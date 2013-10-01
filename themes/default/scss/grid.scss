@@ -1,0 +1,44 @@
+@import 'susy', 'compass/utilities/general/clearfix';
+
+// A Fluid Grid based on 960gs
+$total-columns: 12;
+$column-width: 60px;
+$gutter-width: 20px;
+$grid-padding: 10px;
+
+$break: 12;
+
+// Make it fluid!
+//$container-style: fluid;
+
+.container { 
+	@include container($total-columns, $break);
+}
+
+.row {
+	@include clearfix;
+	
+	@for $i from 1 through $total-columns {
+		.grid_#{$i}:last-child { 
+			@include omega;
+		}
+	}
+	
+	@include at-breakpoint(0 55em) {
+		@for $i from 1 through 12 {
+			.grid_#{$i} { 
+				@include span-columns(12,12);
+				@include omega;
+				float: none;
+				margin: 0;
+				display: block;
+			}
+		}
+	}
+}
+
+@for $i from 1 through $total-columns {
+	.grid_#{$i} { 
+		@include span-columns($i);
+	}
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset=utf-8 />
+<title>Welcome to JS Bin</title>
+
+
+</head>
+  
+<body style="background: red;">
+  
+  <div id="canvas">
+  	
+  </div>
+  
+</body>
+<script src="js/svg.js"></script>
+<script src="js/jquery-2.0.3.min.js"></script>
+<script>
+	(function($) {
+
+		var draw = SVG('canvas').size(10000,10000);
+		draw.move(500,0);
+/* 		var group = null; */
+		var prev = null;
+		var text = draw.text("Herring").attr({fill: '#fff'});
+		var pos = 10;
+		text.font({
+			family:   'Helvetica',
+			size:     100,
+			anchor:   'left',
+			weight:   'bold'
+		});
+		text.hide();
+		
+		function drawPath(width, offsetY, offsetX) {
+			var group = draw.group();
+			offsetY = (typeof offsetY != 'undefined') ? offsetY : -500;
+			offsetX = (typeof offsetX != 'undefined') ? offsetX : 0;
+			for(var i=0; i<50; i++) {
+				var rect = draw.rect(width, 1000).attr({ fill: '#fff' });
+				rect.move(offsetX + pos + (i*(2*width)), offsetY);
+				rect.rotate(45,0,0);
+				group.add(rect);
+			}
+			
+/* 			group.move(pos + 1,0 - pos + 1); */
+/* 			--pos; */
+			return group;
+			
+		}
+		
+		var i = 0,
+			y = 0,
+			direction = 1;
+			
+		//var interval = setInterval(function() {
+			var g = drawPath(5, -200);
+			g.style('opacity',0.5);
+			text.show();
+			text.maskWith(g);
+			
+			var group = draw.group();
+			group.add(text);
+			
+			var path = drawPath(5, -600, 10);
+			
+			group.maskWith(path);
+			
+			var interval = setInterval(function() {
+				if(i == 7) {
+					clearInterval(interval);
+					return;
+				}
+				
+				
+				if(i == 100) {
+					direction = -1;
+				}
+				
+				if(i == -100) {
+					direction = 1;
+				}
+				
+				i = i += (direction > 0 ? 1 : -1);
+				
+				path.move(i, 0);
+			}, 500);
+			
+		//	if(i == 10) {
+		//		clearInterval(interval);
+		//	}
+		//}, 500);
+		
+		
+
+/* 		group.maskWith(text); */
+		
+/* 		group.rotate(-45); */
+		
+	})(jQuery);
+</script>
+</html>
