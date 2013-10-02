@@ -1,20 +1,32 @@
 <?php
 class Page extends SiteTree {
 
-	public static $db = array(
+	/*
+public static $db = array(
 		'OGTitle' => 'Varchar(255)',
 		'OGDescription' => 'Varchar(1024)'
 	);
+*/
 
 	public static $has_one = array(
-		'OGImage' => 'Image'
+		'OG' => 'OG'
 	);
 	
 	public function getCMSFields() {
-		$fields = parent::getCMSFields();
-		$fields->addFieldToTab("Root.OpenGraph", new TextField('OGTitle', 'Title'));
-		$fields->addFieldToTab("Root.OpenGraph", new TextField('OGDescription', 'Description'));
-		$fields->addFieldToTab("Root.OpenGraph", new UploadField('OGImage', 'Image (min 200px X 200px)'));
+		$fields = parent::getCMSFields();		
+		$fields->removeFieldFromTab('Root.Main', 'Content');
+		
+		/*
+$fields->addFieldToTab(
+                'Root.Main',
+                new ToggleCompositeField('OGID', 'Facebook', array(
+					new TextField('OGTitle', 'Title'),
+					new TextField('OGDescription', 'Description'),
+					new UploadField('OGImage', 'Image')
+				))
+        );
+*/
+		
 		return $fields;
 	}
 	
@@ -33,6 +45,10 @@ class Page extends SiteTree {
 				user_error($e, E_USER_WARNING);
 			}
 		}
+	}
+	
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
 	}
 	
 	public function createCSS() {

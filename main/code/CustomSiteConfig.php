@@ -2,14 +2,16 @@
 class CustomSiteConfig extends DataExtension { 
 	
 	public static $db = array(
-		'OGTitle' => 'Varchar(255)',
+		/*
+'OGTitle' => 'Varchar(255)',
 		'OGDescription' => 'Varchar(1024)',
+*/
 		'GoogleSiteVerificationCode' => 'Varchar(128)',
 		'GoogleAnalyticsCode' => 'Varchar(20)'
 	);
 
 	public static $has_one = array(
-		'OGImage' => 'Image'
+		'OG' => 'OG'
 	);
 	
 	public function updateCMSFields(FieldList $fields) {

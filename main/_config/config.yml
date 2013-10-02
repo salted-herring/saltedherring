@@ -1,0 +1,12 @@
+---
+Name: main
+---
+BaseDBO:
+  extensions:
+    - Versioned("Stage","Live")
+BaseMedia:
+  extensions:
+    - Versioned("Stage","Live")
+Slider:
+  extensions:
+    - Versioned("Stage","Live")

@@ -33,6 +33,7 @@ if (defined('SS_ENVIRONMENT_TYPE')) {
 }
 
 Object::add_extension('SiteConfig', 'CustomSiteConfig');
+Object::add_extension('ProjectImage', 'ProjectMediaDecorator');
 
 GD::set_default_quality(100);
 
