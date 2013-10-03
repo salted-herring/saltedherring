@@ -19,10 +19,7 @@ require.config({
 require(['jquery', 'backbone', 'underscore'], function($, Backbone, _) {
 	
 	$(function() {
-		$('#main_nav').click(function() {
-			$(this).toggleClass('collapse expand');
-			return;
-		});
+		console.log('teampage page');
 	});
 	
 });

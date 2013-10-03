@@ -1,4 +1,4 @@
-@import 'compass/css3', 'compass/typography/text/replacement', 'compass/utilities/general/clearfix', 'h5bp';
+@import '_base', 'compass/css3', 'compass/typography/text/replacement', 'compass/utilities/general/clearfix', 'h5bp', 'fonts', 'susy';
 
 @include h5bp-normalize;
 @include h5bp-base-styles;
@@ -8,8 +8,217 @@
 body,
 p,
 td,
-li {
-	font-size: 14px;
+li,
+input {
+	font-family: 'BrandonGrotesque', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+}
+
+a {
+	text-decoration: none;
+	@include transition(all .5s);
+}
+
+body {
+	background: $background;
+	//background: url(../img/SH_salted4_WORK_02.jpg) no-repeat center top;
 }
 
 @import 'grid';
+
+/* ===========================
+ * Sections
+ * =========================== */
+
+/* ===========================
+ * Header
+ * =========================== */
+#header {
+	position: relative;
+	overflow: visible;
+	
+	@include at-breakpoint(0 3 320px) {
+		background: $white;
+	}
+}
+#logo {
+	position: relative;
+	padding-right: 4em;
+	margin-left: -2em;
+	display: inline-block;
+	background: $black;
+	
+	@include at-breakpoint(0 3 320px) {
+		padding-right: 0em;
+		margin-left: 0em;
+		width: 18em;
+	}
+	
+	a {
+		@include hide_text;
+		display: inline-block;
+		height: (14+18+18)/$font-size+em;
+		line-height: 0;
+		width: 143px;
+		margin-left: 2em;
+		
+		@include at-breakpoint(0 3 320px) {
+			padding-right: 0;
+			margin-right: 0;
+		}
+		
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 2em;
+			top: 1.5em;
+			width: 143px;
+			height: 14px;
+			@include sprites-sprite(salted-herring);
+		}
+	}
+	
+}
+
+.menu-open {
+	@include sprites-sprite(menu-open);
+}
+
+#main_nav {
+	margin-left: -2.5em;
+	padding-right: .5em;
+	position: relative;
+	outline: none;
+	-webkit-backface-visibility: visible;
+	@include perspective(1000);
+	
+	@include at-breakpoint(0 3 320px) {
+		margin-left: -1em;
+		padding-left: 1em;
+		padding-right: 1em;
+		background: $background;
+	}
+	
+	&:before {
+		position: absolute;
+		content: '';
+		right: 2em;
+		top: -2.6em;
+		width: 39px;
+		height: 27px;
+		z-index: 2;
+		display: none;
+	}
+	
+	&.collapse {
+		&:before {
+			@include sprites-sprite(menu-collapse);
+		}
+	}
+	&.expand {
+		&:before {
+			cursor: pointer;
+			@include sprites-sprite(menu-open);
+		}
+	}
+	
+	
+	@include at-breakpoint(0 3 320px) {
+		&:before {
+			display: block;
+		}
+			
+		ul {
+			height: 0;
+			@include transition(height .5s);
+			
+			li {
+				@include opacity(0);
+				@include transition(opacity .5s);
+			}
+		}
+		/*
+ul {
+			overflow: none;
+			position: absolute;
+			top: 1em;
+			z-index: 2;
+			background: red;
+		}
+*/
+		&.collapse {
+			ul {
+				height: 3.5em;
+			}
+			li {
+				@include opacity(1);
+			}
+		}
+		&.expand {
+			
+			ul {
+				height: 0;
+			}
+			
+			li {
+				@include opacity(0);
+			}
+		}
+	}
+	
+	ul {
+		margin: 0;
+		padding-left: 0;
+		text-align: right;
+		
+		@include at-breakpoint(0 3 320px) {
+			text-align: center;
+		}
+	}
+	
+	li {
+		padding: (18/$font-size)+em 0;
+		display: inline-block;
+		padding-left: 1.3em;
+		line-height: 1em;
+		
+		&:first-child {
+			padding-left: 0;
+		}
+	}
+	
+	a {
+		font-size: (18/$font-size)+em;
+		font-weight: 800;
+		text-transform: uppercase;
+		color: $black;
+		position: relative;
+		
+		&:after {
+			position: absolute;
+			content: '';
+			bottom: -1.3em;
+			left: 0;
+			height: 4px;
+			width: 100%;
+			z-index: 2;
+			background: transparent;
+			@include transition(background .5s);
+		}
+		
+		&:hover,
+		&.current {
+			color: $blue;
+			
+			&:after {
+				background: $black;
+			}
+		}
+	}
+}
+
+
+/* ===========================
+ * End Sections
+ * =========================== */

@@ -1,0 +1,19 @@
+/* ===========================
+ * Colour Pallet
+ * =========================== */
+$black: #000000;
+$blue: #36cdf5;
+$white: #ffffff;
+$background: #f5f5f5;
+
+/* ===========================
+ * Fonts
+ * =========================== */
+$font-size: 16;
+
+/* ===========================
+ * Sprite sheets
+ * =========================== */
+$sprites-layout: smart;
+@import "sprites/*.png";
+@include all-sprites-sprites;

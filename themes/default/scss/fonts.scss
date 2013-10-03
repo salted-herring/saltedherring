@@ -1,0 +1,70 @@
+@import "compass/css3";
+
+/* @license
+ * MyFonts Webfont Build ID 2234777, 2012-04-22T18:09:36-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed fonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Bodoni Book Italic by Bitstream
+ * URL: http://www.myfonts.com/fonts/bitstream/atf-bodoni/bodoni-book-italic/
+ * Copyright: Copyright 1990-2003 Bitstream Inc. All rights reserved.
+ * 
+ * Webfont: Brandon Grotesque Bold by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/bold/
+ * Copyright: Copyright (c) 2009 by Hannes von Doehren. All rights reserved.
+ * 
+ * Webfont: Brandon Grotesque Regular by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/regular/
+ * Copyright: Copyright (c) 2009 by Hannes von Doehren. All rights reserved.
+ * 
+ * Webfont: Brandon Grotesque Medium by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/medium/
+ * Copyright: Copyright (c) 2009 by Hannes von Doehren. All rights reserved.
+ *
+ * Webfont: Brandon Grotesque Light by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/light/
+ * Copyright: Copyright (c) 2009 by Hannes von Doehren. All rights reserved.
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2234777
+ * 
+ * © 2012 Bitstream Inc
+*/
+
+/* @license
+ * MyFonts Webfont Build ID 2631517, 2013-08-28T00:27:08-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Brandon Grotesque Black by HVD Fonts
+ * URL: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/black/
+ * Copyright: Copyright (c) 2009 by Hannes von Doehren. All rights reserved.
+ * Licensed pageviews: 10,000
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2631517
+ * 
+ * © 2013 MyFonts Inc
+*/
+
+// Black
+@include font-face('BrandonGrotesque', font-files('28275D_0_0.woff', '28275D_0_0.ttf'), '28275D_0_0.eot', 800, normal);
+
+// Bold
+@include font-face('BrandonGrotesque', font-files('234A9E_0_0.woff', '234A9E_0_0.ttf'), '234A9E_0_0.eot', bold, normal);
+
+// Medium
+@include font-face('BrandonGrotesque', font-files('234A9E_2_0.woff', '234A9E_2_0.ttf'), '234A9E_2_0.eot', 500, normal);
+
+// Regular
+@include font-face('BrandonGrotesque', font-files('234A9E_1_0.woff', '234A9E_1_0.ttf'), '234A9E_1_0.eot', normal, normal);
+
+// Light
+@include font-face('BrandonGrotesque', font-files('27128A_0_0.woff', '27128A_0_0.ttf'), '234A9E_1_0.eot', 100, normal);

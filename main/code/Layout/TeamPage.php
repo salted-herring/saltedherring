@@ -1,5 +1,5 @@
 <?php
-class WorkPage extends Page {
+class TeamPage extends Page {
 	
 	public static $db = array(
 	);
@@ -8,16 +8,15 @@ class WorkPage extends Page {
 	);
 	
 	public static $has_many = array(
-/* 		'Projects' => 'Project' */
 	);
 	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
-		
 		return $fields;
 	}
+	
 }
-class WorkPage_Controller extends Page_Controller {
+class TeamPage_Controller extends Page_Controller {
 	
 	public static $allowed_actions = array (
 	);
@@ -26,6 +25,5 @@ class WorkPage_Controller extends Page_Controller {
 		parent::init();
 		
 	}
-	
 	
 }

@@ -32,8 +32,13 @@ if (defined('SS_ENVIRONMENT_TYPE')) {
 	}
 }
 
+require_once(ROOT."main/code/Lib/MobileDetect.php");
+$mobi = new Mobile_Detect();
+define('MOBILE', $mobi->isMobile());
+
+
 Object::add_extension('SiteConfig', 'CustomSiteConfig');
-Object::add_extension('ProjectImage', 'ProjectMediaDecorator');
+/* Object::add_extension('ProjectImage', 'ProjectMediaDecorator'); */
 
 GD::set_default_quality(100);
 

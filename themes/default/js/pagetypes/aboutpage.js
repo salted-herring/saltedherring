@@ -19,8 +19,8 @@ require.config({
 require(['jquery', 'backbone', 'underscore'], function($, Backbone, _) {
 	
 	$(function() {
-		$('#main_nav').click(function() {
-			$(this).toggleClass('collapse expand');
+		$('#main_nav a').click(function() {
+			alert();
 			return;
 		});
 	});

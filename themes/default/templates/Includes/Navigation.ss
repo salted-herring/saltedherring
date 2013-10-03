@@ -1,4 +1,4 @@
-<nav id="main_nav">
+<nav id="main_nav" class="grid_2 expand">
 	<ul>
 		<% loop Menu(1) %>
 			<li>

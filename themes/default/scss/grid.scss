@@ -1,44 +1,56 @@
 @import 'susy', 'compass/utilities/general/clearfix';
 
 // A Fluid Grid based on 960gs
-$total-columns: 12;
-$column-width: 60px;
-$gutter-width: 20px;
-$grid-padding: 10px;
+$total-columns  : 3;
+$column-width   : 16em;
+$gutter-width   : 4em;
+$grid-padding   : 2em;
 
-$break: 12;
-
-// Make it fluid!
-//$container-style: fluid;
+$break: 3;
 
 .container { 
 	@include container($total-columns, $break);
+}
+
+
+@for $i from 1 through $total-columns {
+	.grid_#{$i} {
+		@include span-columns($i);
+	}
+	
+	.spacer_#{$i} {
+		margin-left: ($i * $column-width + ($gutter-width * $i));
+	}
 }
 
 .row {
 	@include clearfix;
 	
 	@for $i from 1 through $total-columns {
-		.grid_#{$i}:last-child { 
-			@include omega;
-		}
-	}
-	
-	@include at-breakpoint(0 55em) {
-		@for $i from 1 through 12 {
-			.grid_#{$i} { 
-				@include span-columns(12,12);
-				@include omega;
-				float: none;
-				margin: 0;
-				display: block;
+		.grid_#{$i}{
+			&:last-child { 
+				margin-right: 0;
+			}
+			
+			&.notlast {
+				float: left !important;
 			}
 		}
 	}
 }
 
-@for $i from 1 through $total-columns {
-	.grid_#{$i} { 
-		@include span-columns($i);
+@include at-breakpoint(0 3 320px) {
+	$gutter-width   : 1em;
+	$grid-padding   : 1em;
+	
+	.container { 
+		@include container;
+	}
+
+	@for $i from 1 through $total-columns {
+		.grid_#{$i}{
+			@include span-columns(3,$break);
+			margin: 0;
+		}
 	}
 }

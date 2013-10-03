@@ -12,6 +12,7 @@ class Service extends BaseDBO {
 	);
 	
 	static $summary_fields = array(
+		'Name'
 	);
 	
 	public static $defaults = array(
@@ -20,7 +21,21 @@ class Service extends BaseDBO {
 	static $searchable_fields = array(
 	);
 	
+	static $belongs_many_many = array(
+		'Projects' => 'Project'
+	);
+	
 	public function getTitle() {
 		return $this->Name;
+	}
+	
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+		
+		$fields->removeByName('Projects');
+		
+		$fields->removeFieldFromTab('Root.Main', 'Title');
+		
+		return $fields;
 	}
 }

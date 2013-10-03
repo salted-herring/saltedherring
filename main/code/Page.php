@@ -36,7 +36,7 @@ $fields->addFieldToTab(
 		$this->createCSS();
 		$this->createJS();
 		
-		$template = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/templates/Layout' . get_class($this) . '.ss';
+		$template = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/templates/Layout/' . get_class($this) . '.ss';
 		
 		if(!file_exists($template)) {
 			try {

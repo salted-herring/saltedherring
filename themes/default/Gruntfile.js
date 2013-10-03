@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 					fileExclusionRegExp: /^\.|css|scss|fonts|img|templates|build|\.(jpg|jpeg|gif|css|pdf|png|php|html|ico|md|json)+$|readme|r.js|app.build.js|config.js|\.svn|docs|examples|test/,
 					optimizeCss: 'none',
 	
-					modules: [{"name":"pagetypes\/default"},{"name":"pagetypes\/homepage"},{"name":"pagetypes\/page"},{"name":"pagetypes\/reportspage"},{"name":"pagetypes\/workpage"}] // add modules here. e.g. : {name: 'pagetypes/pagename'}
+					modules: [{"name":"pagetypes\/aboutpage"},{"name":"pagetypes\/default"},{"name":"pagetypes\/homepage"},{"name":"pagetypes\/page"},{"name":"pagetypes\/reportspage"},{"name":"pagetypes\/teampage"},{"name":"pagetypes\/workpage"}] // add modules here. e.g. : {name: 'pagetypes/pagename'}
 				}
 			}
 		},

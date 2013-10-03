@@ -13,6 +13,7 @@ class Colour extends BaseDBO {
 	);
 	
 	public static $summary_fields = array(
+		'gettheColour' => 'Colour',
 		'Name' => 'Name'
 	);
 	
@@ -20,6 +21,8 @@ class Colour extends BaseDBO {
 	);
 	
 	static $searchable_fields = array(
+		'Name',
+		'Value'
 	);
 	
 	public static $belongs_to = array(
@@ -28,6 +31,10 @@ class Colour extends BaseDBO {
 	
 	public function getTitle() {
 		return $this->Name;
+	}
+	
+	public function gettheColour() {
+		return DBField::create_field('HTMLVarchar', '<div style="width:40px;height:40px;background-color:#' . $this->Value . ';"/>');
 	}
 	
 	public function getCMSFields() {
@@ -41,10 +48,5 @@ class Colour extends BaseDBO {
 		return $fields;
 	}
 	
-	public function getColourVal() {
-		/* if($this->Image()->exists()) { */
-			return null;//DBField::create_field('HTMLVarchar', '<div style="width:40px;height:40px;background-color:' . $this->Value . ';"/>');
-/* 		} */
-/* 		return null;  */
-	}
+	
 }

@@ -15,36 +15,22 @@ class Project extends BaseDBO {
 	);
 	
 	public static $has_many = array(
-		'ProjectAwards' => 'ProjectAward'
-		//'Media' => 'BaseMedia'
+		'ProjectAwards' => 'ProjectAward',
+		'Media' => 'BaseMedia'
 	);
 	
 	public static $many_many = array(
-		'Categories' => 'Category'
+		'Categories' => 'Category',
+		'Services' => 'Service'
 	);
-	
-	static $summary_fields = array(
-	);
-	
-	public static $defaults = array(
-	);
-	
-	static $searchable_fields = array(
-	);
-	
-	/*
-public static $many_many_extraFields = array(
-		'Awards' => array(
-			'URL' => 'Varchar(255)'
-		)
-	);
-*/
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		
 		$fields->removeByName('Categories');
 		$fields->removeByName('ClientID');
+		$fields->removeByName('Services');
+		$fields->removeByName('Media');
 		$fields->removeByName('ProjectAwards');
 		
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
@@ -72,19 +58,48 @@ public static $many_many_extraFields = array(
 			$clients[$client->ID] = $client->Name;
 		}
 		
+		$services = array();
+		
+		foreach(Service::get() as $service) {
+			$services[$service->ID] = $service->Name;
+		}
+		
+		// Root.Main
 		$fields->addFieldsToTab('Root.Main', array(
 			$title = new TextField('Title'),
 			$tagLine = new TextField('TagLine', 'Tag Line'),
 			$quote = new TextareaField('Quote'),
 			$cite = new TextareaField('Citation', 'Source'),
 			$categories = new CheckboxSetField($name='Categories', $title='Categories', $source=$cats),
+			$serv = new CheckboxSetField($name='Services', $title='Services', $source=$services),
 			$client = new OptionsetField('ClientID', 'Client', $clients),
 		));
 		
-		$fields->addFieldToTab('Root.Awards', new GridField("Awards", "Awards", $this->ProjectAwards(), $gridFieldConfig));
-		
 		$tagLine->setRightTitle('Short, single line description of project');
 		$cite->setRightTitle('Quotation source. Can contain html tags - e.g. to link to twitter etc.');
+		
+		
+		// Root.Award
+		$fields->addFieldToTab('Root.Awards', new GridField("Awards", "Awards", $this->ProjectAwards(), $gridFieldConfig));
+		
+		
+		// Root.Media
+		$multiClasses = new GridFieldAddNewMultiClass();
+		$multiClasses->setClasses(array('ImageMedia', 'SWFMedia', 'VimeoMedia'));
+		
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldToolbarHeader(),
+			new GridFieldSortableHeader(),
+			new GridFieldDataColumns(),
+			new GridFieldEditButton(),
+			new GridFieldDeleteAction(),
+			new GridFieldDetailForm(),
+			new GridFieldFilterHeader(),
+			new GridFieldOrderableRows('SortOrder'),
+			$multiClasses
+		);
+		
+		$fields->addFieldToTab('Root.Media', new GridField("Media", "Media", $this->Media(), $gridFieldConfig));
 		
 		return $fields;
 	}
@@ -105,7 +120,8 @@ class ProjectAward extends DataObject {
 	);
 	
 	static $summary_fields = array(
-		'Award.Name' => 'Name'
+		'Award.Name' => 'Name',
+		'gettheURL' => 'URL'
 	);
 	
 	public static $defaults = array(
@@ -113,6 +129,10 @@ class ProjectAward extends DataObject {
 	
 	static $searchable_fields = array(
 	);
+	
+	public function gettheURL() {
+		return DBField::create_field('HTMLVarchar', '<a href="' . $this->URL . '" target="_blank">' . $this->URL . '</a>');
+	}
 	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();

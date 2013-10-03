@@ -13,6 +13,7 @@ class Award extends BaseDBO {
 	);
 	
 	static $summary_fields = array(
+		'getThumbnail' => 'Logo',
 		'Name'
 	);
 	
@@ -20,6 +21,7 @@ class Award extends BaseDBO {
 	);
 	
 	static $searchable_fields = array(
+		'Name'
 	);
 	
 	static $belongs_to = array(
@@ -36,5 +38,12 @@ class Award extends BaseDBO {
 		$fields->removeFieldFromTab('Root.Main', 'Title');
 		
 		return $fields;
+	}
+	
+	public function getThumbnail() {
+		if($this->Logo()->exists()) {
+			return DBField::create_field('HTMLVarchar', '<img src="' . $this->Logo()->CroppedImage(40,40)->URL . '"/>');
+		}
+		return null; 
 	}
 }

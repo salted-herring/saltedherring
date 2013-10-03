@@ -7,7 +7,7 @@ class BaseDBO extends DataObject {
 		'SortOrder' => 'Int'
 	);
 	
-	public static $default_sort = 'SortOrder ASC, ID DESC';
+	public static $default_sort = 'SortOrder DESC, ID DESC';
 	
 	public static $has_one = array(
 	);
@@ -73,6 +73,17 @@ class BaseDBO extends DataObject {
         }
         
         $this->URLSegment = strtolower(trim($this->URLSegment, '-'));
+        
+        
+        // Sort Order		
+        if(!$this->ID) {
+        	$query = DB::query("SELECT MIN(SortOrder) FROM BaseDBO WHERE ClassName = '" . $this->getClassName() . "'");
+        	
+        	if($query) {
+	        	$minVal = (int)($query->value());   	
+				$this->SortOrder = $minVal - 1;
+        	}
+        }
   
         parent::onBeforeWrite();
     }
@@ -117,15 +128,18 @@ class BaseMedia extends DataObject {
 		return true;
 	}
 	
-	public static $default_sort = 'SortOrder ASC, ID DESC';
+	public static $default_sort = 'SortOrder DESC, ID DESC';
 	
 	public static $has_one = array(
+		'Project' => 'Project'
 	);
 	
 	public static $has_many = array(
 	);
 	
 	static $summary_fields = array(
+		'Title',
+		'Type'
 	);
 	
 	public static $defaults = array(
@@ -134,16 +148,36 @@ class BaseMedia extends DataObject {
 	static $searchable_fields = array(
 	);
 	
+	public function getType() {
+		return $this->singular_name();
+	}
+	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$fields->RemoveFieldFromTab('Root.Main', 'SortOrder');
 		$fields->RemoveFieldFromTab('Root.Main', 'Version');
+		$fields->RemoveFieldFromTab('Root.Main', 'ProjectID');
+		$fields->RemoveFieldFromTab('Root.Main', 'TeamMemberID');
 		
 		return $fields;
 	}
+	
+	public function onBeforeWrite() {
+		// Sort Order
+		
+        if(!$this->ID) {
+        	$query = DB::query("SELECT MIN(SortOrder) FROM BaseMedia WHERE ClassName = '" . $this->getClassName() . "'");
+        	
+        	if($query) {
+	        	$minVal = (int)($query->value());   	
+				$this->SortOrder = $minVal - 1;
+        	}
+        }
+        
+        parent::onBeforeWrite();
+	}
 }
 
-/*
 class MediaWithFallback extends BaseMedia {
 	public static $db = array(
 	);
@@ -171,14 +205,14 @@ class MediaWithFallback extends BaseMedia {
 		return $fields;
 	}
 }
-*/
 
 class ImageMedia extends BaseMedia {
 	public static $db = array(
 	);
 	
 	public static $has_one = array(
-		'Image' => 'Image'
+		'Image' => 'Image',
+		'TeamMember' => 'TeamMember'
 	);
 	
 	public static $has_many = array(
@@ -204,6 +238,13 @@ class ImageMedia extends BaseMedia {
 		}
 		return null; 
 	}
+	
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+		$fields->RemoveFieldFromTab('Root.Main', 'TeamMemberID');
+		
+		return $fields;
+	}
 }
 
 class SliderImage extends ImageMedia {
@@ -219,26 +260,8 @@ class SliderImage extends ImageMedia {
 	}
 }
 
-/*
-class ProjectMedia extends BaseMedia {
-	public static $has_one = array(
-		'Project' => 'Project'
-	);
-	
-	public function getCMSFields() {
-		$fields = parent::getCMSFields();
-		$fields->RemoveFieldFromTab('Root.Main', 'ProjectID');
-		
-		return $fields;
-	}
-}
-*/
-
-class ProjectMedia extends BaseMedia {
-}
 
 
-/*
 class SWFMedia extends MediaWithFallback {
 	public static $db = array(
 	);
@@ -261,6 +284,13 @@ class SWFMedia extends MediaWithFallback {
 	
 	public static $singular_name = 'SWF';
 	public static $plural_name = 'SWFs';
+	
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+		$fields->AddFieldToTab('Root.Main', new UploadField('File', 'SWF'));
+		
+		return $fields;
+	}
 }
 
 class VimeoMedia extends MediaWithFallback {
@@ -285,5 +315,11 @@ class VimeoMedia extends MediaWithFallback {
 	
 	public static $singular_name = 'Vimeo';
 	public static $plural_name = 'Vimeos';
+	
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+		$fields->AddFieldToTab('Root.Main', new TextField('vimeoID', 'Vimeo ID'));
+		
+		return $fields;
+	}
 }
-*/
