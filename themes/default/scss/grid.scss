@@ -8,8 +8,20 @@ $grid-padding   : 2em;
 
 $break: 3;
 
+@include at-breakpoint(0 3 320px) {
+	img {
+		max-width: 100%;
+	}
+}
+
 .container { 
 	@include container($total-columns, $break);
+	width: 960px;
+	
+	@include at-breakpoint(0 3 320px) {
+		width: 18em;
+		overflow-x: none;
+	}
 }
 
 

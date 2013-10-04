@@ -1,4 +1,5 @@
 <header id="header" class="container row">
-	<span id="logo" class="grid_1"><a href="/">Salted Herring</a></span>
+	<div id="logo" class="grid_1"><a href="/">Salted Herring</a></div>
+	<a href="#" id="menu_icon">Show Menu</a>
 	<% include Navigation %>
 </header>

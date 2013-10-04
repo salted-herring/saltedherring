@@ -18,7 +18,7 @@
 	</head>
 	<body class="page-$URLSegment">
 		<% include Header %>
-		<div class="container">
+		<div id="content" class="container">
 			$Layout
 		</div>
 		

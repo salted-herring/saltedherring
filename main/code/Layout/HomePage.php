@@ -8,7 +8,8 @@ class HomePage extends Page {
 	);
 	
 	public static $has_many = array(
-		'Sliders' => 'Slider'
+		'Sliders' => 'Slider',
+		'NewsItems' => 'NewsItem'
 	);
 	
 	public function getCMSFields() {
@@ -30,6 +31,23 @@ class HomePage extends Page {
 		
 		$gridfield = new GridField("Slides", "Slides", $this->Sliders(), $gridFieldConfig);
 		$fields->addFieldToTab('Root.Slides', $gridfield);
+		
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldToolbarHeader(),
+			new GridFieldSortableHeader(),
+			new GridFieldDataColumns(),
+			new GridFieldEditButton(),
+			$add = new GridFieldAddNewButton(),
+			new GridFieldDeleteAction(),
+			new GridFieldDetailForm(),
+			new GridFieldFilterHeader(),
+			new GridFieldOrderableRows('SortOrder')
+		);
+		
+		$add->setButtonName('Add News');
+		
+		$gridfield = new GridField("News", "News", $this->NewsItems(), $gridFieldConfig);
+		$fields->addFieldToTab('Root.News', $gridfield);
 		
 		return $fields;
 	}

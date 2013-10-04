@@ -1,1 +1,193 @@
 @import 'styles';
+
+
+section {
+	position: relative;
+	a {
+		color: $white;
+	}
+	
+	.block {
+		position: relative;
+	}
+	
+	.text {
+		position: relative;
+	}
+	
+	img {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+	}
+	
+	.heading {
+		text-align: center;
+		color: $white;
+		font-weight: 800;
+		font-size: (50/$font-size)+em;
+		text-transform: uppercase;
+		line-height: 1em;
+		
+		span {
+			display: block;
+		}
+	}
+	
+	.first nav, .link {
+		text-align: center;
+		border: 3px solid $white;
+		display: block;
+		padding: 0 1em !important;
+		display: table;
+		margin: 0 auto;
+		width: auto;
+		
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			padding: 0;
+			display: inline-block;
+		}
+		
+		a {
+			padding: 1em .5em .8em .5em;
+			text-transform: uppercase;
+			font-weight: 800;
+			font-size: (18/$font-size)+em;
+			display: block;
+		}
+	}
+	
+	.link {
+		padding: .8em 2em !important;
+		font-weight: 500;
+		font-size: (18/$font-size)+em;
+		display: table;
+		margin: 0 auto;
+		width: auto;
+	}
+	
+	.intro {
+		a {
+			position: relative;
+			display: inline-block;
+			padding-right: 5px;
+			
+			&[href^="mailto:"] {
+				padding-left: 5px;
+				padding-right: 0;
+				
+				&:before {
+					position: absolute;
+					content: '';
+					display: block;
+					width: 3px;
+					height: 30px;
+					left: -3px;
+					top: -2px;
+					background: $white;
+				}
+			}
+		}
+	}
+	
+	.contact {
+		display: none;
+	}
+	
+	@include at-breakpoint(0 3 320px) {
+		margin: 0 -1em;
+		
+		.block {
+			overflow: hidden;
+		}
+		
+		.header {
+			display: none;
+		}
+		
+		.heading {
+			margin-top: 1.5em;
+		}
+		
+		img {
+			height: 100%;
+			max-width: none;
+		}
+		
+		.contact {
+			display: block;
+		}
+		
+		.intro {
+			display: none;
+		}
+		
+		.link {
+			position: relative;
+			z-index: 1;
+		}
+		
+		.links {
+			margin-top: 1em;
+			padding: 1em 0;
+			width: 100%;
+			left: 0;
+			top: 0;
+			z-index: -1;
+			background: rgba(66,33,16,.6);
+			display: block;
+		}
+		
+		.first {
+			nav {
+				margin-bottom: 1em;
+			}
+			.link {
+				display: none;
+			}
+			
+			.intro {
+				display: block;
+				width: 100%;
+				margin-top: .5em;
+				background: rgba(0, 211, 255, .6);
+				text-align: center;
+				padding: 1em 0;
+				a {
+					display: inline-block;
+					padding-left: 2em;
+					color: $black;
+				}
+				
+				a[href^="mailto:"] {
+					display: none;
+				}
+				
+				a[href^="tel:"] {
+					padding-right: 2em;
+					padding-left: 0;
+				}
+				
+				.contact {
+					position: relative;
+					
+					&:before {
+						position: absolute;
+						display: block;
+						content: '';
+						width: 3px;
+						height: 20px;
+						left: 0;
+						top: 0;
+						background: $white;
+					}
+				}
+			}
+		}
+	}
+}
