@@ -584,6 +584,7 @@ a {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+  color: white;
 }
 
 body {
@@ -825,6 +826,11 @@ body {
   padding-right: .5em;
   position: relative;
   outline: none;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 @media (max-width: 320px) {
   #main_nav {
@@ -850,38 +856,21 @@ body {
     background: white;
     top: 2.9em;
     height: 0;
-    -webkit-transform: perspective(1) scale(1, 0);
-    -moz-transform: perspective(1) scale(1, 0);
-    -ms-transform: perspective(1) scale(1, 0);
-    -o-transform: perspective(1) scale(1, 0);
-    transform: perspective(1) scale(1, 0);
+    overflow: hidden;
+    max-height: 1000px;
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
     -webkit-transform-style: preserve-3d;
     -webkit-user-select: none;
     -moz-user-select: none;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-  }
-  #main_nav li {
-    -webkit-transition: opacity 0.5s;
-    -moz-transition: opacity 0.5s;
-    -o-transition: opacity 0.5s;
-    transition: opacity 0.5s;
-    opacity: 0;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
   }
   #main_nav.collapse ul {
-    -webkit-transform: perspective(1) scale(1, 1);
-    -moz-transform: perspective(1) scale(1, 1);
-    -ms-transform: perspective(1) scale(1, 1);
-    -o-transform: perspective(1) scale(1, 1);
-    transform: perspective(1) scale(1, 1);
     height: 3em;
-  }
-  #main_nav.collapse li {
-    opacity: 1;
+    overflow: visible;
   }
 }
 #main_nav ul {
@@ -938,6 +927,10 @@ body {
   top: .75em;
   width: 39px;
   height: 27px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
   background-position: -62px -14px;
   text-indent: -119988px;
   overflow: hidden;
@@ -1008,3 +1001,57 @@ footer a.map {
 /* ===========================
  * End Sections
  * =========================== */
+nav.filters {
+  background: #36cdf5;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding: 2em 2em 2em 1em;
+}
+nav.filters a {
+  font-family: 'Times', serif;
+  font-style: italic;
+  color: black;
+}
+nav.filters a.all, nav.filters a:hover {
+  color: white;
+}
+nav.filters a.all:hover {
+  color: black;
+}
+nav.filters a:after {
+  margin-left: 10px;
+  margin-right: 10px;
+  content: '/';
+  color: black;
+}
+
+#work .work {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+#work .work img {
+  position: absolute;
+  z-index: 0;
+}
+#work .work .label {
+  position: absolute;
+  z-index: 1;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 2em;
+}
+#work .work .label strong,
+#work .work .label span {
+  display: block;
+}
+#work .work .label span {
+  font-family: 'Times', serif;
+  font-style: italic;
+}
+@media (max-width: 320px) {
+  #work .work {
+    height: 280px;
+  }
+}

@@ -20,12 +20,14 @@ class WorkPage extends Page {
 class WorkPage_Controller extends Page_Controller {
 	
 	public static $allowed_actions = array (
+		'project'
 	);
 	
 	public function init() {
 		parent::init();
-		
 	}
 	
-	
+	public function project() {
+		return $this->renderWith(array('ProjectPage', 'Page'));
+	}
 }

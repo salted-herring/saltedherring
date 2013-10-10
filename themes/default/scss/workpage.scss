@@ -1,1 +1,64 @@
 @import 'styles';
+
+nav.filters {
+	background: $blue;
+	margin-left: -1em;
+	margin-right: -1em;
+	padding: 2em 2em 2em 1em;
+	
+	a {
+		@include minion;
+		color: $black;
+		
+		&.all,
+		&:hover {
+			color: $white;
+		}
+		
+		&.all:hover {
+			color: $black;
+		}
+		
+		&:after {
+			margin-left: 10px;
+			margin-right: 10px;
+			content: '/';
+			color: $black;
+		}
+	}
+}
+
+#work {
+	.work {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		
+		img {
+			position: absolute;
+			z-index: 0;
+		}
+		
+		.label {
+			position: absolute;
+			z-index: 1;
+			bottom: 0px;
+			background: rgba(0,0,0,.5);
+			width: 100%;
+			padding: 2em;
+			
+			strong,
+			span {
+				display: block;
+			}
+			
+			span {
+				@include minion;
+			}
+		}
+		
+		@include at-breakpoint(0 3 320px) {
+			height: 280px;
+		}
+	}
+}

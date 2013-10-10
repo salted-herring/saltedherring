@@ -17,6 +17,7 @@ input {
 a {
 	text-decoration: none;
 	@include transition(all .5s);
+	color: $white;
 }
 
 
@@ -141,6 +142,8 @@ body {
 	position: relative;
 	outline: none;
 	
+	@include transform(translate3d(0,0,0));
+	
 	@include at-breakpoint(0 3 320px) {
 		margin-left: -1em;
 		padding-left: 0em;
@@ -168,8 +171,10 @@ body {
 			background: $white;
 			top: 2.9em;
 			height: 0;
+			overflow: hidden;
+			max-height: 1000px;
 			
-			@include scale(1.0,0,1);
+			//@include scale(1.0,0,1);
 			
 			-webkit-backface-visibility: hidden;
 			-webkit-perspective: 1000;
@@ -178,22 +183,25 @@ body {
 			-webkit-user-select:none;
 			-moz-user-select:none;
 			
-			@include transition(all .5s);
+			@include transition(all .2s);
 
 		}
 		
 		li {
-			@include transition(opacity .5s);
-			@include opacity(0);
+			//@include transition(opacity .2s);
+			//@include transition-delay(.2s);
+			//@include opacity(0);
 		}
 		
 		&.collapse {
 			ul {
-				@include scale(1.0,1.0,1);
+				//@include scale(1.0,1.0,1);
 				height: 3em;
+				overflow: visible;
 			}
 			li {
-				@include opacity(1.0);
+				//@include transition-delay(0s);
+				//@include opacity(1.0);
 			}
 		}
 	}
@@ -256,6 +264,7 @@ body {
 	top: .75em;
 	width: 39px;
 	height: 27px;
+	@include transition(none);
 	@include sprites-sprite(menu-open);
 	@include hide_text;
 	
