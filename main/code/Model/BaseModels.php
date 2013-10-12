@@ -7,7 +7,7 @@ class BaseDBO extends DataObject {
 		'SortOrder' => 'Int'
 	);
 	
-	public static $default_sort = 'SortOrder DESC, ID DESC';
+	public static $default_sort = 'SortOrder ASC';
 	
 	public static $has_one = array(
 	);

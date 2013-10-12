@@ -11,7 +11,9 @@ td,
 li,
 input {
 	font-family: 'BrandonGrotesque', Helvetica, Arial, sans-serif;
-	font-size: 16px;
+	font-size: $font-size;
+	line-height: (24/$font-size)+em;
+	-webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -20,15 +22,15 @@ a {
 	color: $white;
 }
 
-
-
 body {
 	background: $background;
-/* 	position: relative; */
-	@include at-breakpoint(0 3 320px) {
-/* 		z-index: -1; */
-	}
-	//background: url(../img/SH_salted4_WORK_02.jpg) no-repeat center top;
+}
+
+h1 {
+	font-size: (48/$font-size)+em;
+	line-height: (52/48)+em;
+	font-weight: bold;
+	font-style: normal;
 }
 
 @import 'grid';
@@ -43,14 +45,20 @@ body {
 	}
 }
 
-.external {
+.link {
 	display: inline-block;
 	border: 3px solid $white;
 	padding: .8em 2em 1em 2em;
-	background: $blue;
 	text-align: center;
 	font-size: (22/$font-size)+em;
 	position: relative;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.external {
+	@extend .link;
+	background: $blue;
 	
 	&:before {
 		position: absolute;
@@ -282,9 +290,9 @@ body {
  * Content
  * =========================== */
 #content {
-	@include at-breakpoint(0 3 320px) {
+	//@include at-breakpoint(0 3 320px) {
 		padding-top: 2.9em;
-	}
+	//}
 }
 
 /* ===========================

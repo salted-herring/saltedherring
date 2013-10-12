@@ -23,6 +23,10 @@ class Project extends BaseDBO {
 		'Categories' => 'Category',
 		'Services' => 'Service'
 	);
+	
+	public static $belongs_to = array(
+		'Slider' => 'Slider'
+	);
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
@@ -102,6 +106,10 @@ class Project extends BaseDBO {
 		$fields->addFieldToTab('Root.Media', new GridField("Media", "Media", $this->Media(), $gridFieldConfig));
 		
 		return $fields;
+	}
+	
+	public function getURL() {
+		return '/work/' . $this->URLSegment;
 	}
 }
 

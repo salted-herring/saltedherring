@@ -8,7 +8,6 @@ class HomePage extends Page {
 	);
 	
 	public static $has_many = array(
-		'Sliders' => 'Slider',
 		'NewsItems' => 'NewsItem'
 	);
 	
@@ -29,7 +28,7 @@ class HomePage extends Page {
 		
 		$add->setButtonName('Add Slide');
 		
-		$gridfield = new GridField("Slides", "Slides", $this->Sliders(), $gridFieldConfig);
+		$gridfield = new GridField("Slides", "Slides", Slider::get(), $gridFieldConfig);
 		$fields->addFieldToTab('Root.Slides', $gridfield);
 		
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
@@ -60,5 +59,13 @@ class HomePage_Controller extends Page_Controller {
 	
 	public function init() {
 		parent::init();
+	}
+	
+	public function getSliders() {
+		/*
+print_r(Slider::get()->filter(array('ID' => 15)));
+		die;
+*/
+		return Slider::get();
 	}
 }

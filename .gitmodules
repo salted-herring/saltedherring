@@ -1,0 +1,3 @@
+[submodule "gridfieldextensions"]
+	path = gridfieldextensions
+	url = https://github.com/ajshort/silverstripe-gridfieldextensions.git
