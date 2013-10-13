@@ -23,7 +23,9 @@ class TeamPage_Controller extends Page_Controller {
 	
 	public function init() {
 		parent::init();
-		
 	}
 	
+	public function getTeam() {
+		return Team::get();
+	}
 }

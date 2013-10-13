@@ -109,7 +109,18 @@ class Project extends BaseDBO {
 	}
 	
 	public function getURL() {
-		return '/work/' . $this->URLSegment;
+		return '/work/project/' . $this->URLSegment;
+	}
+	
+	public function getFirstImage() {
+		$im = NULL;
+		foreach($this->Media() as $media) {
+			if($media->getType() == 'Image') {
+				return $media;
+			}
+		}
+		
+		return $im;
 	}
 }
 

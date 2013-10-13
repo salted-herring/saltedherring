@@ -1,42 +1,31 @@
+<% if getCategories %>
 <nav class="filters">
-	<a href="#" class="all">View all</a>
-	<a href="#">brand &amp; identity</a>
-	<a href="#">strategy</a>
-	<a href="#">websites</a>
-	<a href="#">campaigns &amp; microsites</a>
-	<a href="#">content creation</a>
-	<a href="#">apps &amp; interface design</a>
+	<a href="/work/"<% if category %><% else %> class="all"<% end_if %>>View all</a>
+	<% loop getCategories %>
+	<a href="/work/category/$URLSegment"<% if $Top.category = $URLSegment %> class="current"<% end_if %>>$Name</a>
+	<% end_loop %>
 </nav>
+<% end_if %>
 
 <section id="work">
-	<a href="/work/project" class="work">
-		<img src="http://placehold.it/480x480" alt="Work Item Name" />
+	<% if getAllProjects %>
+	<% loop getAllProjects %>
+	<a href="$getURL" class="work">
+		<% if getFirstImage %>
+		<img src="$getFirstImage.outputImage.URL" alt="$Name" />
+		<% end_if %>
 		<div class="label">
-			<strong>Project Name</strong>
-			<span>Aenean Parturient Ultricies</span>
+			<strong>$Title</strong>
+			<span>$TagLine</span>
 		</div>
 	</a>
-	<a href="#" class="work">
-		<img src="http://placehold.it/480x480" alt="Work Item Name" />
-		<div class="label">
-			<strong>Project Name</strong>
-			<span>Aenean Parturient Ultricies</span>
-		</div>
-	</a>
-	<a href="#" class="work">
-		<img src="http://placehold.it/480x480" alt="Work Item Name" />
-		<div class="label">
-			<strong>Project Name</strong>
-			<span>Aenean Parturient Ultricies</span>
-		</div>
-	</a>
-	<a href="#" class="work">
-		<img src="http://placehold.it/480x480" alt="Work Item Name" />
-		<div class="label">
-			<strong>Project Name</strong>
-			<span>Aenean Parturient Ultricies</span>
-		</div>
-	</a>
+	<% end_loop %>
+	<% else %>
+	<div class="warning">
+		<h1>Something's fishy.</h1>
+		<p>We don't know what's up. But it's not cool.</p>
+	</div>
+	<% end_if %>
 </section>
 <!--
 $Form

@@ -15,15 +15,40 @@ class WorkPage extends Page {
 }
 class WorkPage_Controller extends Page_Controller {
 	
-	public static $allowed_actions = array (
-		'project'
+	public static $url_handlers = array (
+		'project/$Project!' => 'getProject',
+		'category/$Category!' => 'getCategoryProjects'
 	);
 	
 	public function init() {
 		parent::init();
 	}
 	
-	public function project() {
-		return $this->renderWith(array('ProjectPage', 'Page'));
+	public function getProject($request) {
+		$Project = Project::get()->filter(array('URLSegment' => $request->param('Project')));
+		return $this->renderWith(array('ProjectPage', 'Page'), array(
+			'Project' => $Project
+		));
+	}
+	
+	public function getCategoryProjects($request) {
+		$cat = Category::get()->filter('URLSegment', $request->param('Category'));
+		$Projects = false;
+		if($cat) {
+			$Projects = Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->first()->ID);
+		}
+		
+		return $this->renderWith(array('WorkPage', 'Page'), array(
+			'getAllProjects' => $Projects->count() == 0 ? false : $Projects,
+			'category' => $request->param('Category')
+		));
+	}
+	
+	public function getAllProjects() {
+		return Project::get();
+	}
+	
+	public function getCategories() {
+		return Category::get();
 	}
 }

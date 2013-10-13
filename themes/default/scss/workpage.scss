@@ -11,12 +11,16 @@ nav.filters {
 		color: $black;
 		
 		&.all,
+		&.current,
 		&:hover {
 			color: $white;
 		}
 		
-		&.all:hover {
-			color: $black;
+		&.all,
+		&.current {
+			&:hover {
+				color: $black;
+			}
 		}
 		
 		&:after {
@@ -33,32 +37,28 @@ nav.filters {
 		position: relative;
 		display: block;
 		overflow: hidden;
+	}
+	
+	img {
+		position: relative;
+		z-index: 0;
+	}
+	
+	.label {
+		position: absolute;
+		z-index: 1;
+		bottom: 0px;
+		background: rgba(0,0,0,.5);
+		width: 100%;
+		padding: 2em;
 		
-		img {
-			position: absolute;
-			z-index: 0;
+		strong,
+		span {
+			display: block;
 		}
 		
-		.label {
-			position: absolute;
-			z-index: 1;
-			bottom: 0px;
-			background: rgba(0,0,0,.5);
-			width: 100%;
-			padding: 2em;
-			
-			strong,
-			span {
-				display: block;
-			}
-			
-			span {
-				@include minion;
-			}
-		}
-		
-		@include at-breakpoint(0 3 320px) {
-			height: 280px;
+		span {
+			@include minion;
 		}
 	}
 }
@@ -204,7 +204,7 @@ margin: 0 -0 0 -1.5em;
 		font-weight: 500;
 		width: 48%;
 		font-style: normal;
-		font-size: (20/$font-size)+em;
+		font-size: (20/$font-size)+em !important;
 		float: left;
 	}
 	
@@ -234,6 +234,12 @@ margin: 0 -0 0 -1.5em;
 			p:first-child {
 				display: block;
 			}
+		}
+	}
+	
+	#work {
+		.label {
+			padding: 1em 2em;
 		}
 	}
 }

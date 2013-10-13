@@ -1022,10 +1022,10 @@ nav.filters a {
   font-style: italic;
   color: black;
 }
-nav.filters a.all, nav.filters a:hover {
+nav.filters a.all, nav.filters a.current, nav.filters a:hover {
   color: white;
 }
-nav.filters a.all:hover {
+nav.filters a.all:hover, nav.filters a.current:hover {
   color: black;
 }
 nav.filters a:after {
@@ -1040,11 +1040,11 @@ nav.filters a:after {
   display: block;
   overflow: hidden;
 }
-#work .work img {
-  position: absolute;
+#work img {
+  position: relative;
   z-index: 0;
 }
-#work .work .label {
+#work .label {
   position: absolute;
   z-index: 1;
   bottom: 0px;
@@ -1052,18 +1052,13 @@ nav.filters a:after {
   width: 100%;
   padding: 2em;
 }
-#work .work .label strong,
-#work .work .label span {
+#work .label strong,
+#work .label span {
   display: block;
 }
-#work .work .label span {
+#work .label span {
   font-family: 'Times', serif;
   font-style: italic;
-}
-@media (max-width: 320px) {
-  #work .work {
-    height: 280px;
-  }
 }
 
 /* ***************
@@ -1177,7 +1172,7 @@ nav.filters a:after {
   font-weight: 500;
   width: 48%;
   font-style: normal;
-  font-size: 1.25em;
+  font-size: 1.25em !important;
   float: left;
 }
 #articleLinks .fullstory {
@@ -1196,5 +1191,9 @@ nav.filters a:after {
 @media (max-width: 320px) {
   #project .content p:first-child {
     display: block;
+  }
+
+  #work .label {
+    padding: 1em 2em;
   }
 }
