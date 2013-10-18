@@ -14,9 +14,15 @@ class WorkPage extends Page {
 	}
 }
 class WorkPage_Controller extends Page_Controller {
-	
+	/*
 	public static $url_handlers = array (
 		'project/$Project!' => 'getProject',
+		'category/$Category!' => 'getCategoryProjects'
+	);
+*/
+	
+	public static $url_handlers = array (
+		'project/$projectName!' => 'project',
 		'category/$Category!' => 'getCategoryProjects'
 	);
 	
@@ -24,12 +30,30 @@ class WorkPage_Controller extends Page_Controller {
 		parent::init();
 	}
 	
-	public function getProject($request) {
+	public function project() {
+		$project = Project::get()->filter('URLSegment', $this->request->param('projectName'));
+		
+		if($project->count() == 0) {
+			$this->httpError(404, 'The requested page could not be found.');
+		}
+		
+		return $this->renderWith(array('ProjectPage', 'Page'), array(
+			'Project' => $project->first()
+		));
+	}
+	
+	public function getCategories() {
+		return Category::get();
+	}
+	
+	/*
+public function getProject($request) {
 		$Project = Project::get()->filter(array('URLSegment' => $request->param('Project')));
 		return $this->renderWith(array('ProjectPage', 'Page'), array(
 			'Project' => $Project
 		));
 	}
+*/
 	
 	public function getCategoryProjects($request) {
 		$cat = Category::get()->filter('URLSegment', $request->param('Category'));

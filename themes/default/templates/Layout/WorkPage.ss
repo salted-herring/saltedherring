@@ -1,13 +1,16 @@
 <% if getCategories %>
 <nav class="filters">
-	<a href="/work/"<% if category %><% else %> class="all"<% end_if %>>View all</a>
+	<a href="$URLSegment" class="all">View all</a>
 	<% loop getCategories %>
-	<a href="/work/category/$URLSegment"<% if $Top.category = $URLSegment %> class="current"<% end_if %>>$Name</a>
+		<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment %> class="current"<% end_if %>>$Name</a>
 	<% end_loop %>
 </nav>
 <% end_if %>
 
+<% if getWork %>
 <section id="work">
+	<% loop getWork %>
+	<a href="$Top.URLSegment/project/$URLSegment" class="work">
 	<% if getAllProjects %>
 	<% loop getAllProjects %>
 	<a href="$getURL" class="work">
@@ -27,6 +30,7 @@
 	</div>
 	<% end_if %>
 </section>
+<% end_if %>
 <!--
 $Form
 $Content

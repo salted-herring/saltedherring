@@ -1,1 +1,35 @@
 @import 'styles';
+
+#team {
+	.member {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		margin-bottom: 1em;
+		
+		img {
+			position: relative;
+			z-index: 0;
+			padding: 0;
+		}
+		
+		.label {
+			position: absolute;
+			z-index: 1;
+			bottom: 0px;
+			display: block;
+			background: rgba(0,0,0,.5);
+			width: 100%;
+			padding: 1em 2em;
+			
+			strong,
+			span {
+				display: block;
+			}
+			
+			span {
+				@include minion;
+			}
+		}
+	}
+}

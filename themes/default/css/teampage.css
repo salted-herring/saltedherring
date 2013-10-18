@@ -1011,3 +1011,31 @@ footer a.map {
 /* ===========================
  * End Sections
  * =========================== */
+#team .member {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+#team .member img {
+  position: relative;
+  z-index: 0;
+  padding: 0;
+}
+#team .member .label {
+  position: absolute;
+  z-index: 1;
+  bottom: 0px;
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 1em 2em;
+}
+#team .member .label strong,
+#team .member .label span {
+  display: block;
+}
+#team .member .label span {
+  font-family: 'Times', serif;
+  font-style: italic;
+}

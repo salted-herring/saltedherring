@@ -1039,18 +1039,22 @@ nav.filters a:after {
   position: relative;
   display: block;
   overflow: hidden;
+  margin-bottom: 1em;
 }
+
 #work img {
   position: relative;
   z-index: 0;
+  padding: 0;
 }
 #work .label {
   position: absolute;
   z-index: 1;
   bottom: 0px;
+  display: block;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  padding: 2em;
+  padding: 1em 2em;
 }
 #work .label strong,
 #work .label span {
