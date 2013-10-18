@@ -42,10 +42,6 @@ class WorkPage_Controller extends Page_Controller {
 		));
 	}
 	
-	public function getCategories() {
-		return Category::get();
-	}
-	
 	/*
 public function getProject($request) {
 		$Project = Project::get()->filter(array('URLSegment' => $request->param('Project')));

@@ -99,9 +99,25 @@ section {
 		display: none;
 	}
 	
-	@include at-breakpoint(0 3 320px) {
+	
+}
+
+
+
+
+@include at-breakpoint(0 3 320px) {
+/* 	a[href^="tel"], */
+	.contact {
+		width: 20%;
+	}
+	
+	.blog {
+		display: none !important;
+	}
+	
+	section {
 		margin: 0 -1em;
-		
+	
 		.block {
 			overflow: hidden;
 		}
@@ -191,3 +207,4 @@ section {
 		}
 	}
 }
+

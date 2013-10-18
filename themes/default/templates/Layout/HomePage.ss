@@ -23,21 +23,23 @@
 					
 					<div class="intro grid_1">
 						<a href="tel:+6444731344">+64 (0)4 473 1344</a>
-						<a href="mailto:info@saltedherring.com">email us</a>
-						<a href="#footer" class="contact">Contact Details</a>
+						<a href="#footer" class="contact">contact</a>
+						<a href="http://blog.saltedherring.com" target="_blank" class="blog">blog</a>
 					</div>
 					
-					<a href="#" class="link">to our blog</a>
+					
 					
 					<% else %>
+					<% if Project.getURL || Link.Link %>
 					<div class="grid_1 links">
 						<a href="<% if Project %>$Project.getURL<% else %>$Link.Link<% end_if %>" class="link">see project</a>
 					</div>
 					<% end_if %>
+					<% end_if %>
 				</div>
 				<% if Images %>
 					<% with Images.First %>
-					<img src="$Image.URL" alt="" />
+					<img src="$outputImage.URL" alt="" />
 					<% end_with %>
 				<% end_if %>
 			</div>

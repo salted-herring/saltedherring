@@ -19,15 +19,23 @@ class TeamPage extends Page {
 class TeamPage_Controller extends Page_Controller {
 	
 	public static $url_handlers = array (
-		'team/$teamMember!' => 'teamMember'
+		'$teamMember!' => 'teamMember'
 	);
 	
 	public function init() {
 		parent::init();
 	}
 	
-	public function teamMember() {
-		//$teamMember = Project::get_one('URLSegment = `' . $this->request->param('teamMember') . '`');
+	public function teamMember($request) {
+		$teamMember = DataObject::get_one('TeamMember', "URLSegment='" . $request->param('teamMember') . "'");
+		
+		if(!$teamMember->exists()) {
+			$this->httpError(404, 'The requested page could not be found.');
+		}
+		
+		return $this->renderWith(array('TeamMemberPage', 'Page'), array(
+			'Member' => $teamMember
+		));
 		
 		/*
 echo '<pre>';
@@ -35,12 +43,10 @@ echo '<pre>';
 		echo '</pre>';
 */
 		
-		die;
+		//die;
 		
 		/*
-if(!$teamMember->exists()) {
-			$this->httpError(404, 'The requested page could not be found.');
-		}
+
 		
 		return $this->renderWith(array('TeamMemberPage', 'Page'), array(
 			'Member' => $teamMember

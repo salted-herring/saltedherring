@@ -8,6 +8,8 @@ class TeamMember extends BaseDBO {
 		'Responsibilities' => 'Text',
 		'Intro' => 'Text',
 		'Bio' => 'HTMLText',
+		'Email' => 'Varchar(100)',
+		'MobileNumber' => 'Varchar(30)'
 	);
 	
 	public static $has_one = array(
@@ -51,7 +53,6 @@ class TeamMember extends BaseDBO {
 		
 		if($this->ID) {
 			$gridFieldConfig = GridFieldConfig::create()->addComponents(
-				new DropdownField('Photographer', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()),
 				new GridFieldAddNewButton(),
 				new GridFieldToolbarHeader(),
 				new GridFieldSortableHeader(),
@@ -67,7 +68,7 @@ class TeamMember extends BaseDBO {
 				$gridField = new GridField("Images", "Images", $this->Images(), $gridFieldConfig)
 			));
 			
-			$fields->addFieldToTab('Root.Images', new DropdownField('Photographer', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()), 'Images');
+			$fields->addFieldToTab('Root.Images', new DropdownField('PhotographerID', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()), 'Images');
 		}
 		
 		return $fields;

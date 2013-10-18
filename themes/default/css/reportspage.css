@@ -582,6 +582,7 @@ input {
   font-size: 16;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
+  color: black;
 }
 
 a {
@@ -730,12 +731,6 @@ h1 {
 /* ===========================
  * Generic Styles
  * =========================== */
-@media (max-width: 320px) {
-  .nomobi {
-    display: none !important;
-  }
-}
-
 .link, .external {
   display: inline-block;
   border: 3px solid white;
@@ -937,16 +932,12 @@ h1 {
   z-index: 120;
   right: 1em;
   top: .75em;
-  width: 39px;
-  height: 27px;
+  /* 	display: none; */
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
   transition: none;
   background-position: -85px -14px;
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
 }
 #menu_icon.collapse {
   background-position: -46px -14px;
@@ -974,28 +965,9 @@ footer .salt {
   font-size: 1.25em;
   display: inline-block;
 }
-@media (max-width: 320px) {
-  footer .salt {
-    font-size: 1em;
-    margin: 0 0 0 -1em;
-    padding: 1.5em 1em;
-    line-height: 1em;
-    width: 18em;
-    text-align: center;
-  }
-}
 footer .row {
   background: #36cdf5;
   color: black;
-}
-@media (max-width: 320px) {
-  footer .row {
-    font-size: 1em;
-    margin: 0 0 0 -1em;
-    padding: 1.5em 1em;
-    line-height: 1.2em;
-    width: 18em;
-  }
 }
 footer a {
   color: white;
@@ -1011,3 +983,32 @@ footer a.map {
 /* ===========================
  * End Sections
  * =========================== */
+@media (max-width: 320px) {
+  .nomobi {
+    display: none !important;
+  }
+
+  #menu_icon {
+    text-indent: -119988px;
+    overflow: hidden;
+    text-align: left;
+    width: 39px;
+    height: 27px;
+  }
+
+  footer .salt {
+    font-size: 1em;
+    margin: 0 0 0 -1em;
+    padding: 1.5em 1em;
+    line-height: 1em;
+    width: 18em;
+    text-align: center;
+  }
+  footer .row {
+    font-size: 1em;
+    margin: 0 0 0 -1em;
+    padding: 1.5em 1em;
+    line-height: 1.2em;
+    width: 18em;
+  }
+}

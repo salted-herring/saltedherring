@@ -582,6 +582,7 @@ input {
   font-size: 16;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
+  color: black;
 }
 
 a {
@@ -730,12 +731,6 @@ h1 {
 /* ===========================
  * Generic Styles
  * =========================== */
-@media (max-width: 320px) {
-  .nomobi {
-    display: none !important;
-  }
-}
-
 .link, .external {
   display: inline-block;
   border: 3px solid white;
@@ -937,16 +932,12 @@ h1 {
   z-index: 120;
   right: 1em;
   top: .75em;
-  width: 39px;
-  height: 27px;
+  /* 	display: none; */
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
   transition: none;
   background-position: -85px -14px;
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
 }
 #menu_icon.collapse {
   background-position: -46px -14px;
@@ -974,28 +965,9 @@ footer .salt {
   font-size: 1.25em;
   display: inline-block;
 }
-@media (max-width: 320px) {
-  footer .salt {
-    font-size: 1em;
-    margin: 0 0 0 -1em;
-    padding: 1.5em 1em;
-    line-height: 1em;
-    width: 18em;
-    text-align: center;
-  }
-}
 footer .row {
   background: #36cdf5;
   color: black;
-}
-@media (max-width: 320px) {
-  footer .row {
-    font-size: 1em;
-    margin: 0 0 0 -1em;
-    padding: 1.5em 1em;
-    line-height: 1.2em;
-    width: 18em;
-  }
 }
 footer a {
   color: white;
@@ -1011,6 +983,35 @@ footer a.map {
 /* ===========================
  * End Sections
  * =========================== */
+@media (max-width: 320px) {
+  .nomobi {
+    display: none !important;
+  }
+
+  #menu_icon {
+    text-indent: -119988px;
+    overflow: hidden;
+    text-align: left;
+    width: 39px;
+    height: 27px;
+  }
+
+  footer .salt {
+    font-size: 1em;
+    margin: 0 0 0 -1em;
+    padding: 1.5em 1em;
+    line-height: 1em;
+    width: 18em;
+    text-align: center;
+  }
+  footer .row {
+    font-size: 1em;
+    margin: 0 0 0 -1em;
+    padding: 1.5em 1em;
+    line-height: 1.2em;
+    width: 18em;
+  }
+}
 #team .member {
   position: relative;
   display: block;
@@ -1038,4 +1039,86 @@ footer a.map {
 #team .member .label span {
   font-family: 'Times', serif;
   font-style: italic;
+}
+
+#teammember article {
+  position: relative;
+}
+#teammember h1 {
+  font-size: 1.375em;
+  line-height: 1.36364em;
+}
+#teammember .tagLine {
+  font-family: 'Times', serif;
+  font-style: italic;
+  font-size: 16;
+}
+#teammember header {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 1em 1em 1em 1em;
+  margin: 0 -1em;
+  color: white;
+}
+#teammember header h1 {
+  margin: 0;
+  line-height: 1em;
+  padding: 0 1.81818em;
+}
+#teammember header .tagLine {
+  display: block;
+  padding: 0 2.5em;
+}
+#teammember ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#teammember .media img {
+  position: relative;
+  z-index: 0;
+  padding: 0;
+  margin-bottom: 1.5em;
+}
+#teammember blockquote {
+  font-size: 3em;
+  line-height: 1.04167em;
+  position: relative;
+  padding: 0;
+  margin: .5em 0 0 0;
+  font-weight: bold;
+  font-style: italic;
+  display: block;
+}
+#teammember aside strong {
+  font-weight: normal;
+  font-size: 1.125em;
+  color: #d8c801;
+}
+#teammember aside a,
+#teammember aside span,
+#teammember aside strong {
+  display: block;
+}
+#teammember aside a {
+  color: black;
+}
+#teammember aside a,
+#teammember aside span {
+  font-family: 'Times', serif;
+  font-style: italic;
+}
+#teammember aside .contact {
+  margin-top: 1em;
+}
+
+@media (max-width: 320px) {
+  #teammember blockquote {
+    font-size: 1.5em;
+    line-height: 1.25em;
+  }
 }

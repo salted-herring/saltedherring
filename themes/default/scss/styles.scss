@@ -14,6 +14,7 @@ input {
 	font-size: $font-size;
 	line-height: (24/$font-size)+em;
 	-webkit-font-smoothing: antialiased;
+	color: $black;
 }
 
 a {
@@ -39,11 +40,7 @@ h1 {
 /* ===========================
  * Generic Styles
  * =========================== */
-.nomobi {
-	@include at-breakpoint(0 3 320px) {
-		display: none !important;
-	}
-}
+
 
 .link {
 	display: inline-block;
@@ -270,11 +267,11 @@ h1 {
 	z-index: 120;
 	right: 1em;
 	top: .75em;
-	width: 39px;
-	height: 27px;
+	
+/* 	display: none; */
+	
 	@include transition(none);
 	@include sprites-sprite(menu-open);
-	@include hide_text;
 	
 	&.collapse {
 		@include sprites-sprite(menu-collapse);
@@ -307,28 +304,11 @@ footer {
 		font-weight: bold;
 		font-size: (20/$font-size)+em;
 		display: inline-block;
-		
-		@include at-breakpoint(0 3 320px) {
-			font-size: (16/$font-size)+em;
-			margin: 0 0 0 -1em;
-			padding: 1.5em 1em;
-			line-height: 1em;
-			width: 18em;
-			text-align: center;
-		}
 	}
 	
 	.row {
 		background: $blue;
 		color: $black;
-		
-		@include at-breakpoint(0 3 320px) {
-			font-size: (16/$font-size)+em;
-			margin: 0 0 0 -1em;
-			padding: 1.5em 1em;
-			line-height: 1.2em;
-			width: 18em;
-		}
 	}
 	
 	a {
@@ -349,3 +329,35 @@ footer {
 /* ===========================
  * End Sections
  * =========================== */
+ 
+ 
+@include at-breakpoint(0 3 320px) {
+ 	.nomobi {
+		display: none !important;
+	}
+	
+	#menu_icon {
+		@include hide_text;
+		width: 39px;
+		height: 27px;
+	}
+	
+	footer {
+		.salt {
+			font-size: (16/$font-size)+em;
+			margin: 0 0 0 -1em;
+			padding: 1.5em 1em;
+			line-height: 1em;
+			width: 18em;
+			text-align: center;
+		}
+		
+		.row {
+			font-size: (16/$font-size)+em;
+			margin: 0 0 0 -1em;
+			padding: 1.5em 1em;
+			line-height: 1.2em;
+			width: 18em;
+		}
+	}
+}

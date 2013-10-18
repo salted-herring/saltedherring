@@ -5,7 +5,7 @@
 	<a href="$Top.URLSegment/$URLSegment" class="member">
 		
 			<% with Images.First %>
-			<img src="$Image.setWidth(480).URL" alt="$Up.Title" />
+			<img src="$outputImage.URL" alt="$Up.getUserName" />
 			<% end_with %>
 		
 		<div class="label">
