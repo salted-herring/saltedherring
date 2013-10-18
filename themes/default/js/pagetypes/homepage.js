@@ -4,7 +4,7 @@ require.config({
 		'underscore': '../lib/underscore',
 		'backbone': '../lib/backbone',
 		'modernizr': '../lib/modernizr',
-		'base': '../lib/_base'
+		'_base': '../lib/_base'
 	},
 	shim: {
 		backbone: {
@@ -14,20 +14,16 @@ require.config({
 		underscore: {
 			exports: '_'
 		},
-		base: {
+		_base: {
 			deps: ['jquery']
 		}
 	}
 });
 
-require(['jquery', 'backbone', 'underscore', 'base'], function($, Backbone, _) {
+require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) {
 	
 	$(function() {
-		$('#menu_icon').click(function(e) {
-			e.preventDefault();
-			$(this).toggleClass('collapse expand');
-			$('#main_nav').toggleClass('collapse expand');
-		});
+		
 	});
 	
 });

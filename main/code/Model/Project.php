@@ -23,6 +23,10 @@ class Project extends BaseDBO {
 		'Categories' => 'Category',
 		'Services' => 'Service'
 	);
+	
+	public static $belongs_to = array(
+		'Slider' => 'Slider'
+	);
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
@@ -106,14 +110,16 @@ class Project extends BaseDBO {
 		return $fields;
 	}
 	
+
+	public function getURL() {
+		return '/work/project/' . $this->URLSegment;
+	}
+	
 	public function getFirstImage() {
-		$im = false;
-		
-		// loop through the media & find the first image.
+		$im = NULL;
 		foreach($this->Media() as $media) {
 			if($media->getType() == 'Image') {
-				$im = $media;
-				break;
+				return $media;
 			}
 		}
 		

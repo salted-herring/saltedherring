@@ -3,7 +3,8 @@ require.config({
 		'jquery': '../lib/jquery',
 		'underscore': '../lib/underscore',
 		'backbone': '../lib/backbone',
-		'modernizr': '../lib/modernizr'
+		'modernizr': '../lib/modernizr',
+		'_base': '../lib/_base'
 	},
 	shim: {
 		backbone: {
@@ -12,14 +13,17 @@ require.config({
 		},
 		underscore: {
 			exports: '_'
+		},
+		_base: {
+			deps: ['jquery']
 		}
 	}
 });
 
-require(['jquery', 'backbone', 'underscore'], function($, Backbone, _) {
+require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) {
 	
 	$(function() {
-		console.log('pagename');
+		
 	});
 	
 });

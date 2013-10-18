@@ -7,7 +7,7 @@ class BaseDBO extends DataObject {
 		'SortOrder' => 'Int'
 	);
 	
-	public static $default_sort = 'SortOrder DESC, ID DESC';
+	public static $default_sort = 'SortOrder ASC';
 	
 	public static $has_one = array(
 	);
@@ -176,6 +176,12 @@ class BaseMedia extends DataObject {
         
         parent::onBeforeWrite();
 	}
+	
+	public function isMobile() {
+		$mobi = new Mobile_Detect();
+		
+		return $mobi->isMobile();
+	}
 }
 
 class MediaWithFallback extends BaseMedia {
@@ -244,6 +250,17 @@ class ImageMedia extends BaseMedia {
 		$fields->RemoveFieldFromTab('Root.Main', 'TeamMemberID');
 		
 		return $fields;
+	}
+	
+	public function outputImage($width = 928, $height = 687) {
+		if(!$this->Image()) {
+			return false;
+		}
+		if($this->isMobile()) {
+			return $this->Image()->setWidth($width > 480 ? 480 : $width, 200);
+		}
+		
+		return $this->Image()->setWidth($width > 928 ? 928 : $width);
 	}
 }
 

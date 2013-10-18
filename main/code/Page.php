@@ -12,6 +12,10 @@ public static $db = array(
 		'OG' => 'OG'
 	);
 	
+	public static $belongs_to = array(
+		'Slider' => 'Slider'
+	);
+	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();		
 		$fields->removeFieldFromTab('Root.Main', 'Content');
@@ -230,9 +234,9 @@ class Page_Controller extends ContentController {
 	protected function getRequireJS() {
 		$script = '<script src="' . $this->ThemeDir() . '/js/lib/require.js" data-main="' . $this->ThemeDir() . '/%s"></script>';
 		if(defined('SS_ENVIRONMENT_TYPE') && SS_ENVIRONMENT_TYPE == 'dev') {
-			return sprintf($script, 'js/pagetypes/' . strtolower($this->Page(0)->ClassName));
+			return sprintf($script, 'js/pagetypes/' . strtolower($this->ClassName));
 		} else {
-			return sprintf($script, 'js/build/' . strtolower($this->Page(0)->ClassName));
+			return sprintf($script, 'build/pagetypes/' . strtolower($this->ClassName));
 		}
 	}
 	

@@ -10,6 +10,7 @@ class Slider extends BaseDBO {
 	
 	public static $has_one = array(
 		'Link' => 'Page',
+		'Project' => 'Project',
 		'OverlayImage' => 'Image'
 	);
 	
@@ -28,12 +29,6 @@ class Slider extends BaseDBO {
 	
 	static $single_name = 'Slide';
 	static $plural_name = 'Slides';
-	
-	/*
-public static $extensions = array(
-        'VersionedDataObject'
-    );
-*/
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
@@ -47,9 +42,13 @@ public static $extensions = array(
 		$keyword = new TextField('Keyword');
 		$title = new TextField('Title');
 		$description = new TextField('Description');
-		$link = new TreeDropdownField("LinkID", "Link", "SiteTree");
+		$link = new DropdownField("LinkID", "Link", SiteTree::get()->map('ID', 'Title'));
 		$linkDescription = new TextField('LinkDescription', 'Link Description');
 		$overlay = new UploadField('OverlayImage', 'Overlay Image');
+		$project = new DropdownField("ProjectID", "Project", Project::get()->map('ID', 'Title'), $emptyString = 'x');
+		
+		$project->setEmptyString('(Choose) …');
+		$link->setEmptyString('(Choose) …');
 		
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
@@ -69,7 +68,15 @@ public static $extensions = array(
 			$keyword,
 			$title,
 			$description,
-			$link,
+			new ToggleCompositeField(
+				'Link',
+				'Internal Link or Project',
+				array(
+					new HeaderField('Label', 'Choose either an internal link or project to link to.', 4),
+					$link,
+					$project
+				)
+			),
 			$linkDescription,
 			$overlay,
 			$gridfield
@@ -79,7 +86,7 @@ public static $extensions = array(
 		$keyword->setRightTitle('The large text. e.g. CHOCOLATE');
 		$description->setRightTitle('Description of what the slide represents - e.g. The world\'s first chocolate website.');
 		$linkDescription->setRightTitle('Text of the link');
-		$link->setRightTitle('Another page in the site to link to');
+		$link->setRightTitle('A page in the site to link to');
 		$title->setRightTitle('e.g. Whittakers\' Chocolate');
 		$overlay->setRightTitle('An optional image layer. This image will be used to produce a parallax effect.');
 		

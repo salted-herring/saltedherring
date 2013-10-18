@@ -7,10 +7,6 @@ class WorkPage extends Page {
 	public static $has_one = array(
 	);
 	
-	public static $has_many = array(
-/* 		'Projects' => 'Project' */
-	);
-	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		
@@ -18,15 +14,16 @@ class WorkPage extends Page {
 	}
 }
 class WorkPage_Controller extends Page_Controller {
-	
 	/*
-public static $allowed_actions = array (
-		'project'
+	public static $url_handlers = array (
+		'project/$Project!' => 'getProject',
+		'category/$Category!' => 'getCategoryProjects'
 	);
 */
 	
 	public static $url_handlers = array (
-		'project/$projectName!' => 'project'
+		'project/$projectName!' => 'project',
+		'category/$Category!' => 'getCategoryProjects'
 	);
 	
 	public function init() {
@@ -49,7 +46,33 @@ public static $allowed_actions = array (
 		return Category::get();
 	}
 	
-	public function getWork() {
+	/*
+public function getProject($request) {
+		$Project = Project::get()->filter(array('URLSegment' => $request->param('Project')));
+		return $this->renderWith(array('ProjectPage', 'Page'), array(
+			'Project' => $Project
+		));
+	}
+*/
+	
+	public function getCategoryProjects($request) {
+		$cat = Category::get()->filter('URLSegment', $request->param('Category'));
+		$Projects = false;
+		if($cat) {
+			$Projects = Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->first()->ID);
+		}
+		
+		return $this->renderWith(array('WorkPage', 'Page'), array(
+			'getAllProjects' => $Projects->count() == 0 ? false : $Projects,
+			'category' => $request->param('Category')
+		));
+	}
+	
+	public function getAllProjects() {
 		return Project::get();
+	}
+	
+	public function getCategories() {
+		return Category::get();
 	}
 }

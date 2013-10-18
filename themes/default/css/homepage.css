@@ -7,20 +7,24 @@
 /* ===========================
  * Sprite sheets
  * =========================== */
-.sprites-sprite, .sprites-external_arrow, .sprites-menu-collapse, .sprites-menu-open, .sprites-salted-herring, .external:before, #logo a, .menu-open, #menu_icon, #menu_icon.collapse, #menu_icon.expand {
-  background: url('../img/sprites-s98f8eb9522.png') no-repeat;
+.sprites-sprite, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-salted-herring, .external:before, #logo a, .menu-open, #menu_icon, #menu_icon.collapse, #menu_icon.expand {
+  background: url('../img/sprites-s3cd600fdb6.png') no-repeat;
 }
 
 .sprites-external_arrow {
+  background-position: -23px -14px;
+}
+
+.sprites-external_arrow_blue {
   background-position: 0 -14px;
 }
 
 .sprites-menu-collapse {
-  background-position: -23px -14px;
+  background-position: -46px -14px;
 }
 
 .sprites-menu-open {
-  background-position: -62px -14px;
+  background-position: -85px -14px;
 }
 
 .sprites-salted-herring {
@@ -575,7 +579,9 @@ td,
 li,
 input {
   font-family: 'BrandonGrotesque', Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 16;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -589,12 +595,13 @@ a {
 
 body {
   background: whitesmoke;
-  /* 	position: relative; */
 }
-@media (max-width: 320px) {
-  body {
-    /* 		z-index: -1; */
-  }
+
+h1 {
+  font-size: 3em;
+  line-height: 1.08333em;
+  font-weight: bold;
+  font-style: normal;
 }
 
 @media (max-width: 320px) {
@@ -729,14 +736,19 @@ body {
   }
 }
 
-.external {
+.link, .external {
   display: inline-block;
   border: 3px solid white;
   padding: .8em 2em 1em 2em;
-  background: #36cdf5;
   text-align: center;
   font-size: 1.375em;
   position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.external {
+  background: #36cdf5;
 }
 .external:before {
   position: absolute;
@@ -748,7 +760,7 @@ body {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: 0 -14px;
+  background-position: -23px -14px;
 }
 
 /* ===========================
@@ -818,7 +830,7 @@ body {
 }
 
 .menu-open {
-  background-position: -62px -14px;
+  background-position: -85px -14px;
 }
 
 #main_nav {
@@ -931,26 +943,24 @@ body {
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-  background-position: -62px -14px;
+  background-position: -85px -14px;
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
 }
 #menu_icon.collapse {
-  background-position: -23px -14px;
+  background-position: -46px -14px;
 }
 #menu_icon.expand {
   cursor: pointer;
-  background-position: -62px -14px;
+  background-position: -85px -14px;
 }
 
 /* ===========================
  * Content
  * =========================== */
-@media (max-width: 320px) {
-  #content {
-    padding-top: 2.9em;
-  }
+#content {
+  padding-top: 2.9em;
 }
 
 /* ===========================
@@ -1030,7 +1040,7 @@ section .heading {
 section .heading span {
   display: block;
 }
-section .first nav, section .link {
+section .first nav, section .link, section .external {
   text-align: center;
   border: 3px solid white;
   display: block;
@@ -1039,22 +1049,22 @@ section .first nav, section .link {
   margin: 0 auto;
   width: auto;
 }
-section .first nav ul, section .link ul {
+section .first nav ul, section .link ul, section .external ul {
   margin: 0;
   padding: 0;
 }
-section .first nav li, section .link li {
+section .first nav li, section .link li, section .external li {
   padding: 0;
   display: inline-block;
 }
-section .first nav a, section .link a {
+section .first nav a, section .link a, section .external a {
   padding: 1em .5em .8em .5em;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 1.125em;
   display: block;
 }
-section .link {
+section .link, section .external {
   padding: .8em 2em !important;
   font-weight: 500;
   font-size: 1.125em;
@@ -1107,7 +1117,7 @@ section .contact {
   section .intro {
     display: none;
   }
-  section .link {
+  section .link, section .external {
     position: relative;
     z-index: 1;
   }
@@ -1124,7 +1134,7 @@ section .contact {
   section .first nav {
     margin-bottom: 1em;
   }
-  section .first .link {
+  section .first .link, section .first .external {
     display: none;
   }
   section .first .intro {

@@ -7,20 +7,24 @@
 /* ===========================
  * Sprite sheets
  * =========================== */
-.sprites-sprite, .sprites-external_arrow, .sprites-menu-collapse, .sprites-menu-open, .sprites-salted-herring, .external:before, #logo a, .menu-open, #menu_icon, #menu_icon.collapse, #menu_icon.expand {
-  background: url('../img/sprites-s98f8eb9522.png') no-repeat;
+.sprites-sprite, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-salted-herring, .external:before, #articleLinks .website:before, #logo a, .menu-open, #menu_icon, #menu_icon.collapse, #menu_icon.expand {
+  background: url('../img/sprites-s3cd600fdb6.png') no-repeat;
 }
 
 .sprites-external_arrow {
+  background-position: -23px -14px;
+}
+
+.sprites-external_arrow_blue {
   background-position: 0 -14px;
 }
 
 .sprites-menu-collapse {
-  background-position: -23px -14px;
+  background-position: -46px -14px;
 }
 
 .sprites-menu-open {
-  background-position: -62px -14px;
+  background-position: -85px -14px;
 }
 
 .sprites-salted-herring {
@@ -575,7 +579,9 @@ td,
 li,
 input {
   font-family: 'BrandonGrotesque', Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 16;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -589,12 +595,13 @@ a {
 
 body {
   background: whitesmoke;
-  /* 	position: relative; */
 }
-@media (max-width: 320px) {
-  body {
-    /* 		z-index: -1; */
-  }
+
+h1 {
+  font-size: 3em;
+  line-height: 1.08333em;
+  font-weight: bold;
+  font-style: normal;
 }
 
 @media (max-width: 320px) {
@@ -729,16 +736,21 @@ body {
   }
 }
 
-.external {
+.link, .external, #articleLinks .website, #articleLinks a {
   display: inline-block;
   border: 3px solid white;
   padding: .8em 2em 1em 2em;
-  background: #36cdf5;
   text-align: center;
   font-size: 1.375em;
   position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
-.external:before {
+
+.external, #articleLinks .website {
+  background: #36cdf5;
+}
+.external:before, #articleLinks .website:before {
   position: absolute;
   display: block;
   content: '';
@@ -748,7 +760,7 @@ body {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: 0 -14px;
+  background-position: -23px -14px;
 }
 
 /* ===========================
@@ -818,7 +830,7 @@ body {
 }
 
 .menu-open {
-  background-position: -62px -14px;
+  background-position: -85px -14px;
 }
 
 #main_nav {
@@ -931,26 +943,24 @@ body {
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-  background-position: -62px -14px;
+  background-position: -85px -14px;
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
 }
 #menu_icon.collapse {
-  background-position: -23px -14px;
+  background-position: -46px -14px;
 }
 #menu_icon.expand {
   cursor: pointer;
-  background-position: -62px -14px;
+  background-position: -85px -14px;
 }
 
 /* ===========================
  * Content
  * =========================== */
-@media (max-width: 320px) {
-  #content {
-    padding-top: 2.9em;
-  }
+#content {
+  padding-top: 2.9em;
 }
 
 /* ===========================
@@ -1012,10 +1022,10 @@ nav.filters a {
   font-style: italic;
   color: black;
 }
-nav.filters a.all, nav.filters a:hover {
+nav.filters a.all, nav.filters a.current, nav.filters a:hover {
   color: white;
 }
-nav.filters a.all:hover {
+nav.filters a.all:hover, nav.filters a.current:hover {
   color: black;
 }
 nav.filters a:after {
@@ -1031,12 +1041,13 @@ nav.filters a:after {
   overflow: hidden;
   margin-bottom: 1em;
 }
-#work .work img {
+
+#work img {
   position: relative;
   z-index: 0;
   padding: 0;
 }
-#work .work .label {
+#work .label {
   position: absolute;
   z-index: 1;
   bottom: 0px;
@@ -1045,11 +1056,148 @@ nav.filters a:after {
   width: 100%;
   padding: 1em 2em;
 }
-#work .work .label strong,
-#work .work .label span {
+#work .label strong,
+#work .label span {
   display: block;
 }
-#work .work .label span {
+#work .label span {
   font-family: 'Times', serif;
   font-style: italic;
+}
+
+/* ***************
+ * Project
+ * *************** */
+#project article {
+  position: relative;
+}
+#project h1 {
+  font-size: 1.375em;
+  line-height: 1.36364em;
+}
+#project .tagLine {
+  font-family: 'Times', serif;
+  font-style: italic;
+  font-size: 16;
+}
+#project header {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 1em 1em 1em 1em;
+  		/*
+  margin: 0 -0 0 -1.5em;
+  		padding: 1em 0em 1em 2.5em;
+  */
+  margin: 0 -1em;
+  color: white;
+}
+#project header h1 {
+  margin: 0;
+  line-height: 1em;
+  padding: 0 1.81818em;
+}
+#project header .tagLine {
+  display: block;
+  padding: 0 2.5em;
+}
+#project ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#project .media img {
+  margin-bottom: 1.5em;
+}
+#project blockquote {
+  font-size: 1.5em;
+  position: relative;
+  padding: 0;
+  margin: .5em 0 0 0;
+  font-weight: bold;
+  font-style: italic;
+  display: inline-block;
+}
+#project blockquote:before {
+  content: '“';
+  display: inline-block;
+}
+#project blockquote:after {
+  content: '”';
+  display: inline-block;
+  padding-right: 0.625em;
+}
+#project cite {
+  font-weight: 500;
+  font-style: normal;
+}
+#project .content p {
+  display: none;
+}
+#project aside strong {
+  font-weight: normal;
+  font-size: 1.125em;
+  color: #36cdf5;
+}
+#project aside ul {
+  margin: 1em 0 2em 0;
+}
+#project aside li {
+  display: inline-block;
+}
+#project aside .services li:after {
+  display: inline;
+  content: ', ';
+}
+#project aside .services li:last-child:after {
+  display: none;
+}
+#project aside .awards li {
+  margin: 0 -4px 0 0;
+}
+#project aside .awards li:last-child a {
+  margin-right: 0;
+}
+#project aside .awards a {
+  display: block;
+  margin-right: 2em;
+}
+
+#articleLinks {
+  margin: 2.5em 0;
+}
+#articleLinks a {
+  color: #36cdf5;
+  border-color: #36cdf5;
+  padding: .625em inherit !important;
+  font-weight: 500;
+  width: 48%;
+  font-style: normal;
+  font-size: 1.25em !important;
+  float: left;
+}
+#articleLinks .fullstory {
+  margin-right: 4%;
+}
+#articleLinks .website {
+  color: #36cdf5;
+  border-color: #36cdf5;
+  background-color: whitesmoke;
+}
+#articleLinks .website:before {
+  background-color: whitesmoke;
+  background-position: 0 -14px;
+}
+
+@media (max-width: 320px) {
+  #project .content p:first-child {
+    display: block;
+  }
+
+  #work .label {
+    padding: 1em 2em;
+  }
 }

@@ -1,24 +1,21 @@
+<% if getCategories %>
 <nav class="filters">
 	<a href="$URLSegment" class="all">View all</a>
 	<% loop getCategories %>
-		<a href="$Top.URLSegment/$URLSegment">$Name</a>
+		<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment %> class="current"<% end_if %>>$Name</a>
 	<% end_loop %>
-	
-	<a href="#">strategy</a>
-	<a href="#">websites</a>
-	<a href="#">campaigns &amp; microsites</a>
-	<a href="#">content creation</a>
-	<a href="#">apps &amp; interface design</a>
 </nav>
+<% end_if %>
 
 <% if getWork %>
 <section id="work">
 	<% loop getWork %>
 	<a href="$Top.URLSegment/project/$URLSegment" class="work">
+	<% if getAllProjects %>
+	<% loop getAllProjects %>
+	<a href="$getURL" class="work">
 		<% if getFirstImage %>
-			<% with getFirstImage %>
-			<img src="$Image.setWidth(480).URL" alt="$Up.Title" />
-			<% end_with %>
+		<img src="$getFirstImage.outputImage.URL" alt="$Name" />
 		<% end_if %>
 		<div class="label">
 			<strong>$Title</strong>
@@ -26,6 +23,12 @@
 		</div>
 	</a>
 	<% end_loop %>
+	<% else %>
+	<div class="warning">
+		<h1>Something's fishy.</h1>
+		<p>We don't know what's up. But it's not cool.</p>
+	</div>
+	<% end_if %>
 </section>
 <% end_if %>
 <!--
