@@ -69,9 +69,9 @@ class Project extends BaseDBO {
 			$title = new TextField('Title'),
 			$tagLine = new TextField('TagLine', 'Tag Line'),
 			$quote = new TextareaField('Quote'),
-			$cite = new TextareaField('Citation', 'Source'),
-			$categories = new CheckboxSetField($name='Categories', $title='Categories', $source=$cats),
-			$serv = new CheckboxSetField($name='Services', $title='Services', $source=$services),
+			$cite = new TextField('Citation', 'Source'),
+			$categories = $this->ID ? new CheckboxSetField($name='Categories', $title='Categories', $source=$cats) : new LiteralField('CatWarn', '<p><strong>Categories</strong> can be added once the project has been created</p>'),
+			$serv = $this->ID ? new CheckboxSetField($name='Services', $title='Services', $source=$services) : new LiteralField('ServiceWarn', '<p><strong>Services</strong> can be added once the project has been created</p>'),
 			$client = new OptionsetField('ClientID', 'Client', $clients),
 		));
 		
@@ -79,29 +79,45 @@ class Project extends BaseDBO {
 		$cite->setRightTitle('Quotation source. Can contain html tags - e.g. to link to twitter etc.');
 		
 		
-		// Root.Award
-		$fields->addFieldToTab('Root.Awards', new GridField("Awards", "Awards", $this->ProjectAwards(), $gridFieldConfig));
-		
-		
-		// Root.Media
-		$multiClasses = new GridFieldAddNewMultiClass();
-		$multiClasses->setClasses(array('ImageMedia', 'SWFMedia', 'VimeoMedia'));
-		
-		$gridFieldConfig = GridFieldConfig::create()->addComponents(
-			new GridFieldToolbarHeader(),
-			new GridFieldSortableHeader(),
-			new GridFieldDataColumns(),
-			new GridFieldEditButton(),
-			new GridFieldDeleteAction(),
-			new GridFieldDetailForm(),
-			new GridFieldFilterHeader(),
-			new GridFieldOrderableRows('SortOrder'),
-			$multiClasses
-		);
-		
-		$fields->addFieldToTab('Root.Media', new GridField("Media", "Media", $this->Media(), $gridFieldConfig));
+		if($this->ID) {
+			// Root.Award
+			$fields->addFieldToTab('Root.Awards', new GridField("Awards", "Awards", $this->ProjectAwards(), $gridFieldConfig));
+			
+			
+			// Root.Media
+			$multiClasses = new GridFieldAddNewMultiClass();
+			$multiClasses->setClasses(array('ImageMedia', 'SWFMedia', 'VimeoMedia'));
+			
+			$gridFieldConfig = GridFieldConfig::create()->addComponents(
+				new GridFieldToolbarHeader(),
+				new GridFieldSortableHeader(),
+				new GridFieldDataColumns(),
+				new GridFieldEditButton(),
+				new GridFieldDeleteAction(),
+				new GridFieldDetailForm(),
+				new GridFieldFilterHeader(),
+				new GridFieldOrderableRows('SortOrder'),
+				$multiClasses
+			);
+			
+			$fields->addFieldToTab('Root.Media', new GridField("Media", "Media", $this->Media(), $gridFieldConfig));
+		}
 		
 		return $fields;
+	}
+	
+	public function getFirstImage() {
+		$im = false;
+		
+		// loop through the media & find the first image.
+		foreach($this->Media() as $media) {
+			if($media->getType() == 'Image') {
+				$im = $media;
+				break;
+			}
+		}
+		
+		return $im;
 	}
 }
 

@@ -1029,18 +1029,21 @@ nav.filters a:after {
   position: relative;
   display: block;
   overflow: hidden;
+  margin-bottom: 1em;
 }
 #work .work img {
-  position: absolute;
+  position: relative;
   z-index: 0;
+  padding: 0;
 }
 #work .work .label {
   position: absolute;
   z-index: 1;
   bottom: 0px;
+  display: block;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  padding: 2em;
+  padding: 1em 2em;
 }
 #work .work .label strong,
 #work .work .label span {
@@ -1049,9 +1052,4 @@ nav.filters a:after {
 #work .work .label span {
   font-family: 'Times', serif;
   font-style: italic;
-}
-@media (max-width: 320px) {
-  #work .work {
-    height: 280px;
-  }
 }
