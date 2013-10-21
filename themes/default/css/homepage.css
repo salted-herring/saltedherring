@@ -1241,14 +1241,11 @@ section .contact {
   section .heading {
     padding: 0;
     width: 100%;
+    margin-top: 1.5em;
     font-size: 3.125em;
   }
   section .header {
     display: none;
-  }
-  section img {
-    height: 100%;
-    max-width: none;
   }
   section .contact {
     display: block;
@@ -1291,9 +1288,6 @@ section .contact {
   .first .link, .first .external {
     display: none;
   }
-  .first .heading {
-    margin-top: 1.5em;
-  }
   .first .intro {
     display: block;
     width: 100%;
@@ -1308,8 +1302,11 @@ section .contact {
   }
   .first .intro a {
     display: inline-block;
-    padding-left: 1em;
+    /* 				width: 50%; */
+    padding: 0;
+    /* 				padding-left: 1em; */
     color: black;
+    text-align: center;
   }
   .first .intro a[href^="mailto:"] {
     display: none;
@@ -1318,7 +1315,14 @@ section .contact {
     padding-right: 1em;
     padding-left: 0;
   }
+  .first .intro li {
+    padding: 0;
+    /* 				width: 50%; */
+    text-align: center;
+    background: blue;
+  }
   .first .intro .contact {
+    background: red;
     position: relative;
   }
   .first .intro .contact:before {
@@ -1330,5 +1334,9 @@ section .contact {
     left: 0;
     top: 0;
     background: white;
+  }
+
+  #work .block {
+    /* 			background-size: contain !important; */
   }
 }

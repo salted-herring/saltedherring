@@ -243,6 +243,7 @@ position: absolute;
 		.heading {
 			padding: 0;
 			width: 100%;
+			margin-top: 1.5em;
 			font-size: (50/$font-size)+em;
 		}
 		.header {
@@ -250,8 +251,8 @@ position: absolute;
 		}
 		
 		img {
-			height: 100%;
-			max-width: none;
+			//height: 100%;
+			//max-width: none;
 		}
 		
 		.contact {
@@ -310,7 +311,7 @@ left: 0;
 		}
 		
 		.heading {
-			margin-top: 1.5em;
+			
 		}
 		
 		.intro {
@@ -326,8 +327,11 @@ left: 0;
 			font-size: 1em;
 			a {
 				display: inline-block;
-				padding-left: 1em;
+/* 				width: 50%; */
+				padding: 0;
+/* 				padding-left: 1em; */
 				color: $black;
+				text-align: center;
 			}
 			
 			a[href^="mailto:"] {
@@ -339,7 +343,15 @@ left: 0;
 				padding-left: 0;
 			}
 			
+			li {
+				padding: 0;
+/* 				width: 50%; */
+				text-align: center;
+				background: blue;
+			}
+			
 			.contact {
+				background: red;
 				position: relative;
 				
 				&:before {
@@ -353,6 +365,12 @@ left: 0;
 					background: $white;
 				}
 			}
+		}
+	}
+	
+	#work {		
+		.block {
+/* 			background-size: contain !important; */
 		}
 	}
 }
