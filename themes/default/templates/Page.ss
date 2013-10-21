@@ -16,9 +16,9 @@
 		
 		<% include GA %>
 	</head>
-	<body class="page-$URLSegment">
+	<body class="page-$URLSegment<% if isMobile %> mobile<% end_if %>">
 		<% include Header %>
-		<div id="content" class="container">
+		<div id="content">
 			$Layout
 		</div>
 		

@@ -253,4 +253,10 @@ class Page_Controller extends ContentController {
 		$this->createCSS();
 		$this->createJS();
 	}
+	
+	public function isMobile() {
+		$mobi = new Mobile_Detect();
+		
+		return $mobi->isMobile();
+	}
 }

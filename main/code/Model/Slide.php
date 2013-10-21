@@ -11,7 +11,8 @@ class Slider extends BaseDBO {
 	public static $has_one = array(
 		'Link' => 'Page',
 		'Project' => 'Project',
-		'OverlayImage' => 'Image'
+		'OverlayImage' => 'Image',
+		'Colour' => 'Colour'
 	);
 	
 	public static $has_many = array(
@@ -67,6 +68,7 @@ class Slider extends BaseDBO {
 			$header,
 			$keyword,
 			$title,
+			$colour = new DropdownField("ColourID", "Colour", Colour::get()->map('ID', 'Name')),
 			$description,
 			new ToggleCompositeField(
 				'Link',
@@ -81,6 +83,8 @@ class Slider extends BaseDBO {
 			$overlay,
 			$gridfield
 		));
+		
+		$colour->setEmptyString('(Choose) …');
 		
 		$header->setRightTitle('Line of header text at the top of the slide. e.g. Hi There! Welcome to:');
 		$keyword->setRightTitle('The large text. e.g. CHOCOLATE');

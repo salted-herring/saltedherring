@@ -105,6 +105,7 @@
     float: left;
     margin-right: 2%;
     margin: 0;
+    float: none;
   }
 
   .grid_2 {
@@ -112,6 +113,7 @@
     float: left;
     margin-right: 2%;
     margin: 0;
+    float: none;
   }
 
   .grid_3 {
@@ -119,5 +121,6 @@
     float: left;
     margin-right: 2%;
     margin: 0;
+    float: none;
   }
 }

@@ -66,6 +66,7 @@ $break: 3;
 		.grid_#{$i}{
 			@include span-columns(3,$break);
 			margin: 0;
+			float: none;
 		}
 	}
 }

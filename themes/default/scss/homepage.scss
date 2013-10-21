@@ -13,6 +13,14 @@ section {
 	
 	.text {
 		position: relative;
+		height: 100%;
+	}
+	
+	.contain {
+		position: absolute;
+		top: 50%;
+/* 		margin-top: -300px; */
+		width: 100%;
 	}
 	
 	img {
@@ -20,18 +28,36 @@ section {
 		z-index: -1;
 		top: 0;
 		left: 0;
+		display: none;
+	}
+	
+	.header {
+		display: block;
+		text-align: center;
+		margin-bottom: 8em;
 	}
 	
 	.heading {
+		/*
+position: absolute;
+		top: 50%;
+*/
 		text-align: center;
+		vertical-align: middle;
 		color: $white;
 		font-weight: 800;
-		font-size: (50/$font-size)+em;
+		font-size: (120/$font-size)+em;
 		text-transform: uppercase;
 		line-height: 1em;
 		
 		span {
 			display: block;
+		}
+	}
+	
+	.first {
+		.text {
+			padding: 0;
 		}
 	}
 	
@@ -72,6 +98,71 @@ section {
 	}
 	
 	.intro {
+		background: rgba(0, 211, 255, .6);
+		font-size: (18/$font-size)+em;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		ul {
+			list-style: none;
+			padding: 1.5em 0 0 0;
+			margin: 0;
+			display: inline;
+		}
+		li {
+			display: inline;
+		}
+		
+		.contact,
+		.blog {
+			a {
+				color: $black;
+			}
+		}
+		
+		.down {
+			display: inline-block;
+			background-color: $black;
+			padding: 1.5em 1em;
+			@include hide_text;
+			width: 21px;
+			position: relative;
+			height: 100%;
+			
+			&:before {
+				position: absolute;
+				left: 1em;
+				top: 1.5em;
+				width: 21px;
+				height: 28px;
+				content: '';
+				display: block;
+				@include sprites-sprite(down_arrow);
+			}
+		}
+		
+		.contactlinks {
+			width: 454px;
+			
+			a {
+				padding-right: 4em;
+			}
+		}
+		.news {
+			padding-left: 2em;
+			width: 410px;
+			
+			li {
+				display: block;
+			}
+		}
+		
+		.contactlinks,
+		.down,
+		.news {
+			float: left;
+		}
+		
 		a {
 			position: relative;
 			display: inline-block;
@@ -102,6 +193,27 @@ section {
 	
 }
 
+.mobile #main_nav {
+	display: block;
+}
+
+#main_nav {
+	display: none;
+}
+
+#menu_icon {
+	display: block;
+}
+
+#work {
+	height: 100%;
+	
+	.block {
+		height: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+}
 
 
 
@@ -116,18 +228,25 @@ section {
 	}
 	
 	section {
-		margin: 0 -1em;
+		margin: 0;
+		
+		.contain {
+			position: relative;
+			top: auto;
+			width: auto;
+		}
 	
 		.block {
 			overflow: hidden;
 		}
 		
+		.heading {
+			padding: 0;
+			width: 100%;
+			font-size: (50/$font-size)+em;
+		}
 		.header {
 			display: none;
-		}
-		
-		.heading {
-			margin-top: 1.5em;
 		}
 		
 		img {
@@ -141,6 +260,20 @@ section {
 		
 		.intro {
 			display: none;
+			
+			.contactlinks {
+				width: 100%;
+			}
+			.news {
+				display: none;
+			}
+			ul {
+				padding: 0;
+			}
+		}
+		
+		.down {
+			display: none !important;
 		}
 		
 		.link {
@@ -148,60 +281,76 @@ section {
 			z-index: 1;
 		}
 		
+		/*
+.text {
+			padding: 0 1em;
+		}
+*/
+		
 		.links {
-			margin-top: 1em;
+			margin: 1em 0em 0 1em;
 			padding: 1em 0;
-			width: 100%;
-			left: 0;
+/* 			width: 100%; */
+			float: none;
+			/*
+left: 0;
 			top: 0;
+*/
 			z-index: -1;
-			background: rgba(66,33,16,.6);
 			display: block;
 		}
+	}
+	
+	.first {
+		nav {
+			margin-bottom: 1em;
+		}
+		.link {
+			display: none;
+		}
 		
-		.first {
-			nav {
-				margin-bottom: 1em;
+		.heading {
+			margin-top: 1.5em;
+		}
+		
+		.intro {
+			display: block;
+			width: 100%;
+			margin-top: 2em;
+			background: rgba(0, 211, 255, .6);
+			text-align: center;
+			padding: 1em 0;
+/* 			margin-left: -1em; */
+/* 			margin-right: -1em; */
+			width: 20em;
+			font-size: 1em;
+			a {
+				display: inline-block;
+				padding-left: 1em;
+				color: $black;
 			}
-			.link {
+			
+			a[href^="mailto:"] {
 				display: none;
 			}
 			
-			.intro {
-				display: block;
-				width: 100%;
-				margin-top: .5em;
-				background: rgba(0, 211, 255, .6);
-				text-align: center;
-				padding: 1em 0;
-				a {
-					display: inline-block;
-					padding-left: 2em;
-					color: $black;
-				}
+			a[href^="tel:"] {
+				padding-right: 1em;
+				padding-left: 0;
+			}
+			
+			.contact {
+				position: relative;
 				
-				a[href^="mailto:"] {
-					display: none;
-				}
-				
-				a[href^="tel:"] {
-					padding-right: 2em;
-					padding-left: 0;
-				}
-				
-				.contact {
-					position: relative;
-					
-					&:before {
-						position: absolute;
-						display: block;
-						content: '';
-						width: 3px;
-						height: 20px;
-						left: 0;
-						top: 0;
-						background: $white;
-					}
+				&:before {
+					position: absolute;
+					display: block;
+					content: '';
+					width: 3px;
+					height: 20px;
+					left: 0;
+					top: 0;
+					background: $white;
 				}
 			}
 		}

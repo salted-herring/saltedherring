@@ -252,15 +252,15 @@ class ImageMedia extends BaseMedia {
 		return $fields;
 	}
 	
-	public function outputImage($width = 928, $height = 687) {
+	public function outputImage($width = -1) {
 		if(!$this->Image()) {
 			return false;
 		}
 		if($this->isMobile()) {
-			return $this->Image()->setWidth($width > 480 ? 480 : $width, 200);
+			return $this->Image()->setWidth(480);
 		}
 		
-		return $this->Image()->setWidth($width > 928 ? 928 : $width);
+		return $this->Image()->setWidth($width != -1 ? $width : 928);
 	}
 }
 

@@ -5,6 +5,11 @@
 @include h5bp-helpers;
 @include h5bp-media;
 
+html,
+body {
+	height: 100%;
+}
+
 body,
 p,
 td,
@@ -24,7 +29,7 @@ a {
 }
 
 body {
-	background: $background;
+	background: url(../img/diagonals.png) $background;
 }
 
 h1 {
@@ -88,15 +93,6 @@ h1 {
 	left: 50%;
 	
 	-webkit-transform: translate3d(0,0,0);
-		
-	@include at-breakpoint(0 3 320px) {
-		width: 18em;
-		left: auto;
-		margin-left: 0;
-		-webkit-transform-style: preserve-3d;
-		-webkit-backface-visibility: hidden;
-		-webkit-perspective: 1000;
-	}
 }
 
 #logo {
@@ -108,15 +104,6 @@ h1 {
 	margin-left: -2em;
 	display: inline-block;
 	background: $black;
-	
-	@include at-breakpoint(0 3 320px) {
-		padding-right: 0em;
-		padding-left: 0em;
-		margin-left: -1em;
-		position: absolute;
-		z-index: 2;
-		width: 20em;
-	}
 	
 	a {
 		@include hide_text;
@@ -149,76 +136,12 @@ h1 {
 	
 	@include transform(translate3d(0,0,0));
 	
-	@include at-breakpoint(0 3 320px) {
-		margin-left: -1em;
-		padding-left: 0em;
-		padding-right: 0em;
-		background: $background;
-		position: absolute;
-		z-index: 3;
-		width: 100%;
-	}
-	
-	
-	
-	
-	@include at-breakpoint(0 3 320px) {
-		&:before {
-			display: block;
-		}
-			
-		ul {
-			position: absolute;
-			z-index: 20;
-			width: 20em;
-			margin-left: 0em;
-			margin-right: -1em;
-			background: $white;
-			top: 2.9em;
-			height: 0;
-			overflow: hidden;
-			max-height: 1000px;
-			
-			//@include scale(1.0,0,1);
-			
-			-webkit-backface-visibility: hidden;
-			-webkit-perspective: 1000;
-			
-			-webkit-transform-style: preserve-3d;
-			-webkit-user-select:none;
-			-moz-user-select:none;
-			
-			@include transition(all .2s);
-
-		}
-		
-		li {
-			//@include transition(opacity .2s);
-			//@include transition-delay(.2s);
-			//@include opacity(0);
-		}
-		
-		&.collapse {
-			ul {
-				//@include scale(1.0,1.0,1);
-				height: 3em;
-				overflow: visible;
-			}
-			li {
-				//@include transition-delay(0s);
-				//@include opacity(1.0);
-			}
-		}
-	}
-	
 	ul {
 		margin: 0;
 		padding-left: 0;
 		text-align: right;
-		
-		@include at-breakpoint(0 3 320px) {
-			text-align: center;
-		}
+		border: none;
+		outline: none;
 	}
 	
 	li {
@@ -268,9 +191,19 @@ h1 {
 	right: 1em;
 	top: .75em;
 	
-/* 	display: none; */
+	color: $blue;
+	font-size: (18/$font-size)+em;
+	text-transform: uppercase;
+	line-height: 1em;
+	font-weight: 500;
+	
+	display: none;
 	
 	@include transition(none);
+}
+
+.mobile #menu_icon {
+	right: 2em;
 	@include sprites-sprite(menu-open);
 	
 	&.collapse {
@@ -289,6 +222,7 @@ h1 {
 #content {
 	//@include at-breakpoint(0 3 320px) {
 		padding-top: 2.9em;
+		min-height: 100%;
 	//}
 }
 
@@ -296,7 +230,6 @@ h1 {
  * Footer
  * =========================== */
 footer {
-	
 	.salt {
 		background: $black;
 		color: $blue;
@@ -340,6 +273,81 @@ footer {
 		@include hide_text;
 		width: 39px;
 		height: 27px;
+	}
+	
+	#header {
+		width: 20em;
+		left: auto;
+		margin-left: 0;
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-webkit-perspective: 1000;
+	}
+	
+	#logo {
+		padding-right: 1em;
+		padding-left: 0em;
+		margin-left: -1em;
+		position: absolute;
+		z-index: 2;
+		width: 20em;
+	}
+	
+	#main_nav {
+		margin-left: -1em;
+		padding-left: 0em;
+		padding-right: 0em;
+		background: $background;
+		position: absolute;
+		z-index: 3;
+		width: 100%;
+		
+		&:before {
+			display: block;
+		}
+			
+		ul {
+				position: absolute;
+				z-index: 20;
+				width: 20em;
+				background: $white;
+				top: 2.9em;
+				height: 0;
+				overflow: hidden;
+				max-height: 1000px;
+				text-align: center;
+				padding: 0 1em;
+				margin: 0;
+				
+				//@include scale(1.0,0,1);
+				
+				-webkit-backface-visibility: hidden;
+				-webkit-perspective: 1000;
+				
+				-webkit-transform-style: preserve-3d;
+				-webkit-user-select:none;
+				-moz-user-select:none;
+				
+				@include transition(all .2s);
+			}
+		
+		li {
+				//@include transition(opacity .2s);
+				//@include transition-delay(.2s);
+				//@include opacity(0);
+			}
+		
+		&.collapse {
+				ul {
+					//@include scale(1.0,1.0,1);
+					height: 3em;
+					overflow: visible;
+				}
+				li {
+					//@include transition-delay(0s);
+					//@include opacity(1.0);
+				}
+			}
 	}
 	
 	footer {
