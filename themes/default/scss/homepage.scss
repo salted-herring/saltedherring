@@ -1,5 +1,41 @@
 @import 'styles';
 
+#nextnav {
+	position: fixed;
+	z-index: 10;
+	left: 50%;
+	bottom: 0;
+	margin-left: -46px;
+	background: $black;
+	font-size: 18px;
+	
+	a {
+		display: inline-block;
+		background-color: $black;
+		padding: 1.5em 2em 1em 2em;
+		@include hide_text;
+		width: 21px;
+		position: relative;
+		height: 100%;
+		
+		&:before {
+			position: absolute;
+			left: 1.5em;
+			top: 1.5em;
+			width: 21px;
+			height: 28px;
+			content: '';
+			display: block;
+			@include sprites-sprite(down_arrow);
+		}
+	}
+	
+	&.up {
+		a:before {
+			@include transform(rotate(180deg));
+		}
+	}
+}
 
 section {
 	position: relative;
@@ -28,16 +64,21 @@ section {
 		z-index: -1;
 		top: 0;
 		left: 0;
-		display: none;
+/* 		display: none; */
 	}
 	
 	.header {
 		display: block;
 		text-align: center;
-		margin-bottom: 8em;
+		margin-top: (50/$font-size)+em;
+		line-height: 1em;
+		color: $white;
+		font-size: (22/$font-size)+em;
+/* 		margin-bottom: 8em; */
 	}
 	
 	.heading {
+		padding: 0 !important;
 		/*
 position: absolute;
 		top: 50%;
@@ -58,6 +99,12 @@ position: absolute;
 	.first {
 		.text {
 			padding: 0;
+		}
+		nav {
+			position: absolute;
+			left: 50%;
+			margin-left: -130px !important;
+			bottom: (130/$font-size)+em;
 		}
 	}
 	
@@ -97,6 +144,26 @@ position: absolute;
 		width: auto;
 	}
 	
+	.links {
+		margin-top: 6em;
+		span {
+			display: block;
+			float: left;
+		}
+		
+		em {
+			@include minion;
+		}
+		
+		strong {
+			font-size: (22/$font-size)+em;
+		}
+		
+		a {
+			float: right;
+		}
+	}
+	
 	.intro {
 		background: rgba(0, 211, 255, .6);
 		font-size: (18/$font-size)+em;
@@ -121,9 +188,10 @@ position: absolute;
 		}
 		
 		.down {
+			visibility: hidden;
 			display: inline-block;
 			background-color: $black;
-			padding: 1.5em 1em;
+			padding: 1.5em 2em 1em 2em;
 			@include hide_text;
 			width: 21px;
 			position: relative;
@@ -131,7 +199,7 @@ position: absolute;
 			
 			&:before {
 				position: absolute;
-				left: 1em;
+				left: 2em;
 				top: 1.5em;
 				width: 21px;
 				height: 28px;
@@ -142,15 +210,15 @@ position: absolute;
 		}
 		
 		.contactlinks {
-			width: 454px;
+			width: 433px;
 			
 			a {
-				padding-right: 4em;
+				padding-right: 3em;
 			}
 		}
 		.news {
 			padding-left: 2em;
-			width: 410px;
+			width: 398px;
 			
 			li {
 				display: block;
@@ -207,6 +275,7 @@ position: absolute;
 
 #work {
 	height: 100%;
+	width: 100%;
 	
 	.block {
 		height: 100%;
@@ -223,7 +292,13 @@ position: absolute;
 		width: 20%;
 	}
 	
-	.blog {
+	.block {
+		margin: 0 !important;
+		padding: 0;
+	}
+	
+	.blog,
+	#nextnav {
 		display: none !important;
 	}
 	
@@ -257,19 +332,40 @@ position: absolute;
 		
 		.contact {
 			display: block;
+			a {
+				display: inline-block !important;
+				padding: 0 0 0 1em !important;
+			}
 		}
 		
 		.intro {
 			display: none;
 			
 			.contactlinks {
-				width: 100%;
+				float: none;
 			}
 			.news {
 				display: none;
 			}
 			ul {
 				padding: 0;
+			}
+			
+			li {
+				margin-left: -4px;
+				margin-right: 1em;
+			}
+			
+			a {
+				padding: 0 !important;
+			}
+			
+			.contact {
+				margin-right: 0;
+				
+				a {
+					padding-left: 1em !important;
+				}
 			}
 		}
 		
@@ -289,7 +385,7 @@ position: absolute;
 */
 		
 		.links {
-			margin: 1em 0em 0 1em;
+			margin: 1em 0em 0 0em;
 			padding: 1em 0;
 /* 			width: 100%; */
 			float: none;
@@ -299,6 +395,14 @@ left: 0;
 */
 			z-index: -1;
 			display: block;
+			
+			span {
+				display: none;
+			}
+			
+			a {
+				float: none;
+			}
 		}
 	}
 	
@@ -323,7 +427,7 @@ left: 0;
 			padding: 1em 0;
 /* 			margin-left: -1em; */
 /* 			margin-right: -1em; */
-			width: 20em;
+/* 			width: 20em; */
 			font-size: 1em;
 			a {
 				display: inline-block;
@@ -347,11 +451,9 @@ left: 0;
 				padding: 0;
 /* 				width: 50%; */
 				text-align: center;
-				background: blue;
 			}
 			
 			.contact {
-				background: red;
 				position: relative;
 				
 				&:before {
@@ -361,15 +463,19 @@ left: 0;
 					width: 3px;
 					height: 20px;
 					left: 0;
-					top: 0;
+					top: 3px;
 					background: $white;
 				}
 			}
 		}
 	}
 	
-	#work {		
+	#work {
+/* 		display: none; */
+		margin: 0em;
 		.block {
+			width: 100% !important;
+/* 			visibility: hidden; */
 /* 			background-size: contain !important; */
 		}
 	}

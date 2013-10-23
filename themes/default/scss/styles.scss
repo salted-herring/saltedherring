@@ -10,13 +10,18 @@ body {
 	height: 100%;
 }
 
+* {
+	background-clip: padding-box;
+	box-sizing: border-box;
+}
+
 body,
 p,
 td,
 li,
 input {
 	font-family: 'BrandonGrotesque', Helvetica, Arial, sans-serif;
-	font-size: $font-size;
+	font-size: $font-size+px;
 	line-height: (24/$font-size)+em;
 	-webkit-font-smoothing: antialiased;
 	color: $black;
@@ -116,10 +121,6 @@ h1 {
 		@include sprites-sprite(salted-herring);
 		margin: 0 0 0 1em !important;
 		position: relative;
-		
-		@include at-breakpoint(0 3 320px) {
-			margin-left: 20px !important;
-		}
 	}
 	
 }
@@ -203,7 +204,6 @@ h1 {
 }
 
 .mobile #menu_icon {
-	right: 2em;
 	@include sprites-sprite(menu-open);
 	
 	&.collapse {
@@ -223,6 +223,7 @@ h1 {
 	//@include at-breakpoint(0 3 320px) {
 		padding-top: 2.9em;
 		min-height: 100%;
+/* 		width: 100%; */
 	//}
 }
 
@@ -230,13 +231,22 @@ h1 {
  * Footer
  * =========================== */
 footer {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	
 	.salt {
 		background: $black;
 		color: $blue;
 		font-style: italic;
 		font-weight: bold;
 		font-size: (20/$font-size)+em;
-		display: inline-block;
+		display: block;
+		width: 100%;
+		
+		span {
+			display: block;
+		}
 	}
 	
 	.row {
@@ -269,37 +279,49 @@ footer {
 		display: none !important;
 	}
 	
+	#content {
+		width: 100%;
+		margin: 0;
+	}
+	
 	#menu_icon {
 		@include hide_text;
 		width: 39px;
 		height: 27px;
+		font-size: $font-size+px;
+		right: 1em !important;
 	}
 	
 	#header {
-		width: 20em;
-		left: auto;
-		margin-left: 0;
+		width: 100%;
+		left: 0;
+		margin: 0 !important;
+		padding: 0 !important;
+		
 		-webkit-transform-style: preserve-3d;
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
 	}
 	
 	#logo {
-		padding-right: 1em;
-		padding-left: 0em;
-		margin-left: -1em;
+		left: 0;
+		margin: 0;
+/* 		padding-right: 2em; */
+		padding-left: 1em;
+/* 		margin-left: -1em; */
 		position: absolute;
 		z-index: 2;
-		width: 20em;
+/* 		width: 20em; */
 	}
 	
 	#main_nav {
-		margin-left: -1em;
+		margin-left: 0em;
 		padding-left: 0em;
 		padding-right: 0em;
 		background: $background;
 		position: absolute;
 		z-index: 3;
+		left: 0;
 		width: 100%;
 		
 		&:before {
@@ -309,14 +331,15 @@ footer {
 		ul {
 				position: absolute;
 				z-index: 20;
-				width: 20em;
+				left: 0;
+				width: 100%;
 				background: $white;
 				top: 2.9em;
 				height: 0;
 				overflow: hidden;
 				max-height: 1000px;
 				text-align: center;
-				padding: 0 1em;
+				padding: 0;
 				margin: 0;
 				
 				//@include scale(1.0,0,1);
@@ -351,21 +374,33 @@ footer {
 	}
 	
 	footer {
+		width: 100%;
+/* 		display: none; */
 		.salt {
 			font-size: (16/$font-size)+em;
-			margin: 0 0 0 -1em;
+			margin: 0;
 			padding: 1.5em 1em;
 			line-height: 1em;
-			width: 18em;
+/* 			width: 100%; */
 			text-align: center;
+/* 			display: none; */
+		}
+		
+		.external {
+			margin: 0 0 1em 1em;
 		}
 		
 		.row {
 			font-size: (16/$font-size)+em;
-			margin: 0 0 0 -1em;
+			margin: 0;
 			padding: 1.5em 1em;
 			line-height: 1.2em;
-			width: 18em;
+			
+			p {
+				margin: 1em;
+			}
+/* 			display: none; */
+/* 			width: 100%; */
 		}
 	}
 }

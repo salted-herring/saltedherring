@@ -18,7 +18,7 @@
 	</head>
 	<body class="page-$URLSegment<% if isMobile %> mobile<% end_if %>">
 		<% include Header %>
-		<div id="content">
+		<div id="content" class="clearfix">
 			$Layout
 		</div>
 		

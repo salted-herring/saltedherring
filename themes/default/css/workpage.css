@@ -582,13 +582,18 @@ body {
   height: 100%;
 }
 
+* {
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+
 body,
 p,
 td,
 li,
 input {
   font-family: 'BrandonGrotesque', Helvetica, Arial, sans-serif;
-  font-size: 16;
+  font-size: 16px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
   color: black;
@@ -641,8 +646,11 @@ h1 {
 }
 @media (max-width: 320px) {
   .container {
-    width: 18em;
+    width: 100%;
+    /* 		width: 18em; */
     overflow-x: none;
+    max-width: 100% !important;
+    padding: 0 !important;
   }
 }
 
@@ -683,6 +691,9 @@ h1 {
   overflow: hidden;
   *zoom: 1;
 }
+.row .container {
+  padding: 0;
+}
 .row .grid_1:last-child {
   margin-right: 0;
 }
@@ -709,11 +720,16 @@ h1 {
     padding-right: 1em;
     margin-left: auto;
     margin-right: auto;
+    max-width: 100%;
   }
   .container:after {
     content: "";
     display: table;
     clear: both;
+  }
+
+  .row {
+    max-width: 100%;
   }
 
   .grid_1 {
@@ -810,11 +826,6 @@ h1 {
   margin: 0 0 0 1em !important;
   position: relative;
 }
-@media (max-width: 320px) {
-  #logo a {
-    margin-left: 20px !important;
-  }
-}
 
 .menu-open {
   background-position: -85px -42px;
@@ -893,7 +904,6 @@ h1 {
 }
 
 .mobile #menu_icon {
-  right: 2em;
   background-position: -85px -42px;
 }
 .mobile #menu_icon.collapse {
@@ -910,18 +920,28 @@ h1 {
 #content {
   padding-top: 2.9em;
   min-height: 100%;
+  /* 		width: 100%; */
 }
 
 /* ===========================
  * Footer
  * =========================== */
+footer {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
 footer .salt {
   background: black;
   color: #36cdf5;
   font-style: italic;
   font-weight: bold;
   font-size: 1.25em;
-  display: inline-block;
+  display: block;
+  width: 100%;
+}
+footer .salt span {
+  display: block;
 }
 footer .row {
   background: #36cdf5;
@@ -946,39 +966,50 @@ footer a.map {
     display: none !important;
   }
 
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+
   #menu_icon {
     text-indent: -119988px;
     overflow: hidden;
     text-align: left;
     width: 39px;
     height: 27px;
+    font-size: 16px;
+    right: 1em !important;
   }
 
   #header {
-    width: 20em;
-    left: auto;
-    margin-left: 0;
+    width: 100%;
+    left: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
   }
 
   #logo {
-    padding-right: 1em;
-    padding-left: 0em;
-    margin-left: -1em;
+    left: 0;
+    margin: 0;
+    /* 		padding-right: 2em; */
+    padding-left: 1em;
+    /* 		margin-left: -1em; */
     position: absolute;
     z-index: 2;
-    width: 20em;
+    /* 		width: 20em; */
   }
 
   #main_nav {
-    margin-left: -1em;
+    margin-left: 0em;
     padding-left: 0em;
     padding-right: 0em;
     background: whitesmoke;
     position: absolute;
     z-index: 3;
+    left: 0;
     width: 100%;
   }
   #main_nav:before {
@@ -987,14 +1018,15 @@ footer a.map {
   #main_nav ul {
     position: absolute;
     z-index: 20;
-    width: 20em;
+    left: 0;
+    width: 100%;
     background: white;
     top: 2.9em;
     height: 0;
     overflow: hidden;
     max-height: 1000px;
     text-align: center;
-    padding: 0 1em;
+    padding: 0;
     margin: 0;
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
@@ -1011,20 +1043,32 @@ footer a.map {
     overflow: visible;
   }
 
+  footer {
+    width: 100%;
+    /* 		display: none; */
+  }
   footer .salt {
     font-size: 1em;
-    margin: 0 0 0 -1em;
+    margin: 0;
     padding: 1.5em 1em;
     line-height: 1em;
-    width: 18em;
+    /* 			width: 100%; */
     text-align: center;
+    /* 			display: none; */
+  }
+  footer .external, footer #articleLinks .website, #articleLinks footer .website {
+    margin: 0 0 1em 1em;
   }
   footer .row {
     font-size: 1em;
-    margin: 0 0 0 -1em;
+    margin: 0;
     padding: 1.5em 1em;
     line-height: 1.2em;
-    width: 18em;
+    /* 			display: none; */
+    /* 			width: 100%; */
+  }
+  footer .row p {
+    margin: 1em;
   }
 }
 nav.filters {

@@ -22,8 +22,11 @@ $break: 3;
 	width: 960px;
 	
 	@include at-breakpoint(0 3 320px) {
-		width: 18em;
+		width: 100%;
+/* 		width: 18em; */
 		overflow-x: none;
+		max-width: 100% !important;
+		padding: 0 !important;
 	}
 }
 
@@ -40,6 +43,10 @@ $break: 3;
 
 .row {
 	@include clearfix;
+	
+	.container {
+		padding: 0;
+	}
 	
 	@for $i from 1 through $total-columns {
 		.grid_#{$i}{
@@ -60,6 +67,11 @@ $break: 3;
 	
 	.container { 
 		@include container;
+		max-width: 100%;
+	}
+	
+	.row {
+		max-width: 100%;
 	}
 
 	@for $i from 1 through $total-columns {

@@ -1,8 +1,10 @@
-<footer class="container">
-	<span class="salt">Adding flavour to the web since 2001</span>
-	<div class="row">
+<footer id="footer">
+	<div class="salt">
+		<span class="container">Adding flavour to the web since 2001</span>
+	</div>
+	<div class="container row">
 		<div class="grid_1 nomobi">
-			<p>Saltedherring is a digital design agency, based in Wellington, New Zeand</p>
+			<p>Saltedherring is a digital design agency, based in Wellington, New Zealand</p>
 
 			<p>Copyright &copy; 2003 – 2012<br>
 			All right reserved.</p>
