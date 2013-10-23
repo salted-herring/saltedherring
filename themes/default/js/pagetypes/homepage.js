@@ -24,7 +24,7 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) 
 	
 	$(function() {
 		$(window).resize(function() {
-			$('#work .block').height($(window).height() - $('#header').height());
+			$('#work .block').height($(window).height() - $('#logo').height());
 			
 			
 			$('body:not(.mobile) .contain').each(function() {
