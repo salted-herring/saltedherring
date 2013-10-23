@@ -1,11 +1,23 @@
 <% if getTeam %>
-<section id="team">
+<nav id="banner">
+	<div class="container">
+		<h1 class="title">Team</h1>
+		<div class="filters">
+			<a href="$URLSegment">View all</a>
+			<% loop getTeam %>
+				<a href="$Top.URLSegment/$URLSegment">$FirstName</a>
+			<% end_loop %>
+		</div>
+	</div>
+</nav>
+<section id="team" class="container">
+	
 	<% loop getTeam %>
 	<% if Images %>
 	<a href="$Top.URLSegment/$URLSegment" class="member">
 		
 			<% with Images.First %>
-			<img src="$outputImage.URL" alt="$Up.getUserName" />
+			<img src="$outputImage(320).URL" alt="$Up.getUserName" />
 			<% end_with %>
 		
 		<div class="label">

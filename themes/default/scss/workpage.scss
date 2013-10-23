@@ -2,42 +2,28 @@
 
 nav.filters {
 	background: $blue;
-	margin-left: -1em;
-	margin-right: -1em;
-	padding: 2em 2em 2em 1em;
-	
-	a {
-		@include minion;
-		color: $black;
-		
-		&.all,
-		&.current,
-		&:hover {
-			color: $white;
-		}
-		
-		&.all,
-		&.current {
-			&:hover {
-				color: $black;
-			}
-		}
-		
-		&:after {
-			margin-left: 10px;
-			margin-right: 10px;
-			content: '/';
-			color: $black;
-		}
-	}
 }
 
 #work {
+	.container {
+		padding: 0;
+	}
 	.work {
 		position: relative;
 		display: block;
 		overflow: hidden;
 		margin-bottom: 1em;
+		width: 320px;
+		
+		&:hover {
+			.label {
+				background: rgba(0,0,0,0.5);
+				
+				span {
+					@include opacity(1);
+				}
+			}
+		}
 	}
 	
 	img {
@@ -49,9 +35,11 @@ nav.filters {
 		position: absolute;
 		z-index: 1;
 		bottom: 0px;
-		background: rgba(0,0,0,.5);
+		background: rgba(0,0,0,0);
 		width: 100%;
 		padding: 2em;
+		
+		@include transition(background .2s);
 		
 		strong,
 		span {
@@ -59,6 +47,8 @@ nav.filters {
 		}
 		
 		span {
+			@include transition(opacity .2s);
+			@include opacity(0);
 			@include minion;
 		}
 	}
@@ -252,6 +242,15 @@ margin: 0 -0 0 -1.5em;
 	}
 	
 	#work {
+		
+		.work {
+			width: 100%;
+			.label {
+				span {
+					@include opacity(1);
+				}
+			}
+		}
 		.label {
 			padding: 1em 2em;
 		}

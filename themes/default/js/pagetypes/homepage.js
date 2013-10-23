@@ -24,7 +24,7 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) 
 	
 	$(function() {
 		$(window).resize(function() {
-			$('#work .block').height($(window).height() - $('#header').height());
+			$('#work .block').height($(window).height() - $('.down').height());
 			
 			
 			$('body:not(.mobile) .contain').each(function() {
@@ -32,7 +32,7 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) 
 				$(this).children().each(function() {
 					_h += $(this).height();
 				});
-				var marginTop = $(this).parents('.block').is('.first') ? - $('#header').height() : 0;
+				var marginTop = 0;//$(this).parents('.block').is('.first') ? - $('.down').height() : 0;
 				
 				$(this).height(_h).css('margin-top', marginTop - (_h/2));
 			});

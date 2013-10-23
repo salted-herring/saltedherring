@@ -81,6 +81,42 @@ h1 {
 	}
 }
 
+.filters {
+	padding: 2em 2em 2em 1em;
+	
+	a {
+		@include minion;
+		color: $black;
+		white-space: nowrap;
+		
+		&:last-child {
+			&:after {
+				display: none;
+			}
+		}
+		
+		&.all,
+		&.current,
+		&:hover {
+			color: $white;
+		}
+		
+		&.all,
+		&.current {
+			&:hover {
+				color: $black;
+			}
+		}
+		
+		&:after {
+			margin-left: 10px;
+			margin-right: 10px;
+			content: '/';
+			color: $black;
+		}
+	}
+}
+
 
 /* ===========================
  * Sections
@@ -341,25 +377,58 @@ footer {
 
 
 /* ===========================
+ * Banner
+ * =========================== */
+#banner {
+	padding: 2em 0;
+	margin-bottom: 6em;
+	
+	.container {
+		position: relative;
+	}
+	
+	h1 {
+		font-size: (160/$font-size)+em;
+		color: $white;
+		line-height: 160px;
+		font-weight: 800;
+		margin: 0 0 -48px -32px;
+		text-transform: uppercase;
+	}
+}
+
+
+/* ===========================
  * End Sections
  * =========================== */
 
 
 .mobile #main_nav {
 	display: block;
+	
+	ul {
+		margin-right: 0;
+	}
 }
 
 #main_nav {
-	display: none;
+	display: block;
+	ul {
+		margin-right: -4em;
+	}
 }
 
 #menu_icon {
-	display: block;
+	display: none;
 } 
  
 @include at-breakpoint(0 3 320px) {
  	.nomobi {
 		display: none !important;
+	}
+	
+	#banner {
+		display: none;
 	}
 	
 	#content {
