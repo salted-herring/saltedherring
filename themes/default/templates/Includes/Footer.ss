@@ -3,13 +3,13 @@
 		<span class="container">Adding flavour to the web since 2001</span>
 	</div>
 	<div class="container row">
-		<div class="grid_1 nomobi">
+		<div class="grid_1 nomobi whoarewe">
 			<p>Saltedherring is a digital design agency, based in Wellington, New Zealand</p>
 
 			<p>Copyright &copy; 2003 – 2012<br>
 			All right reserved.</p>
 		</div>
-		<div class="grid_1">
+		<div class="grid_1 contact">
 			<p>
 				<a href="mailto:info@saltedherring.com">info@saltedherring.com</a><br>
 				<a href="tel:+6444731344">+64 (0) 4 473 1344</a>
@@ -22,7 +22,7 @@
 			
 			
 		</div>
-		<div class="grid_1">
+		<div class="grid_1 ourblog">
 			<a href="//blog.saltedherring.com" target="_blank" class="external">our blog</a>
 		</div>
 	</div>

@@ -7,32 +7,40 @@
 /* ===========================
  * Sprite sheets
  * =========================== */
-.sprites-sprite, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-salted-herring, .external:before, #articleLinks .website:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand {
-  background: url('../img/sprites-s1b90845297.png') no-repeat;
+.sprites-sprite, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-salt, .sprites-salted-herring, .sprites-saltshaker, .external:before, #articleLinks .website:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, footer .salt span:after, footer .salt span:before {
+  background: url('../img/sprites-sb5f3c36d67.png') no-repeat;
 }
 
 .sprites-down_arrow {
-  background-position: 0 -14px;
+  background-position: -78px -14px;
 }
 
 .sprites-external_arrow {
-  background-position: 0 -42px;
+  background-position: -62px -42px;
 }
 
 .sprites-external_arrow_blue {
-  background-position: -23px -42px;
+  background-position: -85px -42px;
 }
 
 .sprites-menu-collapse {
-  background-position: -46px -42px;
+  background-position: 0 -14px;
 }
 
 .sprites-menu-open {
-  background-position: -85px -42px;
+  background-position: -39px -14px;
+}
+
+.sprites-salt {
+  background-position: 0 -42px;
 }
 
 .sprites-salted-herring {
   background-position: 0 0;
+}
+
+.sprites-saltshaker {
+  background-position: 0 -106px;
 }
 
 /* @license
@@ -783,7 +791,7 @@ h1 {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: 0 -42px;
+  background-position: -62px -42px;
 }
 
 /* ===========================
@@ -828,7 +836,7 @@ h1 {
 }
 
 .menu-open {
-  background-position: -85px -42px;
+  background-position: -39px -14px;
 }
 
 #main_nav {
@@ -904,14 +912,14 @@ h1 {
 }
 
 .mobile #menu_icon {
-  background-position: -85px -42px;
+  background-position: -39px -14px;
 }
 .mobile #menu_icon.collapse {
-  background-position: -46px -42px;
+  background-position: 0 -14px;
 }
 .mobile #menu_icon.expand {
   cursor: pointer;
-  background-position: -85px -42px;
+  background-position: -39px -14px;
 }
 
 /* ===========================
@@ -936,16 +944,74 @@ footer .salt {
   color: #36cdf5;
   font-style: italic;
   font-weight: bold;
-  font-size: 1.25em;
+  font-size: 2em;
   display: block;
   width: 100%;
+  padding: 1em 0;
+  overflow: hidden;
 }
 footer .salt span {
   display: block;
+  position: relative;
+}
+footer .salt span:after {
+  position: absolute;
+  right: 6.5em;
+  top: .65em;
+  display: block;
+  content: '';
+  width: 62px;
+  height: 64px;
+  background-position: 0 -42px;
+}
+footer .salt span:before {
+  position: absolute;
+  right: 4em;
+  top: -3.8em;
+  display: block;
+  content: '';
+  width: 139px;
+  height: 160px;
+  background-position: 0 -106px;
+  -webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  animation: none;
+}
+footer .salt.animate span:before {
+  -webkit-animation-timing-function: easeInOutBack;
+  -moz-animation-timing-function: easeInOutBack;
+  -ms-animation-timing-function: easeInOutBack;
+  animation-timing-function: easeInOutBack;
+  -webkit-animation: saltshaker 0.5s 2;
+  -moz-animation: saltshaker 0.5s 2;
+  -ms-animation: saltshaker 0.5s 2;
+  animation: saltshaker 0.5s 2;
+}
+footer .salt.animate span:after {
+  -webkit-animation-timing-function: easeInOutBounce;
+  -moz-animation-timing-function: easeInOutBounce;
+  -ms-animation-timing-function: easeInOutBounce;
+  animation-timing-function: easeInOutBounce;
+  -webkit-animation: salt 0.5s 2;
+  -moz-animation: salt 0.5s 2;
+  -ms-animation: salt 0.5s 2;
+  animation: salt 0.5s 2;
+}
+footer .whoarewe {
+  margin-top: -1em;
+}
+footer .whoarewe p {
+  font-family: 'Times', serif;
+  font-style: italic;
+}
+footer .contact {
+  margin-top: -1em;
 }
 footer .row {
   background: #36cdf5;
   color: black;
+  padding: 6em 2em;
 }
 footer a {
   color: white;
@@ -958,9 +1024,101 @@ footer a.map {
   color: black;
 }
 
+@-webkit-keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
+@-moz-keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
+@-ms-keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
+@keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
+@-webkit-keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
+@-moz-keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
+@-ms-keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
+@keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
 /* ===========================
  * End Sections
  * =========================== */
+.mobile #main_nav {
+  display: block;
+}
+
+#main_nav {
+  display: none;
+}
+
+#menu_icon {
+  display: block;
+}
+
 @media (max-width: 320px) {
   .nomobi {
     display: none !important;
@@ -969,6 +1127,9 @@ footer a.map {
   #content {
     width: 100%;
     margin: 0;
+  }
+  #content article {
+    padding: 0 1em !important;
   }
 
   #menu_icon {
@@ -979,6 +1140,7 @@ footer a.map {
     height: 27px;
     font-size: 16px;
     right: 1em !important;
+    display: block;
   }
 
   #header {
@@ -1055,6 +1217,9 @@ footer a.map {
     /* 			width: 100%; */
     text-align: center;
     /* 			display: none; */
+  }
+  footer .salt span:before, footer .salt span:after {
+    display: none;
   }
   footer .external, footer #articleLinks .website, #articleLinks footer .website {
     margin: 0 0 1em 1em;
@@ -1258,7 +1423,7 @@ nav.filters a:after {
 }
 #articleLinks .website:before {
   background-color: whitesmoke;
-  background-position: -23px -42px;
+  background-position: -85px -42px;
 }
 
 @media (max-width: 320px) {

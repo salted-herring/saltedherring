@@ -19,4 +19,15 @@
 			$('#main_nav').toggleClass('collapse expand');
 		});
 	});
+	
+	
+	$(function() {
+		$(window).scroll(function() {
+			if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+				$('footer .salt').addClass('animate');
+			} else {
+				$('footer .salt').removeClass('animate');
+			}
+		});
+	});
 })(jQuery);
