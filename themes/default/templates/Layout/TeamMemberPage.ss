@@ -1,9 +1,18 @@
-<% control Member %>
+<div id="banner" class="collapsed">
+	<div class="filters container">
+		<a href="$URLSegment">all</a>
+		<% loop getTeam %>
+			<a href="$Top.URLSegment/$URLSegment"<% if $URLSegment = Member.URLSegment %> class="current"<% end_if %>>$FirstName</a>
+		<% end_loop %>
+	</div>
+</div>
+<div class="contain">
+	<% control Member %>
 <section id="teammember" class="container">
 	<article>
 		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.5);">
 			<h1>$getUserName</h1>
-			<span class="tagLine">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.getUserName</a></span>
+			<span class="role">$Role</span><span class="photographer">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.getUserName</a></span>
 		</header>
 		
 		<% with Images.First %>
@@ -37,5 +46,6 @@
 		</div>
 	</article>
 	
-	</section>
+</section>
 <% end_control %>
+</div>

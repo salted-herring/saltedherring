@@ -21,8 +21,10 @@
 			<% end_with %>
 		
 		<div class="label">
-			<strong>$FirstName $LastName</strong>
-			<span>$Role</span>
+			<span>
+				<strong>$FirstName $LastName</strong>
+				<em>$Role</em>
+			</span>
 		</div>
 	</a>
 	<% end_if %>

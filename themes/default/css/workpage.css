@@ -1339,14 +1339,28 @@ footer a.map {
 }
 #work .work:hover .label {
   background: rgba(0, 0, 0, 0.5);
+  height: 142px;
 }
 #work .work:hover .label span {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
+  top: 400px;
+}
+#work .work:hover .label:before {
+  top: 1.5em;
+}
+#work .work:hover img {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
 }
 #work img {
   position: relative;
   z-index: 0;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  transition: transform 0.3s;
 }
 #work .label {
   position: absolute;
@@ -1355,22 +1369,45 @@ footer a.map {
   background: rgba(0, 0, 0, 0);
   width: 100%;
   padding: 2em;
-  -webkit-transition: background 0.2s;
-  -moz-transition: background 0.2s;
-  -o-transition: background 0.2s;
-  transition: background 0.2s;
+  height: 112px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+#work .label:before {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 6em;
+  margin-left: -95px;
+  content: 'see project';
+  padding: .8em 2em;
+  border: 3px solid white;
+  font-weight: 500;
+  z-index: 1;
+  line-height: 1em;
+  text-align: center;
+  font-size: 1.375em;
+  -webkit-transition: top 0.2s;
+  -moz-transition: top 0.2s;
+  -o-transition: top 0.2s;
+  transition: top 0.2s;
+}
+#work .label span {
+  position: relative;
+  display: block;
+  top: 0;
+  -webkit-transition: top 0.2s;
+  -moz-transition: top 0.2s;
+  -o-transition: top 0.2s;
+  transition: top 0.2s;
 }
 #work .label strong,
-#work .label span {
+#work .label em {
   display: block;
 }
-#work .label span {
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+#work .label em {
   font-family: 'Times', serif;
   font-style: italic;
 }

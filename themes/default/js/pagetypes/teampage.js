@@ -23,7 +23,13 @@ require.config({
 require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) {
 	
 	$(function() {
-		
+		$(window).scroll(function() {
+			if($(window).scrollTop() > ($('article > header').height() + $('#banner').height())) {
+				$('article > header').addClass('small');
+			} else {
+				$('article > header').removeClass('small');
+			}
+		});
 	});
 	
 });

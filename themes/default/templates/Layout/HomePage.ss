@@ -43,12 +43,13 @@
 									
 									<a href="#" class="down">&darr;</a>
 									
+									<% if $Top.NewsItems %>
 									<ul class="news">
-										<li>news item</li>
-										<li></li>
-										<li></li>
-										<li></li>
+										<% loop $Top.NewsItems %>
+										<li<% if First %> class="active"<% end_if %>>$Text</li>
+										<% end_loop %>
 									</ul>
+									<% end_if %>
 								</div>
 								
 							</div>

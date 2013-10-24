@@ -36,7 +36,8 @@ class TeamPage_Controller extends Page_Controller {
 		$this->MetaTitle = $teamMember->getUserName();
 		
 		return $this->renderWith(array('TeamMemberPage', 'Page'), array(
-			'Member' => $teamMember
+			'Member' => $teamMember,
+			'getTeam' => $this->getTeam()
 		));
 		
 		/*

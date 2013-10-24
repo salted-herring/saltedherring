@@ -23,8 +23,10 @@
 				<img src="$getFirstImage.Image.CroppedImage(320,320).URL" alt="$Name" />
 			<% end_if %>
 			<div class="label">
-				<strong>$Title</strong>
-				<span>$TagLine</span>
+				<span>
+					<strong>$Title</strong>
+					<em>$TagLine</em>
+				</span>
 			</div>
 		</a>
 	<% end_loop %>

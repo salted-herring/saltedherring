@@ -1309,6 +1309,25 @@ footer a.map {
   padding-bottom: 0;
 }
 
+#banner.collapsed {
+  margin-bottom: 0;
+  padding: 1em 0;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+#banner.collapsed .filters {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  text-align: center;
+  padding: 0;
+}
+
+.contain {
+  background: #f3f3f3;
+}
+
 #main_nav a:hover, #main_nav a.current {
   color: #ffe339;
 }
@@ -1326,14 +1345,28 @@ footer a.map {
 }
 #team .member:hover .label {
   background: rgba(0, 0, 0, 0.5);
+  height: 142px;
 }
 #team .member:hover .label span {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
+  top: 400px;
+}
+#team .member:hover .label:before {
+  top: 1.5em;
+}
+#team .member:hover img {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
 }
 #team img {
   position: relative;
   z-index: 0;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  transition: transform 0.3s;
 }
 #team .label {
   position: absolute;
@@ -1342,26 +1375,52 @@ footer a.map {
   background: rgba(0, 0, 0, 0);
   width: 100%;
   padding: 2em;
-  -webkit-transition: background 0.2s;
-  -moz-transition: background 0.2s;
-  -o-transition: background 0.2s;
-  transition: background 0.2s;
+  height: 112px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+#team .label:before {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 6em;
+  margin-left: -95px;
+  content: 'get closer';
+  padding: .8em 2em;
+  border: 3px solid white;
+  font-weight: 500;
+  z-index: 1;
+  line-height: 1em;
+  text-align: center;
+  font-size: 1.375em;
+  -webkit-transition: top 0.2s;
+  -moz-transition: top 0.2s;
+  -o-transition: top 0.2s;
+  transition: top 0.2s;
+}
+#team .label span {
+  position: relative;
+  display: block;
+  top: 0;
+  -webkit-transition: top 0.2s;
+  -moz-transition: top 0.2s;
+  -o-transition: top 0.2s;
+  transition: top 0.2s;
 }
 #team .label strong,
-#team .label span {
+#team .label em {
   display: block;
 }
-#team .label span {
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+#team .label em {
   font-family: 'Times', serif;
   font-style: italic;
 }
 
+#teammember {
+  margin-top: 56px;
+}
 #teammember article {
   position: relative;
 }
@@ -1371,11 +1430,6 @@ footer a.map {
   margin: 0 0 0.45833em 0;
   padding: 0;
 }
-#teammember .tagLine {
-  font-family: 'Times', serif;
-  font-style: italic;
-  font-size: 1.5em;
-}
 #teammember header {
   position: absolute;
   z-index: 1;
@@ -1383,10 +1437,35 @@ footer a.map {
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   width: 960px;
-  /* 		padding: 1em 1em 1em 1em; */
   margin: 0 0 0 -3em;
   padding: 3.5em 5em 5em 5em;
   color: white;
+}
+#teammember header span {
+  font-family: 'Times', serif;
+  font-style: italic;
+  font-size: 1.5em;
+}
+#teammember header .photographer {
+  float: right;
+  font-size: 16px;
+}
+#teammember header.small {
+  padding: 1em 5em;
+  position: fixed;
+  left: 50%;
+  top: 102px;
+  margin-left: -496px;
+}
+#teammember header.small h1 {
+  font-size: 1.375em;
+  margin: 0;
+}
+#teammember header.small span {
+  font-size: 1em;
+}
+#teammember header.small .photographer {
+  display: none;
 }
 #teammember img {
   margin: 0 0 0 -2em;

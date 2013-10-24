@@ -220,9 +220,24 @@ position: absolute;
 		.news {
 			padding-left: 2em;
 			width: 398px;
+			overflow: hidden;
+			height: 24px;
+			position: relative;
+			padding: 0;
+			margin: 1.5em 0 0 2em;
 			
 			li {
+				position: absolute;
 				display: block;
+				top: 30px;
+				
+				&.active {
+					top: 0;
+				}
+			}
+			
+			p {
+				margin: 0;
 			}
 		}
 		

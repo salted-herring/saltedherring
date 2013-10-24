@@ -1502,9 +1502,22 @@ section .intro .contactlinks a {
 section .intro .news {
   padding-left: 2em;
   width: 398px;
+  overflow: hidden;
+  height: 24px;
+  position: relative;
+  padding: 0;
+  margin: 1.5em 0 0 2em;
 }
 section .intro .news li {
+  position: absolute;
   display: block;
+  top: 30px;
+}
+section .intro .news li.active {
+  top: 0;
+}
+section .intro .news p {
+  margin: 0;
 }
 section .intro .contactlinks,
 section .intro .down,
