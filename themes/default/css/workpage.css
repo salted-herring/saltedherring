@@ -794,6 +794,10 @@ h1 {
   z-index: 2;
   background-position: -62px -42px;
 }
+.external:hover:before, #articleLinks .website:hover:before {
+  right: -6px;
+  top: -6px;
+}
 
 .filters {
   padding: 2em 2em 2em 1em;
@@ -830,10 +834,15 @@ h1 {
   position: fixed;
   overflow: visible;
   margin-top: 0;
-  margin-left: -480px;
+  width: 100%;
+  /* 	margin-left: -480px; */
   z-index: 100;
-  left: 50%;
+  /* 	left: 50%; */
+  background: #f3f3f3;
   -webkit-transform: translate3d(0, 0, 0);
+}
+#header .row {
+  overflow: visible;
 }
 
 #logo {
@@ -884,7 +893,7 @@ h1 {
   outline: none;
 }
 #main_nav li {
-  padding: 1.125em 0;
+  padding: 1.125em 0 0 0;
   display: inline-block;
   padding-left: 1.3em;
   line-height: 1em;
@@ -1034,8 +1043,10 @@ footer .whoarewe p {
 footer .contact {
   margin-top: -1em;
 }
-footer .row {
+footer .details {
   background: #36cdf5;
+}
+footer .row {
   color: black;
   padding: 6em 2em;
 }
@@ -1291,10 +1302,27 @@ footer a.map {
     margin: 1em;
   }
 }
-nav.filters {
+.filters {
+  position: absolute;
+  right: 2em;
+  bottom: 0em;
+  padding-bottom: 0;
+  width: 400px;
+}
+.filters strong {
+  display: block;
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+#banner {
   background: #36cdf5;
 }
 
+#work {
+  margin-top: 2em;
+  margin-bottom: 6em;
+}
 #work .container {
   padding: 0;
 }
@@ -1302,8 +1330,12 @@ nav.filters {
   position: relative;
   display: block;
   overflow: hidden;
-  margin-bottom: 1em;
+  margin-bottom: 0em;
+  margin-right: 0em;
+  margin-left: 0em;
   width: 320px;
+  height: 320px;
+  float: left;
 }
 #work .work:hover .label {
   background: rgba(0, 0, 0, 0.5);
@@ -1346,17 +1378,11 @@ nav.filters {
 /* ***************
  * Project
  * *************** */
-#project article {
+#project {
+  background: #f3f3f3;
+}
+#project .container {
   position: relative;
-}
-#project h1 {
-  font-size: 1.375em;
-  line-height: 1.36364em;
-}
-#project .tagLine {
-  font-family: 'Times', serif;
-  font-style: italic;
-  font-size: 16;
 }
 #project header {
   position: absolute;
@@ -1365,22 +1391,19 @@ nav.filters {
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  padding: 1em 1em 1em 1em;
-  		/*
-  margin: 0 -0 0 -1.5em;
-  		padding: 1em 0em 1em 2.5em;
-  */
-  margin: 0 -1em;
+  padding: 3.5em 5em 5em 5em;
   color: white;
-}
-#project header h1 {
   margin: 0;
-  line-height: 1em;
-  padding: 0 1.81818em;
 }
-#project header .tagLine {
+#project .tagLine {
   display: block;
-  padding: 0 2.5em;
+  font-family: 'Times', serif;
+  font-style: italic;
+  font-size: 16;
+  /* 		padding: 0 (40/$font-size)+em; */
+}
+#project img {
+  margin: 0 0 0 -1em;
 }
 #project ul {
   margin: 0;
@@ -1394,13 +1417,14 @@ nav.filters {
   margin-bottom: 1.5em;
 }
 #project blockquote {
-  font-size: 1.5em;
+  font-size: 3em;
+  line-height: 1.04167em;
   position: relative;
   padding: 0;
-  margin: .5em 0 0 0;
+  margin: 0;
   font-weight: bold;
   font-style: italic;
-  display: inline-block;
+  display: inline;
 }
 #project blockquote .label {
   position: absolute;
@@ -1423,12 +1447,13 @@ nav.filters {
 #project cite {
   font-weight: 500;
   font-style: normal;
+  font-size: 1.5em;
 }
 #project .content p {
   display: none;
 }
 #project aside strong {
-  font-weight: normal;
+  font-weight: 500;
   font-size: 1.125em;
   color: #36cdf5;
 }
@@ -1437,6 +1462,11 @@ nav.filters {
 }
 #project aside li {
   display: inline-block;
+  white-space: nowrap;
+}
+#project aside .services li {
+  font-family: 'Times', serif;
+  font-style: italic;
 }
 #project aside .services li:after {
   display: inline;
@@ -1447,6 +1477,8 @@ nav.filters {
 }
 #project aside .awards li {
   margin: 0 -4px 0 0;
+  font-family: 'Times', serif;
+  font-style: italic;
 }
 #project aside .awards li:last-child a {
   margin-right: 0;
@@ -1458,6 +1490,7 @@ nav.filters {
 
 #articleLinks {
   margin: 2.5em 0;
+  width: 50%;
 }
 #articleLinks a {
   color: #36cdf5;
@@ -1482,12 +1515,46 @@ nav.filters {
   background-position: -85px -42px;
 }
 
+#project article {
+  position: relative;
+}
+#project h1 {
+  font-size: 3em;
+  line-height: 1em;
+  margin: 0 0 0.45833em 0;
+  padding: 0;
+}
+#project .tagLine {
+  font-family: 'Times', serif;
+  font-style: italic;
+  font-size: 1.5em;
+}
+#project ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#project .media img {
+  position: relative;
+  z-index: 0;
+  padding: 0;
+  margin-bottom: 1.5em;
+}
+
+#media img {
+  margin-bottom: 3em;
+  margin-left: -1em;
+}
+
 @media (max-width: 320px) {
   #project .content p:first-child {
     display: block;
   }
 
   #work .work {
+    /* 			width: 300px; */
+  }
+  #work .work img {
     width: 100%;
   }
   #work .work .label span {

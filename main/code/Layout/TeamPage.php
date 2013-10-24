@@ -33,6 +33,8 @@ class TeamPage_Controller extends Page_Controller {
 			$this->httpError(404, 'The requested page could not be found.');
 		}
 		
+		$this->MetaTitle = $teamMember->getUserName();
+		
 		return $this->renderWith(array('TeamMemberPage', 'Page'), array(
 			'Member' => $teamMember
 		));

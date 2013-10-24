@@ -7,14 +7,24 @@
 	padding-bottom: 0;
 }
 
+#main_nav {
+	a {
+		&:hover,
+		&.current {
+			color: $yellowbanner;
+		}
+	}
+}
+
 #team {
 	padding: 0;
 	.member {
 		position: relative;
 		display: block;
 		overflow: hidden;
-		margin-bottom: 1em;
+		margin-bottom: 0em;
 		width: 320px;
+		height: 320px;
 		
 		&:hover {
 			.label {
@@ -77,9 +87,9 @@
 		top: 0;
 		left: 0;
 		background: rgba(0,0,0,0.5);
-		width: 100%;
+		width: 960px;
 /* 		padding: 1em 1em 1em 1em; */
-		margin: 0 -1em;
+		margin: 0 0 0 -3em;
 		padding: 3.5em 5em 5em 5em;
 		color: $white;
 	}

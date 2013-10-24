@@ -1,7 +1,7 @@
 <% control Member %>
 <section id="teammember" class="container">
 	<article>
-		<header style="bakcground: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.5);">
+		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.5);">
 			<h1>$getUserName</h1>
 			<span class="tagLine">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.getUserName</a></span>
 		</header>

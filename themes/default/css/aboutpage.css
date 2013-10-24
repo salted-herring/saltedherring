@@ -794,6 +794,10 @@ h1 {
   z-index: 2;
   background-position: -62px -42px;
 }
+.external:hover:before {
+  right: -6px;
+  top: -6px;
+}
 
 .filters {
   padding: 2em 2em 2em 1em;
@@ -830,10 +834,15 @@ h1 {
   position: fixed;
   overflow: visible;
   margin-top: 0;
-  margin-left: -480px;
+  width: 100%;
+  /* 	margin-left: -480px; */
   z-index: 100;
-  left: 50%;
+  /* 	left: 50%; */
+  background: #f3f3f3;
   -webkit-transform: translate3d(0, 0, 0);
+}
+#header .row {
+  overflow: visible;
 }
 
 #logo {
@@ -884,7 +893,7 @@ h1 {
   outline: none;
 }
 #main_nav li {
-  padding: 1.125em 0;
+  padding: 1.125em 0 0 0;
   display: inline-block;
   padding-left: 1.3em;
   line-height: 1em;
@@ -1034,8 +1043,10 @@ footer .whoarewe p {
 footer .contact {
   margin-top: -1em;
 }
-footer .row {
+footer .details {
   background: #36cdf5;
+}
+footer .row {
   color: black;
   padding: 6em 2em;
 }

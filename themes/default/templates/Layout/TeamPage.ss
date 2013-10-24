@@ -3,7 +3,7 @@
 	<div class="container">
 		<h1 class="title">Team</h1>
 		<div class="filters">
-			<a href="$URLSegment">View all</a>
+			<a href="$URLSegment">all</a>
 			<% loop getTeam %>
 				<a href="$Top.URLSegment/$URLSegment">$FirstName</a>
 			<% end_loop %>
@@ -17,7 +17,7 @@
 	<a href="$Top.URLSegment/$URLSegment" class="member">
 		
 			<% with Images.First %>
-			<img src="$outputImage(320).URL" alt="$Up.getUserName" />
+			<img src="$Image.CroppedImage(320,320).URL" alt="$Up.getUserName" />
 			<% end_with %>
 		
 		<div class="label">

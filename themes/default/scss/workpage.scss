@@ -1,19 +1,41 @@
 @import 'styles';
 
-nav.filters {
+.filters {
+	position: absolute;
+	right: 2em;
+	bottom: 0em;
+	padding-bottom: 0;
+	width: 400px;
+	
+	strong {
+		display: block;
+		margin-bottom: 1em;
+		font-weight: 500;
+	}
+}
+
+#banner {
 	background: $blue;
 }
 
 #work {
+	margin-top: 2em;
 	.container {
 		padding: 0;
 	}
+	
+	margin-bottom: 6em;
+	
 	.work {
 		position: relative;
 		display: block;
 		overflow: hidden;
-		margin-bottom: 1em;
+		margin-bottom: 0em;
+		margin-right: 0em;
+		margin-left: 0em;
 		width: 320px;
+		height: 320px;
+		float: left;
 		
 		&:hover {
 			.label {
@@ -59,17 +81,10 @@ nav.filters {
  * Project
  * *************** */
 #project {
-	article {
-		position: relative;
-	}
+	background: $lightgrey;
 	
-	h1 {
-		font-size: (22/$font-size)+em;
-		line-height: (30/22)+em;
-	}
-	.tagLine {
-		@include minion;
-		font-size: $font-size;
+	.container {
+		position: relative;
 	}
 	
 	header {
@@ -79,24 +94,20 @@ nav.filters {
 		left: 0;
 		background: rgba(0,0,0,0.5);
 		width: 100%;
-		padding: 1em 1em 1em 1em;
-		/*
-margin: 0 -0 0 -1.5em;
-		padding: 1em 0em 1em 2.5em;
-*/
-		margin: 0 -1em;
+		padding: 3.5em 5em 5em 5em;
 		color: $white;
-		
-		h1 {
-			margin: 0;
-			line-height: 1em;
-			padding: 0 (40/22)+em;
-		}
-		
-		.tagLine {
-			display: block;
-			padding: 0 (40/$font-size)+em;
-		}
+		margin: 0;
+	}
+	
+	.tagLine {
+		display: block;
+		@include minion;
+		font-size: $font-size;
+/* 		padding: 0 (40/$font-size)+em; */
+	}
+	
+	img {
+		margin: 0 0 0 -1em;
 	}
 	
 	ul {
@@ -115,13 +126,14 @@ margin: 0 -0 0 -1.5em;
 	}
 	
 	blockquote {
-		font-size: (24/$font-size)+em;
+		font-size: (48/$font-size)+em;
+		line-height: (50/48)+em;
 		position: relative;
 		padding: 0;
-		margin: .5em 0 0 0;
+		margin: 0;
 		font-weight: bold;
 		font-style: italic;
-		display: inline-block;
+		display: inline;
 		
 
 		.label {
@@ -147,6 +159,7 @@ margin: 0 -0 0 -1.5em;
 	cite {
 		font-weight: 500;
 		font-style: normal;
+		font-size: (24/$font-size)+em;
 	}
 	
 	.content {
@@ -157,7 +170,7 @@ margin: 0 -0 0 -1.5em;
 	
 	aside {
 		strong {
-			font-weight: normal;
+			font-weight: 500;
 			font-size: (18/$font-size)+em;
 			color: $blue;
 		}
@@ -167,9 +180,11 @@ margin: 0 -0 0 -1.5em;
 		}
 		li {
 			display: inline-block;
+			white-space: nowrap;
 		}
 		
 		.services li {
+			@include minion;
 			&:after {
 				display: inline;
 				content: ', ';
@@ -183,6 +198,7 @@ margin: 0 -0 0 -1.5em;
 		.awards {
 			li {
 				margin: 0 -4px 0 0;
+				@include minion;
 				
 				&:last-child a {
 					margin-right: 0;
@@ -199,6 +215,7 @@ margin: 0 -0 0 -1.5em;
 
 #articleLinks {
 	margin: (40/$font-size)+em 0;
+	width: 50%;
 
 	a {
 		@extend .link;
@@ -229,8 +246,48 @@ margin: 0 -0 0 -1.5em;
 	}
 }
 
+#project {
+	article {
+		position: relative;
+	}
+	
+	h1 {
+		font-size: (48/$font-size)+em;
+		line-height: 1em;
+		margin: 0 0 (22/48)+em 0;
+		padding: 0;
+	}
+	.tagLine {
+		@include minion;
+		font-size: (24/$font-size)+em;
+	}
+	
+	
+	
+	
+	
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	.media {
+		img {
+			position: relative;
+			z-index: 0;
+			padding: 0;
+			margin-bottom: 1.5em;
+		}
+	}
+}
 
-
+#media {
+	img {
+		margin-bottom: 3em;
+		margin-left: -1em;
+	}
+}
 
 @include at-breakpoint(0 3 320px) {
 	#project {
@@ -244,7 +301,10 @@ margin: 0 -0 0 -1.5em;
 	#work {
 		
 		.work {
-			width: 100%;
+/* 			width: 300px; */
+			img {
+				width: 100%;
+			}
 			.label {
 				span {
 					@include opacity(1);

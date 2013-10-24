@@ -15,7 +15,7 @@
 						<% if First %>
 						<% else %>
 							<% if Project.getURL || Link.Link %>
-						<div class="container links"<% if Colour %> style="background: rgba($Colour.hex2rgb, .5);"<% end_if %>>
+						<div class="container links">
 						<span><strong>$Project.Title</strong><br><em>$Project.TagLine</em></span>
 						<a href="<% if Project %>$Project.getURL<% else %>$Link.Link<% end_if %>" class="link">see project</a>
 						</div>

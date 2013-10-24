@@ -1,11 +1,14 @@
 <% if getCategories %>
-<nav class="filters">
+<nav id="banner">
 	<div class="container">
-	
-		<a href="$URLSegment"<% if category %><% else %> class="all"<% end_if %>>View all</a>
-	<% loop getCategories %>
-		<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment %> class="current"<% end_if %>>$Name</a>
-	<% end_loop %>
+		<h1 class="title">Work</h1>
+		<div class="filters">
+			<strong>Filter by:</strong>
+			<a href="$URLSegment"<% if category %><% else %> class="all"<% end_if %>>all</a>
+			<% loop getCategories %>
+				<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment %> class="current"<% end_if %>>$Name</a>
+			<% end_loop %>
+		</div>
 	</div>
 </nav>
 <% end_if %>
@@ -14,10 +17,10 @@
 <section id="work">
 	<div class="container">
 	<% loop getAllProjects %>
-		<a href="$Top.URLSegment/project/$URLSegment" class="work">
+		<a href="$Top.URLSegment/project/$URLSegment" class="work<% if MultipleOf(3) %> last<% end_if %>">
 		
 			<% if getFirstImage %>
-				<img src="$getFirstImage.outputImage(320).URL" alt="$Name" />
+				<img src="$getFirstImage.Image.CroppedImage(320,320).URL" alt="$Name" />
 			<% end_if %>
 			<div class="label">
 				<strong>$Title</strong>
@@ -28,7 +31,3 @@
 	</div>
 </section>
 <% end_if %>
-<!--
-$Form
-$Content
--->

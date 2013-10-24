@@ -210,6 +210,17 @@ class MediaWithFallback extends BaseMedia {
 		
 		return $fields;
 	}
+	
+	public function outputFallback($width = -1) {
+		if(!$this->PosterImage()) {
+			return false;
+		}
+		if($this->isMobile()) {
+			return $this->PosterImage()->setWidth(480);
+		}
+		
+		return $this->PosterImage()->setWidth($width != -1 ? $width : 928);
+	}
 }
 
 class ImageMedia extends BaseMedia {

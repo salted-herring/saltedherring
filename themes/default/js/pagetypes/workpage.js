@@ -23,7 +23,13 @@ require.config({
 require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) {
 	
 	$(function() {
-		
+		$('.fullstory').click(function(e) {
+			e.preventDefault();
+			$('.content p').toggle();
+			$('html,body').animate({
+				scrollTop: $('.content p:first').offset().top - $('blockquote').height()
+			});
+		});
 	});
 	
 });

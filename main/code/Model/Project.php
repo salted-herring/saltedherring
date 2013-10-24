@@ -125,6 +125,18 @@ class Project extends BaseDBO {
 		
 		return $im;
 	}
+	
+	public function getAllMedia() {
+		$curr = $this->getFirstImage();
+		
+		if($curr) {
+			return $this->Media()->exclude(array(
+				'ID' => $curr->ID
+			));
+		}
+		
+		return $this->Media;
+	}
 }
 
 
