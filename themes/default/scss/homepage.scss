@@ -20,7 +20,7 @@
 		
 		&:before {
 			position: absolute;
-			left: 1.5em;
+			left: 2em;
 			top: 1.5em;
 			width: 21px;
 			height: 28px;
@@ -57,6 +57,7 @@ section {
 		top: 50%;
 /* 		margin-top: -300px; */
 		width: 100%;
+		-webkit-transform: translateZ(0);
 	}
 	
 	img {
@@ -103,8 +104,9 @@ position: absolute;
 		nav {
 			position: absolute;
 			left: 50%;
-			margin-left: -130px !important;
+			margin-left: -163px !important;
 			bottom: (130/$font-size)+em;
+			padding: 0 3em !important;
 		}
 	}
 	
@@ -112,13 +114,13 @@ position: absolute;
 		text-align: center;
 		border: 3px solid $white;
 		display: block;
-		padding: 0 1em !important;
+		padding: 0 1em;
 		display: table;
 		margin: 0 auto;
 		width: auto;
 		
 		ul {
-			margin: 0;
+			margin: 0 0 -7px 0;
 			padding: 0;
 		}
 		li {
@@ -127,11 +129,40 @@ position: absolute;
 		}
 		
 		a {
-			padding: 1em .5em .8em .5em;
+			padding: 1em .5em 1em .5em;
+			margin: 0;
 			text-transform: uppercase;
 			font-weight: 800;
 			font-size: (18/$font-size)+em;
 			display: block;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+			color: $white;
+			@include transition-delay(8s);
+			@include transition(color .5s);
+			
+			&:after {
+				position: absolute;
+				display: block;
+				content: '';
+				left: 0;
+				top: -100%;
+				width: 100%;
+				height: 100%;
+				background: $white;
+				z-index: -1;
+				@include transition(all .5s ceaser($easeOutExpo));
+/* 				@include transform(rotate(-30deg)); */
+			}
+			
+			&:hover {
+				color: $blue;
+				
+				&:after{
+					top: 0;
+				}
+			}
 		}
 	}
 	
@@ -287,6 +318,16 @@ position: absolute;
 		height: 100%;
 		background-repeat: no-repeat;
 		background-size: cover;
+	}
+	
+	.overlay {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		-webkit-transform: translate3d(0,0,0);
+		-webkit-backface-visibility: hidden;
 	}
 }
 

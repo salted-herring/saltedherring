@@ -33,6 +33,7 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) 
 					_h += $(this).height();
 				});
 				
+				$(this).attr("data-top", -_h/2);
 				$(this).height(_h).css('margin-top', -_h/2);
 			});
 		});
@@ -136,6 +137,35 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) 
 			
 			interval = getInterval();
 		}
+		
+		
+		/* ===========================
+		 * Animate overlays.
+		 * =========================== */
+		/*
+$('.block .overlay').each(function() {
+			if($(window).scrollTop() > x) {
+				
+			}
+		});
+*/
+		var previousScroll = 0;
+		$(window).scroll(function() {
+			var down = (previousScroll - $(window).scrollTop()) < 0,
+				current = $('#work .block').filter(function() {
+					return (($(this).offset().top - $('#header').height()) <= $(window).scrollTop()) &&
+								($(window).scrollTop() <= ($(this).offset().top - $('#header').height() + $(this).height()));
+				}).last(),
+				margin = parseInt(current.find('.overlay').css('background-position-y'));
+			
+			margin = ($(window).scrollTop() / 2.75);
+			
+			current.find('.overlay').css({
+				'background-position-y': margin
+			})
+			
+			previousScroll = $(window).scrollTop();
+		});
 	});
 	
 });

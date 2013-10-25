@@ -592,7 +592,7 @@ body {
 
 * {
   background-clip: padding-box;
-  box-sizing: border-box;
+  box-sizing: padding-box;
 }
 
 body,
@@ -1324,7 +1324,7 @@ footer a.map {
 }
 #nextnav a:before {
   position: absolute;
-  left: 1.5em;
+  left: 2em;
   top: 1.5em;
   width: 21px;
   height: 28px;
@@ -1358,6 +1358,7 @@ section .contain {
   top: 50%;
   /* 		margin-top: -300px; */
   width: 100%;
+  -webkit-transform: translateZ(0);
 }
 section img {
   position: absolute;
@@ -1398,20 +1399,21 @@ section .first .text {
 section .first nav {
   position: absolute;
   left: 50%;
-  margin-left: -130px !important;
+  margin-left: -163px !important;
   bottom: 8.125em;
+  padding: 0 3em !important;
 }
 section .first nav, section .link, section .external {
   text-align: center;
   border: 3px solid white;
   display: block;
-  padding: 0 1em !important;
+  padding: 0 1em;
   display: table;
   margin: 0 auto;
   width: auto;
 }
 section .first nav ul, section .link ul, section .external ul {
-  margin: 0;
+  margin: 0 0 -7px 0;
   padding: 0;
 }
 section .first nav li, section .link li, section .external li {
@@ -1419,11 +1421,46 @@ section .first nav li, section .link li, section .external li {
   display: inline-block;
 }
 section .first nav a, section .link a, section .external a {
-  padding: 1em .5em .8em .5em;
+  padding: 1em .5em 1em .5em;
+  margin: 0;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 1.125em;
   display: block;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: white;
+  -webkit-transition-delay: 8s;
+  -moz-transition-delay: 8s;
+  -o-transition-delay: 8s;
+  transition-delay: 8s;
+  -webkit-transition: color 0.5s;
+  -moz-transition: color 0.5s;
+  -o-transition: color 0.5s;
+  transition: color 0.5s;
+}
+section .first nav a:after, section .link a:after, section .external a:after {
+  position: absolute;
+  display: block;
+  content: '';
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: -1;
+  -webkit-transition: all 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -moz-transition: all 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  -o-transition: all 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  transition: all 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  /* 				@include transform(rotate(-30deg)); */
+}
+section .first nav a:hover, section .link a:hover, section .external a:hover {
+  color: #36cdf5;
+}
+section .first nav a:hover:after, section .link a:hover:after, section .external a:hover:after {
+  top: 0;
 }
 section .link, section .external {
   padding: .8em 2em !important;
@@ -1555,6 +1592,15 @@ section .contact {
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+}
+#work .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
 }
 
 @media (max-width: 320px) {

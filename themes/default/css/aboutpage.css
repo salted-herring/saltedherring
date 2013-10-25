@@ -592,7 +592,7 @@ body {
 
 * {
   background-clip: padding-box;
-  box-sizing: border-box;
+  box-sizing: padding-box;
 }
 
 body,

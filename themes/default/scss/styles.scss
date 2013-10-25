@@ -1,4 +1,4 @@
-@import '_base', 'compass/css3', 'compass/typography/text/replacement', 'compass/utilities/general/clearfix', 'h5bp', 'fonts', 'susy', 'animation';
+@import '_base', 'compass/css3', 'compass/typography/text/replacement', 'compass/utilities/general/clearfix', 'h5bp', 'fonts', 'susy', 'animation', 'ceaser-easing';
 
 @include h5bp-normalize;
 @include h5bp-base-styles;
@@ -12,7 +12,7 @@ body {
 
 * {
 	background-clip: padding-box;
-	box-sizing: border-box;
+	box-sizing: padding-box;
 }
 
 body,
