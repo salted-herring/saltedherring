@@ -233,13 +233,6 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		/* ===========================
 		 * Animate overlays.
 		 * =========================== */
-		/*
-$('.block .overlay').each(function() {
-			if($(window).scrollTop() > x) {
-				
-			}
-		});
-*/
 		var previousScroll = 0;
 		$(window).scroll(function() {
 			var down = (previousScroll - $(window).scrollTop()) < 0,
@@ -248,39 +241,19 @@ $('.block .overlay').each(function() {
 								($(window).scrollTop() < ($(this).offset().top - $('#header').height() + $(this).height()));
 				}).last();
 				
-				//if(current.offset().top <= ($(window).scrollTop() - $('#header').height())) {
-					current.find('.overlay').css({
-						'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 7))
-					})
-					
-					current.css({
-						'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 15))
-					});
-					
-				/*
-$('#work .block:not(#' + current.attr('id') + ')').css({
-					'background-position-y': 0
-				});
-*/
-				//}
+				current.find('.overlay').css({
+					'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 7))
+				})
 				
-				/*
-,
-				margin = parseInt(current.find('.overlay').css('background-position-y'));
-			
-			margin = Math.ceil($(window).scrollTop() / 2.65);
-*/
-			/*
-if ( ($(window).scrollTop() + $(window).height()) > current.offset().top &&
-				 ( (current.offset().top + current.height()) > $(window).scrollTop() ) ) {
-*/
-				 
-/* 			} */
-			
-			
-			
-			
-			//previousScroll = $(window).scrollTop();
+				current.css({
+					'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 15))
+				});
+				
+				if(current.is('.first')) {
+					$('.intro').css({
+						'bottom' : Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 2))
+					});
+				}
 		});
 	});
 	
