@@ -30,21 +30,23 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		 * SVG - for the diagonals.
 		 * =========================== */
 		$('#keyword').empty();
-		var draw = SVG('keyword').size($(window).width(), 120);
+		var draw = SVG('keyword').size($(window).width(), 120),
+			svgPaths = [];
+		
 		draw.move(0,0);
 		
 		function drawPath(width, offsetY, offsetX) {
 			var group = draw.group();
 			offsetY = (typeof offsetY != 'undefined') ? offsetY : -500;
 			offsetX = (typeof offsetX != 'undefined') ? offsetX : 0;
-			for(var i=0; i<($(window).width()/(2*width)); i++) {
+			for(var i=0; i<100; i++) {
 				var rect = draw.rect(width, $(window).width()).attr({ fill: '#fff' });
 				rect.move(offsetX + (i*(2*width)), offsetY);
 				rect.rotate(25,0,0);
 				group.add(rect);
 			}
 			
-			group.move(($(window).width() - 960)/2,0);
+			group.move(($(window).width() - 960),0);
 			return group;
 		}
 		
@@ -53,29 +55,38 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		/* ===========================
 		 * This section will need to be repeated per block.
 		 * =========================== */
-		var text = draw.text($('.block:first').data('keyword').toUpperCase()).attr({fill: '#fff'});
-		text.font({
-			family:   'BrandonGrotesque',
-			size:     120,
-			anchor:   'left',
-			weight:   'bold'
-		});
-		text.hide();
-
+		 
+		$('.block').each(function() {
+			var text = draw.text($(this).data('keyword').toUpperCase()).attr({fill: '#fff'});
+			text.font({
+				family:   'BrandonGrotesque',
+				size:     120,
+				anchor:   'left',
+				weight:   'bold'
+			});
+			text.hide();
+			var g = drawPath(5, -1000, -($(window).width() - 960)/2);
+			
+			text.show();
+			text.style({'text-align': 'center', width: '100%'});
+			text.maskWith(g);
+			
+			var group = draw.group();
+			text.center(($(window).width() - text.bbox().width)/2, 40);
+			group.add(text);
+			
+			group.style({'text-align': 'center', width: '100%'});
+			var path = drawPath(5, -1000, -($(window).width() - 960)/2);
+			
+			group.maskWith(path);
+			
+			if(!$(this).is('.first')) {
+				path.x(($(window).scrollTop() /  ( $('.block:first').offset().top + $('.block:first').height() )) -1);
+			}
+			
+			svgPaths.push(path);
+		})
 		
-		var g = drawPath(5, -1000, -($(window).width() - 960)/2);
-		text.show();
-		text.style({'text-align': 'center', width: '100%'});
-		text.maskWith(g);
-		
-		var group = draw.group();
-		text.center(($(window).width() - text.bbox().width)/2, 40);
-		group.add(text);
-		
-		group.style({'text-align': 'center', width: '100%'});
-		var path = drawPath(5, -1000, -($(window).width() - 960)/2);
-		
-		group.maskWith(path);
 			
 		
 		
@@ -85,7 +96,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 			// replace with current block.
 			var offset = ($(window).scrollTop() /  ( $('.block:first').offset().top + $('.block:first').height() )) * 10;
 			
-			path.x((($(window).width() - 960)/2) + ( (prevScroll - $(window).scrollTop()) > 0 ? -offset : offset));
+			//path.x((($(window).width() - 960)/2) + ( (prevScroll - $(window).scrollTop()) > 0 ? -offset : offset));
 			prevScroll = $(window).scrollTop();
 		});
 		
@@ -105,13 +116,13 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 					_h += $(this).height();
 				});
 				
-				$(this).attr("data-top", -_h/2);
-				$(this).height(_h).css('margin-top', -_h/2);
+				$(this).attr("data-top", (-_h/2) + 180);
+				$(this).height(_h).css('margin-top', (-_h/2) + 180);
 			});
 			
 			$('body:not(.mobile) #heading').css({
 				top: ($(window).height() - $('body:not(.mobile) #heading').height() - 100) /2
-			});
+			}).attr('data-top', ($(window).height() - $('body:not(.mobile) #heading').height() - 100) /2);
 			
 			$('body:not(.mobile) .heading').css({
 				left: ($(window).width() - 960) / 2
@@ -138,12 +149,19 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 			}
 			
 			
+			/* ===========================
+			 * Ensure that the heading attaches itself
+			 * to the last block.
+			 * =========================== */
 			if($(window).scrollTop() >= ($('#work .block:last').offset().top - $('#header').height())) {
-				$('#heading').hide();
-				$('#work .block:last .heading').show();
+				$('#heading').css({
+					top: $('#heading').data('top') - ($(window).scrollTop() - ($('#work .block:last').offset().top - $('#header').height()))
+				});
+				
 			} else {
-				$('#heading').show();
-				$('#work .block:last .heading').hide();
+				$('#heading').css({
+					top: $('#heading').data('top')
+				});
 			}
 		});
 		
@@ -235,25 +253,26 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		 * =========================== */
 		var previousScroll = 0;
 		$(window).scroll(function() {
-			var down = (previousScroll - $(window).scrollTop()) < 0,
-				current = $('#work .block').filter(function() {
-					return (($(this).offset().top - $('#header').height()) <= $(window).scrollTop()) &&
-								($(window).scrollTop() < ($(this).offset().top - $('#header').height() + $(this).height()));
-				}).last();
 				
-				current.find('.overlay').css({
-					'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 7))
-				})
-				
-				current.css({
-					'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 15))
+				$('#work .block').each(function(i, el) {
+					if (($(window).scrollTop() + $(window).height()) > $(this).offset().top && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
+						$(this).find('.overlay').css({
+							'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 7))
+						})
+						
+						$(this).css({
+							'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 15))
+						});
+						
+						if($(this).is('.first')) {
+							$('.intro').css({
+								'bottom' : Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 5))
+							});
+						}
+					}
 				});
 				
-				if(current.is('.first')) {
-					$('.intro').css({
-						'bottom' : Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 2))
-					});
-				}
+				
 		});
 	});
 	
