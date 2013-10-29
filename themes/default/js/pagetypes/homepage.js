@@ -4,7 +4,8 @@ require.config({
 		'underscore': '../lib/underscore',
 		'backbone': '../lib/backbone',
 		'modernizr': '../lib/modernizr',
-		'_base': '../lib/_base'
+		'_base': '../lib/_base',
+		'svg': '../lib/svg'
 	},
 	shim: {
 		backbone: {
@@ -20,15 +21,93 @@ require.config({
 	}
 });
 
-require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) {
+require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbone, _) {
+	
+	console.log(arguments, SVG);
 	
 	$(function() {
+	
+		// SVG
+		$('#keyword').empty();
+		var draw = SVG('keyword').size($(window).width(), 120);
+		draw.move(0,0);
+/* 		var group = null; */
+		var prev = null;
+		var text = draw.text("HERRING").attr({fill: '#ffffff'});
+		var pos = 10;
+		text.font({
+			family:   'BrandonGrotesque',
+			size:     120,
+			anchor:   'left',
+			weight:   'bold'
+		});
+		text.hide();
+		
+		function drawPath(width, offsetY, offsetX) {
+			var group = draw.group();
+			offsetY = (typeof offsetY != 'undefined') ? offsetY : -500;
+			offsetX = (typeof offsetX != 'undefined') ? offsetX : 0;
+			for(var i=0; i<90; i++) {
+				var rect = draw.rect(width, 1000).attr({ fill: '#fff' });
+				rect.move(offsetX + pos + (i*(2*width)), offsetY);
+				rect.rotate(25,0,0);
+				group.add(rect);
+			}
+			
+			group.move(($(window).width() - 960)/2,0);
+/* 			--pos; */
+			return group;
+			
+		}
+		
+		var i = 0,
+			y = 0,
+			direction = 1;
+			
+		//var interval = setInterval(function() {
+			var g = drawPath(5, -500);
+			//g.style('opacity',0.5);
+			text.show();
+			text.maskWith(g);
+			
+			var group = draw.group();
+			text.center(($(window).width() - text.bbox().width)/2, 40);
+			group.add(text);
+			
+			group.style({'text-align': 'center', width: '100%'});
+			var path = drawPath(5, -600, 10);
+			
+			group.maskWith(path);
+			
+			/*
+var interval = setInterval(function() {
+				if(i == 7) {
+					clearInterval(interval);
+					return;
+				}
+				
+				
+				if(i == 100) {
+					direction = -1;
+				}
+				
+				if(i == -100) {
+					direction = 1;
+				}
+				
+				i = i += (direction > 0 ? 1 : -1);
+				
+				path.move(i, 0);
+			}, 500);
+*/
+	
 		$(window).resize(function() {
 			$('#work .block').height($(window).height() - $('#header').height());
 			
+			var _h = 0;
 			
 			$('body:not(.mobile) .contain').each(function() {
-				var _h = 0;
+				_h = 0;
 				$(this).children().each(function() {
 					_h += $(this).height();
 				});
@@ -36,6 +115,29 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) 
 				$(this).attr("data-top", -_h/2);
 				$(this).height(_h).css('margin-top', -_h/2);
 			});
+			
+			$('body:not(.mobile) #heading').css({
+				top: ($(window).height() - $('body:not(.mobile) #heading').height() - 100) /2
+			});
+			
+			$('body:not(.mobile) .heading').css({
+				left: ($(window).width() - 960) / 2
+			});
+		});
+		
+		
+		$(window).scroll(function() {
+			if(i == 100) {
+				direction = -1;
+			}
+			
+			if(i == -100) {
+				direction = 1;
+			}
+			
+			i += ((direction > 0 ? 1 : -1)) / $(window).height();
+			
+			path.move(i, 0);
 		});
 		
 		$(window).resize();
@@ -53,6 +155,15 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) 
 			
 			if($(window).scrollTop() == 0) {
 				$('#nextnav').removeClass('up');
+			}
+			
+			
+			if($(window).scrollTop() >= ($('#work .block:last').offset().top - $('#header').height())) {
+				$('#heading').hide();
+				$('#work .block:last .heading').show();
+			} else {
+				$('#heading').show();
+				$('#work .block:last .heading').hide();
 			}
 		});
 		
@@ -158,7 +269,7 @@ $('.block .overlay').each(function() {
 				}).last(),
 				margin = parseInt(current.find('.overlay').css('background-position-y'));
 			
-			margin = ($(window).scrollTop() / 2.75);
+			margin = ($(window).scrollTop() / 1.65);
 			
 			current.find('.overlay').css({
 				'background-position-y': margin

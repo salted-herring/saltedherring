@@ -1,8 +1,48 @@
 @import 'styles';
 
+h1 {
+	padding: 0 !important;
+	text-align: center;
+	vertical-align: middle;
+	color: $white;
+	font-weight: 800;
+	font-size: (120/$font-size)+em;
+	text-transform: uppercase;
+	line-height: 1em;
+	
+	span {
+		display: none;
+	}
+}
+
+h1 {
+	margin: 0;
+}
+
+#keyword {
+	margin-top: -30px;
+}
+
+#heading,
+.heading {
+	width: 100%;
+	position: fixed;
+	text-align: center;
+/* 	left: 50%; */
+	margin: 0;
+/* 	margin-left: -(425/2)+px; */
+	z-index: 100;
+	display: block;
+	
+	&.fixed {
+		background: red;
+		z-index: 1;
+	}
+}
+
 #nextnav {
 	position: fixed;
-	z-index: 10;
+	z-index: 100;
 	left: 50%;
 	bottom: 0;
 	margin-left: -46px;
@@ -45,17 +85,34 @@ section {
 	
 	.block {
 		position: relative;
+		
+		
 	}
 	
 	.text {
 		position: relative;
 		height: 100%;
+/* 		z-index: 10; */
+	}
+	
+	.blur {
+		width: 100%;
+		height: 100%;
+		background: rgba(255,255,255,0.8);
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 1;
+		@include filter(blur(20px));
+		height: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: none;
 	}
 	
 	.contain {
 		position: absolute;
 		top: 50%;
-/* 		margin-top: -300px; */
 		width: 100%;
 		-webkit-transform: translateZ(0);
 	}
@@ -65,7 +122,6 @@ section {
 		z-index: -1;
 		top: 0;
 		left: 0;
-/* 		display: none; */
 	}
 	
 	.header {
@@ -75,15 +131,10 @@ section {
 		line-height: 1em;
 		color: $white;
 		font-size: (22/$font-size)+em;
-/* 		margin-bottom: 8em; */
 	}
 	
 	.heading {
 		padding: 0 !important;
-		/*
-position: absolute;
-		top: 50%;
-*/
 		text-align: center;
 		vertical-align: middle;
 		color: $white;
@@ -91,6 +142,9 @@ position: absolute;
 		font-size: (120/$font-size)+em;
 		text-transform: uppercase;
 		line-height: 1em;
+		position: absolute;
+		display: none;
+		width: 100%;
 		
 		span {
 			display: block;
@@ -104,33 +158,65 @@ position: absolute;
 		nav {
 			position: absolute;
 			left: 50%;
-			margin-left: -163px !important;
+			margin-left: -(211/2)+px !important;
 			bottom: (130/$font-size)+em;
-			padding: 0 3em !important;
+/* 			padding: 0 3em !important; */
 		}
 	}
 	
 	.first nav, .link {
 		text-align: center;
-		border: 3px solid $white;
+		border-top: 3px solid $white;
 		display: block;
-		padding: 0 1em;
+		padding: 0;
 		display: table;
 		margin: 0 auto;
 		width: auto;
+/* 		position: relative; */
+		
+		&:before {
+			position: absolute;
+			content: '';
+			display: block;
+			width: 3em;
+			height: 100%;
+			left: -3em;
+			top: -3px;
+			border: {
+				top: 3px solid $white;
+				bottom: 3px solid $white;
+				left: 3px solid $white;
+			}
+		}
+		
+		&:after {
+			position: absolute;
+			content: '';
+			display: block;
+			width: 3em;
+			height: 100%;
+			right: -3em;
+			top: -3px;
+			border: {
+				top: 3px solid $white;
+				right: 3px solid $white;
+				bottom: 3px solid $white;
+			}
+		}
 		
 		ul {
-			margin: 0 0 -7px 0;
+			margin: 0;
 			padding: 0;
 		}
 		li {
 			padding: 0;
+			margin-left: -4px;
 			display: inline-block;
 		}
 		
 		a {
-			padding: 1em .5em 1em .5em;
-			margin: 0;
+			padding: 1em .5em .8em .5em;
+			margin: -3px 0 -3px 0;
 			text-transform: uppercase;
 			font-weight: 800;
 			font-size: (18/$font-size)+em;
@@ -139,28 +225,32 @@ position: absolute;
 			overflow: hidden;
 			z-index: 1;
 			color: $white;
+			/*
+border-bottom: 3px solid transparent;
+			border-bottom: 3px solid $white;
+*/
 			@include transition-delay(8s);
-			@include transition(color .5s);
+			@include transition(all .5s);
 			
 			&:after {
 				position: absolute;
-				display: block;
 				content: '';
-				left: 0;
-				top: -100%;
+				display: block;
 				width: 100%;
-				height: 100%;
+				height: 3px;
+				bottom: 0;
+				left: 50%;
+				margin-left: -50%;
 				background: $white;
-				z-index: -1;
-				@include transition(all .5s ceaser($easeOutExpo));
-/* 				@include transform(rotate(-30deg)); */
+				@include transition(all .5s);
 			}
 			
 			&:hover {
 				color: $blue;
+				border-bottom-color: transparent;
 				
-				&:after{
-					top: 0;
+				&:after {
+					width: 0;
 				}
 			}
 		}
@@ -173,6 +263,11 @@ position: absolute;
 		display: table;
 		margin: 0 auto;
 		width: auto;
+		
+		&:before,
+		&:after {
+			display: none !important;
+		}
 	}
 	
 	.links {
@@ -201,7 +296,9 @@ position: absolute;
 		font-size: (18/$font-size)+em;
 		position: absolute;
 		bottom: 0;
+		z-index: 10;
 		width: 100%;
+		min-height: 63px;
 		ul {
 			list-style: none;
 			padding: 1.5em 0 0 0;
@@ -221,7 +318,7 @@ position: absolute;
 		
 		.down {
 			visibility: hidden;
-			display: inline-block;
+			display: none;
 			background-color: $black;
 			padding: 1.5em 2em 1em 2em;
 			@include hide_text;
@@ -318,6 +415,7 @@ position: absolute;
 		height: 100%;
 		background-repeat: no-repeat;
 		background-size: cover;
+		background-attachment: fixed;
 	}
 	
 	.overlay {
@@ -326,6 +424,9 @@ position: absolute;
 		position: absolute;
 		left: 0;
 		top: 0;
+		background-position-y: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
 		-webkit-transform: translate3d(0,0,0);
 		-webkit-backface-visibility: hidden;
 	}

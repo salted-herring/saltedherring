@@ -1,8 +1,18 @@
 <section id="work">
+	<div id="heading">
+		<h1>Salted <span class="salted">Herring</span></h1>
+		<div id="keyword">&nbsp;</div>
+	</div>
+	
 	<% if getSliders %>
 		<nav id="nextnav"><a href="#">&darr;</a></nav>
 		<% loop getSliders %>
 			<div class="block<% if First %> first<% end_if %>"<% if Images && Top.isMobile(false) %><% with Images.First %> style="background-image: url($outputImage(1920).URL);"<% end_with %><% end_if %>>
+				<div class="blur"<% if Images && Top.isMobile(false) %><% with Images.First %> style="background-image: url($outputImage(1920).URL);"<% end_with %><% end_if %> data-keyword="$Keyword">
+					<% if $OverlayImage %>
+						<div class="overlay" style="background-image: url($OverlayImage.SetWidth(1920).URL);"></div>
+					<% end_if %>
+				</div>
 				<% if $OverlayImage %>
 					<div class="overlay" style="background-image: url($OverlayImage.SetWidth(1920).URL);"></div>
 				<% end_if %>
@@ -11,10 +21,14 @@
 					<span class="header container">$Header</span>
 					
 					<div class="contain">
+						
+						<% if Last %>
 						<div class="heading container">
 							<span class="salted">Salted</span>
 							<span class="keyword">$Keyword</span>
 						</div>
+						<% end_if %>
+
 						
 						<% if First %>
 						<% else %>

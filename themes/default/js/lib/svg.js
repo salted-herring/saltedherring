@@ -1,0 +1,1 @@
+../components/svg.js/dist/svg.min.js

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -1011,26 +1012,31 @@ footer .salt span:before {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
+  -o-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
   -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
   -ms-animation-timing-function: easeInOutBack;
+  -o-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
   -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
   -ms-animation: saltshaker 0.5s 2;
+  -o-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
   -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
   -ms-animation-timing-function: easeInOutBounce;
+  -o-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
   -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
   -ms-animation: salt 0.5s 2;
+  -o-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
 }
 footer .whoarewe {
@@ -1061,6 +1067,16 @@ footer a.map {
   color: black;
 }
 
+@-moz-keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
@@ -1071,7 +1087,7 @@ footer a.map {
   }
 }
 
-@-moz-keyframes saltshaker {
+@-o-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
   }
@@ -1101,6 +1117,16 @@ footer a.map {
   }
 }
 
+@-moz-keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
 @-webkit-keyframes salt {
   0%, 100% {
     top: 0.65em;
@@ -1111,7 +1137,7 @@ footer a.map {
   }
 }
 
-@-moz-keyframes salt {
+@-o-keyframes salt {
   0%, 100% {
     top: 0.65em;
   }
@@ -1174,7 +1200,7 @@ footer a.map {
   display: block;
 }
 #main_nav ul {
-  margin-right: -4em;
+  margin-right: -1em;
 }
 
 #menu_icon {
@@ -1302,9 +1328,48 @@ footer a.map {
     margin: 1em;
   }
 }
+h1 {
+  padding: 0 !important;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  font-weight: 800;
+  font-size: 7.5em;
+  text-transform: uppercase;
+  line-height: 1em;
+}
+h1 span {
+  display: none;
+}
+
+h1 {
+  margin: 0;
+}
+
+#keyword {
+  margin-top: -30px;
+}
+
+#heading,
+.heading {
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  /* 	left: 50%; */
+  margin: 0;
+  /* 	margin-left: -(425/2)+px; */
+  z-index: 100;
+  display: block;
+}
+#heading.fixed,
+.heading.fixed {
+  background: red;
+  z-index: 1;
+}
+
 #nextnav {
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   left: 50%;
   bottom: 0;
   margin-left: -46px;
@@ -1352,11 +1417,27 @@ section .block {
 section .text {
   position: relative;
   height: 100%;
+  /* 		z-index: 10; */
+}
+section .blur {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  filter: blur(20px);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: none;
 }
 section .contain {
   position: absolute;
   top: 50%;
-  /* 		margin-top: -300px; */
   width: 100%;
   -webkit-transform: translateZ(0);
 }
@@ -1365,7 +1446,6 @@ section img {
   z-index: -1;
   top: 0;
   left: 0;
-  /* 		display: none; */
 }
 section .header {
   display: block;
@@ -1374,14 +1454,9 @@ section .header {
   line-height: 1em;
   color: white;
   font-size: 1.375em;
-  /* 		margin-bottom: 8em; */
 }
 section .heading {
   padding: 0 !important;
-  		/*
-  position: absolute;
-  		top: 50%;
-  */
   text-align: center;
   vertical-align: middle;
   color: white;
@@ -1389,6 +1464,9 @@ section .heading {
   font-size: 7.5em;
   text-transform: uppercase;
   line-height: 1em;
+  position: absolute;
+  display: none;
+  width: 100%;
 }
 section .heading span {
   display: block;
@@ -1399,30 +1477,56 @@ section .first .text {
 section .first nav {
   position: absolute;
   left: 50%;
-  margin-left: -163px !important;
+  margin-left: -105.5px !important;
   bottom: 8.125em;
-  padding: 0 3em !important;
+  /* 			padding: 0 3em !important; */
 }
 section .first nav, section .link, section .external {
   text-align: center;
-  border: 3px solid white;
+  border-top: 3px solid white;
   display: block;
-  padding: 0 1em;
+  padding: 0;
   display: table;
   margin: 0 auto;
   width: auto;
+  /* 		position: relative; */
+}
+section .first nav:before, section .link:before, section .external:before {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 3em;
+  height: 100%;
+  left: -3em;
+  top: -3px;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  border-left: 3px solid white;
+}
+section .first nav:after, section .link:after, section .external:after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 3em;
+  height: 100%;
+  right: -3em;
+  top: -3px;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  border-bottom: 3px solid white;
 }
 section .first nav ul, section .link ul, section .external ul {
-  margin: 0 0 -7px 0;
+  margin: 0;
   padding: 0;
 }
 section .first nav li, section .link li, section .external li {
   padding: 0;
+  margin-left: -4px;
   display: inline-block;
 }
 section .first nav a, section .link a, section .external a {
-  padding: 1em .5em 1em .5em;
-  margin: 0;
+  padding: 1em .5em .8em .5em;
+  margin: -3px 0 -3px 0;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 1.125em;
@@ -1431,36 +1535,40 @@ section .first nav a, section .link a, section .external a {
   overflow: hidden;
   z-index: 1;
   color: white;
+  			/*
+  border-bottom: 3px solid transparent;
+  			border-bottom: 3px solid $white;
+  */
   -webkit-transition-delay: 8s;
   -moz-transition-delay: 8s;
   -o-transition-delay: 8s;
   transition-delay: 8s;
-  -webkit-transition: color 0.5s;
-  -moz-transition: color 0.5s;
-  -o-transition: color 0.5s;
-  transition: color 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 section .first nav a:after, section .link a:after, section .external a:after {
   position: absolute;
-  display: block;
   content: '';
-  left: 0;
-  top: -100%;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 50%;
+  margin-left: -50%;
   background: white;
-  z-index: -1;
-  -webkit-transition: all 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  -moz-transition: all 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  -o-transition: all 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  transition: all 0.5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  /* 				@include transform(rotate(-30deg)); */
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 section .first nav a:hover, section .link a:hover, section .external a:hover {
   color: #36cdf5;
+  border-bottom-color: transparent;
 }
 section .first nav a:hover:after, section .link a:hover:after, section .external a:hover:after {
-  top: 0;
+  width: 0;
 }
 section .link, section .external {
   padding: .8em 2em !important;
@@ -1469,6 +1577,9 @@ section .link, section .external {
   display: table;
   margin: 0 auto;
   width: auto;
+}
+section .link:before, section .external:before, section .link:after, section .external:after {
+  display: none !important;
 }
 section .links {
   margin-top: 6em;
@@ -1493,7 +1604,9 @@ section .intro {
   font-size: 1.125em;
   position: absolute;
   bottom: 0;
+  z-index: 10;
   width: 100%;
+  min-height: 63px;
 }
 section .intro ul {
   list-style: none;
@@ -1510,7 +1623,7 @@ section .intro .blog a {
 }
 section .intro .down {
   visibility: hidden;
-  display: inline-block;
+  display: none;
   background-color: black;
   padding: 1.5em 2em 1em 2em;
   text-indent: -119988px;
@@ -1592,6 +1705,7 @@ section .contact {
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 #work .overlay {
   width: 100%;
@@ -1599,6 +1713,9 @@ section .contact {
   position: absolute;
   left: 0;
   top: 0;
+  background-position-y: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
 }
