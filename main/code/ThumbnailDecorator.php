@@ -1,11 +1,11 @@
 <?php
 
-class ProjectMediaDecorator extends DataExtension {
+class ThumbnailDecorator extends DataExtension {
  
     function extraStatics() {
         return array(
             'has_one' => array(
-                'Project' => 'Project',
+                'Thumbnail' => 'Image',
             ),
         );
     }
