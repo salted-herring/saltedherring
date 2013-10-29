@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -776,8 +775,22 @@ h1 {
   text-align: center;
   font-size: 1.375em;
   position: relative;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
+  	/*
+  background-color: $white;
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+  */
+}
+.link span, .external span {
+  background-color: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* 		color: $black; */
 }
 
 .external {
@@ -1012,31 +1025,26 @@ footer .salt span:before {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
-  -o-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
   -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
   -ms-animation-timing-function: easeInOutBack;
-  -o-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
   -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
   -ms-animation: saltshaker 0.5s 2;
-  -o-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
   -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
   -ms-animation-timing-function: easeInOutBounce;
-  -o-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
   -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
   -ms-animation: salt 0.5s 2;
-  -o-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
 }
 footer .whoarewe {
@@ -1067,16 +1075,6 @@ footer a.map {
   color: black;
 }
 
-@-moz-keyframes saltshaker {
-  0%, 100% {
-    top: -3.8em;
-  }
-
-  50% {
-    top: -3.5em;
-  }
-}
-
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
@@ -1087,7 +1085,7 @@ footer a.map {
   }
 }
 
-@-o-keyframes saltshaker {
+@-moz-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
   }
@@ -1117,16 +1115,6 @@ footer a.map {
   }
 }
 
-@-moz-keyframes salt {
-  0%, 100% {
-    top: 0.65em;
-  }
-
-  50% {
-    top: 1em;
-  }
-}
-
 @-webkit-keyframes salt {
   0%, 100% {
     top: 0.65em;
@@ -1137,7 +1125,7 @@ footer a.map {
   }
 }
 
-@-o-keyframes salt {
+@-moz-keyframes salt {
   0%, 100% {
     top: 0.65em;
   }
@@ -1372,9 +1360,9 @@ h1 {
   z-index: 100;
   left: 50%;
   bottom: 0;
-  margin-left: -46px;
+  margin-left: -43px;
   background: black;
-  font-size: 18px;
+  /* 	@include hide_text; */
 }
 #nextnav a {
   display: inline-block;
@@ -1384,15 +1372,16 @@ h1 {
   overflow: hidden;
   text-align: left;
   width: 21px;
+  /* 		height: 28px !important; */
   position: relative;
   height: 100%;
 }
 #nextnav a:before {
   position: absolute;
-  left: 2em;
-  top: 1.5em;
+  /* 			left: 2em; */
+  /* 			top: 1.5em; */
   width: 21px;
-  height: 28px;
+  height: 28px !important;
   content: '';
   display: block;
   background-position: -78px -14px;
@@ -1518,6 +1507,7 @@ section .first nav:after, section .link:after, section .external:after {
 section .first nav ul, section .link ul, section .external ul {
   margin: 0;
   padding: 0;
+  line-height: 0;
 }
 section .first nav li, section .link li, section .external li {
   padding: 0;
@@ -1525,8 +1515,8 @@ section .first nav li, section .link li, section .external li {
   display: inline-block;
 }
 section .first nav a, section .link a, section .external a {
-  padding: 1em .5em .8em .5em;
-  margin: -3px 0 -3px 0;
+  padding: 1em .5em;
+  margin: 0 0 -3px 0;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 1.125em;
@@ -1535,10 +1525,9 @@ section .first nav a, section .link a, section .external a {
   overflow: hidden;
   z-index: 1;
   color: white;
-  			/*
+  line-height: 1em;
   border-bottom: 3px solid transparent;
-  			border-bottom: 3px solid $white;
-  */
+  border-bottom: 3px solid white;
   -webkit-transition-delay: 8s;
   -moz-transition-delay: 8s;
   -o-transition-delay: 8s;
@@ -1547,21 +1536,20 @@ section .first nav a, section .link a, section .external a {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-}
-section .first nav a:after, section .link a:after, section .external a:after {
-  position: absolute;
-  content: '';
-  display: block;
-  width: 100%;
-  height: 3px;
-  bottom: 0;
-  left: 50%;
-  margin-left: -50%;
-  background: white;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  			/*
+  &:after {
+  				position: absolute;
+  				content: '';
+  				display: block;
+  				width: 100%;
+  				height: 3px;
+  				bottom: 0px;
+  				left: 50%;
+  				margin-left: -50%;
+  				background: $white;
+  				@include transition(all .5s);
+  			}
+  */
 }
 section .first nav a:hover, section .link a:hover, section .external a:hover {
   color: #36cdf5;
@@ -1606,7 +1594,7 @@ section .intro {
   bottom: 0;
   z-index: 10;
   width: 100%;
-  min-height: 63px;
+  min-height: 66px;
 }
 section .intro ul {
   list-style: none;
@@ -1657,6 +1645,7 @@ section .intro .news {
   position: relative;
   padding: 0;
   margin: 1.5em 0 0 2em;
+  float: right !important;
 }
 section .intro .news li {
   position: absolute;
@@ -1670,8 +1659,7 @@ section .intro .news p {
   margin: 0;
 }
 section .intro .contactlinks,
-section .intro .down,
-section .intro .news {
+section .intro .down {
   float: left;
 }
 section .intro a {
@@ -1706,6 +1694,7 @@ section .contact {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-position: 50% 0;
 }
 #work .overlay {
   width: 100%;
@@ -1713,11 +1702,14 @@ section .contact {
   position: absolute;
   left: 0;
   top: 0;
-  background-position-y: 0;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
+  background-attachment: fixed;
+  background-position: 0 0;
+  		/*
+  -webkit-transform: translate3d(0,0,0);
+  		-webkit-backface-visibility: hidden;
+  */
 }
 
 @media (max-width: 320px) {

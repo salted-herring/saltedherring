@@ -45,9 +45,9 @@ h1 {
 	z-index: 100;
 	left: 50%;
 	bottom: 0;
-	margin-left: -46px;
+	margin-left: -43px;
 	background: $black;
-	font-size: 18px;
+/* 	@include hide_text; */
 	
 	a {
 		display: inline-block;
@@ -55,15 +55,16 @@ h1 {
 		padding: 1.2em 2em 1em 2em;
 		@include hide_text;
 		width: 21px;
+/* 		height: 28px !important; */
 		position: relative;
 		height: 100%;
 		
 		&:before {
 			position: absolute;
-			left: 2em;
-			top: 1.5em;
+/* 			left: 2em; */
+/* 			top: 1.5em; */
 			width: 21px;
-			height: 28px;
+			height: 28px !important;
 			content: '';
 			display: block;
 			@include sprites-sprite(down_arrow);
@@ -207,6 +208,7 @@ section {
 		ul {
 			margin: 0;
 			padding: 0;
+			line-height: 0;
 		}
 		li {
 			padding: 0;
@@ -215,8 +217,8 @@ section {
 		}
 		
 		a {
-			padding: 1em .5em .8em .5em;
-			margin: -3px 0 -3px 0;
+			padding: 1em .5em;
+			margin: 0 0 -3px 0;
 			text-transform: uppercase;
 			font-weight: 800;
 			font-size: (18/$font-size)+em;
@@ -225,25 +227,26 @@ section {
 			overflow: hidden;
 			z-index: 1;
 			color: $white;
-			/*
-border-bottom: 3px solid transparent;
+			line-height: 1em;
+			border-bottom: 3px solid transparent;
 			border-bottom: 3px solid $white;
-*/
 			@include transition-delay(8s);
 			@include transition(all .5s);
 			
-			&:after {
+			/*
+&:after {
 				position: absolute;
 				content: '';
 				display: block;
 				width: 100%;
 				height: 3px;
-				bottom: 0;
+				bottom: 0px;
 				left: 50%;
 				margin-left: -50%;
 				background: $white;
 				@include transition(all .5s);
 			}
+*/
 			
 			&:hover {
 				color: $blue;
@@ -298,7 +301,7 @@ border-bottom: 3px solid transparent;
 		bottom: 0;
 		z-index: 10;
 		width: 100%;
-		min-height: 63px;
+		min-height: 66px;
 		ul {
 			list-style: none;
 			padding: 1.5em 0 0 0;
@@ -353,6 +356,7 @@ border-bottom: 3px solid transparent;
 			position: relative;
 			padding: 0;
 			margin: 1.5em 0 0 2em;
+			float: right !important;
 			
 			li {
 				position: absolute;
@@ -370,8 +374,7 @@ border-bottom: 3px solid transparent;
 		}
 		
 		.contactlinks,
-		.down,
-		.news {
+		.down {
 			float: left;
 		}
 		
@@ -416,6 +419,7 @@ border-bottom: 3px solid transparent;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-attachment: fixed;
+		background-position: 50% 0;
 	}
 	
 	.overlay {
@@ -424,11 +428,14 @@ border-bottom: 3px solid transparent;
 		position: absolute;
 		left: 0;
 		top: 0;
-		background-position-y: 0;
 		background-repeat: no-repeat;
 		background-size: cover;
-		-webkit-transform: translate3d(0,0,0);
+		background-attachment: fixed;
+		background-position: 0 0;
+		/*
+-webkit-transform: translate3d(0,0,0);
 		-webkit-backface-visibility: hidden;
+*/
 	}
 }
 

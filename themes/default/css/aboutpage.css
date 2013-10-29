@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -776,8 +775,22 @@ h1 {
   text-align: center;
   font-size: 1.375em;
   position: relative;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
+  	/*
+  background-color: $white;
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+  */
+}
+.link span, .external span {
+  background-color: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* 		color: $black; */
 }
 
 .external {
@@ -1012,31 +1025,26 @@ footer .salt span:before {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
-  -o-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
   -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
   -ms-animation-timing-function: easeInOutBack;
-  -o-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
   -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
   -ms-animation: saltshaker 0.5s 2;
-  -o-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
   -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
   -ms-animation-timing-function: easeInOutBounce;
-  -o-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
   -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
   -ms-animation: salt 0.5s 2;
-  -o-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
 }
 footer .whoarewe {
@@ -1067,16 +1075,6 @@ footer a.map {
   color: black;
 }
 
-@-moz-keyframes saltshaker {
-  0%, 100% {
-    top: -3.8em;
-  }
-
-  50% {
-    top: -3.5em;
-  }
-}
-
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
@@ -1087,7 +1085,7 @@ footer a.map {
   }
 }
 
-@-o-keyframes saltshaker {
+@-moz-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
   }
@@ -1117,16 +1115,6 @@ footer a.map {
   }
 }
 
-@-moz-keyframes salt {
-  0%, 100% {
-    top: 0.65em;
-  }
-
-  50% {
-    top: 1em;
-  }
-}
-
 @-webkit-keyframes salt {
   0%, 100% {
     top: 0.65em;
@@ -1137,7 +1125,7 @@ footer a.map {
   }
 }
 
-@-o-keyframes salt {
+@-moz-keyframes salt {
   0%, 100% {
     top: 0.65em;
   }

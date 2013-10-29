@@ -7,8 +7,8 @@
 	<% if getSliders %>
 		<nav id="nextnav"><a href="#">&darr;</a></nav>
 		<% loop getSliders %>
-			<div class="block<% if First %> first<% end_if %>"<% if Images && Top.isMobile(false) %><% with Images.First %> style="background-image: url($outputImage(1920).URL);"<% end_with %><% end_if %>>
-				<div class="blur"<% if Images && Top.isMobile(false) %><% with Images.First %> style="background-image: url($outputImage(1920).URL);"<% end_with %><% end_if %> data-keyword="$Keyword">
+			<div id="_{$Pos}" class="block<% if First %> first<% end_if %>"<% if Images && Top.isMobile(false) %><% with Images.First %> style="background-image: url($outputImage(1920).URL);"<% end_with %><% end_if %> data-keyword="$Keyword">
+				<div class="blur"<% if Images && Top.isMobile(false) %><% with Images.First %> style="background-image: url($outputImage(1920).URL);"<% end_with %><% end_if %>>
 					<% if $OverlayImage %>
 						<div class="overlay" style="background-image: url($OverlayImage.SetWidth(1920).URL);"></div>
 					<% end_if %>
