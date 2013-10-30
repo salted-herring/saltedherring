@@ -19,9 +19,8 @@
 	<% loop getAllProjects %>
 		<a href="$Top.URLSegment/project/$URLSegment" class="work<% if MultipleOf(3) %> last<% end_if %>">
 		
-			<% if getFirstImage %>
-				<div class="overlay" style="background-image: url($getFirstImage.Image.CroppedImage(320,320).URL);"></div>
-				<img src="$getFirstImage.Image.CroppedImage(320,320).URL" alt="$Name" />
+			<% if Thumbnail %>
+				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Name" />
 			<% end_if %>
 			<div class="label">
 				<span>

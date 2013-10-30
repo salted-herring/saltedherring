@@ -51,30 +51,16 @@
 				}
 			}
 			
-			img,
-			.overlay {
+			img {
 				@include transform(scale(1.2));
 			}
-			
-			.overlay {
-				@include filter(blur(10px));
-			}
 		}
-	}
-	
-	.overlay {
-		width: 320px;
-		height: 320px;
-		position: absolute;
-		z-index: 1;
-		@include transition(all .3s);
-		@include filter(blur(0px));
 	}
 	
 	img {
 		position: relative;
 		z-index: 0;
-		@include transition(transform .3s);
+		@include transition(transform .2s);
 	}
 	
 	.label {
@@ -88,7 +74,10 @@
 		@include transition(all .5s);
 		
 		&:hover {
-			
+			&:before {
+				background: $white;
+				color: $black;
+			}
 		}
 		
 		&:before {
