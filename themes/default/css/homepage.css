@@ -1406,6 +1406,8 @@ section a {
 }
 section .block {
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 section .text {
   position: relative;
@@ -1692,6 +1694,7 @@ section .contact {
 #work {
   height: 100%;
   width: 100%;
+  position: absolute;
 }
 #work .block {
   height: 100%;

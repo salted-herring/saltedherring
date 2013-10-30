@@ -115,9 +115,16 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		
 	
 		$(window).resize(function() {
-			$('#work .block').height($(window).height() - $('#header').height());
-			
 			var _h = 0;
+			
+			$('#work .block').each(function() {
+				$(this).height($(window).height() - $('#header').height());
+				_h += $(this).height();
+			});
+			
+			$('#content,#work').height(_h);
+			
+			_h = 0;
 			
 			$('body:not(.mobile) .contain').each(function() {
 				_h = 0;

@@ -88,8 +88,8 @@ section {
 	
 	.block {
 		position: relative;
-		
-		
+		height: 100%;
+		width: 100%;
 	}
 	
 	.text {
@@ -415,6 +415,7 @@ section {
 #work {
 	height: 100%;
 	width: 100%;
+	position: absolute;
 	
 	.block {
 		height: 100%;
