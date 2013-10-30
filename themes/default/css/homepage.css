@@ -1375,6 +1375,10 @@ h1 {
   /* 		height: 28px !important; */
   position: relative;
   height: 100%;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 #nextnav a:before {
   position: absolute;
@@ -1692,7 +1696,7 @@ section .contact {
 #work .block {
   height: 100%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 120% auto;
   background-attachment: fixed;
   background-position: 50% 0;
 }
@@ -1703,7 +1707,7 @@ section .contact {
   left: 0;
   top: 0;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 120% auto;
   background-attachment: fixed;
   background-position: 0 0;
   		/*

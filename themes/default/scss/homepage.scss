@@ -59,6 +59,8 @@ h1 {
 		position: relative;
 		height: 100%;
 		
+		@include transition(none);
+		
 		&:before {
 			position: absolute;
 /* 			left: 2em; */
@@ -417,7 +419,7 @@ section {
 	.block {
 		height: 100%;
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: 120% auto;
 		background-attachment: fixed;
 		background-position: 50% 0;
 	}
@@ -429,7 +431,7 @@ section {
 		left: 0;
 		top: 0;
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: 120% auto;
 		background-attachment: fixed;
 		background-position: 0 0;
 		/*

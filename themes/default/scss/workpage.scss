@@ -40,7 +40,7 @@
 		&:hover {
 			.label {
 				background: rgba(0,0,0,0.5);
-				height: 142px;
+				height: 120px;
 				
 				span {
 					top: 400px;
@@ -51,10 +51,24 @@
 				}
 			}
 			
-			img {
+			img,
+			.overlay {
 				@include transform(scale(1.2));
 			}
+			
+			.overlay {
+				@include filter(blur(10px));
+			}
 		}
+	}
+	
+	.overlay {
+		width: 320px;
+		height: 320px;
+		position: absolute;
+		z-index: 1;
+		@include transition(all .3s);
+		@include filter(blur(0px));
 	}
 	
 	img {
@@ -68,9 +82,9 @@
 		z-index: 1;
 		bottom: 0px;
 		background: rgba(0,0,0,0);
-		width: 100%;
-		padding: 2em;
-		height: 112px;
+		width: 256px;
+		padding: 1em 2em;
+		height: 58px;
 		@include transition(all .5s);
 		
 		&:hover {

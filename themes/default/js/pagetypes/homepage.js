@@ -46,7 +46,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 				group.add(rect);
 			}
 			
-			group.move(($(window).width() - 960),0);
+/* 			group.move(0,0); */
 			return group;
 		}
 		
@@ -65,7 +65,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 				weight:   'bold'
 			});
 			text.hide();
-			var g = drawPath(5, -1000, -($(window).width() - 960)/2);
+			var g = drawPath(5, -1000, ($(window).width() - 960)/2);
 			
 			text.show();
 			text.style({'text-align': 'center', width: '100%'});
@@ -76,7 +76,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 			group.add(text);
 			
 			group.style({'text-align': 'center', width: '100%'});
-			var path = drawPath(5, -1000, -($(window).width() - 960)/2);
+			var path = drawPath(5, -1000, ($(window).width() - 960)/2 - 40);
 			
 			group.maskWith(path);
 			
@@ -90,14 +90,23 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 			
 		
 		
-		var prevScroll = 0;
+		var prevScroll = 0,
+			currentOffset = 0;
 		$(window).scroll(function() {
 			
 			// replace with current block.
 			var offset = ($(window).scrollTop() /  ( $('.block:first').offset().top + $('.block:first').height() )) * 10;
+			currentOffset = offset;
 			
+			for(var i in svgPaths) {
+				prev = svgPaths[i].x();
+				svgPaths[i].x((prevScroll - $(window).scrollTop()) >= 0 ? -offset : offset);
+				console.log(prev, svgPaths[i].x());
+			}
 			//path.x((($(window).width() - 960)/2) + ( (prevScroll - $(window).scrollTop()) > 0 ? -offset : offset));
 			prevScroll = $(window).scrollTop();
+			
+			//console.log(currentOffset);
 		});
 		
 		
@@ -127,6 +136,8 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 			$('body:not(.mobile) .heading').css({
 				left: ($(window).width() - 960) / 2
 			});
+			
+			
 		});
 		
 		
@@ -264,9 +275,13 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 							'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 15))
 						});
 						
-						if($(this).is('.first')) {
+						if($(this).is('.first') && $(window).scrollTop() > (100)) {
 							$('.intro').css({
-								'bottom' : Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 5))
+								'bottom' : 0 - parseInt($('.intro').height())
+							});
+						} else {
+							$('.intro').css({
+								'bottom' : 0
 							});
 						}
 					}

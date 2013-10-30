@@ -1353,7 +1353,7 @@ footer a.map {
 }
 #work .work:hover .label {
   background: rgba(0, 0, 0, 0.5);
-  height: 142px;
+  height: 120px;
 }
 #work .work:hover .label span {
   top: 400px;
@@ -1361,12 +1361,31 @@ footer a.map {
 #work .work:hover .label:before {
   top: 1.5em;
 }
-#work .work:hover img {
+#work .work:hover img,
+#work .work:hover .overlay {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
   transform: scale(1.2);
+}
+#work .work:hover .overlay {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  filter: blur(10px);
+}
+#work .overlay {
+  width: 320px;
+  height: 320px;
+  position: absolute;
+  z-index: 1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  filter: blur(0px);
 }
 #work img {
   position: relative;
@@ -1381,9 +1400,9 @@ footer a.map {
   z-index: 1;
   bottom: 0px;
   background: rgba(0, 0, 0, 0);
-  width: 100%;
-  padding: 2em;
-  height: 112px;
+  width: 256px;
+  padding: 1em 2em;
+  height: 58px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
