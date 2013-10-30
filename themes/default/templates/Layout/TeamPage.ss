@@ -14,11 +14,10 @@
 	
 	<% loop getTeam %>
 	<% if Images %>
-	<a href="$Top.URLSegment/$URLSegment" class="member">
-		
-			<% with Images.First %>
-			<img src="$Image.CroppedImage(320,320).URL" alt="$Up.getUserName" />
-			<% end_with %>
+	<a href="$Top.URLSegment/$URLSegment" class="member">			
+			<% if Thumbnail %>
+				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Up.getUserName" />
+			<% end_if %>
 		
 		<div class="label">
 			<span>

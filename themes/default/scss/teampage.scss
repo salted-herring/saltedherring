@@ -79,13 +79,16 @@
 		z-index: 1;
 		bottom: 0px;
 		background: rgba(0,0,0,0);
-		width: 100%;
-		padding: 2em;
-		height: 112px;
+		width: 256px;
+		padding: 1em 2em;
+		height: 58px;
 		@include transition(all .5s);
 		
 		&:hover {
-			
+			&:before {
+				background: $white;
+				color: $black;
+			}
 		}
 		
 		&:before {
@@ -94,7 +97,7 @@
 			left: 50%;
 			top: 6em;
 			margin-left: -95px;
-			content: 'get closer';
+			content: 'see project';
 			padding: .8em 2em;
 			border: 3px solid $white;
 			font-weight: 500;
