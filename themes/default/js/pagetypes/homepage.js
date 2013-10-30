@@ -145,13 +145,13 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		$(window).resize();
 		
 		$(window).scroll(function() {
-			if($(window).scrollTop() + $(window).height() >= $('#footer').offset().top) {
-				$('#nextnav').css('bottom', $(window).scrollTop() + $(window).height() - $('#footer').offset().top);
+			if(($(window).scrollTop() + $(window).height()) >= $('#footer').offset().top) {
+				$('#nextnav').css('position', 'absolute');
 			} else {
-				$('#nextnav').css('bottom', 0);
+				$('#nextnav').css('position', 'fixed');
 			}
 			
-			if($(window).scrollTop() + $(window).height() >= $('#footer').offset().top) {
+			if(($(window).scrollTop() + $(window).height()) >= $('#footer').offset().top) {
 				$('#nextnav').addClass('up');
 			}
 			
@@ -264,30 +264,23 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		 * =========================== */
 		var previousScroll = 0;
 		$(window).scroll(function() {
-				
-				$('#work .block').each(function(i, el) {
-					if (($(window).scrollTop() + $(window).height()) > $(this).offset().top && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
-						$(this).find('.overlay').css({
-							'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 7))
-						})
-						
-						$(this).css({
-							'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 15))
-						});
-						
-						if($(this).is('.first') && $(window).scrollTop() > (100)) {
-							$('.intro').css({
-								'bottom' : 0 - parseInt($('.intro').height())
-							});
-						} else {
-							$('.intro').css({
-								'bottom' : 0
-							});
-						}
+			$('#work .block').each(function(i, el) {
+				if (($(window).scrollTop() + $(window).height()) > $(this).offset().top && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
+					$(this).find('.overlay').css({
+						'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 7))
+					});
+					
+					$(this).css({
+						'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 20))
+					});
+					
+					if($(this).is('.first') && $(window).scrollTop() > 100) {
+						$(this).find('.intro').hide();
+					} else {
+						$(this).find('.intro').show();
 					}
-				});
-				
-				
+				}
+			});
 		});
 	});
 	
