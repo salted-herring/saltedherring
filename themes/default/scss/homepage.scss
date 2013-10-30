@@ -31,12 +31,16 @@ h1 {
 /* 	left: 50%; */
 	margin: 0;
 /* 	margin-left: -(425/2)+px; */
-	z-index: 100;
+	z-index: 5;
 	display: block;
 	
 	&.fixed {
 		background: red;
 		z-index: 1;
+	}
+	
+	h1 {
+		display: inline-block;
 	}
 }
 

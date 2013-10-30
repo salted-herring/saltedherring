@@ -30,7 +30,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		 * SVG - for the diagonals.
 		 * =========================== */
 		$('#keyword').empty();
-		var draw = SVG('keyword').size($(window).width(), 120),
+		var draw = SVG('keyword').size(960, 120),
 			svgPaths = [];
 		
 		draw.move(0,0);
@@ -56,19 +56,26 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 		 * This section will need to be repeated per block.
 		 * =========================== */
 		 
-		$('.block').each(function() {
+		$('.block.first').each(function() {
 			var text = draw.text($(this).data('keyword').toUpperCase()).attr({fill: '#fff'});
 			text.font({
 				family:   'BrandonGrotesque',
 				size:     120,
-				anchor:   'left',
 				weight:   'bold'
 			});
+/* 			text.style({'margin-left': '-1000px'}); */
 			text.hide();
-			var g = drawPath(5, -1000, ($(window).width() - 960)/2);
+			var g = drawPath(5, -1000, 0);
 			
+			
+			
+			//text.show();
+			
+			//text.hide();
+/* 			text.move(-960,0); */
 			text.show();
-			text.style({'text-align': 'center', width: '100%'});
+			//console.log(text.bbox());
+			text.style({'text-align': 'left', width: '100%'});
 			text.maskWith(g);
 			
 			var group = draw.group();
@@ -76,9 +83,10 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($, Backbo
 			group.add(text);
 			
 			group.style({'text-align': 'center', width: '100%'});
-			var path = drawPath(5, -1000, ($(window).width() - 960)/2 - 40);
+			var path = drawPath(5, -1000, 0 - 10);
 			
 			group.maskWith(path);
+			group.move(0,0);
 			
 			if(!$(this).is('.first')) {
 				path.x(($(window).scrollTop() /  ( $('.block:first').offset().top + $('.block:first').height() )) -1);
