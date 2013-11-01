@@ -1335,12 +1335,12 @@ footer a.map {
 
 #work {
   margin-top: 2em;
-  width: 960px !important;
-  max-width: 960px !important;
   margin-bottom: 6em;
 }
 #work .container {
   padding: 0;
+  width: 960px !important;
+  max-width: 960px !important;
 }
 #work .work {
   position: relative;
