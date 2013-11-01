@@ -132,7 +132,7 @@
 		top: 0;
 		left: 0;
 		background: rgba(0,0,0,0.5);
-		width: 100%;
+		width: 800px;
 		padding: 3.5em 5em 5em 5em;
 		color: $white;
 		margin: 0;
@@ -184,12 +184,14 @@
 			width: 100%;
 			padding: 1em 2em;
 		}
-		&:before {
+		/*
+&:before {
 			content: '“';
 			display: inline-block;
 		}
+*/
 		&:after {
-			content: '”';
+/* 			content: '”'; */
 			display: inline-block;
 			padding-right: (10/$font-size)+em;
 		}

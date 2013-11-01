@@ -640,8 +640,8 @@ h1 {
   padding-right: 2em;
   margin-left: auto;
   margin-right: auto;
-  width: 960px;
-  max-width: 960px !important;
+  width: 896px;
+  max-width: 896px !important;
 }
 .container:after {
   content: "";
@@ -1445,7 +1445,7 @@ footer a.map {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  width: 100%;
+  width: 800px;
   padding: 3.5em 5em 5em 5em;
   color: white;
   margin: 0;
@@ -1480,6 +1480,12 @@ footer a.map {
   font-weight: bold;
   font-style: italic;
   display: inline;
+  		/*
+  &:before {
+  			content: '“';
+  			display: inline-block;
+  		}
+  */
 }
 #project blockquote .label {
   position: absolute;
@@ -1490,12 +1496,8 @@ footer a.map {
   width: 100%;
   padding: 1em 2em;
 }
-#project blockquote:before {
-  content: '“';
-  display: inline-block;
-}
 #project blockquote:after {
-  content: '”';
+  /* 			content: '”'; */
   display: inline-block;
   padding-right: 0.625em;
 }

@@ -640,8 +640,8 @@ h1 {
   padding-right: 2em;
   margin-left: auto;
   margin-right: auto;
-  width: 960px;
-  max-width: 960px !important;
+  width: 896px;
+  max-width: 896px !important;
 }
 .container:after {
   content: "";
@@ -1356,6 +1356,7 @@ footer a.map {
   margin-bottom: 0em;
   width: 320px;
   height: 320px;
+  float: left;
 }
 #team .member:hover .label {
   background: rgba(0, 0, 0, 0.5);

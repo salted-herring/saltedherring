@@ -19,8 +19,8 @@ $break: 3;
 
 .container { 
 	@include container($total-columns, $break);
-	width: 960px;
-	max-width: 960px !important;
+	width: 896px;
+	max-width: 896px !important;
 	
 	@include at-breakpoint(0 3 320px) {
 		width: 100%;

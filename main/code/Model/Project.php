@@ -81,7 +81,7 @@ class Project extends BaseDBO {
 		
 		$tagLine->setRightTitle('Short, single line description of project');
 		$cite->setRightTitle('Quotation source. Can contain html tags - e.g. to link to twitter etc.');
-		
+		$quote->setTitle('Quote - use “ & ” for quote marks.');
 		
 		if($this->ID) {
 			// Root.Award
