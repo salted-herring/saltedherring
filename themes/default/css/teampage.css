@@ -1406,7 +1406,7 @@ footer a.map {
   left: 50%;
   top: 6em;
   margin-left: -95px;
-  content: 'see project';
+  content: "meet " attr(data-name);
   padding: .8em 2em;
   border: 3px solid white;
   font-weight: 500;
@@ -1418,6 +1418,7 @@ footer a.map {
   -moz-transition: top 0.2s;
   -o-transition: top 0.2s;
   transition: top 0.2s;
+  text-transform: lowercase;
 }
 #team .label span {
   position: relative;

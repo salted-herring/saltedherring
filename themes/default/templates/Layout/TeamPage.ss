@@ -19,7 +19,7 @@
 				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Up.getUserName" />
 			<% end_if %>
 		
-		<div class="label">
+		<div class="label" data-name="$FirstName">
 			<span>
 				<strong>$FirstName $LastName</strong>
 				<em>$Role</em>

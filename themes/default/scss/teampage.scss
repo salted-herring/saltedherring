@@ -98,7 +98,7 @@
 			left: 50%;
 			top: 6em;
 			margin-left: -95px;
-			content: 'see project';
+			content: 'meet ' attr(data-name);
 			padding: .8em 2em;
 			border: 3px solid $white;
 			font-weight: 500;
@@ -107,6 +107,7 @@
 			text-align: center;
 			font-size: (22/$font-size)+em;
 			@include transition(top .2s);
+			text-transform: lowercase;
 		}
 		
 		span {
