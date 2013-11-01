@@ -1348,6 +1348,8 @@ footer a.map {
 
 #team {
   padding: 0;
+  width: 960px !important;
+  max-width: 960px !important;
 }
 #team .member {
   position: relative;
