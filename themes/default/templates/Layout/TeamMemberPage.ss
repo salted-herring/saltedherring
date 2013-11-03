@@ -15,9 +15,11 @@
 			<span class="role">$Role</span><span class="photographer">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.getUserName</a></span>
 		</header>
 		
-		<% with Images.First %>
-			<img src="$outputImage.URL" alt="$Up.getUserName" />
-		<% end_with %>
+		<div class="images">
+			<% with Images.First %>
+				<img src="$outputImage.URL" alt="$Up.getUserName" />
+			<% end_with %>
+		</div>
 		
 		<div class="row" id="contentarea">
 			<div class="content grid_2">

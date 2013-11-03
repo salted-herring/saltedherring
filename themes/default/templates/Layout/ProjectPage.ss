@@ -57,6 +57,14 @@
 		<% loop getAllMedia %>
 			<% if $Type = SWF %>
 			<img src="$outputFallback.URL" alt="" />
+			<% else %>
+				<% if $Type = Vimeo %>
+					<img src="$outputFallback.URL" alt="" />
+				<% else %>
+					<% with $outputImage %>
+					<img src="$URL" width="$Width" height="$Height" alt="$Up.Title" />
+					<% end_with %>
+				<% end_if %>
 			<% end_if %>
 		<% end_loop %>
 	</div>

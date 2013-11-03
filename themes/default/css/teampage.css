@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -856,7 +857,7 @@ h1 {
   -webkit-transform: translate3d(0, 0, 0);
 }
 #header .row {
-  /* 		overflow: visible; */
+  overflow: visible;
 }
 
 #logo {
@@ -1025,26 +1026,31 @@ footer .salt span:before {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
+  -o-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
   -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
   -ms-animation-timing-function: easeInOutBack;
+  -o-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
   -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
   -ms-animation: saltshaker 0.5s 2;
+  -o-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
   -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
   -ms-animation-timing-function: easeInOutBounce;
+  -o-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
   -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
   -ms-animation: salt 0.5s 2;
+  -o-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
 }
 footer .whoarewe {
@@ -1075,6 +1081,16 @@ footer a.map {
   color: black;
 }
 
+@-moz-keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
@@ -1085,7 +1101,7 @@ footer a.map {
   }
 }
 
-@-moz-keyframes saltshaker {
+@-o-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
   }
@@ -1115,6 +1131,16 @@ footer a.map {
   }
 }
 
+@-moz-keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
 @-webkit-keyframes salt {
   0%, 100% {
     top: 0.65em;
@@ -1125,7 +1151,7 @@ footer a.map {
   }
 }
 
-@-moz-keyframes salt {
+@-o-keyframes salt {
   0%, 100% {
     top: 0.65em;
   }
@@ -1350,6 +1376,7 @@ footer a.map {
   padding: 0;
   width: 960px !important;
   max-width: 960px !important;
+  margin-bottom: 6em;
 }
 #team .member {
   position: relative;
@@ -1442,6 +1469,10 @@ footer a.map {
 
 #teammember {
   margin-top: 56px;
+  background: #f3f3f3;
+}
+#teammember.container {
+  position: relative;
 }
 #teammember article {
   position: relative;
@@ -1456,12 +1487,12 @@ footer a.map {
   position: absolute;
   z-index: 1;
   top: 0;
-  left: 0;
+  left: -2em;
   background: rgba(0, 0, 0, 0.5);
-  width: 960px;
-  margin: 0 0 0 -3em;
+  width: 800px;
   padding: 3.5em 5em 5em 5em;
   color: white;
+  margin: 0;
 }
 #teammember header span {
   font-family: 'Times', serif;
@@ -1477,7 +1508,7 @@ footer a.map {
   position: fixed;
   left: 50%;
   top: 102px;
-  margin-left: -496px;
+  margin-left: -30em;
 }
 #teammember header.small h1 {
   font-size: 1.375em;
@@ -1490,7 +1521,7 @@ footer a.map {
   display: none;
 }
 #teammember img {
-  margin: 0 0 0 -2em;
+  margin: 0 0 0 -1em;
 }
 #teammember ul {
   margin: 0;

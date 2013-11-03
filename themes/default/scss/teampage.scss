@@ -42,6 +42,8 @@
 	padding: 0;
 	width: 960px !important;
 	max-width: 960px !important;
+	margin-bottom: 6em;
+	
 	.member {
 		position: relative;
 		display: block;
@@ -132,6 +134,13 @@
 
 #teammember {
 	margin-top: 56px;
+	
+	background: $lightgrey;
+	
+	&.container {
+		position: relative;
+	}
+	
 	article {
 		position: relative;
 	}
@@ -148,12 +157,12 @@
 		position: absolute;
 		z-index: 1;
 		top: 0;
-		left: 0;
+		left: -2em;
 		background: rgba(0,0,0,0.5);
-		width: 960px;
-		margin: 0 0 0 -3em;
+		width: 800px;
 		padding: 3.5em 5em 5em 5em;
 		color: $white;
+		margin: 0;
 		
 		span {
 			@include minion;
@@ -170,7 +179,7 @@
 			position: fixed;
 			left: 50%;
 			top: 102px;
-			margin-left: -496px;
+			margin-left: -30em;
 			h1 {
 				font-size: (22/$font-size)+em;
 				margin: 0;
@@ -186,7 +195,7 @@
 	}
 	
 	img {
-		margin: 0 0 0 -2em;
+		margin: 0 0 0 -1em;
 	}
 	
 	ul {
