@@ -1,4 +1,4 @@
-@import 'styles';
+@import 'styles', 'teamworkgrid';
 
 .filters {
 	position: absolute;
@@ -19,101 +19,10 @@
 }
 
 #work {
-	margin-top: 2em;
-	
-	.container {
-		padding: 0;
-		width: 960px !important;
-		max-width: 960px !important;
-	}
-	
-	margin-bottom: 6em;
-	
-	.work {
-		position: relative;
-		display: block;
-		overflow: hidden;
-		margin-bottom: 0em;
-		margin-right: 0em;
-		margin-left: 0em;
-		width: 320px;
-		height: 320px;
-		float: left;
-		
-		&:hover {
-			.label {
-				background: rgba(0,0,0,0.5);
-				height: 120px;
-				
-				span {
-					top: 400px;
-				}
-				
-				&:before {
-					top: 1.5em;
-				}
-			}
-			
-			img {
-				@include transform(scale(1.2));
-			}
-		}
-	}
-	
-	img {
-		position: relative;
-		z-index: 0;
-		@include transition(transform .2s);
-	}
 	
 	.label {
-		position: absolute;
-		z-index: 1;
-		bottom: 0px;
-		background: rgba(0,0,0,0);
-		width: 256px;
-		padding: 1em 2em;
-		height: 58px;
-		@include transition(all .5s);
-		
-		&:hover {
-			&:before {
-				background: $white;
-				color: $black;
-			}
-		}
-		
 		&:before {
-			position: absolute;
-			display: block;
-			left: 50%;
-			top: 6em;
-			margin-left: -95px;
 			content: 'see project';
-			padding: .8em 2em;
-			border: 3px solid $white;
-			font-weight: 500;
-			z-index: 1;
-			line-height: 1em;
-			text-align: center;
-			font-size: (22/$font-size)+em;
-			@include transition(top .2s);
-		}
-		
-		span {
-			position: relative;
-			display: block;
-			top: 0;
-			@include transition(top .2s);
-		}
-		
-		strong,
-		em {
-			display: block;
-		}
-		
-		em {
-			@include minion;
 		}
 	}
 }
@@ -122,7 +31,7 @@
 /* ***************
  * Project
  * *************** */
-#project {
+.individualentry {
 	background: $lightgrey;
 	
 	.container {
@@ -130,15 +39,7 @@
 	}
 	
 	header {
-		position: absolute;
-		z-index: 1;
-		top: 0;
 		left: 0;
-		background: rgba(0,0,0,0.5);
-		width: 800px;
-		padding: 3.5em 5em 5em 5em;
-		color: $white;
-		margin: 0;
 	}
 	
 	.tagLine {
@@ -204,6 +105,7 @@
 		font-weight: 500;
 		font-style: normal;
 		font-size: (24/$font-size)+em;
+		margin-left: 1em;
 	}
 	
 	.content {
@@ -290,7 +192,7 @@
 	}
 }
 
-#project {
+.individualentry {
 	article {
 		position: relative;
 	}

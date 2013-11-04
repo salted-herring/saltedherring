@@ -7,7 +7,8 @@
  */
 
 
-(function($) {
+define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
+	
 	$(function() {
 		
 		//
@@ -21,6 +22,14 @@
 	});
 	
 	
+	/*
+$('#main_nav a').click(function(e) {
+		e.preventDefault();
+		Router.navigate($(this).attr('href'));
+	});
+*/
+	
+	
 	$(function() {
 		$(window).scroll(function() {
 			if($(window).scrollTop() + $(window).height() >= $(document).height()) {
@@ -28,6 +37,13 @@
 			} else {
 				$('footer .salt').removeClass('animate');
 			}
-		});
+			
+			
+			if($(window).scrollTop() > ($('.individualentry header').height() + $('#banner').height())) {
+				$('.individualentry header').addClass('small');
+			} else {
+				$('.individualentry header').removeClass('small');
+			}
+		}).scroll();
 	});
-})(jQuery);
+});

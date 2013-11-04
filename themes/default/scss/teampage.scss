@@ -1,28 +1,10 @@
-@import 'styles';
+@import 'styles', 'teamworkgrid';
 
 .filters {
 	position: absolute;
 	right: 2em;
 	bottom: 0em;
 	padding-bottom: 0;
-}
-
-#banner {
-	&.collapsed {
-		margin-bottom: 0;
-		padding: 1em 0;
-		position: fixed;
-		z-index: 2;
-		width: 100%;
-		
-		.filters {
-			position: relative;
-			right: auto;
-			bottom: auto;
-			text-align: center;
-			padding: 0;
-		}
-	}
 }
 
 .contain {
@@ -38,102 +20,7 @@
 	}
 }
 
-#team {
-	padding: 0;
-	width: 960px !important;
-	max-width: 960px !important;
-	margin-bottom: 6em;
-	
-	.member {
-		position: relative;
-		display: block;
-		overflow: hidden;
-		margin-bottom: 0em;
-		width: 320px;
-		height: 320px;
-		float: left;
-		
-		&:hover {
-			.label {
-				background: rgba(0,0,0,0.5);
-				height: 142px;
-				
-				span {
-					top: 400px;
-				}
-				
-				&:before {
-					top: 1.5em;
-				}
-			}
-			
-			img {
-				@include transform(scale(1.2));
-			}
-		}
-	}
-	
-	img {
-		position: relative;
-		z-index: 0;
-		@include transition(transform .3s);
-	}
-	
-	.label {
-		position: absolute;
-		z-index: 1;
-		bottom: 0px;
-		background: rgba(0,0,0,0);
-		width: 256px;
-		padding: 1em 2em;
-		height: 58px;
-		@include transition(all .5s);
-		
-		&:hover {
-			&:before {
-				background: $white;
-				color: $black;
-			}
-		}
-		
-		&:before {
-			position: absolute;
-			display: block;
-			left: 50%;
-			top: 6em;
-			margin-left: -95px;
-			content: 'meet ' attr(data-name);
-			padding: .8em 2em;
-			border: 3px solid $white;
-			font-weight: 500;
-			z-index: 1;
-			line-height: 1em;
-			text-align: center;
-			font-size: (22/$font-size)+em;
-			@include transition(top .2s);
-			text-transform: lowercase;
-		}
-		
-		span {
-			position: relative;
-			display: block;
-			top: 0;
-			@include transition(top .2s);
-		}
-		
-		strong,
-		em {
-			display: block;
-		}
-		
-		em {
-			@include minion;
-		}
-	}
-}
-
-#teammember {
-	margin-top: 56px;
+.individualentry {
 	
 	background: $lightgrey;
 	
@@ -153,46 +40,7 @@
 	}
 	
 	
-	header {
-		position: absolute;
-		z-index: 1;
-		top: 0;
-		left: -2em;
-		background: rgba(0,0,0,0.5);
-		width: 800px;
-		padding: 3.5em 5em 5em 5em;
-		color: $white;
-		margin: 0;
-		
-		span {
-			@include minion;
-			font-size: (24/$font-size)+em;
-		}
-		
-		.photographer {
-			float: right;
-			font-size: $font-size+px;
-		}
-		
-		&.small {
-			padding: 1em 5em;
-			position: fixed;
-			left: 50%;
-			top: 102px;
-			margin-left: -30em;
-			h1 {
-				font-size: (22/$font-size)+em;
-				margin: 0;
-			}
-			span {
-				font-size: 1em;
-			}
-			
-			.photographer {
-				display: none;
-			}
-		}
-	}
+	
 	
 	img {
 		margin: 0 0 0 -1em;
@@ -231,7 +79,6 @@
 			color: $yellow;
 		}
 		
-		a,
 		span,
 		strong {
 			display: block;
@@ -239,6 +86,7 @@
 		
 		a {
 			color: $black;
+			display: table;
 		}
 		
 		a,

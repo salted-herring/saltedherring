@@ -14,10 +14,9 @@
 <% end_if %>
 
 <% if getAllProjects %>
-<section id="work">
-	<div class="container">
+<section id="work" class="container records">
 	<% loop getAllProjects %>
-		<a href="$Top.URLSegment/project/$URLSegment" class="work<% if MultipleOf(3) %> last<% end_if %>">
+		<a href="$Top.URLSegment/project/$URLSegment" class="entry<% if MultipleOf(3) %> last<% end_if %>" title="$Name">
 		
 			<% if Thumbnail %>
 				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Name" />
@@ -30,6 +29,5 @@
 			</div>
 		</a>
 	<% end_loop %>
-	</div>
 </section>
 <% end_if %>

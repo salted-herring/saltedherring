@@ -8,9 +8,9 @@
 </div>
 <div class="contain">
 	<% control Member %>
-<section id="teammember" class="container">
+<section id="teammember" class="container individualentry">
 	<article>
-		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.5);">
+		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);">
 			<h1>$getUserName</h1>
 			<span class="role">$Role</span><span class="photographer">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.getUserName</a></span>
 		</header>

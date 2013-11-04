@@ -10,11 +10,11 @@
 		</div>
 	</div>
 </nav>
-<section id="team" class="container">
+<section id="team" class="container records">
 	
 	<% loop getTeam %>
 	<% if Images %>
-	<a href="$Top.URLSegment/$URLSegment" class="member">			
+	<a href="$Top.URLSegment/$URLSegment" class="entry">			
 			<% if Thumbnail %>
 				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Up.getUserName" />
 			<% end_if %>

@@ -128,7 +128,7 @@ class BaseMedia extends DataObject {
 		return true;
 	}
 	
-	public static $default_sort = 'SortOrder DESC, ID DESC';
+	public static $default_sort = 'SortOrder ASC, ID DESC';
 	
 	public static $has_one = array(
 		'Project' => 'Project'

@@ -232,12 +232,25 @@ class Page_Controller extends ContentController {
 	}
 	
 	protected function getRequireJS() {
-		$script = '<script src="' . $this->ThemeDir() . '/js/lib/require.js" data-main="' . $this->ThemeDir() . '/%s"></script>';
+		
 		if(defined('SS_ENVIRONMENT_TYPE') && SS_ENVIRONMENT_TYPE == 'dev') {
-			return sprintf($script, 'js/pagetypes/' . strtolower($this->ClassName));
+			//return sprintf($script, 'js/pagetypes/' . strtolower($this->ClassName));
+			$script = "<script src=\"" . $this->ThemeDir() . "/js/lib/require.js\"></script>\n";
+			$script .= "<script>\n";
+            $script .= "require([\"" . $this->ThemeDir() . "/js/devconfig\"], function (common) {";
+            $script.= "require([\"" .  $this->ThemeDir() . "/js/pagetypes/" . strtolower($this->ClassName) . "\"]);";
+            $script.= "});";
+			$script .= "</script>";
+
+			return $script;
+			
 		} else {
+			$script = '<script src="' . $this->ThemeDir() . '/js/lib/require.js" data-main="' . $this->ThemeDir() . '/%s"></script>';
 			return sprintf($script, 'build/pagetypes/' . strtolower($this->ClassName));
 		}
+		
+		/*
+*/
 	}
 	
 	protected function getCSS() {
