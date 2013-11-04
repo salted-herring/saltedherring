@@ -145,12 +145,17 @@
 }
 
 #banner {
-	&.collapsed {
+	&.collapsed,
+	&.small {
 		margin-bottom: 0;
 		padding: 1em 0;
 		position: fixed;
 		z-index: 2;
 		width: 100%;
+		
+		h1, strong {
+			display: none;
+		}
 		
 		.filters {
 			position: relative;

@@ -22,15 +22,31 @@ class WorkPage_Controller extends Page_Controller {
 */
 	
 	public static $url_handlers = array (
-		'project/$projectName!' => 'project',
-		'category/$Category!' => 'getCategoryProjects'
+		'project/$projectName/$meta' => 'project',
+		'category/$Category/$meta' => 'getCategoryProjects'
 	);
 	
 	public function init() {
 		parent::init();
 	}
 	
+	public function getTheTitle() {
+		$title = parent::getTitle();
+		
+		if($this->request->param('projectName')) {
+			$title .= ' - ' . DataObject::get_one('Project', "URLSegment='" . $this->request->param('projectName') . "'")->Title;
+		} else if($this->request->param('Category')) {
+			$title .= ' - ' . DataObject::get_one('Category', "URLSegment='" . $this->request->param('Category') . "'")->Title;
+		}
+		
+		return $title;
+	}
+	
 	public function project() {
+		if($this->request->param('meta')) {
+			return $this->meta($this->request);
+		}
+		
 		$project = Project::get()->filter('URLSegment', $this->request->param('projectName'));
 		
 		if($project->count() == 0) {
@@ -52,6 +68,10 @@ public function getProject($request) {
 */
 	
 	public function getCategoryProjects($request) {
+		if($request->param('meta')) {
+			return $this->meta($request);
+		}
+		
 		$cat = Category::get()->filter('URLSegment', $request->param('Category'));
 		$Projects = false;
 		if($cat) {

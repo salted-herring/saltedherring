@@ -4,14 +4,24 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			'': 'home',
 			'about(/)': 'about',
 			'work(/)': 'work',
-			'work/category/:category': 'work',
-			'team/(:member)(/)': 'team'
+			'work/:section/:fragment': 'work',
+			'team(/)': 'team',
+			'team/:member(/)': 'team'
 		},
 		
 		initialize: function() {
 			this.root = 'themes/default/';
 			this.views = {}; // cached views are added here.
 			this.prev = '';
+			
+			this.regex = '';
+			
+			$('#main_nav a').each(function() {
+				return $(this).text();	
+			});
+			
+			// build regex from the main nav.
+			this.regex = new RegExp(($('#main_nav a').map(function(){ return $(this).text().toLowerCase(); })).get().join('|'));
 		},
 		
 		home: function() {
@@ -22,11 +32,11 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			this.loadPage('aboutpage', '/about/');
 		},
 		
-		work: function(category) {
-			if(category == null) {
+		work: function(section, fragment) {
+			if(section == null && fragment == null) {
 				this.loadPage('workpage', '/work/');
 			} else {
-				this.loadPage('workpage', '/work/category/' + category);
+				this.loadPage('workpage', '/work/' + section + '/' + fragment);
 			}
 		},
 		
@@ -42,19 +52,23 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			views = this.views;
 			
 			if(views.hasOwnProperty(url)) {
+				/* ===========================
+				 * Grab the cached version.
+				 * =========================== */
 				$('[rel="stylesheet"]').attr('href', views[url].css);
 				$('#content, #loadingcontent').empty().html(views[url].html);
 			} else {
+			
+				/* ===========================
+				 * Load correct content.
+				 * =========================== */
 				views[url] = false;
 				
 				that = this;
 				
 				$('#content').prepend('<div id="loadingcontent"/>');
 				
-				
-				
-				require([this.root + 'js/pagetypes/' + page], function() {
-					$('#loadingcontent').hide().load(url + ' #content', function(response, status, xhr) {
+				$('#loadingcontent').hide().load(url + ' #content', function(response, status, xhr) {
 					views[url] = {
 						html: $('#loadingcontent #content').html(),
 						css: that.root + 'css/' + page + '.css'
@@ -62,23 +76,45 @@ define(['jquery', 'backbone'], function($, Backbone) {
 					
 					$('[rel="stylesheet"]').attr('href', views[url].css);
 					
-/* 					if(that.prev) { */
-						$('#content, #loadingcontent').empty().html(views[url].html);
-/* 					}; */
+					if(that.prev) {
+						$('#content, #loadingcontent').empty();
+						$('#content').html(views[url].html);
+					};
 					that.prev = url;
 					
-				});
+					require([that.root + 'js/pagetypes/' + page]);
+					
 				});
 			}
-			/*
-if(page in 'views') {
-				// load page.
-				
-			} else {
-*/
-				
-				
-/* 			} */
+			
+			/* ===========================
+			 * Check if we need to change
+			 * the selected main nav.
+			 * =========================== */
+			var match = url.match(this.regex);
+			if(match != null) {
+				$('#main_nav a').removeClass('current');
+				$('#main_nav').find('a[href*="' + match[0] + '"]').addClass('current');
+			}
+			
+			/* ===========================
+			 * Re-populate the meta data.
+			 * =========================== */
+			var location = window.location.href;
+			if(window.location.pathname == '/') {
+				location += 'home/';
+			}
+			
+			if(location[location.length - 1] != '/') {
+				location += '/';
+			}
+			
+			location += 'meta';
+			
+			$.get(location, function(response, status, xhr) {
+				$('title,meta:not([name="viewport"])').remove();
+				$('head').prepend(response);
+			}, 'html');
 		}
 	});
 	

@@ -21,17 +21,8 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		});
 	});
 	
-	
-	/*
-$('#main_nav a').click(function(e) {
+	$(document).on("click", "a:not([target='_blank'])", function(e){
 		e.preventDefault();
-		Router.navigate($(this).attr('href'), {trigger: true});
-	});
-*/
-	
-	$('a').on('click', function(e) {
-		e.preventDefault();
-		alert();
 		Router.navigate($(this).attr('href'), {trigger: true});
 	});
 	
@@ -45,10 +36,10 @@ $('#main_nav a').click(function(e) {
 			}
 			
 			
-			if($(window).scrollTop() > ($('.individualentry header').height() + $('#banner').height())) {
-				$('.individualentry header').addClass('small');
+			if(($('.individualentry').length != 0 && $(window).scrollTop() > ($('.individualentry header').height() + $('#banner').height())) || ($('.individualentry').length == 0 && $(window).scrollTop() > $('#header').height())) {
+				$('.individualentry header, #banner:not(.collapsed)').addClass('small');
 			} else {
-				$('.individualentry header').removeClass('small');
+				$('.individualentry header, #banner:not(.collapsed)').removeClass('small');
 			}
 		}).scroll();
 	});

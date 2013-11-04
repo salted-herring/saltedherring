@@ -137,7 +137,12 @@ $fields->addFieldToTab(
 class Page_Controller extends ContentController {
 	
 	public static $allowed_actions = array (
-		'rebuild'
+		'rebuild',
+		'meta'
+	);
+	
+	public static $url_handlers = array(
+		'meta' => 'meta'
 	);
 	
 	protected function getGACode() {
@@ -177,9 +182,7 @@ class Page_Controller extends ContentController {
 	public function MetaTags($includeTitle = true) {
 		$tags = "";
 		if($includeTitle === true || $includeTitle == 'true') {
-			$tags .= "<title>" . Convert::raw2xml(($this->MetaTitle)
-			? $this->MetaTitle
-			: $this->Title) . "</title>\n";
+			$tags .= "<title>" . $this->getTheTitle() . "</title>\n";
 		}
 		
 		$charset = ContentNegotiator::get_encoding();
@@ -205,6 +208,31 @@ class Page_Controller extends ContentController {
 		$this->extend('MetaTags', $tags);
 		
 		return $tags;
+	}
+	
+	public function getTheTitle() {
+		return Convert::raw2xml(($this->MetaTitle) ? $this->MetaTitle : $this->Title);
+	}
+	
+	public function meta($request) {
+		if($request->isAjax()) {
+			$tags = $this->MetaTags(true);
+			
+			if($this->getCurrentOGTitle()) {
+				$tags .= '<meta property="og:title" content="' . $this->getCurrentOGTitle() .'" />';
+			}
+			if($this->getCurrentOGDescription()) {
+				$tags .= '<meta property="og:description" content="' . $this->getCurrentOGDescription() .'" />';
+			}
+			if($this->getCurrentOGImageURL()) {
+				$tags .= '<meta property="og:image" content="' . $this->getCurrentOGImageURL(). '" />';
+			}
+			if($this->getCurrentPageUrl()) {
+				$tags .= '<meta property="og:url" content="' . str_replace('meta', '', $this->getCurrentPageUrl()) . '" />';
+			}
+			
+			return $tags;
+		}
 	}
 	
 	protected function getCurrentOGTitle() {

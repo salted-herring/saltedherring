@@ -19,14 +19,30 @@ class TeamPage extends Page {
 class TeamPage_Controller extends Page_Controller {
 	
 	public static $url_handlers = array (
-		'$teamMember!' => 'teamMember'
+		'meta' => 'meta',
+		'$teamMember!/$meta' => 'teamMember'
 	);
 	
 	public function init() {
 		parent::init();
 	}
 	
+	public function getTheTitle() {
+		$title = parent::getTitle();
+		
+		if($this->request->param('teamMember')) {
+			$title .= ' - ' . DataObject::get_one('TeamMember', "URLSegment='" . $this->request->param('teamMember') . "'")->FirstName;
+		}
+		
+		return $title;
+	}
+	
 	public function teamMember($request) {
+		
+		if($request->param('meta')) {
+			return $this->meta($request);
+		}
+		
 		$teamMember = DataObject::get_one('TeamMember', "URLSegment='" . $request->param('teamMember') . "'");
 		
 		if(!$teamMember->exists()) {
@@ -39,22 +55,6 @@ class TeamPage_Controller extends Page_Controller {
 			'Member' => $teamMember,
 			'getTeam' => $this->getTeam()
 		));
-		
-		/*
-echo '<pre>';
-		print_r($teamMember);
-		echo '</pre>';
-*/
-		
-		//die;
-		
-		/*
-
-		
-		return $this->renderWith(array('TeamMemberPage', 'Page'), array(
-			'Member' => $teamMember
-		));
-*/
 	}
 	
 	public function getTeam() {

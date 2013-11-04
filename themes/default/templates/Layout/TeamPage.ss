@@ -3,7 +3,7 @@
 	<div class="container">
 		<h1 class="title">Team</h1>
 		<div class="filters">
-			<a href="$URLSegment">all</a>
+			<a href="$URLSegment/" class="current">all</a>
 			<% loop getTeam %>
 				<a href="$Top.URLSegment/$URLSegment">$FirstName</a>
 			<% end_loop %>
