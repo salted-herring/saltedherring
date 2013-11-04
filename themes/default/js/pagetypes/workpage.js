@@ -1,8 +1,12 @@
 
 
-require(['jquery', 'backbone', 'underscore', '_base'], function($, Backbone, _) {
+require(['jquery', 'backbone', 'underscore', '_base', 'router'], function($, Backbone, _, undefined, Router) {
 	
 	$(function() {
+		
+		
+		
+	
 		$('.fullstory').click(function(e) {
 			e.preventDefault();
 			$('.content p').toggle();

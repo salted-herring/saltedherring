@@ -25,9 +25,15 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 	/*
 $('#main_nav a').click(function(e) {
 		e.preventDefault();
-		Router.navigate($(this).attr('href'));
+		Router.navigate($(this).attr('href'), {trigger: true});
 	});
 */
+	
+	$('a').on('click', function(e) {
+		e.preventDefault();
+		alert();
+		Router.navigate($(this).attr('href'), {trigger: true});
+	});
 	
 	
 	$(function() {

@@ -2,7 +2,7 @@
 <nav id="banner">
 	<div class="container">
 		<h1 class="title">Work</h1>
-		<div class="filters">
+		<div class="filters workfilters">
 			<strong>Filter by:</strong>
 			<a href="$URLSegment"<% if category %><% else %> class="all"<% end_if %>>all</a>
 			<% loop getCategories %>

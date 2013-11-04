@@ -4,43 +4,70 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			'': 'home',
 			'about(/)': 'about',
 			'work(/)': 'work',
-			'work/category/:category(/)': 'work',
+			'work/category/:category': 'work',
 			'team/(:member)(/)': 'team'
 		},
 		
-		root: 'themes/default/js/',
-		
-		views: {}, // cached views are added here.
+		initialize: function() {
+			this.root = 'themes/default/';
+			this.views = {}; // cached views are added here.
+			this.prev = '';
+		},
 		
 		home: function() {
-			console.log('home URL');
+			this.loadPage('homepage', '/');
 		},
 		
 		about: function() {
-			console.log('about URL');
-			this.loadPage('aboutpage');
+			this.loadPage('aboutpage', '/about/');
 		},
 		
 		work: function(category) {
-			console.log('work URL', arguments);
+			if(category == null) {
+				this.loadPage('workpage', '/work/');
+			} else {
+				this.loadPage('workpage', '/work/category/' + category);
+			}
 		},
 		
 		team: function(member) {
-			console.log('team URL', arguments);
+			if(member == null) {
+				this.loadPage('teampage', '/team/');
+			} else {
+				this.loadPage('teampage', '/team/' + member);
+			}
 		},
 		
-		loadPage: function(page) {
+		loadPage: function(page, url) {
 			views = this.views;
 			
-			if(views.hasOwnProperty(page)) {
-				
+			if(views.hasOwnProperty(url)) {
+				$('[rel="stylesheet"]').attr('href', views[url].css);
+				$('#content, #loadingcontent').empty().html(views[url].html);
 			} else {
-				view[page] = false;
+				views[url] = false;
 				
-				$.get()
+				that = this;
 				
-				require([this.root + 'pagetypes/' + page], function() {
-/* 					views[page] = this; */
+				$('#content').prepend('<div id="loadingcontent"/>');
+				
+				
+				
+				require([this.root + 'js/pagetypes/' + page], function() {
+					$('#loadingcontent').hide().load(url + ' #content', function(response, status, xhr) {
+					views[url] = {
+						html: $('#loadingcontent #content').html(),
+						css: that.root + 'css/' + page + '.css'
+					};
+					
+					$('[rel="stylesheet"]').attr('href', views[url].css);
+					
+/* 					if(that.prev) { */
+						$('#content, #loadingcontent').empty().html(views[url].html);
+/* 					}; */
+					that.prev = url;
+					
+				});
 				});
 			}
 			/*
@@ -55,12 +82,8 @@ if(page in 'views') {
 		}
 	});
 	
-	//var router = new Router();
-	//Backbone.history.start({pushState: true});
-	
-	var router = {
-		navigate: function(){}
-	};
+	var router = new Router();
+	Backbone.history.start({pushState: true});
 	
 	return router;
 });

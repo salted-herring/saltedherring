@@ -18,7 +18,7 @@ require.config({
 			exports: '_'
 		},
 		_base: {
-			deps: ['jquery', 'router']
+			deps: ['jquery', 'router', 'backbone']
 		},
 		router: {
 			deps: ['jquery', 'backbone'],
