@@ -33,10 +33,25 @@ define(['jquery', 'backbone'], function($, Backbone) {
 		},
 		
 		work: function(section, fragment) {
+			var callback = function() {
+				$.get('/work/getCurrentSession', function(response, status, xhr) {
+					console.log(response);
+					if(window.location.href.match(/work\/$/) != null || response == '') {
+						$('#banner .filters a').removeClass('current');
+						$('#banner .filters a:first').addClass('all');
+					} else {
+						$('#banner .filters a').removeClass('current all');
+						$('#banner .filters a[href*="' + response + '"]').addClass('current');
+					}
+					
+				});
+			};
+			
 			if(section == null && fragment == null) {
-				this.loadPage('workpage', '/work/');
+				$.get('/work/clearSession');
+				this.loadPage('workpage', '/work/', callback);
 			} else {
-				this.loadPage('workpage', '/work/' + section + '/' + fragment);
+				this.loadPage('workpage', '/work/' + section + '/' + fragment, callback);
 			}
 		},
 		
@@ -48,7 +63,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			}
 		},
 		
-		loadPage: function(page, url) {
+		loadPage: function(page, url, callback) {
 			views = this.views;
 			
 			if(views.hasOwnProperty(url)) {
@@ -57,6 +72,10 @@ define(['jquery', 'backbone'], function($, Backbone) {
 				 * =========================== */
 				$('[rel="stylesheet"]').attr('href', views[url].css);
 				$('#content, #loadingcontent').empty().html(views[url].html);
+				if(callback) {
+					callback();
+					this.getMeta(url);
+				}
 			} else {
 			
 				/* ===========================
@@ -81,12 +100,18 @@ define(['jquery', 'backbone'], function($, Backbone) {
 						$('#content').html(views[url].html);
 					};
 					that.prev = url;
+					if(callback) {
+						callback();
+						that.getMeta(url);	
+					}
 					
 					require([that.root + 'js/pagetypes/' + page]);
 					
 				});
 			}
-			
+		},
+		
+		getMeta: function(url) {
 			/* ===========================
 			 * Check if we need to change
 			 * the selected main nav.

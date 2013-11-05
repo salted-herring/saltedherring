@@ -1,8 +1,8 @@
 <div id="banner" class="collapsed">
 	<div class="filters container">
-		<a href="$URLSegment"<% if category %><% else %> class="all"<% end_if %>>all</a>
+		<a href="$URLSegment/"<% if category || getCurrentSession %><% else %> class="all"<% end_if %>>all</a>
 		<% loop getCategories %>
-			<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment %> class="current"<% end_if %>>$Name</a>
+			<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment || Top.getCurrentSession = $URLSegment %> class="current"<% end_if %>>$Name</a>
 		<% end_loop %>
 	</div>
 </div>
@@ -15,6 +15,12 @@
 				<h1>$Title</h1>
 				<span class="tagLine">$TagLine</span>
 			</header>
+			
+			<!--
+<nav>
+				<a href="" class="next">next</a>
+			</nav>
+-->
 			
 			<% if getFirstImage %>
 			<div class="media">

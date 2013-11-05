@@ -4,9 +4,9 @@
 		<h1 class="title">Work</h1>
 		<div class="filters workfilters">
 			<strong>Filter by:</strong>
-			<a href="$URLSegment"<% if category %><% else %> class="all"<% end_if %>>all</a>
+			<a href="$URLSegment/"<% if category %><% else %> class="all"<% end_if %>>all</a>
 			<% loop getCategories %>
-				<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment %> class="current"<% end_if %>>$Name</a>
+				<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment || Top.getCurrentSession = $URLSegment %> class="current"<% end_if %>>$Name</a>
 			<% end_loop %>
 		</div>
 	</div>

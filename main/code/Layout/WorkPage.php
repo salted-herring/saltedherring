@@ -22,6 +22,7 @@ class WorkPage_Controller extends Page_Controller {
 */
 	
 	public static $url_handlers = array (
+		'' => 'home',
 		'project/$projectName/$meta' => 'project',
 		'category/$Category/$meta' => 'getCategoryProjects'
 	);
@@ -58,30 +59,40 @@ class WorkPage_Controller extends Page_Controller {
 		));
 	}
 	
-	/*
-public function getProject($request) {
-		$Project = Project::get()->filter(array('URLSegment' => $request->param('Project')));
-		return $this->renderWith(array('ProjectPage', 'Page'), array(
-			'Project' => $Project
-		));
+	public function home() {
+		$this->clearSession();
+		return $this->renderWith(array('WorkPage', 'Page'));
 	}
-*/
+	
+	public function clearSession() {
+		Session::clear('category');
+	}
 	
 	public function getCategoryProjects($request) {
+		if($request->param('Category')) {
+			$this->clearSession();
+			Session::set('category', $request->param('Category'));
+		}
+		
 		if($request->param('meta')) {
 			return $this->meta($request);
 		}
 		
 		$cat = Category::get()->filter('URLSegment', $request->param('Category'));
 		$Projects = false;
+		
 		if($cat) {
 			$Projects = Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->first()->ID);
 		}
 		
 		return $this->renderWith(array('WorkPage', 'Page'), array(
 			'getAllProjects' => $Projects->count() == 0 ? false : $Projects,
-			'category' => $request->param('Category')
+			'category' => Session::get('category')
 		));
+	}
+	
+	public function getCurrentSession() {
+		return Session::get('category');
 	}
 	
 	public function getAllProjects() {
