@@ -58,6 +58,8 @@ define(['jquery', 'backbone'], function($, Backbone) {
 						$('#banner .filter a').removeClass('all current');
 						$('#banner .filter a[href*="' + response + '"').addClass('current');
 						
+						console.log('response', response);
+						
 						// load the existing navigation for the category,
 						// else get the json file.
 						cat = (response == '' || response == null) ? cat = 'all' : response;
