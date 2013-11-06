@@ -7,7 +7,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'router'], function($, Bac
 		
 		
 	
-		$('.fullstory').click(function(e) {
+		$(document).on('click', '.fullstory', function(e) {
 			e.preventDefault();
 			$('.content p').toggle();
 			$('html,body').animate({
