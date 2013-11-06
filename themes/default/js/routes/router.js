@@ -58,7 +58,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
 						$('#banner .filter a').removeClass('all current');
 						$('#banner .filter a[href*="' + response + '"').addClass('current');
 						
-						console.log('response', response);
+						
 						
 						// load the existing navigation for the category,
 						// else get the json file.
@@ -67,7 +67,8 @@ define(['jquery', 'backbone'], function($, Backbone) {
 							that.navigation(cat);
 						} else {
 							$.get(that.root + 'json/' + cat + '.json', function(response, status, xhr) {
-								that.work[cat] = response;
+								console.log('response', that.root + 'json/' + cat + '.json', response);
+								that.work[cat] = typeof response == 'string' ? JSON.parse(response) : response;
 								that.navigation(cat);
 							});
 						}
