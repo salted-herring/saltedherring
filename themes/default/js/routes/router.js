@@ -197,7 +197,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
 					if(typeof projects == 'string') {
 						projects = JSON.parse(projects);
 					}
-					//console.log(projects);
+					
 					for(var i=0; i<projects.length; i++) {
 						if(current != null) {
 							previous = current;
@@ -215,13 +215,9 @@ define(['jquery', 'backbone'], function($, Backbone) {
 						if(current.URLSegment == currentCat) {
 							break;
 						}
-						
-						console.log(previous, next, current);
 					}
 					
-					$('#projectnav a').hide();
-					
-					
+					$('#projectnav a').hide();					
 					
 					if(previous) {
 						$('#projectnav .previous strong').text(previous.Title);
