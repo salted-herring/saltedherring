@@ -193,8 +193,12 @@ define(['jquery', 'backbone'], function($, Backbone) {
 				if(currentCat != null) {
 					currentCat = currentCat[1];
 					var projects = category == 'all' ? this.work[category] : this.work[category].Projects;
+					
+					if(typeof projects == 'string') {
+						projects = JSON.parse(projects);
+					}
 					//console.log(projects);
-					for(var i in projects) {
+					for(var i=0; i<projects.length; i++) {
 						if(current != null) {
 							previous = current;
 						}
