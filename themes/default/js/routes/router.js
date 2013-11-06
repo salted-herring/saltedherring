@@ -193,7 +193,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
 				if(currentCat != null) {
 					currentCat = currentCat[1];
 					var projects = category == 'all' ? this.work[category] : this.work[category].Projects;
-					console.log(projects);
+					//console.log(projects);
 					for(var i in projects) {
 						if(current != null) {
 							previous = current;
@@ -211,11 +211,13 @@ define(['jquery', 'backbone'], function($, Backbone) {
 						if(current.URLSegment == currentCat) {
 							break;
 						}
+						
+						console.log(previous, next, current);
 					}
 					
 					$('#projectnav a').hide();
 					
-					console.log(previous, next);
+					
 					
 					if(previous) {
 						$('#projectnav .previous strong').text(previous.Title);
