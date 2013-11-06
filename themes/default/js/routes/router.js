@@ -215,6 +215,8 @@ define(['jquery', 'backbone'], function($, Backbone) {
 					
 					$('#projectnav a').hide();
 					
+					console.log(previous, next);
+					
 					if(previous) {
 						$('#projectnav .previous strong').text(previous.Title);
 						$('#projectnav .previous em').text(previous.TagLine);
