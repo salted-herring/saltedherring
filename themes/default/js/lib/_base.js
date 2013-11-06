@@ -26,8 +26,9 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		$(this).addClass('current');
 	});
 	
-	$(document).on("click", "a:not([target='_blank']):not([href='#'])", function(e){
+	$(document).on("click", "a:not([target='_blank']):not([href*='#'])", function(e){
 		e.preventDefault();
+		alert();
 		
 		Router.navigate($(this).attr('href'), {trigger: true});
 	});

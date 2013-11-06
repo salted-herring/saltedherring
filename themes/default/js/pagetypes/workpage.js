@@ -3,10 +3,6 @@
 require(['jquery', 'backbone', 'underscore', '_base', 'router'], function($, Backbone, _, undefined, Router) {
 	
 	$(function() {
-		
-		
-		
-	
 		$(document).on('click', '.fullstory', function(e) {
 			e.preventDefault();
 			$('.content p').toggle();
