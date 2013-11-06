@@ -189,9 +189,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
 					current = null;
 				
 				var currentCat = window.location.href.match(/work\/project\/(.*)/);
-				
-				console.log(this.work[category]);
-				
+								
 				if(currentCat != null) {
 					currentCat = currentCat[1];
 					var projects = category == 'all' ? this.work[category] : this.work[category].Projects;
