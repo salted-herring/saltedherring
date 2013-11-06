@@ -50,14 +50,14 @@ h1 {
 
 article a {
 	position: relative;
-	padding-bottom: 20px;
+	padding-bottom: 6px;
 	
 	&:after {
 		position: absolute;
 		display: block;
 		content: '';
-		bottom: 10px;
-		height: 4px;
+		bottom: 5px;
+		height: 2px;
 		width: 100%;
 		background: transparent;
 	}
@@ -428,15 +428,15 @@ footer {
 		&[href^='mailto:'],
 		&.map {
 			position: relative;
-			padding-bottom: 10px;
+/* 			padding-bottom: 6px; */
 			display: inline-block;
 			
 			&:after {
 				position: absolute;
 				display: block;
 				content: '';
-				bottom: 5px;
-				height: 4px;
+				bottom: 0px;
+				height: 2px;
 				width: 100%;
 				background: transparent;
 			}
@@ -474,7 +474,6 @@ footer {
  * =========================== */
 #banner {
 	padding: 2em 0;
-	margin-bottom: 6em;
 	
 	.container {
 		position: relative;

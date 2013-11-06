@@ -48,14 +48,15 @@ class WorkPage_Controller extends Page_Controller {
 			return $this->meta($this->request);
 		}
 		
-		$project = Project::get()->filter('URLSegment', $this->request->param('projectName'));
+		$this->project = Project::get()->filter('URLSegment', $this->request->param('projectName'));
 		
-		if($project->count() == 0) {
-			$this->httpError(404, 'The requested page could not be found.');
+		if($this->project->count() == 0) {
+			$this->project = false;
+			return $this->httpError(404, 'The requested page could not be found.');
 		}
 		
 		return $this->renderWith(array('ProjectPage', 'Page'), array(
-			'Project' => $project->first()
+			'Project' => $this->project->first()
 		));
 	}
 	
@@ -102,4 +103,33 @@ class WorkPage_Controller extends Page_Controller {
 	public function getCategories() {
 		return Category::get();
 	}
+	
+	/*
+public function getNavigation() {
+		//if($this->project) {
+			if($this->getCurrentSession()) {
+				$cat = DataObject::get_one('Category', 'URLSegment = \'' . $this->getCurrentSession() . '\'');
+				if($cat) {
+				
+					$current = NULL;
+					$next = NULL;
+					$previous = NULL;
+					
+					echo '<pre>';
+					print_r(Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID));
+					echo '</pre>';
+					
+					die;
+					
+					foreach(Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID) as $project) {
+						
+					}
+				}
+			}
+			
+					//}
+		
+		return json_encode(array('status' => 0, 'message' => 'No project found'));
+	}
+*/
 }

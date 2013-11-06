@@ -9,18 +9,22 @@
 <% control Project %>
 <div class="contain">
 	<section id="project" class="individualentry">
+		<nav id="projectnav">
+			<a href="#" class="previous">
+				<strong>Title</strong>
+				<em>Tagline</em>
+			</a>
+			<a href="#" class="next">
+				<strong>Title</strong>
+				<em>Tagline</em>
+			</a>
+		</nav>
 		<div class="container">
 			
 			<header  style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);">
 				<h1>$Title</h1>
 				<span class="tagLine">$TagLine</span>
 			</header>
-			
-			<!--
-<nav>
-				<a href="" class="next">next</a>
-			</nav>
--->
 			
 			<% if getFirstImage %>
 			<div class="media">
@@ -66,6 +70,7 @@
 				</aside>
 			</div>
 		</div>
+		<% if getAllMedia %>
 		<div class="container" id="media">
 			<% loop getAllMedia %>
 				<% if $Type = SWF %>
@@ -81,6 +86,28 @@
 				<% end_if %>
 			<% end_loop %>
 		</div>
+		<% end_if %>
 	</section>
 </div>
 <% end_control %>
+
+<% if Project.RelatedProjects %>
+<section id="interestedin" class="container records">
+	<h2>You might also be interested in:</h2>
+	
+	<% loop Project.RelatedProjects %>
+		<a href="$Top.URLSegment/project/$URLSegment" class="entry<% if MultipleOf(3) %> last<% end_if %>" title="$Name">
+		
+			<% if Thumbnail %>
+				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Name" />
+			<% end_if %>
+			<div class="label">
+				<span>
+					<strong>$Title</strong>
+					<em>$TagLine</em>
+				</span>
+			</div>
+		</a>
+	<% end_loop %>
+</section>
+<% end_if %>

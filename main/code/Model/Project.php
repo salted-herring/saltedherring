@@ -21,11 +21,16 @@ class Project extends BaseDBO {
 	
 	public static $many_many = array(
 		'Categories' => 'Category',
-		'Services' => 'Service'
+		'Services' => 'Service',
+		'RelatedProjects' => 'Project'
 	);
 	
 	public static $belongs_to = array(
 		'Slider' => 'Slider'
+	);
+	
+	public static $belongs_many_many = array(
+		'Project' => 'Project'
 	);
 
 	public function getCMSFields() {
@@ -36,6 +41,8 @@ class Project extends BaseDBO {
 		$fields->removeByName('Services');
 		$fields->removeByName('Media');
 		$fields->removeByName('ProjectAwards');
+		$fields->removeByName('Project');
+		$fields->removeByName('RelatedProjects');
 		
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
@@ -68,6 +75,12 @@ class Project extends BaseDBO {
 			$services[$service->ID] = $service->Name;
 		}
 		
+		$rel = array();
+		
+		foreach(Project::get()->exclude(array('ID' => $this->ID)) as $project) {
+			$rel[$project->ID] = $project->Title;
+		}
+		
 		// Root.Main
 		$fields->addFieldsToTab('Root.Main', array(
 			$title = new TextField('Title'),
@@ -77,6 +90,7 @@ class Project extends BaseDBO {
 			$categories = $this->ID ? new CheckboxSetField($name='Categories', $title='Categories', $source=$cats) : new LiteralField('CatWarn', '<p><strong>Categories</strong> can be added once the project has been created</p>'),
 			$serv = $this->ID ? new CheckboxSetField($name='Services', $title='Services', $source=$services) : new LiteralField('ServiceWarn', '<p><strong>Services</strong> can be added once the project has been created</p>'),
 			$client = new OptionsetField('ClientID', 'Client', $clients),
+			$related = $this->ID ? new CheckboxSetField($name='RelatedProjects', $title='Related Projects', $source=$rel) : new LiteralField('RelatedWarn', '<p><strong>Related Projects</strong> can be added once the project has been created</p>'),
 		));
 		
 		$tagLine->setRightTitle('Short, single line description of project');
@@ -86,7 +100,6 @@ class Project extends BaseDBO {
 		if($this->ID) {
 			// Root.Award
 			$fields->addFieldToTab('Root.Awards', new GridField("Awards", "Awards", $this->ProjectAwards(), $gridFieldConfig));
-			
 			
 			// Root.Media
 			$multiClasses = new GridFieldAddNewMultiClass();
@@ -136,6 +149,57 @@ class Project extends BaseDBO {
 		}
 		
 		return $this->Media;
+	}
+	
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+		
+		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
+		$data = array();
+		
+		foreach(Category::get() as $cat) {
+			$projects = Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID);
+			
+			$current = array(
+				'Category' => $cat->Title,
+				'URLSegment' => $cat->URLSegment,
+				'Projects' => array()
+			);
+			
+			foreach($projects as $project) {
+				array_push($current['Projects'], array(
+					'Title' => $project->Title,
+					'TagLine' => $project->TagLine,
+					'URLSegment' => $project->URLSegment
+				));
+			}
+			
+			try {
+				$handle = fopen($dir . $cat->URLSegment . '.json', 'w');
+				fwrite($handle, json_encode($current));
+				fclose($handle);
+			} catch(Exception $e) {
+				user_error($e, E_USER_WARNING);
+			}
+		}
+		
+		$all = array();
+		
+		foreach(Project::get() as $project) {
+			array_push($all, array(
+				'Title' => $project->Title,
+				'TagLine' => $project->TagLine,
+				'URLSegment' => $project->URLSegment
+			));
+		}
+		
+		try {
+			$handle = fopen($dir . 'all.json', 'w');
+			fwrite($handle, json_encode($all));
+			fclose($handle);
+		} catch(Exception $e) {
+			user_error($e, E_USER_WARNING);
+		}
 	}
 }
 

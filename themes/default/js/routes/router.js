@@ -1,10 +1,19 @@
+/* ===========================
+ * Router.
+ * ---------------------------
+ * Simon Winter
+ * Nov 6 2013
+ * ---------------------------
+ * Backbone URL routing for
+ * website.
+ * =========================== */
 define(['jquery', 'backbone'], function($, Backbone) {
 	var Router = Backbone.Router.extend({
 		routes: {
 			'': 'home',
 			'about(/)': 'about',
 			'work(/)': 'work',
-			'work/:section/:fragment': 'work',
+			'work/:section/:fragment(/)': 'work',
 			'team(/)': 'team',
 			'team/:member(/)': 'team'
 		},
@@ -13,15 +22,19 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			this.root = 'themes/default/';
 			this.views = {}; // cached views are added here.
 			this.prev = '';
-			
-			this.regex = '';
-			
-			$('#main_nav a').each(function() {
-				return $(this).text();	
-			});
+			this.work = {}; // add here each cached projects. key should be the category - or 'all' for default.
+			this.currentCategory = '';
 			
 			// build regex from the main nav.
 			this.regex = new RegExp(($('#main_nav a').map(function(){ return $(this).text().toLowerCase(); })).get().join('|'));
+		},
+		
+		navigate: function() {
+			Backbone.Router.prototype.navigate.apply(this, arguments);
+			
+			$('html, body').animate({
+				scrollTop: 0
+			}, 500);
 		},
 		
 		home: function() {
@@ -33,18 +46,30 @@ define(['jquery', 'backbone'], function($, Backbone) {
 		},
 		
 		work: function(section, fragment) {
+			var that = this;
 			var callback = function() {
-				$.get('/work/getCurrentSession', function(response, status, xhr) {
-					console.log(response);
-					if(window.location.href.match(/work\/$/) != null || response == '') {
-						$('#banner .filters a').removeClass('current');
-						$('#banner .filters a:first').addClass('all');
-					} else {
-						$('#banner .filters a').removeClass('current all');
-						$('#banner .filters a[href*="' + response + '"]').addClass('current');
-					}
+			
+				if(window.location.href.match(/work\/project\//) != null) {
+					$.get('/work/getCurrentSession', function(response, status, xhr) {
+						that.currentCategory = response;
+						$('#banner .filter a').removeClass('all current');
+						$('#banner .filter a[href*="' + response + '"').addClass('current');
+						
+						// load the existing navigation for the category,
+						// else get the json file.
+						cat = (response == '' || response == null) ? cat = 'all' : response;
+						if(that.work[cat]) {
+							that.navigation(cat);
+						} else {
+							$.get(that.root + 'json/' + cat + '.json', function(response, status, xhr) {
+								that.work[cat] = response;
+								that.navigation(cat);
+							});
+						}
+					});
 					
-				});
+					
+				}
 			};
 			
 			if(section == null && fragment == null) {
@@ -52,6 +77,10 @@ define(['jquery', 'backbone'], function($, Backbone) {
 				this.loadPage('workpage', '/work/', callback);
 			} else {
 				this.loadPage('workpage', '/work/' + section + '/' + fragment, callback);
+			}
+			
+			if(section == 'category') {
+				this.currentCategory = fragment;
 			}
 		},
 		
@@ -71,10 +100,10 @@ define(['jquery', 'backbone'], function($, Backbone) {
 				 * Grab the cached version.
 				 * =========================== */
 				$('[rel="stylesheet"]').attr('href', views[url].css);
-				$('#content, #loadingcontent').empty().html(views[url].html);
+				$('#content').empty().html(views[url].html);
+				this.loadMeta(views[url].meta);
 				if(callback) {
 					callback();
-					this.getMeta(url);
 				}
 			} else {
 			
@@ -99,24 +128,31 @@ define(['jquery', 'backbone'], function($, Backbone) {
 						$('#content, #loadingcontent').empty();
 						$('#content').html(views[url].html);
 					};
+					
 					that.prev = url;
+					
+					that.getMeta(url, views[url]);
+					
 					if(callback) {
 						callback();
-						that.getMeta(url);	
 					}
 					
 					require([that.root + 'js/pagetypes/' + page]);
 					
+					$(this).remove();
 				});
 			}
 		},
 		
-		getMeta: function(url) {
+		getMeta: function(url, result) {
 			/* ===========================
 			 * Check if we need to change
 			 * the selected main nav.
 			 * =========================== */
-			var match = url.match(this.regex);
+			var match = url.match(this.regex),
+				that = this,
+				location = window.location.href;
+				
 			if(match != null) {
 				$('#main_nav a').removeClass('current');
 				$('#main_nav').find('a[href*="' + match[0] + '"]').addClass('current');
@@ -125,7 +161,6 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			/* ===========================
 			 * Re-populate the meta data.
 			 * =========================== */
-			var location = window.location.href;
 			if(window.location.pathname == '/') {
 				location += 'home/';
 			}
@@ -137,9 +172,71 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			location += 'meta';
 			
 			$.get(location, function(response, status, xhr) {
-				$('title,meta:not([name="viewport"])').remove();
-				$('head').prepend(response);
+				that.loadMeta(response);
+				result.meta = response;
 			}, 'html');
+		},
+		
+		loadMeta: function(meta) {
+			$('title,meta:not([name="viewport"])').remove();
+			$('head').prepend(meta);
+		},
+		
+		navigation: function(category) {
+			if(category in this.work) {
+				var previous = null,
+					next = null,
+					current = null;
+				
+				var currentCat = window.location.href.match(/work\/project\/(.*)/);
+				
+				console.log(this.work[category]);
+				
+				if(currentCat != null) {
+					currentCat = currentCat[1];
+					var projects = category == 'all' ? this.work[category] : this.work[category].Projects;
+					for(var i in projects) {
+						if(current != null) {
+							previous = current;
+						}
+						
+						current = projects[i];
+						iplus = parseInt(i) + 1;
+						
+						if(iplus < projects.length) {
+							next = projects[iplus] || null;
+						} else {
+							next = null;
+						}
+						
+						if(current.URLSegment == currentCat) {
+							break;
+						}
+					}
+					
+					$('#projectnav a').hide();
+					
+					if(previous) {
+						$('#projectnav .previous strong').text(previous.Title);
+						$('#projectnav .previous em').text(previous.TagLine);
+						$('#projectnav .previous').attr('href', '/work/project/' + previous.URLSegment);
+						$('#projectnav .previous').show();
+					}
+					
+					if(next) {
+						$('#projectnav .next strong').text(next.Title);
+						$('#projectnav .next em').text(next.TagLine);
+						$('#projectnav .next').attr('href', '/work/project/' + next.URLSegment);
+						$('#projectnav .next').show();
+					}
+					
+					$('#projectnav').fadeIn();
+				}
+				
+				
+			} else {
+				
+			}
 		}
 	});
 	

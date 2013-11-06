@@ -7,32 +7,40 @@
 /* ===========================
  * Sprite sheets
  * =========================== */
-.sprites-sprite, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-salt, .sprites-salted-herring, .sprites-saltshaker, .external:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, footer .salt span:after, footer .salt span:before {
-  background: url('../img/sprites-sb5f3c36d67.png') no-repeat;
+.sprites-sprite, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-saltshaker, .external:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, footer .salt span:after, footer .salt span:before {
+  background: url('../img/sprites-sa4b056e8e3.png') no-repeat;
 }
 
 .sprites-down_arrow {
-  background-position: -78px -14px;
+  background-position: -39px -40px;
 }
 
 .sprites-external_arrow {
-  background-position: -62px -42px;
+  background-position: -79px -14px;
 }
 
 .sprites-external_arrow_blue {
-  background-position: -85px -42px;
+  background-position: -56px -14px;
 }
 
 .sprites-menu-collapse {
-  background-position: 0 -14px;
+  background-position: -102px -14px;
 }
 
 .sprites-menu-open {
-  background-position: -39px -14px;
+  background-position: 0 -40px;
+}
+
+.sprites-next_arrow {
+  background-position: 0 -14px;
+}
+
+.sprites-previous_arrow {
+  background-position: -28px -14px;
 }
 
 .sprites-salt {
-  background-position: 0 -42px;
+  background-position: -60px -40px;
 }
 
 .sprites-salted-herring {
@@ -40,7 +48,7 @@
 }
 
 .sprites-saltshaker {
-  background-position: 0 -106px;
+  background-position: 0 -104px;
 }
 
 /* @license
@@ -632,14 +640,14 @@ h1 {
 
 article a {
   position: relative;
-  padding-bottom: 20px;
+  padding-bottom: 6px;
 }
 article a:after {
   position: absolute;
   display: block;
   content: '';
-  bottom: 10px;
-  height: 4px;
+  bottom: 5px;
+  height: 2px;
   width: 100%;
   background: transparent;
 }
@@ -826,7 +834,7 @@ article a:hover:after {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: -62px -42px;
+  background-position: -79px -14px;
 }
 .external:hover:before {
   right: -6px;
@@ -905,7 +913,7 @@ article a:hover:after {
 }
 
 .menu-open {
-  background-position: -39px -14px;
+  background-position: 0 -40px;
 }
 
 #main_nav {
@@ -981,14 +989,14 @@ article a:hover:after {
 }
 
 .mobile #menu_icon {
-  background-position: -39px -14px;
+  background-position: 0 -40px;
 }
 .mobile #menu_icon.collapse {
-  background-position: 0 -14px;
+  background-position: -102px -14px;
 }
 .mobile #menu_icon.expand {
   cursor: pointer;
-  background-position: -39px -14px;
+  background-position: 0 -40px;
 }
 
 /* ===========================
@@ -1041,7 +1049,7 @@ footer .salt span:after {
   content: '';
   width: 62px;
   height: 64px;
-  background-position: 0 -42px;
+  background-position: -60px -40px;
 }
 footer .salt span:before {
   position: absolute;
@@ -1051,7 +1059,7 @@ footer .salt span:before {
   content: '';
   width: 139px;
   height: 160px;
-  background-position: 0 -106px;
+  background-position: 0 -104px;
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
@@ -1106,15 +1114,15 @@ footer a.map {
 }
 footer a[href^='mailto:'], footer a.map {
   position: relative;
-  padding-bottom: 10px;
+  /* 			padding-bottom: 6px; */
   display: inline-block;
 }
 footer a[href^='mailto:']:after, footer a.map:after {
   position: absolute;
   display: block;
   content: '';
-  bottom: 5px;
-  height: 4px;
+  bottom: 0px;
+  height: 2px;
   width: 100%;
   background: transparent;
 }
@@ -1207,7 +1215,6 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
  * =========================== */
 #banner {
   padding: 2em 0;
-  margin-bottom: 6em;
 }
 #banner .container {
   position: relative;
@@ -1411,15 +1418,6 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   width: 256px;
   padding: 1em 2em;
   min-height: 80px;
-  /* 		height: 58px; */
-  		/*
-  &:hover {
-  			&:before {
-  				background: $white;
-  				color: $black;
-  			}
-  		}
-  */
 }
 .records .label:before {
   position: absolute;
@@ -1429,7 +1427,6 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   margin-left: -95px;
   content: "meet " attr(data-name);
   padding: .8em 2em;
-  /* 			border: 3px solid $white; */
   font-weight: 500;
   z-index: 1;
   line-height: 1em;
@@ -1458,7 +1455,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 .individualentry header {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   left: -2em;
   background: rgba(0, 0, 0, 0.5);
@@ -1494,11 +1491,19 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   display: none;
 }
 
+#banner {
+  position: fixed;
+  width: 100%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
 #banner.collapsed, #banner.small {
   margin-bottom: 0;
   padding: 1em 0;
   position: fixed;
-  z-index: 2;
+  z-index: 4;
   width: 100%;
 }
 #banner.collapsed h1, #banner.collapsed strong, #banner.small h1, #banner.small strong {
@@ -1596,6 +1601,10 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 
 #banner {
   background: #ffe339;
+}
+
+#team {
+  margin-top: 17em;
 }
 
 @media (max-width: 320px) {

@@ -173,7 +173,7 @@ var offset = ($(window).scrollTop() /  ( $('.block:first').offset().top + $('.bl
 			 * Ensure that the heading attaches itself
 			 * to the last block.
 			 * =========================== */
-			if($(window).scrollTop() >= ($('#work .block:last').offset().top - $('#header').height())) {
+			if($('#work .block:last').length > 0 && $(window).scrollTop() >= ($('#work .block:last').offset().top - $('#header').height())) {
 				$('#heading').css({
 					top: $('#heading').data('top') - ($(window).scrollTop() - ($('#work .block:last').offset().top - $('#header').height()))
 				});

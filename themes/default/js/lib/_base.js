@@ -26,8 +26,9 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		$(this).addClass('current');
 	});
 	
-	$(document).on("click", "a:not([target='_blank'])", function(e){
+	$(document).on("click", "a:not([target='_blank']):not(href='#')", function(e){
 		e.preventDefault();
+		
 		Router.navigate($(this).attr('href'), {trigger: true});
 	});
 	
@@ -40,7 +41,8 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				$('footer .salt').removeClass('animate');
 			}
 			
-			if(($('.individualentry').length != 0 && $(window).scrollTop() > ($('.individualentry header').height() + $('#banner').height())) || ($('.individualentry').length == 0 && $(window).scrollTop() > $('#header').height())) {
+			if(($('.individualentry').length != 0 && $(window).scrollTop() > ($('.individualentry header').height() + $('#banner').height())) || 
+				($('.individualentry').length == 0 && $(window).scrollTop() > $('#header').height())) {
 				$('.individualentry header, #banner:not(.collapsed)').addClass('small');
 			} else {
 				$('.individualentry header, #banner:not(.collapsed)').removeClass('small');

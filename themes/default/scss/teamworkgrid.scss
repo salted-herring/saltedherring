@@ -49,17 +49,6 @@
 		width: 256px;
 		padding: 1em 2em;
 		min-height: 80px;
-/* 		height: 58px; */
-		//@include transition(all .5s);
-		
-		/*
-&:hover {
-			&:before {
-				background: $white;
-				color: $black;
-			}
-		}
-*/
 		
 		&:before {
 			position: absolute;
@@ -69,7 +58,6 @@
 			margin-left: -95px;
 			content: 'meet ' attr(data-name);
 			padding: .8em 2em;
-/* 			border: 3px solid $white; */
 			font-weight: 500;
 			z-index: 1;
 			line-height: 1em;
@@ -104,7 +92,7 @@
 	margin-top: 56px;
 	header {
 		position: absolute;
-		z-index: 1;
+		z-index: 3;
 		top: 0;
 		left: -2em;
 		background: rgba(0,0,0,0.5);
@@ -145,12 +133,16 @@
 }
 
 #banner {
+	position: fixed;
+	width: 100%;
+	@include transition(all .5s);
+	
 	&.collapsed,
 	&.small {
 		margin-bottom: 0;
 		padding: 1em 0;
 		position: fixed;
-		z-index: 2;
+		z-index: 4;
 		width: 100%;
 		
 		h1, strong {

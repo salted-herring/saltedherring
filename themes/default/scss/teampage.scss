@@ -110,6 +110,10 @@
 }
 
 
+#team {
+	margin-top: 17em;
+}
+
 @include at-breakpoint(0 3 320px) {
 	#teammember {
 		h1 {
