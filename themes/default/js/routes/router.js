@@ -8,6 +8,9 @@
  * website.
  * =========================== */
 define(['jquery', 'backbone'], function($, Backbone) {
+
+	var View = Backbone.View.extend();
+
 	var Router = Backbone.Router.extend({
 		routes: {
 			'': 'home',
@@ -234,11 +237,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
 					}
 					
 					$('#projectnav').fadeIn();
-				}
-				
-				
-			} else {
-				
+				}	
 			}
 		}
 	});
