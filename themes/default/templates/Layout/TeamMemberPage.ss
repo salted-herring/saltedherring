@@ -20,17 +20,19 @@
 	</nav>
 <section id="teammember" class="container individualentry">
 	<article>
-		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="overlay">
+		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="overlay<% if Images %><% else %> no-images<% end_if %>">
 			<h1>$getUserName</h1>
-			<span class="role">$Role</span><span class="photographer">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.getUserName</a></span>
+			<span class="role">$Role</span><% if Photographer %><span class="photographer">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.FirstName</a></span><% end_if %>
 		</header>
 		
-		<div id="memberdetails" class="detailscontainer">
+		<div id="memberdetails" class="detailscontainer<% if Images %><% else %> no-images<% end_if %>">
+			<% if Images %>
 			<div class="images">
 				<% with Images.First %>
 					<img src="$outputImage.URL" alt="$Up.Up.getUserName" class="current" />
 				<% end_with %>
 			</div>
+			<% end_if %>
 			
 			<div class="row" id="contentarea">
 				<div class="content grid_2">

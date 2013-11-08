@@ -99,9 +99,13 @@ define(['jquery', 'backbone'], function($, Backbone) {
 					if($.isEmptyObject(that.teamImages[member])) {
 						// get image
 						$.get(window.location.href + '/portraits/', function(response, status, xhr) {
-							that.teamImages[member] = typeof response == 'string' ? JSON.parse(response) : response;
+							data = response.data;
+							if(!response.data) {
+								data = [];
+							}
+							that.teamImages[member] = data;
 							that.loadPortraits(member);
-						});
+						}, 'json');
 					} else {
 						that.loadPortraits(member);
 					}

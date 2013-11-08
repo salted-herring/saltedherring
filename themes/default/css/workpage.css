@@ -1474,6 +1474,10 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   color: white;
   margin: 0;
 }
+.individualentry header.no-images {
+  position: relative;
+  /* 			margin-left: -2em; */
+}
 .individualentry header span {
   font-family: 'Times', serif;
   font-style: italic;

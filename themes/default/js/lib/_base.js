@@ -51,14 +51,14 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				$('footer .salt').removeClass('animate');
 			}
 			
-			if($('header.overlay').length > 0) {
+			if($('header.overlay:not(.no-images)').length > 0) {
 				/* ===========================
 				 * Animation for overlay as seen
 				 * on work & team.
 				 * =========================== */
 				var headerHeight = $('header.overlay').outerHeight(true);
 						
-				if($(window).scrollTop() < (headerHeight + 100)) {
+				if($(window).scrollTop() < (headerHeight)) {
 					$('.detailscontainer').removeAttr('style');
 					$('.detailscontainer, footer').addClass('fixedcontainer');
 					$('.overlay').removeClass('fixedoverlay');
@@ -67,7 +67,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				} else {
 					$('.overlay').addClass('fixedoverlay');
 					if($('.detailscontainer').is('.fixedcontainer')) {
-						$('.detailscontainer').css('margin-top', headerHeight + 160);
+						$('.detailscontainer').css('margin-top', headerHeight + 60);
 					}
 					
 					$('.detailscontainer, footer').removeClass('fixedcontainer');

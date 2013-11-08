@@ -41,15 +41,19 @@ class TeamMember extends BaseDBO {
 	}
 	
 	public function getOtherPortraits() {
-		$images = $this->Images()->exclude(array('ID' => $this->Images()->first()->ID));
+		if($this->Images()->first()) {
+			$images = $this->Images()->exclude(array('ID' => $this->Images()->first()->ID));
 		
-		$portraits = array();
-		
-		foreach($images as $image) {
-			array_push($portraits, $image->outputImage()->URL);
+			$portraits = array();
+			
+			foreach($images as $image) {
+				array_push($portraits, $image->outputImage()->URL);
+			}
+			
+			return json_encode(array('data' => $portraits));
 		}
 		
-		return json_encode($portraits);
+		return json_encode(array('data' => NULL));
 	}
 	
 	public function getCMSFields() {

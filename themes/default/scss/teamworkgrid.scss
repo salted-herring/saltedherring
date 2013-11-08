@@ -101,6 +101,11 @@
 		color: $white;
 		margin: 0;
 		
+		&.no-images {
+			position: relative;
+/* 			margin-left: -2em; */
+		}
+		
 		span {
 			@include minion;
 			font-size: (24/$font-size)+em;
