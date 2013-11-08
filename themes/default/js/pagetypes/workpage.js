@@ -5,7 +5,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'router'], function($, Bac
 	$(function() {
 		$(document).on('click', '.fullstory', function(e) {
 			e.preventDefault();
-			$('.content p').toggle();
+			$('.content p').toggle(0, function() { $('.detailscontainer').parent().height($('.detailscontainer').height())} );
 			$('html,body').animate({
 				scrollTop: $('.content p:first').offset().top - $('#banner').height() - $('#header').height() - $('blockquote').height() - 128
 			});

@@ -100,6 +100,18 @@
 	}
 }
 
+.images {
+	height: 620px;
+	img {
+		position: absolute;
+		z-index: 0;
+		
+		&.current {
+			z-index: 1;
+		}
+	}
+}
+
 #contentarea {
 	margin-top: 5em;
 	margin-bottom: 2em;
@@ -112,6 +124,12 @@
 
 #team {
 	margin-top: 17em;
+}
+
+#teammember {
+	article {
+		width: inherit;
+	}
 }
 
 @include at-breakpoint(0 3 320px) {

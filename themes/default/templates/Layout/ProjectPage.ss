@@ -7,25 +7,26 @@
 	</div>
 </div>
 <% control Project %>
-<div class="contain">
-	<section id="project" class="individualentry">
-		<nav id="projectnav">
-			<a href="#" class="previous">
-				<strong>Title</strong>
-				<em>Tagline</em>
-			</a>
-			<a href="#" class="next">
-				<strong>Title</strong>
-				<em>Tagline</em>
-			</a>
-		</nav>
-		<div class="container">
-			
-			<header  style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);">
-				<h1>$Title</h1>
-				<span class="tagLine">$TagLine</span>
-			</header>
-			
+
+<section id="project" class="individualentry">
+	<nav id="projectnav">
+		<a href="#" class="previous">
+			<strong>Title</strong>
+			<em>Tagline</em>
+		</a>
+		<a href="#" class="next">
+			<strong>Title</strong>
+			<em>Tagline</em>
+		</a>
+	</nav>
+	<div class="container">
+		
+		<header  style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="overlay">
+			<h1>$Title</h1>
+			<span class="tagLine">$TagLine</span>
+		</header>
+		
+		<div id="projectdetails" class="detailscontainer">
 			<% if getFirstImage %>
 			<div class="media">
 				<img src="$getFirstImage.outputImage.URL" alt="" />
@@ -69,26 +70,28 @@
 					<% end_if %>
 				</aside>
 			</div>
-		</div>
-		<% if getAllMedia %>
-		<div class="container" id="media">
-			<% loop getAllMedia %>
-				<% if $Type = SWF %>
-				<img src="$outputFallback.URL" alt="" />
-				<% else %>
-					<% if $Type = Vimeo %>
-						<img src="$outputFallback.URL" alt="" />
+			
+			<% if getAllMedia %>
+			<div id="media">
+				<% loop getAllMedia %>
+					<% if $Type = SWF %>
+					<img src="$outputFallback.URL" alt="" />
 					<% else %>
-						<% with $outputImage %>
-						<img src="$URL" width="$Width" height="$Height" alt="$Up.Title" />
-						<% end_with %>
+						<% if $Type = Vimeo %>
+							<img src="$outputFallback.URL" alt="" />
+						<% else %>
+							<% with $outputImage %>
+							<img src="$URL" width="$Width" height="$Height" alt="$Up.Title" />
+							<% end_with %>
+						<% end_if %>
 					<% end_if %>
-				<% end_if %>
-			<% end_loop %>
+				<% end_loop %>
+			</div>
+			<% end_if %>
 		</div>
-		<% end_if %>
-	</section>
-</div>
+	</div>
+	
+</section>
 <% end_control %>
 
 <% if Project.RelatedProjects %>

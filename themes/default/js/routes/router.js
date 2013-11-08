@@ -26,6 +26,8 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			this.views = {}; // cached views are added here.
 			this.prev = '';
 			this.work = {}; // add here each cached projects. key should be the category - or 'all' for default.
+			this.team = []; // add the cached team members.
+			this.teamImages = {}; // add team portraits here.
 			this.currentCategory = '';
 			
 			// build regex from the main nav.
@@ -62,11 +64,11 @@ define(['jquery', 'backbone'], function($, Backbone) {
 						// else get the json file.
 						cat = (response == '' || response == null) ? cat = 'all' : response;
 						if(that.work[cat]) {
-							that.navigation(cat);
+							that.workNavigation(cat);
 						} else {
 							$.get(that.root + 'json/' + cat + '.json', function(response, status, xhr) {
 								that.work[cat] = typeof response == 'string' ? JSON.parse(response) : response;
-								that.navigation(cat);
+								that.workNavigation(cat);
 							});
 						}
 					});
@@ -88,10 +90,31 @@ define(['jquery', 'backbone'], function($, Backbone) {
 		},
 		
 		team: function(member) {
+			
 			if(member == null) {
 				this.loadPage('teampage', '/team/');
 			} else {
-				this.loadPage('teampage', '/team/' + member);
+				var that = this;
+				this.loadPage('teampage', '/team/' + member, function() {
+					if($.isEmptyObject(that.teamImages[member])) {
+						// get image
+						$.get(window.location.href + '/portraits/', function(response, status, xhr) {
+							that.teamImages[member] = typeof response == 'string' ? JSON.parse(response) : response;
+							that.loadPortraits(member);
+						});
+					} else {
+						that.loadPortraits(member);
+					}
+				
+					if(that.team.length) {
+						that.teamNavigation(member);
+					} else {
+						$.get(that.root + 'json/team.json', function(response, status, xhr) {
+							that.team = typeof response == 'string' ? JSON.parse(response) : response;
+							that.teamNavigation(member);
+						});
+					}
+				});
 			}
 		},
 		
@@ -185,7 +208,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			$('head').prepend(meta);
 		},
 		
-		navigation: function(category) {
+		workNavigation: function(category) {
 			if(category in this.work) {
 				var previous = null,
 					next = null,
@@ -220,24 +243,66 @@ define(['jquery', 'backbone'], function($, Backbone) {
 						}
 					}
 					
-					$('#projectnav a').hide();					
-					
-					if(previous) {
-						$('#projectnav .previous strong').text(previous.Title);
-						$('#projectnav .previous em').text(previous.TagLine);
-						$('#projectnav .previous').attr('href', '/work/project/' + previous.URLSegment);
-						$('#projectnav .previous').show();
-					}
-					
-					if(next) {
-						$('#projectnav .next strong').text(next.Title);
-						$('#projectnav .next em').text(next.TagLine);
-						$('#projectnav .next').attr('href', '/work/project/' + next.URLSegment);
-						$('#projectnav .next').show();
-					}
-					
-					$('#projectnav').fadeIn();
+					this.showNav(next, previous, '/work/project/');
 				}	
+			}
+		},
+		
+		teamNavigation: function(member) {
+			var previous = null,
+				next = null,
+				current = null;
+				
+			
+					
+			for(var i in this.team) {
+				if(current != null) {
+					previous = current;
+				}
+				
+				current = this.team[i];
+				iplus = parseInt(i) + 1;
+				
+				if(iplus < this.team.length) {
+					next = this.team[iplus] || null;
+				} else {
+					next = null;
+				}
+				
+				if(current.URLSegment == member) {
+					break;
+				}
+			}
+			
+			this.showNav(next, previous, '/team/');	
+		},
+		
+		showNav: function(next, previous, base) {
+			$('#projectnav a').hide();					
+					
+			if(previous) {
+				$('#projectnav .previous strong').text(previous.Title);
+				$('#projectnav .previous em').text(previous.TagLine);
+				$('#projectnav .previous').attr('href', base + previous.URLSegment);
+				$('#projectnav .previous').show();
+			}
+			
+			if(next) {
+				$('#projectnav .next strong').text(next.Title);
+				$('#projectnav .next em').text(next.TagLine);
+				$('#projectnav .next').attr('href', base + next.URLSegment);
+				$('#projectnav .next').show();
+			}
+			
+			$('#projectnav').fadeIn();
+		},
+		
+		loadPortraits: function(member) {
+			if(this.teamImages[member]) {
+				for(var image in this.teamImages[member]) {
+					$('.images').append($('<img/>').attr('src', this.teamImages[member][image]));
+				}
+				$('.images').addClass('loaded');
 			}
 		}
 	});

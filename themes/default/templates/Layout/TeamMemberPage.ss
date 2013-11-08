@@ -8,43 +8,54 @@
 </div>
 <div class="contain">
 	<% control Member %>
+	<nav id="projectnav">
+		<a href="#" class="previous">
+			<strong>Title</strong>
+			<em>Tagline</em>
+		</a>
+		<a href="#" class="next">
+			<strong>Title</strong>
+			<em>Tagline</em>
+		</a>
+	</nav>
 <section id="teammember" class="container individualentry">
 	<article>
-		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);">
+		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="overlay">
 			<h1>$getUserName</h1>
 			<span class="role">$Role</span><span class="photographer">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.getUserName</a></span>
 		</header>
 		
-		<div class="images">
-			<% with Images.First %>
-				<img src="$outputImage.URL" alt="$Up.getUserName" />
-			<% end_with %>
-		</div>
-		
-		<div class="row" id="contentarea">
-			<div class="content grid_2">
-				<% if Intro %><blockquote>$Intro</blockquote><% end_if %>
-			
-				$Bio
+		<div id="memberdetails" class="detailscontainer">
+			<div class="images">
+				<% with Images.First %>
+					<img src="$outputImage.URL" alt="$Up.Up.getUserName" class="current" />
+				<% end_with %>
 			</div>
 			
-			<aside class="grid_1">
-				<% if Role %>
-				<strong>Role:</strong>
-				<span>$Role</span>
-				<% end_if %>
+			<div class="row" id="contentarea">
+				<div class="content grid_2">
+					<% if Intro %><blockquote>$Intro</blockquote><% end_if %>
+					$Bio
+				</div>
 				
-				<% if Email || MobileNumber %>
-					<strong class="contact">Contact:</strong>
-					<% if MobileNumber %>
-					<a href="tel:$MobileNumber">$MobileNumber</a>
+				<aside class="grid_1">
+					<% if Role %>
+					<strong>Role:</strong>
+					<span>$Role</span>
 					<% end_if %>
 					
-					<% if Email %>
-					<a href="mailto:$Email">$Email</a>
+					<% if Email || MobileNumber %>
+						<strong class="contact">Contact:</strong>
+						<% if MobileNumber %>
+						<a href="tel:$MobileNumber">$MobileNumber</a>
+						<% end_if %>
+						
+						<% if Email %>
+						<a href="mailto:$Email">$Email</a>
+						<% end_if %>
 					<% end_if %>
-				<% end_if %>
-			</aside>
+				</aside>
+			</div>
 		</div>
 	</article>
 	

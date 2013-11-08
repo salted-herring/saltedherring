@@ -92,19 +92,10 @@ article a {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	
-	
-	
-	/*
-background-color: $white;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-*/
-	
 	span {
 		background-color: $white;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-/* 		color: $black; */
 	}
 }
 
@@ -167,6 +158,21 @@ background-color: $white;
 			color: $black;
 		}
 	}
+}
+
+.fixedcontainer {
+	position: fixed;
+	width: inherit;
+	
+	.row {
+		width: inherit;
+	}
+}
+.unfixed {
+/* 	margin-top: 317px; */
+}
+.fixedoverlay {
+	visibility: hidden;
 }
 
 

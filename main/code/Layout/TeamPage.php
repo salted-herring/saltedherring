@@ -20,7 +20,7 @@ class TeamPage_Controller extends Page_Controller {
 	
 	public static $url_handlers = array (
 		'meta' => 'meta',
-		'$teamMember!/$meta' => 'teamMember'
+		'$teamMember!/$arg' => 'teamMember'
 	);
 	
 	public function init() {
@@ -39,8 +39,14 @@ class TeamPage_Controller extends Page_Controller {
 	
 	public function teamMember($request) {
 		
-		if($request->param('meta')) {
-			return $this->meta($request);
+		if($request->param('arg')) {
+			if($request->param('arg') == 'meta') {
+				return $this->meta($request);
+			} else if($request->param('arg') == 'portraits') {
+				return $this->getPortraits();
+			} else {
+				return false;
+			}			
 		}
 		
 		$teamMember = DataObject::get_one('TeamMember', "URLSegment='" . $request->param('teamMember') . "'");
@@ -59,5 +65,16 @@ class TeamPage_Controller extends Page_Controller {
 	
 	public function getTeam() {
 		return TeamMember::get();
+	}
+	
+	public function getPortraits() {
+		if($this->request->param('teamMember')) {
+			$member = TeamMember::get()->filter('URLSegment', $this->request->param('teamMember'));
+			if($member) {
+				return $member->first()->getOtherPortraits();
+			}
+		}
+		
+		return false;
 	}
 }

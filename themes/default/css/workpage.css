@@ -808,17 +808,11 @@ article a:hover:after {
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  	/*
-  background-color: $white;
-  		-webkit-background-clip: text;
-  		-webkit-text-fill-color: transparent;
-  */
 }
 .link span, .external span, #articleLinks .website span, #articleLinks a span {
   background-color: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* 		color: $black; */
 }
 
 .external, #articleLinks .website {
@@ -864,6 +858,22 @@ article a:hover:after {
   margin-right: 10px;
   content: '/';
   color: black;
+}
+
+.fixedcontainer {
+  position: fixed;
+  width: inherit;
+}
+.fixedcontainer .row {
+  width: inherit;
+}
+
+.unfixed {
+  /* 	margin-top: 317px; */
+}
+
+.fixedoverlay {
+  visibility: hidden;
 }
 
 /* ===========================
@@ -1494,6 +1504,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 #banner {
   position: fixed;
   width: 100%;
+  z-index: 10;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -1516,30 +1527,6 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   text-align: center;
   padding: 0;
   width: auto;
-}
-
-.filters {
-  position: absolute;
-  right: 2em;
-  bottom: 0em;
-  padding-bottom: 0;
-  width: 400px;
-}
-.filters strong {
-  display: block;
-  margin-bottom: 1em;
-  font-weight: 500;
-}
-
-#banner {
-  background: #36cdf5;
-}
-
-#work {
-  margin-top: 17em;
-}
-#work .label:before {
-  content: 'see project';
 }
 
 .arrow, #projectnav .next:after, #projectnav .previous:before {
@@ -1617,6 +1604,30 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 #projectnav .previous:hover:before {
   left: 1.2em;
   top: 1.5em;
+}
+
+.filters {
+  position: absolute;
+  right: 2em;
+  bottom: 0em;
+  padding-bottom: 0;
+  width: 400px;
+}
+.filters strong {
+  display: block;
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+#banner {
+  background: #36cdf5;
+}
+
+#work {
+  margin-top: 17em;
+}
+#work .label:before {
+  content: 'see project';
 }
 
 /* ***************

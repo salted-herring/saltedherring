@@ -808,17 +808,11 @@ article a:hover:after {
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  	/*
-  background-color: $white;
-  		-webkit-background-clip: text;
-  		-webkit-text-fill-color: transparent;
-  */
 }
 .link span, .external span {
   background-color: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* 		color: $black; */
 }
 
 .external {
@@ -864,6 +858,22 @@ article a:hover:after {
   margin-right: 10px;
   content: '/';
   color: black;
+}
+
+.fixedcontainer {
+  position: fixed;
+  width: inherit;
+}
+.fixedcontainer .row {
+  width: inherit;
+}
+
+.unfixed {
+  /* 	margin-top: 317px; */
+}
+
+.fixedoverlay {
+  visibility: hidden;
 }
 
 /* ===========================

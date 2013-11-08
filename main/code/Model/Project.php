@@ -169,7 +169,7 @@ class Project extends BaseDBO {
 			foreach($projects as $project) {
 				array_push($current['Projects'], array(
 					'Title' => $project->Title,
-					'TagLine' => $project->TagLine,
+					'TagLine' => htmlentities($project->TagLine),
 					'URLSegment' => $project->URLSegment
 				));
 			}
@@ -188,7 +188,7 @@ class Project extends BaseDBO {
 		foreach(Project::get() as $project) {
 			array_push($all, array(
 				'Title' => $project->Title,
-				'TagLine' => $project->TagLine,
+				'TagLine' => htmlentities($project->TagLine),
 				'URLSegment' => $project->URLSegment
 			));
 		}

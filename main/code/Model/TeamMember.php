@@ -40,6 +40,18 @@ class TeamMember extends BaseDBO {
 		return $this->getUserName();
 	}
 	
+	public function getOtherPortraits() {
+		$images = $this->Images()->exclude(array('ID' => $this->Images()->first()->ID));
+		
+		$portraits = array();
+		
+		foreach($images as $image) {
+			array_push($portraits, $image->outputImage()->URL);
+		}
+		
+		return json_encode($portraits);
+	}
+	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		
@@ -72,5 +84,28 @@ class TeamMember extends BaseDBO {
 		}
 		
 		return $fields;
+	}
+	
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+		
+		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
+		$data = array();
+		
+		foreach(TeamMember::get() as $member) {
+			array_push($data, array(
+				'Title' => $member->getUserName(),
+				'TagLine' => htmlentities($member->Role),
+				'URLSegment' => $member->URLSegment
+			));
+		}
+		
+		try {
+			$handle = fopen($dir . 'team.json', 'w');
+			fwrite($handle, json_encode($data));
+			fclose($handle);
+		} catch(Exception $e) {
+			user_error($e, E_USER_WARNING);
+		}
 	}
 }
