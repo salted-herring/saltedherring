@@ -7,7 +7,7 @@
  */
 
 
-define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
+define(['jquery', 'backbone', 'router', 'workrouter'], function($, Backbone, Router, WorkRouter) {
 	
 	$(function() {
 		

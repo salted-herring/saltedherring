@@ -7,7 +7,10 @@ require.config({
 		'modernizr': 'themes/default/js/lib/modernizr',
 		'_base': 'themes/default/js/lib/_base',
 		'svg': 'themes/default/js/lib/svg',
-		'router': 'themes/default/js/routes/router'
+		'router': 'themes/default/js/routes/router',
+		
+		'workrouter': 'themes/default/js/routes/workRouter',
+		'defaultrouter': 'themes/default/js/routes/defaultRouter'
 	},
 	shim: {
 		backbone: {
@@ -18,9 +21,17 @@ require.config({
 			exports: '_'
 		},
 		_base: {
-			deps: ['jquery', 'router', 'backbone']
+			deps: ['jquery', 'backbone', 'workrouter']
 		},
 		router: {
+			deps: ['jquery', 'backbone'],
+			exports: 'Router'
+		},
+		workrouter: {
+			deps: ['jquery', 'underscore', 'backbone', 'defaultrouter'],
+			exports: 'Router'
+		},
+		defaultrouter: {
 			deps: ['jquery', 'backbone'],
 			exports: 'Router'
 		}
