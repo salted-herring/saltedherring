@@ -17,13 +17,21 @@ define(['jquery', 'backbone'], function($, Backbone) {
 			'about(/)': 'about'
 		},
 		
-		initiailize: function(options) {
+		initialize: function(options) {
 			this.root = 'themes/default/';
-			
-			this.view = this.options.view || { loadPage: function(){} };
+						
+			this.view = typeof options == 'undefined' ? { loadPage: function(){} } : (view in options ? options.view : { loadPage: function(){} });
 			
 			// build regex from the main nav.
 			this.regex = new RegExp(($('#main_nav a').map(function(){ return $(this).text().toLowerCase(); })).get().join('|'));
+		},
+		
+		navigate: function() {
+			Backbone.Router.prototype.navigate.apply(this, arguments);
+			
+			$('html, body').animate({
+				scrollTop: 0
+			}, 500);
 		},
 		
 		home: function() {
@@ -31,6 +39,7 @@ define(['jquery', 'backbone'], function($, Backbone) {
 		},
 		
 		about: function() {
+			alert();
 			this.view.loadPage('aboutpage', '/about/');
 		},
 		

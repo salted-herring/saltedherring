@@ -96,10 +96,46 @@
 		top: 0;
 		left: -2em;
 		background: rgba(0,0,0,0.5);
-		width: 800px;
-		padding: 3.5em 5em 5em 5em;
+		width: 960px;//800px;
+		height: 235px;
 		color: $white;
 		margin: 0;
+		
+		.details {
+			padding: 3.5em 5em 5em 5em;
+			@include transform(translateZ(0));
+		}
+		
+		.details {
+			@include transition_delay(1s);
+			@include transition(all .2s);
+		}
+		
+		
+		
+		&.small {
+			height: 78px;
+			position: fixed;
+			left: 50%;
+			top: 102px;
+			margin-left: -30em;
+			
+			.details {
+				padding: 1em 5em;
+			}
+			h1 {
+				font-size: (22/$font-size)+em;
+				margin: 0;
+			}
+			span {
+				font-size: 1em;
+			}
+			
+			.photographer {
+				display: none;
+			}
+		}
+		
 		
 		&.no-images {
 			position: relative;
@@ -115,25 +151,6 @@
 			float: right;
 			font-size: $font-size+px;
 		}
-		
-		&.small {
-			padding: 1em 5em;
-			position: fixed;
-			left: 50%;
-			top: 102px;
-			margin-left: -30em;
-			h1 {
-				font-size: (22/$font-size)+em;
-				margin: 0;
-			}
-			span {
-				font-size: 1em;
-			}
-			
-			.photographer {
-				display: none;
-			}
-		}
 	}
 }
 
@@ -141,7 +158,7 @@
 	position: fixed;
 	width: 100%;
 	z-index: 10;
-	@include transition(all .5s);
+	//@include transition(padding .5s);
 	
 	&.collapsed,
 	&.small {
@@ -193,6 +210,7 @@
 		color: $white;
 		padding: (24/$font-size)+em 0 (24/$font-size)+em 1.2em;
 		height: 48px;
+		@include transition(none);
 		
 		&:hover {
 			strong,em {

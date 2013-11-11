@@ -128,7 +128,7 @@ class BaseMedia extends DataObject {
 		return true;
 	}
 	
-	public static $default_sort = 'SortOrder ASC, ID DESC';
+	public static $default_sort = 'SortOrder ASC';
 	
 	public static $has_one = array(
 		'Project' => 'Project'
@@ -292,6 +292,8 @@ class SliderImage extends ImageMedia {
 
 class SWFMedia extends MediaWithFallback {
 	public static $db = array(
+		'width' => 'Int',
+		'height' => 'Int'
 	);
 	
 	public static $has_one = array(

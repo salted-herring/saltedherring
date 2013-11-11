@@ -2,7 +2,8 @@
 
 require(['jquery', 'backbone', 'underscore', '_base', 'router'], function($, Backbone, _, undefined, Router) {
 	
-	$(function() {
+	$(function() {		
+		
 		$(document).on('click', '.fullstory', function(e) {
 			e.preventDefault();
 			$('.content p').toggle(0, function() { $('.detailscontainer').parent().height($('.detailscontainer').height())} );

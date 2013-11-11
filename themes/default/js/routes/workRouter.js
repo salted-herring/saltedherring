@@ -9,13 +9,62 @@
  * =========================== */
 
 define(['jquery', 'underscore', 'backbone', 'defaultrouter'], function($, _, Backbone, Router) {
+	var cache = Backbone.Collection.extend();
+	window.Cache = new cache();
 	
+	var WorkView = Backbone.View.extend({
+		render: function(url) {
+		
+			var record = window.Cache.findWhere({urlsegment: url});
+			
+			if(record) {
+				$(this.el).html(record.html);
+			} else {
+				
+			}
+			//$(this.el).html(html);
+		}
+	});
 	
+	var WorkModel = Backbone.Model.extend({
+		constructor: function(options) {
+			options || (options = {});
+			
+			this.html = options.html ? options.html : '';
+			this.urlsegment = options.urlsegment ? options.urlsegment : '';
+		}
+	});
 	
-	var WorkRouter = {
+	/*
+var WorkRouter = function(router) {
+		this.router = router;
+		
+		for(key in router) {
+			this[key] = router[key];
+		}
+		
+		_.extend(this.prototype, {
+			work: 
+		});
+		
+		_.extend(this.routes, {
+			'work(/)': 'work',
+			'work/:section/:fragment(/)': 'work'
+		});
+		
+		
+	};
+*/
+	
+	var WorkRouter = Backbone.Router.extend({
+		routes: {
+			'work(/)': 'work',
+			'work/:section/:fragment(/)': 'work'
+		},
 		work: function(section, fragment) {
 			var that = this;
-			var callback = function() {
+			/*
+var callback = function() {
 			
 				if(window.location.href.match(/work\/project\//) != null) {
 					$.get('/work/getCurrentSession', function(response, status, xhr) {
@@ -39,27 +88,37 @@ define(['jquery', 'underscore', 'backbone', 'defaultrouter'], function($, _, Bac
 					
 				}
 			};
+*/
 			
 			if(section == null && fragment == null) {
 				$.get('/work/clearSession');
-				this.loadPage('workpage', '/work/', callback);
+				this.view.render('/work/');
+				//this.view.loadPage('workpage', '/work/', callback);
 			} else {
-				this.loadPage('workpage', '/work/' + section + '/' + fragment, callback);
+				this.view.render('/work/' + section + '/' + fragment);
+				//this.loadPage('workpage', '/work/' + section + '/' + fragment, callback);
 			}
 			
 			if(section == 'category') {
 				this.currentCategory = fragment;
 			}
+		}, 
+		initialize: function() {
+			this.view = new WorkView({el: $('#content')});
 		}
-	};
-	
-	_.extend(WorkRouter, new Router());
-	_.extend(WorkRouter.routes, {
-		'work(/)': 'work',
-		'work/:section/:fragment(/)': 'work'
 	});
 	
-	window.Router = WorkRouter;
 	
-	return WorkRouter;
+	
+	
+	//window.Router = new WorkRouter();
+	
+	var route = new WorkRouter();//new Router());
+	
+	console.log(route);
+	
+	//var route = new WorkRouter(Router);
+	Backbone.history.start({pushState: true});
+	
+	return route;
 });

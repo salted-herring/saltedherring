@@ -7,7 +7,9 @@
  */
 
 
-define(['jquery', 'backbone', 'router', 'workrouter'], function($, Backbone, Router, WorkRouter) {
+define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
+
+/* 	console.log(WorkModel); */
 	
 	$(function() {
 		
@@ -57,17 +59,20 @@ define(['jquery', 'backbone', 'router', 'workrouter'], function($, Backbone, Rou
 				 * on work & team.
 				 * =========================== */
 				var headerHeight = $('header.overlay').outerHeight(true);
-						
-				if($(window).scrollTop() < (headerHeight)) {
+					
+				if($(window).scrollTop() < (headerHeight + 78)) {
 					$('.detailscontainer').removeAttr('style');
 					$('.detailscontainer, footer').addClass('fixedcontainer');
-					$('.overlay').removeClass('fixedoverlay');
-					
 					$('.detailscontainer').parent().height($('.detailscontainer').height());
+					
+					if($(window).scrollTop() > 157) {
+						$('.overlay').addClass('small');
+					} else {
+						$('.overlay').removeClass('small');
+					}
 				} else {
-					$('.overlay').addClass('fixedoverlay');
 					if($('.detailscontainer').is('.fixedcontainer')) {
-						$('.detailscontainer').css('margin-top', headerHeight + 60);
+						$('.detailscontainer').css('margin-top', headerHeight + 135);
 					}
 					
 					$('.detailscontainer, footer').removeClass('fixedcontainer');
@@ -92,14 +97,24 @@ define(['jquery', 'backbone', 'router', 'workrouter'], function($, Backbone, Rou
 			}
 			
 			
-			
-			
-			// lock next/prev project navigation on last image.
-			/*
-if() {
-				
+			/* ===========================
+			 * Hide navigation at bottom 
+			 * of the page.
+			 * =========================== */
+			if($('#projectnav').length > 0) {
+				var offset = $('#content').offset().top + $('#content').height() - $('#footer').outerHeight(true) - 1000;
+				//console.log($('#content').offset().top + $('#content').height() - $('#footer').outerHeight(true) - 200, $(window).scrollTop());
+				if($(window).scrollTop() >= offset) {
+					//alert(0 + (400 - $(window).scrollTop()));
+					$('#projectnav .next').css({
+						right: 0 + ((offset - $(window).scrollTop()) / 10)
+					});
+					
+					$('#projectnav .previous').css({
+						left: 0 + ((offset - $(window).scrollTop()) / 10)
+					});
+				}
 			}
-*/
 		}).scroll();
 	});
 });

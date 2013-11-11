@@ -9,8 +9,12 @@ require.config({
 		'svg': 'themes/default/js/lib/svg',
 		'router': 'themes/default/js/routes/router',
 		
-		'workrouter': 'themes/default/js/routes/workRouter',
-		'defaultrouter': 'themes/default/js/routes/defaultRouter'
+/* 		'workrouter': 'themes/default/js/routes/workRouter', */
+		'defaultrouter': 'themes/default/js/routes/defaultRouter',
+		
+		
+		'defaultmodel': 'themes/default/js/models/defaultModel',
+		'swfobject': 'themes/default/js/lib/swfobject'
 	},
 	shim: {
 		backbone: {
@@ -21,19 +25,27 @@ require.config({
 			exports: '_'
 		},
 		_base: {
-			deps: ['jquery', 'backbone', 'workrouter']
+			deps: ['jquery', 'backbone', 'router']
 		},
+		
 		router: {
-			deps: ['jquery', 'backbone'],
-			exports: 'Router'
+			deps: ['jquery', 'underscore', 'backbone', 'swfobject'],
+			exports: 'WorkRouter'
 		},
-		workrouter: {
+		/*
+workrouter: {
 			deps: ['jquery', 'underscore', 'backbone', 'defaultrouter'],
-			exports: 'Router'
+			exports: 'WorkRouter'
 		},
+*/
 		defaultrouter: {
 			deps: ['jquery', 'backbone'],
 			exports: 'Router'
+		},
+		
+		defaultmodel: {
+			deps: ['jquery', 'backbone'],
+			exports: 'Model'
 		}
 	}
 });

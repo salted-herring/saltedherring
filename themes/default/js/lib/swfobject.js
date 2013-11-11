@@ -1,0 +1,1 @@
+../components/swfobject-amd/swfobject.js

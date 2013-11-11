@@ -22,8 +22,10 @@
 	<div class="container">
 		
 		<header  style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="overlay">
-			<h1>$Title</h1>
-			<span class="tagLine">$TagLine</span>
+			<div class="details">
+				<h1>$Title</h1>
+				<span class="tagLine">$TagLine</span>
+			</div>
 		</header>
 		
 		<div id="projectdetails" class="detailscontainer">
@@ -75,13 +77,16 @@
 			<div id="media">
 				<% loop getAllMedia %>
 					<% if $Type = SWF %>
-					<img src="$outputFallback.URL" alt="" />
+						<div class="image swf notloaded" data-url="$outputFallback.URL" data-width="$outputFallback.Width" data-height="$outputFallback.Height" data-swf="$File.URL" data-swf-width="$width" data-swf-height="$height" data-alt="$Up.Title" id="media_$Pos">
+							<img src="$outputFallback.URL" width="$outputFallback.Width" height="$outputFallback.Height" alt="$Up.Title" />
+						</div>
 					<% else %>
 						<% if $Type = Vimeo %>
-							<img src="$outputFallback.URL" alt="" />
+							<div class="image vimeo notloaded" data-url="$outputFallback.URL" data-width="$outputFallback.Width" data-vimeo="$vimeoID" data-height="$outputFallback.Height" data-alt="$Up.Title" id="media_$Pos"></div>
 						<% else %>
 							<% with $outputImage %>
-							<img src="$URL" width="$Width" height="$Height" alt="$Up.Title" />
+								$outputImage.Height
+								<div class="image notloaded" data-url="$URL" data-width="$Width" data-height="$Height" data-alt="$Up.Title" id="media_$Pos"></div>
 							<% end_with %>
 						<% end_if %>
 					<% end_if %>

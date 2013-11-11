@@ -1469,10 +1469,48 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   top: 0;
   left: -2em;
   background: rgba(0, 0, 0, 0.5);
-  width: 800px;
-  padding: 3.5em 5em 5em 5em;
+  width: 960px;
+  height: 235px;
   color: white;
   margin: 0;
+}
+.individualentry header .details {
+  padding: 3.5em 5em 5em 5em;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.individualentry header .details {
+  -webkit-transition-delay: 1s;
+  -moz-transition-delay: 1s;
+  -o-transition-delay: 1s;
+  transition-delay: 1s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.individualentry header.small {
+  height: 78px;
+  position: fixed;
+  left: 50%;
+  top: 102px;
+  margin-left: -30em;
+}
+.individualentry header.small .details {
+  padding: 1em 5em;
+}
+.individualentry header.small h1 {
+  font-size: 1.375em;
+  margin: 0;
+}
+.individualentry header.small span {
+  font-size: 1em;
+}
+.individualentry header.small .photographer {
+  display: none;
 }
 .individualentry header.no-images {
   position: relative;
@@ -1487,32 +1525,11 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   float: right;
   font-size: 16px;
 }
-.individualentry header.small {
-  padding: 1em 5em;
-  position: fixed;
-  left: 50%;
-  top: 102px;
-  margin-left: -30em;
-}
-.individualentry header.small h1 {
-  font-size: 1.375em;
-  margin: 0;
-}
-.individualentry header.small span {
-  font-size: 1em;
-}
-.individualentry header.small .photographer {
-  display: none;
-}
 
 #banner {
   position: fixed;
   width: 100%;
   z-index: 10;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
 }
 #banner.collapsed, #banner.small {
   margin-bottom: 0;
@@ -1560,6 +1577,10 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   color: white;
   padding: 1.5em 0 1.5em 1.2em;
   height: 48px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 #projectnav a:hover strong, #projectnav a:hover em {
   display: block;
