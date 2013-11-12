@@ -20,6 +20,7 @@
 
 #work {
 	margin-top: 17em;
+	@include transition(all .5s);
 	
 	.label {
 		&:before {

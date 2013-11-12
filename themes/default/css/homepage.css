@@ -816,7 +816,7 @@ article a:hover:after {
 }
 
 .external {
-  background: #36cdf5;
+  background: #00bbde;
 }
 .external:before {
   position: absolute;
@@ -824,7 +824,7 @@ article a:hover:after {
   content: '';
   right: -3px;
   top: -3px;
-  background-color: #36cdf5;
+  background-color: #00bbde;
   width: 23px;
   height: 23px;
   z-index: 2;
@@ -975,7 +975,7 @@ article a:hover:after {
   transition: background 0.5s;
 }
 #main_nav a:hover, #main_nav a.current {
-  color: #36cdf5;
+  color: #00bbde;
 }
 #main_nav a:hover:after, #main_nav a.current:after {
   background: black;
@@ -986,7 +986,7 @@ article a:hover:after {
   z-index: 120;
   right: 1em;
   top: .75em;
-  color: #36cdf5;
+  color: #00bbde;
   font-size: 1.125em;
   text-transform: uppercase;
   line-height: 1em;
@@ -1014,7 +1014,7 @@ article a:hover:after {
  * =========================== */
 #content {
   padding-top: 2.9em;
-  min-height: 100%;
+  /* 		min-height: 100%; */
   /* 		width: 100%; */
 }
 
@@ -1036,9 +1036,12 @@ footer {
   padding: 0;
   margin: 0;
 }
+footer.fixedcontainer {
+  /* 		bottom: -300% !important; */
+}
 footer .salt {
   background: black;
-  color: #36cdf5;
+  color: #00bbde;
   font-style: italic;
   font-weight: bold;
   font-size: 2em;
@@ -1106,7 +1109,7 @@ footer .contact {
   margin-top: -1em;
 }
 footer .details {
-  background: #36cdf5;
+  background: #00bbde;
 }
 footer .row {
   color: black;
@@ -1626,7 +1629,7 @@ section .first nav a, section .link a, section .external a {
   */
 }
 section .first nav a:hover, section .link a:hover, section .external a:hover {
-  color: #36cdf5;
+  color: #00bbde;
   border-bottom-color: transparent;
 }
 section .first nav a:hover:after, section .link a:hover:after, section .external a:hover:after {

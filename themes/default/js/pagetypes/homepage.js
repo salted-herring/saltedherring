@@ -33,7 +33,8 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($) {
 		 * This section will need to be repeated per block.
 		 * =========================== */
 		 
-		$('.block').each(function() {
+		/*
+$('.block').each(function() {
 			var text = draw.text($(this).data('keyword').toUpperCase()).attr({fill: '#fff'});
 			text.font({
 				family:   'BrandonGrotesque',
@@ -63,6 +64,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($) {
 			
 			svgPaths.push({path: path, block: $(this), g: g});
 		});
+*/
 		
 			
 		
@@ -93,22 +95,6 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($) {
 			}
 			
 			prevScroll = $(window).scrollTop();
-			
-			
-			
-			/*
-var offset = ($(window).scrollTop() /  ( $('.block:first').offset().top + $('.block:first').height() )) * 10;
-			currentOffset = offset;
-			
-			for(var i in svgPaths) {
-				prev = svgPaths[i].path.x();
-				svgPaths[i].path.x((prevScroll - $(window).scrollTop()) >= 0 ? -offset : offset);
-			}
-			//path.x((($(window).width() - 960)/2) + ( (prevScroll - $(window).scrollTop()) > 0 ? -offset : offset));
-			prevScroll = $(window).scrollTop();
-*/
-			
-			//console.log(currentOffset);
 		});
 		
 		

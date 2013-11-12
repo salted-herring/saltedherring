@@ -816,7 +816,7 @@ article a:hover:after {
 }
 
 .external {
-  background: #36cdf5;
+  background: #00bbde;
 }
 .external:before {
   position: absolute;
@@ -824,7 +824,7 @@ article a:hover:after {
   content: '';
   right: -3px;
   top: -3px;
-  background-color: #36cdf5;
+  background-color: #00bbde;
   width: 23px;
   height: 23px;
   z-index: 2;
@@ -975,7 +975,7 @@ article a:hover:after {
   transition: background 0.5s;
 }
 #main_nav a:hover, #main_nav a.current {
-  color: #36cdf5;
+  color: #00bbde;
 }
 #main_nav a:hover:after, #main_nav a.current:after {
   background: black;
@@ -986,7 +986,7 @@ article a:hover:after {
   z-index: 120;
   right: 1em;
   top: .75em;
-  color: #36cdf5;
+  color: #00bbde;
   font-size: 1.125em;
   text-transform: uppercase;
   line-height: 1em;
@@ -1014,7 +1014,7 @@ article a:hover:after {
  * =========================== */
 #content {
   padding-top: 2.9em;
-  min-height: 100%;
+  /* 		min-height: 100%; */
   /* 		width: 100%; */
 }
 
@@ -1036,9 +1036,12 @@ footer {
   padding: 0;
   margin: 0;
 }
+footer.fixedcontainer {
+  /* 		bottom: -300% !important; */
+}
 footer .salt {
   background: black;
-  color: #36cdf5;
+  color: #00bbde;
   font-style: italic;
   font-weight: bold;
   font-size: 2em;
@@ -1106,7 +1109,7 @@ footer .contact {
   margin-top: -1em;
 }
 footer .details {
-  background: #36cdf5;
+  background: #00bbde;
 }
 footer .row {
   color: black;
@@ -1394,6 +1397,15 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   width: 320px;
   height: 320px;
   float: left;
+  /* 		@include transform(scale(1.0)); */
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.records .entry.hiddenentry {
+  /* 			@include transform(scale(0)); */
+  width: 0;
 }
 .records .entry:hover .label {
   background: rgba(0, 0, 0, 0.5);
@@ -1555,10 +1567,9 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   content: '';
   width: 28px;
   height: 21px;
-  position: relative;
-  /* 	maritop: 50%; */
+  position: absolute;
   margin-top: 1em;
-  background-color: #36cdf5;
+  background-color: #00bbde;
 }
 
 #projectnav {
@@ -1573,23 +1584,35 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   z-index: 10;
   top: 50%;
   display: block;
-  background: #36cdf5;
+  background: #00bbde;
   color: white;
   padding: 1.5em 0 1.5em 1.2em;
   height: 48px;
+  width: 3em;
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
   transition: none;
 }
+#projectnav a:hover {
+  width: auto;
+}
 #projectnav a:hover strong, #projectnav a:hover em {
-  display: block;
+  width: auto;
+  height: auto;
 }
 #projectnav a:hover:after, #projectnav a:hover:before {
   position: absolute;
 }
 #projectnav strong, #projectnav em {
-  display: none;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  display: block;
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  -o-transition: width 0.5s;
+  transition: width 0.5s;
 }
 #projectnav strong {
   font-size: 1.375em;
@@ -1606,11 +1629,13 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   padding-right: 70px;
 }
 #projectnav .next:after {
-  margin-right: 1.2em;
+  right: 1.2em;
   background-position: 0 -14px;
 }
+#projectnav .next:before {
+  display: none;
+}
 #projectnav .next:hover:after {
-  right: 0;
   top: 1.5em;
 }
 #projectnav .previous {

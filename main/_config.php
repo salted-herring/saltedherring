@@ -43,9 +43,11 @@ Object::add_extension('TeamMember', 'ThumbnailDecorator');
 
 GD::set_default_quality(100);
 
+/*
 if (Director::isDev()) {
 	SSViewer::flush_template_cache();
 }
+*/
 
 if (Director::isLive()) {
 	SS_Log::add_writer(new SS_LogEmailWriter('administration@saltedherring.com'), SS_Log::ERR);

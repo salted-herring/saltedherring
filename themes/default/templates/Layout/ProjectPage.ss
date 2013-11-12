@@ -21,7 +21,7 @@
 	</nav>
 	<div class="container">
 		
-		<header  style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="overlay">
+		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="overlay <% if getFirstImage %><% else %> no-images<% end_if %>">
 			<div class="details">
 				<h1>$Title</h1>
 				<span class="tagLine">$TagLine</span>

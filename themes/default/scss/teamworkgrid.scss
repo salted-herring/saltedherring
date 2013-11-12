@@ -14,6 +14,13 @@
 		width: 320px;
 		height: 320px;
 		float: left;
+/* 		@include transform(scale(1.0)); */
+		@include transition(all .5s);
+		
+		&.hiddenentry {
+/* 			@include transform(scale(0)); */
+			width: 0;
+		}
 		
 		&:hover {
 			.label {
@@ -90,6 +97,7 @@
 
 .individualentry {
 	margin-top: 56px;
+		
 	header {
 		position: absolute;
 		z-index: 3;
@@ -188,8 +196,7 @@
 	content: '';
 	width: 28px;
 	height: 21px;
-	position: relative;
-/* 	maritop: 50%; */
+	position: absolute;
 	margin-top: 1em;
 	background-color: $blue;
 }
@@ -210,11 +217,14 @@
 		color: $white;
 		padding: (24/$font-size)+em 0 (24/$font-size)+em 1.2em;
 		height: 48px;
+		width: 3em;
 		@include transition(none);
 		
 		&:hover {
+			width: auto;
 			strong,em {
-				display: block;
+				width: auto;
+				height: auto;
 			}
 			
 			&:after,
@@ -225,7 +235,11 @@
 	}
 	
 	strong, em {
-		display: none;
+		width: 0;
+		height: 0;
+		overflow: hidden;
+		display: block;
+		@include transition(width .5s);
 	}
 	
 	strong {
@@ -244,14 +258,17 @@
 		}
 		
 		&:after {
-			margin-right: 1.2em;
+			right: 1.2em;
+			//margin-right: 1.2em;
 			@extend .arrow;
 			@include sprites-sprite(next_arrow);
+		}
+		&:before {
+			display: none;
 		}
 		
 		&:hover {
 			&:after {
-				right: 0;
 				top: (24/$font-size)+em;
 			}
 		}

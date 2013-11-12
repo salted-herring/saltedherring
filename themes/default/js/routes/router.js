@@ -24,11 +24,16 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 		initialize: function() {
 			this.root = 'themes/default/';
 			this.views = {}; // cached views are added here.
-			this.prev = '';
 			this.work = {}; // add here each cached projects. key should be the category - or 'all' for default.
 			this.team = []; // add the cached team members.
 			this.teamImages = {}; // add team portraits here.
 			this.currentCategory = '';
+			
+			this.historyStack = [];
+			
+			this.on('route', function() {
+				this.historyStack.push('/' + arguments[0] + '/' + arguments[1].join('/'));
+			});
 			
 			// build regex from the main nav.
 			this.regex = new RegExp(($('#main_nav a').map(function(){ return $(this).text().toLowerCase(); })).get().join('|'));
@@ -53,12 +58,12 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 		work: function(section, fragment) {
 			var that = this;
 			var callback = function() {
-			
+				
 				if(window.location.href.match(/work\/project\//) != null) {
 					$.get('/work/getCurrentSession', function(response, status, xhr) {
 						that.currentCategory = response;
 						$('#banner .filter a').removeClass('all current');
-						$('#banner .filter a[href*="' + response + '"').addClass('current');
+						//$('#banner .filter a[href*="' + response + '"').addClass('current');
 						
 						// load the existing navigation for the category,
 						// else get the json file.
@@ -72,64 +77,59 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 							});
 						}
 						
-						var index = 0;
-						$('#media .image').each(function() {
-							var url = $(this).data('url'),
-								width = $(this).data('width'),
-								height = $(this).data('height'),
-								alt = $(this).data('alt');
-								
-							console.log(url);
-								
-							$('<img/>').attr({
-								alt: $(this).data('alt')
-							}).load(url, function(status, success, xhr) {
-								var img = $(this);
-								$(this).hide();
-								
-								var i = index++,
-									target = $('#media .image').eq(i);
-									
-								
-								if(target.is('.swf')) {
-									target.append($('<div id="' + target.attr('id') + '_swf">'));
-									
-									$('#' + target.attr('id') + ', #' + target.attr('id') + '_swf').css('min-height', target.data('swf-height'));
-									
-									$('#' + target.attr('id') + '_swf').hide().load(target.data('swf'), function() {
-										SwfObject.embedSWF(target.data('swf'), target.attr('id') + '_swf', target.data('swf-width'), target.data('swf-height'), '9.0.0', that.root + 'js/components/swfobject-amd/expressinstall.swf', {wmode: 'transparent'});
-										$('#' + target.attr('id') + '_swf').delay($('#' + target.attr('id') + '_swf').index() * 500).fadeIn(function() {
-											$(this).removeClass('notloaded');
-										});
-									});
-								} else if(target.is('.vimeo')) {
-									iframe = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen/>').attr({
-										src: '//player.vimeo.com/video/' + target.data('vimeo') + '?title=0&amp;byline=0&amp;portrait=0&amp;badge=0',
-										width: 928,
-										height: 522,
-										frameborder: 0
-									});
-									target.css('min-height', 522).removeClass('notloaded').append(iframe);
-								} else {
-									target.append(img);
-									img.delay(target.index() * 500).fadeIn(function() {
-										target.removeClass('notloaded');
-									});
-								}
-								
-							}).attr('src', $(this).data('url'));
-						});
+						that.loadMedia();
 					});
 					
 					
+				} else {
+					if($('#work').length == 0) {
+						$('#content').append($('<div id="work"/>'));
+					}
 				}
 			};
 			
+			var transition = function(html) {
+				var loaded = $(html),
+					i = loaded.find('.filters a.current, .filters a.all').index() - 1,
+					entries = $(loaded.get(4)).find('.entry'); // for some reason I can't target the #work element, so have to use 4 instead.
+				
+				// change the navigation
+				$('#banner .filters a').removeClass('all current');
+				$('.filters a').eq(i).addClass('current');
+				
+				
+				/* ====================================================
+				 * Get the list of new entries, compare to the original 
+				 * entries & add / hide as required.
+				 * ==================================================== */
+				var urls = []
+				entries.each(function() {
+					if($('#work .entry').filter('a[href="' + $(this).attr('href') + '"]').length == 0) {
+						$(this).addClass('hiddenentry');
+						$('#work').append($(this));
+					}
+				});
+				
+				$('#work .entry').each(function(id, el) {
+					if(entries.filter('[href="' + $(this).attr('href') + '"]').length == 0) {
+						setTimeout(function(target) {
+							$(target).addClass('hiddenentry');
+						}, i * 200, this);
+					} else {
+						setTimeout(function(target) {
+							$(target).removeClass('hiddenentry');
+						}, i * 200, this);
+					}
+				});
+				
+				callback();
+			}
+			
 			if(section == null && fragment == null) {
 				$.get('/work/clearSession');
-				this.loadPage('workpage', '/work/', callback);
+				this.loadPage('workpage', '/work/', callback, transition);
 			} else {
-				this.loadPage('workpage', '/work/' + section + '/' + fragment, callback);
+				this.loadPage('workpage', '/work/' + section + '/' + fragment, callback, transition);
 			}
 			
 			if(section == 'category') {
@@ -170,7 +170,7 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 			}
 		},
 		
-		loadPage: function(page, url, callback) {
+		loadPage: function(page, url, callback, transitionContent) {
 			views = this.views;
 			
 			if(views.hasOwnProperty(url)) {
@@ -178,11 +178,25 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 				 * Grab the cached version.
 				 * =========================== */
 				$('[rel="stylesheet"]').attr('href', views[url].css);
-				$('#content').empty().html(views[url].html);
-				this.loadMeta(views[url].meta);
-				if(callback) {
-					callback();
+				
+				/* ===========================
+				 * If there is a transition
+				 * function supplied, call that - otherwise load the content.
+				 * - Don't call the transition iff the previous URL is from a 
+				 * different section e.g. going from team to work.
+				 * =========================== */
+				
+				if(typeof transitionContent !== 'undefined' && this.transitionAvailable(url)) {
+					transitionContent(views[url].html);
+				} else {
+					$('#content').removeAttr('style').empty().html(views[url].html);
+					
+					if(callback) {
+						callback();
+					}
 				}
+				
+				this.loadMeta(views[url].meta);
 			} else {
 			
 				/* ===========================
@@ -201,25 +215,97 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 					};
 					
 					$('[rel="stylesheet"]').attr('href', views[url].css);
-					
-					if(that.prev) {
-						$('#content, #loadingcontent').empty();
-						$('#content').html(views[url].html);
-					};
+										
+					$('#loadingcontent').empty();
+					/* ===========================
+					 * If there is a transition
+					 * function supplied, call that - otherwise load the content.
+					 * =========================== */
+					if(typeof transitionContent !== 'undefined' && that.transitionAvailable(url)) {
+						transitionContent(views[url].html);
+					} else {
+						
+						if(that.prev) {
+							$('#content, #loadingcontent').empty();
+							$('#content').removeAttr('style').html(views[url].html);
+						}
+						if(callback) {
+							callback();
+						}
+					}
 					
 					that.prev = url;
 					
 					that.getMeta(url, views[url]);
 					
-					if(callback) {
-						callback();
-					}
 					
 					require([that.root + 'js/pagetypes/' + page]);
 					
 					$(this).remove();
 				});
 			}
+		},
+		
+		loadMedia: function() {
+			var that = this;
+			
+			function loadSwf(target) {
+				target.append($('<div id="' + target.attr('id') + '_swf">'));
+						
+				$('#' + target.attr('id') + ', #' + target.attr('id') + '_swf').css('min-height', target.data('swf-height'));
+				
+				$('#' + target.attr('id') + '_swf').hide().load(target.data('swf'), function() {
+					SwfObject.embedSWF(target.data('swf'), target.attr('id') + '_swf', target.data('swf-width'), target.data('swf-height'), '9.0.0', that.root + 'js/components/swfobject-amd/expressinstall.swf', {wmode: 'transparent'});
+					$('#' + target.attr('id') + '_swf').delay($('#' + target.attr('id') + '_swf').index() * 500).fadeIn(function() {
+						$(this).removeClass('notloaded');
+					});
+				});
+			}
+			
+			function loadImage(target, img) {
+				target.append(img);
+				img.delay(target.index() * 500).fadeIn(function() {
+					target.removeClass('notloaded');
+				});
+			}
+			
+			function loadVimeo(target) {
+				iframe = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen/>').attr({
+							src: '//player.vimeo.com/video/' + target.data('vimeo') + '?title=0&amp;byline=0&amp;portrait=0&amp;badge=0',
+							width: 928,
+							height: 522,
+							frameborder: 0
+						});
+				target.css('min-height', 522).removeClass('notloaded').append(iframe);
+			}
+			
+			var index = 0;
+			$('#media .image').each(function() {
+				var url = $(this).data('url'),
+					width = $(this).data('width'),
+					height = $(this).data('height'),
+					alt = $(this).data('alt');
+					
+				$('<img/>').attr({
+					alt: $(this).data('alt')
+				}).load(url, function(status, success, xhr) {
+					var img = $(this);
+					$(this).hide();
+					
+					var i = index++,
+						target = $('#media .image').eq(i);
+						
+					
+					if(target.is('.swf')) {
+						loadSwf(target);
+					} else if(target.is('.vimeo')) {
+						loadVimeo(target);
+					} else {
+						loadImage(target, img);
+					}
+					
+				}).attr('src', $(this).data('url'));
+			});
 		},
 		
 		getMeta: function(url, result) {
@@ -356,6 +442,17 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 				}
 				$('.images').addClass('loaded');
 			}
+		},
+		
+		transitionAvailable: function(url) {
+			/* ===========================
+			 * We can't use a transition if
+			 * we are moving to or from a
+			 * project.
+			 * =========================== */
+			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-2] : '';
+			//console.log(this.historyStack, prev, url);//prev, url, prev.match(/project/) == null, url.match(/project/) == null);
+			return prev.match(/project/) == null && url.match(/project/) == null;
 		}
 	});
 	

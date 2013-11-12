@@ -62,7 +62,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 					
 				if($(window).scrollTop() < (headerHeight + 78)) {
 					$('.detailscontainer').removeAttr('style');
-					$('.detailscontainer, footer').addClass('fixedcontainer');
+					//$('.detailscontainer, footer').addClass('fixedcontainer');
 					$('.detailscontainer').parent().height($('.detailscontainer').height());
 					
 					if($(window).scrollTop() > 157) {
@@ -80,7 +80,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				}
 			} else {
 				$('.detailscontainer, footer').removeClass('fixedcontainer');
-				$('#content').removeAttr('style');
+				//$('#content').removeAttr('style');
 				
 				/* ===========================
 				 * Animation for banner as seen on
@@ -102,18 +102,24 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 			 * of the page.
 			 * =========================== */
 			if($('#projectnav').length > 0) {
-				var offset = $('#content').offset().top + $('#content').height() - $('#footer').outerHeight(true) - 1000;
+				var offset = $(document).height() - $(window).height() - $('#footer').height();//$('#content').offset().top + $('#content').height() - $('#footer').outerHeight(true) - 1000;
 				//console.log($('#content').offset().top + $('#content').height() - $('#footer').outerHeight(true) - 200, $(window).scrollTop());
+				//console.log(offset - $('#footer').height(), $(window).scrollTop());
 				if($(window).scrollTop() >= offset) {
+					var target = (offset - $(window).scrollTop()) / 5;
+					console.log(target, offset);
+/* 					target = target < 48 ? 0 : target; */
 					//alert(0 + (400 - $(window).scrollTop()));
 					$('#projectnav .next').css({
-						right: 0 + ((offset - $(window).scrollTop()) / 10)
+						right: target//($(document).height() - offset) / ((offset - $(window).scrollTop()))
 					});
 					
 					$('#projectnav .previous').css({
-						left: 0 + ((offset - $(window).scrollTop()) / 10)
+						left: target//($(document).height() - offset) / ((offset - $(window).scrollTop()))
 					});
 				}
+				
+				console.log();
 			}
 		}).scroll();
 	});
