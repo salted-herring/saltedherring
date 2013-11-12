@@ -186,15 +186,17 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 				 * different section e.g. going from team to work.
 				 * =========================== */
 				
-				if(typeof transitionContent !== 'undefined' && this.transitionAvailable(url)) {
+				/*
+if(typeof transitionContent !== 'undefined' && this.transitionAvailable(url)) {
 					transitionContent(views[url].html);
 				} else {
+*/
 					$('#content').removeAttr('style').empty().html(views[url].html);
 					
 					if(callback) {
 						callback();
 					}
-				}
+/* 				} */
 				
 				this.loadMeta(views[url].meta);
 			} else {
@@ -215,24 +217,25 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 					};
 					
 					$('[rel="stylesheet"]').attr('href', views[url].css);
-										
-					$('#loadingcontent').empty();
-					/* ===========================
-					 * If there is a transition
-					 * function supplied, call that - otherwise load the content.
-					 * =========================== */
-					if(typeof transitionContent !== 'undefined' && that.transitionAvailable(url)) {
-						transitionContent(views[url].html);
-					} else {
-						
-						if(that.prev) {
+					
+					if(that.prev) {
+						$('#loadingcontent').empty();
+						/* ===========================
+						 * If there is a transition
+						 * function supplied, call that - otherwise load the content.
+						 * =========================== */
+						if(typeof transitionContent !== 'undefined' && that.transitionAvailable(url)) {
+							transitionContent(views[url].html);
+						} else {
+							
 							$('#content, #loadingcontent').empty();
 							$('#content').removeAttr('style').html(views[url].html);
+							
+							if(callback) {
+								callback();
+							}
 						}
-						if(callback) {
-							callback();
-						}
-					}
+					};
 					
 					that.prev = url;
 					
@@ -448,11 +451,11 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 			/* ===========================
 			 * We can't use a transition if
 			 * we are moving to or from a
-			 * project.
+			 * project, or from any other page
+			 * to a work page.
 			 * =========================== */
 			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-2] : '';
-			//console.log(this.historyStack, prev, url);//prev, url, prev.match(/project/) == null, url.match(/project/) == null);
-			return prev.match(/project/) == null && url.match(/project/) == null;
+			return url.match(/project/) == null && prev.match(/home|about|team|project/) == null;
 		}
 	});
 	
