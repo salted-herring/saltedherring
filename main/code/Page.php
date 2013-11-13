@@ -266,7 +266,7 @@ class Page_Controller extends ContentController {
 			$script = "<script src=\"" . $this->ThemeDir() . "/js/lib/require.js\"></script>\n";
 			$script .= "<script>\n";
             $script .= "require([\"" . $this->ThemeDir() . "/js/devconfig\"], function (common) {";
-            $script.= "require([\"" .  $this->ThemeDir() . "/js/pagetypes/" . strtolower($this->ClassName) . "\"]);";
+            $script.= "require([\"pagetypes/" . strtolower($this->ClassName) . "\"]);";
             $script.= "});";
 			$script .= "</script>";
 

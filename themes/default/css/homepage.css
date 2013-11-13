@@ -7,40 +7,40 @@
 /* ===========================
  * Sprite sheets
  * =========================== */
-.sprites-sprite, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-saltshaker, .external:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, footer .salt span:after, footer .salt span:before, #nextnav a:before, section .intro .down:before {
-  background: url('../img/sprites-sa4b056e8e3.png') no-repeat;
+.sprites-sprite, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-saltshaker, .sprites-stripes, .external:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, footer .salt span:after, footer .salt span:before, #nextnav a:before, section .intro .down:before {
+  background: url('../img/sprites-s8e41816e42.png') no-repeat;
 }
 
 .sprites-down_arrow {
-  background-position: -39px -40px;
+  background-position: -323px 0;
 }
 
 .sprites-external_arrow {
-  background-position: -79px -14px;
+  background-position: -222px 0;
 }
 
 .sprites-external_arrow_blue {
-  background-position: -56px -14px;
+  background-position: -199px 0;
 }
 
 .sprites-menu-collapse {
-  background-position: -102px -14px;
+  background-position: -245px 0;
 }
 
 .sprites-menu-open {
-  background-position: 0 -40px;
+  background-position: -284px 0;
 }
 
 .sprites-next_arrow {
-  background-position: 0 -14px;
+  background-position: -143px 0;
 }
 
 .sprites-previous_arrow {
-  background-position: -28px -14px;
+  background-position: -171px 0;
 }
 
 .sprites-salt {
-  background-position: -60px -40px;
+  background-position: -344px 0;
 }
 
 .sprites-salted-herring {
@@ -48,7 +48,11 @@
 }
 
 .sprites-saltshaker {
-  background-position: 0 -104px;
+  background-position: -406px 0;
+}
+
+.sprites-stripes {
+  background-position: 0 -160px;
 }
 
 /* @license
@@ -828,7 +832,7 @@ article a:hover:after {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: -79px -14px;
+  background-position: -222px 0;
 }
 .external:hover:before {
   right: -6px;
@@ -923,7 +927,7 @@ article a:hover:after {
 }
 
 .menu-open {
-  background-position: 0 -40px;
+  background-position: -284px 0;
 }
 
 #main_nav {
@@ -999,14 +1003,14 @@ article a:hover:after {
 }
 
 .mobile #menu_icon {
-  background-position: 0 -40px;
+  background-position: -284px 0;
 }
 .mobile #menu_icon.collapse {
-  background-position: -102px -14px;
+  background-position: -245px 0;
 }
 .mobile #menu_icon.expand {
   cursor: pointer;
-  background-position: 0 -40px;
+  background-position: -284px 0;
 }
 
 /* ===========================
@@ -1062,7 +1066,7 @@ footer .salt span:after {
   content: '';
   width: 62px;
   height: 64px;
-  background-position: -60px -40px;
+  background-position: -344px 0;
 }
 footer .salt span:before {
   position: absolute;
@@ -1072,7 +1076,7 @@ footer .salt span:before {
   content: '';
   width: 139px;
   height: 160px;
-  background-position: 0 -104px;
+  background-position: -406px 0;
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
@@ -1424,6 +1428,11 @@ h1 {
 #heading h1,
 .heading h1 {
   display: inline-block;
+  -webkit-mask-image: url(../img/stripes.png);
+  -moz-mask: url(../img/stripes.png);
+  mask: url(../img/stripes.png);
+  -webkit-mask-size: 963px 230px;
+  -moz-mask-size: 963px 230px;
 }
 
 #nextnav {
@@ -1459,7 +1468,7 @@ h1 {
   height: 28px !important;
   content: '';
   display: block;
-  background-position: -39px -40px;
+  background-position: -323px 0;
 }
 #nextnav.up a:before {
   -webkit-transform: rotate(180deg);
@@ -1706,7 +1715,7 @@ section .intro .down:before {
   height: 28px;
   content: '';
   display: block;
-  background-position: -39px -40px;
+  background-position: -323px 0;
 }
 section .intro .contactlinks {
   width: 433px;

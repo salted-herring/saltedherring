@@ -6,13 +6,16 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($) {
 		/* ===========================
 		 * SVG - for the diagonals.
 		 * =========================== */
-		$('#keyword').empty();
+		/*
+$('#keyword').empty();
 		var draw = SVG('keyword').size(960, 120),
 			svgPaths = [];
 		
 		draw.move(0,0);
+*/
 		
-		function drawPath(width, offsetY, offsetX) {
+		/*
+function drawPath(width, offsetY, offsetX) {
 			var group = draw.group();
 			offsetY = (typeof offsetY != 'undefined') ? offsetY : -500;
 			offsetX = (typeof offsetX != 'undefined') ? offsetX : 0;
@@ -26,6 +29,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($) {
 			group.move(0,0);
 			return group;
 		}
+*/
 		
 		
 		
@@ -69,7 +73,8 @@ $('.block').each(function() {
 			
 		
 		
-		var prevScroll = 0,
+		/*
+var prevScroll = 0,
 			currentOffset = 0;
 		$(window).scroll(function() {
 			var current = $('.block').filter(function() {
@@ -96,6 +101,7 @@ $('.block').each(function() {
 			
 			prevScroll = $(window).scrollTop();
 		});
+*/
 		
 		
 		

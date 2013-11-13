@@ -3,13 +3,14 @@
 .filters {
 	position: absolute;
 	right: 2em;
-	bottom: 0em;
+/* 	bottom: 0em; */
 	padding-bottom: 0;
 	width: 400px;
+	padding-top: 4em;
 	
 	strong {
 		display: block;
-		margin-bottom: 1em;
+/* 		margin-bottom: 1em; */
 		font-weight: 500;
 	}
 }
@@ -19,13 +20,22 @@
 }
 
 #work {
+	min-height: 100%;
+	height: 100%;
 	margin-top: 17em;
-	@include transition(all .5s);
+	position: relative;
+/* 	@include transition_delay(5s); */
+/* 	@include transition(min-height .5s 1s ease); */
 	
 	.label {
 		&:before {
 			content: 'see project';
 		}
+	}
+	
+	.entry {
+		@include transition(none);
+		@include transform(translate3d(0,0,0));
 	}
 }
 

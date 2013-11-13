@@ -7,7 +7,7 @@
  * Backbone URL routing for
  * website.
  * =========================== */
-define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
+define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, SwfObject, Masonry) {
 
 	var View = Backbone.View.extend();
 
@@ -29,10 +29,11 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 			this.teamImages = {}; // add team portraits here.
 			this.currentCategory = '';
 			
-			this.historyStack = [];
+			this.historyStack = [''];
 			
 			this.on('route', function() {
 				this.historyStack.push('/' + arguments[0] + '/' + arguments[1].join('/'));
+				//console.log('route', this.historyStack);
 			});
 			
 			// build regex from the main nav.
@@ -57,7 +58,12 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 		
 		work: function(section, fragment) {
 			var that = this;
+			
 			var callback = function() {
+			
+				if(window.workMasonry) {
+					window.workMasonry.layout();
+				}
 				
 				if(window.location.href.match(/work\/project\//) != null) {
 					$.get('/work/getCurrentSession', function(response, status, xhr) {
@@ -97,6 +103,17 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 				$('#banner .filters a').removeClass('all current');
 				$('.filters a').eq(i).addClass('current');
 				
+				// re-init the masonry.
+				if(window.workMasonry && $('#work').length > 0) {
+					window.workMasonry.destroy();
+					var masonry = new Masonry($('#work').get(0), {
+						hiddenStyle: {transform: 'scale(.8)', opacity: 0},
+						transitionDuration: '.5s'
+					});
+					masonry.layout();
+					window.workMasonry = masonry;
+				}
+				
 				
 				/* ====================================================
 				 * Get the list of new entries, compare to the original 
@@ -105,19 +122,21 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 				var urls = []
 				entries.each(function() {
 					if($('#work .entry').filter('a[href="' + $(this).attr('href') + '"]').length == 0) {
-						$(this).addClass('hiddenentry');
 						$('#work').append($(this));
+						if(window.workMasonry) {
+							window.workMasonry.appended($(this));
+							window.workMasonry.layout();
+						}
 					}
 				});
 				
 				$('#work .entry').each(function(id, el) {
 					if(entries.filter('[href="' + $(this).attr('href') + '"]').length == 0) {
 						setTimeout(function(target) {
-							$(target).addClass('hiddenentry');
-						}, i * 200, this);
-					} else {
-						setTimeout(function(target) {
-							$(target).removeClass('hiddenentry');
+							if(window.workMasonry) {
+								window.workMasonry.remove(target);
+								window.workMasonry.layout();
+							}
 						}, i * 200, this);
 					}
 				});
@@ -171,6 +190,7 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 		},
 		
 		loadPage: function(page, url, callback, transitionContent) {
+			
 			views = this.views;
 			
 			if(views.hasOwnProperty(url)) {
@@ -185,18 +205,11 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 				 * - Don't call the transition iff the previous URL is from a 
 				 * different section e.g. going from team to work.
 				 * =========================== */
-				
-				/*
-if(typeof transitionContent !== 'undefined' && this.transitionAvailable(url)) {
+				if(typeof transitionContent !== 'undefined' && this.transitionAvailable(url)) {
 					transitionContent(views[url].html);
 				} else {
-*/
 					$('#content').removeAttr('style').empty().html(views[url].html);
-					
-					if(callback) {
-						callback();
-					}
-/* 				} */
+				}
 				
 				this.loadMeta(views[url].meta);
 			} else {
@@ -218,7 +231,7 @@ if(typeof transitionContent !== 'undefined' && this.transitionAvailable(url)) {
 					
 					$('[rel="stylesheet"]').attr('href', views[url].css);
 					
-					if(that.prev) {
+					//if(that.prev) {
 						$('#loadingcontent').empty();
 						/* ===========================
 						 * If there is a transition
@@ -230,22 +243,24 @@ if(typeof transitionContent !== 'undefined' && this.transitionAvailable(url)) {
 							
 							$('#content, #loadingcontent').empty();
 							$('#content').removeAttr('style').html(views[url].html);
-							
-							if(callback) {
-								callback();
-							}
 						}
-					};
-					
+					//};
 					that.prev = url;
+					
 					
 					that.getMeta(url, views[url]);
 					
 					
-					require([that.root + 'js/pagetypes/' + page]);
+					require(['pagetypes/' + page]);
 					
 					$(this).remove();
 				});
+			}
+			
+			
+			
+			if(callback) {
+				callback();
 			}
 		},
 		
@@ -454,8 +469,8 @@ if(typeof transitionContent !== 'undefined' && this.transitionAvailable(url)) {
 			 * project, or from any other page
 			 * to a work page.
 			 * =========================== */
-			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-2] : '';
-			return url.match(/project/) == null && prev.match(/home|about|team|project/) == null;
+			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-1] : '';
+			return url.match(/work/) != null && prev.match(/home|about|team|project/) == null;
 		}
 	});
 	

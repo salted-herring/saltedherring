@@ -1,10 +1,11 @@
-@import 'compass/css3';
+@import 'compass/css3', 'animation';
 
 .records {
 	padding: 0;
 	width: 960px !important;
 	max-width: 960px !important;
 	margin-bottom: 6em;
+	@include transition(all .5s);
 	
 	.entry {
 		position: relative;
@@ -14,12 +15,14 @@
 		width: 320px;
 		height: 320px;
 		float: left;
+/* 		@include opacity(1); */
 /* 		@include transform(scale(1.0)); */
-		@include transition(all .5s);
+/* 		@include transition(all .5s); */
 		
 		&.hiddenentry {
+/* 			@include opacity(0.2); */
 /* 			@include transform(scale(0)); */
-			width: 0;
+/* 			width: 0; */
 		}
 		
 		&:hover {
@@ -162,11 +165,42 @@
 	}
 }
 
+@include keyframes(heading) {
+	0% {
+		display: block;
+		@include transform(scale(1));
+	}
+	
+	50% {
+		@include transform(scale(0));
+	}
+	
+	51%, 100% {
+		display: none;
+	}
+	
+	
+}
+
 #banner {
 	position: fixed;
 	width: 100%;
 	z-index: 10;
-	//@include transition(padding .5s);
+	height: 112px;
+	@include transition(height .2s 0 easInOutCubic, padding .5s 0 ease);
+	
+	h1,strong {
+		position: absolute;
+		@include transition(top .2s 0 easeInOutSine);
+	}
+	
+	h1 {
+		top: 0;
+	}
+	
+	strong {
+		top: 2em;
+	}
 	
 	&.collapsed,
 	&.small {
@@ -175,10 +209,7 @@
 		position: fixed;
 		z-index: 4;
 		width: 100%;
-		
-		h1, strong {
-			display: none;
-		}
+		height: 24px;
 		
 		.filters {
 			position: relative;
@@ -187,6 +218,10 @@
 			text-align: center;
 			padding: 0;
 			width: auto;
+		}
+		
+		h1, strong {
+			top: -10em;
 		}
 	}
 }

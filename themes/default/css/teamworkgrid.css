@@ -1,9 +1,9 @@
 /*
 Syntax error: Undefined variable: "$font-size".
-        on line 72 of /Users/simonwinter/Sites/salted_herring/themes/default/scss/teamworkgrid.scss
+        on line 75 of /Users/simonwinter/Sites/salted_herring/themes/default/scss/teamworkgrid.scss
 
 Backtrace:
-/Users/simonwinter/Sites/salted_herring/themes/default/scss/teamworkgrid.scss:72
+/Users/simonwinter/Sites/salted_herring/themes/default/scss/teamworkgrid.scss:75
 /Library/Ruby/Gems/1.8/gems/sass-3.2.7/lib/sass/../sass/script/variable.rb:49:in `_perform'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.7/lib/sass/../sass/script/node.rb:40:in `perform'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.7/lib/sass/../sass/script/operation.rb:83:in `_perform'
@@ -109,4 +109,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$font-size\".\A         on line 72 of /Users/simonwinter/Sites/salted_herring/themes/default/scss/teamworkgrid.scss"; }
+  content: "Syntax error: Undefined variable: \"$font-size\".\A         on line 75 of /Users/simonwinter/Sites/salted_herring/themes/default/scss/teamworkgrid.scss"; }
