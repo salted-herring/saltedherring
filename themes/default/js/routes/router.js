@@ -231,8 +231,8 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 					
 					$('[rel="stylesheet"]').attr('href', views[url].css);
 					
-					//if(that.prev) {
-						$('#loadingcontent').empty();
+					if(that.prev) {
+						$('#loadingcontent').remove();
 						/* ===========================
 						 * If there is a transition
 						 * function supplied, call that - otherwise load the content.
@@ -244,7 +244,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 							$('#content, #loadingcontent').empty();
 							$('#content').removeAttr('style').html(views[url].html);
 						}
-					//};
+					};
 					that.prev = url;
 					
 					
@@ -469,7 +469,15 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			 * project, or from any other page
 			 * to a work page.
 			 * =========================== */
-			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-1] : '';
+			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-2] : '';
+			
+			return url.match(/category/) != null && prev.match(/category/) != null;
+			
+			/*
+if(prev === url){
+				return false;
+			}
+*/
 			return url.match(/work/) != null && prev.match(/home|about|team|project/) == null;
 		}
 	});

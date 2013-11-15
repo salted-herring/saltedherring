@@ -1032,6 +1032,10 @@ article a:hover:after {
   vertical-align: middle;
 }
 
+#loadingcontent {
+  display: none;
+}
+
 /* ===========================
  * Footer
  * =========================== */
