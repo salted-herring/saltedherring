@@ -1596,26 +1596,13 @@ section .header {
 }
 section .heading {
   position: fixed;
-  /* 		margin-top: -6em; */
   overflow: hidden;
   height: 95px;
-  /* 		background: red; */
 }
 section .heading h1 {
   margin-top: -88px;
-  /* 			marg */
-  /* 			height: 95px; */
-  /* 			margin-bottom: -16px; */
   position: fixed;
   top: 50%;
-  /* 			margin-bottom: -121px; */
-  /* 			bottom: -25px; */
-  /* 			left: 0 !important; */
-  /* 			left: 50%; */
-}
-section .first {
-  /* 		z-index: 3; */
-  /* 		margin-bottom: -2.9em; */
 }
 section .first .text {
   padding: 0;

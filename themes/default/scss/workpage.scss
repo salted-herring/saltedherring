@@ -255,6 +255,7 @@
 		@include transition(height .2s);
 		@include transition(background .2s);
 		margin-bottom: 3em;
+		text-align: center;
 		
 		&.notloaded {
 			background-image: url(../img/SHloader.gif);

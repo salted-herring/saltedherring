@@ -2000,6 +2000,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   -o-transition: background 0.2s;
   transition: background 0.2s;
   margin-bottom: 3em;
+  text-align: center;
 }
 #media .image.notloaded {
   background-image: url(../img/SHloader.gif);
