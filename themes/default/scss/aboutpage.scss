@@ -1,5 +1,37 @@
 @import 'styles';
 
-.introText {
+h1 {
+	@include sprites-sprite(digital_brand);
+	width: 912px;
+	height: 174px;
+	@include hide_text;
+	margin: 62px 0;
+	position: fixed;
+	top: 46px;
+}
+
+aside {
 	font-weight: bold;
+	font-style: italic;
+	font-size: (48/$font-size)+em;
+	line-height: (50/48)+em;
+}
+
+.article {
+	margin-top: -1em;
+}
+
+article {
+	.row {
+		margin-top: 298px;
+	}
+}
+
+.overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-image: url(../img/stripes.gif);
+	@include opacity(.2);
+/* 	background-repeat: repeat-y; */
 }

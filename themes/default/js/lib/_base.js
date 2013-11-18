@@ -59,8 +59,29 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				 * on work & team.
 				 * =========================== */
 				var headerHeight = $('header.overlay').outerHeight(true);
+				
+				//console.log(headerHeight);
+				var offset = 30;
+				
+				if($(window).scrollTop() < (180)) {
+					$('.detailscontainer, footer').addClass('fixedcontainer');
+					$('.detailscontainer').css('margin-top', 0).parent().height($('.detailscontainer').height());
 					
-				if($(window).scrollTop() < (headerHeight + 78)) {
+					if($(window).scrollTop() > 157) {
+						$('.overlay').addClass('small');
+					} else {
+						$('.overlay').removeClass('small');
+					}
+				} else {
+					if($('.detailscontainer').is('.fixedcontainer')) {
+						$('.detailscontainer').css('margin-top', 216);
+					}
+				
+					$('.detailscontainer, footer').removeClass('fixedcontainer');
+				}
+					
+				/*
+if($(window).scrollTop() < (headerHeight + 78)) {
 					$('.detailscontainer').removeAttr('style');
 					//$('.detailscontainer, footer').addClass('fixedcontainer');
 					$('.detailscontainer').parent().height($('.detailscontainer').height());
@@ -78,8 +99,9 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 					$('.detailscontainer, footer').removeClass('fixedcontainer');
 					$('#content').removeAttr('style');
 				}
+*/
 			} else {
-				$('.detailscontainer, footer').removeClass('fixedcontainer');
+				//$('.detailscontainer, footer').removeClass('fixedcontainer');
 				//$('#content').removeAttr('style');
 				
 				/* ===========================
@@ -87,13 +109,15 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				 * work & team landing pages.
 				 * =========================== */
 				
-				if($('#banner').length > 0) {
+				/*
+if($('#banner').length > 0) {
 					if($(window).scrollTop() > 100) {
 						$('#banner').addClass('small');
 					} else {
 						$('#banner').removeClass('small');
 					}
 				}
+*/
 			}
 			
 			
@@ -107,7 +131,6 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				//console.log(offset - $('#footer').height(), $(window).scrollTop());
 				if($(window).scrollTop() >= offset) {
 					var target = (offset - $(window).scrollTop()) / 5;
-					console.log(target, offset);
 /* 					target = target < 48 ? 0 : target; */
 					//alert(0 + (400 - $(window).scrollTop()));
 					$('#projectnav .next').css({
@@ -118,8 +141,6 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 						left: target//($(document).height() - offset) / ((offset - $(window).scrollTop()))
 					});
 				}
-				
-				console.log();
 			}
 		}).scroll();
 	});

@@ -60,6 +60,9 @@
 // Bold
 @include font-face('BrandonGrotesque', font-files('234A9E_0_0.woff', '234A9E_0_0.ttf'), '234A9E_0_0.eot', bold, normal);
 
+// Bold Italic
+@include font-face('BrandonGrotesque', font-files('290D38_0_0.woff', '290D38_0_0.ttf'), '290D38_0_0.eot', bold, italic);
+
 // Medium
 @include font-face('BrandonGrotesque', font-files('234A9E_2_0.woff', '234A9E_2_0.ttf'), '234A9E_2_0.eot', 500, normal);
 

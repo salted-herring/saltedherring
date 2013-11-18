@@ -9,31 +9,30 @@ require(['jquery', 'backbone', 'underscore', '_base', 'svg'], function($) {
 		 * - The content container & each block are full height.
 		 * =========================== */
 		$(window).resize(function() {
-			$('#content, #work').height(($('#work .block').length * $(window).height()) - parseInt($('#content').css('padding-top')) - (($('#work .block').length - 1) * $('#header').height()));
-			/*
-$('#work .block').each(function() {
-				$(this).css('top', (($(this).index() - 1) * $(window).height()) + $('#header').height());
-			});
-*/
+			var targetHeight = ($('#work .block').length * $(window).height()) - parseInt($('#content').css('padding-top')) - (($('#work .block').length - 1) * $('#header').height());
+			if(targetHeight > 0) {
+				$('#content, #work').height(targetHeight);
+			}
+			
 			$('#work .block').each(function(i, el) {
-				var top = (i * $(window).height());
-				if(i > 0) {
-					top -= $(header).height();
-				}
+				var top = (i * ($(window).height() - $('#header').height()));
 				$(this).height($(window).height() - $('#header').height());
 				$(this).css({
 					'top': top
 				});
 				
-				$(this).attr('data-top', parseInt(top));
+				$(this).attr('data-top', parseInt($(this).offset().top));
+				$(this).attr('data-headingtop', parseInt($(this).find('.heading').offset().top));
 				
-				$(this).find('h1').css('z-index', i);
+/* 				$(this).find('h1').css('z-index', i); */
 			});
 			
 			$('#footer').show();
 			
 			$('body:not(.mobile) #heading').attr('data-top', parseInt(($(window).height() - $('#header').height() + 16) / 2));
-			$('body:not(.mobile) .block:last').attr('data-top', parseInt($('body:not(.mobile) .block:last').offset().top));
+			if($('body:not(.mobile) .block:last').length > 0) {
+				$('body:not(.mobile) .block:last').attr('data-top', parseInt($('body:not(.mobile) .block:last').offset().top));
+			}
 			
 			positionHeading();
 		}).resize();
@@ -43,10 +42,6 @@ $('#work .block').each(function() {
 			
 		$(window).scroll(function(e) {
 			e.preventDefault();
-			
-			//if(scrolled) {
-				//$('.block').css('margin-top', 0 - prevPosition - $(window).scrollTop() - $('#header').height());
-			//}
 		
 			if(($(window).scrollTop() + $(window).height()) >= $('#footer').offset().top) {
 				$('#nextnav').css({
@@ -63,27 +58,41 @@ $('#work .block').each(function() {
 			if($(window).scrollTop() == 0) {
 				$('#nextnav').removeClass('up');
 			}
-		
-			//$('h1').css('-webkit-mask-position-y', parseInt($('h1').css('-webkit-mask-position-y')) + (Math.abs($(window).scrollTop() - prevPosition) / 10));
-			
-			/*
-$('#work .block').each(function(i, el) {
-				if (($(window).scrollTop() + $(window).height()) > $(this).offset().top && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
-					$(this).find('.overlay').css({
-						'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 7))
-					});
-					
-					$(this).css({
-						'background-position-y': Math.min(0, -(($(window).scrollTop() - $('#header').height()) / 20))
-					});
-				}
-			});
-*/
 			
 			prevPosition = $(window).scrollTop();
 			
 			positionHeading();
 			scrolled = true;
+			
+			if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset().top + $(window).height() - $('#header').height())) {
+				$('#menu_icon').removeClass('hide').addClass('show');
+				$('#main_nav').removeClass('show').addClass('hide');
+			} else {
+				$('#menu_icon').removeClass('show').addClass('hide');
+				$('#main_nav').removeClass('hide').addClass('show');
+			}
+			
+			/* ===========================
+			 * Animate overlays.
+			 * =========================== */
+			$('#work .block').each(function(i, el) {
+				if (($(window).scrollTop() + $(window).height()) > $(this).offset().top && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
+					$(this).find('.overlay').css({
+						'background-position': '0 ' + Math.min(0, -(($(window).scrollTop() - $('#header').height()) * .125)) + 'px'
+					});
+					
+					$(this).css({
+						'background-position': '0 ' + Math.min(0, -(($(window).scrollTop() - $('#header').height()) * .2)) + 'px'
+					});
+					
+					if($(this).is('.first') && $(window).scrollTop() > 100) {
+						$(this).find('.intro').hide();
+					} else {
+						$(this).find('.intro').show();
+					}
+				}
+			});
+			
 		}).scroll();
 		
 		// * ===========================
@@ -94,7 +103,8 @@ $('#work .block').each(function(i, el) {
 			var _max = 95;
 			
 			$('#work .block').each(function() {
-				var top = parseInt($(this).offset().top);
+				var top = $(this).data('top');
+				console.log(top, $(window).scrollTop() + $('#header').height());
 				
 				/*
 if((top - $('#header').height()) < $(window).scrollTop()) {
@@ -105,39 +115,28 @@ if((top - $('#header').height()) < $(window).scrollTop()) {
 				} else {
 */
 /* 					if($(window).scrollTop() >= top && (top) < ($(window).scrollTop() + ($(window).height()/2))) { */
-					if(top < ($(window).scrollTop() + ($(window).height()/2))) {
+				if(top < ($(window).scrollTop() + ($(window).height()/2))) {
+					
+					var condition = top < $(window).scrollTop();
+					var _h = condition ? ($(window).height() / 2) : (($(window).height() / 2)) - Math.abs($(window).scrollTop() - top);
+					var newTop = top < ($(window).scrollTop() + $('#header').height()) ? 0 - Math.abs($(window).scrollTop() + $('#header').height() - top) : Math.abs($(window).scrollTop() - top);
+					
+					
+					$(this).find('.heading').show().css({
+						top: newTop,
+						height: _h
+					});
+					
 						
-						var _h = (($(window).height() / 2)) - Math.abs($(window).scrollTop() - top);
-						var newTop = Math.abs($(window).scrollTop() - top);
-						var condition = top < $(window).scrollTop();
-						
-						$(this).find('.heading').show().css({
-							top: condition ? 0 - newTop : newTop,
-							height: condition ? ($(window).height() / 2) : _h
-						});
-						
-						//if(top < ($(window).scrollTop())) {
-/* 							var ratio = (condition ? ($(window).height() / 2) : _h) / $(window).height(); */
-							//console.log(((top + $(this).height()) - x) / 2);
-							
-							//console.log($(window).height() - (($(window).scrollTop() + (condition ? ($(window).height() / 2) : _h)) % $(window).height()), $(this).index());
-							
-							
-							$(this).find('.heading h1').css({
-								top: $(window).height() - ((Math.abs($(window).scrollTop() - $(this).find('.heading').offset().top) + $(this).find('.heading').height()))//(0 - x + (top + $(this).height())) / 2//((1000 / $(window).height()) * 100) + 'px'//($(window).height() / 2) / Math.abs($(window).scrollTop() - top)
-							});
-						/*
-} else {
-							$(this).find('.heading h1').css({
-								top: '50%'
-							});
-						}
-*/
-					} else {
-						$(this).find('.heading').show().css({
-							height: 0
-						});
-					}
+					$(this).find('.heading h1').css({
+						top: Math.ceil(newTop + _h)
+					});
+					
+				} else {
+					$(this).find('.heading').show().css({
+						height: 0
+					});
+				}
 			});
 			
 			
@@ -193,6 +192,10 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 				}, 500);
 			}
 		});
+		
+		
+		
+		
 	
 		
 		/* ===========================

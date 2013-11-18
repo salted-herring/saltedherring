@@ -43,6 +43,18 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 		navigate: function() {
 			Backbone.Router.prototype.navigate.apply(this, arguments);
 			
+			_gaq.push(['_trackPageview', arguments[0]]);
+			
+			if(arguments[0] !== '/') {
+				$('#menu_icon').removeClass('show').addClass('hide');
+				$('#main_nav').removeClass('hide').addClass('show');
+			} else {
+				$('#menu_icon').removeClass('hide').addClass('show');
+				$('#main_nav').removeClass('show').addClass('hide');
+			}
+			
+			$(window).resize();
+			
 			$('html, body').animate({
 				scrollTop: 0
 			}, 500);
@@ -97,7 +109,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			var transition = function(html) {
 				var loaded = $(html),
 					i = loaded.find('.filters a.current, .filters a.all').index() - 1,
-					entries = $(loaded.get(4)).find('.entry'); // for some reason I can't target the #work element, so have to use 4 instead.
+					entries = $(loaded.get(2)).find('.entry'); // for some reason I can't target the #work element, so have to use 2 instead.
 				
 				// change the navigation
 				$('#banner .filters a').removeClass('all current');
@@ -144,12 +156,19 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				callback();
 			}
 			
-			if(section == null && fragment == null) {
-				$.get('/work/clearSession');
-				this.loadPage('workpage', '/work/', callback, transition);
-			} else {
-				this.loadPage('workpage', '/work/' + section + '/' + fragment, callback, transition);
+			var url = ['work'];
+			if(section) {
+				url.push(section);
 			}
+			if(fragment) {
+				url.push(fragment);
+			}
+			
+			if(section == null && fragment == null) {
+				$.get('/work/clearSession');	
+			}
+			
+			this.loadPage('workpage', '/' + url.join('/') + '/', callback, transition);
 			
 			if(section == 'category') {
 				this.currentCategory = fragment;
@@ -218,18 +237,20 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				 * Load correct content.
 				 * =========================== */
 				views[url] = false;
+				$('#loader').show();
 				
 				that = this;
 				
 				$('#content').prepend('<div id="loadingcontent"/>');
 				
-				$('#loadingcontent').hide().load(url + ' #content', function(response, status, xhr) {
+				$('#loadingcontent').load(url + ' #content', function(response, status, xhr) {
+					
+					$('#loader').hide();
+					
 					views[url] = {
 						html: $('#loadingcontent #content').html(),
 						css: that.root + 'css/' + page + '.css'
-					};
-					
-					$('[rel="stylesheet"]').attr('href', views[url].css);
+					};					
 					
 					if(that.prev) {
 						$('#loadingcontent').remove();
@@ -240,19 +261,19 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 						if(typeof transitionContent !== 'undefined' && that.transitionAvailable(url)) {
 							transitionContent(views[url].html);
 						} else {
-							
 							$('#content, #loadingcontent').empty();
 							$('#content').removeAttr('style').html(views[url].html);
 						}
 					};
-					that.prev = url;
 					
-					
+					/* ===========================
+					 * Load in meta data, css & js.
+					 * =========================== */
+					$('[rel="stylesheet"]').attr('href', views[url].css);
 					that.getMeta(url, views[url]);
-					
-					
 					require(['pagetypes/' + page]);
 					
+					that.prev = url;
 					$(this).remove();
 				});
 			}
@@ -265,7 +286,8 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 		},
 		
 		loadMedia: function() {
-			var that = this;
+			var that = this,
+				loadOrder = {};
 			
 			function loadSwf(target) {
 				target.append($('<div id="' + target.attr('id') + '_swf">'));
@@ -280,8 +302,11 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				});
 			}
 			
-			function loadImage(target, img) {
-				target.append(img);
+			function loadImage(target, img, width, height) {
+				target.css({
+					width: width,
+					minHeight: height
+				}).append(img);
 				img.delay(target.index() * 500).fadeIn(function() {
 					target.removeClass('notloaded');
 				});
@@ -297,7 +322,8 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				target.css('min-height', 522).removeClass('notloaded').append(iframe);
 			}
 			
-			var index = 0;
+			$('#media .image').each(function(i, e) { loadOrder[$(this).data('url')] = i; });
+			
 			$('#media .image').each(function() {
 				var url = $(this).data('url'),
 					width = $(this).data('width'),
@@ -307,22 +333,20 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				$('<img/>').attr({
 					alt: $(this).data('alt')
 				}).load(url, function(status, success, xhr) {
-					var img = $(this);
-					$(this).hide();
-					
-					var i = index++,
-						target = $('#media .image').eq(i);
+					var img = $(this),
+						target = $('#media .image').eq(loadOrder[url]);
 						
+					$(this).hide()
 					
 					if(target.is('.swf')) {
 						loadSwf(target);
 					} else if(target.is('.vimeo')) {
 						loadVimeo(target);
 					} else {
-						loadImage(target, img);
+						loadImage(target, img, width, height);
 					}
 					
-				}).attr('src', $(this).data('url'));
+				}).attr('src', url);
 			});
 		},
 		
@@ -469,16 +493,15 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			 * project, or from any other page
 			 * to a work page.
 			 * =========================== */
-			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-2] : '';
+			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-1] : '';
 			
-			return url.match(/category/) != null && prev.match(/category/) != null;
+			console.log(url, url.match(/(work\/?$)|category/), prev, prev.match(/(work\/?$)|category/));
 			
-			/*
-if(prev === url){
-				return false;
-			}
-*/
-			return url.match(/work/) != null && prev.match(/home|about|team|project/) == null;
+			return url.match(/(work\/?$)|category/) != null && prev.match(/(work\/?$)|category/) != null && prev !== url;
+		},
+		
+		transition: function(html) {
+			
 		}
 	});
 	

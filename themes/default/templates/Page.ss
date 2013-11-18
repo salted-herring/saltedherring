@@ -18,10 +18,10 @@
 	</head>
 	<body class="page-$URLSegment<% if isMobile %> mobile<% end_if %>">
 		<% include Header %>
+		<div id="loader">
+			//// Loading ////
+		</div>
 		<div id="content" class="clearfix" data-title="$getTitle">
-			<div id="loader">
-				//// Loading ////
-			</div>
 			$Layout
 		</div>
 		

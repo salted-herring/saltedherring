@@ -5,7 +5,7 @@
 	width: 960px !important;
 	max-width: 960px !important;
 	margin-bottom: 6em;
-	@include transition(all .5s);
+	@include transition(height .5s);
 	
 	.entry {
 		position: relative;

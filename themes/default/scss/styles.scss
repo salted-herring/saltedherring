@@ -197,6 +197,7 @@ article a {
 	
 	.row {
 		overflow: visible;
+		position: relative;
 	}
 }
 
@@ -230,12 +231,15 @@ article a {
 }
 
 #main_nav {
-	margin-left: -2.5em;
-	padding-right: .5em;
-	position: relative;
+/* 	margin-left: -2.5em; */
+/* 	padding-right: .5em; */
+	position: absolute;
+	right: 2em;
+	top: 0em;
 	outline: none;
 	
 	@include transform(translate3d(0,0,0));
+	@include transition(top .5s);
 	
 	ul {
 		margin: 0 !important;
@@ -284,13 +288,21 @@ article a {
 			}
 		}
 	}
+	
+	&.hide {
+		top: -3em;
+	}
+	
+	&.show {
+		top: 0em;
+	}
 }
 
 #menu_icon {
-	position: fixed;
+	position: absolute;
 	z-index: 120;
-	right: 1em;
-	top: .75em;
+	right: 2em;
+	top: -1em;
 	
 	color: $blue;
 	font-size: (18/$font-size)+em;
@@ -298,9 +310,18 @@ article a {
 	line-height: 1em;
 	font-weight: 500;
 	
-	display: none;
+/* 	display: none; */
 	
 	@include transition(none);
+	@include transition(top .5s);
+	
+	&.hide {
+		top: -1em;
+	}
+	
+	&.show {
+		top: .8em;
+	}
 }
 
 .mobile #menu_icon {
@@ -323,6 +344,7 @@ article a {
 	//@include transition(all .5s);
 	//@include at-breakpoint(0 3 320px) {
 		padding-top: 2.9em;
+		padding-bottom: 12em;
 /* 		min-height: 100%; */
 /* 		width: 100%; */
 	//}
@@ -336,6 +358,7 @@ article a {
 	display: none;
 	text-align: center;
 	vertical-align: middle;
+	background: red;
 }
 #loadingcontent {
 	display: none;
@@ -522,10 +545,6 @@ footer {
 	ul {
 		margin-right: -1em;
 	}
-}
-
-#menu_icon {
-	display: none;
 } 
  
 @include at-breakpoint(0 3 320px) {
@@ -553,6 +572,7 @@ footer {
 		font-size: $font-size+px;
 		right: 1em !important;
 		display: block;
+		position: fixed;
 	}
 	
 	#header {
@@ -586,6 +606,8 @@ footer {
 		z-index: 3;
 		left: 0;
 		width: 100%;
+		top: .75em;
+		right: 0;
 		
 		&:before {
 			display: block;
