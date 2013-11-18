@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -812,6 +813,16 @@ article a:hover:after {
 /* ===========================
  * Generic Styles
  * =========================== */
+.stripedMask {
+  -webkit-mask-image: url(../img/stripes.png);
+  -moz-mask: url(../img/stripes.png);
+  mask: url(../img/stripes.png);
+  -webkit-mask-size: 963px 230px;
+  -moz-mask-size: 963px 230px;
+  -webkit-mask-repeat: repeat;
+  -webkit-mask-position: 0 0;
+}
+
 .link, .external {
   display: inline-block;
   border: 3px solid white;
@@ -849,31 +860,6 @@ article a:hover:after {
 .external:hover:before {
   right: -6px;
   top: -6px;
-}
-
-.filters {
-  padding: 2em 2em 2em 1em;
-}
-.filters a {
-  font-family: 'Times', serif;
-  font-style: italic;
-  color: black;
-  white-space: nowrap;
-}
-.filters a:last-child:after {
-  display: none;
-}
-.filters a.all, .filters a.current, .filters a:hover {
-  color: white;
-}
-.filters a.all:hover, .filters a.current:hover {
-  color: black;
-}
-.filters a:after {
-  margin-left: 10px;
-  margin-right: 10px;
-  content: '/';
-  color: black;
 }
 
 .fixedcontainer {
@@ -1121,26 +1107,31 @@ footer .salt span:before {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
+  -o-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
   -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
   -ms-animation-timing-function: easeInOutBack;
+  -o-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
   -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
   -ms-animation: saltshaker 0.5s 2;
+  -o-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
   -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
   -ms-animation-timing-function: easeInOutBounce;
+  -o-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
   -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
   -ms-animation: salt 0.5s 2;
+  -o-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
 }
 footer .whoarewe {
@@ -1188,6 +1179,16 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   background: black;
 }
 
+@-moz-keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
@@ -1198,7 +1199,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-moz-keyframes saltshaker {
+@-o-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
   }
@@ -1228,6 +1229,16 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
+@-moz-keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
 @-webkit-keyframes salt {
   0%, 100% {
     top: 0.65em;
@@ -1238,7 +1249,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-moz-keyframes salt {
+@-o-keyframes salt {
   0%, 100% {
     top: 0.65em;
   }

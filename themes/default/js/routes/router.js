@@ -120,7 +120,9 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 					window.workMasonry.destroy();
 					var masonry = new Masonry($('#work').get(0), {
 						hiddenStyle: {transform: 'scale(.8)', opacity: 0},
-						transitionDuration: '.5s'
+						transitionDuration: '.5s',
+						columnWidth: 320,
+						gutter: 0
 					});
 					masonry.layout();
 					window.workMasonry = masonry;
@@ -245,36 +247,40 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				
 				$('#loadingcontent').load(url + ' #content', function(response, status, xhr) {
 					
-					$('#loader').hide();
+					var el = this;
 					
-					views[url] = {
-						html: $('#loadingcontent #content').html(),
-						css: that.root + 'css/' + page + '.css'
-					};					
-					
-					if(that.prev) {
-						$('#loadingcontent').remove();
+					require(['pagetypes/' + page], function() {
+						views[url] = {
+							html: $('#loadingcontent #content').html(),
+							css: that.root + 'css/' + page + '.css'
+						};					
+						
+						if(that.prev) {
+							$('#loadingcontent').remove();
+							/* ===========================
+							 * If there is a transition
+							 * function supplied, call that - otherwise load the content.
+							 * =========================== */
+							if(typeof transitionContent !== 'undefined' && that.transitionAvailable(url)) {
+								transitionContent(views[url].html);
+							} else {
+								$('#content, #loadingcontent').empty();
+								$('#content').removeAttr('style').html(views[url].html);
+							}
+						};
+						
 						/* ===========================
-						 * If there is a transition
-						 * function supplied, call that - otherwise load the content.
+						 * Load in meta data, css & js.
 						 * =========================== */
-						if(typeof transitionContent !== 'undefined' && that.transitionAvailable(url)) {
-							transitionContent(views[url].html);
-						} else {
-							$('#content, #loadingcontent').empty();
-							$('#content').removeAttr('style').html(views[url].html);
-						}
-					};
+						$('[rel="stylesheet"]').attr('href', views[url].css);
+						that.getMeta(url, views[url]);
+						
+						that.prev = url;
+						$(el).remove();
+						
+						$('#loader').hide();
+					});
 					
-					/* ===========================
-					 * Load in meta data, css & js.
-					 * =========================== */
-					$('[rel="stylesheet"]').attr('href', views[url].css);
-					that.getMeta(url, views[url]);
-					require(['pagetypes/' + page]);
-					
-					that.prev = url;
-					$(this).remove();
 				});
 			}
 			

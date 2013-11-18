@@ -16,45 +16,27 @@ h1,
 	line-height: 1em;
 }
 
-.keyword {
+
+
+.keyword,
+.large {
 	position: absolute;
 	display: block;
 	width: 100%;
 	top: 50%;
-/* 	margin-top: 90px; */
-/* 	color: #bce9f1; */
-/* 	color: red; */
-/* 	margin-top: -.5em; */
-/* 	font-size: 1em; */
+}
+
+.large {
+	margin-top: -120px;
 }
 
 h1 {
-	margin: 0;//-1em 0 0 0;
-/* 	position: fixed !important; */
+	margin: 0;
 	width: 100%;
 	z-index: 2;
-/* 	height: 104px; */
-/* 	top: 50%; */
-/* 	background: red; */
 	
-	@include transform(translate3d(0,0,0), translateZ(0));
-	
-	-webkit-backface-visibility: hidden;
-	-webkit-perspective: 1000;
-/* 	display: inline-block; */
-	
-	/*
--webkit-mask-image: url(../img/stripes.png);
-	-moz-mask: url(../img/stripes.png);
-	mask: url(../img/stripes.png);
-	-webkit-mask-size: 963px 230px;
-	-moz-mask-size: 963px 230px;
-	
-	-webkit-mask-repeat: repeat;
-	-webkit-mask-position: 0 0;
-*/
-	
-/* 	top: 50%; */
+
+	@extend .stripedMask;
 	
 	span {
 		display: none;
@@ -90,19 +72,8 @@ h1 {
 	}
 	
 	h1 {
-		@include transform(translateZ(0));
-/* 		display: inline-block; */
-		
-		/*
--webkit-mask-image: url(../img/stripes.png);
-		-moz-mask: url(../img/stripes.png);
-		mask: url(../img/stripes.png);
-		-webkit-mask-size: 963px 230px;
-		-moz-mask-size: 963px 230px;
-		
-		-webkit-mask-repeat: repeat;
-		-webkit-mask-position: 0 0;
-*/
+		@include transform(translate3d(0,0,0), translateZ(0));
+/* 		@include transform(translateZ(0)); */
 	}
 }
 
@@ -223,7 +194,7 @@ section {
 		height: 95px;
 		
 		h1 {
-			margin-top: -88px;
+			margin-top: -97px;
 			position: fixed;
 			top: 50%;
 		}
@@ -501,11 +472,11 @@ section {
 	.block {
 		height: 100%;
 		background-repeat: no-repeat;
-		background-size: 120%;
+/* 		background-size: 120%; */
 		background-attachment: fixed;
 		background-position: 50% 0;
 		position: absolute;
-/* 		background: red !important; */
+/* 		@include transform(translate3d(0,0,10), translateZ(10)); */
 	}
 	
 	.overlay {
@@ -514,16 +485,12 @@ section {
 		position: absolute;
 		left: 0;
 		top: 0;
-		background-repeat: no-repeat;
-		background-size: auto 120%;
-		background-attachment: fixed;
-		background-position: 0 0;
 /* 		display: none; */
-/* 		background: red; */
-		/*
--webkit-transform: translate3d(0,0,0);
-		-webkit-backface-visibility: hidden;
-*/
+		background-repeat: no-repeat;
+/* 		background-size: 120%; */
+		background-attachment: fixed;
+		background-position: 50% 0;
+/* 		@include transform(translate3d(0,0,11), translateZ(11)); */
 	}
 }
 

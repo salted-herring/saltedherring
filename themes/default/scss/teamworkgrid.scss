@@ -1,5 +1,44 @@
 @import 'compass/css3', 'animation';
 
+
+.filters {
+	padding: 2em 2em 2em 1em;
+	width: ($font-size*24)+px;
+	
+	a {
+		@include minion;
+		color: $black;
+		white-space: nowrap;
+		font-size: (18/$font-size)+em;
+		
+		&:last-child {
+			&:after {
+				display: none;
+			}
+		}
+		
+		&.all,
+		&.current,
+		&:hover {
+			color: $white;
+		}
+		
+		&.all,
+		&.current {
+			&:hover {
+				color: $black;
+			}
+		}
+		
+		&:after {
+			margin-left: 10px;
+			margin-right: 10px;
+			content: '/';
+			color: $black;
+		}
+	}
+}
+
 .records {
 	padding: 0;
 	width: 960px !important;
@@ -15,15 +54,6 @@
 		width: 320px;
 		height: 320px;
 		float: left;
-/* 		@include opacity(1); */
-/* 		@include transform(scale(1.0)); */
-/* 		@include transition(all .5s); */
-		
-		&.hiddenentry {
-/* 			@include opacity(0.2); */
-/* 			@include transform(scale(0)); */
-/* 			width: 0; */
-		}
 		
 		&:hover {
 			.label {
@@ -196,10 +226,11 @@
 	
 	h1 {
 		top: 0;
+		@extend .stripedMask;
 	}
 	
 	strong {
-		top: 2em;
+		top: 0em;
 	}
 	
 	&.collapsed,

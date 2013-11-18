@@ -5,8 +5,7 @@
 	right: 2em;
 /* 	bottom: 0em; */
 	padding-bottom: 0;
-	width: 400px;
-	padding-top: 4em;
+	padding-top: 2em;
 	
 	strong {
 		display: block;
@@ -25,6 +24,7 @@
 	margin-top: 17em;
 	position: relative;
 	width: 960px !important;
+	background: red;
 /* 	@include transition_delay(5s); */
 /* 	@include transition(min-height .5s 1s ease); */
 	
@@ -101,12 +101,7 @@
 			width: 100%;
 			padding: 1em 2em;
 		}
-		/*
-&:before {
-			content: '“';
-			display: inline-block;
-		}
-*/
+		
 		&:after {
 			content: '';
 			display: inline-block;

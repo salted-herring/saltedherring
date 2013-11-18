@@ -122,13 +122,20 @@ if((top - $('#header').height()) < $(window).scrollTop()) {
 					var newTop = top < ($(window).scrollTop() + $('#header').height()) ? 0 - Math.abs($(window).scrollTop() + $('#header').height() - top) : Math.abs($(window).scrollTop() - top);
 					
 					
-					$(this).find('.heading').show().css({
-						top: newTop,
-						height: _h
+					if(newTop <= 0) {
+						$(this).find('.heading').hide();
+						$(this).find('.large').show();
+					} else {
+						$(this).find('.heading').show();
+						$(this).find('.large').hide();
+					}
+					$(this).find('.heading').css({
+						height: _h,
+						top: newTop
 					});
 					
 						
-					$(this).find('.heading h1').css({
+					$(this).find('.heading > h1').css({
 						top: Math.ceil(newTop + _h)
 					});
 					
@@ -136,6 +143,7 @@ if((top - $('#header').height()) < $(window).scrollTop()) {
 					$(this).find('.heading').show().css({
 						height: 0
 					});
+					$(this).find('.large').hide();
 				}
 			});
 			
