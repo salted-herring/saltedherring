@@ -508,7 +508,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 		},
 		
 		loadPortraits: function(member) {
-			console.log(this.teamImages, member);
+			console.log(this.teamImages, member in this.teamImages, this.teamImages[member] == true);
 			if(this.teamImages[member]) {
 				for(var image in this.teamImages[member]) {
 					$('.images').append($('<img/>').attr('src', this.teamImages[member][image]));
