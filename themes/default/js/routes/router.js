@@ -70,11 +70,23 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 		
 		work: function(section, fragment) {
 			var that = this;
-			
 			var callback = function() {
-			
+				
+				
 				if(window.workMasonry) {
 					window.workMasonry.layout();
+				} else {
+					//if(window.workMasonry && $('#work').length > 0) {
+/* 						window.workMasonry.destroy(); */
+						var masonry = new Masonry($('#work').get(0), {
+							hiddenStyle: {transform: 'scale(.8)', opacity: 0},
+							transitionDuration: '.5s',
+							columnWidth: 320,
+							gutter: 0
+						});
+						masonry.layout();
+						window.workMasonry = masonry;
+					//}
 				}
 				
 				if(window.location.href.match(/work\/project\//) != null) {
@@ -133,7 +145,8 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				 * Get the list of new entries, compare to the original 
 				 * entries & add / hide as required.
 				 * ==================================================== */
-				var urls = []
+				var urls = [],
+					count = 0;
 				entries.each(function() {
 					if($('#work .entry').filter('a[href="' + $(this).attr('href') + '"]').length == 0) {
 						$('#work').append($(this));
@@ -146,14 +159,26 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				
 				$('#work .entry').each(function(id, el) {
 					if(entries.filter('[href="' + $(this).attr('href') + '"]').length == 0) {
+						count++;
 						setTimeout(function(target) {
 							if(window.workMasonry) {
 								window.workMasonry.remove(target);
-								window.workMasonry.layout();
+							}
+							
+							if(--count <= 0) {
+								if(window.workMasonry) {
+									window.workMasonry.layout();
+								}
 							}
 						}, i * 200, this);
 					}
 				});
+				
+				if(--count <= 0) {
+					if(window.workMasonry) {
+						window.workMasonry.layout();
+					}
+				}
 				
 				callback();
 			}
@@ -234,14 +259,15 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				
 				this.loadMeta(views[url].meta);
 			} else {
-			
+				that = this;
+				
 				/* ===========================
 				 * Load correct content.
 				 * =========================== */
 				views[url] = false;
-				$('#loader').show();
-				
-				that = this;
+				if(that.prev) {
+					this.showLoading();
+				}
 				
 				$('#content').prepend('<div id="loadingcontent"/>');
 				
@@ -278,7 +304,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 						that.prev = url;
 						$(el).remove();
 						
-						$('#loader').hide();
+						that.hideLoading();
 					});
 					
 				});
@@ -501,13 +527,17 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			 * =========================== */
 			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-1] : '';
 			
-			console.log(url, url.match(/(work\/?$)|category/), prev, prev.match(/(work\/?$)|category/));
-			
 			return url.match(/(work\/?$)|category/) != null && prev.match(/(work\/?$)|category/) != null && prev !== url;
 		},
 		
-		transition: function(html) {
+		showLoading: function() {
+/* 			$('#loader span').hide(); */
 			
+			$('#loader').fadeIn('fast');
+		},
+		
+		hideLoading: function() {
+			$('#loader').fadeOut('fast');
 		}
 	});
 	

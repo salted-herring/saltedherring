@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -8,52 +7,56 @@
 /* ===========================
  * Sprite sheets
  * =========================== */
-.sprites-sprite, .sprites-digital_brand, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-saltshaker, .sprites-stripes, .external:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, footer .salt span:after, footer .salt span:before {
-  background: url('../img/sprites-s0696abf378.png') no-repeat;
+.sprites-sprite, .sprites-digital_brand, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-salted, .sprites-saltshaker, .sprites-stripes, .external:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, #loader span.salt, footer .salt span:after, footer .salt span:before {
+  background: url('../img/sprites-s40306aa5d7.png') no-repeat;
 }
 
 .sprites-digital_brand {
-  background-position: 0 0;
+  background-position: 0 -160px;
 }
 
 .sprites-down_arrow {
-  background-position: -323px -174px;
+  background-position: -39px 0;
 }
 
 .sprites-external_arrow {
-  background-position: -222px -174px;
+  background-position: -1111px -160px;
 }
 
 .sprites-external_arrow_blue {
-  background-position: -199px -174px;
+  background-position: -1134px -160px;
 }
 
 .sprites-menu-collapse {
-  background-position: -245px -174px;
+  background-position: -1157px -160px;
 }
 
 .sprites-menu-open {
-  background-position: -284px -174px;
+  background-position: 0 0;
 }
 
 .sprites-next_arrow {
-  background-position: -171px -174px;
+  background-position: -1055px -160px;
 }
 
 .sprites-previous_arrow {
-  background-position: -143px -174px;
+  background-position: -1083px -160px;
 }
 
 .sprites-salt {
-  background-position: -344px -174px;
+  background-position: -60px 0;
 }
 
 .sprites-salted-herring {
-  background-position: 0 -174px;
+  background-position: -912px -160px;
+}
+
+.sprites-salted {
+  background-position: -122px 0;
 }
 
 .sprites-saltshaker {
-  background-position: -406px -174px;
+  background-position: -522px 0;
 }
 
 .sprites-stripes {
@@ -642,7 +645,7 @@ a {
 }
 
 body {
-  background: url(../img/diagonals.png) whitesmoke;
+  background: url(../img/stripes_final.png) whitesmoke;
 }
 body.fixed {
   overflow: hidden;
@@ -835,15 +838,24 @@ article a:hover:after {
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 .link span, .external span {
   background-color: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.link:hover, .external:hover {
+  background: white;
+  color: black;
+}
 
 .external {
-  background: #00bbde;
+  font-size: 18px;
+  /* 	background: $blue; */
 }
 .external:before {
   position: absolute;
@@ -855,11 +867,10 @@ article a:hover:after {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: -222px -174px;
+  background-position: -1111px -160px;
 }
 .external:hover:before {
-  right: -6px;
-  top: -6px;
+  display: none;
 }
 
 .fixedcontainer {
@@ -920,13 +931,13 @@ article a:hover:after {
   width: 143px;
   font-size: 0;
   height: 14px;
-  background-position: 0 -174px;
+  background-position: -912px -160px;
   margin: 0 0 0 1em !important;
   position: relative;
 }
 
 .menu-open {
-  background-position: -284px -174px;
+  background-position: 0 0;
 }
 
 #main_nav {
@@ -1024,14 +1035,14 @@ article a:hover:after {
 }
 
 .mobile #menu_icon {
-  background-position: -284px -174px;
+  background-position: 0 0;
 }
 .mobile #menu_icon.collapse {
-  background-position: -245px -174px;
+  background-position: -1157px -160px;
 }
 .mobile #menu_icon.expand {
   cursor: pointer;
-  background-position: -284px -174px;
+  background-position: 0 0;
 }
 
 /* ===========================
@@ -1052,7 +1063,34 @@ article a:hover:after {
   display: none;
   text-align: center;
   vertical-align: middle;
-  background: red;
+  background: #00bbde;
+  color: white;
+}
+#loader span {
+  display: block;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  color: white;
+  font-weight: 800;
+  width: 100%;
+  font-size: 7.5em;
+  text-transform: uppercase;
+  line-height: 1em;
+  margin-top: -.5em;
+}
+#loader span.salt {
+  margin-top: .5em;
+  z-index: 2;
+  padding: 0;
+  width: 400px;
+  height: 89px;
+  left: 50%;
+  margin-left: -200px;
+  background-position: -122px 0;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
 }
 
 #loadingcontent {
@@ -1066,6 +1104,12 @@ footer {
   width: 100%;
   padding: 0;
   margin: 0;
+  position: relative;
+}
+footer #nextnav {
+  position: absolute;
+  bottom: auto;
+  top: -66px;
 }
 footer.fixedcontainer {
   /* 		bottom: -300% !important; */
@@ -1093,7 +1137,7 @@ footer .salt span:after {
   content: '';
   width: 62px;
   height: 64px;
-  background-position: -344px -174px;
+  background-position: -60px 0;
 }
 footer .salt span:before {
   position: absolute;
@@ -1103,35 +1147,30 @@ footer .salt span:before {
   content: '';
   width: 139px;
   height: 160px;
-  background-position: -406px -174px;
+  background-position: -522px 0;
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
-  -o-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
   -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
   -ms-animation-timing-function: easeInOutBack;
-  -o-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
   -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
   -ms-animation: saltshaker 0.5s 2;
-  -o-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
   -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
   -ms-animation-timing-function: easeInOutBounce;
-  -o-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
   -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
   -ms-animation: salt 0.5s 2;
-  -o-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
 }
 footer .whoarewe {
@@ -1179,16 +1218,6 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   background: black;
 }
 
-@-moz-keyframes saltshaker {
-  0%, 100% {
-    top: -3.8em;
-  }
-
-  50% {
-    top: -3.5em;
-  }
-}
-
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
@@ -1199,7 +1228,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-o-keyframes saltshaker {
+@-moz-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
   }
@@ -1229,16 +1258,6 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-moz-keyframes salt {
-  0%, 100% {
-    top: 0.65em;
-  }
-
-  50% {
-    top: 1em;
-  }
-}
-
 @-webkit-keyframes salt {
   0%, 100% {
     top: 0.65em;
@@ -1249,7 +1268,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-o-keyframes salt {
+@-moz-keyframes salt {
   0%, 100% {
     top: 0.65em;
   }

@@ -22,8 +22,11 @@ h1,
 .large {
 	position: absolute;
 	display: block;
-	width: 100%;
 	top: 50%;
+}
+
+.keyword {
+	width: 100%;
 }
 
 .large {
@@ -32,11 +35,19 @@ h1,
 
 h1 {
 	margin: 0;
-	width: 100%;
+	//width: 100%;
 	z-index: 2;
+	padding: 0;
+	width: 400px;
+	height: 89px;
+	left: 50%;
+	margin-left: -200px;
 	
-
-	@extend .stripedMask;
+	@include sprites-sprite(salted);
+	@include hide_text;
+	
+	
+	//@extend .stripedMask;
 	
 	span {
 		display: none;
@@ -221,7 +232,14 @@ section {
 		display: table;
 		margin: 0 auto;
 		width: auto;
-/* 		position: relative; */
+		
+		&.hover {
+			&:before,
+			&:after,
+			a {
+				background: $white;
+			}
+		}
 		
 		&:before {
 			position: absolute;
@@ -262,6 +280,7 @@ section {
 			padding: 0;
 			margin-left: -4px;
 			display: inline-block;
+/* 			background: red; */
 		}
 		
 		a {
@@ -278,23 +297,8 @@ section {
 			line-height: 1em;
 			border-bottom: 3px solid transparent;
 			border-bottom: 3px solid $white;
-			@include transition-delay(8s);
-			@include transition(all .5s);
-			
-			/*
-&:after {
-				position: absolute;
-				content: '';
-				display: block;
-				width: 100%;
-				height: 3px;
-				bottom: 0px;
-				left: 50%;
-				margin-left: -50%;
-				background: $white;
-				@include transition(all .5s);
-			}
-*/
+/* 			@include transition-delay(8s); */
+			@include transition(none);
 			
 			&:hover {
 				color: $blue;
@@ -356,6 +360,12 @@ section {
 		z-index: 10;
 		width: 100%;
 		min-height: 66px;
+		@include transition(bottom .5s 0 easeInExpo);
+		
+		&.hide {
+			bottom: -70px;
+		}
+		
 		ul {
 			list-style: none;
 			padding: 1.5em 0 0 0;
@@ -416,6 +426,7 @@ section {
 				position: absolute;
 				display: block;
 				top: 30px;
+				padding-left: 20px;
 				
 				&.active {
 					top: 0;
@@ -472,7 +483,7 @@ section {
 	.block {
 		height: 100%;
 		background-repeat: no-repeat;
-/* 		background-size: 120%; */
+/* 		background-size: 1920px 1200px; */
 		background-attachment: fixed;
 		background-position: 50% 0;
 		position: absolute;

@@ -1,7 +1,8 @@
 
 
 require(['jquery', 'backbone', 'underscore', '_base', 'router', 'masonry'], function($, Backbone, _, undefined, Router, Masonry) {
-	if($('#work').length > 0 && typeof window.workMasonry == 'undefined') {
+	/*
+if($('#work').length > 0 && typeof window.workMasonry == 'undefined') {
 			var masonry = new Masonry($('#work').get(0), {
 				hiddenStyle: {transform: 'scale(.8)', opacity: 0},
 				transitionDuration: '.5s',
@@ -11,7 +12,8 @@ require(['jquery', 'backbone', 'underscore', '_base', 'router', 'masonry'], func
 			masonry.layout();
 	
 			window.workMasonry = masonry;
-		}	
+		}
+*/	
 	$(window).resize(function(e) {
 		$('#work').css('min-height', $(window).height());
 	}).resize();
@@ -24,4 +26,9 @@ require(['jquery', 'backbone', 'underscore', '_base', 'router', 'masonry'], func
 		});
 	});
 	
+	$(document).on('mouseover', '#projectnav a', function() {
+		$(this).width(Math.max($(this).find('strong').width(), $(this).find('em').width()) + 100);
+	}).on('mouseout', '#projectnav a', function() {
+		$(this).removeAttr('style');
+	});
 });

@@ -24,7 +24,7 @@
 	margin-top: 17em;
 	position: relative;
 	width: 960px !important;
-	background: red;
+/* 	background: red; */
 /* 	@include transition_delay(5s); */
 /* 	@include transition(min-height .5s 1s ease); */
 	
@@ -185,6 +185,11 @@
 	
 	.fullstory {
 		margin-right: 4%;
+		
+		&:hover {
+			background: $blue;
+			color: $white;
+		}
 	}
 	
 	.website {
@@ -196,6 +201,11 @@
 		&:before {
 			background-color: $background;
 			@include sprites-sprite(external_arrow_blue);
+		}
+		
+		&:hover {
+			background: $blue;
+			color: $white;
 		}
 	}
 }

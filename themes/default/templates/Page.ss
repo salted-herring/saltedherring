@@ -9,6 +9,10 @@
 		$MetaTags(true)
 		<% include OG %>
 		<meta name="viewport" content="width=device-width">
+		<link rel="apple-touch-icon" href="$ThemeDir/img/touch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="$ThemeDir/img/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="$ThemeDir/img/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="$ThemeDir/img/touch-icon-ipad-retina.png">
 
 		$getCSS
 		
@@ -19,7 +23,8 @@
 	<body class="page-$URLSegment<% if isMobile %> mobile<% end_if %>">
 		<% include Header %>
 		<div id="loader">
-			//// Loading ////
+			<span>Getting</span>
+			<span class="salt">Salted</span>
 		</div>
 		<div id="content" class="clearfix" data-title="$getTitle">
 			$Layout

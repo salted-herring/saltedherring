@@ -8,7 +8,7 @@
 	<% if getSliders %>
 		
 		<% loop getSliders %>
-			<div id="_{$Pos}" class="block<% if First %> first<% end_if %>"<% if Images && Top.isMobile(false) %><% with Images.First %> style="background-image: url($outputImage(1920).URL);"<% end_with %><% end_if %> data-keyword="$Keyword">
+			<div id="_{$Pos}" class="block<% if First %> first<% end_if %>"<% if Images && Top.isMobile(false) %><% with Images.First %> style="background-image: url($outputImage(1920).URL);" data-imgwidth="$outputImage(1920).Width" data-imgheight="$outputImage(1920).Height"<% end_with %><% end_if %> data-keyword="$Keyword">
 				<% if $OverlayImage %>
 					<div class="overlay" style="background-image: url($OverlayImage.SetWidth(1920).URL);"></div>
 				<% end_if %>

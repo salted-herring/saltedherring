@@ -34,7 +34,7 @@ a {
 }
 
 body {
-	background: url(../img/diagonals.png) $background;
+	background: url(../img/stripes_final.png) $background;
 	
 	&.fixed {
 		overflow: hidden;
@@ -102,16 +102,25 @@ article a {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	
+	@include transition(none);
+	
 	span {
 		background-color: $white;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
+	
+	&:hover {
+		background: $white;
+		color: $black;
+	}
 }
 
 .external {
 	@extend .link;
-	background: $blue;
+	
+	font-size: 18px;
+/* 	background: $blue; */
 	
 	&:before {
 		position: absolute;
@@ -128,8 +137,7 @@ article a {
 	
 	&:hover {
 		&:before {
-			right: -6px;
-			top: -6px;
+			display: none;
 		}
 	}
 }
@@ -334,7 +342,36 @@ article a {
 	display: none;
 	text-align: center;
 	vertical-align: middle;
-	background: red;
+	background: $blue;
+	
+	color: $white;
+	
+	span {
+		display: block;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		color: $white;
+		font-weight: 800;
+		width: 100%;
+		font-size: (120/$font-size)+em;
+		text-transform: uppercase;
+		line-height: 1em;
+		margin-top: -.5em;
+		
+		&.salt {
+			margin-top: .5em;
+			z-index: 2;
+			padding: 0;
+			width: 400px;
+			height: 89px;
+			left: 50%;
+			margin-left: -200px;
+			
+			@include sprites-sprite(salted);
+			@include hide_text;
+		}
+	}
 }
 #loadingcontent {
 	display: none;
@@ -347,6 +384,13 @@ footer {
 	width: 100%;
 	padding: 0;
 	margin: 0;
+	position: relative;
+	
+	#nextnav {
+		position: absolute;
+		bottom: auto;
+		top: -66px;
+	}
 	
 	&.fixedcontainer {
 /* 		bottom: -300% !important; */
