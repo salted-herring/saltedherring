@@ -32,7 +32,7 @@
 			<div class="images">
 				<% loop getOtherPortraits %>
 					<% if First %>
-						<img src="$outputImage.URL" alt="$Up.Up.getUserName" class="current" />
+						<img src="$Image.URL" alt="$Up.Up.getUserName" class="current" />
 					<% end_if %>
 				<% end_loop %>
 			</div>
