@@ -28,9 +28,9 @@
 		</header>
 		
 		<div id="memberdetails" class="detailscontainer<% if Images %><% else %> no-images<% end_if %>">
-			<% if Images %>
+			<% if getOtherPortraits %>
 			<div class="images">
-				<% with Images.First %>
+				<% with getOtherPortraits.First %>
 					<img src="$outputImage.URL" alt="$Up.Up.getUserName" class="current" />
 				<% end_with %>
 			</div>
