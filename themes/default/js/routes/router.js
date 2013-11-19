@@ -33,7 +33,6 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			
 			this.on('route', function() {
 				this.historyStack.push('/' + arguments[0] + '/' + arguments[1].join('/'));
-				//console.log('route', this.historyStack);
 			});
 			
 			// build regex from the main nav.
@@ -72,12 +71,10 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			var that = this;
 			var callback = function() {
 				
-				
-				if(window.workMasonry) {
-					window.workMasonry.layout();
-				} else {
-					//if(window.workMasonry && $('#work').length > 0) {
-/* 						window.workMasonry.destroy(); */
+				if($('#work').length > 0) {
+					if(window.workMasonry) {
+						window.workMasonry.layout();
+					} else {
 						var masonry = new Masonry($('#work').get(0), {
 							hiddenStyle: {transform: 'scale(.8)', opacity: 0},
 							transitionDuration: '.5s',
@@ -86,8 +83,9 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 						});
 						masonry.layout();
 						window.workMasonry = masonry;
-					//}
+					}
 				}
+				
 				
 				if(window.location.href.match(/work\/project\//) != null) {
 					$.get('/work/getCurrentSession', function(response, status, xhr) {
@@ -150,7 +148,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				entries.each(function() {
 					if($('#work .entry').filter('a[href="' + $(this).attr('href') + '"]').length == 0) {
 						$('#work').append($(this));
-						if(window.workMasonry) {
+						if(window.workMasonry && $('#work').length > 0) {
 							window.workMasonry.appended($(this));
 							window.workMasonry.layout();
 						}
@@ -161,11 +159,11 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 					if(entries.filter('[href="' + $(this).attr('href') + '"]').length == 0) {
 						count++;
 						setTimeout(function(target) {
-							if(window.workMasonry) {
+							if(window.workMasonry && $('#work').length > 0) {
 								window.workMasonry.remove(target);
 							}
 							
-							if(--count <= 0) {
+							if(--count <= 0 && $('#work').length > 0) {
 								if(window.workMasonry) {
 									window.workMasonry.layout();
 								}
@@ -174,7 +172,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 					}
 				});
 				
-				if(--count <= 0) {
+				if(--count <= 0 && $('#work').length > 0) {
 					if(window.workMasonry) {
 						window.workMasonry.layout();
 					}
@@ -195,7 +193,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				$.get('/work/clearSession');	
 			}
 			
-			this.loadPage('workpage', '/' + url.join('/') + '/', callback, transition);
+			this.loadPage('workpage', url.join('/'), callback, transition);
 			
 			if(section == 'category') {
 				this.currentCategory = fragment;
@@ -265,7 +263,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				 * Load correct content.
 				 * =========================== */
 				views[url] = false;
-				if(that.prev) {
+				if(that.prev && !that.transitionAvailable(url)) {
 					this.showLoading();
 				}
 				
@@ -525,8 +523,8 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			 * project, or from any other page
 			 * to a work page.
 			 * =========================== */
-			prev = this.historyStack.length > 1 ? this.historyStack[this.historyStack.length-1] : '';
-			
+			prev = this.historyStack.length > 0 ? this.historyStack[this.historyStack.length-2] : '';
+						
 			return url.match(/(work\/?$)|category/) != null && prev.match(/(work\/?$)|category/) != null && prev !== url;
 		},
 		

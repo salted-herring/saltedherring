@@ -212,6 +212,8 @@ section {
 	}
 	
 	.first {
+/* 		z-index: 1; */
+/* 		@include transform(translateZ(1)); */
 		.text {
 			padding: 0;
 		}
@@ -221,6 +223,10 @@ section {
 			margin-left: -(211/2)+px !important;
 			bottom: (150/$font-size)+em;
 /* 			padding: 0 3em !important; */
+		}
+		
+		&.init {
+			z-index: 2;
 		}
 	}
 	

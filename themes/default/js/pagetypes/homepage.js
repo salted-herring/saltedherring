@@ -14,6 +14,8 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 				$('#content, #work').height(targetHeight);
 			}
 			
+			$('#work .block.first').removeClass('init');
+			
 			$('#work .block').each(function(i, el) {
 				var top = (i * ($(window).height() - $('#header').height()));
 				$(this).height($(window).height() - $('#header').height());

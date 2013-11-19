@@ -1177,7 +1177,7 @@ footer .whoarewe {
   margin-top: -1em;
 }
 footer .whoarewe p {
-  font-family: 'Times', serif;
+  font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
 footer .contact {
@@ -1462,7 +1462,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   width: 384px;
 }
 .filters a {
-  font-family: 'Times', serif;
+  font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
   color: black;
   white-space: nowrap;
@@ -1564,7 +1564,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   display: block;
 }
 .records .label em {
-  font-family: 'Times', serif;
+  font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
 
@@ -1625,7 +1625,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   /* 			margin-left: -2em; */
 }
 .individualentry header span {
-  font-family: 'Times', serif;
+  font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
   font-size: 1.5em;
 }
@@ -1834,7 +1834,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   font-size: 1.375em;
 }
 #projectnav em {
-  font-family: 'Times', serif;
+  font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
 #projectnav .next {
@@ -1945,7 +1945,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 .individualentry aside a,
 .individualentry aside span {
-  font-family: 'Times', serif;
+  font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
 .individualentry aside .contact {

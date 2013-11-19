@@ -17,6 +17,8 @@
 		$getCSS
 		
 		<script src="$ThemeDir/js/lib/modernizr.min.js"></script>
+		<script type="text/javascript" src="//use.typekit.net/fxa7vos.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 		
 		<% include GA %>
 	</head>

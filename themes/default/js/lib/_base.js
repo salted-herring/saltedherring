@@ -104,20 +104,20 @@ if($(window).scrollTop() < (headerHeight + 78)) {
 				//$('.detailscontainer, footer').removeClass('fixedcontainer');
 				//$('#content').removeAttr('style');
 				
-				/* ===========================
-				 * Animation for banner as seen on
-				 * work & team landing pages.
-				 * =========================== */
 				
-				/*
-if($('#banner').length > 0) {
-					if($(window).scrollTop() > 100) {
-						$('#banner').addClass('small');
-					} else {
-						$('#banner').removeClass('small');
-					}
+			}
+			
+			/* ===========================
+			 * Animation for banner as seen on
+			 * work & team landing pages.
+			 * =========================== */
+			
+			if($('#banner').length > 0) {
+				if($(window).scrollTop() > 100) {
+					$('#banner').addClass('small');
+				} else {
+					$('#banner').removeClass('small');
 				}
-*/
 			}
 			
 			
