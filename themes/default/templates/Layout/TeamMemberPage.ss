@@ -28,13 +28,13 @@
 		</header>
 		
 		<div id="memberdetails" class="detailscontainer<% if Images %><% else %> no-images<% end_if %>">
-			<% if getOtherPortraits %>
+			<% if firstAnimatedImage %>
 			<div class="images">
-				<% loop getOtherPortraits %>
+				<% with firstAnimatedImage %>
 					<% if First %>
-						<img src="$Image.URL" alt="$Up.Up.getUserName" class="current" />
+						<img src="$outputImage.URL" alt="$Up.getUserName" class="current" />
 					<% end_if %>
-				<% end_loop %>
+				<% end_with %>
 			</div>
 			<% end_if %>
 			

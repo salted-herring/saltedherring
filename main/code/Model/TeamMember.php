@@ -56,6 +56,18 @@ class TeamMember extends BaseDBO {
 		return json_encode(array('data' => NULL));
 	}
 	
+	public function firstAnimatedImage() {
+		if($this->Images()->first()) {
+			$images = $this->Images()->exclude(array('ID' => $this->Images()->first()->ID));
+		
+			if($images) {
+				return $images->first();
+			}
+		}
+		
+		return false;
+	}
+	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		
