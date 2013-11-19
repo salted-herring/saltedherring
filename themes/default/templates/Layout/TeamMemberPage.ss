@@ -30,7 +30,7 @@
 		<div id="memberdetails" class="detailscontainer<% if Images %><% else %> no-images<% end_if %>">
 			<% if getOtherPortraits %>
 			<div class="images">
-				<% with getOtherPortraits.First %>
+				<% with getOtherPortraits.First.Image %>
 					<img src="$outputImage.URL" alt="$Up.Up.getUserName" class="current" />
 				<% end_with %>
 			</div>
