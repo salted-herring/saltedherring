@@ -16,6 +16,8 @@ if($('#work').length > 0 && typeof window.workMasonry == 'undefined') {
 */	
 	$(window).resize(function(e) {
 		$('#work').css('min-height', $(window).height());
+		var els = $('.entry.hide');
+		
 	}).resize();
 	
 	$(document).on('click', '.fullstory', function(e) {

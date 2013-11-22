@@ -21,7 +21,7 @@
 		<div class="label" data-name="$FirstName">
 			<span>
 				<strong>$FirstName $LastName</strong>
-				<em>$Role</em>
+				<em>$Role.XML</em>
 			</span>
 		</div>
 	</a>

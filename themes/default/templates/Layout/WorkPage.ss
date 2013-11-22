@@ -16,7 +16,7 @@
 <% if getAllProjects %>
 <section id="work" class="container records">
 	<% loop getAllProjects %>
-		<a href="$Top.URLSegment/project/$URLSegment" class="entry<% if MultipleOf(3) %> last<% end_if %>" title="$Name">
+		<a href="$Top.URLSegment/project/$URLSegment" class="entry hide<% if MultipleOf(3) %> last<% end_if %>" title="$Name">
 		
 			<% if Thumbnail %>
 				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Name" />

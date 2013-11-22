@@ -103,6 +103,7 @@
 
 .images {
 	height: 620px;
+	margin-bottom: 5em;
 	img {
 		position: absolute;
 		z-index: 0;
@@ -114,7 +115,7 @@
 }
 
 #contentarea {
-	margin-top: 5em;
+	margin-top: 0 !important;
 	margin-bottom: 2em;
 }
 

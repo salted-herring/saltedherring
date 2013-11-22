@@ -8,7 +8,7 @@
  * Sprite sheets
  * =========================== */
 .sprites-sprite, .sprites-digital_brand, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-salted, .sprites-saltshaker, .sprites-stripes, .external:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, #loader span.salt, footer .salt span:after, footer .salt span:before, #projectnav .next:after, #projectnav .previous:before {
-  background: url('../img/sprites-s40306aa5d7.png') no-repeat;
+  background: url('../img/sprites-s1ebda60a27.png') no-repeat;
 }
 
 .sprites-digital_brand {
@@ -20,15 +20,15 @@
 }
 
 .sprites-external_arrow {
-  background-position: -1111px -160px;
+  background-position: -1114px -160px;
 }
 
 .sprites-external_arrow_blue {
-  background-position: -1134px -160px;
+  background-position: -1137px -160px;
 }
 
 .sprites-menu-collapse {
-  background-position: -1157px -160px;
+  background-position: -1160px -160px;
 }
 
 .sprites-menu-open {
@@ -36,11 +36,11 @@
 }
 
 .sprites-next_arrow {
-  background-position: -1055px -160px;
+  background-position: -1058px -160px;
 }
 
 .sprites-previous_arrow {
-  background-position: -1083px -160px;
+  background-position: -1086px -160px;
 }
 
 .sprites-salt {
@@ -48,7 +48,7 @@
 }
 
 .sprites-salted-herring {
-  background-position: -912px -160px;
+  background-position: -915px -160px;
 }
 
 .sprites-salted {
@@ -60,7 +60,7 @@
 }
 
 .sprites-stripes {
-  background-position: 0 -334px;
+  background-position: 0 -335px;
 }
 
 /* @license
@@ -867,7 +867,7 @@ article a:hover:after {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: -1111px -160px;
+  background-position: -1114px -160px;
 }
 .external:hover:before {
   display: none;
@@ -931,7 +931,7 @@ article a:hover:after {
   width: 143px;
   font-size: 0;
   height: 14px;
-  background-position: -912px -160px;
+  background-position: -915px -160px;
   margin: 0 0 0 1em !important;
   position: relative;
 }
@@ -1038,7 +1038,7 @@ article a:hover:after {
   background-position: 0 0;
 }
 .mobile #menu_icon.collapse {
-  background-position: -1157px -160px;
+  background-position: -1160px -160px;
 }
 .mobile #menu_icon.expand {
   cursor: pointer;
@@ -1105,6 +1105,7 @@ footer {
   padding: 0;
   margin: 0;
   position: relative;
+  z-index: 3;
 }
 footer #nextnav {
   position: absolute;
@@ -1151,26 +1152,31 @@ footer .salt span:before {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
+  -o-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
   -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
   -ms-animation-timing-function: easeInOutBack;
+  -o-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
   -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
   -ms-animation: saltshaker 0.5s 2;
+  -o-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
   -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
   -ms-animation-timing-function: easeInOutBounce;
+  -o-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
   -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
   -ms-animation: salt 0.5s 2;
+  -o-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
 }
 footer .whoarewe {
@@ -1218,6 +1224,16 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   background: black;
 }
 
+@-moz-keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
@@ -1228,7 +1244,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-moz-keyframes saltshaker {
+@-o-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
   }
@@ -1258,6 +1274,16 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
+@-moz-keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
 @-webkit-keyframes salt {
   0%, 100% {
     top: 0.65em;
@@ -1268,7 +1294,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-moz-keyframes salt {
+@-o-keyframes salt {
   0%, 100% {
     top: 0.65em;
   }
@@ -1634,21 +1660,15 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   font-size: 16px;
 }
 
-@-webkit-keyframes heading {
+@-moz-keyframes heading {
   0% {
     display: block;
-    -webkit-transform: scale(1);
     -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
-    -webkit-transform: scale(0);
     -moz-transform: scale(0);
-    -ms-transform: scale(0);
-    -o-transform: scale(0);
     transform: scale(0);
   }
 
@@ -1657,20 +1677,31 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-moz-keyframes heading {
+@-webkit-keyframes heading {
   0% {
     display: block;
     -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
     -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+
+  51%, 100% {
+    display: none;
+  }
+}
+
+@-o-keyframes heading {
+  0% {
+    display: block;
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
     -o-transform: scale(0);
     transform: scale(0);
   }
@@ -1683,18 +1714,12 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 @-ms-keyframes heading {
   0% {
     display: block;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
     -ms-transform: scale(1);
-    -o-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
     -ms-transform: scale(0);
-    -o-transform: scale(0);
     transform: scale(0);
   }
 
@@ -1706,18 +1731,10 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 @keyframes heading {
   0% {
     display: block;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
-    -o-transform: scale(0);
     transform: scale(0);
   }
 
@@ -1848,7 +1865,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 #projectnav .next:after {
   right: 1.2em;
   top: 1.5em;
-  background-position: -1055px -160px;
+  background-position: -1058px -160px;
 }
 #projectnav .next:before {
   display: none;
@@ -1868,7 +1885,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 #projectnav .previous:before {
   margin-left: 0;
   margin-right: 1.2em;
-  background-position: -1083px -160px;
+  background-position: -1086px -160px;
 }
 #projectnav .previous:hover:before {
   left: 1.2em;
@@ -1954,6 +1971,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 
 .images {
   height: 620px;
+  margin-bottom: 5em;
 }
 .images img {
   position: absolute;
@@ -1964,7 +1982,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 
 #contentarea {
-  margin-top: 5em;
+  margin-top: 0 !important;
   margin-bottom: 2em;
 }
 

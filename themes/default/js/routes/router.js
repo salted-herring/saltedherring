@@ -79,9 +79,19 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 							hiddenStyle: {transform: 'scale(.8)', opacity: 0},
 							transitionDuration: '.5s',
 							columnWidth: 320,
-							gutter: 0
+							gutter: 0,
+							isInitLayout: false,
+							itemSelector: '.entry'
 						});
+						
+						masonry.on( 'layoutComplete', function( msnryInstance, laidOutItems ) {
+							masonry.hide(laidOutItems);
+							$('.entry.hide').removeClass('hide');
+							masonry.reveal(laidOutItems);
+						});
+						
 						masonry.layout();
+						
 						window.workMasonry = masonry;
 					}
 				}
@@ -91,7 +101,6 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 					$.get('/work/getCurrentSession', function(response, status, xhr) {
 						that.currentCategory = response;
 						$('#banner .filter a').removeClass('all current');
-						//$('#banner .filter a[href*="' + response + '"').addClass('current');
 						
 						// load the existing navigation for the category,
 						// else get the json file.
@@ -132,8 +141,17 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 						hiddenStyle: {transform: 'scale(.8)', opacity: 0},
 						transitionDuration: '.5s',
 						columnWidth: 320,
-						gutter: 0
+						gutter: 0,
+						isInitLayout: false,
+						itemSelector: '.entry'
 					});
+					
+					masonry.on( 'layoutComplete', function( msnryInstance, laidOutItems ) {
+						masonry.hide(laidOutItems);
+						$('.entry.hide').removeClass('hide');
+						masonry.reveal(laidOutItems);
+					});
+					
 					masonry.layout();
 					window.workMasonry = masonry;
 				}
@@ -221,11 +239,11 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 						that.loadPortraits(member);
 					}
 				
-					if(that.team.length) {
+					if(that.team.length > 0) {
 						that.teamNavigation(member);
 					} else {
 						$.get(that.root + 'json/team.json', function(response, status, xhr) {
-							that.team = typeof response == 'string' ? JSON.parse(response) : response;
+							that.team = response;
 							that.teamNavigation(member);
 						});
 					}
@@ -233,7 +251,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			}
 		},
 		
-		loadPage: function(page, url, callback, transitionContent) {
+		loadPage: function(page, url, callback, transitionContent, hideElements) {
 			
 			views = this.views;
 			
@@ -253,6 +271,9 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 					transitionContent(views[url].html);
 				} else {
 					$('#content').removeAttr('style').empty().html(views[url].html);
+					if(callback) {
+						callback();
+					}
 				}
 				
 				this.loadMeta(views[url].meta);
@@ -303,15 +324,13 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 						$(el).remove();
 						
 						that.hideLoading();
+						
+						if(callback) {
+							callback();
+						}
 					});
 					
 				});
-			}
-			
-			
-			
-			if(callback) {
-				callback();
 			}
 		},
 		
@@ -462,8 +481,6 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			var previous = null,
 				next = null,
 				current = null;
-				
-			
 					
 			for(var i in this.team) {
 				if(current != null) {
@@ -484,11 +501,13 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				}
 			}
 			
+			console.log(member, next, previous);
+			
 			this.showNav(next, previous, '/team/');	
 		},
 		
 		showNav: function(next, previous, base) {
-			$('#projectnav a').hide();					
+			$('#projectnav, #projectnav a').hide();		
 					
 			if(previous) {
 				$('#projectnav .previous strong').text(previous.Title);
@@ -497,14 +516,14 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				$('#projectnav .previous').show();
 			}
 			
-			if(next) {
+			if(next != null) {
 				$('#projectnav .next strong').text(next.Title);
 				$('#projectnav .next em').text(next.TagLine);
 				$('#projectnav .next').attr('href', base + next.URLSegment);
 				$('#projectnav .next').show();
 			}
 			
-			$('#projectnav').fadeIn();
+			$('#projectnav').css({display: 'block'}).show();
 		},
 		
 		loadPortraits: function(member) {

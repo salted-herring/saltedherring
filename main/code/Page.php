@@ -81,10 +81,7 @@ $fields->addFieldToTab(
 			try {				
 				$contents = $this->__readFILE(ROOT . $dir . 'pagetypes/.bootstrap.js');
 				
-				// open config & add to new file.
-				$require = $this->__readFILE(ROOT . $dir . 'config.js');
-				
-				$this->__writeFILE($file, str_replace('pagename', strtolower(get_class($this)) . ' page', str_replace('lib', '../lib', $require)) . $contents);
+				$this->__writeFILE($file, str_replace('pagename', strtolower(get_class($this)), $contents));
 				
 			} catch(Exception $e) {
 				user_error($e, E_USER_WARNING);
@@ -276,9 +273,6 @@ class Page_Controller extends ContentController {
 			$script = '<script src="' . $this->ThemeDir() . '/js/lib/require.js" data-main="' . $this->ThemeDir() . '/%s"></script>';
 			return sprintf($script, 'build/pagetypes/' . strtolower($this->ClassName));
 		}
-		
-		/*
-*/
 	}
 	
 	protected function getCSS() {

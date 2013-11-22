@@ -35,8 +35,12 @@
 	}
 	
 	.entry {
-		@include transition(none);
+		@include transition(opacity .2s);
 		@include transform(translate3d(0,0,0));
+		
+		&.hide {
+			@include opacity(0);
+		}
 	}
 }
 

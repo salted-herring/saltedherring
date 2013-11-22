@@ -8,7 +8,7 @@
  * Sprite sheets
  * =========================== */
 .sprites-sprite, .sprites-digital_brand, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-salted, .sprites-saltshaker, .sprites-stripes, .external:before, #logo a, .menu-open, .mobile #menu_icon, .mobile #menu_icon.collapse, .mobile #menu_icon.expand, #loader span.salt, footer .salt span:after, footer .salt span:before, h1 {
-  background: url('../img/sprites-s40306aa5d7.png') no-repeat;
+  background: url('../img/sprites-s1ebda60a27.png') no-repeat;
 }
 
 .sprites-digital_brand {
@@ -20,15 +20,15 @@
 }
 
 .sprites-external_arrow {
-  background-position: -1111px -160px;
+  background-position: -1114px -160px;
 }
 
 .sprites-external_arrow_blue {
-  background-position: -1134px -160px;
+  background-position: -1137px -160px;
 }
 
 .sprites-menu-collapse {
-  background-position: -1157px -160px;
+  background-position: -1160px -160px;
 }
 
 .sprites-menu-open {
@@ -36,11 +36,11 @@
 }
 
 .sprites-next_arrow {
-  background-position: -1055px -160px;
+  background-position: -1058px -160px;
 }
 
 .sprites-previous_arrow {
-  background-position: -1083px -160px;
+  background-position: -1086px -160px;
 }
 
 .sprites-salt {
@@ -48,7 +48,7 @@
 }
 
 .sprites-salted-herring {
-  background-position: -912px -160px;
+  background-position: -915px -160px;
 }
 
 .sprites-salted {
@@ -60,7 +60,7 @@
 }
 
 .sprites-stripes {
-  background-position: 0 -334px;
+  background-position: 0 -335px;
 }
 
 /* @license
@@ -867,7 +867,7 @@ article a:hover:after {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: -1111px -160px;
+  background-position: -1114px -160px;
 }
 .external:hover:before {
   display: none;
@@ -931,7 +931,7 @@ article a:hover:after {
   width: 143px;
   font-size: 0;
   height: 14px;
-  background-position: -912px -160px;
+  background-position: -915px -160px;
   margin: 0 0 0 1em !important;
   position: relative;
 }
@@ -1038,7 +1038,7 @@ article a:hover:after {
   background-position: 0 0;
 }
 .mobile #menu_icon.collapse {
-  background-position: -1157px -160px;
+  background-position: -1160px -160px;
 }
 .mobile #menu_icon.expand {
   cursor: pointer;
@@ -1105,6 +1105,7 @@ footer {
   padding: 0;
   margin: 0;
   position: relative;
+  z-index: 3;
 }
 footer #nextnav {
   position: absolute;
@@ -1151,26 +1152,31 @@ footer .salt span:before {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
+  -o-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
   -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
   -ms-animation-timing-function: easeInOutBack;
+  -o-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
   -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
   -ms-animation: saltshaker 0.5s 2;
+  -o-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
   -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
   -ms-animation-timing-function: easeInOutBounce;
+  -o-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
   -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
   -ms-animation: salt 0.5s 2;
+  -o-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
 }
 footer .whoarewe {
@@ -1218,6 +1224,16 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   background: black;
 }
 
+@-moz-keyframes saltshaker {
+  0%, 100% {
+    top: -3.8em;
+  }
+
+  50% {
+    top: -3.5em;
+  }
+}
+
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
@@ -1228,7 +1244,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-moz-keyframes saltshaker {
+@-o-keyframes saltshaker {
   0%, 100% {
     top: -3.8em;
   }
@@ -1258,6 +1274,16 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
+@-moz-keyframes salt {
+  0%, 100% {
+    top: 0.65em;
+  }
+
+  50% {
+    top: 1em;
+  }
+}
+
 @-webkit-keyframes salt {
   0%, 100% {
     top: 0.65em;
@@ -1268,7 +1294,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 
-@-moz-keyframes salt {
+@-o-keyframes salt {
   0%, 100% {
     top: 0.65em;
   }
@@ -1457,6 +1483,10 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     margin: 1em;
   }
 }
+body {
+  background: whitesmoke;
+}
+
 h1 {
   background-position: 0 -160px;
   width: 912px;
@@ -1467,6 +1497,7 @@ h1 {
   margin: 62px 0;
   position: fixed;
   top: 46px;
+  z-index: 0;
 }
 
 aside {
@@ -1481,14 +1512,17 @@ aside {
 }
 
 article .row {
+  z-index: 2;
+  position: relative;
   margin-top: 298px;
 }
 
 .overlay {
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100%;
   background: url(../img/stripes_final.png);
+  z-index: 1;
   /* 	background-position: 5px 5px; */
   /* 	@include opacity(.2); */
   /* 	background-repeat: repeat-y; */
