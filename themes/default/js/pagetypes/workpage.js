@@ -1,19 +1,83 @@
 
 
-require(['jquery', 'backbone', 'underscore', '_base', 'router', 'masonry'], function($, Backbone, _, undefined, Router, Masonry) {
-	/*
-if($('#work').length > 0 && typeof window.workMasonry == 'undefined') {
-			var masonry = new Masonry($('#work').get(0), {
-				hiddenStyle: {transform: 'scale(.8)', opacity: 0},
-				transitionDuration: '.5s',
-				columnWidth: 320,
-				gutter: 0
-			});
-			masonry.layout();
+require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], function($, Backbone, _) {
+
+	var $container = $('#work');
 	
-			window.workMasonry = masonry;
+	$container.isotope({
+		itemSelector: '.entry',
+		
+		cellsByColumn: {
+			columnWidth: 320,
+			rowHeight: 320
+		},
+		
+		/*
+masonry: {
+			columnWidth: 320,
+			gutter: 0
+		},
+*/
+		
+		sortby: 'id',
+		
+		getSortData : {
+	    	id : function ( $elem ) {
+				return $elem.data('sortorder');
+			}
+	    },
+		
+		filter: function() {
+			var target = $('.filters .current');
+			
+			if(target.length == 0) {
+				target = $('.filters .all');
+			}
+			
+			return $(this).hasClass(target.data('class'));
 		}
-*/	
+	});
+
+
+	var Router = Backbone.Router.extend({
+		routes: {
+			'work(/)': 'work',
+			'work/:section/:fragment(/)': 'work',
+		},
+		
+		navigate: function(url, options) {
+			Backbone.Router.prototype.navigate.apply(this, arguments);
+			
+			_gaq.push(['_trackPageview', url]);
+			
+			$('#menu_icon').removeClass('show').addClass('hide');
+			$('#main_nav').removeClass('hide').addClass('show');
+			
+			$('.filters a[href="' + url + '"]').addClass('current').siblings().removeClass('current');
+			
+			$(window).resize();
+			
+			$('html, body').animate({
+				scrollTop: 0
+			}, 500);
+			
+			$container.isotope({ filter: '.' + $('.filters .current').data('class')});
+		},
+		
+		work: function(section, fragment) {
+			
+		}
+	});
+	
+	var Router = new Router();
+
+	$(document).on("click", "#banner:not(.collapsed) .filters a", function(e){
+		e.preventDefault();
+		
+		Router.navigate($(this).attr('href'), {trigger: true});
+	});
+
+
 	$(window).resize(function(e) {
 		$('#work').css('min-height', $(window).height());
 		var els = $('.entry.hide');

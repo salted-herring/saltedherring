@@ -9,6 +9,8 @@ require.config({
 		'svg': 'lib/svg',
 		'router': 'routes/router',
 		
+		'bridget': 'components/jquery-bridget/jquery.bridget',
+		
 		eventie: 'components/eventie/eventie',
 		'doc-ready': 'components/doc-ready/doc-ready',
 		eventEmitter: 'components/eventEmitter/eventEmitter',
@@ -20,12 +22,9 @@ require.config({
 		
 		'mutate': 'lib/mutate/mutate.min',
 		'mutateevents': 'lib/mutate/mutate.events',
-		
-/* 		'defaultrouter': 'routes/defaultRouter', */
-		
-		
-/* 		'defaultmodel': 'models/defaultModel', */
 		'swfobject': 'lib/swfobject',
+		
+		isotope: 'components/isotope/jquery.isotope'
 		
 	},
 	shim: {
@@ -48,6 +47,13 @@ require.config({
 		mutate: {
 			deps: ['jquery', 'mutateevents'],
 			exports: '$.mutate'
+		},
+		
+		isotope: {
+			desp: ['jquery', 'bridget']
+		},
+		bridget: {
+			desp: ['jquery']
 		}
 		/*
 workrouter: {

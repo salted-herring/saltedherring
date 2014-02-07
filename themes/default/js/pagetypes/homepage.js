@@ -1,6 +1,6 @@
 require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 	
-	$(function() {
+	//$(function() {
 	
 			
 		/* ===========================
@@ -566,6 +566,6 @@ var previousScroll = 0;
 			});
 		});
 */
-	});
+	//});
 	
 });

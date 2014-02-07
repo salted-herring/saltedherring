@@ -350,12 +350,14 @@ width: auto;
 	.previous {
 		left: 0;
 		
-		strong,
+		/*
+strong,
 		em {
 			padding-right: 1.2em;
 			padding-left: 50px;
 			margin-left: -50px;
 		}
+*/
 		
 		&:before {
 			margin-left: 0;

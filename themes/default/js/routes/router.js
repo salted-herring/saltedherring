@@ -13,12 +13,14 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 
 	var Router = Backbone.Router.extend({
 		routes: {
-			'': 'home',
-			'about(/)': 'about',
+/* 			'': 'home', */
+/* 			'about(/)': 'about', */
 			'work(/)': 'work',
 			'work/:section/:fragment(/)': 'work',
+/*
 			'team(/)': 'team',
 			'team/:member(/)': 'team'
+*/
 		},
 		
 		initialize: function() {
@@ -59,19 +61,23 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			}, 500);
 		},
 		
-		home: function() {
+		/*
+home: function() {
 			this.loadPage('homepage', '/');
 		},
 		
 		about: function() {
 			this.loadPage('aboutpage', '/about/');
 		},
+*/
 		
 		work: function(section, fragment) {
+		
 			var that = this;
 			var callback = function() {
 				
-				if($('#work').length > 0) {
+				/*
+if($('#work').length > 0) {
 					if(window.workMasonry) {
 						window.workMasonry.layout();
 					} else {
@@ -95,6 +101,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 						window.workMasonry = masonry;
 					}
 				}
+*/
 				
 				
 				if(window.location.href.match(/work\/project\//) != null) {
@@ -135,7 +142,8 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				$('.filters a').eq(i).addClass('current');
 				
 				// re-init the masonry.
-				if(window.workMasonry && $('#work').length > 0) {
+				/*
+if(window.workMasonry && $('#work').length > 0) {
 					window.workMasonry.destroy();
 					var masonry = new Masonry($('#work').get(0), {
 						hiddenStyle: {transform: 'scale(.8)', opacity: 0},
@@ -155,48 +163,158 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 					masonry.layout();
 					window.workMasonry = masonry;
 				}
+*/
 				
-				
-				/* ====================================================
-				 * Get the list of new entries, compare to the original 
-				 * entries & add / hide as required.
-				 * ==================================================== */
 				var urls = [],
 					count = 0;
-				entries.each(function() {
-					if($('#work .entry').filter('a[href="' + $(this).attr('href') + '"]').length == 0) {
-						$('#work').append($(this));
-						if(window.workMasonry && $('#work').length > 0) {
-							window.workMasonry.appended($(this));
+				
+				
+				
+				/* ===========================
+				 * If the user has clicked on the 'all' filter, then
+				 * reload the masonry
+				 * =========================== */
+				if(window.location.href.match(/work\/?$/) != null) {
+					
+					/*
+if(--count <= 0 && $('#work').length > 0) {
+						if(window.workMasonry) {
+*/
+							//window.workMasonry.layout();
+					/*
+	}
+					}
+*/
+					
+					
+					
+					/*
+ordered.each(function(id, el) {
+						
+						
+						
+						//setTimeout(function(target) {
+							var left = 320 * (id % 3),
+								top =  Math.floor(id/3) * 320;
+							
+							
+							if(top < $(this).offset().top) {
+								top = 0 - Math.abs(top, $(this).offset().top);
+							} else {
+								top = Math.abs(top, $(this).offset().top);
+							}
+							
+							if(left < $(this).offset().left) {
+								left = 0 - Math.abs(left, $(this).offset().left);
+							} else {
+								left = Math.abs(left, $(this).offset().left);
+							}
+							//console.log($(this).offset().top, top, top - $(this).offset().top);
+							
+							$(this).css({
+								position: 'absolute',
+								'-webkit-transform': 'translate3d(' + left + 'px,' + top + 'px,0)'
+							});
+							
+							//$("#work .entry").eq(i-1 > 0 ? i-1 : 0).after($(this));
+							
+						//}, id * 200, this);
+						
+						//$(this).
+						
+						// clone.insertAfter();
+						
+						//$(this).remove();
+						
+						//console.log($(this).data('sortorder'), 320 * (id % 3),  Math.floor(id/3) * 320);
+					});
+*/
+					
+					
+					
+				} else {
+					
+					
+					
+					/* ====================================================
+					 * Get the list of new entries, compare to the original 
+					 * entries & add / hide as required.
+					 * ==================================================== */
+					/*
+entries.each(function() {
+						if($('#work .entry').filter('a[href="' + $(this).attr('href') + '"]').length == 0) {
+							$('#work').append($(this));
+							if(window.workMasonry && $('#work').length > 0) {
+								window.workMasonry.appended($(this));
+								window.workMasonry.layout();
+							}
+						}
+					});
+					
+					$('#work .entry').each(function(id, el) {
+						if(entries.filter('[href="' + $(this).attr('href') + '"]').length == 0) {
+							count++;
+							setTimeout(function(target) {
+								if(window.workMasonry && $('#work').length > 0) {
+									window.workMasonry.remove(target);
+								}
+								
+								if(--count <= 0 && $('#work').length > 0) {
+									if(window.workMasonry) {
+										window.workMasonry.layout();
+									}
+								}
+							}, i * 200, this);
+						}
+					});
+					
+					if(--count <= 0 && $('#work').length > 0) {
+						if(window.workMasonry) {
 							window.workMasonry.layout();
 						}
 					}
-				});
-				
-				$('#work .entry').each(function(id, el) {
-					if(entries.filter('[href="' + $(this).attr('href') + '"]').length == 0) {
-						count++;
-						setTimeout(function(target) {
-							if(window.workMasonry && $('#work').length > 0) {
-								window.workMasonry.remove(target);
-							}
-							
-							if(--count <= 0 && $('#work').length > 0) {
-								if(window.workMasonry) {
-									window.workMasonry.layout();
-								}
-							}
-						}, i * 200, this);
-					}
-				});
-				
-				if(--count <= 0 && $('#work').length > 0) {
-					if(window.workMasonry) {
-						window.workMasonry.layout();
-					}
+*/
 				}
 				
-				callback();
+				var ordered = entries;
+				
+				$('#work .entry').filter(function() {
+					return entries.find("[data-sortorder='" + $(this).data('sortorder') + "']").length == 0;
+				}).each(function(id, el) {
+					$(this).fadeOut(function() {
+						$(this).remove();
+					});
+				});
+					
+				ordered.sort(function (a, b) {
+					a = $(a).data("sortorder");
+					b = $(b).data("sortorder");
+					
+					if(a > b) {
+					    return 1;
+					} else if(a < b) {
+					    return -1;
+					} else {
+					    return 0;
+					}
+				});
+				
+				
+				
+				ordered.each(function(id, el) {
+					var exists = $('#work').find("[data-sortorder='" + $(this).data('sortorder') + "']").length == 1;
+					
+					if(exists) {
+						$('#work').find('.entry').eq(id-1 < 0 ? 0 : id-1).removeClass('hidden').after($('#work').find("[data-sortorder='" + $(this).data('sortorder') + "']"));
+					} else {
+						$('#work').find('.entry').eq(id-1 < 0 ? 0 : id-1).after($(this));
+					}
+					
+				});
+				
+				
+				
+				//callback();
 			}
 			
 			var url = ['work'];
@@ -207,10 +325,6 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				url.push(fragment);
 			}
 			
-			if(section == null && fragment == null) {
-				$.get('/work/clearSession');	
-			}
-			
 			this.loadPage('workpage', url.join('/'), callback, transition);
 			
 			if(section == 'category') {
@@ -218,7 +332,8 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			}
 		},
 		
-		team: function(member) {
+		/*
+team: function(member) {
 			
 			if(member == null) {
 				this.loadPage('teampage', '/team/');
@@ -250,10 +365,13 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				});
 			}
 		},
+*/
 		
 		loadPage: function(page, url, callback, transitionContent, hideElements) {
 			
 			views = this.views;
+			
+/* 			console.log(views); */
 			
 			if(views.hasOwnProperty(url)) {
 				/* ===========================
@@ -543,7 +661,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			 * to a work page.
 			 * =========================== */
 			prev = this.historyStack.length > 0 ? this.historyStack[this.historyStack.length-2] : '';
-						
+			
 			return url.match(/(work\/?$)|category/) != null && prev.match(/(work\/?$)|category/) != null && prev !== url;
 		},
 		

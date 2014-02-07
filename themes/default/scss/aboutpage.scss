@@ -24,6 +24,10 @@ aside {
 
 .article {
 	margin-top: -1em;
+	
+	p {
+		font-size: (18/$font-size)+em;
+	}
 }
 
 article {	

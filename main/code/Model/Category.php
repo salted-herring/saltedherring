@@ -38,4 +38,8 @@ class Category extends BaseDBO {
 		
 		return $fields;
 	}
+	
+	public function legalName() {
+		return str_replace(' ', '-', $this->Name);
+	}
 }

@@ -55,8 +55,11 @@ class WorkPage_Controller extends Page_Controller {
 			return $this->httpError(404, 'The requested page could not be found.');
 		}
 		
+		$project = $this->project->first();
+		
 		return $this->renderWith(array('ProjectPage', 'Page'), array(
-			'Project' => $this->project->first()
+			'Project' => $project,
+			'Awards' => ProjectAward::get()->filter(array('ProjectID' => $project->ID))
 		));
 	}
 	
@@ -75,7 +78,8 @@ class WorkPage_Controller extends Page_Controller {
 			Session::set('category', $request->param('Category'));
 		}
 		
-		if($request->param('meta')) {
+		/*
+if($request->param('meta')) {
 			return $this->meta($request);
 		}
 		
@@ -85,10 +89,13 @@ class WorkPage_Controller extends Page_Controller {
 		if($cat) {
 			$Projects = Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->first()->ID);
 		}
+*/
+		$cat = Category::get()->filter(array('URLSegment' => Session::get('category')));
 		
 		return $this->renderWith(array('WorkPage', 'Page'), array(
-			'getAllProjects' => $Projects->count() == 0 ? false : $Projects,
-			'category' => Session::get('category')
+			'getAllProjects' => Project::get(),
+			'category' => Session::get('category'),
+			'categoryName' => $cat->first()->legalName()
 		));
 	}
 	

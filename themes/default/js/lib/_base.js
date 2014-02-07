@@ -29,12 +29,6 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		$(this).addClass('current');
 	});
 	
-	$(document).on("click", "a:not([target='_blank']):not([href*='#'])", function(e){
-		e.preventDefault();
-		
-		Router.navigate($(this).attr('href'), {trigger: true});
-	});
-	
 	$(document).on("mousemove", "#teammember .images.loaded", function(e) {
 		var count = $(this).find('img').length,
 			_width = 50,

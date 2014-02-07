@@ -1,9 +1,4 @@
 <section id="work">
-	<!--
-<div id="heading">
-		<h1>Salted <span class="salted">Herring</span></h1>
-	</div>
--->
 	
 	<% if getSliders %>
 		
@@ -34,7 +29,7 @@
 						<% else %>
 							<% if Project.getURL || Link.Link %>
 						<div class="container links">
-						<span><strong>$Project.Title</strong><br><em>$Project.TagLine</em></span>
+						<span><strong>$Title</strong><br><em>$Description</em></span>
 						<a href="<% if Project %>$Project.getURL<% else %>$Link.Link<% end_if %>" class="link">see project</a>
 						</div>
 							<% end_if %>

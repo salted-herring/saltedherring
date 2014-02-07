@@ -35,13 +35,36 @@
 	}
 	
 	.entry {
-		@include transition(opacity .2s);
+		@include transition(opacity .2s, scale2d .2s, translate3d .2s);
 		@include transform(translate3d(0,0,0));
-		
-		&.hide {
-			@include opacity(0);
+	}
+	
+	
+	$filters: brand-development websites applications content-creation campaigns showreels;
+	
+	@each $filter in $filters {
+		&.#{$filter} {
+			.entry.#{$filter} {
+				display: block;
+			}
 		}
 	}
+	
+	&.all {
+		.entry {
+			display: block;
+		}
+	}
+	
+}
+
+.isotope-item {
+	z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+	pointer-events: none;
+	z-index: 1;
 }
 
 
@@ -161,6 +184,10 @@
 				&:last-child a {
 					margin-right: 0;
 				}
+			}
+			
+			img {
+				margin-left: 0;
 			}
 			
 			a {

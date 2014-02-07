@@ -196,6 +196,8 @@ audio:not([controls]) {
 }
 
 html {
+  background: #fff;
+  color: #000;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -817,9 +819,9 @@ article a:hover:after {
  * Generic Styles
  * =========================== */
 .stripedMask, #banner h1 {
-  -webkit-mask-image: url(../img/stripes.png);
-  -moz-mask: url(../img/stripes.png);
-  mask: url(../img/stripes.png);
+  -webkit-mask-image: url(../img/stripes2.png);
+  -moz-mask: url(../img/stripes2.png);
+  mask: url(../img/stripes2.png);
   -webkit-mask-size: 963px 230px;
   -moz-mask-size: 963px 230px;
   -webkit-mask-repeat: repeat;
@@ -1875,12 +1877,14 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 #projectnav .previous {
   left: 0;
-}
-#projectnav .previous strong,
-#projectnav .previous em {
-  padding-right: 1.2em;
-  padding-left: 50px;
-  margin-left: -50px;
+  		/*
+  strong,
+  		em {
+  			padding-right: 1.2em;
+  			padding-left: 50px;
+  			margin-left: -50px;
+  		}
+  */
 }
 #projectnav .previous:before {
   margin-left: 0;
@@ -1923,19 +1927,45 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   content: 'see project';
 }
 #work .entry {
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s, scale2d 0.2s, translate3d 0.2s;
+  -moz-transition: opacity 0.2s, scale2d 0.2s, translate3d 0.2s;
+  -o-transition: opacity 0.2s, scale2d 0.2s, translate3d 0.2s;
+  transition: opacity 0.2s, scale2d 0.2s, translate3d 0.2s;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-#work .entry.hide {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
+#work.brand-development .entry.brand-development {
+  display: block;
+}
+#work.websites .entry.websites {
+  display: block;
+}
+#work.applications .entry.applications {
+  display: block;
+}
+#work.content-creation .entry.content-creation {
+  display: block;
+}
+#work.campaigns .entry.campaigns {
+  display: block;
+}
+#work.showreels .entry.showreels {
+  display: block;
+}
+#work.all .entry {
+  display: block;
+}
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ***************
@@ -2034,6 +2064,9 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 .individualentry aside .awards li:last-child a {
   margin-right: 0;
+}
+.individualentry aside .awards img {
+  margin-left: 0;
 }
 .individualentry aside .awards a {
   display: block;
