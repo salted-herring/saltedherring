@@ -9,9 +9,21 @@
 
 define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 
+	
+	/* ===========================
+	 * Croxx browser compatible docheight
+	 * =========================== */
+	window.docHeight = function() {
+		var body = document.body,
+    		html = document.documentElement;
+    	
+		return Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+    }
+
 /* 	console.log(WorkModel); */
 	
-	$(function() {
+	//$(function() {
 		
 		//
 		// Show / hide the mobile menu.
@@ -22,7 +34,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 			$('#main_nav').toggleClass('collapse expand');
 		});
 		
-	});
+	//});
 	
 	$(document).on('click', '#main_nav a, #logo a', function() {
 		$('#main_nav a, #logo a').removeClass('current');
@@ -38,9 +50,14 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		$(this).find('img').eq(Math.ceil(pos / _width) % count).addClass('current');
 	});
 	
+	$('#projectnav a').hover(function() {
+		$(this).addClass('over');
+	}, function() {
+		$(this).removeClass('over');
+	});
 	
-	$(function() {
-		$(window).scroll(function() {
+	
+	$(window).scroll(function(e) {
 			if($(window).scrollTop() + $(window).height() >= $(document).height()) {
 				$('footer .salt').addClass('animate');
 			} else {
@@ -52,65 +69,36 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				 * Animation for overlay as seen
 				 * on work & team.
 				 * =========================== */
-				var headerHeight = $('header.overlay').outerHeight(true);
-				
-				//console.log(headerHeight);
-				var offset = 30;
+				var headerHeight = $('header.overlay').outerHeight(true),
+					offset = 30;
 				
 				if($(window).scrollTop() < (180)) {
-					$('.detailscontainer, footer').addClass('fixedcontainer');
-					$('.detailscontainer').css('margin-top', 0).parent().height($('.detailscontainer').height());
-					
-					if($(window).scrollTop() > 157) {
-						$('.overlay').addClass('small');
-					} else {
-						$('.overlay').removeClass('small');
-					}
+					$('.detailscontainer:not(.nofix)').addClass('fixedcontainer');
+					$('.detailscontainer:not(.nofix)').css('margin-top', 0).parent().height($('.detailscontainer:not(.nofix)').height());
 				} else {
-					if($('.detailscontainer').is('.fixedcontainer')) {
-						$('.detailscontainer').css('margin-top', 216);
+					if($('.detailscontainer:not(.nofix)').is('.fixedcontainer')) {
+						$('.detailscontainer:not(.nofix)').css('margin-top', 216);
 					}
 				
-					$('.detailscontainer, footer').removeClass('fixedcontainer');
+					$('.detailscontainer:not(.nofix)').removeClass('fixedcontainer');
 				}
-					
-				/*
-if($(window).scrollTop() < (headerHeight + 78)) {
-					$('.detailscontainer').removeAttr('style');
-					//$('.detailscontainer, footer').addClass('fixedcontainer');
-					$('.detailscontainer').parent().height($('.detailscontainer').height());
-					
-					if($(window).scrollTop() > 157) {
-						$('.overlay').addClass('small');
-					} else {
-						$('.overlay').removeClass('small');
-					}
+				
+				if($(window).scrollTop() > 157) {
+					$('.overlay').addClass('small');
 				} else {
-					if($('.detailscontainer').is('.fixedcontainer')) {
-						$('.detailscontainer').css('margin-top', headerHeight + 135);
-					}
-					
-					$('.detailscontainer, footer').removeClass('fixedcontainer');
-					$('#content').removeAttr('style');
+					$('.overlay').removeClass('small').css('top',0);
 				}
-*/
-			} else {
-				//$('.detailscontainer, footer').removeClass('fixedcontainer');
-				//$('#content').removeAttr('style');
-				
-				
 			}
 			
 			/* ===========================
 			 * Animation for banner as seen on
 			 * work & team landing pages.
 			 * =========================== */
-			
-			if($('#banner').length > 0) {
+			if($('nav#banner').length > 0) {
 				if($(window).scrollTop() > 100) {
-					$('#banner').addClass('small');
+					$('nav#banner').addClass('small');
 				} else {
-					$('#banner').removeClass('small');
+					$('nav#banner').removeClass('small');
 				}
 			}
 			
@@ -120,22 +108,36 @@ if($(window).scrollTop() < (headerHeight + 78)) {
 			 * of the page.
 			 * =========================== */
 			if($('#projectnav').length > 0) {
-				var offset = $(document).height() - $(window).height() - $('#footer').height();//$('#content').offset().top + $('#content').height() - $('#footer').outerHeight(true) - 1000;
-				//console.log($('#content').offset().top + $('#content').height() - $('#footer').outerHeight(true) - 200, $(window).scrollTop());
-				//console.log(offset - $('#footer').height(), $(window).scrollTop());
-				if($(window).scrollTop() >= offset) {
-					var target = (offset - $(window).scrollTop()) / 5;
-/* 					target = target < 48 ? 0 : target; */
-					//alert(0 + (400 - $(window).scrollTop()));
+				var bottom = docHeight() - $('footer').height(),
+					contentbottom = parseInt($('#content').css('padding-bottom')),
+					top = bottom-contentbottom,
+					current = $(window).scrollTop()+$(window).height();
+				
+				if(current >= top) {
 					$('#projectnav .next').css({
-						right: target//($(document).height() - offset) / ((offset - $(window).scrollTop()))
+						right: 0 - (current-top)
 					});
 					
 					$('#projectnav .previous').css({
-						left: target//($(document).height() - offset) / ((offset - $(window).scrollTop()))
+						left: 0 - (current-top)
+					});
+					
+					$('.overlay.small').css({
+						top: 102 - (current-top)
+					});
+				} else {
+					$('#projectnav .next').css({
+						right: 0
+					});
+					
+					$('#projectnav .previous').css({
+						left: 0
+					});
+					
+					$('.overlay.small').css({
+						top: 102
 					});
 				}
 			}
-		}).scroll();
-	});
+		});
 });

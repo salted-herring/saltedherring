@@ -639,10 +639,6 @@ input {
 
 a {
   text-decoration: none;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
   color: white;
 }
 
@@ -1826,8 +1822,10 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   /* 			width: auto; */
 }
 #projectnav a:hover strong, #projectnav a:hover em {
+  				/*
   margin-left: 0;
-  margin-right: 0;
+  				margin-right: 0;
+  */
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   /* 				display: block; */
@@ -1839,15 +1837,31 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 #projectnav a:hover:after, #projectnav a:hover:before {
   position: absolute;
 }
+#projectnav a.over {
+  -webkit-transition: width 0.2s;
+  -webkit-transition-delay: 0.5s;
+  -moz-transition: width 0.2s 0.5s;
+  -o-transition: width 0.2s 0.5s;
+  transition: width 0.2s 0.5s;
+}
+#projectnav a.over strong,
+#projectnav a.over em {
+  -webkit-transition: opacity 0.5s;
+  -webkit-transition-delay: 0.2s;
+  -moz-transition: opacity 0.5s 0.2s;
+  -o-transition: opacity 0.5s 0.2s;
+  transition: opacity 0.5s 0.2s;
+}
 #projectnav strong, #projectnav em {
   display: inline-block;
   white-space: nowrap;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -webkit-transition-delay: 0s;
+  -moz-transition: opacity 0.5s 0s;
+  -o-transition: opacity 0.5s 0s;
+  transition: opacity 0.5s 0s;
 }
 #projectnav strong {
   font-size: 1.375em;
@@ -1877,14 +1891,15 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 #projectnav .previous {
   left: 0;
-  		/*
-  strong,
-  		em {
-  			padding-right: 1.2em;
-  			padding-left: 50px;
-  			margin-left: -50px;
-  		}
-  */
+}
+#projectnav .previous strong,
+#projectnav .previous em {
+  /* 			padding-right: 1.2em; */
+  padding-right: 20px;
+  padding-left: 50px;
+  /* 			margin-left: -50px; */
+  float: right;
+  text-align: left;
 }
 #projectnav .previous:before {
   margin-left: 0;
@@ -1919,6 +1934,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   margin-top: 17em;
   position: relative;
   width: 960px !important;
+  overflow: hidden;
   /* 	background: red; */
   /* 	@include transition_delay(5s); */
   /* 	@include transition(min-height .5s 1s ease); */
@@ -1926,39 +1942,51 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 #work .label:before {
   content: 'see project';
 }
-#work .entry {
-  -webkit-transition: opacity 0.2s, scale2d 0.2s, translate3d 0.2s;
-  -moz-transition: opacity 0.2s, scale2d 0.2s, translate3d 0.2s;
-  -o-transition: opacity 0.2s, scale2d 0.2s, translate3d 0.2s;
-  transition: opacity 0.2s, scale2d 0.2s, translate3d 0.2s;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+#work a {
+  /* 		@include transition(none); */
 }
-#work.brand-development .entry.brand-development {
-  display: block;
+#work .noelems {
+  font-size: 3em;
+  line-height: 1.2em;
+  font-weight: bold;
+  position: absolute;
+  z-index: 3;
+  display: none;
 }
-#work.websites .entry.websites {
-  display: block;
-}
-#work.applications .entry.applications {
-  display: block;
-}
-#work.content-creation .entry.content-creation {
-  display: block;
-}
-#work.campaigns .entry.campaigns {
-  display: block;
-}
-#work.showreels .entry.showreels {
-  display: block;
-}
-#work.all .entry {
+
+#loader {
   display: block;
 }
 
+.no-js #work .entry {
+  display: none;
+}
+.no-js #work.all .entry.all {
+  display: block;
+}
+.no-js #work.brand-development .entry.brand-development {
+  display: block;
+}
+.no-js #work.websites .entry.websites {
+  display: block;
+}
+.no-js #work.applications .entry.applications {
+  display: block;
+}
+.no-js #work.content-creation .entry.content-creation {
+  display: block;
+}
+.no-js #work.campaigns .entry.campaigns {
+  display: block;
+}
+.no-js #work.showreels .entry.showreels {
+  display: block;
+}
+.no-js #loader {
+  display: none;
+}
+
+/**** Isotope Filtering ****/
 .isotope-item {
   z-index: 2;
 }
@@ -1966,6 +1994,43 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 .isotope-hidden.isotope-item {
   pointer-events: none;
   z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -ms-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -ms-transition-property: -ms-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
 }
 
 /* ***************

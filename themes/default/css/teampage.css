@@ -639,10 +639,6 @@ input {
 
 a {
   text-decoration: none;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
   color: white;
 }
 
@@ -1826,8 +1822,10 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   /* 			width: auto; */
 }
 #projectnav a:hover strong, #projectnav a:hover em {
+  				/*
   margin-left: 0;
-  margin-right: 0;
+  				margin-right: 0;
+  */
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   /* 				display: block; */
@@ -1839,15 +1837,31 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 #projectnav a:hover:after, #projectnav a:hover:before {
   position: absolute;
 }
+#projectnav a.over {
+  -webkit-transition: width 0.2s;
+  -webkit-transition-delay: 0.5s;
+  -moz-transition: width 0.2s 0.5s;
+  -o-transition: width 0.2s 0.5s;
+  transition: width 0.2s 0.5s;
+}
+#projectnav a.over strong,
+#projectnav a.over em {
+  -webkit-transition: opacity 0.5s;
+  -webkit-transition-delay: 0.2s;
+  -moz-transition: opacity 0.5s 0.2s;
+  -o-transition: opacity 0.5s 0.2s;
+  transition: opacity 0.5s 0.2s;
+}
 #projectnav strong, #projectnav em {
   display: inline-block;
   white-space: nowrap;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -webkit-transition-delay: 0s;
+  -moz-transition: opacity 0.5s 0s;
+  -o-transition: opacity 0.5s 0s;
+  transition: opacity 0.5s 0s;
 }
 #projectnav strong {
   font-size: 1.375em;
@@ -1877,14 +1891,15 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 #projectnav .previous {
   left: 0;
-  		/*
-  strong,
-  		em {
-  			padding-right: 1.2em;
-  			padding-left: 50px;
-  			margin-left: -50px;
-  		}
-  */
+}
+#projectnav .previous strong,
+#projectnav .previous em {
+  /* 			padding-right: 1.2em; */
+  padding-right: 20px;
+  padding-left: 50px;
+  /* 			margin-left: -50px; */
+  float: right;
+  text-align: left;
 }
 #projectnav .previous:before {
   margin-left: 0;

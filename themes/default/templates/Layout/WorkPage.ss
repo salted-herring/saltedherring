@@ -14,7 +14,7 @@
 <% end_if %>
 
 <% if getAllProjects %>
-<section id="work" class="container records <% if $categoryName %>$categoryName<% else %>all<% end_if %>">
+<section id="work" class="container records <% if $categoryName %>$categoryName<% else %>all<% end_if %> init">
 	<% loop getAllProjects %>
 		<a href="$Top.URLSegment/project/$URLSegment" data-sortorder="$SortOrder" class="entry <% loop $Categories %>$legalName <% end_loop %> all" title="$Name">
 		
@@ -29,5 +29,8 @@
 			</div>
 		</a>
 	<% end_loop %>
+	<div class="noelems">
+		Looks like there's nothing here.<br>We better get back to work.
+	</div>
 </section>
 <% end_if %>
