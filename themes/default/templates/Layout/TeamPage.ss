@@ -3,9 +3,8 @@
 	<div class="container">
 		<h1 class="title">Team</h1>
 		<div class="filters">
-			<a href="$URLSegment/" class="current">all</a>
 			<% loop getTeam %>
-				<a href="$Top.URLSegment/$URLSegment">$FirstName</a>
+				<a href="$Top.URLSegment/$URLSegment"<% if $MultipleOf(3) %> class="_3"<% end_if %>>$FirstName</a>
 			<% end_loop %>
 		</div>
 	</div>

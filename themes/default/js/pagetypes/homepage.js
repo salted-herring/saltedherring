@@ -129,6 +129,87 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 			
 		}).scroll();
 		
+		
+		/* ===========================
+		 * Load in slider images.
+		 * =========================== */
+		var Images = {
+			data: {},
+			toLoad: {},
+			length: 0,
+			
+			clone: function() {
+				this.toLoad = $.extend(true, {}, this.data);
+			}
+		}; 
+		 
+		
+		$.get('themes/default/json/sliders.json', function(response, status, xhr) {
+			if(status == 'success') {
+				
+				for(var i in response) {
+					if(response[i].Images) {
+						var target = $('#work .block[data-id="' + response[i].Slider + '"]');
+						
+						Images.data[response[i].Slider] = [];
+						
+						for(var img in response[i].Images) {
+							Images.data[response[i].Slider].push(response[i].Images[img].URL);
+							Images.length = ++Images.length;
+						}
+					}
+				}
+				
+				Images.clone();
+				
+				function removeItem(images, src) {
+					for(var l in images) {
+						if(images[l] == src) {
+							images.splice(l, 1);
+							Images.length = Images.length - 1;
+							break;
+						}
+					}
+				}
+				
+				for(var i in Images.toLoad) {
+					for(var j in Images.toLoad[i]) {
+						$('<img/>').load(function(response, status, xhr) {
+						
+							// we can't load the image, so remove
+							// from list of available images.
+							if(status == 'error') {
+								var images = Images.data[$(this).attr('id')];
+							} else {
+								// no error, so remove from toLoad & check if we're ready to roll.
+								var images = Images.toLoad[$(this).attr('id')];
+							}
+							
+							removeItem(images, $(this).attr('src'));
+								
+							if(Images.length <= 0) {
+								$('#work .block').addClass('loaded').on('mousemove', function(e) {
+									var count = $(this).data('images'),
+										_width = 200,
+										pos = e.clientX,
+										id = $(this).data('id'),
+										target = Math.ceil((pos / _width)*count) % count,
+										direction = Math.ceil(Math.ceil((pos / _width)*count)/count) % 2,
+										target = direction == 0 ? target : (count - target) % count;
+									
+									if(target != 0) {
+										$(this).css('background-image', 'url(' + Images.data[id][target] + ')');
+									}
+								});
+							}
+						}).attr('id', i).attr('src', Images.toLoad[i][j]);	
+					}
+				}
+			}
+		});
+		
+		
+		
 		// * ===========================
 		// * Ensure that the heading attaches itself
 		// * to the last block.
@@ -201,7 +282,7 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 		$('#nextnav a').click(function(e) {
 			e.preventDefault();
 			
-			if($(this).is('.up')) {
+			if($(this).parent().is('.up')) {
 				var first = $('.block').filter(function() {
 					return $(this).offset().top < $(window).scrollTop();
 				}).filter(':last');
@@ -211,6 +292,12 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 				} else {
 					target = first.prev();
 				}
+				
+				$('body,html').animate({
+					scrollTop: 0
+				}, 500);
+				
+				return;
 				
 			} else {
 				var first = $('.block').filter(function() {
@@ -226,7 +313,9 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 			if(first && target.length > 0) {
 				$('body,html').animate({
 					scrollTop: target.offset().top - $('#header').height()
-				}, 500);
+				}, 500, function() {
+					$('#nextnav').removeClass('up');
+				});
 			} else {
 				$('#nextnav').addClass('up');
 				$('body,html').animate({

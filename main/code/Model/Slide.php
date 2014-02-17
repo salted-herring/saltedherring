@@ -34,6 +34,35 @@ class Slider extends BaseDBO {
 	
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();
+		
+		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
+		$data = array();
+		
+		foreach(Slider::get() as $slider) {
+			
+			//$projects = Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID);
+			
+			$current = array(
+				'Slider' => $slider->ID,
+				'Images' => array()
+			);
+			
+			foreach($slider->Images() as $img) {
+				array_push($current['Images'], array(
+					'URL' => $img->Image()->URL
+				));
+			}
+			
+			array_push($data, $current);
+		}
+		
+		try {
+			$handle = fopen($dir . 'sliders.json', 'w');
+			fwrite($handle, json_encode($data));
+			fclose($handle);
+		} catch(Exception $e) {
+			user_error($e, E_USER_WARNING);
+		}
 	}
 
 	public function getCMSFields() {

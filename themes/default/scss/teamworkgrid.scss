@@ -9,7 +9,7 @@
 		@include minion;
 		color: $black;
 		white-space: nowrap;
-		font-size: (18/$font-size)+em;
+		font-size: (22/$font-size)+em;
 		
 		&:last-child {
 			&:after {
@@ -249,6 +249,10 @@
 			text-align: center;
 			padding: 0;
 			width: auto;
+			
+			a {
+				font-size: (16/$font-size)+em;
+			}
 		}
 		
 		h1, strong {

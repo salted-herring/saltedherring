@@ -1490,7 +1490,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   font-style: italic;
   color: black;
   white-space: nowrap;
-  font-size: 1.125em;
+  font-size: 1.375em;
 }
 .filters a:last-child:after {
   display: none;
@@ -1781,6 +1781,9 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   text-align: center;
   padding: 0;
   width: auto;
+}
+#banner.collapsed .filters a, #banner.small .filters a {
+  font-size: 1em;
 }
 #banner.collapsed h1, #banner.collapsed strong, #banner.small h1, #banner.small strong {
   top: -10em;

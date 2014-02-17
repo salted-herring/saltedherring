@@ -13,7 +13,6 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 
 	var Router = Backbone.Router.extend({
 		routes: {
-/* 			'': 'home', */
 /* 			'about(/)': 'about', */
 			'work(/)': 'work',
 			'work/:section/:fragment(/)': 'work',
@@ -58,16 +57,6 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 				scrollTop: 0
 			}, 500);
 		},
-		
-		/*
-home: function() {
-			this.loadPage('homepage', '/');
-		},
-		
-		about: function() {
-			this.loadPage('aboutpage', '/about/');
-		},
-*/
 		
 		work: function(section, fragment) {
 		
