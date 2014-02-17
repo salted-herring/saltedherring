@@ -26,7 +26,7 @@ aside {
 	margin-top: -1em;
 	
 	p {
-		font-size: (18/$font-size)+em;
+		font-size: (22/$font-size)+em;
 	}
 }
 
@@ -49,4 +49,52 @@ article {
 /* 	background-position: 5px 5px; */
 /* 	@include opacity(.2); */
 /* 	background-repeat: repeat-y; */
+}
+
+.links {
+	margin: (40/$font-size)+em 0;
+	width: 50%;
+
+	a {
+		@extend .link;
+		color: $blue;
+		border-color: $blue;
+		padding: .625em inherit !important;
+		font-weight: 500;
+		width: 48%;
+		font-style: normal;
+		font-size: (20/$font-size)+em !important;
+		float: left;
+		text-decoration: none;
+		
+		&:hover:after {
+			background: none !important;
+		}
+	}
+	
+	.fullstory {
+		margin-right: 4%;
+		
+		&:hover {
+			background: $blue;
+			color: $white;
+		}
+	}
+	
+	.website {
+		@extend .external;
+		color: $blue;
+		border-color: $blue;
+		background-color: $background;
+		
+		&:before {
+			background-color: $background;
+			@include sprites-sprite(external_arrow_blue);
+		}
+		
+		&:hover {
+			background: $blue;
+			color: $white;
+		}
+	}
 }

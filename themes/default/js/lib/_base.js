@@ -57,6 +57,13 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 	});
 	
 	
+	$(document).on('mouseover', '#projectnav a', function() {
+		$(this).width($(this).outerWidth(true) + Math.max($(this).find('strong').outerWidth(), $(this).find('em').outerWidth()));
+	}).on('mouseout', '#projectnav a', function() {
+		$(this).removeAttr('style');
+	});
+	
+	
 	$(window).scroll(function(e) {
 			if($(window).scrollTop() + $(window).height() >= $(document).height()) {
 				$('footer .salt').addClass('animate');
@@ -101,7 +108,6 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 					$('nav#banner').removeClass('small');
 				}
 			}
-			
 			
 			/* ===========================
 			 * Hide navigation at bottom 

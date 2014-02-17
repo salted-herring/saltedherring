@@ -30,6 +30,11 @@ class Slider extends BaseDBO {
 	
 	static $single_name = 'Slide';
 	static $plural_name = 'Slides';
+	
+	
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+	}
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();

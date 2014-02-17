@@ -17,10 +17,8 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 /* 			'about(/)': 'about', */
 			'work(/)': 'work',
 			'work/:section/:fragment(/)': 'work',
-/*
 			'team(/)': 'team',
 			'team/:member(/)': 'team'
-*/
 		},
 		
 		initialize: function() {
@@ -332,8 +330,7 @@ entries.each(function() {
 			}
 		},
 		
-		/*
-team: function(member) {
+		team: function(member) {
 			
 			if(member == null) {
 				this.loadPage('teampage', '/team/');
@@ -365,7 +362,6 @@ team: function(member) {
 				});
 			}
 		},
-*/
 		
 		loadPage: function(page, url, callback, transitionContent, hideElements) {
 			

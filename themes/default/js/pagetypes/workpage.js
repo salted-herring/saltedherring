@@ -4,8 +4,6 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 
 	var $container = $('#work');
 	
-/* 	$('#loader').fadeIn(); */
-	
 	$container.isotope({
 		itemSelector: '.entry',
 		
@@ -86,11 +84,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 		});
 	});
 	
-	$(document).on('mouseover', '#projectnav a', function() {
-		$(this).width(Math.max($(this).find('strong').width(), $(this).find('em').width()) + 100);
-	}).on('mouseout', '#projectnav a', function() {
-		$(this).removeAttr('style');
-	});
+	
 	
 	
 	/* ===========================

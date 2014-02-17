@@ -284,15 +284,17 @@
 		padding: (24/$font-size)+em 0 (24/$font-size)+em 1.2em;
 		height: 48px;
 		width: 3em;
-		@include transition(width .2s);
+/* 		@include transition(width .2s .1s); */
 		
 		&:hover {
 /* 			width: auto; */
 			strong,em {
+				//@include transition(opacity .1s 0s);
 				/*
 margin-left: 0;
 				margin-right: 0;
 */
+				//@include transition(opacity .5s 0s);
 				@include opacity(1);
 /* 				display: block; */
 				/*
@@ -309,10 +311,10 @@ width: auto;
 		
 		
 		&.over {
-			@include transition(width .2s .5s);
+			//@include transition(width .2s 0s);
 			strong,
 			em {
-				@include transition(opacity .5s .2s);
+/* 				@include transition(opacity .2s 1s); */
 			}
 		}
 	}
@@ -321,7 +323,7 @@ width: auto;
 		display: inline-block;
 		white-space: nowrap;
 		@include opacity(0);
-		@include transition(opacity .5s 0s);
+/* 		@include transition(none); */
 	}
 	
 	strong {
@@ -336,8 +338,10 @@ width: auto;
 		
 		strong,
 		em {
-			padding-right: 70px;
+			/*
+padding-right: 70px;
 			margin-right: -50px;
+*/
 		}
 		
 		&:after {
@@ -365,7 +369,7 @@ width: auto;
 		em {
 /* 			padding-right: 1.2em; */
 			padding-right: 20px;
-			padding-left: 50px;
+/* 			padding-left: 50px; */
 /* 			margin-left: -50px; */
 			float: right;
 			text-align: left
