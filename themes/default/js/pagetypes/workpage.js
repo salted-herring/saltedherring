@@ -8,10 +8,7 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 		itemSelector: '.entry',
 		
 		masonry : {
-          columnWidth : 320
-        },
-        masonryHorizontal : {
-          rowHeight: 320
+          columnWidth : $('#work .entry:first').width()
         },
         
         containerStyle: {
@@ -36,6 +33,14 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 			return $(this).hasClass(target.data('class'));
 		}
 	});
+	
+	$(window).resize(function(){
+		$container.isotope({
+			masonry: { 
+				columnWidth: $('#work .entry:first').width() 
+			}
+		});
+	});
 
 
 	var Router = Backbone.Router.extend({
@@ -53,8 +58,8 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 			
 			$container.isotope({ filter: '.' + $('.filters .current').data('class')});
 			
-			$('#menu_icon').removeClass('show').addClass('hide');
-			$('#main_nav').removeClass('hide').addClass('show');
+			//$('#menu_icon').removeClass('show').addClass('hide');
+			//$('#main_nav').removeClass('hide').addClass('show');
 			
 			showHiddenMessage();
 		},

@@ -71,7 +71,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				$('footer .salt').removeClass('animate');
 			}
 			
-			if($('header.overlay:not(.no-images)').length > 0) {
+			if($('body:not(.mobile) header.overlay:not(.no-images)').length > 0) {
 				/* ===========================
 				 * Animation for overlay as seen
 				 * on work & team.

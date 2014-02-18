@@ -1,11 +1,13 @@
 require(['jquery', 'backbone', 'underscore', '_base'], function($) {
+
+	
 	
 	//$(function() {
 	
 			
 		/* ===========================
 		 * On resize - make sure:
-		 * - The fotter is in the correct place
+		 * - The footer is in the correct place
 		 * - The content container & each block are full height.
 		 * =========================== */
 		$(window).resize(function() {
@@ -63,6 +65,90 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 		}).resize();
 		
 		
+		// * ===========================
+		// * Ensure that the heading attaches itself
+		// * to the last block.
+		// * ===========================
+		function positionHeading() {
+			var _max = 95;
+			
+			if($('body').is('.mobile')) {
+				$('#work .block').find('.heading, .large').show();
+				return;
+			}
+			
+			$('#work .block').each(function() {
+				var top = $(this).data('top');
+				
+				
+				//console.log(top, $(window).scrollTop() + $('#header').height());
+				
+				/*
+if((top - $('#header').height()) < $(window).scrollTop()) {
+					
+					$(this).find('.heading').css({
+						top: top
+					});
+				} else {
+*/
+/* 					if($(window).scrollTop() >= top && (top) < ($(window).scrollTop() + ($(window).height()/2))) { */
+				if(top < ($(window).scrollTop() + ($(window).height()/2))) {
+					
+					var condition = top < $(window).scrollTop();
+					var _h = condition ? ($(window).height() / 2) : (($(window).height() / 2)) - Math.abs($(window).scrollTop() - top);
+					var newTop = top < ($(window).scrollTop() + $('#header').height()) ? 0 - Math.abs($(window).scrollTop() + $('#header').height() - top) : Math.abs($(window).scrollTop() - top);
+					
+					
+					if(newTop <= 0) {
+						$(this).find('.heading').hide();
+						$(this).find('.large').show();
+					} else {
+						$(this).find('.heading').show();
+						$(this).find('.large').hide();
+					}
+					$(this).find('.heading').css({
+						height: _h,
+						top: newTop
+					});
+					
+						
+					$(this).find('.heading > h1').css({
+						top: Math.ceil(newTop + _h)
+					});
+					
+				} else {
+					$(this).find('.heading').show().css({
+						height: 0
+					});
+					$(this).find('.large').hide();
+				}
+			});
+			
+			
+			/*
+if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').height())) {
+				$('#heading').css({
+					top: $('#heading').data('top') - ($(window).scrollTop() - ($('#work .block:last').data('top') - $('#header').height()))
+				});
+				
+			} else {
+				$('#heading').css({
+					top: '50%'//$('#heading').data('top')
+				});
+			}
+*/
+		}
+		
+		
+		/* ===========================
+		 * No more to see on mobile.
+		 * =========================== */
+		if($('body').is('.mobile')) {
+			return;
+		}
+		
+		
+		
 		
 		var prevPosition = 0,
 			scrolled = false;
@@ -107,7 +193,7 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 			/* ===========================
 			 * Animate overlays.
 			 * =========================== */
-			$('#work .block').filter(function() {
+			$('body:not(.mobile) #work .block').filter(function() {
 				return ($(window).scrollTop() + $(window).height()) > $(this).data('top') && ($(this).data('top') + $(this).height()) > $(window).scrollTop();
 			}).each(function(i, el) {
 				//if (($(window).scrollTop() + $(window).height()) > $(this).offset().top && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
@@ -210,72 +296,7 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 		
 		
 		
-		// * ===========================
-		// * Ensure that the heading attaches itself
-		// * to the last block.
-		// * ===========================
-		function positionHeading() {
-			var _max = 95;
-			
-			$('#work .block').each(function() {
-				var top = $(this).data('top');
-				//console.log(top, $(window).scrollTop() + $('#header').height());
-				
-				/*
-if((top - $('#header').height()) < $(window).scrollTop()) {
-					
-					$(this).find('.heading').css({
-						top: top
-					});
-				} else {
-*/
-/* 					if($(window).scrollTop() >= top && (top) < ($(window).scrollTop() + ($(window).height()/2))) { */
-				if(top < ($(window).scrollTop() + ($(window).height()/2))) {
-					
-					var condition = top < $(window).scrollTop();
-					var _h = condition ? ($(window).height() / 2) : (($(window).height() / 2)) - Math.abs($(window).scrollTop() - top);
-					var newTop = top < ($(window).scrollTop() + $('#header').height()) ? 0 - Math.abs($(window).scrollTop() + $('#header').height() - top) : Math.abs($(window).scrollTop() - top);
-					
-					
-					if(newTop <= 0) {
-						$(this).find('.heading').hide();
-						$(this).find('.large').show();
-					} else {
-						$(this).find('.heading').show();
-						$(this).find('.large').hide();
-					}
-					$(this).find('.heading').css({
-						height: _h,
-						top: newTop
-					});
-					
-						
-					$(this).find('.heading > h1').css({
-						top: Math.ceil(newTop + _h)
-					});
-					
-				} else {
-					$(this).find('.heading').show().css({
-						height: 0
-					});
-					$(this).find('.large').hide();
-				}
-			});
-			
-			
-			/*
-if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').height())) {
-				$('#heading').css({
-					top: $('#heading').data('top') - ($(window).scrollTop() - ($('#work .block:last').data('top') - $('#header').height()))
-				});
-				
-			} else {
-				$('#heading').css({
-					top: '50%'//$('#heading').data('top')
-				});
-			}
-*/
-		}
+		
 		
 		
 		

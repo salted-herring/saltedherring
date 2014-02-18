@@ -392,7 +392,107 @@
 }
 
 @include at-breakpoint(0 3 320px) {
+	html,
+	body {
+		height: auto;
+	}
+	
+	#banner {
+		display: none;
+		/*
+display: block;
+		position: relative;
+		height: auto;
+		margin-bottom: 0;
+		padding: 1em 0;
+		position: fixed;
+		z-index: 4;
+		width: 100%;
+		height: auto !important;
+		
+		.filters {
+			position: relative;
+			right: auto;
+			bottom: auto;
+			text-align: center;
+			padding: 0;
+			width: auto;
+			
+			a {
+				font-size: (16/$font-size)+em;
+			}
+		}
+		
+		h1, strong {
+			top: -10em;
+		}
+		
+		h1 {
+			display: none;
+		}
+*/
+	}
+	
+	blockquote,
+	cite {
+/* 		display: block !important; */
+		max-width: 100%;
+		display: inline-block !important;
+	}
+	
+	blockquote {
+		font-size: 24px !important;
+		
+
+		/*
+.label {
+			position: absolute;
+			z-index: 1;
+			bottom: 0px;
+			display: block;
+			background: rgba(0,0,0,.5);
+			width: 100%;
+			padding: 1em 2em;
+		}
+*/
+		
+		&:after {
+			display: none;
+		}
+	}
+	
+	#projectdetails {
+		padding: 0 16px 16px 16px !important;
+	}
+	
+	cite {
+		font-size: 1em !important;
+		margin-bottom: 1.5em;
+	}
+	
+	.page-work {
+		/*
+#banner {
+			display: none;
+		}
+*/
+	}
+	
+	.media {
+		width: 100% !important;
+		img {
+			margin: 0 0 3em 0 !important;
+		}
+	}
+
 	#project {
+		margin-top: 0;
+		header {
+			.details {
+				padding: 32px;
+			}
+		}
+		
 		.content {
 			p:first-child {
 				display: block;
@@ -400,10 +500,20 @@
 		}
 	}
 	
+	#projectnav {
+		display: none !important;
+	}
+	
+	#articleLinks {
+		width: 100%;
+	}
+	
 	#work {
+		width: 100% !important;
+		overflow: visible;
+		margin-top: 0em;
 		
 		.work {
-/* 			width: 300px; */
 			img {
 				width: 100%;
 			}
@@ -413,14 +523,32 @@
 				}
 			}
 		}
+		
+		
+		.entry {
+			/*
+width: 90%;
+			height: 90%;
+*/
+/* 			padding-left: 16px; */
+		}
+		
 		.label {
 			padding: 1em 2em;
+		}
+		
+		.noelems {
+			padding: 0 16px;
 		}
 	}
 	
 	#media {		
 		.image {
-			height: auto;
+			height: auto !important;
+			width: 100% !important;
+			margin: 0 0 16px 0;
+			min-height: 0 !important;
+			
 		}
 		
 		.swf {

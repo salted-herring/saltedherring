@@ -513,12 +513,6 @@ section {
 
 
 
-
-#footer {
-	display: none;
-}
-
-
 @include at-breakpoint(0 3 320px) {
 /* 	a[href^="tel"], */
 	.contact {
@@ -620,14 +614,12 @@ section {
 		.links {
 			margin: 1em 0em 0 0em;
 			padding: 1em 0;
-/* 			width: 100%; */
 			float: none;
-			/*
-left: 0;
-			top: 0;
-*/
-			z-index: -1;
+			z-index: 1;
 			display: block;
+			bottom: -1.5em;
+			width: 100%;
+			left: 0;
 			
 			span {
 				display: none;
@@ -647,8 +639,8 @@ left: 0;
 			display: none;
 		}
 		
-		.heading {
-			
+		.headingwrapper {
+			display: none;
 		}
 		
 		.intro {
@@ -704,13 +696,73 @@ left: 0;
 	}
 	
 	#work {
+/* 		background: green; */
 /* 		display: none; */
 		margin: 0em;
+		position: relative;
+		height: auto;
+		
+		.text {
+			overflow: hidden !important;
+		}
+		
 		.block {
 			width: 100% !important;
+/* 			display: none; */
+			height: auto;
+/* 			overflow: visible; */
+			background-attachment: initial;
+			
+			&.first {
+				display: block;
+				
+				nav {
+					bottom: 8em;
+					&:before {
+						left: -1.5em;
+					}
+					&:after {
+						right: -1.5em;
+					}
+				}
+				
+				
+				.large {
+					margin-top: -150px;
+				}
+				
+				.intro {
+					min-height: 0;
+				}
+				
+				/*
+.bottom {
+					display: none;
+				}
+*/
+			}
+			
+			img {
+				display: none;
+			}
 /* 			visibility: hidden; */
 /* 			background-size: contain !important; */
 		}
+		
+		.large {
+			position: relative;
+			@include transform(scale(.5));
+			margin-top: -150px;
+		}
+		
+		.keyword {
+			font-size: 50px;
+			margin-top: 80px;
+		}
+	}
+	
+	#footer {
+		display: none;
 	}
 }
 

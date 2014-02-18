@@ -674,8 +674,9 @@ article a:hover:after {
 }
 
 @media (max-width: 320px) {
-  img {
-    max-width: 100%;
+  img,
+  object {
+    max-width: 100% !important;
   }
 }
 .container {
@@ -1358,6 +1359,16 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 
 @media (max-width: 320px) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  .row {
+    overflow: visible !important;
+    max-width: 100% !important;
+  }
+
   .nomobi {
     display: none !important;
   }
@@ -1374,6 +1385,18 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     padding: 0 1em !important;
   }
 
+  #loader span {
+    font-size: 3.2em;
+  }
+  #loader .salt {
+    margin-top: 0em !important;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+
   #menu_icon {
     text-indent: -119988px;
     overflow: hidden;
@@ -1384,6 +1407,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     right: 1em !important;
     display: block;
     position: fixed;
+    top: .8em;
   }
 
   #header {
@@ -1428,7 +1452,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     left: 0;
     width: 100%;
     background: white;
-    top: 2.9em;
+    top: 78px;
     height: 0;
     overflow: hidden;
     max-height: 1000px;
@@ -1452,12 +1476,13 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 
   footer {
     width: 100%;
+    background: #00bbde;
     /* 		display: none; */
   }
   footer .salt {
     font-size: 1em;
     margin: 0;
-    padding: 1.5em 1em;
+    /* 			padding: 1.5em 1em; */
     line-height: 1em;
     /* 			width: 100%; */
     text-align: center;
@@ -1898,6 +1923,58 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   top: 1.5em;
 }
 
+@media (max-width: 320px) {
+  .individualentry {
+    /* 		margin-top: 56px; */
+  }
+  .individualentry header {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    /* 			left: -2em; */
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: auto;
+    color: white;
+    margin: 0;
+  }
+  .individualentry header .details {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+  .individualentry header .details {
+    padding: 0em 5em;
+  }
+  .individualentry header h1 {
+    font-size: 1.375em;
+    margin: 0;
+  }
+  .individualentry header span {
+    font-size: 1em;
+  }
+  .individualentry header .photographer {
+    display: none;
+  }
+  .individualentry header .tagLine {
+    font-size: 16px;
+    line-height: 1.2em;
+  }
+  .individualentry header.no-images {
+    position: relative;
+    /* 			margin-left: -2em; */
+  }
+  .individualentry header span {
+    font-family: 'minion-pro', 'Times', serif;
+    font-style: italic;
+    font-size: 1.5em;
+  }
+  .individualentry header .photographer {
+    float: right;
+    font-size: 16px;
+  }
+}
 .filters {
   position: absolute;
   right: 2em;
@@ -2231,12 +2308,118 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 
 @media (max-width: 320px) {
+  html,
+  body {
+    height: auto;
+  }
+
+  #banner {
+    display: none;
+    		/*
+    display: block;
+    		position: relative;
+    		height: auto;
+    		margin-bottom: 0;
+    		padding: 1em 0;
+    		position: fixed;
+    		z-index: 4;
+    		width: 100%;
+    		height: auto !important;
+    		
+    		.filters {
+    			position: relative;
+    			right: auto;
+    			bottom: auto;
+    			text-align: center;
+    			padding: 0;
+    			width: auto;
+    			
+    			a {
+    				font-size: (16/$font-size)+em;
+    			}
+    		}
+    		
+    		h1, strong {
+    			top: -10em;
+    		}
+    		
+    		h1 {
+    			display: none;
+    		}
+    */
+  }
+
+  blockquote,
+  cite {
+    /* 		display: block !important; */
+    max-width: 100%;
+    display: inline-block !important;
+  }
+
+  blockquote {
+    font-size: 24px !important;
+    		/*
+    .label {
+    			position: absolute;
+    			z-index: 1;
+    			bottom: 0px;
+    			display: block;
+    			background: rgba(0,0,0,.5);
+    			width: 100%;
+    			padding: 1em 2em;
+    		}
+    */
+  }
+  blockquote:after {
+    display: none;
+  }
+
+  #projectdetails {
+    padding: 0 16px 16px 16px !important;
+  }
+
+  cite {
+    font-size: 1em !important;
+    margin-bottom: 1.5em;
+  }
+
+  .page-work {
+    		/*
+    #banner {
+    			display: none;
+    		}
+    */
+  }
+
+  .media {
+    width: 100% !important;
+  }
+  .media img {
+    margin: 0 0 3em 0 !important;
+  }
+
+  #project {
+    margin-top: 0;
+  }
+  #project header .details {
+    padding: 32px;
+  }
   #project .content p:first-child {
     display: block;
   }
 
-  #work .work {
-    /* 			width: 300px; */
+  #projectnav {
+    display: none !important;
+  }
+
+  #articleLinks {
+    width: 100%;
+  }
+
+  #work {
+    width: 100% !important;
+    overflow: visible;
+    margin-top: 0em;
   }
   #work .work img {
     width: 100%;
@@ -2244,12 +2427,25 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   #work .work .label span {
     opacity: 1;
   }
+  #work .entry {
+    			/*
+    width: 90%;
+    			height: 90%;
+    */
+    /* 			padding-left: 16px; */
+  }
   #work .label {
     padding: 1em 2em;
   }
+  #work .noelems {
+    padding: 0 16px;
+  }
 
   #media .image {
-    height: auto;
+    height: auto !important;
+    width: 100% !important;
+    margin: 0 0 16px 0;
+    min-height: 0 !important;
   }
   #media .swf img {
     display: block;

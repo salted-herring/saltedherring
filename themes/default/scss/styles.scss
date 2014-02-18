@@ -569,6 +569,16 @@ footer {
 } 
  
 @include at-breakpoint(0 3 320px) {
+	html,
+	body {
+		height: 100%;
+	}
+	
+	.row {
+		overflow: visible !important;
+		max-width: 100% !important;
+	}
+	
  	.nomobi {
 		display: none !important;
 	}
@@ -586,6 +596,16 @@ footer {
 		}
 	}
 	
+	#loader {
+		span {
+			font-size: 3.2em;
+		}
+		.salt {
+			margin-top: 0em !important;
+			@include transform(scale(.5));
+		}
+	}
+	
 	#menu_icon {
 		@include hide_text;
 		width: 39px;
@@ -594,6 +614,7 @@ footer {
 		right: 1em !important;
 		display: block;
 		position: fixed;
+		top: .8em;
 	}
 	
 	#header {
@@ -640,7 +661,7 @@ footer {
 				left: 0;
 				width: 100%;
 				background: $white;
-				top: 2.9em;
+				top: 78px;
 				height: 0;
 				overflow: hidden;
 				max-height: 1000px;
@@ -681,11 +702,12 @@ footer {
 	
 	footer {
 		width: 100%;
+		background: $blue;
 /* 		display: none; */
 		.salt {
 			font-size: (16/$font-size)+em;
 			margin: 0;
-			padding: 1.5em 1em;
+/* 			padding: 1.5em 1em; */
 			line-height: 1em;
 /* 			width: 100%; */
 			text-align: center;

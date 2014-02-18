@@ -1,6 +1,7 @@
 @media (max-width: 320px) {
-  img {
-    max-width: 100%;
+  img,
+  object {
+    max-width: 100% !important;
   }
 }
 .container {

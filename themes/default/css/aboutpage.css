@@ -674,8 +674,9 @@ article a:hover:after {
 }
 
 @media (max-width: 320px) {
-  img {
-    max-width: 100%;
+  img,
+  object {
+    max-width: 100% !important;
   }
 }
 .container {
@@ -1358,6 +1359,16 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 
 @media (max-width: 320px) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  .row {
+    overflow: visible !important;
+    max-width: 100% !important;
+  }
+
   .nomobi {
     display: none !important;
   }
@@ -1374,6 +1385,18 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     padding: 0 1em !important;
   }
 
+  #loader span {
+    font-size: 3.2em;
+  }
+  #loader .salt {
+    margin-top: 0em !important;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+
   #menu_icon {
     text-indent: -119988px;
     overflow: hidden;
@@ -1384,6 +1407,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     right: 1em !important;
     display: block;
     position: fixed;
+    top: .8em;
   }
 
   #header {
@@ -1428,7 +1452,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     left: 0;
     width: 100%;
     background: white;
-    top: 2.9em;
+    top: 78px;
     height: 0;
     overflow: hidden;
     max-height: 1000px;
@@ -1452,12 +1476,13 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 
   footer {
     width: 100%;
+    background: #00bbde;
     /* 		display: none; */
   }
   footer .salt {
     font-size: 1em;
     margin: 0;
-    padding: 1.5em 1em;
+    /* 			padding: 1.5em 1em; */
     line-height: 1em;
     /* 			width: 100%; */
     text-align: center;
@@ -1567,4 +1592,56 @@ article .row {
 .links .website:hover {
   background: #00bbde;
   color: white;
+}
+
+@media (max-width: 320px) {
+  html,
+  body {
+    height: auto;
+  }
+
+  h1 {
+    text-indent: 0;
+    font-size: 5em;
+    background: none;
+    padding: 16px;
+    width: auto;
+    height: auto;
+    position: relative;
+    top: auto;
+    margin: 0;
+  }
+
+  .overlay {
+    display: none;
+  }
+
+  article .row {
+    margin-top: 0 !important;
+  }
+
+  .links {
+    width: 100%;
+  }
+
+  #content {
+    max-width: 100%;
+    padding-bottom: 4em;
+    /* 		padding: 16px; */
+  }
+  #content aside {
+    padding: 16px;
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+  #content .article {
+    display: block;
+    padding: 16px;
+    margin: 0;
+    width: auto;
+  }
+  #content article {
+    padding: 0 !important;
+  }
 }

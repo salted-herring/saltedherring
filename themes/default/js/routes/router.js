@@ -651,8 +651,6 @@ entries.each(function() {
 		},
 		
 		showLoading: function() {
-/* 			$('#loader span').hide(); */
-			
 			$('#loader').fadeIn('fast');
 		},
 		

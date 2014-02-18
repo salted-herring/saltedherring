@@ -9,8 +9,9 @@ $grid-padding   : 2em;
 $break: 3;
 
 @include at-breakpoint(0 3 320px) {
-	img {
-		max-width: 100%;
+	img,
+	object {
+		max-width: 100% !important;
 	}
 	aside {
 		
