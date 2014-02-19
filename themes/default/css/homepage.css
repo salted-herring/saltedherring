@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -197,6 +196,8 @@ audio:not([controls]) {
 }
 
 html {
+  background: #fff;
+  color: #000;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -676,6 +677,10 @@ article a:hover:after {
   img,
   object {
     max-width: 100% !important;
+  }
+
+  img {
+    height: auto;
   }
 }
 .container {
@@ -1507,6 +1512,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 #content {
   padding-bottom: 0;
+  height: 1000px;
 }
 
 h1,

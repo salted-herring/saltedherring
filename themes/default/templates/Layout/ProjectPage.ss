@@ -77,9 +77,13 @@
 			<div id="media">
 				<% loop getAllMedia %>
 					<% if $Type = SWF %>
+						<% if isMobile %> 
+						<% else %>
 						<div class="image swf notloaded" data-url="$outputFallback.URL" data-width="$outputFallback.Width" data-height="$outputFallback.Height" data-swf="$File.URL" data-swf-width="$width" data-swf-height="$height" data-alt="$Up.Title" id="media_$Pos">
 							<img src="$outputFallback.URL" width="$outputFallback.Width" height="$outputFallback.Height" alt="$Up.Title" />
 						</div>
+						<% end_if %>
+						
 					<% else %>
 						<% if $Type = Vimeo %>
 							<div class="image vimeo notloaded" data-url="$outputFallback.URL" data-width="$outputFallback.Width" data-vimeo="$vimeoID" data-height="$outputFallback.Height" data-alt="$Up.Title" id="media_$Pos"></div>

@@ -143,28 +143,104 @@
 }
 
 @include at-breakpoint(0 3 320px) {
+	#team {
+		width: 100% !important;
+		overflow: visible;
+		margin-top: 0em;
+	}
+	
 	#teammember {
-		h1 {
-			font-size: 22px;
-		}
-		.tagLine {
-			font-size: 16px;
-		}
-		img {
-			margin-left: 0;
-		}
+		width: 100% !important;
+		overflow: visible;
+		margin-top: 46px;
+		
 		header {
+/* 			display: none; */
 			margin: 0;
 			padding: 1em;
+			
+			.details {
+				padding: 32px;
+			}
 		}
-		blockquote {
-			font-size: (24/$font-size)+em;
-			line-height: (30/24)+em;
+		
+		article {
+			width: 100%;
+		}
+		
+		.images {
+			height: auto;
+			width: 100%;
+			padding: 0;
+			margin-bottom: 40px;
+/* 			display: none; */
+			
+			img {
+				margin: 0;
+				position: relative;
+			}
+		}
+	}
+	
+	/*
+#memberdetails {
+		.content {
+			width: 10% !important;
+			padding: 0;
+			background: red;	
+			display: none;
+		}
+	}
+*/
+	
+	.content,
+	.row,
+	.detailscontainer,
+	article,
+	.container {
+		width: 100% !important;
+	}
+	
+	#teammember article {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+	
+	#content {
+		padding: 0 !important;
+	}
+	
+	blockquote,
+	p,
+	aside {
+		padding: 0 16px !important;
+		margin: 0;
+	}
+	
+	blockquote {
+		margin-bottom: 16px !important;
+	}
+	aside {
+		width: 100% !important;
+		
+		strong,
+		span {
+			margin: auto 16px;
 		}
 	}
 	
 	#contentarea {
 		margin-top: 1em;
 		margin-bottom: 1em;
+		overflow: visible;
+		width: 100% !important;
+		
+		
+	}
+	
+	#footer {
+		p {
+			margin-left: 0;
+		}
 	}
 }

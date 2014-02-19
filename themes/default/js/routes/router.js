@@ -326,6 +326,10 @@ entries.each(function() {
 			} else {
 				var that = this;
 				this.loadPage('teampage', '/team/' + member, function() {
+					if($('body').is('.mobile')) {
+						return false;
+					}
+					
 					if($.isEmptyObject(that.teamImages[member])) {
 						// get image
 						$.get(window.location.href + '/portraits/', function(response, status, xhr) {
@@ -491,7 +495,11 @@ entries.each(function() {
 					$(this).hide()
 					
 					if(target.is('.swf')) {
-						loadSwf(target);
+						if($('body').not('.mobile')) {
+							loadSwf(target);	
+						} else {
+							$(this).removeClass('notloaded');
+						}
 					} else if(target.is('.vimeo')) {
 						loadVimeo(target);
 					} else {
