@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -196,8 +197,6 @@ audio:not([controls]) {
 }
 
 html {
-  background: #fff;
-  color: #000;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -1440,7 +1439,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     z-index: 3;
     left: 0;
     width: 100%;
-    top: .75em;
+    top: 0em;
     right: 0;
   }
   #main_nav:before {
@@ -1452,7 +1451,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
     left: 0;
     width: 100%;
     background: white;
-    top: 78px;
+    top: 46px;
     height: 0;
     overflow: hidden;
     max-height: 1000px;

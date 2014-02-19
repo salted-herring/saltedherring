@@ -648,7 +648,7 @@ footer {
 		z-index: 3;
 		left: 0;
 		width: 100%;
-		top: .75em;
+		top: 0em;
 		right: 0;
 		
 		&:before {
@@ -661,7 +661,7 @@ footer {
 				left: 0;
 				width: 100%;
 				background: $white;
-				top: 78px;
+				top: 46px;
 				height: 0;
 				overflow: hidden;
 				max-height: 1000px;
