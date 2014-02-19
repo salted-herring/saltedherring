@@ -484,18 +484,20 @@ if($('#work').length > 0) {
 		},
 		
 		showNav: function(next, previous, base) {
-			$('#projectnav, #projectnav a').hide();		
+			$('#projectnav, #projectnav a').hide();
+			
+				
 					
 			if(previous) {
-				$('#projectnav .previous strong').text(previous.Title);
-				$('#projectnav .previous em').text(previous.TagLine);
+				$('#projectnav .previous strong').text(decodeURIComponent(previous.Title));
+				$('#projectnav .previous em').text(decodeURIComponent(previous.TagLine));
 				$('#projectnav .previous').attr('href', base + previous.URLSegment);
 				$('#projectnav .previous').show();
 			}
 			
 			if(next != null) {
-				$('#projectnav .next strong').text(next.Title);
-				$('#projectnav .next em').text(next.TagLine);
+				$('#projectnav .next strong').text(decodeURIComponent(next.Title));
+				$('#projectnav .next em').text(decodeURIComponent(next.TagLine));
 				$('#projectnav .next').attr('href', base + next.URLSegment);
 				$('#projectnav .next').show();
 			}
