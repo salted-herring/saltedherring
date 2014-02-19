@@ -1933,6 +1933,7 @@ section .intro a {
   position: relative;
   display: inline-block;
   padding-right: 5px;
+  padding-left: 5px;
 }
 section .intro a[href^="mailto:"] {
   padding-left: 5px;
