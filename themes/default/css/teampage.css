@@ -2096,7 +2096,8 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
-.individualentry aside .contact {
+.individualentry aside .contact,
+.individualentry aside responsibilities {
   margin-top: 1em;
 }
 

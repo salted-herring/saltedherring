@@ -50,9 +50,9 @@
 					<span>$Role</span>
 					<% end_if %>
 					
-					<% if Responsibility %>
-					<strong>Responsibility:</strong>
-					<span>$Responsibility</span>
+					<% if Responsibilities %>
+					<strong class="responsibilities">Responsibilities:</strong>
+					<span>$Responsibilities</span>
 					<% end_if %>
 					
 					<% if Email || MobileNumber %>
