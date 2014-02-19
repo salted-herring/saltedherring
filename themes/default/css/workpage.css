@@ -1845,7 +1845,9 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   padding: 1.5em 0 1.5em 1.2em;
   height: 48px;
   width: 3em;
-  /* 		@include transition(width .2s .1s); */
+}
+#projectnav a strong {
+  display: block;
 }
 #projectnav a:hover {
   /* 			width: auto; */

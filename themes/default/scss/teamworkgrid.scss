@@ -288,7 +288,10 @@
 		padding: (24/$font-size)+em 0 (24/$font-size)+em 1.2em;
 		height: 48px;
 		width: 3em;
-/* 		@include transition(width .2s .1s); */
+		
+		strong {
+			display: block;
+		}
 		
 		&:hover {
 /* 			width: auto; */
