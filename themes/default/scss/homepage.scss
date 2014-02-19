@@ -459,6 +459,7 @@ section {
 			&[href^="mailto:"] {
 				padding-left: 10px;
 				padding-right: 0;
+				margin-left: 10px;
 				
 				&:before {
 					position: absolute;

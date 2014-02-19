@@ -1938,6 +1938,7 @@ section .intro a {
 section .intro a[href^="mailto:"] {
   padding-left: 10px;
   padding-right: 0;
+  margin-left: 10px;
 }
 section .intro a[href^="mailto:"]:before {
   position: absolute;
