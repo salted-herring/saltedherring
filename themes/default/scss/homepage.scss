@@ -454,10 +454,10 @@ section {
 			position: relative;
 			display: inline-block;
 			padding-right: 5px;
-			padding-left: 5px;
+/* 			padding-left: 5px; */
 			
 			&[href^="mailto:"] {
-				padding-left: 5px;
+				padding-left: 10px;
 				padding-right: 0;
 				
 				&:before {
