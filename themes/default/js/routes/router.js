@@ -128,140 +128,8 @@ if($('#work').length > 0) {
 				$('#banner .filters a').removeClass('all current');
 				$('.filters a').eq(i).addClass('current');
 				
-				// re-init the masonry.
-				/*
-if(window.workMasonry && $('#work').length > 0) {
-					window.workMasonry.destroy();
-					var masonry = new Masonry($('#work').get(0), {
-						hiddenStyle: {transform: 'scale(.8)', opacity: 0},
-						transitionDuration: '.5s',
-						columnWidth: 320,
-						gutter: 0,
-						isInitLayout: false,
-						itemSelector: '.entry'
-					});
-					
-					masonry.on( 'layoutComplete', function( msnryInstance, laidOutItems ) {
-						masonry.hide(laidOutItems);
-						$('.entry.hide').removeClass('hide');
-						masonry.reveal(laidOutItems);
-					});
-					
-					masonry.layout();
-					window.workMasonry = masonry;
-				}
-*/
-				
 				var urls = [],
 					count = 0;
-				
-				
-				
-				/* ===========================
-				 * If the user has clicked on the 'all' filter, then
-				 * reload the masonry
-				 * =========================== */
-				if(window.location.href.match(/work\/?$/) != null) {
-					
-					/*
-if(--count <= 0 && $('#work').length > 0) {
-						if(window.workMasonry) {
-*/
-							//window.workMasonry.layout();
-					/*
-	}
-					}
-*/
-					
-					
-					
-					/*
-ordered.each(function(id, el) {
-						
-						
-						
-						//setTimeout(function(target) {
-							var left = 320 * (id % 3),
-								top =  Math.floor(id/3) * 320;
-							
-							
-							if(top < $(this).offset().top) {
-								top = 0 - Math.abs(top, $(this).offset().top);
-							} else {
-								top = Math.abs(top, $(this).offset().top);
-							}
-							
-							if(left < $(this).offset().left) {
-								left = 0 - Math.abs(left, $(this).offset().left);
-							} else {
-								left = Math.abs(left, $(this).offset().left);
-							}
-							//console.log($(this).offset().top, top, top - $(this).offset().top);
-							
-							$(this).css({
-								position: 'absolute',
-								'-webkit-transform': 'translate3d(' + left + 'px,' + top + 'px,0)'
-							});
-							
-							//$("#work .entry").eq(i-1 > 0 ? i-1 : 0).after($(this));
-							
-						//}, id * 200, this);
-						
-						//$(this).
-						
-						// clone.insertAfter();
-						
-						//$(this).remove();
-						
-						//console.log($(this).data('sortorder'), 320 * (id % 3),  Math.floor(id/3) * 320);
-					});
-*/
-					
-					
-					
-				} else {
-					
-					
-					
-					/* ====================================================
-					 * Get the list of new entries, compare to the original 
-					 * entries & add / hide as required.
-					 * ==================================================== */
-					/*
-entries.each(function() {
-						if($('#work .entry').filter('a[href="' + $(this).attr('href') + '"]').length == 0) {
-							$('#work').append($(this));
-							if(window.workMasonry && $('#work').length > 0) {
-								window.workMasonry.appended($(this));
-								window.workMasonry.layout();
-							}
-						}
-					});
-					
-					$('#work .entry').each(function(id, el) {
-						if(entries.filter('[href="' + $(this).attr('href') + '"]').length == 0) {
-							count++;
-							setTimeout(function(target) {
-								if(window.workMasonry && $('#work').length > 0) {
-									window.workMasonry.remove(target);
-								}
-								
-								if(--count <= 0 && $('#work').length > 0) {
-									if(window.workMasonry) {
-										window.workMasonry.layout();
-									}
-								}
-							}, i * 200, this);
-						}
-					});
-					
-					if(--count <= 0 && $('#work').length > 0) {
-						if(window.workMasonry) {
-							window.workMasonry.layout();
-						}
-					}
-*/
-				}
 				
 				var ordered = entries;
 				
@@ -350,7 +218,7 @@ entries.each(function() {
 						$.get(that.root + 'json/team.json', function(response, status, xhr) {
 							that.team = response;
 							that.teamNavigation(member);
-						});
+						}, 'json');
 					}
 				});
 			}
@@ -611,8 +479,6 @@ entries.each(function() {
 					break;
 				}
 			}
-			
-			console.log(member, next, previous);
 			
 			this.showNav(next, previous, '/team/');	
 		},
