@@ -489,15 +489,15 @@ if($('#work').length > 0) {
 				
 					
 			if(previous) {
-				$('#projectnav .previous strong').text(decodeURIComponent(previous.Title));
-				$('#projectnav .previous em').text(decodeURIComponent(previous.TagLine));
+				$('#projectnav .previous strong').text(encodeURIComponent(previous.Title));
+				$('#projectnav .previous em').text(encodeURIComponent(previous.TagLine));
 				$('#projectnav .previous').attr('href', base + previous.URLSegment);
 				$('#projectnav .previous').show();
 			}
 			
 			if(next != null) {
-				$('#projectnav .next strong').text(decodeURIComponent(next.Title));
-				$('#projectnav .next em').text(decodeURIComponent(next.TagLine));
+				$('#projectnav .next strong').text(encodeURIComponent(next.Title));
+				$('#projectnav .next em').text(encodeURIComponent(next.TagLine));
 				$('#projectnav .next').attr('href', base + next.URLSegment);
 				$('#projectnav .next').show();
 			}
