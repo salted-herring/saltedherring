@@ -2,14 +2,14 @@
 
 
 .filters {
-	padding: 2em 2em 2em 1em;
-	width: ($font-size*24)+px;
+	padding: 2em 0em 2em 1em;
+	width: 420px;
 	
 	a {
 		@include minion;
 		color: $black;
 		white-space: nowrap;
-		font-size: (22/$font-size)+em;
+		font-size: (18/$font-size)+em;
 		
 		&:last-child {
 			&:after {
@@ -58,15 +58,7 @@
 		&:hover {
 			.label {
 				background: rgba(0,0,0,0.5);
-				height: 142px;
-				
-				span {
-					top: 400px;
-				}
-				
-				&:before {
-					top: 1.5em;
-				}
+				bottom: -142px;
 			}
 			
 			img {
@@ -85,36 +77,20 @@
 		position: absolute;
 		z-index: 1;
 		bottom: 0px;
-		background: rgba(0,0,0,0.2);
+		background: rgba(0,0,0,0.4);
 		width: 256px;
 		padding: 1em 2em;
 		min-height: 80px;
+		@include transition(bottom .3s);
 		
 		&:before {
-			position: absolute;
-			display: block;
-			left: 50%;
-			top: 6em;
-			margin-left: -95px;
-			content: 'meet ' attr(data-name);
-			padding: .8em 2em;
-			font-weight: 500;
-			z-index: 1;
-			line-height: 1em;
-			text-align: center;
-			font-size: (22/$font-size)+em;
-			//@include transition(top .2s);
-			text-transform: lowercase;
-			
-			background: $white;
-				color: $black;
+			display: none;
 		}
 		
 		span {
 			position: relative;
 			display: block;
 			top: 0;
-			//@include transition(top .2s);
 		}
 		
 		strong,
@@ -220,17 +196,13 @@
 	@include transition(height .2s 0 easInOutCubic, padding .5s 0 ease);
 	
 	h1,strong {
-		position: absolute;
 		@include transition(top .2s 0 easeInOutSine);
 	}
 	
 	h1 {
+		position: absolute;
 		top: 0;
 		@extend .stripedMask;
-	}
-	
-	strong {
-		top: 0em;
 	}
 	
 	&.collapsed,
@@ -257,6 +229,15 @@
 		
 		h1, strong {
 			top: -10em;
+		}
+	}
+	
+	&.small {
+		.filters {
+			top: 0;
+			strong {
+				display: none;
+			}
 		}
 	}
 }

@@ -56,7 +56,7 @@ h1 {
 }
 
 #main_nav {
-	top: -2em;
+/* 	top: -2em; */
 }
 #menu_icon {
 	top: .8em;
@@ -218,12 +218,25 @@ section {
 		.text {
 			padding: 0;
 		}
-		nav {
+		/*
+nav {
 			position: absolute;
 			left: 50%;
 			margin-left: -(211/2)+px !important;
 			bottom: (150/$font-size)+em;
-/* 			padding: 0 3em !important; */
+		}
+*/
+		
+		.digital {
+			color: $blue;
+			font-size: (30/$font-size)+em;
+			text-transform: uppercase;
+			line-height: 1em;
+			font-weight: 500;
+			position: absolute;
+			left: 50%;
+			margin-left: -(247/2)+px !important;
+			bottom: 4em;
 		}
 		
 		&.init {
@@ -456,7 +469,8 @@ section {
 			padding-right: 5px;
 /* 			padding-left: 5px; */
 			
-			&[href^="mailto:"] {
+			/*
+&[href^="mailto:"] {
 				padding-left: 10px;
 				padding-right: 0;
 				margin-left: 10px;
@@ -472,6 +486,7 @@ section {
 					background: $white;
 				}
 			}
+*/
 		}
 	}
 	

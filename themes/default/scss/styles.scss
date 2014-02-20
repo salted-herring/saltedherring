@@ -294,7 +294,7 @@ article a {
 	line-height: 1em;
 	font-weight: 500;
 	
-/* 	display: none; */
+	display: none;
 	
 	@include transition(none);
 	@include transition(top .5s);
@@ -503,6 +503,12 @@ footer {
 				&:after {
 					background: $black;
 				}
+			}
+		}
+		
+		&[href^='mailto:'] {			
+			&:hover:after {
+				background: $white;
 			}
 		}
 	}

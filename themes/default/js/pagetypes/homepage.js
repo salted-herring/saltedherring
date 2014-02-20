@@ -182,13 +182,15 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 			positionHeading();
 			scrolled = true;
 			
-			if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset().top + $(window).height() - $('#header').height())) {
+			/*
+if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset().top + $(window).height() - $('#header').height())) {
 				$('#menu_icon').removeClass('hide').addClass('show');
 				$('#main_nav').removeClass('show').addClass('hide');
 			} else {
 				$('#menu_icon').removeClass('show').addClass('hide');
 				$('#main_nav').removeClass('hide').addClass('show');
 			}
+*/
 			
 			/* ===========================
 			 * Animate overlays.

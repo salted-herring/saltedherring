@@ -34,7 +34,9 @@
 					</div>
 					<% if First %>
 						<div class="bottom">
-							<nav class="container">
+							<span class="digital">Digital + Brand</span>
+							<!--
+<nav class="container">
 								<ul>
 									<% loop Top.Menu(1) %>
 										<li>
@@ -43,6 +45,7 @@
 									<% end_loop %>
 								</ul>
 							</nav>
+-->
 							<div class="intro">
 								<div class="container">
 									<ul class="contactlinks">

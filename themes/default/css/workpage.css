@@ -1020,7 +1020,7 @@ article a:hover:after {
   text-transform: uppercase;
   line-height: 1em;
   font-weight: 500;
-  /* 	display: none; */
+  display: none;
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
@@ -1225,6 +1225,9 @@ footer a[href^='mailto:']:after, footer a.map:after {
 }
 footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   background: black;
+}
+footer a[href^='mailto:']:hover:after {
+  background: white;
 }
 
 @-moz-keyframes saltshaker {
@@ -1511,15 +1514,15 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   }
 }
 .filters {
-  padding: 2em 2em 2em 1em;
-  width: 384px;
+  padding: 2em 0em 2em 1em;
+  width: 420px;
 }
 .filters a {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
   color: black;
   white-space: nowrap;
-  font-size: 1.375em;
+  font-size: 1.125em;
 }
 .filters a:last-child:after {
   display: none;
@@ -1558,13 +1561,7 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 .records .entry:hover .label {
   background: rgba(0, 0, 0, 0.5);
-  height: 142px;
-}
-.records .entry:hover .label span {
-  top: 400px;
-}
-.records .entry:hover .label:before {
-  top: 1.5em;
+  bottom: -142px;
 }
 .records .entry:hover img {
   -webkit-transform: scale(1.1);
@@ -1585,27 +1582,17 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   position: absolute;
   z-index: 1;
   bottom: 0px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
   width: 256px;
   padding: 1em 2em;
   min-height: 80px;
+  -webkit-transition: bottom 0.3s;
+  -moz-transition: bottom 0.3s;
+  -o-transition: bottom 0.3s;
+  transition: bottom 0.3s;
 }
 .records .label:before {
-  position: absolute;
-  display: block;
-  left: 50%;
-  top: 6em;
-  margin-left: -95px;
-  content: "meet " attr(data-name);
-  padding: .8em 2em;
-  font-weight: 500;
-  z-index: 1;
-  line-height: 1em;
-  text-align: center;
-  font-size: 1.375em;
-  text-transform: lowercase;
-  background: white;
-  color: black;
+  display: none;
 }
 .records .label span {
   position: relative;
@@ -1782,7 +1769,6 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   transition: height 0.2s 0 easInOutCubic, padding 0.5s 0 ease;
 }
 #banner h1, #banner strong {
-  position: absolute;
   -webkit-transition: top 0.2s 0;
   -webkit-transition-delay: easeInOutSine;
   -moz-transition: top 0.2s 0 easeInOutSine;
@@ -1790,10 +1776,8 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   transition: top 0.2s 0 easeInOutSine;
 }
 #banner h1 {
+  position: absolute;
   top: 0;
-}
-#banner strong {
-  top: 0em;
 }
 #banner.collapsed, #banner.small {
   margin-bottom: 0;
@@ -1816,6 +1800,12 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 #banner.collapsed h1, #banner.collapsed strong, #banner.small h1, #banner.small strong {
   top: -10em;
+}
+#banner.small .filters {
+  top: 0;
+}
+#banner.small .filters strong {
+  display: none;
 }
 
 .arrow, #projectnav .next:after, #projectnav .previous:before {
@@ -2026,9 +2016,9 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 .filters {
   position: absolute;
   right: 2em;
-  /* 	bottom: 0em; */
   padding-bottom: 0;
-  padding-top: 2em;
+  padding-top: 0em;
+  top: 2.8em;
 }
 .filters strong {
   display: block;
@@ -2047,15 +2037,6 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
   position: relative;
   width: 960px !important;
   overflow: hidden;
-  /* 	background: red; */
-  /* 	@include transition_delay(5s); */
-  /* 	@include transition(min-height .5s 1s ease); */
-}
-#work .label:before {
-  content: 'see project';
-}
-#work a {
-  /* 		@include transition(none); */
 }
 #work .noelems {
   font-size: 3em;
