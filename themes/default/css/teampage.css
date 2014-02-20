@@ -1794,15 +1794,13 @@ footer a[href^='mailto:']:hover:after {
   text-align: center;
   padding: 0;
   width: auto;
+  top: 0;
 }
 #banner.collapsed .filters a, #banner.small .filters a {
   font-size: 1em;
 }
 #banner.collapsed h1, #banner.collapsed strong, #banner.small h1, #banner.small strong {
   top: -10em;
-}
-#banner.small .filters {
-  top: 0;
 }
 #banner.small .filters strong {
   display: none;
@@ -1928,6 +1926,28 @@ footer a[href^='mailto:']:hover:after {
 
   #banner {
     display: none;
+    position: relative;
+    height: auto;
+    padding: 16px 0 16px 16px;
+    width: 100%;
+    overflow: hidden;
+  }
+  #banner .filters {
+    top: auto;
+    right: auto;
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    margin: 0;
+  }
+  #banner .filters a:after {
+    margin-right: 0;
+  }
+  #banner .filters strong {
+    display: none;
+  }
+  #banner h1 {
+    display: none;
   }
 
   blockquote,
@@ -2015,10 +2035,10 @@ footer a[href^='mailto:']:hover:after {
 }
 .filters {
   position: absolute;
-  right: 5em;
+  right: 13.5em;
   padding-top: 2.5em;
   padding-bottom: 0;
-  /* 	width: 230px; */
+  width: 300px;
   top: 2em;
 }
 
@@ -2189,15 +2209,16 @@ footer a[href^='mailto:']:hover:after {
     margin: 0 !important;
   }
 
-  #content {
-    padding: 0 !important;
-  }
-
-  blockquote,
-  p,
-  aside {
+  #teammember blockquote,
+  #teammember p,
+  #teammember aside,
+  #teammember a {
     padding: 0 16px !important;
     margin: 0;
+  }
+
+  #content {
+    padding: 0 !important;
   }
 
   blockquote {
@@ -2219,7 +2240,11 @@ footer a[href^='mailto:']:hover:after {
     width: 100% !important;
   }
 
-  #footer p {
-    margin-left: 0;
-  }
+  	/*
+  #footer {
+  		p {
+  			margin-left: 0;
+  		}
+  	}
+  */
 }

@@ -221,6 +221,7 @@
 			text-align: center;
 			padding: 0;
 			width: auto;
+			top: 0;
 			
 			a {
 				font-size: (16/$font-size)+em;
@@ -234,7 +235,6 @@
 	
 	&.small {
 		.filters {
-			top: 0;
 			strong {
 				display: none;
 			}
@@ -389,6 +389,34 @@ padding-right: 70px;
 	
 	#banner {
 		display: none;
+		position: relative;
+		height: auto;
+		padding: 16px 0 16px 16px;
+		width: 100%;
+		overflow: hidden;
+		
+		.filters {
+			top: auto;
+			right: auto;
+			padding: 0px;
+			position: relative;
+			width: 100%;
+			margin: 0;
+			
+			a {
+				&:after {
+					margin-right: 0;
+				}
+			}
+			
+			strong {
+				display: none;
+			}
+		}
+		
+		h1 {
+			display: none;
+		}
 	}
 	
 	blockquote,

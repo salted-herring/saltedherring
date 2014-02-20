@@ -1794,15 +1794,13 @@ footer a[href^='mailto:']:hover:after {
   text-align: center;
   padding: 0;
   width: auto;
+  top: 0;
 }
 #banner.collapsed .filters a, #banner.small .filters a {
   font-size: 1em;
 }
 #banner.collapsed h1, #banner.collapsed strong, #banner.small h1, #banner.small strong {
   top: -10em;
-}
-#banner.small .filters {
-  top: 0;
 }
 #banner.small .filters strong {
   display: none;
@@ -1927,6 +1925,28 @@ footer a[href^='mailto:']:hover:after {
   }
 
   #banner {
+    display: none;
+    position: relative;
+    height: auto;
+    padding: 16px 0 16px 16px;
+    width: 100%;
+    overflow: hidden;
+  }
+  #banner .filters {
+    top: auto;
+    right: auto;
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    margin: 0;
+  }
+  #banner .filters a:after {
+    margin-right: 0;
+  }
+  #banner .filters strong {
+    display: none;
+  }
+  #banner h1 {
     display: none;
   }
 

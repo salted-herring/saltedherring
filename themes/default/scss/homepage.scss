@@ -229,14 +229,19 @@ nav {
 		
 		.digital {
 			color: $blue;
-			font-size: (30/$font-size)+em;
+			font-size: (42/$font-size)+em;
 			text-transform: uppercase;
 			line-height: 1em;
 			font-weight: 500;
 			position: absolute;
-			left: 50%;
-			margin-left: -(247/2)+px !important;
-			bottom: 4em;
+			display: block;
+			text-align: center;
+			width: 100%;
+/* 			left: 50%; */
+/* 			margin-left: -(247/2)+px !important; */
+			top: 50%;
+			
+			margin-top: 140px;
 		}
 		
 		&.init {

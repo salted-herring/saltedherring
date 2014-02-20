@@ -6,7 +6,8 @@ class Project extends BaseDBO {
 		'Quote' => 'Varchar(255)',
 		'Citation' => 'HTMLVarchar(255)',
 		'ProjectInfo' => 'HTMLText',
-		'SiteURL' => 'Varchar(255)'
+		'SiteURL' => 'Varchar(255)',
+		'isPublished' => 'Boolean'
 	);
 	
 	public static $has_one = array(
@@ -31,6 +32,10 @@ class Project extends BaseDBO {
 	
 	public static $belongs_many_many = array(
 		'Project' => 'Project'
+	);
+	
+	public static $defaults = array(
+		'isPublished' => true
 	);
 
 	public function getCMSFields() {
@@ -158,7 +163,7 @@ class Project extends BaseDBO {
 		$data = array();
 		
 		foreach(Category::get() as $cat) {
-			$projects = Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID);
+			$projects = Project::get()->filter(array('isPublished' => 1))->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID);
 			
 			$current = array(
 				'Category' => $cat->Title,

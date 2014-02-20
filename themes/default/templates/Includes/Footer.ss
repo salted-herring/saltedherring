@@ -5,7 +5,7 @@
 	<div class="details">
 		<div class="container row">
 			<div class="grid_1 nomobi whoarewe">
-				<p>Saltedherring is a digital design agency, based in Wellington, New Zealand</p>
+				<p> We're a strategic creative agency with a black belt in digital</p>
 	
 				<p>Copyright &copy; 2003 – 2012<br>
 				All right reserved.</p>
@@ -19,7 +19,8 @@
 				<p>
 				<a href="http://goo.gl/maps/5kRrd" target="_blank" class="map">Level 4, 56 Victoria St.</a><br>
 				PO Box 6534<br>
-				Wellington 6141</p>
+				Wellington 6141<br>
+				New Zealand</p>
 				
 				
 			</div>

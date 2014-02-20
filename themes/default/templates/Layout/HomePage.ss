@@ -23,6 +23,7 @@
 						<span class="keyword">$Keyword</span>
 						
 						<% if First %>
+							<span class="digital">Digital + Brand</span>
 						<% else %>
 							<% if Project.getURL || Link.Link %>
 						<div class="container links">
@@ -34,7 +35,6 @@
 					</div>
 					<% if First %>
 						<div class="bottom">
-							<span class="digital">Digital + Brand</span>
 							<!--
 <nav class="container">
 								<ul>

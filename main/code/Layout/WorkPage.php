@@ -48,7 +48,7 @@ class WorkPage_Controller extends Page_Controller {
 			return $this->meta($this->request);
 		}
 		
-		$this->project = Project::get()->filter('URLSegment', $this->request->param('projectName'));
+		$this->project = Project::get()->filter(array('URLSegment' => $this->request->param('projectName'), 'isPublished' => 1));
 		
 		if($this->project->count() == 0) {
 			$this->project = false;
@@ -93,7 +93,7 @@ if($request->param('meta')) {
 		$cat = Category::get()->filter(array('URLSegment' => Session::get('category')));
 		
 		return $this->renderWith(array('WorkPage', 'Page'), array(
-			'getAllProjects' => Project::get(),
+			'getAllProjects' => Project::get()->filter(array('isPublished' => 1)),
 			'category' => Session::get('category'),
 			'categoryName' => $cat->first()->legalName()
 		));
@@ -104,7 +104,7 @@ if($request->param('meta')) {
 	}
 	
 	public function getAllProjects() {
-		return Project::get();
+		return Project::get()->filter(array('isPublished' => 1));
 	}
 	
 	public function getCategories() {
