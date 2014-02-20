@@ -377,7 +377,11 @@
 
 @include at-breakpoint(0 3 320px) {
 	
-	
+	#banner {
+		.filters.container {
+			padding-left: 16px !important;
+		}
+	}
 	
 	
 	#projectdetails {
@@ -466,5 +470,7 @@ width: 90%;
 		}
 	}
 	
-	
+	#interestedin {
+		display: none;
+	}
 }

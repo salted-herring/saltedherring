@@ -153,6 +153,12 @@
 }
 
 @include at-breakpoint(0 3 320px) {
+
+	#banner {
+		position: relative;
+		margin-top: 46px;
+	}
+	
 	#team {
 		width: 100% !important;
 		overflow: visible;

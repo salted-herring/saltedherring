@@ -18,7 +18,7 @@ require.config({
 		'get-size': 'components/get-size/get-size',
 		'matches-selector': 'components/matches-selector/matches-selector',
 		outlayer: 'components/outlayer/outlayer',
-		'masonry': 'components/masonry/masonry',
+/* 		'masonry': 'components/masonry/masonry', */
 		
 		'mutate': 'lib/mutate/mutate.min',
 		'mutateevents': 'lib/mutate/mutate.events',
@@ -55,31 +55,5 @@ require.config({
 		bridget: {
 			desp: ['jquery']
 		}
-		/*
-workrouter: {
-			deps: ['jquery', 'underscore', 'backbone', 'defaultrouter'],
-			exports: 'WorkRouter'
-		},
-*/
-		/*
-defaultrouter: {
-			deps: ['jquery', 'backbone'],
-			exports: 'Router'
-		},
-*/
-		
-		/*
-defaultmodel: {
-			deps: ['jquery', 'backbone'],
-			exports: 'Model'
-		},
-*/
-		
-		/*
-masonry: {
-			deps: ['jquery', 'eventie', 'doc-ready', 'eventEmitter', 'get-style-property', 'get-size', 'matches-selector', 'outlayer'],
-			exports: 'Masonry'
-		}
-*/
 	}
 });

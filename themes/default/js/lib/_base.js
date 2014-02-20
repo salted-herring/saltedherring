@@ -11,7 +11,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 
 	
 	/* ===========================
-	 * Croxx browser compatible docheight
+	 * Cross browser compatible docheight
 	 * =========================== */
 	window.docHeight = function() {
 		var body = document.body,
@@ -20,21 +20,15 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		return Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
     }
-
-/* 	console.log(WorkModel); */
-	
-	//$(function() {
 		
-		//
-		// Show / hide the mobile menu.
-		//
-		$('#menu_icon').click(function(e) {
-			e.preventDefault();
-			$(this).toggleClass('collapse expand');
-			$('#main_nav').toggleClass('collapse expand');
-		});
-		
-	//});
+	//
+	// Show / hide the mobile menu.
+	//
+	$('#menu_icon').click(function(e) {
+		e.preventDefault();
+		$(this).toggleClass('collapse expand');
+		$('#main_nav').toggleClass('collapse expand');
+	});
 	
 	$(document).on('click', '#main_nav a, #logo a', function() {
 		$('#main_nav a, #logo a').removeClass('current');
@@ -101,7 +95,8 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 			 * Animation for banner as seen on
 			 * work & team landing pages.
 			 * =========================== */
-			if($('nav#banner').length > 0) {
+			
+			if($('body:not(.mobile) nav#banner').length > 0) {
 				if($(window).scrollTop() > 100) {
 					$('nav#banner').addClass('small');
 				} else {

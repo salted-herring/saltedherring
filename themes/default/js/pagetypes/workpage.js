@@ -78,7 +78,16 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 			scrollTop: 0
 		}, 500);
 		
-		Router.navigate($(this).attr('href'), {trigger: true});
+		/* ===========================
+		 * Redirect on mobi instead of
+		 * routing the page - to reduce
+		 * possible performance issues.
+		 * =========================== */
+		if($('body').is('.mobile')) {
+			window.location.href = $(this).attr('href');
+		} else {
+			Router.navigate($(this).attr('href'), {trigger: true});
+		}
 	});
 	
 	$(document).on('click', '.fullstory', function(e) {

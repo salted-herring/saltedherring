@@ -7,7 +7,7 @@
  * Backbone URL routing for
  * website.
  * =========================== */
-define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, SwfObject, Masonry) {
+define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 
 	var View = Backbone.View.extend();
 
@@ -31,7 +31,19 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 			this.historyStack = [''];
 			
 			this.on('route', function() {
-				this.historyStack.push('/' + arguments[0] + '/' + arguments[1].join('/'));
+				/*
+if($('body').is('.mobile')) {
+					var target = '/' + arguments[0] + '/' + arguments[1].join('/');
+					
+					console.log(window.location.href.indexOf(target));
+					
+					if(window.location.href.indexOf(target) == 0) {
+						window.location.href = '/' + arguments[0] + '/' + arguments[1].join('/');
+					}
+				} else {
+*/
+					this.historyStack.push('/' + arguments[0] + '/' + arguments[1].join('/'));
+/* 				} */
 			});
 			
 			// build regex from the main nav.
@@ -59,7 +71,7 @@ define(['jquery', 'backbone', 'swfobject', 'masonry'], function($, Backbone, Swf
 		},
 		
 		work: function(section, fragment) {
-		
+				
 			var that = this;
 			var callback = function() {
 				
@@ -535,8 +547,16 @@ if($('#work').length > 0) {
 		}
 	});
 	
-	var router = new Router();
-	Backbone.history.start({pushState: true});
+	
+	
+	var router = new Router(),
+		routerOptions = {};
+		
+	//if($('body').not('.mobile')) {
+		routerOptions.pushState = true;
+	//}
+	
+	Backbone.history.start(routerOptions);
 	
 	return router;
 });

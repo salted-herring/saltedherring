@@ -12,7 +12,7 @@ images_dir = "img"
 fonts_dir = "fonts"
 javascripts_dir = "js"
 
-environment = :development
+environment = :production
 
 # In development, we can turn on the FireSass-compatible debug_info.
 firesass = true
