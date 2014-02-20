@@ -3,13 +3,7 @@
 	<% if getSliders %>
 		
 		<% loop getSliders %>
-			<div id="_{$Pos}" class="block<% if First %> first init<% end_if %>" 
-			<% if Images %>
-				<% with Images.First %> 
-			
-				style="background-image: url(<% if $Image.Width>1920 %>$outputImage(1920).URL<% else %>$Image.URL<% end_if %>);" data-imgwidth="$outputImage(1920).Width" data-imgheight="$outputImage(1920).Height"
-			<% end_with %>
-			<% end_if %> data-keyword="$Keyword"<% if Images %> data-images="$Images.Count"<% end_if %> data-id="$ID">
+			<div id="_{$Pos}" class="block<% if First %> first init<% end_if %>"<% if Images %><% with Images.First %> style="background-image: url($outputImage(1920).URL);" data-imgwidth="$outputImage(1920).Width" data-imgheight="$outputImage(1920).Height"<% end_with %><% end_if %> data-keyword="$Keyword"<% if Images %> data-images="$Images.Count"<% end_if %> data-id="$ID">
 				<% if $OverlayImage %>
 					<div class="overlay" style="background-image: url($OverlayImage.SetWidth(1920).URL);"></div>
 				<% end_if %>
