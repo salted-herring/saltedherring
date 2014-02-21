@@ -190,7 +190,7 @@ class Project extends BaseDBO {
 		
 		$all = array();
 		
-		foreach(Project::get() as $project) {
+		foreach(Project::get()->filter(array('isPublished' => 1)) as $project) {
 			array_push($all, array(
 				'Title' => $project->Title,
 				'TagLine' => htmlentities($project->TagLine),
@@ -205,6 +205,10 @@ class Project extends BaseDBO {
 		} catch(Exception $e) {
 			user_error($e, E_USER_WARNING);
 		}
+	}
+	
+	public function getValidRelatedProjects() {
+		return $this->RelatedProjects()->filter(array('isPublished' => 1));
 	}
 }
 

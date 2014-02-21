@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<LoaderMax name="images" prependURLs="img/" load="true">
+		<ImageLoader name="s1a" url="s1a_CottonCandy_(Seamless).png" />
+		<ImageLoader name="s1b" url="s1b_GreyCottonCandy_(Seamless).png" />
+		<ImageLoader name="s1c" url="s1c_BlueCheesecake_(FullerFigure).png" />
+		<ImageLoader name="s2a" url="s2a_VanillaCream_(FlexibleWire).png" />
+		<ImageLoader name="s2b" url="s2b_Toffee_(Contour).png" />
+		<ImageLoader name="s2c" url="s2c_Shortbread_(SoftCup).png" />
+		<ImageLoader name="s3a" url="s3a_DarkToffee_(Contour).png" />
+		<ImageLoader name="s3b" url="s3b_VelvetDelight_(FlexibleWire).png" />
+		<ImageLoader name="s3c" url="s3c_FrostedAlmond_(SoftCup).png" />
+		<ImageLoader name="s4a" url="s4a_CottonCandy_(Seamless).png" />
+		<ImageLoader name="s4b" url="s4b_GreyCottonCandy_(Seamless).png" />
+		<ImageLoader name="s4c" url="s4c_Cheesecake_(FullerFigure).png" />
+		<ImageLoader name="s5a" url="s5a_Licorice_(FlexibleWire).png" />
+		<ImageLoader name="s5b" url="s5b_MintToffee_(Contour).png" />
+		<ImageLoader name="s5c" url="s5c_CoconutIce_(SoftCup).png" />
+	</LoaderMax>
+	<stages>
+		<!--
+			
+			STAGE 1
+		
+		-->
+		<stage id="1">
+			<title><![CDATA[0-3<br/>months]]></title>
+			<information>
+				<title><![CDATA[Bust Development]]></title>
+				<point id="A"><![CDATA[Pregnancy hormones lead to glandular development. Most women will experience rapid growth in the breast]]></point>
+				<separator />
+				<title><![CDATA[Bra Needs]]></title>
+				<point id="B"><![CDATA[Select a non-wired, stretchy, seamless maternity bra that grows with you]]></point>
+			</information>
+			<products>
+				<product id="s1a" type="seamless">
+					<title><![CDATA[Cotton Candy]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/essentials/cotton-candy]]></link>
+				</product>
+				<product id="s1b" type="seamless">
+					<title><![CDATA[Grey Cotton Candy]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/essentials/grey-cotton-candy]]></link>
+				</product>
+				<product id="s1c" type="fullerfigure">
+					<title><![CDATA[Blue Cheesecake]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/fashion/blue-cheesecake]]></link>
+				</product>
+			</products>
+		</stage>
+		<!--
+
+			STAGE 2
+
+		-->
+		<stage id="2">
+			<title><![CDATA[3-8<br/>months]]></title>
+			<information>
+				<title><![CDATA[Bust Development]]></title>
+				<point id="C"><![CDATA[Your breast growth will slow]]></point>
+				<point id="D"><![CDATA[Your ribcage will start to expand]]></point>
+				<separator />
+				<title><![CDATA[Bra Needs]]></title>
+				<point id="E"><![CDATA[Select a flexible-wire and/or contour bra with 6 hooks & eyes, for greater support and extension]]></point>
+			</information>
+			<products>
+				<product id="s2a" type="flexiblewire">
+					<title><![CDATA[Vanilla Cream]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/fashion/vanilla-cream]]></link>
+				</product>
+				<product id="s2b" type="contour">
+					<title><![CDATA[Toffee]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/essentials/toffee]]></link>
+				</product>
+				<product id="s2c" type="softcup">
+					<title><![CDATA[Shortbread]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/fashion/shortbread]]></link>
+				</product>
+			</products>
+		</stage>
+		<!--
+
+			STAGE 3
+
+		-->
+		<stage id="3">
+			<title><![CDATA[8-9<br/>months]]></title>
+			<information>
+				<title><![CDATA[Bust Development]]></title>
+				<point id="F"><![CDATA[Your breast size at this stage will most likely be your nursing cup-size in Stage 5]]></point>
+				<separator />
+				<title><![CDATA[Bra Needs]]></title>
+				<point id="G"><![CDATA[Purchase a minimum of 3 supportive nursing bras at this point.<br/>We recommend flexible-wire, contour or fuller figure bras]]></point>
+			</information>
+			<products>
+				<product id="s3a" type="contour">
+					<title><![CDATA[Dark Toffee]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/essentials/dark-toffee]]></link>
+				</product>
+				<product id="s3b" type="flexiblewire">
+					<title><![CDATA[Velvet Delight]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/fashion/velvet-delight]]></link>
+				</product>
+				<product id="s3c" type="softcup">
+					<title><![CDATA[Frosted Almond]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/fashion/frosted-almond]]></link>
+				</product>
+			</products>
+		</stage>
+		<!--
+
+			STAGE 4
+
+		-->
+		<stage id="4">
+			<title><![CDATA[0-4<br/>weeks]]></title>
+			<information>
+				<title><![CDATA[Bust Development]]></title>
+				<point id="H"><![CDATA[Your breast will swell & change size rapidly as it regulates its milk supply]]></point>
+				<separator />
+				<title><![CDATA[Bra Needs]]></title>
+				<point id="I"><![CDATA[Use a non-wired, stretchy, seamless maternity bra that grows with you]]></point>
+			</information>
+			<products>
+				<product id="s4a" type="seamless">
+					<title><![CDATA[Cotton Candy]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/essentials/cotton-candy]]></link>
+				</product>
+				<product id="s4b" type="seamless">
+					<title><![CDATA[Grey Cotton Candy]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/essentials/grey-cotton-candy]]></link>
+				</product>
+				<product id="s4c" type="fullerfigure">
+					<title><![CDATA[Cheesecake]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/fashion/cheesecake]]></link>
+				</product>
+			</products>
+		</stage>
+		<!--
+
+			STAGE 5
+
+		-->
+		<stage id="5">
+			<title><![CDATA[4+<br/>weeks]]></title>
+			<information>
+				<title><![CDATA[Bust Development]]></title>
+				<point id="J"><![CDATA[Your milk-flow would have now regulated itself and cup-size would have stabilised, apart from regular daily fluctuations]]></point>
+				<separator />
+				<title><![CDATA[Bra Needs]]></title>
+				<point id="K"><![CDATA[Wear your choice of flexible-wire, contour or fuller figure bras, with plenty to top cup stretch]]></point>
+			</information>
+			<products>
+				<product id="s5a" type="flexiblewire">
+					<title><![CDATA[Licorice]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/fashion/licorice]]></link>
+				</product>
+				<product id="s5b" type="contour">
+					<title><![CDATA[Mint Toffee]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/essentials/mint-toffee]]></link>
+				</product>
+				<product id="s5c" type="softcup">
+					<title><![CDATA[Coconut Ice]]></title>
+					<link><![CDATA[http://www.cakelingerie.com/online-store/fashion/coconut-ice]]></link>
+				</product>
+			</products>
+		</stage>
+	</stages>
+</data>

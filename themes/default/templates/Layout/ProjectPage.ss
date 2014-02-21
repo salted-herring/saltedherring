@@ -103,11 +103,11 @@
 </section>
 <% end_control %>
 
-<% if Project.RelatedProjects %>
+<% if Project.getValidRelatedProjects %>
 <section id="interestedin" class="container records">
 	<h2>You might also be interested in:</h2>
 	
-	<% loop Project.RelatedProjects %>
+	<% loop Project.getValidRelatedProjects %>
 		<a href="$Top.URLSegment/project/$URLSegment" class="entry<% if MultipleOf(3) %> last<% end_if %>" title="$Name">
 		
 			<% if Thumbnail %>
