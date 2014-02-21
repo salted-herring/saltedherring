@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <data>
 	<LoaderMax name="images" prependURLs="img/" load="true">
-		<ImageLoader name="s1a" url="s1a_CottonCandy_(Seamless).png" />
+		<!--
+<ImageLoader name="s1a" url="s1a_CottonCandy_(Seamless).png" />
 		<ImageLoader name="s1b" url="s1b_GreyCottonCandy_(Seamless).png" />
 		<ImageLoader name="s1c" url="s1c_BlueCheesecake_(FullerFigure).png" />
 		<ImageLoader name="s2a" url="s2a_VanillaCream_(FlexibleWire).png" />
@@ -16,6 +17,7 @@
 		<ImageLoader name="s5a" url="s5a_Licorice_(FlexibleWire).png" />
 		<ImageLoader name="s5b" url="s5b_MintToffee_(Contour).png" />
 		<ImageLoader name="s5c" url="s5c_CoconutIce_(SoftCup).png" />
+-->
 	</LoaderMax>
 	<stages>
 		<!--
