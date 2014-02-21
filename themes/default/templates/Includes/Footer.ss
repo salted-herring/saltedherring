@@ -7,7 +7,7 @@
 			<div class="grid_1 nomobi whoarewe">
 				<p> We're a strategic creative agency with a black belt in digital</p>
 	
-				<p>Copyright &copy; 2003 – 2012<br>
+				<p>Copyright &copy; 2003 – $Now.Year<br>
 				All right reserved.</p>
 			</div>
 			<div class="grid_1 contact">
