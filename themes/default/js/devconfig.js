@@ -6,7 +6,6 @@ require.config({
 		'backbone': 'lib/backbone',
 		'modernizr': 'lib/modernizr',
 		'_base': 'lib/_base',
-		'svg': 'lib/svg',
 		'router': 'routes/router',
 		
 		'bridget': 'components/jquery-bridget/jquery.bridget',
@@ -18,7 +17,6 @@ require.config({
 		'get-size': 'components/get-size/get-size',
 		'matches-selector': 'components/matches-selector/matches-selector',
 		outlayer: 'components/outlayer/outlayer',
-/* 		'masonry': 'components/masonry/masonry', */
 		
 		'mutate': 'lib/mutate/mutate.min',
 		'mutateevents': 'lib/mutate/mutate.events',
@@ -50,10 +48,10 @@ require.config({
 		},
 		
 		isotope: {
-			desp: ['jquery', 'bridget']
+			deps: ['jquery', 'bridget']
 		},
 		bridget: {
-			desp: ['jquery']
+			deps: ['jquery']
 		}
 	}
 });
