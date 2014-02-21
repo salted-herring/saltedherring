@@ -28,7 +28,7 @@
 			</div>
 		</header>
 		
-		<div id="projectdetails" class="detailscontainer nofix">
+		<div id="projectdetails" class="detailscontainer">
 			<% if getFirstImage %>
 			<div class="media">
 				<img src="$getFirstImage.outputImage.URL" alt="" />
