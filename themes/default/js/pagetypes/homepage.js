@@ -2,7 +2,7 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 
 	
 	
-	//$(function() {
+	$(function() {
 	
 			
 		/* ===========================
@@ -11,6 +11,12 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 		 * - The content container & each block are full height.
 		 * =========================== */
 		$(window).resize(function() {
+			/*
+if($('body').is('.mobile')) {
+				return;
+			}
+*/
+			
 			var targetHeight = ($('#work .block').length * $(window).height()) - parseInt($('#content').css('padding-top')) - (($('#work .block').length - 1) * $('#header').height());
 			if(targetHeight > 0) {
 				$('#content, #work').height(targetHeight);
@@ -22,7 +28,9 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 				var top = (i * ($(window).height() - $('#header').height()));
 				$(this).height($(window).height() - $('#header').height());
 				$(this).css({
-					'top': top
+					width: $(window).width(),
+					height: $(window).height(),
+					top: top
 				});
 				
 				$(this).attr('data-top', parseInt($(this).offset().top));
@@ -44,9 +52,13 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 				}
 				
 				$(this).css({
-					'background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px'
+					'background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px',
+					'-webkit-background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px',
+					'-moz-background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px'
 				}).find('.overlay').css({
-					'background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px'
+					'background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px',
+					'-webkit-background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px',
+					'-moz-background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px'
 				});
 					
 				
@@ -64,6 +76,10 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 			positionHeading();
 		}).resize();
 		
+		window.addEventListener("orientationchange", function() {
+			$(window).resize();
+		}, false);
+		
 		
 		// * ===========================
 		// * Ensure that the heading attaches itself
@@ -80,18 +96,6 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 			$('#work .block').each(function() {
 				var top = $(this).data('top');
 				
-				
-				//console.log(top, $(window).scrollTop() + $('#header').height());
-				
-				/*
-if((top - $('#header').height()) < $(window).scrollTop()) {
-					
-					$(this).find('.heading').css({
-						top: top
-					});
-				} else {
-*/
-/* 					if($(window).scrollTop() >= top && (top) < ($(window).scrollTop() + ($(window).height()/2))) { */
 				if(top < ($(window).scrollTop() + ($(window).height()/2))) {
 					
 					var condition = top < $(window).scrollTop();
@@ -144,6 +148,7 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 		 * No more to see on mobile.
 		 * =========================== */
 		if($('body').is('.mobile')) {
+			
 			return;
 		}
 		
@@ -155,6 +160,10 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 			
 		$(window).scroll(function(e) {
 			e.preventDefault();
+			
+			if($('body').is('.mobile')) {
+				return;
+			}
 		
 			if(($(window).scrollTop() + $(window).height()) >= $('#footer').offset().top) {
 				var clone = $('#nextnav').clone(true, true);
@@ -678,6 +687,6 @@ var previousScroll = 0;
 			});
 		});
 */
-	//});
+	});
 	
 });

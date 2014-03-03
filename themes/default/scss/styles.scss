@@ -745,3 +745,22 @@ footer {
 		}
 	}
 }
+
+/*
+@include at-breakpoint(380px 3 768px) {
+	body {
+		min-width: 768px;
+	}
+}
+*/
+
+@include at-breakpoint(768px 3) {
+	body {
+/* 		min-width: 768px; */
+		overflow-x: hidden;
+	}
+	
+	body {
+		min-width: 1000px;
+	}
+}

@@ -139,6 +139,10 @@ h1 {
 	}
 }
 
+.mobile #nextnav {
+	display: none;
+}
+
 section {
 	position: relative;
 	a {
@@ -723,8 +727,6 @@ nav {
 	}
 	
 	#work {
-/* 		background: green; */
-/* 		display: none; */
 		margin: 0em;
 		position: relative;
 		height: auto;
@@ -793,3 +795,49 @@ nav {
 	}
 }
 
+@include at-breakpoint(768px 3 1024px) {
+	#content {
+		min-width: 1000px;
+	}
+	#work {
+		min-width: 1000px;
+		
+		.block {
+			min-width: 1000px;
+		}
+		
+		.overlay {
+			display: none;
+		}
+		
+		.bottom {
+			height: 100%;
+			
+			.intro {
+				bottom: 2.5em;
+				min-height: inherit;
+				
+				ul {
+					padding: 1em 0;
+				}
+				
+				.news {
+					height: 1em;
+					margin-left: 0;
+					margin-top: 1em;
+					overflow: hidden;
+					padding: 0;
+				}
+			}
+		}
+		
+		.links {
+			span {
+				display: none;
+			}
+			a {
+				float: none;
+			}
+		}
+	}
+}
