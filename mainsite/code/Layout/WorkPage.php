@@ -23,7 +23,9 @@ class WorkPage_Controller extends Page_Controller {
 	private static $allowed_actions = array (
 		'home',
 		'project',
-		'getCategoryProjects'
+		'getCategoryProjects',
+		'getCurrentSession',
+		'clearSession'
 	);
 	
 	private static $url_handlers = array (
