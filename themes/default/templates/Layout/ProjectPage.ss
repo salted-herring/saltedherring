@@ -6,7 +6,7 @@
 		<% end_loop %>
 	</div>
 </div>
-<% control Project %>
+<% with Project %>
 
 <section id="project" class="individualentry">
 	<nav id="projectnav">
@@ -65,7 +65,7 @@
 					<ul class="awards">
 						<% loop ProjectAwards %>
 						<% if Award.Logo %>
-						<li><% if URL %><a href="$URL" target="_blank"><% end_if %><% control Award.Logo.SetWidth(60) %><img src="$URL" width="$Width" height="$Height" alt="" /><% end_control %><% if URL %></a><% end_if %></li>
+						<li><% if URL %><a href="$URL" target="_blank"><% end_if %><% with Award.Logo.SetWidth(60) %><img src="$URL" width="$Width" height="$Height" alt="" /><% end_with %><% if URL %></a><% end_if %></li>
 						<% end_if %>
 						<% end_loop %>
 					</ul>
@@ -101,7 +101,7 @@
 	</div>
 	
 </section>
-<% end_control %>
+<% end_with %>
 
 <% if Project.getValidRelatedProjects %>
 <section id="interestedin" class="container records">

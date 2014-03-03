@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="contain">
-	<% control Member %>
+	<% with Member %>
 	<nav id="projectnav">
 		<a href="#" class="previous">
 			<strong>Title</strong>
@@ -71,5 +71,5 @@
 	</article>
 	
 </section>
-<% end_control %>
+<% end_with %>
 </div>

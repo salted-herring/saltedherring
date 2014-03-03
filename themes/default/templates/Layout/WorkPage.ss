@@ -21,6 +21,7 @@
 			<% if Thumbnail %>
 				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Name" />
 			<% end_if %>
+			
 			<div class="label">
 				<span>
 					<strong>$Title</strong>
