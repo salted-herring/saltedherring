@@ -1,14 +1,14 @@
 <?php
 class AboutPage extends Page {
 	
-	public static $db = array(
+	private static $db = array(
 		'IntroText' => 'Text'
 	);
 	
-	public static $has_one = array(
+	private static $has_one = array(
 	);
 	
-	public static $has_many = array(
+	private static $has_many = array(
 	);
 	
 	public function getCMSFields() {
@@ -23,7 +23,7 @@ class AboutPage extends Page {
 }
 class AboutPage_Controller extends Page_Controller {
 	
-	public static $allowed_actions = array (
+	private static $allowed_actions = array (
 	);
 	
 	public function init() {

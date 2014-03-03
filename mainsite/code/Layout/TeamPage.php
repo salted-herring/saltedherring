@@ -1,13 +1,13 @@
 <?php
 class TeamPage extends Page {
 	
-	public static $db = array(
+	private static $db = array(
 	);
 	
-	public static $has_one = array(
+	private static $has_one = array(
 	);
 	
-	public static $has_many = array(
+	private static $has_many = array(
 	);
 	
 	public function getCMSFields() {
@@ -18,7 +18,12 @@ class TeamPage extends Page {
 }
 class TeamPage_Controller extends Page_Controller {
 	
-	public static $url_handlers = array (
+	private static $allowed_actions = array (
+		'meta',
+		'teamMember'
+	);
+	
+	private static $url_handlers = array (
 		'meta' => 'meta',
 		'$teamMember!/$arg' => 'teamMember'
 	);

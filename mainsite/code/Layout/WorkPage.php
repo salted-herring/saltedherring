@@ -1,10 +1,10 @@
 <?php
 class WorkPage extends Page {
 	
-	public static $db = array(
+	private static $db = array(
 	);
 	
-	public static $has_one = array(
+	private static $has_one = array(
 	);
 	
 	public function getCMSFields() {
@@ -15,13 +15,18 @@ class WorkPage extends Page {
 }
 class WorkPage_Controller extends Page_Controller {
 	/*
-	public static $url_handlers = array (
+	private static $url_handlers = array (
 		'project/$Project!' => 'getProject',
 		'category/$Category!' => 'getCategoryProjects'
 	);
 */
+	private static $allowed_actions = array (
+		'home',
+		'project',
+		'getCategoryProjects'
+	);
 	
-	public static $url_handlers = array (
+	private static $url_handlers = array (
 		'' => 'home',
 		'project/$projectName/$meta' => 'project',
 		'category/$Category/$meta' => 'getCategoryProjects'
