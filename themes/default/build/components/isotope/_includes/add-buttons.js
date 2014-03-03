@@ -1,0 +1,1 @@
+$("#insert a").click(function(){var e=$(fakeElement.getGroup());return $container.isotope("insert",e),!1}),$("#append a").click(function(){var e=$(fakeElement.getGroup());return $container.append(e).isotope("appended",e),!1});

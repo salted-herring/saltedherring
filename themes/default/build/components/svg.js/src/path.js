@@ -1,0 +1,1 @@
+SVG.Path=function(e){this.constructor.call(this,SVG.create("path")),this.unbiased=!!e},SVG.Path.prototype=new SVG.Shape,SVG.extend(SVG.Path,{_plot:function(e){return this.attr("d",e||"M0,0")}}),SVG.extend(SVG.Container,{path:function(e,t){return this.put(new SVG.Path(t)).plot(e)}});

@@ -1,0 +1,1 @@
+SVG.Nested=function(){this.constructor.call(this,SVG.create("svg")),this.style("overflow","visible")},SVG.Nested.prototype=new SVG.Container,SVG.extend(SVG.Container,{nested:function(){return this.put(new SVG.Nested)}});

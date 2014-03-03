@@ -1,0 +1,1 @@
+SVG.Use=function(){this.constructor.call(this,SVG.create("use"))},SVG.Use.prototype=new SVG.Shape,SVG.extend(SVG.Use,{element:function(e){return this.target=e,this.attr("href","#"+e,SVG.xlink)}}),SVG.extend(SVG.Container,{use:function(e){return this.put(new SVG.Use).element(e)}});

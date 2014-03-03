@@ -1,0 +1,1 @@
+SVG.G=function(){this.constructor.call(this,SVG.create("g"))},SVG.G.prototype=new SVG.Container,SVG.extend(SVG.G,{x:function(e){return e==null?this.trans.x:this.transform("x",e)},y:function(e){return e==null?this.trans.y:this.transform("y",e)}}),SVG.extend(SVG.Container,{group:function(){return this.put(new SVG.G)}});

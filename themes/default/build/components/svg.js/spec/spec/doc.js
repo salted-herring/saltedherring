@@ -1,0 +1,1 @@
+describe("Doc",function(){it("should be an instance of SVG.Container",function(){expect(draw instanceof SVG.Container).toBe(!0)}),it("should have a defs element",function(){expect(draw instanceof SVG.Container).toBe(!0)})});

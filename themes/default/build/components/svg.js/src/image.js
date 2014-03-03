@@ -1,0 +1,1 @@
+SVG.Image=function(){this.constructor.call(this,SVG.create("image"))},SVG.Image.prototype=new SVG.Shape,SVG.extend(SVG.Image,{load:function(e){return e?this.attr("href",this.src=e,SVG.xlink):this}}),SVG.extend(SVG.Container,{image:function(e,t,n){return t=t!=null?t:100,this.put((new SVG.Image).load(e).size(t,n!=null?n:t))}});

@@ -1,0 +1,1 @@
+$container.find(".element").each(function(){var e=$(this),t=parseInt(e.find(".number").text(),10);t%7%2===1&&e.addClass("width2"),t%3===0&&e.addClass("height2")});

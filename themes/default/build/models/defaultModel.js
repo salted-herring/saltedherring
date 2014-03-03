@@ -1,0 +1,1 @@
+define(["jquery","backbone"],function(e,t){return t.Model.extend({initialize:function(e){this.html=this.initFromOptions(e,"html",""),this.urlsegment=this.initFromOptions(e,"urlsegment","")},initFromOptions:function(e,t,n){return typeof e=="undefined"?n:t in e?e[t]:n}})});
