@@ -147,10 +147,12 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 		/* ===========================
 		 * No more to see on mobile.
 		 * =========================== */
-		if($('body').is('.mobile')) {
+		/*
+if($('body').is('.mobile')) {
 			
 			return;
 		}
+*/
 		
 		
 		
@@ -161,9 +163,11 @@ if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').h
 		$(window).scroll(function(e) {
 			e.preventDefault();
 			
-			if($('body').is('.mobile')) {
+			/*
+if($('body').is('.mobile')) {
 				return;
 			}
+*/
 		
 			if(($(window).scrollTop() + $(window).height()) >= $('#footer').offset().top) {
 				var clone = $('#nextnav').clone(true, true);

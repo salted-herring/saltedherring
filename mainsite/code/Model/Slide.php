@@ -19,6 +19,8 @@ class Slider extends BaseDBO {
 		'Images' => 'SliderImage'
 	);
 	
+	private static $default_sort = 'SortOrder ASC';
+	
 	static $summary_fields = array(
 	);
 	
