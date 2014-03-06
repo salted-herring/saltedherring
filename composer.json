@@ -16,7 +16,8 @@
 		"hubertusanton/silverstripe-seo": "*",
 		"kinglozzer/silverstripegmapsobject": "*",
 		"silverstripe/staticpublisher": "*",
-		"heyday/silverstripe-optimisedimage": "2.0.1"
+		"heyday/silverstripe-optimisedimage": "2.0.1",
+		"normann/gridfieldpaginatorwithshowall": "dev-master"
 	},
 	"require-dev": {
     	"phpunit/phpunit": "3.7.*"

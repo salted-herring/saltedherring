@@ -8,8 +8,10 @@
 	   public function getEditForm($id = null, $fields = null) {
 	        $form = parent::getEditForm($id, $fields);
 	        $gridField = $form->Fields()->fieldByName($this->sanitiseClassName($this->modelClass));
+	        $gridField->getConfig()->removeComponentsByType('GridFieldPaginator');
 	        $gridField->getConfig()->addComponents(	
-				new GridFieldOrderableRows('SortOrder')
+				new GridFieldOrderableRows('SortOrder'),
+				new GridFieldPaginatorWithShowAll()
 			);
 	        return $form;
 	    }
@@ -29,9 +31,12 @@
 		public function getEditForm($id = null, $fields = null) {
 	        $form = parent::getEditForm($id, $fields);
 	        $gridField = $form->Fields()->fieldByName($this->sanitiseClassName($this->modelClass));
+	        $gridField->getConfig()->removeComponentsByType('GridFieldPaginator');
 	        $gridField->getConfig()->addComponents(	
-				new GridFieldOrderableRows('SortOrder')
+				new GridFieldOrderableRows('SortOrder'),
+				new GridFieldPaginatorWithShowAll()
 			);
+			
 	        return $form;
 	    }
 	}
