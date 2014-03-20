@@ -37,6 +37,11 @@ class Project extends BaseDBO {
 	private static $defaults = array(
 		'isPublished' => true
 	);
+	
+	private static $summary_fields = array(
+		'Title',
+		'isPublished'
+	);
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
