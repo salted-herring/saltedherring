@@ -11,6 +11,7 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 		 * - The content container & each block are full height.
 		 * =========================== */
 		$(window).resize(function() {
+			
 			/*
 if($('body').is('.mobile')) {
 				return;
@@ -33,7 +34,7 @@ if($('body').is('.mobile')) {
 					top: top
 				});
 
-				$(this).attr('data-top', parseInt($(this).offset().top));
+				$(this).attr('data-top', parseInt($(this).position().top));
 				$(this).attr('data-headingtop', parseInt($(this).find('.heading').offset().top));
 
 
@@ -41,7 +42,8 @@ if($('body').is('.mobile')) {
 					_h = $(this).data('imgheight'),
 					ratio = 1;
 
-				if(_h > _w) {
+				/*
+if(_h > _w) {
 					ratio = $(window).height() / _h;
 				} else if(_w > _h) {
 					ratio = $(window).width() / _w;
@@ -50,6 +52,7 @@ if($('body').is('.mobile')) {
 				if((_h * ratio) < $(window).height()) {
 					ratio =  ($(window).height() + $('#header').height() + 20) / _h;
 				}
+*/
 
 				/*
 $(this).css({
@@ -75,10 +78,22 @@ $(this).css({
 				$('body:not(.mobile) .block:last').attr('data-top', parseInt($('body:not(.mobile) .block:last').offset().top));
 			}
 
+/* 			$(window).scroll(); */
 			positionHeading();
+/* 			$(window).scroll(); */
 			
-/* 			$('#work .block.first').removeClass('init'); */
-		}).resize();
+			
+			if($('#work .block.first').is('.init')) {
+				setTimeout(function() {
+					$('#work .block.first.init').removeClass('init');
+				}, 5000); 
+			}
+			
+		})
+		
+		//setTimeout(function() {
+			$(window).resize();
+		//}, 500); 
 
 		window.addEventListener("orientationchange", function() {
 			$(window).resize();
@@ -97,8 +112,8 @@ $(this).css({
 				return;
 			}
 
-			$('#work .block').each(function() {
-				var top = $(this).data('top');
+			$('#work .block:visible').each(function(i, el) {
+				var top = $(this).offset().top;
 
 				if(top < ($(window).scrollTop() + ($(window).height()/2))) {
 
@@ -106,6 +121,7 @@ $(this).css({
 					var _h = condition ? ($(window).height() / 2) : (($(window).height() / 2)) - Math.abs($(window).scrollTop() - top);
 					var newTop = top < ($(window).scrollTop() + $('#header').height()) ? 0 - Math.abs($(window).scrollTop() + $('#header').height() - top) : Math.abs($(window).scrollTop() - top);
 
+					
 
 					if(newTop <= 0) {
 						$(this).find('.heading').hide();
@@ -166,7 +182,12 @@ if($('body').is('.mobile')) {
 
 		$(window).scroll(function(e) {
 			e.preventDefault();
-
+			/*
+if(scrolled) {
+				$('#work .block.first.init').removeClass('init');
+			}
+*/
+			
 			/*
 if($('body').is('.mobile')) {
 				return;
@@ -217,11 +238,13 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 			}).each(function(i, el) {
 				if (($(window).scrollTop() + $(window).height()) > $(this).offset().top && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
 					$(this).find('.overlay').css({
-						'background-position': '0 ' + ((($(window).height() / 2) - ($(window).scrollTop() - $(this).data('top'))) * .4) + 'px'
+						'background-position': '50% ' + ((($(window).height() / 2) - ($(window).scrollTop() - $(this).data('top'))) * .4) + 'px'
 					});
+					
+					var pos = Math.min(0, -(($(window).scrollTop() - $(this).data('top') + ($(window).height() / 2)) * .125));
 
 					$(this).css({
-						'background-position': '0 ' + Math.min(0, -(($(window).scrollTop() - $(this).data('top') + ($(window).height() / 2)) * .125)) + 'px'
+						'background-position': '50% ' + (pos) + 'px'
 					});
 
 					if($(this).is('.first') && $(window).scrollTop() > 100) {
@@ -256,7 +279,7 @@ $('.block.loaded').filter(function() {
 				console.log('num images: ', $(this).data('images'), $(this).offset().top - $('#header').height(), $(window).scrollTop());
 			});
 */
-
+	
 		}).scroll();
 
 
@@ -331,6 +354,8 @@ $('.block.loaded').filter(function() {
 									if(target != 0) {
 										$(this).css('background-image', 'url(' + Images.data[id][target] + ')');
 									}
+									
+									return false;
 								});
 								
 							}

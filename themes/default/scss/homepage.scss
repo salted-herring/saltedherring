@@ -91,10 +91,11 @@ h1 {
 
 .headingwrapper {
 	width: 400px;
-	margin-left: -220px;
+	margin-left: -200px;
 	position: fixed;
 	text-align: center;
 	top: 50%;
+	left: 50%;
 	height: 89px;
 	margin-top: -74px;
 }
@@ -104,33 +105,30 @@ h1 {
 	z-index: 100;
 	left: 50%;
 	bottom: 0;
-	margin-left: -43px;
-	background: $black;
-/* 	@include transform(translateZ(0)); */
-/* 	display: none; */
-/* 	@include hide_text; */
+	margin-left: -33px;
 	
 	a {
-		display: inline-block;
+		display: block;
 		background-color: $black;
-		padding: 1.2em 2em 1em 2em;
+		padding: 19px 2em;
 		@include hide_text;
 		width: 21px;
-/* 		height: 28px !important; */
+		height: 28px ;
 		position: relative;
-		height: 100%;
 		
-		@include transition(none);
+		@include transition(background .2s ease);
 		
 		&:before {
 			position: absolute;
-/* 			left: 2em; */
-/* 			top: 1.5em; */
 			width: 21px;
-			height: 28px !important;
+			height: 28px;
 			content: '';
 			display: block;
 			@include sprites-sprite(down_arrow);
+		}
+		
+		&:hover {
+			background: transparent;
 		}
 	}
 	
@@ -152,10 +150,14 @@ section {
 	}
 	
 	.block {
-/* 		position: absolute; */
 		height: 100%;
 		width: 100%;
-/* 		background-color: red; */
+		@include transition(none);
+
+		&.init,
+		&.init .overlay {
+			@include transition(background-position 1s);
+		}
 	}
 	
 	.text {
@@ -250,9 +252,11 @@ nav {
 			margin-top: 140px;
 		}
 		
-		&.init {
+		/*
+&.init {
 			z-index: 2;
 		}
+*/
 	}
 	
 	.first nav, .link {
@@ -436,10 +440,21 @@ nav {
 		}
 		
 		.contactlinks {
-			width: 433px;
+			width: 415px;
+			text-align: right;
 			
 			a {
 				padding-right: 3em;
+				
+				&[href^="/"],
+				&[href^="http"] {
+					font-size: 24px;
+				}
+				
+				
+				&:last-child {
+					padding-right: 1em;
+				}
 			}
 		}
 		.news {
