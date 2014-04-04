@@ -3,7 +3,7 @@
 
 .filters {
 	padding: 2em 0em 2em 1em;
-	width: 420px;
+	width: 400px;
 	
 	a {
 		@include minion;
@@ -80,7 +80,7 @@
 		background: rgba(0,0,0,0.4);
 		width: 256px;
 		padding: 1em 2em;
-		min-height: 80px;
+		min-height: 0px;
 		@include transition(bottom .3s);
 		
 		&:before {
@@ -114,18 +114,20 @@
 		left: -2em;
 		background: rgba(0,0,0,0.5);
 		width: 960px;//800px;
-		height: 235px;
+		height: 200px;
 		color: $white;
 		margin: 0;
+		
+		&.delay {
+			@include transition_delay(.1s);
+		}
+		
+		@include transition(height .4s);
 		
 		.details {
 			padding: 3.5em 5em 5em 5em;
 			@include transform(translateZ(0));
-		}
-		
-		.details {
-			@include transition_delay(1s);
-			@include transition(all .2s);
+			@include transition(all .4s);
 		}
 		
 		
@@ -194,6 +196,10 @@
 	z-index: 10;
 	height: 112px;
 	@include transition(height .2s 0 easInOutCubic, padding .5s 0 ease);
+	
+	.container {
+		height: 112px;
+	}
 	
 	h1,strong {
 		@include transition(top .2s 0 easeInOutSine);

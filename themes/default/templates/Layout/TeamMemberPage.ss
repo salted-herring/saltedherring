@@ -20,7 +20,7 @@
 	</nav>
 <section id="teammember" class="container individualentry">
 	<article>
-		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="overlay<% if Images %><% else %> no-images<% end_if %>">
+		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="<% if Images %><% else %> no-images<% end_if %>">
 			<div class="details">
 				<h1>$getUserName</h1>
 				<span class="role">$Role</span><% if Photographer %><span class="photographer">Photography by <a href="$Top.URLSegment/$Photographer.URLSegment">$Photographer.FirstName</a></span><% end_if %>

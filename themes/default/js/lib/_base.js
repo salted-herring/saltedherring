@@ -35,15 +35,6 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		$(this).addClass('current');
 	});
 	
-	$(document).on("mousemove", "#teammember .images.loaded", function(e) {
-		var count = $(this).find('img').length,
-			_width = 50,
-			pos = e.clientX;
-		
-		$(this).find('img').removeClass('current');
-		$(this).find('img').eq(Math.ceil(pos / _width) % count).addClass('current');
-	});
-	
 	$('#projectnav a').hover(function() {
 		$(this).addClass('over');
 	}, function() {
@@ -91,18 +82,27 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				}
 			}
 			
+			
+			
 			/* ===========================
 			 * Animation for banner as seen on
 			 * work & team landing pages.
 			 * =========================== */
 			
 			if($('body:not(.mobile) nav#banner').length > 0) {
-				if($(window).scrollTop() > 100) {
+				if($(window).scrollTop() > 200) {
 					$('nav#banner').addClass('small');
 				} else {
 					$('nav#banner').removeClass('small');
 				}
+			} else if($('body:not(.mobile) div#banner').length > 0) {
+				if($(window).scrollTop() > 50) {
+					$('header').addClass('small').addClass('delay');
+				} else {
+					$('header').removeClass('delay').removeClass('small');//.css('top',0);
+				}
 			}
+			
 			
 			/* ===========================
 			 * Hide navigation at bottom 

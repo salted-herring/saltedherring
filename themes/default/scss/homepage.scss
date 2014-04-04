@@ -143,6 +143,18 @@ h1 {
 	display: none;
 }
 
+.no-js {
+	section {
+		.block {
+			display: none;
+			
+			&:first-child {
+				display: block;
+			}
+		}
+	}
+}
+
 section {
 	position: relative;
 	a {
@@ -152,11 +164,10 @@ section {
 	.block {
 		height: 100%;
 		width: 100%;
-		@include transition(none);
-
-		&.init,
-		&.init .overlay {
-			@include transition(background-position 1s);
+		display: none;
+		
+		&.show {
+			display: block;
 		}
 	}
 	
@@ -402,7 +413,7 @@ nav {
 		
 		ul {
 			list-style: none;
-			padding: 1.5em 0 0 0;
+			padding: 0;//1.5em 0 0 0;
 			margin: 0;
 			display: inline;
 		}
@@ -442,6 +453,7 @@ nav {
 		.contactlinks {
 			width: 415px;
 			text-align: right;
+			margin-top: 20px;
 			
 			a {
 				padding-right: 3em;
@@ -449,6 +461,14 @@ nav {
 				&[href^="/"],
 				&[href^="http"] {
 					font-size: 24px;
+					
+					&:hover {
+						color: $white;
+					}
+				}
+				
+				&[href^="tel:"] {
+					cursor: text;
 				}
 				
 				
@@ -464,7 +484,7 @@ nav {
 			height: 24px;
 			position: relative;
 			padding: 0;
-			margin: 1.5em 0 0 2em;
+			margin: 23px 0 0 0em;
 			float: right !important;
 			
 			li {
@@ -476,6 +496,10 @@ nav {
 				&.active {
 					top: 0;
 				}
+			}
+			
+			a:hover {
+				color: $black;
 			}
 			
 			p {
@@ -537,7 +561,11 @@ nav {
 		background-position: 50% 0;
 		background-image: none;
 		position: absolute;
-/* 		@include transform(translate3d(0,0,10), translateZ(10)); */
+		@include transform(translate3d(0,0,10), translateZ(10));
+		
+		img {
+			z-index: 0;
+		}
 	}
 	
 	.overlay {
@@ -551,7 +579,7 @@ nav {
 /* 		background-size: 120%; */
 		background-attachment: fixed;
 		background-position: 50% 0;
-/* 		@include transform(translate3d(0,0,11), translateZ(11)); */
+		@include transform(translate3d(0,0,11), translateZ(11));
 	}
 }
 

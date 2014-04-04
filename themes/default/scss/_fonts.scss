@@ -69,5 +69,8 @@
 // Regular
 @include font-face('BrandonGrotesque', font-files('234A9E_1_0.woff', '234A9E_1_0.ttf'), '234A9E_1_0.eot', normal, normal);
 
+// Regular Italic
+@include font-face('BrandonGrotesque', font-files('2A88B5_0_0.woff', '2A88B5_0_0.ttf'), '2A88B5_0_0.eot', regular, italic);
+
 // Light
 @include font-face('BrandonGrotesque', font-files('27128A_0_0.woff', '27128A_0_0.ttf'), '234A9E_1_0.eot', 100, normal);

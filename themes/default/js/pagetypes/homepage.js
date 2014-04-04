@@ -36,39 +36,37 @@ if($('body').is('.mobile')) {
 
 				$(this).attr('data-top', parseInt($(this).position().top));
 				$(this).attr('data-headingtop', parseInt($(this).find('.heading').offset().top));
+		        
+		        function resize(imgWidth, imgHeight, targetWidth, targetHeight) {
+			        var maxWidth = targetWidth,
+						maxHeight = targetHeight,
+						widthRatio = maxWidth / imgWidth,
+						heightRatio = maxHeight / imgHeight,
+						ratio = widthRatio;
+	
+					if (widthRatio * imgHeight < maxHeight) {
+					    ratio = heightRatio;
+					}
+					
+					return {
+						w: imgWidth * ratio,
+						h: imgHeight * ratio
+					}	
+		        }
 
-
-				var _w = $(this).data('imgwidth'),
-					_h = $(this).data('imgheight'),
-					ratio = 1;
-
-				/*
-if(_h > _w) {
-					ratio = $(window).height() / _h;
-				} else if(_w > _h) {
-					ratio = $(window).width() / _w;
-				}
-
-				if((_h * ratio) < $(window).height()) {
-					ratio =  ($(window).height() + $('#header').height() + 20) / _h;
-				}
-*/
-
-				/*
-$(this).css({
-					'background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px',
-					'-webkit-background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px',
-					'-moz-background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px'
+				var dimensions = resize($(this).data('imgwidth'), $(this).data('imgheight'), $(window).width(), $(window).height()*1.5),
+					dimensionsOverlay = resize($(this).data('imgwidth'), $(this).data('imgheight'), $(window).width(), $(window).height());
+				
+				
+				$(this).css({
+					'background-size': dimensions.w + 'px ' + dimensions.h + 'px',
+					'-webkit-background-size': dimensions.w + 'px ' + dimensions.h + 'px',
+					'-moz-background-size': dimensions.w + 'px ' + dimensions.h + 'px'
 				}).find('.overlay').css({
-					'background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px',
-					'-webkit-background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px',
-					'-moz-background-size': (_w * ratio) + 'px ' + (_h * ratio) + 'px'
+					'background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px',
+					'-webkit-background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px',
+					'-moz-background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px'
 				});
-*/
-
-
-
-/* 				$(this).find('h1').css('z-index', i); */
 			});
 
 			$('#footer').show();
@@ -77,10 +75,8 @@ $(this).css({
 			if($('body:not(.mobile) .block:last').length > 0) {
 				$('body:not(.mobile) .block:last').attr('data-top', parseInt($('body:not(.mobile) .block:last').offset().top));
 			}
-
-/* 			$(window).scroll(); */
+			
 			positionHeading();
-/* 			$(window).scroll(); */
 			
 			
 			if($('#work .block.first').is('.init')) {
@@ -89,11 +85,7 @@ $(this).css({
 				}, 5000); 
 			}
 			
-		})
-		
-		//setTimeout(function() {
-			$(window).resize();
-		//}, 500); 
+		}).resize();
 
 		window.addEventListener("orientationchange", function() {
 			$(window).resize();
@@ -147,20 +139,6 @@ $(this).css({
 					$(this).find('.large').hide();
 				}
 			});
-
-
-			/*
-if($(window).scrollTop() >= ($('#work .block:last').data('top') - $('#header').height())) {
-				$('#heading').css({
-					top: $('#heading').data('top') - ($(window).scrollTop() - ($('#work .block:last').data('top') - $('#header').height()))
-				});
-
-			} else {
-				$('#heading').css({
-					top: '50%'//$('#heading').data('top')
-				});
-			}
-*/
 		}
 
 
@@ -234,11 +212,13 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 			 * Animate overlays.
 			 * =========================== */
 			$('body:not(.mobile) #work .block').filter(function() {
-				return ($(window).scrollTop() + $(window).height()) > $(this).data('top') && ($(this).data('top') + $(this).height()) > $(window).scrollTop();
+				return ($(window).scrollTop() + $(window).height()) > $(this).data('top');// && ($(this).data('top') + $(this).height()) > $(window).scrollTop();
 			}).each(function(i, el) {
-				if (($(window).scrollTop() + $(window).height()) > $(this).offset().top && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
+				if (($(window).scrollTop() + $(window).height()) > $(this).offset().top){// && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
+					var top = -200 + ((($(window).scrollTop() - $(this).data('top')) / $(window).height()) * 100);
+					
 					$(this).find('.overlay').css({
-						'background-position': '50% ' + ((($(window).height() / 2) - ($(window).scrollTop() - $(this).data('top'))) * .4) + 'px'
+						'background-position': '50% ' + top + '%'
 					});
 					
 					var pos = Math.min(0, -(($(window).scrollTop() - $(this).data('top') + ($(window).height() / 2)) * .125));
@@ -254,31 +234,6 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 					}
 				}
 			});
-			
-			
-			/* ===========================
-			 * Animate the herring eaters!
-			 * =========================== */
-			/*
-$('.block.loaded').filter(function() {
-				return $(this).data('images') > 1;
-			}).each(function(id, el) {
-				var top = $(this).offset().top - $('#header').height(),
-					images = $(this).data('images');
-				
-				if($(window).scrollTop() > top) {
-					var pos = $(window).scrollTop() - top,
-						target = Math.ceil((pos / $(window).height()) * images) % images;
-						
-					console.log(Images.data[$(this).data('id')][target]);			
-
-					if(target != 0) {
-						$(this).css('background-image', 'url(' + Images.data[$(this).data('id')][target] + ')');
-					}
-				}
-				console.log('num images: ', $(this).data('images'), $(this).offset().top - $('#header').height(), $(window).scrollTop());
-			});
-*/
 	
 		}).scroll();
 
@@ -352,11 +307,29 @@ $('.block.loaded').filter(function() {
 										target = direction == 0 ? target : (count - target) % count;
 
 									if(target != 0) {
+										var bg = $(this).css('background-image');
+										bg = bg.match(/url\((.*)\);?/);
+										
+										/*
+if(bg != null) {
+											bg = (bg[1]).replace(/\"/g, "");
+								        
+									        var dim = $(this).css('background-size').split(' ');
+									        
+											var img = $('<img/>').attr('src', bg).width(dim[0]).height(dim[1]);
+											$(this).append(img);
+											
+											//$(this).find('img').remove();
+										}
+*/
+										
 										$(this).css('background-image', 'url(' + Images.data[id][target] + ')');
 									}
 									
 									return false;
 								});
+								
+								$('#work .block').addClass('show');
 								
 							}
 						}).attr('id', i).attr('src', Images.toLoad[i][j]);
