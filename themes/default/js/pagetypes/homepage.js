@@ -3,7 +3,14 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 
 
 	$(function() {
-
+		/* ===========================
+		 * The background-attachment is
+		 * causing issues on load. Scrolling
+		 * to the top seems to fix it.
+		 * =========================== */
+		setTimeout(function() {
+		    window.scrollTo(0, 0);
+		}, 1);
 
 		/* ===========================
 		 * On resize - make sure:
@@ -66,6 +73,11 @@ if($('body').is('.mobile')) {
 					'background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px',
 					'-webkit-background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px',
 					'-moz-background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px'
+				});
+				
+				$(this).find('img').css({
+					width: dimensions.w,
+					height: dimensions.h
 				});
 			});
 
@@ -160,17 +172,6 @@ if($('body').is('.mobile')) {
 
 		$(window).scroll(function(e) {
 			e.preventDefault();
-			/*
-if(scrolled) {
-				$('#work .block.first.init').removeClass('init');
-			}
-*/
-			
-			/*
-if($('body').is('.mobile')) {
-				return;
-			}
-*/
 
 			if(($(window).scrollTop() + $(window).height()) >= $('#footer').offset().top) {
 				var clone = $('#nextnav').clone(true, true);
@@ -212,7 +213,7 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 			 * Animate overlays.
 			 * =========================== */
 			$('body:not(.mobile) #work .block').filter(function() {
-				return ($(window).scrollTop() + $(window).height()) > $(this).data('top');// && ($(this).data('top') + $(this).height()) > $(window).scrollTop();
+				return (($(window).scrollTop() + $(window).height()) > $(this).data('top'));// && (($(this).data('top') + $(this).height()) > $(window).scrollTop());
 			}).each(function(i, el) {
 				if (($(window).scrollTop() + $(window).height()) > $(this).offset().top){// && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
 					var top = -200 + ((($(window).scrollTop() - $(this).data('top')) / $(window).height()) * 100);
@@ -257,7 +258,7 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 
 		$.get('themes/default/json/sliders.json', function(response, status, xhr) {
 			if(status == 'success') {
-
+				
 				for(var i in response) {
 					if(response[i].Images) {
 						var target = $('#work .block[data-id="' + response[i].Slider + '"]');
@@ -286,7 +287,8 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 				for(var i in Images.toLoad) {
 					for(var j in Images.toLoad[i]) {
 						$('<img/>').load(function(response, status, xhr) {
-
+							
+							
 							// we can't load the image, so remove
 							// from list of available images.
 							if(status == 'error') {
@@ -295,10 +297,15 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 								// no error, so remove from toLoad & check if we're ready to roll.
 								var images = Images.toLoad[$(this).attr('id')];
 							}
+							
+							
+							$('#slider-' + $(this).attr('id')).append($(this));
 
 							removeItem(images, $(this).attr('src'));
 
 							if(Images.length <= 0) {
+								$(window).resize();
+								
 								$('#work .block').addClass('loaded').on('mousemove', function(e) {
 									e.stopPropagation();
 									var count = $(this).data('images'),
@@ -313,6 +320,9 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 									if(target != 0) {
 										var bg = $(this).css('background-image');
 										bg = bg.match(/url\((.*)\);?/);
+										
+										//$(this).find('img.current').removeClass('current');
+										//$(this).find('img').eq(target).addClass('current');
 										
 										$(this).css('background-image', 'url(' + Images.data[id][target] + ')');
 									}

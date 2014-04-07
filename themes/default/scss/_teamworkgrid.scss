@@ -1,4 +1,4 @@
-@import 'compass/css3', 'animation';
+@import 'compass/css3', 'animation', 'ceaser-easing';
 
 
 .filters {
@@ -108,18 +108,29 @@
 	margin-top: 56px;
 		
 	header {
-		position: absolute;
+/* 		position: absolute; */
 		z-index: 3;
-		top: 0;
-		left: -2em;
+/* 		top: 0; */
+/* 		left: -2em; */
 		background: rgba(0,0,0,0.5);
 		width: 960px;//800px;
 		height: 160px;
 		color: $white;
-		margin: 0;
+		margin: 0 0 0 -30em;
 		
-		&.delay {
-			@include transition_delay(.1s);
+		position: fixed;
+		left: 50%;
+		top: 102px;
+/* 		margin-left: -30em; */
+		
+		&.delay  {
+			h1 {
+				font-size: (22/$font-size)+em;
+				margin: 0;
+			}
+			span {
+				font-size: 1em;
+			}
 		}
 		
 		@include transition(height .4s);
@@ -128,6 +139,10 @@
 			padding: 2em 5em 0em 5em;
 			@include transform(translateZ(0));
 			@include transition(all .4s);
+		}
+		
+		h1 {
+			//@include transition(font .08s ceaser($easeOutCubic));
 		}
 		
 		a {
@@ -141,13 +156,10 @@
 		
 		&.small {
 			height: 78px;
-			position: fixed;
-			left: 50%;
-			top: 102px;
-			margin-left: -30em;
+			
 			
 			.details {
-				padding: 1em 5em;
+				padding: 1em 5em 0 5em;
 			}
 			h1 {
 				font-size: (22/$font-size)+em;

@@ -21,9 +21,9 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
     }
 		
-	//
+	// ============================
 	// Show / hide the mobile menu.
-	//
+	//============================
 	$('#menu_icon').click(function(e) {
 		e.preventDefault();
 		$(this).toggleClass('collapse expand');
@@ -105,7 +105,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				}
 			} else if($('body:not(.mobile) div#banner').length > 0) {
 				if($(window).scrollTop() > 50) {
-					$('header').addClass('small').addClass('delay');
+					$('header').addClass('small');
 				} else {
 					$('header').removeClass('delay').removeClass('small');//.css('top',0);
 				}
