@@ -56,7 +56,7 @@ class TeamPage_Controller extends Page_Controller {
 		
 		$teamMember = DataObject::get_one('TeamMember', "URLSegment='" . $request->param('teamMember') . "'");
 		
-		if(!$teamMember->exists()) {
+		if(!$teamMember->exists() || !$teamMember->isPublished) {
 			$this->httpError(404, 'The requested page could not be found.');
 		}
 		
@@ -69,7 +69,7 @@ class TeamPage_Controller extends Page_Controller {
 	}
 	
 	public function getTeam() {
-		return TeamMember::get();
+		return TeamMember::get()->filter(array('isPublished' => true));
 	}
 	
 	public function getPortraits() {
