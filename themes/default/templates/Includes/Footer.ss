@@ -5,10 +5,9 @@
 	<div class="details">
 		<div class="container row">
 			<div class="grid_1 nomobi whoarewe">
-				<p> We're a strategic creative agency with a black belt in digital</p>
+				<p>We're a Strategic Creative Agency with a black belt in Digital.</p>
 	
-				<p>Copyright &copy; 2003 – $Now.Year<br>
-				All right reserved.</p>
+				<p>Copyright &copy; 2003 – $Now.Year</p>
 			</div>
 			<div class="grid_1 contact">
 				<p>

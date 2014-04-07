@@ -114,7 +114,7 @@
 		left: -2em;
 		background: rgba(0,0,0,0.5);
 		width: 960px;//800px;
-		height: 200px;
+		height: 160px;
 		color: $white;
 		margin: 0;
 		
@@ -125,11 +125,18 @@
 		@include transition(height .4s);
 		
 		.details {
-			padding: 3.5em 5em 5em 5em;
+			padding: 2em 5em 0em 5em;
 			@include transform(translateZ(0));
 			@include transition(all .4s);
 		}
 		
+		a {
+			&:hover {
+				&:after {
+					background: $white;
+				}
+			}
+		}
 		
 		
 		&.small {
@@ -276,6 +283,9 @@
 		height: 48px;
 		width: 3em;
 		
+		//@include transition-delay(5s);
+		@include transition(width .2s);
+		
 		strong {
 			display: block;
 		}
@@ -297,6 +307,8 @@ width: auto;
 */
 			}
 			
+			
+			
 			&:after,
 			&:before {
 				position: absolute;
@@ -305,19 +317,24 @@ width: auto;
 		
 		
 		&.over {
+			//@include transition-delay(0s);
 			//@include transition(width .2s 0s);
 			strong,
 			em {
+				//@include transition-delay(0s);
 /* 				@include transition(opacity .2s 1s); */
 			}
 		}
 	}
 	
 	strong, em {
-		display: inline-block;
+		display: block;
+		position: fixed;
 		white-space: nowrap;
 		@include opacity(0);
-/* 		@include transition(none); */
+		overflow: visible;
+		//@include transition-delay(.5s);
+		@include transition(opacity .1s);
 	}
 	
 	strong {
@@ -325,23 +342,22 @@ width: auto;
 	}
 	em {
 		@include minion;
+		margin-top: 1.5em;
 	}
 	
 	.next {
 		right: 0;
 		
-		strong,
+		/*
+strong,
 		em {
-			/*
-padding-right: 70px;
-			margin-right: -50px;
-*/
+			padding-right: 0px;
 		}
+*/
 		
 		&:after {
 			right: 1.2em;
 			top: 1.5em;
-			//margin-right: 1.2em;
 			@extend .arrow;
 			@include sprites-sprite(next_arrow);
 		}
@@ -361,10 +377,10 @@ padding-right: 70px;
 		
 		strong,
 		em {
-/* 			padding-right: 1.2em; */
-			padding-right: 20px;
-/* 			padding-left: 50px; */
-/* 			margin-left: -50px; */
+			/*
+padding-right: 20px;
+			padding-left: 50px;
+*/
 			float: right;
 			text-align: left
 		}

@@ -12,9 +12,13 @@
 <section id="team" class="container records">
 	
 	<% loop getTeam %>
-	<a href="$Top.URLSegment/$URLSegment" class="entry" <% if Thumbnail %><% else %> style="background: #<% if Colour %>{$Colour.Value}<% else %>333333<% end_if %>;"<% end_if %>>			
-			<% if Thumbnail %>
-				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Up.getUserName" />
+	<a href="$Top.URLSegment/$URLSegment" class="entry<% if Thumbnail && ThumbnailOver %> thumbnail<% end_if %>" <% if Thumbnail %><% else %> style="background: #<% if Colour %>{$Colour.Value}<% else %>333333<% end_if %>;"<% end_if %>>			
+		<% if Thumbnail %>
+			<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Up.getUserName" class="thumbnail" />
+		<% end_if %>
+		
+		<% if ThumbnailOver %>
+				<img src="$ThumbnailOver.CroppedImage(320,320).URL" alt="$Up.getUserName" class="thumbnailover" />
 			<% end_if %>
 		
 		<div class="label" data-name="$FirstName">

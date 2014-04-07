@@ -138,6 +138,20 @@
 
 #team {
 	margin-top: 17em;
+	
+	.entry {
+		&.thumbnail {
+			&:hover {
+				
+				.thumbnail {
+					display: none;
+				}
+				img {
+					@include transform(none);
+				}
+			}
+		}
+	}
 }
 
 #teammember {

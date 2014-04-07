@@ -36,16 +36,24 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 	});
 	
 	$('#projectnav a').hover(function() {
-		$(this).addClass('over');
+		var _w = $(this).outerWidth(true) + Math.max($(this).find('strong').outerWidth(), $(this).find('em').outerWidth());
+		if($(this).is('.next')) {
+			$(this).find('em, strong').width(Math.max($(this).find('strong').outerWidth(), $(this).find('em').outerWidth())).css('right', $(this).outerWidth(true));
+		} else {
+			$(this).find('em, strong').css('left', $(this).outerWidth(true));
+		}
+		$(this).addClass('over').width(_w);
 	}, function() {
-		$(this).removeClass('over');
+		$(this).removeClass('over').removeAttr('style');
 	});
 	
 	
-	$(document).on('mouseover', '#projectnav a', function() {
+	$(document).on('hover', '#projectnav a', function() {
 		$(this).width($(this).outerWidth(true) + Math.max($(this).find('strong').outerWidth(), $(this).find('em').outerWidth()));
-	}).on('mouseout', '#projectnav a', function() {
+		$(this).addClass('over');
+	}, function() {
 		$(this).removeAttr('style');
+		$(this).removeClass('over');
 	});
 	
 	

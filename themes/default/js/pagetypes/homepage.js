@@ -248,7 +248,10 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 
 			clone: function() {
 				this.toLoad = $.extend(true, {}, this.data);
-			}
+			},
+			
+			previousX: 0,
+			previousY: 0
 		};
 
 
@@ -299,29 +302,17 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 								$('#work .block').addClass('loaded').on('mousemove', function(e) {
 									e.stopPropagation();
 									var count = $(this).data('images'),
-										_width = 200,
-										pos = e.clientX,
 										id = $(this).data('id'),
+										pos = e.clientX,
 										target = Math.ceil((pos / ($(window).width() / 2)) * count) % count,
 										direction = Math.ceil(Math.ceil((pos / ($(window).width() / 2)) * count)/count) % 2,
 										target = direction == 0 ? target : (count - target) % count;
+										
+										//console.log(Math.abs(Images.previousX - e.clientX), Math.abs(Images.previousY - e.clientY));
 
 									if(target != 0) {
 										var bg = $(this).css('background-image');
 										bg = bg.match(/url\((.*)\);?/);
-										
-										/*
-if(bg != null) {
-											bg = (bg[1]).replace(/\"/g, "");
-								        
-									        var dim = $(this).css('background-size').split(' ');
-									        
-											var img = $('<img/>').attr('src', bg).width(dim[0]).height(dim[1]);
-											$(this).append(img);
-											
-											//$(this).find('img').remove();
-										}
-*/
 										
 										$(this).css('background-image', 'url(' + Images.data[id][target] + ')');
 									}

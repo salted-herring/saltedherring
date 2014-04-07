@@ -14,7 +14,8 @@ class TeamMember extends BaseDBO {
 	
 	private static $has_one = array(
 		'Photographer' => 'TeamMember',
-		'Colour' => 'Colour'
+		'Colour' => 'Colour',
+		'ThumbnailOver' => 'Image'
 	);
 	
 	private static $has_many = array(
@@ -95,6 +96,8 @@ class TeamMember extends BaseDBO {
 			$fields->addFieldsToTab('Root.Images', array(
 				$gridField = new GridField("Images", "Images", $this->Images(), $gridFieldConfig)
 			));
+			
+			$fields->insertAfter($fields->fieldByName('Root.Main.ThumbnailOver'), 'Thumbnail');
 			
 			$fields->addFieldToTab('Root.Images', new DropdownField('PhotographerID', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()), 'Images');
 		}
