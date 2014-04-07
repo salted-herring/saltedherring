@@ -286,6 +286,9 @@ if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset()
 
 				for(var i in Images.toLoad) {
 					for(var j in Images.toLoad[i]) {
+						if($('body').is('.mobile') && j>0) {
+							break;
+						}
 						$('<img/>').load(function(response, status, xhr) {
 							
 							

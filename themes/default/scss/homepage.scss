@@ -613,6 +613,11 @@ nav {
 	section {
 		margin: 0;
 		
+		&:before,
+		&:after {
+			display: none;
+		}
+		
 		.contain {
 			position: relative;
 			top: auto;
@@ -620,6 +625,7 @@ nav {
 		}
 	
 		.block {
+			display: block;
 			overflow: hidden;
 		}
 		
@@ -781,6 +787,14 @@ nav {
 		position: relative;
 		height: auto;
 		
+		h1 {
+			display: none;
+		}
+		
+		.digital {
+			font-size: 1.2em;
+		}
+		
 		.text {
 			overflow: hidden !important;
 		}
@@ -853,6 +867,7 @@ nav {
 		min-width: 1000px;
 		
 		.block {
+			display: block;
 			min-width: 1000px;
 		}
 		
