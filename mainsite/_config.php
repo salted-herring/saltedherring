@@ -47,6 +47,7 @@ define('MOBILE', $mobi->isMobile());
 Object::add_extension('SiteConfig', 'CustomSiteConfig');
 Object::add_extension('Project', 'ThumbnailDecorator');
 Object::add_extension('TeamMember', 'ThumbnailDecorator');
+Object::add_extension('TeamMember', 'PublishedDecorator');
 
 
 /*
