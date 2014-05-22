@@ -133,6 +133,18 @@ class Project extends BaseDBO {
 		return '/work/project/' . $this->URLSegment;
 	}
 	
+	public function canView($member = null) {
+		return $this->isPublished;
+	}
+	
+	public function AbsoluteLink() {
+		return Director::absoluteURL($this->Link());
+	}
+	
+	public function Link() {
+		return $this->getURL();
+	}
+	
 	public function getFirstImage() {
 		$im = NULL;
 		foreach($this->Media() as $media) {

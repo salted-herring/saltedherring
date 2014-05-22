@@ -7,6 +7,8 @@ class BaseDBO extends DataObject {
 		'SortOrder' => 'Int'
 	);
 	
+	private static $default_sort = "SortOrder";
+	
 	function canView($member = false) {
     	return true;
 	}

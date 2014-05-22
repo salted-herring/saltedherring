@@ -124,4 +124,16 @@ class TeamMember extends BaseDBO {
 			user_error($e, E_USER_WARNING);
 		}
 	}
+	
+	public function canView($member = null) {
+		return true;
+	}
+	
+	public function AbsoluteLink() {
+		return Director::absoluteURL($this->Link());
+	}
+	
+	public function Link() {
+		return '/team/' . $this->URLSegment;
+	}
 }
