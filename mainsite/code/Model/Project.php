@@ -134,7 +134,7 @@ class Project extends BaseDBO {
 	}
 	
 	public function canView($member = null) {
-		return $this->isPublished;
+		return true;//$this->isPublished;
 	}
 	
 	public function AbsoluteLink() {
