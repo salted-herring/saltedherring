@@ -49,8 +49,9 @@ Object::add_extension('Project', 'ThumbnailDecorator');
 Object::add_extension('TeamMember', 'ThumbnailDecorator');
 Object::add_extension('TeamMember', 'PublishedDecorator');
 
-GoogleSitemap::register_dataobject('Project');
-GoogleSitemap::register_dataobject('TeamMember');
+GoogleSitemap::register_dataobject('Project', 'daily');
+GoogleSitemap::register_dataobject('TeamMember', 'daily');
+GoogleSitemap::register_dataobject('HomePage', 'daily');  
 
 
 /*
