@@ -1,0 +1,47 @@
+---
+Name: mainsite
+After: 'framework/*','cms/*'
+---
+# YAML configuration for SilverStripe
+# See http://doc.silverstripe.org/framework/en/topics/configuration
+# Caution: Indentation through two spaces, not tabs
+SiteVersion:
+  version: 1.0
+SSViewer:
+  theme: 'default'
+Page:
+  extensions:
+    - SocialDecorator
+    - PageDecorator
+    - SeoObjectExtension
+SiteConfig:
+  extensions:
+    - CustomSiteConfig
+Page_Controller:
+  extensions:
+    - PageControllerDecorator
+ModelAdmin:
+  extensions:
+    - ModelAdminExtension
+Project:
+  extensions:
+    - ThumbnailDecorator
+    - SeoObjectExtension
+    - MetaDecorator
+TeamMember:
+  extensions:
+    - ThumbnailDecorator
+    - PublishedDecorator
+    - SeoObjectExtension
+    - MetaDecorator
+SeoConfig:
+    Page: true
+    ErrorPage: false
+    RedirectorPage: false
+    VirtualPage: false
+    HomePage: true
+    AboutPage: true
+    TeamPage: true
+    WorkPage: true
+    Project: true
+    TeamMember: true

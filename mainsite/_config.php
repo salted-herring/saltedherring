@@ -13,10 +13,6 @@ GD::set_default_quality(100);
 
 /* Image::set_backend("OptimisedGDBackend"); */
 
-if (Director::isLive()) {
-	SS_Log::add_writer(new SS_LogEmailWriter('administration@saltedherring.com'), SS_Log::ERR);
-}
-
 
 MySQLDatabase::set_connection_charset('utf8');
 
@@ -43,18 +39,13 @@ require_once(ROOT."mainsite/code/Lib/MobileDetect.php");
 $mobi = new Mobile_Detect();
 define('MOBILE', $mobi->isMobile());
 
-
-Object::add_extension('SiteConfig', 'CustomSiteConfig');
-Object::add_extension('Project', 'ThumbnailDecorator');
-Object::add_extension('TeamMember', 'ThumbnailDecorator');
-Object::add_extension('TeamMember', 'PublishedDecorator');
+GoogleSitemap::register_dataobject('Project');
+GoogleSitemap::register_dataobject('TeamMember');
 
 
-/*
 if (Director::isDev()) {
 	SSViewer::flush_template_cache();
 }
-*/
 
 if (Director::isLive()) {
 	SS_Log::add_writer(new SS_LogEmailWriter('administration@saltedherring.com'), SS_Log::ERR);

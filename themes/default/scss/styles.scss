@@ -482,6 +482,12 @@ footer {
 	a {
 		color: $white;
 		
+		&:hover {
+			&:after {
+				height: 1px;
+			}
+		}
+		
 		&[href^="tel:"] {
 			color: $black;
 			cursor: text;

@@ -131,7 +131,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 						left: 0 - (current-top)
 					});
 					
-					$('.overlay.small').css({
+					$('.overlay').css({
 						top: 102 - (current-top)
 					});
 				} else {
@@ -143,7 +143,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 						left: 0
 					});
 					
-					$('.overlay.small').css({
+					$('.overlay').css({
 						top: 102
 					});
 				}
