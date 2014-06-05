@@ -249,13 +249,15 @@ nav {
 		.digital {
 			color: $blue;
 			font-size: (42/$font-size)+em;
-			text-transform: uppercase;
+			text-transform: capitalize;
 			line-height: 1em;
 			font-weight: 500;
 			position: absolute;
 			display: block;
 			text-align: center;
 			width: 100%;
+			font-style: italic;
+			font-family: "minion-pro", Times, serif;
 /* 			left: 50%; */
 /* 			margin-left: -(247/2)+px !important; */
 			top: 50%;

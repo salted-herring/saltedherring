@@ -39,8 +39,9 @@ require_once(ROOT."mainsite/code/Lib/MobileDetect.php");
 $mobi = new Mobile_Detect();
 define('MOBILE', $mobi->isMobile());
 
-GoogleSitemap::register_dataobject('Project');
+GoogleSitemap::register_dataobject('Project', 'daily');
 GoogleSitemap::register_dataobject('TeamMember');
+GoogleSitemap::register_dataobject('HomePage', 'daily');
 
 
 if (Director::isDev()) {

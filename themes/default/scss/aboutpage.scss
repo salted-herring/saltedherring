@@ -20,6 +20,37 @@ aside {
 	font-style: italic;
 	font-size: (48/$font-size)+em;
 	line-height: (50/48)+em;
+	
+	.contact {
+		font-size: (16/48)+em;
+		line-height: 1.2em;
+		margin-top: 50px;
+		font-weight: normal;
+		
+		a {
+			color: $blue;
+			font-style: normal;
+		}
+		
+		.map {
+			color: $black;
+			
+			&:hover {
+				&:after {
+					background: transparent;
+				}
+			}
+		}
+		
+		p {
+			font-family: "minion-pro", Times, serif;
+			font-style: italic;
+			
+			a {
+				font-style: inherit;
+			}
+		}
+	}
 }
 
 .article {

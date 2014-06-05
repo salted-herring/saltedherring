@@ -193,19 +193,22 @@ article a {
 	padding-bottom: 1em;
 	margin-left: -2em;
 	display: inline-block;
-	background: $black;
 	
 	a {
 		@include hide_text;
 		display: block;
 		height: (14+18+18)/$font-size+em;
 		line-height: 0;
-		width: 143px;
+		width: 185px;
 		font-size: 0;
-		height: 14px;
-		@include sprites-sprite(salted-herring);
+		height: 23px;
+		@include sprites-sprite(SH_logo_site_black_sm);
 		margin: 0 0 0 1em !important;
 		position: relative;
+		
+		&:hover {
+			@include sprites-sprite(SH_logo_site_blue_sm);
+		}
 	}
 	
 }
@@ -234,7 +237,7 @@ article a {
 	}
 	
 	li {
-		padding: (18/$font-size)+em 0 0 0;
+		padding: (20/$font-size)+em 0 0 0;
 		display: inline-block;
 		padding-left: 1.3em;
 		line-height: 1em;
@@ -254,7 +257,7 @@ article a {
 		&:after {
 			position: absolute;
 			content: '';
-			bottom: -.55em;
+			bottom: -14px;
 			left: 0;
 			height: 4px;
 			width: 100%;
@@ -422,23 +425,25 @@ footer {
 			
 			&:after {
 				position: absolute;
-				right: 6.5em;
-				top: .65em;
+				right: 9em;
+				top: 1em;
 				display: block;
 				content: '';
-				width: 62px;
-				height: 64px;
+				width: 118px;
+				height: 145px;
+				z-index: 0;
 				@include sprites-sprite(salt);
 			}
 			
 			&:before {
 				position: absolute;
 				right: 4em;
-				top: -3.8em;
+				top: -1em;
 				display: block;
 				content: '';
-				width: 139px;
-				height: 160px;
+				width: 272px;
+				height: 101px;
+				z-index: 2;
 				@include sprites-sprite(saltshaker);
 				@include animation(none);
 			}
@@ -455,6 +460,7 @@ footer {
 			&:after {
 				@include animation-timing-function(easeInOutBounce);
 				@include animation(salt .5s 2);
+				@include animation-delay(.1s);
 			}
 		}
 	}
@@ -530,19 +536,19 @@ footer {
 
 @include keyframes(saltshaker) {
   0%, 100% {
-    top: -3.8em;
+    top: -1em;
   }
   50% {
-    top: -3.5em;
+    top: -2em;
   }
 }
 
 @include keyframes(salt) {
   0%, 100% {
-    top: 0.65em;
+    top: 1em;
   }
   50% {
-    top: 1em;
+    top: .5em;
   }
 }
 
