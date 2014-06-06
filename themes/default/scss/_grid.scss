@@ -31,8 +31,8 @@ $break: 3;
 	@include at-breakpoint(0 3 1024px) {
 		width: 100%;
 		overflow-x: none;
-		max-width: 100% !important;
-		padding: 0 !important;
+/* 		max-width: 100% !important; */
+/* 		padding: 0 !important; */
 	}
 }
 

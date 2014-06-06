@@ -607,6 +607,7 @@ and (max-device-width : 568px) {
 	    }
     }
 }
+
 @include at-breakpoint(0 3 320px) {
 	html,
 	body {
@@ -790,11 +791,9 @@ and (max-device-width : 568px) {
 	#content,
 	#header,
 	#footer {
-		/*
-min-width: 320px;
+		min-width: 320px;
 		width: 100%;
 		overflow-x: hidden;
-*/
 	}
 }
 

@@ -426,6 +426,12 @@ nav {
 			}
 		}
 		
+		.container {
+			margin: 0;
+			width: 100%;
+			max-width: 100% !important;
+		}
+		
 		.down {
 			visibility: hidden;
 			display: none;
@@ -449,7 +455,7 @@ nav {
 		}
 		
 		.contactlinks {
-			width: 415px;
+/* 			width: 415px; */
 			text-align: right;
 			margin-top: 20px;
 			
@@ -477,7 +483,7 @@ nav {
 		}
 		.news {
 			padding-left: 2em;
-			width: 398px;
+/* 			width: 398px; */
 			overflow: hidden;
 			height: 24px;
 			position: relative;
@@ -508,6 +514,20 @@ nav {
 		.contactlinks,
 		.down {
 			float: left;
+		}
+		
+		.contactlinks,
+		.news {
+			width: 50%;
+			@include box-sizing(border-box);
+		}
+		
+		.news {
+			padding-left: 60px;
+		}
+		
+		.contactlinks {
+			padding-right: 36px;
 		}
 		
 		a {
@@ -902,6 +922,19 @@ nav {
 		width: 100%;
 	}
 	
+	/*
+section {
+		.intro {
+			.contactlinks {
+				width: 400px;
+			}
+			.news {
+				width: 405px;
+			}
+		}
+	}
+*/
+	
 	#work {
 		min-width: 1024px;
 		width: 100%;
@@ -938,7 +971,8 @@ min-height: 768px !important;
 		.bottom {
 			height: 100%;
 			
-			.intro {
+			/*
+.intro {
 				bottom: 2.5em;
 				min-height: inherit;
 				
@@ -955,6 +989,7 @@ min-height: 768px !important;
 					padding: 0;
 				}
 			}
+*/
 		}
 		
 		.links {
