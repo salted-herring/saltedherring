@@ -28,7 +28,7 @@ $break: 3;
 	width: 896px;
 	max-width: 896px !important;
 	
-	@include at-breakpoint(0 3 320px) {
+	@include at-breakpoint(0 3 1024px) {
 		width: 100%;
 /* 		width: 18em; */
 		overflow-x: none;
@@ -68,6 +68,7 @@ $break: 3;
 	}
 }
 
+/*
 @include at-breakpoint(0 3 320px) {
 	$gutter-width   : 1em;
 	$grid-padding   : 1em;
@@ -89,3 +90,15 @@ $break: 3;
 		}
 	}
 }
+*/
+
+
+
+
+/*
+@include at-breakpoint(0 320px) {
+	.container { 
+		width: 100%;
+	}
+}
+*/

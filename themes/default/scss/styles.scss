@@ -330,7 +330,7 @@ article a {
 #content {
 	//@include transition(all .5s);
 	//@include at-breakpoint(0 3 320px) {
-		padding-top: 2.9em;
+		padding-top: 55px;
 		padding-bottom: 12em;
 /* 		min-height: 100%; */
 /* 		width: 100%; */
@@ -774,13 +774,22 @@ footer {
 }
 */
 
-@include at-breakpoint(768px 3) {
-	body {
-/* 		min-width: 768px; */
-		overflow-x: hidden;
+@include at-breakpoint(0 3 768px) {
+	body,
+	#content,
+	#header,
+	#footer {
+		min-width: 768px;
+		width: 100%;
 	}
-	
-	body {
-		min-width: 1000px;
+}
+
+@include at-breakpoint(768px 3 1024px) {
+	body,
+	#content,
+	#header,
+	#footer {
+		min-width: 1024px;
+		width: 100%;
 	}
 }

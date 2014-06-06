@@ -3,6 +3,24 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 
 
 	$(function() {
+		var prevPosition = 0,
+			scrolled = false,
+			latestKnownScrollY = 0,
+			winHeight = 0,
+			ticking = false;
+		
+		// setup animation frame.
+		requestTick();
+		
+		/*
+var index = 100;
+		$('#work .block').each(function() {
+			$(this).css({
+				'z-index': index--
+			});
+		});
+*/
+		
 		/* ===========================
 		 * The background-attachment is
 		 * causing issues on load. Scrolling
@@ -61,11 +79,12 @@ if($('body').is('.mobile')) {
 					}	
 		        }
 
-				var dimensions = resize($(this).data('imgwidth'), $(this).data('imgheight'), $(window).width(), $(window).height()*1.5),
+				var dimensions = resize($(this).data('imgwidth'), $(this).data('imgheight'), $(window).width(), $(window).height()),
 					dimensionsOverlay = resize($(this).data('imgwidth'), $(this).data('imgheight'), $(window).width(), $(window).height());
 				
 				
-				$(this).css({
+				/*
+$(this).css({
 					'background-size': dimensions.w + 'px ' + dimensions.h + 'px',
 					'-webkit-background-size': dimensions.w + 'px ' + dimensions.h + 'px',
 					'-moz-background-size': dimensions.w + 'px ' + dimensions.h + 'px'
@@ -74,11 +93,14 @@ if($('body').is('.mobile')) {
 					'-webkit-background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px',
 					'-moz-background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px'
 				});
+*/
 				
-				$(this).find('img').css({
+				/*
+$(this).find('img').css({
 					width: dimensions.w,
 					height: dimensions.h
 				});
+*/
 			});
 
 			$('#footer').show();
@@ -118,24 +140,39 @@ if($('body').is('.mobile')) {
 
 			$('#work .block:visible').each(function(i, el) {
 				var top = $(this).offset().top;
+				
+				$(this).find('.heading').show();
 
-				if(top < ($(window).scrollTop() + ($(window).height()/2))) {
+				if(top < (latestKnownScrollY + (winHeight/2))) {
 
-					var condition = top < $(window).scrollTop();
-					var _h = condition ? ($(window).height() / 2) : (($(window).height() / 2)) - Math.abs($(window).scrollTop() - top);
-					var newTop = top < ($(window).scrollTop() + $('#header').height()) ? 0 - Math.abs($(window).scrollTop() + $('#header').height() - top) : Math.abs($(window).scrollTop() - top);
-
+					var condition = top < latestKnownScrollY;
+					var _h = condition ? (winHeight / 2) : ((winHeight / 2)) - Math.abs(latestKnownScrollY - top);
+					var newTop = $(this).offset().top-latestKnownScrollY;
 					
-
-					if(newTop <= 0) {
-						$(this).find('.heading').hide();
-						$(this).find('.large').show();
+					if($(this).is('.first')) {
+						_h += 53;
+						//console.log(Math.ceil(newTop + _h), ((winHeight / 2)) - Math.abs(latestKnownScrollY - top));
+						if(latestKnownScrollY > -1) {
+							$(this).find('.heading').hide();
+							$(this).find('.large').show();
+						} else {
+							$(this).find('.heading').show();
+							$(this).find('.large').hide();
+						}
 					} else {
-						$(this).find('.heading').show();
-						$(this).find('.large').hide();
+						if(Math.ceil(newTop + _h) <= 0) {
+							$(this).find('.heading').hide();
+							$(this).find('.large').show();
+						} else {
+							$(this).find('.heading').show();
+							$(this).find('.large').hide();
+						}
 					}
+					
+					
+					
 					$(this).find('.heading').css({
-						height: _h + 20,
+						height: _h,
 						top: newTop
 					});
 
@@ -143,7 +180,7 @@ if($('body').is('.mobile')) {
 					$(this).find('.heading > h1').css({
 						top: Math.ceil(newTop + _h)
 					});
-
+					
 				} else {
 					$(this).find('.heading').show().css({
 						height: 0
@@ -164,16 +201,16 @@ if($('body').is('.mobile')) {
 		}
 */
 
-
-
-
-		var prevPosition = 0,
-			scrolled = false;
-
-		$(window).scroll(function(e) {
-			e.preventDefault();
-
-			if(($(window).scrollTop() + $(window).height()) >= $('#footer').offset().top) {
+		
+		function update() {
+			if($(window).width() <= 1024) {
+				return false;
+			}
+			ticking = false;
+			latestKnownScrollY = $(window).scrollTop();
+			winHeight = $(window).height();
+			
+			if((latestKnownScrollY + winHeight) >= $('#footer').offset().top) {
 				var clone = $('#nextnav').clone(true, true);
 				$('#nextnav').remove();
 				$('#footer').prepend(clone);
@@ -186,57 +223,68 @@ if($('body').is('.mobile')) {
 				$('#nextnav').removeAttr('style');
 			}
 
-			if(($(window).scrollTop() + $(window).height()) >= $('#footer').offset().top) {
+			if((latestKnownScrollY + winHeight) >= $('#footer').offset().top) {
 				$('#nextnav').addClass('up');
 			}
 
-			if($(window).scrollTop() == 0) {
+			if(latestKnownScrollY == 0) {
 				$('#nextnav').removeClass('up');
 			}
 
-			prevPosition = $(window).scrollTop();
+			prevPosition = latestKnownScrollY;
 
 			positionHeading();
 			scrolled = true;
-
-			/*
-if($('.block').length > 0 && $(window).scrollTop() < ($('.block:first').offset().top + $(window).height() - $('#header').height())) {
-				$('#menu_icon').removeClass('hide').addClass('show');
-				$('#main_nav').removeClass('show').addClass('hide');
-			} else {
-				$('#menu_icon').removeClass('show').addClass('hide');
-				$('#main_nav').removeClass('hide').addClass('show');
-			}
-*/
 
 			/* ===========================
 			 * Animate overlays.
 			 * =========================== */
 			$('body:not(.mobile) #work .block').filter(function() {
-				return (($(window).scrollTop() + $(window).height()) > $(this).data('top'));// && (($(this).data('top') + $(this).height()) > $(window).scrollTop());
+				var top = $(this).offset().top,
+					bottom = top + winHeight;
+				
+				return top < (latestKnownScrollY + winHeight) && bottom > latestKnownScrollY;
 			}).each(function(i, el) {
-				if (($(window).scrollTop() + $(window).height()) > $(this).offset().top){// && ($(this).offset().top + $(this).height()) > $(window).scrollTop()) {
-					var top = -200 + ((($(window).scrollTop() - $(this).data('top')) / $(window).height()) * 100);
+				if ((latestKnownScrollY + winHeight) > $(this).offset().top) {
+					var top = -200 + (((latestKnownScrollY - $(this).data('top')) / winHeight) * 100);
 					
 					$(this).find('.overlay').css({
 						'background-position': '50% ' + top + '%'
 					});
 					
-					var pos = Math.min(0, -(($(window).scrollTop() - $(this).data('top') + ($(window).height() / 2)) * .125));
+					var pos = 0 - (.125 * (latestKnownScrollY - $(this).offset().top));
 
 					$(this).css({
 						'background-position': '50% ' + (pos) + 'px'
 					});
 
-					if($(this).is('.first') && $(window).scrollTop() > 100) {
+					if($(this).is('.first') && latestKnownScrollY > 100) {
 						$(this).find('.intro').addClass('hide');
 					} else {
 						$(this).find('.intro').removeClass('hide');
 					}
 				}
 			});
-	
-		}).scroll();
+		}
+		
+		function onScroll() {
+			requestTick();
+		}
+		
+		function requestTick() {
+			var animationFrame = Modernizr.prefixed('requestAnimationFrame', window);
+			if(!ticking && typeof animationFrame == 'function') {
+				animationFrame(update);
+			} else if(typeof animationFrame != 'function') {
+				update();
+			}
+			ticking = true;
+		}
+
+		$(window).scroll(function(e) {
+			e.preventDefault();
+			onScroll();
+		})
 
 
 		/* ===========================

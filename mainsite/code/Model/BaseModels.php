@@ -218,15 +218,15 @@ class ImageMedia extends BaseMedia {
 		if(!$this->Image()) {
 			return false;
 		}
-		if($this->isMobile()) {
-			return $this->Image()->setWidth(480);
-		}
+		
 		
 		$targetWidth = $width != -1 ? $width : 928;
+		
 		
 		if($targetWidth > $this->Image()->Width) {
 			return $this->Image();
 		}
+		
 		
 		return $this->Image()->setWidth($targetWidth);
 	}

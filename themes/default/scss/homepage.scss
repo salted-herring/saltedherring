@@ -31,7 +31,7 @@ h1,
 }
 
 .large {
-	margin-top: -120px;
+	margin-top: -108px;
 }
 
 h1 {
@@ -97,7 +97,7 @@ h1 {
 	top: 50%;
 	left: 50%;
 	height: 89px;
-	margin-top: -74px;
+	margin-top: -53px;
 }
 
 #nextnav {
@@ -223,9 +223,10 @@ section {
 		position: fixed;
 		overflow: hidden;
 		height: 89px;
+		display: none;
 		
 		h1 {
-			margin-top: -74px;
+			margin-top: -108px;
 			position: fixed;
 			top: 50%;
 		}
@@ -247,7 +248,7 @@ nav {
 */
 		
 		.digital {
-			color: $blue;
+			color: $white;
 			font-size: (42/$font-size)+em;
 			text-transform: capitalize;
 			line-height: 1em;
@@ -264,12 +265,6 @@ nav {
 			
 			margin-top: 140px;
 		}
-		
-		/*
-&.init {
-			z-index: 2;
-		}
-*/
 	}
 	
 	.first nav, .link {
@@ -403,7 +398,7 @@ nav {
 		background: rgba(0, 211, 255, .6);
 		font-size: (18/$font-size)+em;
 		position: absolute;
-		bottom: 46px;
+		bottom: 55px;
 		z-index: 10;
 		width: 100%;
 		min-height: 66px;
@@ -861,16 +856,56 @@ nav {
 	}
 }
 
-@include at-breakpoint(768px 3 1024px) {
+@include at-breakpoint(0 3 768px) {
+
 	#content {
-		min-width: 1000px;
+		min-width: 768px;
+		width: 100%;
 	}
+	
 	#work {
-		min-width: 1000px;
+		min-width: 768px;
+		width: 100%;
 		
 		.block {
 			display: block;
-			min-width: 1000px;
+			min-width: 768px;
+		}
+		
+	}
+
+}
+
+@include at-breakpoint(768px 3 1024px) {
+	#content {
+		min-width: 1024px;
+		width: 100%;
+	}
+	
+	#work {
+		min-width: 1024px;
+		width: 100%;
+		
+		.block {
+			display: block;
+			min-width: 1024px;
+			width: 100%;
+			height: 100%;
+			
+			@include background-size(2048px auto !important);
+			//min-width: 1000px;
+			/*
+-webkit-background-size: 1024px auto !important;
+			background-size: 1024px auto !important;
+*/
+			
+			.headingwrapper {
+				display: none;
+			}
+			
+			.large {
+				display: block !important;
+			}
 		}
 		
 		.overlay {
@@ -886,6 +921,7 @@ nav {
 				
 				ul {
 					padding: 1em 0;
+					margin: 0;
 				}
 				
 				.news {
@@ -905,6 +941,12 @@ nav {
 			a {
 				float: none;
 			}
+		}
+	}
+	
+	#nextnav {
+		a {
+			padding: 13px 2em;
 		}
 	}
 }
