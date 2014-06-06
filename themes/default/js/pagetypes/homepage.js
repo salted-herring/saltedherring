@@ -1,8 +1,13 @@
 require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 
-
+	
 
 	$(function() {
+		/*
+if($('body').is('.mobile')) {
+			return;
+		}
+*/
 		var prevPosition = 0,
 			scrolled = false,
 			latestKnownScrollY = 0,
@@ -10,7 +15,10 @@ require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 			ticking = false;
 		
 		// setup animation frame.
-		requestTick();
+		if(!$('body').is('.mobile')) {
+			requestTick();
+		}
+		
 		
 		/*
 var index = 100;
@@ -26,22 +34,18 @@ var index = 100;
 		 * causing issues on load. Scrolling
 		 * to the top seems to fix it.
 		 * =========================== */
-		setTimeout(function() {
+		/*
+setTimeout(function() {
 		    window.scrollTo(0, 0);
 		}, 1);
+*/
 
 		/* ===========================
 		 * On resize - make sure:
 		 * - The footer is in the correct place
 		 * - The content container & each block are full height.
 		 * =========================== */
-		$(window).resize(function() {
-			
-			/*
-if($('body').is('.mobile')) {
-				return;
-			}
-*/
+		function _resize() {
 
 			var targetHeight = ($('#work .block').length * $(window).height()) - parseInt($('#content').css('padding-top')) - (($('#work .block').length - 1) * $('#header').height());
 			if(targetHeight > 0) {
@@ -118,12 +122,25 @@ $(this).find('img').css({
 					$('#work .block.first.init').removeClass('init');
 				}, 5000); 
 			}
+		}
+		
+		_resize();
+		
+		$(window).resize(function() {
 			
-		}).resize();
+			if($('body').is('.mobile')) {
+				return false;
+			}
 
-		window.addEventListener("orientationchange", function() {
-			$(window).resize();
+			_resize();
+			
+		});
+
+		/*
+window.addEventListener("orientationchange", function() {
+			//$(window).resize();
 		}, false);
+*/
 
 
 		// * ===========================
@@ -281,114 +298,119 @@ if($('body').is('.mobile')) {
 			ticking = true;
 		}
 
-		$(window).scroll(function(e) {
-			e.preventDefault();
-			onScroll();
-		})
-
-
-		/* ===========================
-		 * Load in slider images.
-		 * =========================== */
-		var Images = {
-			data: {},
-			toLoad: {},
-			length: 0,
-
-			clone: function() {
-				this.toLoad = $.extend(true, {}, this.data);
-			},
+		if(!$('body').is('.mobile')) {
+			$(window).scroll(function(e) {
+				e.preventDefault();
+				onScroll();
+			});
 			
-			previousX: 0,
-			previousY: 0
-		};
-
-
-		$.get('themes/default/json/sliders.json', function(response, status, xhr) {
-			if(status == 'success') {
+			/* ===========================
+			 * Load in slider images.
+			 * =========================== */
+			var Images = {
+				data: {},
+				toLoad: {},
+				length: 0,
+	
+				clone: function() {
+					this.toLoad = $.extend(true, {}, this.data);
+				},
 				
-				for(var i in response) {
-					if(response[i].Images) {
-						var target = $('#work .block[data-id="' + response[i].Slider + '"]');
-
-						Images.data[response[i].Slider] = [];
-
-						for(var img in response[i].Images) {
-							Images.data[response[i].Slider].push(response[i].Images[img].URL);
-							Images.length = ++Images.length;
-						}
-					}
-				}
-
-				Images.clone();
-
-				function removeItem(images, src) {
-					for(var l in images) {
-						if(images[l] == src) {
-							images.splice(l, 1);
-							Images.length = Images.length - 1;
-							break;
-						}
-					}
-				}
-
-				for(var i in Images.toLoad) {
-					for(var j in Images.toLoad[i]) {
-						if($('body').is('.mobile') && j>0) {
-							break;
-						}
-						$('<img/>').load(function(response, status, xhr) {
-							
-							
-							// we can't load the image, so remove
-							// from list of available images.
-							if(status == 'error') {
-								var images = Images.data[$(this).attr('id')];
-							} else {
-								// no error, so remove from toLoad & check if we're ready to roll.
-								var images = Images.toLoad[$(this).attr('id')];
+				previousX: 0,
+				previousY: 0
+			};
+	
+	
+			$.get('themes/default/json/sliders.json', function(response, status, xhr) {
+				if(status == 'success') {
+					
+					for(var i in response) {
+						if(response[i].Images) {
+							var target = $('#work .block[data-id="' + response[i].Slider + '"]');
+	
+							Images.data[response[i].Slider] = [];
+	
+							for(var img in response[i].Images) {
+								Images.data[response[i].Slider].push(response[i].Images[img].URL);
+								Images.length = ++Images.length;
 							}
-							
-							
-							$('#slider-' + $(this).attr('id')).append($(this));
-
-							removeItem(images, $(this).attr('src'));
-
-							if(Images.length <= 0) {
-								$(window).resize();
+						}
+					}
+	
+					Images.clone();
+	
+					function removeItem(images, src) {
+						for(var l in images) {
+							if(images[l] == src) {
+								images.splice(l, 1);
+								Images.length = Images.length - 1;
+								break;
+							}
+						}
+					}
+	
+					for(var i in Images.toLoad) {
+						for(var j in Images.toLoad[i]) {
+							if($('body').is('.mobile') && j>0) {
+								break;
+							}
+							$('<img/>').load(function(response, status, xhr) {
 								
-								$('#work .block').addClass('loaded').on('mousemove', function(e) {
-									e.stopPropagation();
-									var count = $(this).data('images'),
-										id = $(this).data('id'),
-										pos = e.clientX,
-										target = Math.ceil((pos / ($(window).width() / 2)) * count) % count,
-										direction = Math.ceil(Math.ceil((pos / ($(window).width() / 2)) * count)/count) % 2,
-										target = direction == 0 ? target : (count - target) % count;
-										
-										//console.log(Math.abs(Images.previousX - e.clientX), Math.abs(Images.previousY - e.clientY));
-
-									if(target != 0) {
-										var bg = $(this).css('background-image');
-										bg = bg.match(/url\((.*)\);?/);
-										
-										//$(this).find('img.current').removeClass('current');
-										//$(this).find('img').eq(target).addClass('current');
-										
-										$(this).css('background-image', 'url(' + Images.data[id][target] + ')');
-									}
+								
+								// we can't load the image, so remove
+								// from list of available images.
+								if(status == 'error') {
+									var images = Images.data[$(this).attr('id')];
+								} else {
+									// no error, so remove from toLoad & check if we're ready to roll.
+									var images = Images.toLoad[$(this).attr('id')];
+								}
+								
+								
+								$('#slider-' + $(this).attr('id')).append($(this));
+	
+								removeItem(images, $(this).attr('src'));
+	
+								if(Images.length <= 0) {
+									$(window).resize();
 									
-									return false;
-								});
-								
-								$('#work .block').addClass('show');
-								
-							}
-						}).attr('id', i).attr('src', Images.toLoad[i][j]);
+									$('#work .block').addClass('loaded').on('mousemove', function(e) {
+										e.stopPropagation();
+										var count = $(this).data('images'),
+											id = $(this).data('id'),
+											pos = e.clientX,
+											target = Math.ceil((pos / ($(window).width() / 2)) * count) % count,
+											direction = Math.ceil(Math.ceil((pos / ($(window).width() / 2)) * count)/count) % 2,
+											target = direction == 0 ? target : (count - target) % count;
+											
+											//console.log(Math.abs(Images.previousX - e.clientX), Math.abs(Images.previousY - e.clientY));
+	
+										if(target != 0) {
+											var bg = $(this).css('background-image');
+											bg = bg.match(/url\((.*)\);?/);
+											
+											//$(this).find('img.current').removeClass('current');
+											//$(this).find('img').eq(target).addClass('current');
+											
+											$(this).css('background-image', 'url(' + Images.data[id][target] + ')');
+										}
+										
+										return false;
+									});
+									
+									$('#work .block').addClass('show');
+									
+								}
+							}).attr('id', i).attr('src', Images.toLoad[i][j]);
+						}
 					}
 				}
-			}
-		}, 'json');
+			}, 'json');
+		}
+		
+
+
+		
 
 
 

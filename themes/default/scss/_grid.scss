@@ -30,7 +30,6 @@ $break: 3;
 	
 	@include at-breakpoint(0 3 1024px) {
 		width: 100%;
-/* 		width: 18em; */
 		overflow-x: none;
 		max-width: 100% !important;
 		padding: 0 !important;
@@ -68,7 +67,6 @@ $break: 3;
 	}
 }
 
-/*
 @include at-breakpoint(0 3 320px) {
 	$gutter-width   : 1em;
 	$grid-padding   : 1em;
@@ -84,13 +82,12 @@ $break: 3;
 
 	@for $i from 1 through $total-columns {
 		.grid_#{$i}{
-			@include span-columns(3,$break);
+			width: 100%;
 			margin: 0;
 			float: none;
 		}
 	}
 }
-*/
 
 
 

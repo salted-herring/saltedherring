@@ -9,22 +9,13 @@ class Page extends SiteTree {
 }
 class Page_Controller extends ContentController {
 
-	/**
-	 * An array of actions that can be accessed via a request. Each array element should be an action name, and the
-	 * permissions or conditions required to allow the user to access it.
-	 *
-	 * <code>
-	 * array (
-	 *     'action', // anyone can access this action
-	 *     'action' => true, // same as above
-	 *     'action' => 'ADMIN', // you must have ADMIN permissions to access this action
-	 *     'action' => '->checkAction' // you can only access this action if $this->checkAction() returns true
-	 * );
-	 * </code>
-	 *
-	 * @var array
-	 */
 	private static $allowed_actions = array (
+		'rebuild',
+		'meta'
+	);
+	
+	private static $url_handlers = array(
+		'meta' => 'meta'
 	);
 
 	public function init() {
@@ -104,6 +95,9 @@ Requirements::themedCSS('reset');
 				if (SiteConfig::current_site_config()->OGTitle) {
 					return SiteConfig::current_site_config()->OGTitle;
 				}
+				if($this->getTheTitle()) {
+					return $this->getTheTitle();
+				}
 				return false;
 			case 'Description':
 				if ($this->OGDescription) {
@@ -112,9 +106,11 @@ Requirements::themedCSS('reset');
 				if (SiteConfig::current_site_config()->OGDescription) {
 					return SiteConfig::current_site_config()->OGDescription;
 				}
+				if($this->MetaDescription) {
+					return Convert::raw2att($this->MetaDescription);
+				}
 				return false;
 			case 'Image':
-				die;
 				if ($this->OGImage()) {
 					return $this->OGImage();
 				}
@@ -124,6 +120,27 @@ Requirements::themedCSS('reset');
 				return false;
 			default:
 				return false;
+		}
+	}
+	
+	public function meta($request) {
+		if($request->isAjax()) {
+		  $tags = $this->MetaTags();
+		  
+		  if($this->getOG('Title')) {
+		    $tags .= '<meta property="og:title" content="' . $this->getOG('Title') .'" />';
+		  }
+		  if($this->getOG('Description')) {
+		    $tags .= '<meta property="og:description" content="' . $this->getOG('Description') .'" />';
+		  }
+		  
+		  if($this->getOG('Image') && $this->getOG('Image')->URL != '/assets/') {
+		    $tags .= '<meta property="og:title" content="' . $this->getHTTPProtocol() . Director::BaseURL() . $this->getOG('Image')->URL .'" />';
+		  }
+		  
+		  $tags .= '<meta property="og:url" content="' . str_replace('meta', '', $this->getHTTPProtocol() . Director::BaseURL() . $this->getCurrentPageUrl()) . '" />';
+		  
+		  return $tags;
 		}
 	}
 }

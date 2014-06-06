@@ -182,6 +182,7 @@ article a {
 	.row {
 		overflow: visible;
 		position: relative;
+		max-width: auto !important;
 	}
 }
 
@@ -593,7 +594,19 @@ footer {
 		margin-right: -1em;
 	}
 } 
+
  
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) and (min-device-width : 320px) 
+and (max-device-width : 568px) { 
+    #logo {
+	    a {
+		    background: url(../img/sprites/SH_logo_site_black.png) no-repeat;
+		    @include background-size(185px 23px);
+	    }
+    }
+}
 @include at-breakpoint(0 3 320px) {
 	html,
 	body {
@@ -657,12 +670,9 @@ footer {
 	#logo {
 		left: 0;
 		margin: 0;
-/* 		padding-right: 2em; */
 		padding-left: 1em;
-/* 		margin-left: -1em; */
-		position: absolute;
+		position: relative;
 		z-index: 2;
-/* 		width: 20em; */
 	}
 	
 	#main_nav {
@@ -774,13 +784,28 @@ footer {
 }
 */
 
-@include at-breakpoint(0 3 768px) {
+
+@include at-breakpoint(0 3 320px) {
+	body,
+	#content,
+	#header,
+	#footer {
+		/*
+min-width: 320px;
+		width: 100%;
+		overflow-x: hidden;
+*/
+	}
+}
+
+@include at-breakpoint(481px 3 768px) {
 	body,
 	#content,
 	#header,
 	#footer {
 		min-width: 768px;
 		width: 100%;
+		overflow-x: hidden;
 	}
 }
 
@@ -791,5 +816,6 @@ footer {
 	#footer {
 		min-width: 1024px;
 		width: 100%;
+		overflow-x: hidden;
 	}
 }
