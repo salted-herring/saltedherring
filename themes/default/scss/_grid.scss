@@ -26,16 +26,36 @@ $break: 3;
 .container { 
 	@include container($total-columns, $break);
 	width: 896px;
-	max-width: 896px !important;
+	max-width: 896px;
 	
 	@include at-breakpoint(0 3 1024px) {
 		width: 100%;
 		overflow-x: none;
-/* 		max-width: 100% !important; */
-/* 		padding: 0 !important; */
+		padding: 0;
 	}
 }
 
+.row {
+	@include clearfix;
+	
+	@for $i from 1 through $total-columns {
+		.grid_#{$i}:last-child { 
+			@include omega;
+		}
+	}
+	
+	@include at-breakpoint(0 $total-columns 480px) {
+		@for $i from 1 through $total-columns {
+			.grid_#{$i} { 
+				@include span-columns($total-columns, $total-columns);
+				@include omega;
+				float: none;
+				margin: 0;
+				display: block;
+			}
+		}
+	}
+}
 
 @for $i from 1 through $total-columns {
 	.grid_#{$i} {
@@ -47,6 +67,7 @@ $break: 3;
 	}
 }
 
+/*
 .row {
 	@include clearfix;
 	
@@ -86,16 +107,6 @@ $break: 3;
 			margin: 0;
 			float: none;
 		}
-	}
-}
-
-
-
-
-/*
-@include at-breakpoint(0 320px) {
-	.container { 
-		width: 100%;
 	}
 }
 */

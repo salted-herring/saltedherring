@@ -186,26 +186,27 @@ article a {
 	}
 }
 
+$logo-height: 23px;
 #logo {
 	position: relative;
-	padding-right: 2em;
-	padding-left: 2em;
+	padding-right: 0em;
+	padding-left: 0em;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	margin-left: -2em;
+	margin-right: 0em;
+	height: $logo-height;
 	display: inline-block;
 	
 	a {
 		@include hide_text;
 		display: block;
-		height: (14+18+18)/$font-size+em;
 		line-height: 0;
 		width: 185px;
 		font-size: 0;
-		height: 23px;
+		height: $logo-height;
 		@include sprites-sprite(SH_logo_site_black_sm);
-		margin: 0 0 0 1em !important;
-		position: relative;
+		position: absolute;
+		left: 32px;
 		
 		&:hover {
 			@include sprites-sprite(SH_logo_site_blue_sm);
@@ -222,9 +223,12 @@ article a {
 /* 	margin-left: -2.5em; */
 /* 	padding-right: .5em; */
 	position: absolute;
-	right: 2em;
+	padding-right: 2em;
 	top: 0em;
+	right: 0;
 	outline: none;
+	
+	@extend .clearfix;
 	
 	@include transform(translate3d(0,0,0));
 	@include transition(top .5s);
@@ -232,9 +236,10 @@ article a {
 	ul {
 		margin: 0 !important;
 		padding-left: 0;
-		text-align: right;
+/* 		text-align: right; */
 		border: none;
 		outline: none;
+		float: right;
 	}
 	
 	li {
@@ -278,11 +283,12 @@ article a {
 	}
 	
 	&.hide {
-		top: -3em;
+		top: -57px;
 	}
 	
-	&.show {
-		top: 0em;
+	&.show,
+	&.collapse {
+		top: 55px;
 	}
 }
 
@@ -310,9 +316,7 @@ article a {
 	&.show {
 		top: .8em;
 	}
-}
-
-.mobile #menu_icon {
+	
 	@include sprites-sprite(menu-open);
 	
 	&.collapse {
@@ -580,6 +584,7 @@ footer {
  * =========================== */
 
 
+/*
 .mobile #main_nav {
 	display: block;
 	
@@ -587,13 +592,7 @@ footer {
 		margin-right: 0;
 	}
 }
-
-#main_nav {
-	display: block;
-	ul {
-		margin-right: -1em;
-	}
-} 
+*/ 
 
  
 @media 
@@ -608,7 +607,7 @@ and (max-device-width : 568px) {
     }
 }
 
-@include at-breakpoint(0 3 320px) {
+@include at-breakpoint(0 3 480px) {
 	html,
 	body {
 		height: 100%;
@@ -654,7 +653,7 @@ and (max-device-width : 568px) {
 		right: 1em !important;
 		display: block;
 		position: fixed;
-		top: .8em;
+		top: 1em;
 	}
 	
 	#header {
@@ -672,8 +671,14 @@ and (max-device-width : 568px) {
 		left: 0;
 		margin: 0;
 		padding-left: 1em;
-		position: relative;
+		position: absolute;
 		z-index: 2;
+		background: $background;
+		width: 100%;
+		
+		a {
+			left: 16px;
+		}
 	}
 	
 	#main_nav {
@@ -682,59 +687,57 @@ and (max-device-width : 568px) {
 		padding-right: 0em;
 		background: $background;
 		position: absolute;
-		z-index: 3;
+/* 		z-index: 1; */
 		left: 0;
 		width: 100%;
-		top: 0em;
 		right: 0;
+		top: -57px;
 		
 		&:before {
 			display: block;
 		}
 			
 		ul {
-				position: absolute;
-				z-index: 20;
-				left: 0;
-				width: 100%;
-				background: $white;
-				top: 46px;
-				height: 0;
-				overflow: hidden;
-				max-height: 1000px;
-				text-align: center;
-				padding: 0;
-				margin: 0;
-				
-				//@include scale(1.0,0,1);
-				
-				-webkit-backface-visibility: hidden;
-				-webkit-perspective: 1000;
-				
-				-webkit-transform-style: preserve-3d;
-				-webkit-user-select:none;
-				-moz-user-select:none;
-				
-				@include transition(all .2s);
-			}
+			position: absolute;
+			z-index: 0;
+			left: 0;
+			width: 100%;
+			background: $white;
+			top: 0;
+/* 			height: 0; */
+			overflow: hidden;
+			max-height: 1000px;
+			text-align: center;
+			padding: 0;
+			margin: 0;
+			
+			//@include scale(1.0,0,1);
+			
+			-webkit-backface-visibility: hidden;
+			-webkit-perspective: 1000;
+			
+			-webkit-transform-style: preserve-3d;
+			-webkit-user-select:none;
+			-moz-user-select:none;
+			
+			@include transition(all .2s);
+		}
 		
 		li {
-				//@include transition(opacity .2s);
-				//@include transition-delay(.2s);
-				//@include opacity(0);
-			}
+			padding: 1.25em 0 1.25em 1.25em;
+		}
 		
 		&.collapse {
-				ul {
-					//@include scale(1.0,1.0,1);
-					height: 3em;
-					overflow: visible;
-				}
-				li {
-					//@include transition-delay(0s);
-					//@include opacity(1.0);
-				}
+			ul {
+				//@include scale(1.0,1.0,1);
+/* 				height: 3em; */
+				overflow: visible;
 			}
+			li {
+				//@include transition-delay(0s);
+				//@include opacity(1.0);
+			}
+		}
 	}
 	
 	footer {
@@ -765,7 +768,7 @@ and (max-device-width : 568px) {
 		.row {
 			font-size: (16/$font-size)+em;
 			margin: 0;
-			padding: 1.5em 1em;
+			padding: 1.5em 0;
 			line-height: 1.2em;
 			
 			p {
@@ -789,7 +792,6 @@ and (max-device-width : 568px) {
 @include at-breakpoint(0 3 320px) {
 	body,
 	#content,
-	#header,
 	#footer {
 		min-width: 320px;
 		width: 100%;
@@ -802,9 +804,11 @@ and (max-device-width : 568px) {
 	#content,
 	#header,
 	#footer {
-		min-width: 768px;
+		/*
+min-width: 768px;
 		width: 100%;
 		overflow-x: hidden;
+*/
 	}
 }
 
@@ -813,8 +817,10 @@ and (max-device-width : 568px) {
 	#content,
 	#header,
 	#footer {
-		min-width: 1024px;
+		/*
+min-width: 1024px;
 		width: 100%;
 		overflow-x: hidden;
+*/
 	}
 }

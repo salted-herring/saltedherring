@@ -207,6 +207,7 @@
                 {
                     "name": "Cam Spiers",
                     "email": "cameron@heyday.co.nz",
+                    "homepage": "https://github.com/camspiers/",
                     "role": "Developer"
                 }
             ],
@@ -240,6 +241,7 @@
                 {
                     "name": "Cam Spiers",
                     "email": "cameron@heyday.co.nz",
+                    "homepage": "https://github.com/camspiers/",
                     "role": "Developer"
                 }
             ],
@@ -647,7 +649,7 @@
                     "homepage": "http://wilr.github.com"
                 },
                 {
-                    "name": "Sam Minnee",
+                    "name": "Sam Minnée",
                     "email": "sam@silverstripe.com"
                 }
             ],

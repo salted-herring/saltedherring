@@ -56,12 +56,6 @@ h1 {
 	}
 }
 
-#main_nav {
-/* 	top: -2em; */
-}
-#menu_icon {
-	top: .8em;
-}
 
 #keyword {
 	margin-top: -30px;
@@ -608,11 +602,13 @@ nav {
 
 
 
-@include at-breakpoint(0 3 320px) {
+@include at-breakpoint(0 3 480px) {
 /* 	a[href^="tel"], */
-	.contact {
+	/*
+.contact {
 		width: 20%;
 	}
+*/
 	
 	.block {
 		margin: 0 !important;
@@ -622,10 +618,6 @@ nav {
 		.overlay {
 			display: none;
 		}
-	}
-	
-	#main_nav {
-		top: 0;
 	}
 	
 	.blog,
@@ -682,28 +674,60 @@ nav {
 			
 			.contactlinks {
 				float: none;
+				padding: 0;
+				width: auto;
+				display: block;
+				margin: 0 auto;
+				text-align: center;
 			}
 			.news {
 				display: none;
 			}
 			ul {
 				padding: 0;
+				position: relative;
+/* 				@include clearfix; */
+				display: block;
+				margin: 0 auto;
 			}
 			
 			li {
-				margin-left: -4px;
-				margin-right: 1em;
+				display: inline;
+				width: auto;
+				/*
+width: 50%;
+				display: inline-block;
+				float: left;
+*/
+				
+				/*
+&:first-child {
+					text-align: right;
+				}
+*/
 			}
 			
 			a {
 				padding: 0 !important;
 			}
 			
-			.contact {
+			li.contact {
 				margin-right: 0;
+/* 				display: inline-block; */
+				text-align: right;
+				position: relative;
+				padding-left: 16px;
+				margin-left: 16px;
 				
-				a {
-					padding-left: 1em !important;
+				&:before {
+					position: absolute;
+					left: 0;
+					top: 0;
+					content: '';
+					display: block;
+					width: 3px;
+					background: $white;
+					height: 100%;
 				}
 			}
 		}
@@ -724,12 +748,12 @@ nav {
 */
 		
 		.links {
-			margin: 1em 0em 0 0em;
-			padding: 1em 0;
+			margin: 0em;
+			padding: 0;
 			float: none;
 			z-index: 1;
 			display: block;
-			bottom: -1.5em;
+			bottom: -2.5em;
 			width: 100%;
 			left: 0;
 			
@@ -786,23 +810,29 @@ nav {
 			
 			li {
 				padding: 0;
-/* 				width: 50%; */
 				text-align: center;
+				width: auto;
 			}
 			
 			.contact {
 				position: relative;
+				text-align: right;
 				
-				&:before {
+				a {
+					padding-left: 0;
+				}
+				/*
+&:before {
 					position: absolute;
 					display: block;
 					content: '';
 					width: 3px;
 					height: 20px;
-					left: 0;
+					left: 0px;
 					top: 3px;
 					background: $white;
 				}
+*/
 			}
 		}
 	}
@@ -812,8 +842,8 @@ nav {
 		position: relative;
 		height: 960px;
 		
-		h1 {
-			display: none;
+		h1.large {
+			display: block !important;
 		}
 		
 		.digital {
