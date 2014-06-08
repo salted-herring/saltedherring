@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -221,6 +220,8 @@ audio:not([controls]) {
 }
 
 html {
+  background: #fff;
+  color: #000;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -962,7 +963,7 @@ iframe {
 #logo {
   position: relative;
   padding-right: 0em;
-  padding-left: 0em;
+  padding-left: 1em;
   padding-top: 1em;
   padding-bottom: 1em;
   margin-right: 0em;
@@ -994,7 +995,7 @@ iframe {
   /* 	margin-left: -2.5em; */
   /* 	padding-right: .5em; */
   position: absolute;
-  padding-right: 0em;
+  padding-right: 1em;
   top: 0em;
   right: 0;
   outline: none;
@@ -1635,17 +1636,6 @@ footer a[href^='mailto:']:hover:after {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  body,
-  #content,
-  #header,
-  #footer {
-    		/*
-    min-width: 1024px;
-    		width: 100%;
-    		overflow-x: hidden;
-    */
-  }
-
   	/*
   #logo {
   		padding-left: 2em;
@@ -1669,6 +1659,17 @@ footer a[href^='mailto:']:hover:after {
   }
   #footer .details .container {
     padding: 6em 2em;
+  }
+}
+@media (min-width: 768px) {
+  body,
+  #content,
+  #header,
+  #footer,
+  #work .block {
+    max-width: 768px;
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 #content {
@@ -1719,6 +1720,14 @@ h1 {
 }
 h1 span {
   display: none;
+}
+
+#main_nav {
+  /* 	top: -2em; */
+}
+
+#menu_icon {
+  top: .8em;
 }
 
 #keyword {
@@ -2084,11 +2093,12 @@ section .intro .down:before {
   background-position: -852px -145px;
 }
 section .intro .contactlinks {
+  /* 			width: 415px; */
   text-align: right;
   margin-top: 20px;
 }
 section .intro .contactlinks a {
-  padding-right: 2em;
+  padding-right: 3em;
 }
 section .intro .contactlinks a[href^="/"], section .intro .contactlinks a[href^="http"] {
   font-size: 24px;
@@ -2099,22 +2109,24 @@ section .intro .contactlinks a[href^="/"]:hover, section .intro .contactlinks a[
 section .intro .contactlinks a[href^="tel:"] {
   cursor: text;
 }
-section .intro .contactlinks li:last-child a {
-  padding-right: 0;
+section .intro .contactlinks a:last-child {
+  padding-right: 1em;
 }
 section .intro .news {
+  padding-left: 2em;
+  /* 			width: 398px; */
   overflow: hidden;
   height: 24px;
   position: relative;
   padding: 0;
-  margin: 23px -2em 0 0;
-  float: left !important;
+  margin: 23px 0 0 0em;
+  float: right !important;
 }
 section .intro .news li {
   position: absolute;
   display: block;
   top: 30px;
-  /* 				padding-left: 20px; */
+  padding-left: 20px;
 }
 section .intro .news li.active {
   top: 0;
@@ -2137,11 +2149,10 @@ section .intro .news {
   box-sizing: border-box;
 }
 section .intro .news {
-  padding-left: 91px;
+  padding-left: 60px;
 }
 section .intro .contactlinks {
-  padding-right: 80px;
-  margin-left: -2em;
+  padding-right: 36px;
 }
 section .intro a {
   position: relative;
@@ -2221,13 +2232,12 @@ section .contact {
   transform: translate3d(0, 0, 11);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 320px) {
   /* 	a[href^="tel"], */
-  	/*
   .contact {
-  		width: 20%;
-  	}
-  */
+    width: 20%;
+  }
+
   .block {
     margin: 0 !important;
     padding: 0;
@@ -2235,6 +2245,10 @@ section .contact {
   }
   .block .overlay {
     display: none;
+  }
+
+  #main_nav {
+    top: 0;
   }
 
   .blog,
@@ -2285,56 +2299,25 @@ section .contact {
   }
   section .intro .contactlinks {
     float: none;
-    padding: 0;
-    width: auto;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
   }
   section .intro .news {
     display: none;
   }
   section .intro ul {
     padding: 0;
-    position: relative;
-    /* 				@include clearfix; */
-    display: block;
-    margin: 0 auto;
   }
   section .intro li {
-    display: inline;
-    width: auto;
-    				/*
-    width: 50%;
-    				display: inline-block;
-    				float: left;
-    */
-    				/*
-    &:first-child {
-    					text-align: right;
-    				}
-    */
+    margin-left: -4px;
+    margin-right: 1em;
   }
   section .intro a {
     padding: 0 !important;
   }
-  section .intro li.contact {
+  section .intro .contact {
     margin-right: 0;
-    /* 				display: inline-block; */
-    text-align: right;
-    position: relative;
-    padding-left: 16px;
-    margin-left: 16px;
   }
-  section .intro li.contact:before {
-    position: absolute;
-    left: 0;
-    top: 0;
-    content: '';
-    display: block;
-    width: 3px;
-    background: white;
-    height: 100%;
+  section .intro .contact a {
+    padding-left: 1em !important;
   }
   section .down {
     display: none !important;
@@ -2344,12 +2327,12 @@ section .contact {
     z-index: 1;
   }
   section .links {
-    margin: 0em;
-    padding: 0;
+    margin: 1em 0em 0 0em;
+    padding: 1em 0;
     float: none;
     z-index: 1;
     display: block;
-    bottom: -2.5em;
+    bottom: -1.5em;
     width: 100%;
     left: 0;
   }
@@ -2398,27 +2381,21 @@ section .contact {
   }
   .first .intro li {
     padding: 0;
+    /* 				width: 50%; */
     text-align: center;
-    width: auto;
   }
   .first .intro .contact {
     position: relative;
-    text-align: right;
-    				/*
-    &:before {
-    					position: absolute;
-    					display: block;
-    					content: '';
-    					width: 3px;
-    					height: 20px;
-    					left: 0px;
-    					top: 3px;
-    					background: $white;
-    				}
-    */
   }
-  .first .intro .contact a {
-    padding-left: 0;
+  .first .intro .contact:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 3px;
+    height: 20px;
+    left: 0;
+    top: 3px;
+    background: white;
   }
 
   #work {
@@ -2426,8 +2403,8 @@ section .contact {
     position: relative;
     height: 960px;
   }
-  #work h1.large {
-    display: block !important;
+  #work h1 {
+    display: none;
   }
   #work .digital {
     font-size: 1.2em;
@@ -2494,17 +2471,13 @@ section .contact {
 }
 @media (min-width: 481px) and (max-width: 768px) {
   #content {
-    		/*
     min-width: 768px;
-    		width: 100%;
-    */
+    width: 100%;
   }
 
   #work {
-    		/*
     min-width: 768px;
-    		width: 100%;
-    */
+    width: 100%;
     		/*
     .block {
     			display: block;
@@ -2514,58 +2487,14 @@ section .contact {
     */
   }
   #work .block {
-    			/*
     min-height: 768px;
-    			height: 100%;
-    */
-  }
-  #work .block .headingwrapper {
-    display: none;
-  }
-  #work .block .large {
-    display: block !important;
-  }
-  #work .block .links {
-    left: 0;
-    margin-left: 0;
-  }
-  #work .block .links span {
-    padding-left: 2em;
-  }
-  #work .block .links a {
-    margin-right: 2em;
-  }
-  #work .block .intro .contactlinks {
-    margin-left: 0;
-    padding-right: 0;
-    text-align: left;
-    padding-left: 1em;
-  }
-  #work .block .intro .contactlinks li {
-    text-align: left;
-  }
-  #work .block .intro .contactlinks li a {
-    padding-right: 1em;
-  }
-  #work .block .intro .news {
-    margin-right: 0;
-    padding-left: 68px;
-  }
-  #work .block .intro .news a {
-    padding-right: 0;
-  }
-  #work .block .intro li,
-  #work .block .intro a,
-  #work .block .intro p {
-    font-size: 14px;
+    height: 100%;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   #content {
-    		/*
     min-width: 1024px;
-    		width: 100%;
-    */
+    width: 100%;
   }
 
   	/*
@@ -2581,28 +2510,21 @@ section .contact {
   	}
   */
   #work {
-    		/*
     min-width: 1024px;
-    		width: 100%;
-    */
-  }
-  #work .intro .contactlinks {
-    margin-left: 0;
-  }
-  #work .intro .news {
-    margin-right: 0;
+    width: 100%;
   }
   #work .block {
     display: block;
-    			/*
     min-width: 1024px;
-    			width: 100%;
-    */
+    width: 100%;
     			/*
     min-height: 768px !important;
     			height: 700px !important;
     */
-    /* 			@include background-size(2048px auto !important); */
+    -webkit-background-size: 2048px auto !important;
+    -moz-background-size: 2048px auto !important;
+    -o-background-size: 2048px auto !important;
+    background-size: 2048px auto !important;
     			/*
     -webkit-background-size: 1024px auto !important;
     			background-size: 1024px auto !important;
@@ -2647,6 +2569,6 @@ section .contact {
   }
 
   #nextnav a {
-    padding: 19px 2em;
+    padding: 13px 2em;
   }
 }

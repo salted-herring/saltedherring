@@ -602,21 +602,32 @@ padding-right: 20px;
 	}
 }
 
-@include at-breakpoint(0 3 768px) {
+@include at-breakpoint(0 3 1023px) {
 	#banner {
-		height: auto;
+		height: auto !important;
+		padding: 16px !important;
+		width: 100% !important;
+		@include box-sizing(border-box);
+		
 		h1 {
 			position: relative;
 		}
 		
 		.filters {
-			margin-top: 32px;
+			/*
+margin-top: 32px;
 			padding-left: 32px;
+*/
 			position: relative;
-			left: auto;
+			left: 0px !important;
 			right: auto;
 			bottom: auto;
 			float: left;
+			max-width: 768px;
+			width: 100%;
+			height: auto;
+			margin-top: 32px;
+			
 		}
 		
 		&.small {
@@ -635,6 +646,14 @@ padding-right: 20px;
 				@include box-sizing(border-box);
 			}
 		}
+	}
+	
+	#project {
+		margin-top: 80px !important;
+	}
+	
+	#work {
+		margin-top: 342px !important;
 	}
 }
 

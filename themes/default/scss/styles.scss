@@ -198,7 +198,7 @@ $logo-height: 23px;
 #logo {
 	position: relative;
 	padding-right: 0em;
-	padding-left: 0em;
+	padding-left: 1em;
 	padding-top: 1em;
 	padding-bottom: 1em;
 	margin-right: 0em;
@@ -231,7 +231,7 @@ $logo-height: 23px;
 /* 	margin-left: -2.5em; */
 /* 	padding-right: .5em; */
 	position: absolute;
-	padding-right: 0em;
+	padding-right: 1em;
 	top: 0em;
 	right: 0;
 	outline: none;
@@ -854,16 +854,7 @@ min-width: 768px;
 }
 
 @include at-breakpoint(769px 3 1024px) {
-	body,
-	#content,
-	#header,
-	#footer {
-		/*
-min-width: 1024px;
-		width: 100%;
-		overflow-x: hidden;
-*/
-	}
+	
 	
 	/*
 #logo {
@@ -898,5 +889,18 @@ min-width: 1024px;
 				padding: 6em 2em;
 			}
 		}
+	}
+}
+
+
+@include at-breakpoint(768px 3 0) {
+	body,
+	#content,
+	#header,
+	#footer,
+	#work .block {
+		max-width: 768px;
+		width: 100%;
+		overflow-x: hidden;
 	}
 }

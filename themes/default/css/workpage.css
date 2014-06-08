@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -221,6 +220,8 @@ audio:not([controls]) {
 }
 
 html {
+  background: #fff;
+  color: #000;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -962,7 +963,7 @@ iframe {
 #logo {
   position: relative;
   padding-right: 0em;
-  padding-left: 0em;
+  padding-left: 1em;
   padding-top: 1em;
   padding-bottom: 1em;
   margin-right: 0em;
@@ -994,7 +995,7 @@ iframe {
   /* 	margin-left: -2.5em; */
   /* 	padding-right: .5em; */
   position: absolute;
-  padding-right: 0em;
+  padding-right: 1em;
   top: 0em;
   right: 0;
   outline: none;
@@ -1635,17 +1636,6 @@ footer a[href^='mailto:']:hover:after {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  body,
-  #content,
-  #header,
-  #footer {
-    		/*
-    min-width: 1024px;
-    		width: 100%;
-    		overflow-x: hidden;
-    */
-  }
-
   	/*
   #logo {
   		padding-left: 2em;
@@ -1669,6 +1659,17 @@ footer a[href^='mailto:']:hover:after {
   }
   #footer .details .container {
     padding: 6em 2em;
+  }
+}
+@media (min-width: 768px) {
+  body,
+  #content,
+  #header,
+  #footer,
+  #work .block {
+    max-width: 768px;
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 .filters {
@@ -2261,21 +2262,32 @@ footer a[href^='mailto:']:hover:after {
     max-width: 960px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   #banner {
-    height: auto;
+    height: auto !important;
+    padding: 16px !important;
+    width: 100% !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   #banner h1 {
     position: relative;
   }
   #banner .filters {
+    			/*
     margin-top: 32px;
-    padding-left: 32px;
+    			padding-left: 32px;
+    */
     position: relative;
-    left: auto;
+    left: 0px !important;
     right: auto;
     bottom: auto;
     float: left;
+    max-width: 768px;
+    width: 100%;
+    height: auto;
+    margin-top: 32px;
   }
   #banner.small .container {
     text-align: center;
@@ -2292,6 +2304,14 @@ footer a[href^='mailto:']:hover:after {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+  }
+
+  #project {
+    margin-top: 80px !important;
+  }
+
+  #work {
+    margin-top: 342px !important;
   }
 }
 @media (max-width: 1024px) {
@@ -2765,7 +2785,7 @@ footer a[href^='mailto:']:hover:after {
   }
 
   .individualentry header {
-    top: 137px !important;
+    top: 135px !important;
   }
   .individualentry header.small .details,
   .individualentry header .details {
@@ -2795,7 +2815,6 @@ footer a[href^='mailto:']:hover:after {
     width: 100%;
     left: auto !important;
     margin: 0 auto !important;
-    /* 		top: 137px !important; */
   }
 
   .individualentry .media img {
