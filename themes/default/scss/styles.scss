@@ -69,6 +69,10 @@ article a {
 	}
 }
 
+iframe {
+	max-width: 100%;
+}
+
 @import 'grid';
 
 
@@ -184,6 +188,10 @@ article a {
 		position: relative;
 		max-width: auto !important;
 	}
+	
+	.container {
+		padding: 0;
+	}
 }
 
 $logo-height: 23px;
@@ -206,7 +214,7 @@ $logo-height: 23px;
 		height: $logo-height;
 		@include sprites-sprite(SH_logo_site_black_sm);
 		position: absolute;
-		left: 32px;
+/* 		left: 32px; */
 		
 		&:hover {
 			@include sprites-sprite(SH_logo_site_blue_sm);
@@ -223,7 +231,7 @@ $logo-height: 23px;
 /* 	margin-left: -2.5em; */
 /* 	padding-right: .5em; */
 	position: absolute;
-	padding-right: 2em;
+	padding-right: 0em;
 	top: 0em;
 	right: 0;
 	outline: none;
@@ -424,6 +432,10 @@ footer {
 		padding: 1em 0;
 		overflow: hidden;
 		
+		.container {
+			overflow: visible;
+		}
+		
 		span {
 			display: block;
 			position: relative;
@@ -573,7 +585,7 @@ footer {
 		color: $white;
 		line-height: 160px;
 		font-weight: 800;
-		margin: 0 0 -48px -32px;
+		margin: 0 0 -48px 0px;
 		text-transform: uppercase;
 	}
 }
@@ -810,9 +822,38 @@ min-width: 768px;
 		overflow-x: hidden;
 */
 	}
+	
+	#footer {
+		overflow: hidden;
+	}
+	#footer {
+		.container {
+			max-width: 768px;
+		}
+		
+		.salt {
+			.container {
+				padding-left: 1em;
+				
+				&:before {
+					right: 1em;
+				}
+				
+				&:after {
+					right: 6em;
+				}
+			}
+		}
+		
+		.details {
+			.container {
+				padding: 6em 2em;
+			}
+		}
+	}
 }
 
-@include at-breakpoint(768px 3 1024px) {
+@include at-breakpoint(769px 3 1024px) {
 	body,
 	#content,
 	#header,
@@ -822,5 +863,40 @@ min-width: 1024px;
 		width: 100%;
 		overflow-x: hidden;
 */
+	}
+	
+	/*
+#logo {
+		padding-left: 2em;
+	}
+*/
+	
+	#footer {
+		overflow: hidden;
+	}
+	#footer {
+		.container {
+			max-width: 1024px;
+		}
+		
+		.salt {
+			.container {
+				padding-left: 1em;
+				
+				&:before {
+					right: 1em;
+				}
+				
+				&:after {
+					right: 6em;
+				}
+			}
+		}
+		
+		.details {
+			.container {
+				padding: 6em 2em;
+			}
+		}
 	}
 }

@@ -1,7 +1,5 @@
 require(['jquery', 'backbone', 'underscore', '_base'], function($) {
-
 	
-
 	$(function() {
 		/*
 if($('body').is('.mobile')) {
@@ -85,26 +83,6 @@ setTimeout(function() {
 
 				var dimensions = resize($(this).data('imgwidth'), $(this).data('imgheight'), $(window).width(), $(window).height()),
 					dimensionsOverlay = resize($(this).data('imgwidth'), $(this).data('imgheight'), $(window).width(), $(window).height());
-				
-				
-				/*
-$(this).css({
-					'background-size': dimensions.w + 'px ' + dimensions.h + 'px',
-					'-webkit-background-size': dimensions.w + 'px ' + dimensions.h + 'px',
-					'-moz-background-size': dimensions.w + 'px ' + dimensions.h + 'px'
-				}).find('.overlay').css({
-					'background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px',
-					'-webkit-background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px',
-					'-moz-background-size': dimensionsOverlay.w + 'px ' + dimensionsOverlay.h + 'px'
-				});
-*/
-				
-				/*
-$(this).find('img').css({
-					width: dimensions.w,
-					height: dimensions.h
-				});
-*/
 			});
 
 			$('#footer').show();
@@ -126,15 +104,9 @@ $(this).find('img').css({
 		
 		_resize();
 		
-		$(window).resize(function() {
-			
-			if($('body').is('.mobile')) {
-				return false;
-			}
-
-			_resize();
-			
-		});
+		if(!$('body').is('.mobile')) {
+			$(window).resize(_resize);
+		}
 
 		/*
 window.addEventListener("orientationchange", function() {

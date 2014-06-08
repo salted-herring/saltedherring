@@ -3,7 +3,7 @@
 
 .filters {
 	padding: 2em 0em 2em 1em;
-	width: 400px;
+	max-width: 400px;
 	
 	a {
 		@include minion;
@@ -41,8 +41,8 @@
 
 .records {
 	padding: 0;
-	width: 960px !important;
-	max-width: 960px !important;
+	width: 960px;
+	max-width: 960px;
 	margin-bottom: 6em;
 	@include transition(height .5s);
 	
@@ -265,6 +265,12 @@
 			}
 		}
 	}
+	
+	.filters {
+		padding-top: 0;
+		top: inherit;
+		bottom: -.5em;
+	}
 }
 
 .arrow {
@@ -425,9 +431,17 @@ padding-right: 20px;
 		display: block;
 		position: relative;
 		height: auto;
-		padding: 16px 0;
+		padding: 0;
 		width: 100%;
 		overflow: hidden;
+		margin-top: 55px;
+		
+		.container {
+			height: auto;
+			overflow: visible;
+			padding: 16px;
+			@include box-sizing(border-box);
+		}
 		
 		&.collapsed,
 		&.small {
@@ -450,15 +464,18 @@ padding-right: 20px;
 		.filters {
 			top: auto;
 			right: auto;
-			padding: 0px 0 0 16px;
+			padding: 0px;
 			position: relative;
 			width: 100%;
 			margin: 0;
+			bottom: 0;
 			
 			a {
-				&:after {
+				/*
+&:after {
 					margin-right: 0;
 				}
+*/
 			}
 			
 			strong {
@@ -563,6 +580,87 @@ padding-right: 20px;
 				float: right;
 				font-size: $font-size+px;
 			}
+		}
+	}
+}
+
+@include at-breakpoint(460px 3 1023px) {
+	.records {
+		width: 100%;
+		max-width: 640px;
+	}
+}
+
+@include at-breakpoint(1024px 3 0) {
+	.records {
+		width: 100%;
+		max-width: 960px;
+	}
+}
+
+@include at-breakpoint(0 3 768px) {
+	#banner {
+		height: auto;
+		h1 {
+			position: relative;
+		}
+		
+		.filters {
+			margin-top: 32px;
+			padding-left: 32px;
+			position: relative;
+			left: auto;
+			right: auto;
+			bottom: auto;
+			float: left;
+		}
+		
+		&.small {
+			.container {
+				text-align: center;
+			}
+			.filters {
+				position: absolute;
+				top: 0;
+				padding: 0;
+				margin: 0;
+				width: 100% !important;
+				max-width: 960px;
+				text-align: center;
+				padding: 0 2em;
+				@include box-sizing(border-box);
+			}
+		}
+	}
+}
+
+@include at-breakpoint(0 3 1024px) {
+	
+	#banner {
+		h1 {
+			padding-left: 32px;
+			margin-left: 0;
+		}
+		
+		.container {
+			overflow: visible;
+		}
+	}
+	
+	#logo {
+		padding-left: 32px;
+	}
+	
+	#main_nav {
+		padding-right: 32px;
+	}
+}
+
+@include at-breakpoint(768px 3 1024px) {
+	#banner {
+		.filters {
+			right: auto;
+			left: 454px;
 		}
 	}
 }

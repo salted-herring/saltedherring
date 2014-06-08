@@ -146,6 +146,7 @@
 	}
 	
 	.media {
+		text-align: center;
 		img {
 			position: relative;
 			z-index: 0;
@@ -324,6 +325,7 @@
 }
 
 #media {
+	text-align: center;
 	img {
 		
 /* 		margin-left: -1em; */
@@ -333,11 +335,10 @@
 		background-repeat: no-repeat;
 		width: 928px;
 		min-height: 700px;
-		margin-left: -1em;
 		background-image: none;
 		@include transition(height .2s);
 		@include transition(background .2s);
-		margin-bottom: 3em;
+		margin: 0 auto 3em auto;
 		text-align: center;
 		
 		&.notloaded {
@@ -378,6 +379,7 @@
 @include at-breakpoint(0 3 320px) {
 	
 	#banner {
+		margin-top: 0px;
 		.filters.container {
 			padding-left: 16px !important;
 		}
@@ -472,5 +474,116 @@ width: 90%;
 	
 	#interestedin {
 		display: none;
+	}
+}
+
+
+@include at-breakpoint(0 3 480px) {
+	.individualentry {
+		header {
+			height: auto !important;
+		}
+			h1 {
+				font-size: 1.375em !important;
+			}
+			
+			.tagLine {
+				font-size: 1em !important;
+			}
+	}
+}
+
+@include at-breakpoint(321px 3 480px) {
+	.individualentry {
+		margin-top: 0;
+		
+		header {
+			top: 55px !important;
+		}
+	}
+}
+
+@include at-breakpoint(0 3 768px) {
+	#projectdetails {
+		.row {
+			max-width: 100%;
+			margin: 0 2em;
+		}
+	}
+	
+	#banner {
+		height: auto !important;
+		
+		&.small {
+			max-height: 50px;
+		}
+	}
+	
+	#articleLinks {
+		width: 100% !important;
+	}
+	
+	.individualentry header {
+		top: 137px !important;
+		&.small .details,
+		.details {
+			padding: 2em 1em !important;
+			height: auto !important;
+		}
+		
+		&.small {
+			height: auto !important;
+		}
+	}
+}
+
+@include at-breakpoint(769px 3 1024px) {
+	#projectdetails {
+		.row {
+			max-width: 928px;
+			margin: 0 auto;
+		}
+	}
+}
+
+@include at-breakpoint(0 3 1024px) {
+	
+	/*
+#banner {
+		height: 50px !important;
+		.container {
+			height: auto;
+		}
+	}
+*/
+	.individualentry header {
+		width: 100%;
+		left: auto !important;
+		margin: 0 auto !important;
+/* 		top: 137px !important; */
+		
+		
+	}
+	
+	.individualentry {
+		.media {
+			img {
+				max-width: 100% !important;
+				height: auto !important;
+				margin-left: 0 !important;
+			}
+		}
+	}
+	
+	#media {
+		.image {
+			max-width: 100%;
+			min-height: 100% !important;
+			img {
+				max-width: 100% !important;
+				height: auto !important;
+				margin-left: 0 !important;
+			}
+		}
 	}
 }

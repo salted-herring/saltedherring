@@ -204,3 +204,31 @@ width: auto;
 		}
 	}
 }
+
+@include at-breakpoint(481px 3 768px) {
+	h1 {
+		left: 1em;
+	}
+	
+	article {
+		.row {
+			padding: 0 2em;
+		}
+		
+		.links {
+			width: 100%;
+		}
+	}
+}
+
+@include at-breakpoint(769px 3 1024px) {
+	h1 {
+		left: 1em;
+	}
+	
+	article {
+		.row {
+			padding: 0 2em;
+		}
+	}
+}

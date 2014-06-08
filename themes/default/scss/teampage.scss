@@ -137,7 +137,7 @@
 
 
 #team {
-	margin-top: 17em;
+	margin-top: 19em;
 	
 	.entry {
 		&.thumbnail {
@@ -170,10 +170,12 @@
 
 @include at-breakpoint(0 3 320px) {
 
-	#banner {
+	/*
+#banner {
 		position: relative;
 		margin-top: 46px;
 	}
+*/
 	
 	#team {
 		width: 100% !important;
@@ -184,7 +186,7 @@
 	#teammember {
 		width: 100% !important;
 		overflow: visible;
-		margin-top: 46px;
+		margin-top: 0;
 		
 		header {
 /* 			display: none; */
@@ -240,16 +242,24 @@
 	
 	#teammember  {
 		blockquote,
-		p,
 		aside,
 		a {
 			padding: 0 16px !important;
 			margin: 0;
 		}
+		
+		p {
+			padding: 0 16px;
+			margin-bottom: 1em;
+		}
 	}
 	
 	#content {
 		padding: 0 !important;
+		
+		.content {
+			padding-bottom: 2em;
+		}
 	}
 	
 	blockquote {
@@ -257,6 +267,7 @@
 	}
 	aside {
 		width: 100% !important;
+		float: none !important;
 		
 		strong,
 		span {
@@ -281,3 +292,5 @@
 	}
 */
 }
+
+

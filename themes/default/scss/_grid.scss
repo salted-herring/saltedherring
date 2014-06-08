@@ -25,14 +25,29 @@ $break: 3;
 
 .container { 
 	@include container($total-columns, $break);
-	width: 896px;
-	max-width: 896px;
+	width: 960px;
+	max-width: 960px;
 	
-	@include at-breakpoint(0 3 1024px) {
-		width: 100%;
-		overflow-x: none;
-		padding: 0;
+	$sizes: 320px 480px 768px 1024px;
+	$from: 0 321px 481px 769px;
+	$i: 1;
+	
+	@each $size in $sizes {
+		@include at-breakpoint(nth($from, $i) 3 $size) {
+			width: 100%;
+			max-width: $size;
+			overflow-x: hidden;
+			padding: 0;
+		}
+		
+		$i: $i + 1;
 	}
+}
+
+@media (min-width: 56em) {
+  .container {
+    max-width: 960px;
+  }
 }
 
 .row {
@@ -66,47 +81,3 @@ $break: 3;
 		margin-left: ($i * $column-width + ($gutter-width * $i));
 	}
 }
-
-/*
-.row {
-	@include clearfix;
-	
-	.container {
-		padding: 0;
-	}
-	
-	@for $i from 1 through $total-columns {
-		.grid_#{$i}{
-			&:last-child { 
-				margin-right: 0;
-			}
-			
-			&.notlast {
-				float: left !important;
-			}
-		}
-	}
-}
-
-@include at-breakpoint(0 3 320px) {
-	$gutter-width   : 1em;
-	$grid-padding   : 1em;
-	
-	.container { 
-		@include container;
-		max-width: 100%;
-	}
-	
-	.row {
-		max-width: 100%;
-	}
-
-	@for $i from 1 through $total-columns {
-		.grid_#{$i}{
-			width: 100%;
-			margin: 0;
-			float: none;
-		}
-	}
-}
-*/

@@ -449,12 +449,11 @@ nav {
 		}
 		
 		.contactlinks {
-/* 			width: 415px; */
 			text-align: right;
 			margin-top: 20px;
 			
 			a {
-				padding-right: 3em;
+				padding-right: 2em;
 				
 				&[href^="/"],
 				&[href^="http"] {
@@ -468,28 +467,27 @@ nav {
 				&[href^="tel:"] {
 					cursor: text;
 				}
-				
-				
-				&:last-child {
-					padding-right: 1em;
+			}
+			
+			li:last-child {
+				a {
+					padding-right: 0;
 				}
 			}
 		}
 		.news {
-			padding-left: 2em;
-/* 			width: 398px; */
 			overflow: hidden;
 			height: 24px;
 			position: relative;
 			padding: 0;
-			margin: 23px 0 0 0em;
-			float: right !important;
+			margin: 23px -2em 0 0;
+			float: left !important;
 			
 			li {
 				position: absolute;
 				display: block;
 				top: 30px;
-				padding-left: 20px;
+/* 				padding-left: 20px; */
 				
 				&.active {
 					top: 0;
@@ -517,11 +515,12 @@ nav {
 		}
 		
 		.news {
-			padding-left: 60px;
+			padding-left: 91px;
 		}
 		
 		.contactlinks {
-			padding-right: 36px;
+			padding-right: 80px;
+			margin-left: -2em;
 		}
 		
 		a {
@@ -921,17 +920,74 @@ width: 50%;
 @include at-breakpoint(481px 3 768px) {
 
 	#content {
-		min-width: 768px;
+		/*
+min-width: 768px;
 		width: 100%;
+*/
 	}
 	
 	#work {
-		min-width: 768px;
+		/*
+min-width: 768px;
 		width: 100%;
-	
+*/
+		
 		.block {
-			min-height: 768px;
+		
+			.headingwrapper {
+				display: none;
+			}
+			
+			.large {
+				display: block !important;
+			}
+		
+			.links {
+				left: 0;
+				margin-left: 0;
+				
+				span {
+					padding-left: 2em;
+				}
+				
+				a {
+					margin-right: 2em;
+				}
+			}
+			
+			.intro {
+				.contactlinks {
+					margin-left: 0;
+					padding-right: 0;
+					text-align: left;
+					padding-left: 1em;
+					
+					li {
+						text-align: left;
+						
+						a {
+							padding-right: 1em;
+						}
+					}
+				}
+				.news {
+					margin-right: 0;
+					padding-left: 68px;
+					
+					a {
+						padding-right: 0;
+					}
+				}
+				li,
+				a,
+				p {
+					font-size: 14px;
+				}
+			}
+			/*
+min-height: 768px;
 			height: 100%;
+*/
 		}
 		
 		/*
@@ -946,10 +1002,12 @@ width: 50%;
 
 }
 
-@include at-breakpoint(768px 3 1024px) {
+@include at-breakpoint(769px 3 1024px) {
 	#content {
-		min-width: 1024px;
+		/*
+min-width: 1024px;
 		width: 100%;
+*/
 	}
 	
 	/*
@@ -966,19 +1024,33 @@ section {
 */
 	
 	#work {
-		min-width: 1024px;
+	
+		.intro {
+			.contactlinks {
+				margin-left: 0;
+			}
+			
+			.news {
+				margin-right: 0;
+			}
+		}
+		/*
+min-width: 1024px;
 		width: 100%;
+*/
 		
 		.block {
 			display: block;
-			min-width: 1024px;
+			/*
+min-width: 1024px;
 			width: 100%;
+*/
 			/*
 min-height: 768px !important;
 			height: 700px !important;
 */
 			
-			@include background-size(2048px auto !important);
+/* 			@include background-size(2048px auto !important); */
 			//min-width: 1000px;
 			/*
 -webkit-background-size: 1024px auto !important;
@@ -1034,7 +1106,7 @@ min-height: 768px !important;
 	
 	#nextnav {
 		a {
-			padding: 13px 2em;
+			padding: 19px 2em;
 		}
 	}
 }
