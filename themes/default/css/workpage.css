@@ -1971,6 +1971,11 @@ footer a[href^='mailto:']:hover:after {
 #banner.collapsed h1, #banner.collapsed strong, #banner.small h1, #banner.small strong {
   top: -10em;
 }
+#banner.small .filters {
+  width: 100%;
+  max-width: 960px;
+  left: 0;
+}
 #banner.small .filters strong {
   display: none;
 }
@@ -2310,6 +2315,9 @@ footer a[href^='mailto:']:hover:after {
   #banner .filters {
     right: auto;
     left: 454px;
+  }
+  #banner.small .filters {
+    text-align: center;
   }
 }
 .filters {

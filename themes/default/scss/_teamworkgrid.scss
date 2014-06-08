@@ -260,6 +260,10 @@
 	
 	&.small {
 		.filters {
+			width: 100%;
+			max-width: 960px;
+			left: 0;
+			
 			strong {
 				display: none;
 			}
@@ -661,6 +665,12 @@ padding-right: 20px;
 		.filters {
 			right: auto;
 			left: 454px;
+		}
+		
+		&.small {
+			.filters {
+				text-align: center;
+			}
 		}
 	}
 }
