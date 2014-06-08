@@ -893,7 +893,7 @@ min-width: 768px;
 }
 
 
-@include at-breakpoint(768px 3 0) {
+@include at-breakpoint(768px 3 1024px) {
 	body,
 	#content,
 	#header,
