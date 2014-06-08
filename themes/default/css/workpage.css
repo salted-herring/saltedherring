@@ -2117,7 +2117,7 @@ footer a[href^='mailto:']:hover:after {
     display: block;
     position: relative;
     height: auto;
-    padding: 0;
+    padding: 0 !important;
     width: 100%;
     overflow: hidden;
     margin-top: 55px;
@@ -2125,7 +2125,7 @@ footer a[href^='mailto:']:hover:after {
   #banner .container {
     height: auto;
     overflow: visible;
-    padding: 16px;
+    padding: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -2150,7 +2150,7 @@ footer a[href^='mailto:']:hover:after {
     padding: 0px;
     position: relative;
     width: 100%;
-    margin: 0;
+    margin: 0 !important;
     bottom: 0;
   }
   #banner .filters a {
@@ -2165,6 +2165,11 @@ footer a[href^='mailto:']:hover:after {
   }
   #banner h1 {
     display: none;
+  }
+
+  section#work,
+  section#project {
+    margin-top: 0 !important;
   }
 
   blockquote,
@@ -2687,7 +2692,8 @@ footer a[href^='mailto:']:hover:after {
     */
   }
   #projectdetails .row {
-    padding: 0 16px !important;
+    margin: 0 1em !important;
+    padding: 0px !important;
   }
   #projectdetails .image {
     margin: 0 0 16px 0;

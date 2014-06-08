@@ -435,7 +435,7 @@ padding-right: 20px;
 		display: block;
 		position: relative;
 		height: auto;
-		padding: 0;
+		padding: 0 !important;
 		width: 100%;
 		overflow: hidden;
 		margin-top: 55px;
@@ -443,7 +443,7 @@ padding-right: 20px;
 		.container {
 			height: auto;
 			overflow: visible;
-			padding: 16px;
+			padding: 0;
 			@include box-sizing(border-box);
 		}
 		
@@ -471,7 +471,7 @@ padding-right: 20px;
 			padding: 0px;
 			position: relative;
 			width: 100%;
-			margin: 0;
+			margin: 0 !important;
 			bottom: 0;
 			
 			a {
@@ -490,6 +490,11 @@ padding-right: 20px;
 		h1 {
 			display: none;
 		}
+	}
+	
+	section#work,
+	section#project {
+		margin-top: 0 !important;
 	}
 	
 	blockquote,
@@ -527,6 +532,8 @@ padding-right: 20px;
 	#projectnav {
 		display: none !important;
 	}
+	
+	
 	
 	.individualentry {
 /* 		margin-top: 56px; */
