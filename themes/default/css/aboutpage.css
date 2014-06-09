@@ -1036,7 +1036,7 @@ iframe {
 }
 #main_nav a {
   font-size: 1.125em;
-  font-weight: 600;
+  font-weight: 800;
   text-transform: uppercase;
   color: black;
   position: relative;
@@ -1788,6 +1788,12 @@ article .row {
   z-index: 2;
   position: relative;
   margin-top: 298px;
+}
+article a {
+  padding-bottom: 3px;
+}
+article a:hover:after {
+  background: #00bbde;
 }
 
 .overlay {

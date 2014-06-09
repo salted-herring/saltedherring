@@ -1036,7 +1036,7 @@ iframe {
 }
 #main_nav a {
   font-size: 1.125em;
-  font-weight: 600;
+  font-weight: 800;
   text-transform: uppercase;
   color: black;
   position: relative;
@@ -1754,11 +1754,11 @@ h1,
 
 .keyword {
   width: 100%;
-  margin-top: -30px;
+  margin-top: -90px;
 }
 
 .large {
-  margin-top: -140px;
+  margin-top: -200px;
 }
 
 h1 {
@@ -1961,6 +1961,12 @@ section .first {
   			bottom: (150/$font-size)+em;
   		}
   */
+}
+section .first .keyword {
+  margin-top: -30px;
+}
+section .first .large {
+  margin-top: -140px;
 }
 section .first .text {
   padding: 0;

@@ -28,11 +28,11 @@ h1,
 
 .keyword {
 	width: 100%;
-	margin-top: -30px;
+	margin-top: -90px;
 }
 
 .large {
-	margin-top: -140px;
+	margin-top: -200px;
 }
 
 h1 {
@@ -234,6 +234,12 @@ section {
 	}
 	
 	.first {
+		.keyword {
+			margin-top: -30px;
+		}
+		.large {
+			margin-top: -140px;
+		}
 /* 		z-index: 1; */
 /* 		@include transform(translateZ(1)); */
 		.text {

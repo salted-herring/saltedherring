@@ -16,27 +16,6 @@ if($('body').is('.mobile')) {
 		if(!$('body').is('.mobile')) {
 			requestTick();
 		}
-		
-		
-		/*
-var index = 100;
-		$('#work .block').each(function() {
-			$(this).css({
-				'z-index': index--
-			});
-		});
-*/
-		
-		/* ===========================
-		 * The background-attachment is
-		 * causing issues on load. Scrolling
-		 * to the top seems to fix it.
-		 * =========================== */
-		/*
-setTimeout(function() {
-		    window.scrollTo(0, 0);
-		}, 1);
-*/
 
 		/* ===========================
 		 * On resize - make sure:
@@ -149,7 +128,6 @@ window.addEventListener("orientationchange", function() {
 					
 					if($(this).is('.first')) {
 						_h += 53;
-						//console.log(Math.ceil(newTop + _h), ((winHeight / 2)) - Math.abs(latestKnownScrollY - top));
 						if(latestKnownScrollY > -1) {
 							$(this).find('.heading').hide();
 							$(this).find('.large').show();
@@ -158,7 +136,7 @@ window.addEventListener("orientationchange", function() {
 							$(this).find('.large').hide();
 						}
 					} else {
-						if(Math.ceil(newTop + _h) <= 0) {
+						if(Math.ceil(newTop) <= $('#header').height()) {
 							$(this).find('.heading').hide();
 							$(this).find('.large').show();
 						} else {
@@ -244,7 +222,7 @@ if($('body').is('.mobile')) {
 				return top < (latestKnownScrollY + winHeight) && bottom > latestKnownScrollY;
 			}).each(function(i, el) {
 				if ((latestKnownScrollY + winHeight) > $(this).offset().top) {
-					var top = -200 + (((latestKnownScrollY - $(this).data('top')) / winHeight) * 100);
+					var top = (-200 + (((latestKnownScrollY - $(this).data('top')) / winHeight) * 100));
 					
 					$(this).find('.overlay').css({
 						'background-position': '50% ' + top + '%'

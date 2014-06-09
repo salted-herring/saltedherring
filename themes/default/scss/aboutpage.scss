@@ -69,6 +69,16 @@ article {
 		position: relative;
 		margin-top: 298px;
 	}
+	
+	a {
+		padding-bottom: 3px;
+		
+		&:hover {
+			&:after {
+				background: $blue;
+			}
+		}
+	}
 }
 
 .overlay {
