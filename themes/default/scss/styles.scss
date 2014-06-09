@@ -549,6 +549,40 @@ footer {
 			}
 		}
 	}
+	
+	.fb {
+		display: inline-block;
+		position: relative;
+		padding-left: 20px;
+		margin: 1em 0;
+		
+		&:before {
+			position: absolute;
+			display: block;
+			content: '';
+			left: 0;
+			top: 0;
+			width: 11px;
+			height: 20px;
+			@include sprites-sprite(fb_over);
+		}
+		
+		&:hover {
+			&:after {
+				position: absolute;
+				display: block;
+				content: '';
+				bottom: -1px;
+				height: 1px;
+				width: 100%;
+				margin-left: -20px;
+				background: $white;
+			}
+			&:before {
+/* 				@include sprites-sprite(fb); */
+			}
+		}
+	}
 }
 
 @include keyframes(saltshaker) {
@@ -894,7 +928,8 @@ min-width: 768px;
 
 
 @include at-breakpoint(768px 3 1024px) {
-	body,
+	/*
+body,
 	#content,
 	#header,
 	#footer,
@@ -903,4 +938,5 @@ min-width: 768px;
 		width: 100%;
 		overflow-x: hidden;
 	}
+*/
 }

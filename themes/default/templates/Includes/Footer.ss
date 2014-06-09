@@ -25,6 +25,8 @@
 			</div>
 			<div class="grid_1 ourblog">
 				<a href="//blog.saltedherring.com" target="_blank" class="external">our blog</a>
+				
+				<a href="https://www.facebook.com/pages/Salted-Herring/123449174364209" target="_blank" class="fb">Follow us on facebook</a>
 			</div>
 		</div>
 	</div>

@@ -27,7 +27,7 @@
 			</div>
 		</header>
 		
-		<div id="memberdetails" class="detailscontainer<% if Images %><% else %> no-images<% end_if %>">
+		<div id="memberdetails" class="container<% if Images %><% else %> no-images<% end_if %>">
 			<% if firstAnimatedImage %>
 			<div class="images">
 				<% with firstAnimatedImage %>

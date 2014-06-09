@@ -7,24 +7,24 @@
 /* ===========================
  * Sprite sheets
  * =========================== */
-.sprites-sprite, .sprites-SH_logo_site_black, .sprites-SH_logo_site_black_sm, .sprites-SH_logo_site_blue, .sprites-SH_logo_site_blue_sm, .sprites-digital_brand, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-salted, .sprites-saltshaker, .sprites-stripes, .external:before, #articleLinks .website:before, #logo a, #logo a:hover, .menu-open, #menu_icon, #menu_icon.collapse, #menu_icon.expand, #loader span.salt, footer .salt span:after, footer .salt span:before, #projectnav .next:after, #projectnav .previous:before {
-  background: url('../img/sprites-sc685fd19f7.png') no-repeat;
+.sprites-sprite, .sprites-SH_logo_site_black, .sprites-SH_logo_site_black_sm, .sprites-SH_logo_site_blue, .sprites-SH_logo_site_blue_sm, .sprites-digital_brand, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-fb, .sprites-fb_over, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-salted, .sprites-saltshaker, .sprites-stripes, .external:before, #articleLinks .website:before, #logo a, #logo a:hover, .menu-open, #menu_icon, #menu_icon.collapse, #menu_icon.expand, #loader span.salt, footer .salt span:after, footer .salt span:before, footer .fb:before, #projectnav .next:after, #projectnav .previous:before {
+  background: url('../img/sprites-s59795d27a4.png') no-repeat;
 }
 
 .sprites-SH_logo_site_black {
-  background-position: 0 0;
+  background-position: -185px 0;
 }
 
 .sprites-SH_logo_site_black_sm {
-  background-position: -971px -234px;
+  background-position: 0 0;
 }
 
 .sprites-SH_logo_site_blue {
-  background-position: -488px 0;
+  background-position: 0 -145px;
 }
 
 .sprites-SH_logo_site_blue_sm {
-  background-position: -543px -145px;
+  background-position: -915px -145px;
 }
 
 .sprites-digital_brand {
@@ -32,47 +32,55 @@
 }
 
 .sprites-down_arrow {
-  background-position: -852px -145px;
+  background-position: -894px -145px;
 }
 
 .sprites-external_arrow {
-  background-position: -728px -145px;
+  background-position: -871px -145px;
 }
 
 .sprites-external_arrow_blue {
-  background-position: -751px -145px;
+  background-position: -848px -145px;
+}
+
+.sprites-fb {
+  background-position: -781px -145px;
+}
+
+.sprites-fb_over {
+  background-position: -770px -145px;
 }
 
 .sprites-menu-collapse {
-  background-position: -774px -145px;
+  background-position: -1058px -234px;
 }
 
 .sprites-menu-open {
-  background-position: -813px -145px;
+  background-position: -1100px -145px;
 }
 
 .sprites-next_arrow {
-  background-position: -943px -234px;
+  background-position: -792px -145px;
 }
 
 .sprites-previous_arrow {
-  background-position: -915px -234px;
+  background-position: -820px -145px;
 }
 
 .sprites-salt {
-  background-position: -370px 0;
+  background-position: -555px 0;
 }
 
 .sprites-salted-herring {
-  background-position: -400px -145px;
+  background-position: -915px -234px;
 }
 
 .sprites-salted {
-  background-position: 0 -145px;
+  background-position: -370px -145px;
 }
 
 .sprites-saltshaker {
-  background-position: -858px 0;
+  background-position: -673px 0;
 }
 
 .sprites-stripes {
@@ -912,7 +920,7 @@ iframe {
   width: 23px;
   height: 23px;
   z-index: 2;
-  background-position: -728px -145px;
+  background-position: -871px -145px;
 }
 .external:hover:before, #articleLinks .website:hover:before {
   display: none;
@@ -979,16 +987,16 @@ iframe {
   width: 185px;
   font-size: 0;
   height: 23px;
-  background-position: -971px -234px;
+  background-position: 0 0;
   position: absolute;
   /* 		left: 32px; */
 }
 #logo a:hover {
-  background-position: -543px -145px;
+  background-position: -915px -145px;
 }
 
 .menu-open {
-  background-position: -813px -145px;
+  background-position: -1100px -145px;
 }
 
 #main_nav {
@@ -1079,7 +1087,7 @@ iframe {
   -moz-transition: top 0.5s;
   -o-transition: top 0.5s;
   transition: top 0.5s;
-  background-position: -813px -145px;
+  background-position: -1100px -145px;
 }
 #menu_icon.hide {
   top: -1em;
@@ -1088,11 +1096,11 @@ iframe {
   top: .8em;
 }
 #menu_icon.collapse {
-  background-position: -774px -145px;
+  background-position: -1058px -234px;
 }
 #menu_icon.expand {
   cursor: pointer;
-  background-position: -813px -145px;
+  background-position: -1100px -145px;
 }
 
 /* ===========================
@@ -1142,7 +1150,7 @@ iframe {
   height: 89px;
   left: 50%;
   margin-left: -200px;
-  background-position: 0 -145px;
+  background-position: -370px -145px;
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
@@ -1197,7 +1205,7 @@ footer .salt span:after {
   width: 118px;
   height: 145px;
   z-index: 0;
-  background-position: -370px 0;
+  background-position: -555px 0;
 }
 footer .salt span:before {
   position: absolute;
@@ -1208,7 +1216,7 @@ footer .salt span:before {
   width: 272px;
   height: 101px;
   z-index: 2;
-  background-position: -858px 0;
+  background-position: -673px 0;
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
@@ -1293,6 +1301,35 @@ footer a[href^='mailto:']:hover:after, footer a.map:hover:after {
 }
 footer a[href^='mailto:']:hover:after {
   background: white;
+}
+footer .fb {
+  display: inline-block;
+  position: relative;
+  padding-left: 20px;
+  margin: 1em 0;
+}
+footer .fb:before {
+  position: absolute;
+  display: block;
+  content: '';
+  left: 0;
+  top: 0;
+  width: 11px;
+  height: 20px;
+  background-position: -770px -145px;
+}
+footer .fb:hover:after {
+  position: absolute;
+  display: block;
+  content: '';
+  bottom: -1px;
+  height: 1px;
+  width: 100%;
+  margin-left: -20px;
+  background: white;
+}
+footer .fb:hover:before {
+  /* 				@include sprites-sprite(fb); */
 }
 
 @-moz-keyframes saltshaker {
@@ -1662,16 +1699,22 @@ footer a[href^='mailto:']:hover:after {
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+  	/*
   body,
-  #content,
-  #header,
-  #footer,
-  #work .block {
-    max-width: 768px;
-    width: 100%;
-    overflow-x: hidden;
-  }
+  	#content,
+  	#header,
+  	#footer,
+  	#work .block {
+  		max-width: 768px;
+  		width: 100%;
+  		overflow-x: hidden;
+  	}
+  */
 }
+#banner.collapsed .filters {
+  max-width: 100%;
+}
+
 .filters {
   padding: 2em 0em 2em 1em;
   max-width: 400px;
@@ -1777,13 +1820,18 @@ footer a[href^='mailto:']:hover:after {
   /* 		left: -2em; */
   background: rgba(0, 0, 0, 0.5);
   width: 960px;
-  height: 160px;
+  min-height: 160px;
   color: white;
   margin: 0 0 0 -30em;
   position: fixed;
   left: 50%;
-  top: 102px;
+  top: 111px;
   /* 		margin-left: -30em; */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
   -webkit-transition: height 0.4s;
   -moz-transition: height 0.4s;
   -o-transition: height 0.4s;
@@ -1797,7 +1845,7 @@ footer a[href^='mailto:']:hover:after {
   font-size: 1em;
 }
 .individualentry header .details {
-  padding: 2em 5em 0em 5em;
+  padding: 2em 5em;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -1812,10 +1860,13 @@ footer a[href^='mailto:']:hover:after {
   background: white;
 }
 .individualentry header.small {
-  height: 78px;
+  /* 			height: 78px; */
+  top: 111px !important;
+  min-height: 78px;
+  height: auto;
 }
 .individualentry header.small .details {
-  padding: 1em 5em 0 5em;
+  padding: 1em 5em;
 }
 .individualentry header.small h1 {
   font-size: 1.375em;
@@ -2076,7 +2127,7 @@ footer a[href^='mailto:']:hover:after {
 #projectnav .next:after {
   right: 1.2em;
   top: 1.5em;
-  background-position: -943px -234px;
+  background-position: -792px -145px;
 }
 #projectnav .next:before {
   display: none;
@@ -2099,7 +2150,7 @@ footer a[href^='mailto:']:hover:after {
 #projectnav .previous:before {
   margin-left: 0;
   margin-right: 1.2em;
-  background-position: -915px -234px;
+  background-position: -820px -145px;
 }
 #projectnav .previous:hover:before {
   left: 1.2em;
@@ -2138,7 +2189,7 @@ footer a[href^='mailto:']:hover:after {
   }
   #banner.collapsed .filters, #banner.small .filters {
     text-align: left;
-    padding: 0px 0 0 16px;
+    padding: 0;
     width: 100%;
   }
   #banner.collapsed .filters a, #banner.small .filters a {
@@ -2211,6 +2262,7 @@ footer a[href^='mailto:']:hover:after {
     background: rgba(0, 0, 0, 0.5);
     width: 100% !important;
     height: auto;
+    min-height: inherit;
     color: white;
     padding: 0 !important;
     left: 0;
@@ -2293,6 +2345,9 @@ footer a[href^='mailto:']:hover:after {
     width: 100%;
     height: auto;
     margin-top: 32px;
+  }
+  #banner.collapsed .filters {
+    margin-top: 0;
   }
   #banner.small .container {
     text-align: center;
@@ -2463,6 +2518,11 @@ footer a[href^='mailto:']:hover:after {
  * *************** */
 .individualentry {
   background: #f3f3f3;
+  	/*
+  img {
+  		margin: 0 0 0 -1em;
+  	}
+  */
 }
 .individualentry .container {
   position: relative;
@@ -2476,9 +2536,6 @@ footer a[href^='mailto:']:hover:after {
   font-style: italic;
   font-size: 16;
   /* 		padding: 0 (40/$font-size)+em; */
-}
-.individualentry img {
-  margin: 0 0 0 -1em;
 }
 .individualentry ul {
   margin: 0;
@@ -2594,7 +2651,7 @@ footer a[href^='mailto:']:hover:after {
 }
 #articleLinks .website:before {
   background-color: whitesmoke;
-  background-position: -751px -145px;
+  background-position: -848px -145px;
 }
 #articleLinks .website:hover {
   background: #00bbde;

@@ -49,15 +49,23 @@ setTimeout(function() {
 			if(targetHeight > 0) {
 				$('#content, #work').height(targetHeight);
 			}
+			
+			var w = window,
+			    d = document,
+			    e = d.documentElement,
+			    g = d.getElementsByTagName('body')[0],
+			    x = w.innerWidth || e.clientWidth || g.clientWidth,
+			    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
 
 			
 
 			$('#work .block').each(function(i, el) {
-				var top = (i * ($(window).height() - $('#header').height()));
-				$(this).height($(window).height() - $('#header').height());
+				var top = (i * (y - $('#header').height()));
+				
 				$(this).css({
 					width: $(window).width(),
-					height: $(window).height(),
+					height: y - $('#header').height(),
 					top: top
 				});
 
@@ -105,7 +113,9 @@ setTimeout(function() {
 		_resize();
 		
 		if(!$('body').is('.mobile')) {
-			$(window).resize(_resize);
+			$(window).resize(function() {
+				_resize();
+			});
 		}
 
 		/*
