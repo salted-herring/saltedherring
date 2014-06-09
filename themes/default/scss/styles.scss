@@ -932,7 +932,7 @@ min-width: 768px;
 	#header,
 	#footer,
 	#work .block {
-		max-width: 1024px;
+		min-width: 768px;
 		width: 100%;
 		overflow-x: hidden;
 	}
@@ -944,7 +944,7 @@ min-width: 768px;
 	#header,
 	#footer,
 	#work .block {
-		max-width: 1024px;
+		min-width: 1024px;
 		width: 100%;
 		overflow-x: hidden;
 	}
