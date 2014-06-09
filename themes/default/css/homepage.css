@@ -1639,6 +1639,14 @@ footer .fb:hover:before {
     width: 100%;
     overflow-x: hidden;
   }
+
+  #footer {
+    text-align: center;
+  }
+  #footer .fb {
+    margin-left: 1em;
+    margin-top: 0;
+  }
 }
 @media (min-width: 481px) and (max-width: 768px) {
   body,
@@ -2085,7 +2093,7 @@ section .links a {
 }
 section .intro {
   background: rgba(0, 211, 255, 0.6);
-  font-size: 1.125em;
+  /* 		font-size: (18/$font-size)+em; */
   position: absolute;
   bottom: 0;
   z-index: 10;
@@ -2149,7 +2157,7 @@ section .intro .contactlinks a {
   padding-right: 3em;
 }
 section .intro .contactlinks a[href^="/"], section .intro .contactlinks a[href^="http"] {
-  font-size: 24px;
+  /* 					font-size: 24px; */
 }
 section .intro .contactlinks a[href^="/"]:hover, section .intro .contactlinks a[href^="http"]:hover {
   color: white;

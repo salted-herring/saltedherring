@@ -1639,6 +1639,14 @@ footer .fb:hover:before {
     width: 100%;
     overflow-x: hidden;
   }
+
+  #footer {
+    text-align: center;
+  }
+  #footer .fb {
+    margin-left: 1em;
+    margin-top: 0;
+  }
 }
 @media (min-width: 481px) and (max-width: 768px) {
   body,
@@ -2818,6 +2826,16 @@ footer .fb:hover:before {
 
   #interestedin {
     display: none;
+  }
+
+  section.individualentry header {
+    top: 0 !important;
+  }
+  section.individualentry header .details {
+    padding: 16px !important;
+  }
+  section.individualentry .media img {
+    margin-bottom: 16px !important;
   }
 }
 @media (max-width: 480px) {

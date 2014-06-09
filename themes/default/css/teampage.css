@@ -1639,6 +1639,14 @@ footer .fb:hover:before {
     width: 100%;
     overflow-x: hidden;
   }
+
+  #footer {
+    text-align: center;
+  }
+  #footer .fb {
+    margin-left: 1em;
+    margin-top: 0;
+  }
 }
 @media (min-width: 481px) and (max-width: 768px) {
   body,
@@ -2558,6 +2566,20 @@ footer .fb:hover:before {
     margin-top: 0em;
   }
 
+  aside {
+    width: 100% !important;
+    float: none !important;
+    margin: 0 0 32px 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+  aside strong,
+  aside span,
+  aside a {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   #teammember {
     width: 100% !important;
     overflow: visible;
@@ -2610,10 +2632,12 @@ footer .fb:hover:before {
   }
 
   #teammember blockquote,
-  #teammember aside,
-  #teammember a {
+  #teammember aside {
     padding: 0 16px !important;
     margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   #teammember p {
     padding: 0 16px;
@@ -2622,22 +2646,16 @@ footer .fb:hover:before {
 
   #content {
     padding: 0 !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   #content .content {
-    padding-bottom: 2em;
+    padding-bottom: 1em;
   }
 
   blockquote {
     margin-bottom: 16px !important;
-  }
-
-  aside {
-    width: 100% !important;
-    float: none !important;
-  }
-  aside strong,
-  aside span {
-    margin: auto 16px;
   }
 
   #contentarea {

@@ -185,6 +185,21 @@
 		margin-top: 0em;
 	}
 	
+	aside {
+		width: 100% !important;
+		float: none !important;
+		margin: 0 0 32px 0 !important;
+		padding: 0 !important;
+		display: block !important;
+		
+		strong,
+		span,
+		a {
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+	}
+	
 	#teammember {
 		width: 100% !important;
 		overflow: visible;
@@ -244,10 +259,10 @@
 	
 	#teammember  {
 		blockquote,
-		aside,
-		a {
+		aside {
 			padding: 0 16px !important;
 			margin: 0;
+			@include box-sizing(border-box);
 		}
 		
 		p {
@@ -258,24 +273,17 @@
 	
 	#content {
 		padding: 0 !important;
+		@include box-sizing(border-box);
 		
 		.content {
-			padding-bottom: 2em;
+			padding-bottom: 1em;
 		}
 	}
 	
 	blockquote {
 		margin-bottom: 16px !important;
 	}
-	aside {
-		width: 100% !important;
-		float: none !important;
-		
-		strong,
-		span {
-			margin: auto 16px;
-		}
-	}
+	
 	
 	#contentarea {
 		margin-top: 1em;

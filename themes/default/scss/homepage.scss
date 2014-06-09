@@ -397,7 +397,7 @@ nav {
 	
 	.intro {
 		background: rgba(0, 211, 255, .6);
-		font-size: (18/$font-size)+em;
+/* 		font-size: (18/$font-size)+em; */
 		position: absolute;
 		bottom: 0;
 		z-index: 10;
@@ -464,7 +464,7 @@ nav {
 				
 				&[href^="/"],
 				&[href^="http"] {
-					font-size: 24px;
+/* 					font-size: 24px; */
 					
 					&:hover {
 						color: $white;

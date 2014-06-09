@@ -843,6 +843,14 @@ and (max-device-width : 568px) {
 		width: 100%;
 		overflow-x: hidden;
 	}
+	
+	#footer {
+		text-align: center;
+		.fb {
+			margin-left: 1em;
+			margin-top: 0;
+		}
+	}
 }
 
 @include at-breakpoint(481px 3 768px) {

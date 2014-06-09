@@ -44,7 +44,6 @@ setTimeout(function() {
 		 * - The content container & each block are full height.
 		 * =========================== */
 		function _resize() {
-
 			var targetHeight = ($('#work .block').length * $(window).height()) - parseInt($('#content').css('padding-top')) - (($('#work .block').length - 1) * $('#header').height());
 			if(targetHeight > 0) {
 				$('#content, #work').height(targetHeight);
@@ -388,102 +387,106 @@ if($('body').is('.mobile')) {
 					}
 				}
 			}, 'json');
-		}
-		
-
-
-		
-
-
-
-
-
-
-
-		$('#nextnav a').click(function(e) {
-			e.preventDefault();
-
-			if($(this).parent().is('.up')) {
-				var first = $('.block').filter(function() {
-					return $(this).offset().top < $(window).scrollTop();
-				}).filter(':last');
-
-				if(first.index() == $('.block').length || first.index() == 1) {
-					target = first;
-				} else {
-					target = first.prev();
-				}
-
-				$('body,html').animate({
-					scrollTop: 0
-				}, 500);
-
-				return;
-
-			} else {
-				var first = $('.block').filter(function() {
-					return $(this).offset().top >= $(window).scrollTop();
-				}).filter(':first'),
-					target = first.next();
-			}
-
-			if(target.length > 0 && target.index() == 1) {
-				$('#nextnav').removeClass('up');
-			}
-
-			if(first && target.length > 0) {
-				$('body,html').animate({
-					scrollTop: target.offset().top - $('#header').height()
-				}, 500, function() {
-					$('#nextnav').removeClass('up');
-				});
-			} else {
-				$('#nextnav').addClass('up');
-				$('body,html').animate({
-					scrollTop: $('footer').offset().top
-				}, 500);
-			}
-		});
-
-
-		$('.first nav a').hover(function() {
-			$(this).parents('nav').toggleClass('hover');
-		});
-
-
-		/* ===========================
-		 * Animate news
-		 * =========================== */
-		if($('.news li').length > 0) {
-			var interval;
-
-			$('.news').each(function() {
-				$(this).hover(function() {
-					clearInterval(interval);
-				}, function() {
-					interval = getInterval();
-				});
-			});
-			function getInterval() {
-				return setInterval(function() {
-					$('.news li.active').animate({
-						top: '-24px'
-					}, 500, function() {
-						var clone = $(this).removeClass('active').removeAttr('style').clone();
-						$(this).next().addClass('active');
-						$('.news').append(clone);
-						$(this).remove();
-					});
-
-					$('.news li.active').next().animate({
-						top: 0
+			
+			$('#nextnav a').click(function(e) {
+				e.preventDefault();
+	
+				if($(this).parent().is('.up')) {
+					var first = $('.block').filter(function() {
+						return $(this).offset().top < $(window).scrollTop();
+					}).filter(':last');
+	
+					if(first.index() == $('.block').length || first.index() == 1) {
+						target = first;
+					} else {
+						target = first.prev();
+					}
+	
+					$('body,html').animate({
+						scrollTop: 0
 					}, 500);
-				}, 4000);
+	
+					return;
+	
+				} else {
+					var first = $('.block').filter(function() {
+						return $(this).offset().top >= $(window).scrollTop();
+					}).filter(':first'),
+						target = first.next();
+				}
+	
+				if(target.length > 0 && target.index() == 1) {
+					$('#nextnav').removeClass('up');
+				}
+	
+				if(first && target.length > 0) {
+					$('body,html').animate({
+						scrollTop: target.offset().top - $('#header').height()
+					}, 500, function() {
+						$('#nextnav').removeClass('up');
+					});
+				} else {
+					$('#nextnav').addClass('up');
+					$('body,html').animate({
+						scrollTop: $('footer').offset().top
+					}, 500);
+				}
+			});
+	
+	
+			$('.first nav a').hover(function() {
+				$(this).parents('nav').toggleClass('hover');
+			});
+			
+			/* ===========================
+			 * Animate news
+			 * =========================== */
+			if($('.news li').length > 0) {
+				var interval;
+	
+				$('.news').each(function() {
+					$(this).hover(function() {
+						clearInterval(interval);
+					}, function() {
+						interval = getInterval();
+					});
+				});
+				function getInterval() {
+					return setInterval(function() {
+						$('.news li.active').animate({
+							top: '-24px'
+						}, 500, function() {
+							var clone = $(this).removeClass('active').removeAttr('style').clone();
+							$(this).next().addClass('active');
+							$('.news').append(clone);
+							$(this).remove();
+						});
+	
+						$('.news li.active').next().animate({
+							top: 0
+						}, 500);
+					}, 4000);
+				}
+	
+	
+				interval = getInterval();
 			}
-
-
-			interval = getInterval();
 		}
+		
+
+
+		
+
+
+
+
+
+
+
+		
+
+
+		
 
 
 

@@ -478,6 +478,22 @@ width: 90%;
 	#interestedin {
 		display: none;
 	}
+	
+	section.individualentry {
+		header {
+			top: 0 !important;
+			
+			.details {
+				padding: 16px !important;
+			}
+		}
+		
+		.media {
+			img {
+				margin-bottom: 16px !important;
+			}
+		}
+	}
 }
 
 
