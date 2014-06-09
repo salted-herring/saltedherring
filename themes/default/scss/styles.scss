@@ -926,17 +926,26 @@ min-width: 768px;
 	}
 }
 
-
-@include at-breakpoint(768px 3 1024px) {
-	/*
-body,
+@include at-breakpoint(768px 3 768px) {
+	body,
 	#content,
 	#header,
 	#footer,
 	#work .block {
-		max-width: 768px;
+		max-width: 768;
 		width: 100%;
 		overflow-x: hidden;
 	}
-*/
+}
+
+@include at-breakpoint(1024px 3 1024px) {
+	body,
+	#content,
+	#header,
+	#footer,
+	#work .block {
+		max-width: 1024px;
+		width: 100%;
+		overflow-x: hidden;
+	}
 }

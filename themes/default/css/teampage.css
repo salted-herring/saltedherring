@@ -1698,18 +1698,27 @@ footer .fb:hover:before {
     padding: 6em 2em;
   }
 }
-@media (min-width: 768px) and (max-width: 1024px) {
-  	/*
+@media (min-width: 768px) and (max-width: 768px) {
   body,
-  	#content,
-  	#header,
-  	#footer,
-  	#work .block {
-  		max-width: 768px;
-  		width: 100%;
-  		overflow-x: hidden;
-  	}
-  */
+  #content,
+  #header,
+  #footer,
+  #work .block {
+    max-width: 768;
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1024px) {
+  body,
+  #content,
+  #header,
+  #footer,
+  #work .block {
+    max-width: 1024px;
+    width: 100%;
+    overflow-x: hidden;
+  }
 }
 #banner.collapsed .filters {
   max-width: 100%;
