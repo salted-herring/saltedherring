@@ -680,19 +680,31 @@ nav {
 		.intro {
 			display: none;
 			
+			.container {
+				width: auto;
+				overflow: visible;
+			}
+			
 			.contactlinks {
 				float: none;
+/* 				width: 100%; */
+				background: red;
+				margin: auto;
+				text-align: center !important;
 			}
 			.news {
 				display: none;
 			}
 			ul {
 				padding: 0;
+				width: auto !important;
 			}
 			
 			li {
-				margin-left: -4px;
-				margin-right: 1em;
+				margin: 0;
+/* 				margin-left: -4px; */
+/* 				margin-right: 1em; */
+/* 				width: 50% !important; */
 			}
 			
 			a {
@@ -700,11 +712,13 @@ nav {
 			}
 			
 			.contact {
-				margin-right: 0;
+				/*
+margin-right: 0;
 				
 				a {
 					padding-left: 1em !important;
 				}
+*/
 			}
 		}
 		

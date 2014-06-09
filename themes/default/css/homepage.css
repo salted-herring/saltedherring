@@ -2345,27 +2345,41 @@ section .contact {
   section .intro {
     display: none;
   }
+  section .intro .container {
+    width: auto;
+    overflow: visible;
+  }
   section .intro .contactlinks {
     float: none;
+    /* 				width: 100%; */
+    background: red;
+    margin: auto;
+    text-align: center !important;
   }
   section .intro .news {
     display: none;
   }
   section .intro ul {
     padding: 0;
+    width: auto !important;
   }
   section .intro li {
-    margin-left: -4px;
-    margin-right: 1em;
+    margin: 0;
+    /* 				margin-left: -4px; */
+    /* 				margin-right: 1em; */
+    /* 				width: 50% !important; */
   }
   section .intro a {
     padding: 0 !important;
   }
   section .intro .contact {
+    				/*
     margin-right: 0;
-  }
-  section .intro .contact a {
-    padding-left: 1em !important;
+    				
+    				a {
+    					padding-left: 1em !important;
+    				}
+    */
   }
   section .down {
     display: none !important;
