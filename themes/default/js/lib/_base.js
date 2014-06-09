@@ -21,9 +21,9 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
     }
 		
-	//
+	// ============================
 	// Show / hide the mobile menu.
-	//
+	//============================
 	$('#menu_icon').click(function(e) {
 		e.preventDefault();
 		$(this).toggleClass('collapse expand');
@@ -35,26 +35,25 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		$(this).addClass('current');
 	});
 	
-	$(document).on("mousemove", "#teammember .images.loaded", function(e) {
-		var count = $(this).find('img').length,
-			_width = 50,
-			pos = e.clientX;
-		
-		$(this).find('img').removeClass('current');
-		$(this).find('img').eq(Math.ceil(pos / _width) % count).addClass('current');
+	$('#projectnav a').hover(function() {
+		var _w = $(this).outerWidth(true) + Math.max($(this).find('strong').outerWidth(), $(this).find('em').outerWidth());
+		if($(this).is('.next')) {
+			$(this).find('em, strong').width(Math.max($(this).find('strong').outerWidth(), $(this).find('em').outerWidth())).css('right', $(this).outerWidth(true));
+		} else {
+			$(this).find('em, strong').css('left', $(this).outerWidth(true));
+		}
+		$(this).addClass('over').width(_w);
+	}, function() {
+		$(this).removeClass('over').removeAttr('style');
 	});
 	
-	$('#projectnav a').hover(function() {
+	
+	$(document).on('hover', '#projectnav a', function() {
+		$(this).width($(this).outerWidth(true) + Math.max($(this).find('strong').outerWidth(), $(this).find('em').outerWidth()));
 		$(this).addClass('over');
 	}, function() {
-		$(this).removeClass('over');
-	});
-	
-	
-	$(document).on('mouseover', '#projectnav a', function() {
-		$(this).width($(this).outerWidth(true) + Math.max($(this).find('strong').outerWidth(), $(this).find('em').outerWidth()));
-	}).on('mouseout', '#projectnav a', function() {
 		$(this).removeAttr('style');
+		$(this).removeClass('over');
 	});
 	
 	
@@ -91,18 +90,27 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 				}
 			}
 			
+			
+			
 			/* ===========================
 			 * Animation for banner as seen on
 			 * work & team landing pages.
 			 * =========================== */
 			
 			if($('body:not(.mobile) nav#banner').length > 0) {
-				if($(window).scrollTop() > 100) {
+				if($(window).scrollTop() > 200) {
 					$('nav#banner').addClass('small');
 				} else {
 					$('nav#banner').removeClass('small');
 				}
+			} else if($('body:not(.mobile) div#banner').length > 0) {
+				if($(window).scrollTop() > 50) {
+					$('header').addClass('small');
+				} else {
+					$('header').removeClass('delay').removeClass('small');//.css('top',0);
+				}
 			}
+			
 			
 			/* ===========================
 			 * Hide navigation at bottom 
@@ -123,7 +131,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 						left: 0 - (current-top)
 					});
 					
-					$('.overlay.small').css({
+					$('.overlay').css({
 						top: 102 - (current-top)
 					});
 				} else {
@@ -135,7 +143,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 						left: 0
 					});
 					
-					$('.overlay.small').css({
+					$('.overlay').css({
 						top: 102
 					});
 				}

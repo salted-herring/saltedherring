@@ -22,5 +22,4 @@ class CustomSiteConfig extends DataExtension {
 		$fields->addFieldToTab("Root.Google", new TextField('GoogleSiteVerificationCode', 'Google Site Verification Code'));
 		$fields->addFieldToTab("Root.Google", new TextField('GoogleAnalyticsCode', 'Google Analytics Code'));
 	}
-	
 }

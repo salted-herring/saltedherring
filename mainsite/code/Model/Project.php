@@ -37,6 +37,11 @@ class Project extends BaseDBO {
 	private static $defaults = array(
 		'isPublished' => true
 	);
+	
+	private static $summary_fields = array(
+		'Title',
+		'isPublished'
+	);
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
@@ -92,11 +97,20 @@ class Project extends BaseDBO {
 			$tagLine = new TextField('TagLine', 'Tag Line'),
 			$quote = new TextareaField('Quote'),
 			$cite = new TextField('Citation', 'Source'),
-			$categories = $this->ID ? new CheckboxSetField($name='Categories', $title='Categories', $source=$cats) : new LiteralField('CatWarn', '<p><strong>Categories</strong> can be added once the project has been created</p>'),
-			$serv = $this->ID ? new CheckboxSetField($name='Services', $title='Services', $source=$services) : new LiteralField('ServiceWarn', '<p><strong>Services</strong> can be added once the project has been created</p>'),
-			$client = new OptionsetField('ClientID', 'Client', $clients),
-			$related = $this->ID ? new CheckboxSetField($name='RelatedProjects', $title='Related Projects', $source=$rel) : new LiteralField('RelatedWarn', '<p><strong>Related Projects</strong> can be added once the project has been created</p>'),
+			$categories = $this->ID ? new ListboxField($name = "Categories", $title = "Categories") : new LiteralField('CatWarn', '<p><strong>Categories</strong> can be added once the project has been created</p>'),
+			$serv = $this->ID ? new ListboxField($name = "Services", $title = "Services") : new LiteralField('ServiceWarn', '<p><strong>Services</strong> can be added once the project has been created</p>'),
+			$client = new DropDownField('ClientID', 'Client', $clients),
+			$related = $this->ID ? new ListboxField($name = "RelatedProjects", $title = "Related Projects")  : new LiteralField('RelatedWarn', '<p><strong>Related Projects</strong> can be added once the project has been created</p>'),
 		));
+		
+		$categories->setSource($cats);
+		$categories->setMultiple(true);
+		
+		$serv->setSource($services);
+		$serv->setMultiple(true);
+		
+		$related->setSource($rel);
+		$related->setMultiple(true);
 		
 		$tagLine->setRightTitle('Short, single line description of project');
 		$cite->setRightTitle('Quotation source. Can contain html tags - e.g. to link to twitter etc.');
@@ -123,6 +137,11 @@ class Project extends BaseDBO {
 			);
 			
 			$fields->addFieldToTab('Root.Media', new GridField("Media", "Media", $this->Media(), $gridFieldConfig));
+			
+			$url = new HiddenField('URLSegment');
+			$url->setAttribute('data-prefix', 'http://' . $_SERVER['HTTP_HOST']);
+			$url->setAttribute('value', $this->Link());
+			$fields->addFieldToTab('Root.Main', $url);
 		}
 		
 		return $fields;
@@ -131,10 +150,6 @@ class Project extends BaseDBO {
 
 	public function getURL() {
 		return '/work/project/' . $this->URLSegment;
-	}
-	
-	public function canView($member = null) {
-		return true;//$this->isPublished;
 	}
 	
 	public function AbsoluteLink() {
@@ -170,6 +185,10 @@ class Project extends BaseDBO {
 	
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();
+		
+		if($this->MetaDescription == NULL) {
+			$this->MetaDescription = $this->Title . ' - ' . $this->TagLine;
+		}
 		
 		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
 		$data = array();
@@ -221,6 +240,17 @@ class Project extends BaseDBO {
 	
 	public function getValidRelatedProjects() {
 		return $this->RelatedProjects()->filter(array('isPublished' => 1));
+	}
+	
+	public function canView($member = null) {
+		if(Permission::check('ADMIN')) {
+			return true;
+		}
+		return $this->isPublished;
+	}
+	
+	public function getSiteConfig() {
+		return SiteConfig::current_site_config();
 	}
 }
 

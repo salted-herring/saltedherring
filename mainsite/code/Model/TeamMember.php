@@ -14,7 +14,8 @@ class TeamMember extends BaseDBO {
 	
 	private static $has_one = array(
 		'Photographer' => 'TeamMember',
-		'Colour' => 'Colour'
+		'Colour' => 'Colour',
+		'ThumbnailOver' => 'Image'
 	);
 	
 	private static $has_many = array(
@@ -96,7 +97,14 @@ class TeamMember extends BaseDBO {
 				$gridField = new GridField("Images", "Images", $this->Images(), $gridFieldConfig)
 			));
 			
+			$fields->insertAfter($fields->fieldByName('Root.Main.ThumbnailOver'), 'Thumbnail');
+			
 			$fields->addFieldToTab('Root.Images', new DropdownField('PhotographerID', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()), 'Images');
+			
+			$url = new HiddenField('URLSegment');
+			$url->setAttribute('data-prefix', 'http://' . $_SERVER['HTTP_HOST']);
+			$url->setAttribute('value', $this->Link());
+			$fields->addFieldToTab('Root.Main', $url);
 		}
 		
 		return $fields;
@@ -104,6 +112,10 @@ class TeamMember extends BaseDBO {
 	
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();
+		
+		if($this->MetaDescription == NULL) {
+			$this->MetaDescription = $this->FirstName . $this->LastName . ' - ' . $this->Role . '. ' .$this->Intro;
+		}
 		
 		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
 		$data = array();
@@ -125,15 +137,15 @@ class TeamMember extends BaseDBO {
 		}
 	}
 	
-	public function canView($member = null) {
-		return true;
-	}
-	
 	public function AbsoluteLink() {
 		return Director::absoluteURL($this->Link());
 	}
 	
 	public function Link() {
 		return '/team/' . $this->URLSegment;
+	}
+	
+	public function getSiteConfig() {
+		return SiteConfig::current_site_config();
 	}
 }

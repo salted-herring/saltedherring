@@ -56,8 +56,8 @@ article a {
 		position: absolute;
 		display: block;
 		content: '';
-		bottom: 5px;
-		height: 2px;
+		bottom: 4px;
+		height: 1px;
 		width: 100%;
 		background: transparent;
 	}
@@ -67,6 +67,10 @@ article a {
 			background: $black;
 		}
 	}
+}
+
+iframe {
+	max-width: 100%;
 }
 
 @import 'grid';
@@ -182,30 +186,39 @@ article a {
 	.row {
 		overflow: visible;
 		position: relative;
+		max-width: auto !important;
+	}
+	
+	.container {
+		padding: 0;
 	}
 }
 
+$logo-height: 23px;
 #logo {
 	position: relative;
-	padding-right: 2em;
-	padding-left: 2em;
+	padding-right: 0em;
+	padding-left: 1em;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	margin-left: -2em;
+	margin-right: 0em;
+	height: $logo-height;
 	display: inline-block;
-	background: $black;
 	
 	a {
 		@include hide_text;
 		display: block;
-		height: (14+18+18)/$font-size+em;
 		line-height: 0;
-		width: 143px;
+		width: 185px;
 		font-size: 0;
-		height: 14px;
-		@include sprites-sprite(salted-herring);
-		margin: 0 0 0 1em !important;
-		position: relative;
+		height: $logo-height;
+		@include sprites-sprite(SH_logo_site_black_sm);
+		position: absolute;
+/* 		left: 32px; */
+		
+		&:hover {
+			@include sprites-sprite(SH_logo_site_blue_sm);
+		}
 	}
 	
 }
@@ -218,9 +231,12 @@ article a {
 /* 	margin-left: -2.5em; */
 /* 	padding-right: .5em; */
 	position: absolute;
-	right: 2em;
+	padding-right: 1em;
 	top: 0em;
+	right: 0;
 	outline: none;
+	
+	@extend .clearfix;
 	
 	@include transform(translate3d(0,0,0));
 	@include transition(top .5s);
@@ -228,13 +244,14 @@ article a {
 	ul {
 		margin: 0 !important;
 		padding-left: 0;
-		text-align: right;
+/* 		text-align: right; */
 		border: none;
 		outline: none;
+		float: right;
 	}
 	
 	li {
-		padding: (18/$font-size)+em 0 0 0;
+		padding: (20/$font-size)+em 0 0 0;
 		display: inline-block;
 		padding-left: 1.3em;
 		line-height: 1em;
@@ -254,7 +271,7 @@ article a {
 		&:after {
 			position: absolute;
 			content: '';
-			bottom: -.55em;
+			bottom: -14px;
 			left: 0;
 			height: 4px;
 			width: 100%;
@@ -274,11 +291,12 @@ article a {
 	}
 	
 	&.hide {
-		top: -3em;
+		top: -57px;
 	}
 	
-	&.show {
-		top: 0em;
+	&.show,
+	&.collapse {
+		top: 55px;
 	}
 }
 
@@ -306,9 +324,7 @@ article a {
 	&.show {
 		top: .8em;
 	}
-}
-
-.mobile #menu_icon {
+	
 	@include sprites-sprite(menu-open);
 	
 	&.collapse {
@@ -327,11 +343,19 @@ article a {
 #content {
 	//@include transition(all .5s);
 	//@include at-breakpoint(0 3 320px) {
-		padding-top: 2.9em;
+		padding-top: 55px;
 		padding-bottom: 12em;
 /* 		min-height: 100%; */
 /* 		width: 100%; */
 	//}
+	
+	.content {
+		a {
+			color: $black;
+			display: inline-block;
+			font-style: italic;
+		}
+	}
 }
 
 #loader {
@@ -408,29 +432,35 @@ footer {
 		padding: 1em 0;
 		overflow: hidden;
 		
+		.container {
+			overflow: visible;
+		}
+		
 		span {
 			display: block;
 			position: relative;
 			
 			&:after {
 				position: absolute;
-				right: 6.5em;
-				top: .65em;
+				right: 9em;
+				top: 1em;
 				display: block;
 				content: '';
-				width: 62px;
-				height: 64px;
+				width: 118px;
+				height: 145px;
+				z-index: 0;
 				@include sprites-sprite(salt);
 			}
 			
 			&:before {
 				position: absolute;
 				right: 4em;
-				top: -3.8em;
+				top: -1em;
 				display: block;
 				content: '';
-				width: 139px;
-				height: 160px;
+				width: 272px;
+				height: 101px;
+				z-index: 2;
 				@include sprites-sprite(saltshaker);
 				@include animation(none);
 			}
@@ -447,6 +477,7 @@ footer {
 			&:after {
 				@include animation-timing-function(easeInOutBounce);
 				@include animation(salt .5s 2);
+				@include animation-delay(.1s);
 			}
 		}
 	}
@@ -474,6 +505,12 @@ footer {
 	a {
 		color: $white;
 		
+		&:hover {
+			&:after {
+				height: 1px;
+			}
+		}
+		
 		&[href^="tel:"] {
 			color: $black;
 			cursor: text;
@@ -493,8 +530,8 @@ footer {
 				position: absolute;
 				display: block;
 				content: '';
-				bottom: 0px;
-				height: 2px;
+				bottom: 1px;
+				height: 1px;
 				width: 100%;
 				background: transparent;
 			}
@@ -512,23 +549,57 @@ footer {
 			}
 		}
 	}
+	
+	.fb {
+		display: inline-block;
+		position: relative;
+		padding-left: 20px;
+		margin: 1em 0;
+		
+		&:before {
+			position: absolute;
+			display: block;
+			content: '';
+			left: 0;
+			top: 0;
+			width: 11px;
+			height: 20px;
+			@include sprites-sprite(fb_over);
+		}
+		
+		&:hover {
+			&:after {
+				position: absolute;
+				display: block;
+				content: '';
+				bottom: -1px;
+				height: 1px;
+				width: 100%;
+				margin-left: -20px;
+				background: $white;
+			}
+			&:before {
+/* 				@include sprites-sprite(fb); */
+			}
+		}
+	}
 }
 
 @include keyframes(saltshaker) {
   0%, 100% {
-    top: -3.8em;
+    top: -1em;
   }
   50% {
-    top: -3.5em;
+    top: -2em;
   }
 }
 
 @include keyframes(salt) {
   0%, 100% {
-    top: 0.65em;
+    top: 1em;
   }
   50% {
-    top: 1em;
+    top: .5em;
   }
 }
 
@@ -548,7 +619,7 @@ footer {
 		color: $white;
 		line-height: 160px;
 		font-weight: 800;
-		margin: 0 0 -48px -32px;
+		margin: 0 0 -48px 0px;
 		text-transform: uppercase;
 	}
 }
@@ -559,6 +630,7 @@ footer {
  * =========================== */
 
 
+/*
 .mobile #main_nav {
 	display: block;
 	
@@ -566,15 +638,22 @@ footer {
 		margin-right: 0;
 	}
 }
+*/ 
 
-#main_nav {
-	display: block;
-	ul {
-		margin-right: -1em;
-	}
-} 
  
-@include at-breakpoint(0 3 320px) {
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) and (min-device-width : 320px) 
+and (max-device-width : 568px) { 
+    #logo {
+	    a {
+		    background: url(../img/sprites/SH_logo_site_black.png) no-repeat;
+		    @include background-size(185px 23px);
+	    }
+    }
+}
+
+@include at-breakpoint(0 3 480px) {
 	html,
 	body {
 		height: 100%;
@@ -620,7 +699,7 @@ footer {
 		right: 1em !important;
 		display: block;
 		position: fixed;
-		top: .8em;
+		top: 1em;
 	}
 	
 	#header {
@@ -637,12 +716,15 @@ footer {
 	#logo {
 		left: 0;
 		margin: 0;
-/* 		padding-right: 2em; */
 		padding-left: 1em;
-/* 		margin-left: -1em; */
 		position: absolute;
 		z-index: 2;
-/* 		width: 20em; */
+		background: $background;
+		width: 100%;
+		
+		a {
+			left: 16px;
+		}
 	}
 	
 	#main_nav {
@@ -651,59 +733,57 @@ footer {
 		padding-right: 0em;
 		background: $background;
 		position: absolute;
-		z-index: 3;
+/* 		z-index: 1; */
 		left: 0;
 		width: 100%;
-		top: 0em;
 		right: 0;
+		top: -57px;
 		
 		&:before {
 			display: block;
 		}
 			
 		ul {
-				position: absolute;
-				z-index: 20;
-				left: 0;
-				width: 100%;
-				background: $white;
-				top: 46px;
-				height: 0;
-				overflow: hidden;
-				max-height: 1000px;
-				text-align: center;
-				padding: 0;
-				margin: 0;
-				
-				//@include scale(1.0,0,1);
-				
-				-webkit-backface-visibility: hidden;
-				-webkit-perspective: 1000;
-				
-				-webkit-transform-style: preserve-3d;
-				-webkit-user-select:none;
-				-moz-user-select:none;
-				
-				@include transition(all .2s);
-			}
+			position: absolute;
+			z-index: 0;
+			left: 0;
+			width: 100%;
+			background: $white;
+			top: 0;
+/* 			height: 0; */
+			overflow: hidden;
+			max-height: 1000px;
+			text-align: center;
+			padding: 0;
+			margin: 0;
+			
+			//@include scale(1.0,0,1);
+			
+			-webkit-backface-visibility: hidden;
+			-webkit-perspective: 1000;
+			
+			-webkit-transform-style: preserve-3d;
+			-webkit-user-select:none;
+			-moz-user-select:none;
+			
+			@include transition(all .2s);
+		}
 		
 		li {
-				//@include transition(opacity .2s);
-				//@include transition-delay(.2s);
-				//@include opacity(0);
-			}
+			padding: 1.25em 0 1.25em 1.25em;
+		}
 		
 		&.collapse {
-				ul {
-					//@include scale(1.0,1.0,1);
-					height: 3em;
-					overflow: visible;
-				}
-				li {
-					//@include transition-delay(0s);
-					//@include opacity(1.0);
-				}
+			ul {
+				//@include scale(1.0,1.0,1);
+/* 				height: 3em; */
+				overflow: visible;
 			}
+			li {
+				//@include transition-delay(0s);
+				//@include opacity(1.0);
+			}
+		}
 	}
 	
 	footer {
@@ -734,7 +814,7 @@ footer {
 		.row {
 			font-size: (16/$font-size)+em;
 			margin: 0;
-			padding: 1.5em 1em;
+			padding: 1.5em 0;
 			line-height: 1.2em;
 			
 			p {
@@ -754,13 +834,126 @@ footer {
 }
 */
 
-@include at-breakpoint(768px 3) {
-	body {
-/* 		min-width: 768px; */
+
+@include at-breakpoint(0 3 320px) {
+	body,
+	#content,
+	#footer {
+		min-width: 320px;
+		width: 100%;
 		overflow-x: hidden;
 	}
 	
-	body {
-		min-width: 1000px;
+	#footer {
+		text-align: center;
+		.fb {
+			margin-left: 1em;
+			margin-top: 0;
+		}
+	}
+}
+
+@include at-breakpoint(481px 3 768px) {
+	body,
+	#content,
+	#header,
+	#footer {
+		/*
+min-width: 768px;
+		width: 100%;
+		overflow-x: hidden;
+*/
+	}
+	
+	#footer {
+		overflow: hidden;
+	}
+	#footer {
+		.container {
+			max-width: 768px;
+		}
+		
+		.salt {
+			.container {
+				padding-left: 1em;
+				
+				&:before {
+					right: 1em;
+				}
+				
+				&:after {
+					right: 6em;
+				}
+			}
+		}
+		
+		.details {
+			.container {
+				padding: 6em 2em;
+			}
+		}
+	}
+}
+
+@include at-breakpoint(769px 3 1024px) {
+	
+	
+	/*
+#logo {
+		padding-left: 2em;
+	}
+*/
+	
+	#footer {
+		overflow: hidden;
+	}
+	#footer {
+		.container {
+			max-width: 1024px;
+		}
+		
+		.salt {
+			.container {
+				padding-left: 1em;
+				
+				&:before {
+					right: 1em;
+				}
+				
+				&:after {
+					right: 6em;
+				}
+			}
+		}
+		
+		.details {
+			.container {
+				padding: 6em 2em;
+			}
+		}
+	}
+}
+
+@include at-breakpoint(768px 3 768px) {
+	body,
+	#content,
+	#header,
+	#footer,
+	#work .block {
+		min-width: 1024px;
+		width: 100%;
+		overflow-x: hidden;
+	}
+}
+
+@include at-breakpoint(1024px 3 1024px) {
+	body,
+	#content,
+	#header,
+	#footer,
+	#work .block {
+		min-width: 1024px;
+		width: 100%;
+		overflow-x: hidden;
 	}
 }

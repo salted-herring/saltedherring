@@ -1,9 +1,15 @@
-@import 'compass/css3', 'animation';
+@import 'compass/css3', 'animation', 'ceaser-easing';
 
+
+#banner.collapsed {
+	.filters {
+		max-width: 100%;
+	}
+}
 
 .filters {
 	padding: 2em 0em 2em 1em;
-	width: 420px;
+	max-width: 400px;
 	
 	a {
 		@include minion;
@@ -41,8 +47,8 @@
 
 .records {
 	padding: 0;
-	width: 960px !important;
-	max-width: 960px !important;
+	width: 960px;
+	max-width: 960px;
 	margin-bottom: 6em;
 	@include transition(height .5s);
 	
@@ -80,7 +86,7 @@
 		background: rgba(0,0,0,0.4);
 		width: 256px;
 		padding: 1em 2em;
-		min-height: 80px;
+		min-height: 0px;
 		@include transition(bottom .3s);
 		
 		&:before {
@@ -108,34 +114,58 @@
 	margin-top: 56px;
 		
 	header {
-		position: absolute;
+/* 		position: absolute; */
 		z-index: 3;
-		top: 0;
-		left: -2em;
+/* 		top: 0; */
+/* 		left: -2em; */
 		background: rgba(0,0,0,0.5);
 		width: 960px;//800px;
-		height: 235px;
+		min-height: 160px;
 		color: $white;
-		margin: 0;
+		margin: 0 0 0 -30em;
+		
+		position: fixed;
+		left: 50%;
+		top: 111px;
+/* 		margin-left: -30em; */
+		@include transform(translateZ(0));
+		
+		&.delay  {
+			h1 {
+				font-size: (22/$font-size)+em;
+				margin: 0;
+			}
+			span {
+				font-size: 1em;
+			}
+		}
+		
+		@include transition(height .4s);
 		
 		.details {
-			padding: 3.5em 5em 5em 5em;
+			padding: 2em 5em;
 			@include transform(translateZ(0));
+			@include transition(all .4s);
 		}
 		
-		.details {
-			@include transition_delay(1s);
-			@include transition(all .2s);
+		h1 {
+			//@include transition(font .08s ceaser($easeOutCubic));
 		}
 		
+		a {
+			&:hover {
+				&:after {
+					background: $white;
+				}
+			}
+		}
 		
 		
 		&.small {
-			height: 78px;
-			position: fixed;
-			left: 50%;
-			top: 102px;
-			margin-left: -30em;
+/* 			height: 78px; */
+			top: 111px !important;
+			min-height: 78px;
+			height: auto;
 			
 			.details {
 				padding: 1em 5em;
@@ -195,6 +225,10 @@
 	height: 112px;
 	@include transition(height .2s 0 easInOutCubic, padding .5s 0 ease);
 	
+	.container {
+		height: 112px;
+	}
+	
 	h1,strong {
 		@include transition(top .2s 0 easeInOutSine);
 	}
@@ -235,10 +269,20 @@
 	
 	&.small {
 		.filters {
+			width: 100%;
+			max-width: 960px;
+			left: 0;
+			
 			strong {
 				display: none;
 			}
 		}
+	}
+	
+	.filters {
+		padding-top: 0;
+		top: inherit;
+		bottom: -.5em;
 	}
 }
 
@@ -270,6 +314,9 @@
 		height: 48px;
 		width: 3em;
 		
+		//@include transition-delay(5s);
+		@include transition(width .2s);
+		
 		strong {
 			display: block;
 		}
@@ -291,6 +338,8 @@ width: auto;
 */
 			}
 			
+			
+			
 			&:after,
 			&:before {
 				position: absolute;
@@ -299,19 +348,24 @@ width: auto;
 		
 		
 		&.over {
+			//@include transition-delay(0s);
 			//@include transition(width .2s 0s);
 			strong,
 			em {
+				//@include transition-delay(0s);
 /* 				@include transition(opacity .2s 1s); */
 			}
 		}
 	}
 	
 	strong, em {
-		display: inline-block;
+		display: block;
+		position: fixed;
 		white-space: nowrap;
 		@include opacity(0);
-/* 		@include transition(none); */
+		overflow: visible;
+		//@include transition-delay(.5s);
+		@include transition(opacity .1s);
 	}
 	
 	strong {
@@ -319,23 +373,22 @@ width: auto;
 	}
 	em {
 		@include minion;
+		margin-top: 1.5em;
 	}
 	
 	.next {
 		right: 0;
 		
-		strong,
+		/*
+strong,
 		em {
-			/*
-padding-right: 70px;
-			margin-right: -50px;
-*/
+			padding-right: 0px;
 		}
+*/
 		
 		&:after {
 			right: 1.2em;
 			top: 1.5em;
-			//margin-right: 1.2em;
 			@extend .arrow;
 			@include sprites-sprite(next_arrow);
 		}
@@ -355,10 +408,10 @@ padding-right: 70px;
 		
 		strong,
 		em {
-/* 			padding-right: 1.2em; */
-			padding-right: 20px;
-/* 			padding-left: 50px; */
-/* 			margin-left: -50px; */
+			/*
+padding-right: 20px;
+			padding-left: 50px;
+*/
 			float: right;
 			text-align: left
 		}
@@ -391,9 +444,17 @@ padding-right: 70px;
 		display: block;
 		position: relative;
 		height: auto;
-		padding: 16px 0;
+		padding: 0 !important;
 		width: 100%;
 		overflow: hidden;
+		margin-top: 55px;
+		
+		.container {
+			height: auto;
+			overflow: visible;
+			padding: 0;
+			@include box-sizing(border-box);
+		}
 		
 		&.collapsed,
 		&.small {
@@ -404,7 +465,7 @@ padding-right: 70px;
 			
 			.filters {
 				text-align: left;
-				padding: 0px 0 0 16px;
+				padding: 0;
 				width: 100%;
 				
 				a {
@@ -416,15 +477,18 @@ padding-right: 70px;
 		.filters {
 			top: auto;
 			right: auto;
-			padding: 0px 0 0 16px;
+			padding: 0px;
 			position: relative;
 			width: 100%;
-			margin: 0;
+			margin: 0 !important;
+			bottom: 0;
 			
 			a {
-				&:after {
+				/*
+&:after {
 					margin-right: 0;
 				}
+*/
 			}
 			
 			strong {
@@ -435,6 +499,11 @@ padding-right: 70px;
 		h1 {
 			display: none;
 		}
+	}
+	
+	section#work,
+	section#project {
+		margin-top: 0 !important;
 	}
 	
 	blockquote,
@@ -473,6 +542,8 @@ padding-right: 70px;
 		display: none !important;
 	}
 	
+	
+	
 	.individualentry {
 /* 		margin-top: 56px; */
 			
@@ -484,6 +555,7 @@ padding-right: 70px;
 			background: rgba(0,0,0,0.5);
 			width: 100% !important;//800px;
 			height: auto;
+			min-height: inherit;
 			color: $white;
 			padding: 0 !important;
 			left: 0;
@@ -528,6 +600,118 @@ padding-right: 70px;
 			.photographer {
 				float: right;
 				font-size: $font-size+px;
+			}
+		}
+	}
+}
+
+@include at-breakpoint(460px 3 1023px) {
+	.records {
+		width: 100%;
+		max-width: 640px;
+	}
+}
+
+@include at-breakpoint(1024px 3 0) {
+	.records {
+		width: 100%;
+		max-width: 960px;
+	}
+}
+
+@include at-breakpoint(0 3 1023px) {
+	#banner {
+		height: auto !important;
+		padding: 16px !important;
+		width: 100% !important;
+		@include box-sizing(border-box);
+		
+		h1 {
+			position: relative;
+		}
+		
+		.filters {
+			/*
+margin-top: 32px;
+			padding-left: 32px;
+*/
+			position: relative;
+			left: 0px !important;
+			right: auto;
+			bottom: auto;
+			float: left;
+			max-width: 768px;
+			width: 100%;
+			height: auto;
+			margin-top: 32px;
+			
+		}
+		
+		&.collapsed {
+			.filters {
+				margin-top: 0;
+			}
+		}
+		
+		&.small {
+			.container {
+				text-align: center;
+			}
+			.filters {
+				position: absolute;
+				top: 0;
+				padding: 0;
+				margin: 0;
+				width: 100% !important;
+				max-width: 960px;
+				text-align: center;
+				padding: 0 2em;
+				@include box-sizing(border-box);
+			}
+		}
+	}
+	
+	#project {
+		margin-top: 80px !important;
+	}
+	
+	#work {
+		margin-top: 342px !important;
+	}
+}
+
+@include at-breakpoint(0 3 1024px) {
+	
+	#banner {
+		h1 {
+			padding-left: 32px;
+			margin-left: 0;
+		}
+		
+		.container {
+			overflow: visible;
+		}
+	}
+	
+	#logo {
+		padding-left: 32px;
+	}
+	
+	#main_nav {
+		padding-right: 32px;
+	}
+}
+
+@include at-breakpoint(768px 3 1024px) {
+	#banner {
+		.filters {
+			right: auto;
+			left: 454px;
+		}
+		
+		&.small {
+			.filters {
+				text-align: center;
 			}
 		}
 	}

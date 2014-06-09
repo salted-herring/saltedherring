@@ -28,10 +28,11 @@ h1,
 
 .keyword {
 	width: 100%;
+	margin-top: -90px;
 }
 
 .large {
-	margin-top: -120px;
+	margin-top: -200px;
 }
 
 h1 {
@@ -90,11 +91,14 @@ h1 {
 }
 
 .headingwrapper {
-	width: 100%;
+	width: 400px;
+	margin-left: -200px;
 	position: fixed;
 	text-align: center;
 	top: 50%;
-	height: 104px;
+	left: 50%;
+	height: 89px;
+	margin-top: -84px;
 }
 
 #nextnav {
@@ -102,33 +106,30 @@ h1 {
 	z-index: 100;
 	left: 50%;
 	bottom: 0;
-	margin-left: -43px;
-	background: $black;
-/* 	@include transform(translateZ(0)); */
-/* 	display: none; */
-/* 	@include hide_text; */
+	margin-left: -42.5px;
 	
 	a {
-		display: inline-block;
+		display: block;
 		background-color: $black;
-		padding: 1.2em 2em 1em 2em;
+		padding: 19px 2em;
 		@include hide_text;
 		width: 21px;
-/* 		height: 28px !important; */
+		height: 28px ;
 		position: relative;
-		height: 100%;
 		
-		@include transition(none);
+		@include transition(background .2s ease);
 		
 		&:before {
 			position: absolute;
-/* 			left: 2em; */
-/* 			top: 1.5em; */
 			width: 21px;
-			height: 28px !important;
+			height: 28px;
 			content: '';
 			display: block;
 			@include sprites-sprite(down_arrow);
+		}
+		
+		&:hover {
+			background: transparent;
 		}
 	}
 	
@@ -143,6 +144,18 @@ h1 {
 	display: none;
 }
 
+.no-js {
+	section {
+		.block {
+			display: none;
+			
+			&:first-child {
+				display: block;
+			}
+		}
+	}
+}
+
 section {
 	position: relative;
 	a {
@@ -150,10 +163,13 @@ section {
 	}
 	
 	.block {
-/* 		position: absolute; */
 		height: 100%;
 		width: 100%;
-/* 		background-color: red; */
+		display: none;
+		
+		&.show {
+			display: block;
+		}
 	}
 	
 	.text {
@@ -207,16 +223,23 @@ section {
 	.heading {
 		position: fixed;
 		overflow: hidden;
-		height: 95px;
+		height: 89px;
+		display: none;
 		
 		h1 {
-			margin-top: -97px;
+			margin-top: -170px;
 			position: fixed;
 			top: 50%;
 		}
 	}
 	
 	.first {
+		.keyword {
+			margin-top: -30px;
+		}
+		.large {
+			margin-top: -140px;
+		}
 /* 		z-index: 1; */
 /* 		@include transform(translateZ(1)); */
 		.text {
@@ -232,24 +255,22 @@ nav {
 */
 		
 		.digital {
-			color: $blue;
+			color: $white;
 			font-size: (42/$font-size)+em;
-			text-transform: uppercase;
+			text-transform: capitalize;
 			line-height: 1em;
 			font-weight: 500;
 			position: absolute;
 			display: block;
 			text-align: center;
 			width: 100%;
+			font-style: italic;
+			font-family: "minion-pro", Times, serif;
 /* 			left: 50%; */
 /* 			margin-left: -(247/2)+px !important; */
 			top: 50%;
 			
-			margin-top: 140px;
-		}
-		
-		&.init {
-			z-index: 2;
+			margin-top: 85px;
 		}
 	}
 	
@@ -309,7 +330,6 @@ nav {
 			padding: 0;
 			margin-left: -4px;
 			display: inline-block;
-/* 			background: red; */
 		}
 		
 		a {
@@ -383,9 +403,9 @@ nav {
 	
 	.intro {
 		background: rgba(0, 211, 255, .6);
-		font-size: (18/$font-size)+em;
+/* 		font-size: (18/$font-size)+em; */
 		position: absolute;
-		bottom: 46px;
+		bottom: 0;
 		z-index: 10;
 		width: 100%;
 		min-height: 66px;
@@ -397,7 +417,7 @@ nav {
 		
 		ul {
 			list-style: none;
-			padding: 1.5em 0 0 0;
+			padding: 0;//1.5em 0 0 0;
 			margin: 0;
 			display: inline;
 		}
@@ -410,6 +430,12 @@ nav {
 			a {
 				color: $black;
 			}
+		}
+		
+		.container {
+			margin: 0;
+			width: 100%;
+			max-width: 100% !important;
 		}
 		
 		.down {
@@ -435,20 +461,40 @@ nav {
 		}
 		
 		.contactlinks {
-			width: 433px;
+/* 			width: 415px; */
+			text-align: right;
+			margin-top: 20px;
 			
 			a {
 				padding-right: 3em;
+				
+				&[href^="/"],
+				&[href^="http"] {
+/* 					font-size: 24px; */
+					
+					&:hover {
+						color: $white;
+					}
+				}
+				
+				&[href^="tel:"] {
+					cursor: text;
+				}
+				
+				
+				&:last-child {
+					padding-right: 1em;
+				}
 			}
 		}
 		.news {
 			padding-left: 2em;
-			width: 398px;
+/* 			width: 398px; */
 			overflow: hidden;
 			height: 24px;
 			position: relative;
 			padding: 0;
-			margin: 1.5em 0 0 2em;
+			margin: 23px 0 0 0em;
 			float: right !important;
 			
 			li {
@@ -462,6 +508,10 @@ nav {
 				}
 			}
 			
+			a:hover {
+				color: $black;
+			}
+			
 			p {
 				margin: 0;
 			}
@@ -470,6 +520,20 @@ nav {
 		.contactlinks,
 		.down {
 			float: left;
+		}
+		
+		.contactlinks,
+		.news {
+			width: 50%;
+			@include box-sizing(border-box);
+		}
+		
+		.news {
+			padding-left: 10px;
+		}
+		
+		.contactlinks {
+			padding-right: 80px;
 		}
 		
 		a {
@@ -516,11 +580,21 @@ nav {
 	.block {
 		height: 100%;
 		background-repeat: no-repeat;
-/* 		background-size: 1920px 1200px; */
+		@include background-size(cover);
 		background-attachment: fixed;
 		background-position: 50% 0;
+		background-image: none;
 		position: absolute;
-/* 		@include transform(translate3d(0,0,10), translateZ(10)); */
+		@include transform(translate3d(0,0,10), translateZ(10));
+		
+		img {
+			z-index: 0;
+			display: none;
+			
+			&.current {
+				display: block;
+			}
+		}
 	}
 	
 	.overlay {
@@ -529,12 +603,12 @@ nav {
 		position: absolute;
 		left: 0;
 		top: 0;
-/* 		display: none; */
 		background-repeat: no-repeat;
+		@include background-size(cover);
 /* 		background-size: 120%; */
 		background-attachment: fixed;
 		background-position: 50% 0;
-/* 		@include transform(translate3d(0,0,11), translateZ(11)); */
+		@include transform(translate3d(0,0,11), translateZ(11));
 	}
 }
 
@@ -549,6 +623,11 @@ nav {
 	.block {
 		margin: 0 !important;
 		padding: 0;
+		height: 480px;
+		
+		.overlay {
+			display: none;
+		}
 	}
 	
 	#main_nav {
@@ -563,15 +642,23 @@ nav {
 	section {
 		margin: 0;
 		
+		&:before,
+		&:after {
+			display: none;
+		}
+		
 		.contain {
 			position: relative;
 			top: auto;
 			width: auto;
 		}
 	
-		.block {
+		/*
+.block {
+			display: block;
 			overflow: hidden;
 		}
+*/
 		
 		.heading {
 			padding: 0;
@@ -599,9 +686,44 @@ nav {
 		.intro {
 			display: none;
 			
-			.contactlinks {
-				float: none;
+			.container {
+				width: auto;
+				overflow: visible;
 			}
+			
+			.contactlinks {
+/* 				float: none; */
+/* 				width: 100%; */
+/* 				background: red; */
+				margin: auto;
+				width: 100%;
+				min-width: 320px;
+				padding-right: 0;
+				
+				@include clearfix;
+			}
+			
+			li a {
+				white-space: nowrap;
+				padding-right: 10px !important;
+			}
+			
+			.contact {
+/* 				min-width: 144px; */
+				width: 100%;
+				height: 24px;
+				
+				a {
+					padding-left: 10px !important;
+					font-size: 24px !important;
+					margin-top: -3px;
+				}
+				
+				&:before {
+					display: none !important;
+				}
+			}
+			
 			.news {
 				display: none;
 			}
@@ -610,20 +732,27 @@ nav {
 			}
 			
 			li {
-				margin-left: -4px;
-				margin-right: 1em;
+				margin: 0;
+/* 				min-width: 144px; */
+				width: 100%;
+				float: none; 
+				display: inline-block;
+				text-align: center !important;
+/* 				margin-left: -4px; */
+/* 				margin-right: 1em; */
+/* 				width: 50% !important; */
 			}
 			
-			a {
-				padding: 0 !important;
-			}
+			
 			
 			.contact {
-				margin-right: 0;
+				/*
+margin-right: 0;
 				
 				a {
 					padding-left: 1em !important;
 				}
+*/
 			}
 		}
 		
@@ -684,7 +813,7 @@ nav {
 /* 			margin-left: -1em; */
 /* 			margin-right: -1em; */
 /* 			width: 20em; */
-			font-size: 1em;
+/* 			font-size: 1em; */
 			a {
 				display: inline-block;
 /* 				width: 50%; */
@@ -699,14 +828,14 @@ nav {
 			}
 			
 			a[href^="tel:"] {
-				padding-right: 1em;
+/* 				padding-right: 1em; */
 				padding-left: 0;
 			}
 			
 			li {
 				padding: 0;
 /* 				width: 50%; */
-				text-align: center;
+/* 				text-align: center; */
 			}
 			
 			.contact {
@@ -729,7 +858,15 @@ nav {
 	#work {
 		margin: 0em;
 		position: relative;
-		height: auto;
+		height: 960px;
+		
+		h1 {
+			display: none;
+		}
+		
+		.digital {
+			font-size: 1.2em;
+		}
 		
 		.text {
 			overflow: hidden !important;
@@ -737,8 +874,8 @@ nav {
 		
 		.block {
 			width: 100% !important;
-/* 			display: none; */
-			height: auto;
+			display: block;
+			height: 320px;
 /* 			overflow: visible; */
 			background-attachment: initial;
 			
@@ -793,17 +930,86 @@ nav {
 	#footer {
 		display: none;
 	}
+	
+	section .first .digital {
+		margin-top: 130px;
+	}
+}
+
+@include at-breakpoint(481px 3 768px) {
+
+	#content {
+		min-width: 768px;
+		width: 100%;
+	}
+	
+	#work {
+		min-width: 768px;
+		width: 100%;
+	
+		.block {
+			min-height: 768px;
+			height: 100%;
+		}
+		
+		/*
+.block {
+			display: block;
+			min-width: 768px;
+			height: 76
+		}
+*/
+		
+	}
+
 }
 
 @include at-breakpoint(768px 3 1024px) {
 	#content {
-		min-width: 1000px;
+		min-width: 1024px;
+		width: 100%;
 	}
+	
+	/*
+section {
+		.intro {
+			.contactlinks {
+				width: 400px;
+			}
+			.news {
+				width: 405px;
+			}
+		}
+	}
+*/
+	
 	#work {
-		min-width: 1000px;
+		min-width: 1024px;
+		width: 100%;
 		
 		.block {
-			min-width: 1000px;
+			display: block;
+			min-width: 1024px;
+			width: 100%;
+			/*
+min-height: 768px !important;
+			height: 700px !important;
+*/
+			
+			@include background-size(2048px auto !important);
+			//min-width: 1000px;
+			/*
+-webkit-background-size: 1024px auto !important;
+			background-size: 1024px auto !important;
+*/
+			
+			.headingwrapper {
+				display: none;
+			}
+			
+			.large {
+				display: block !important;
+			}
 		}
 		
 		.overlay {
@@ -813,12 +1019,14 @@ nav {
 		.bottom {
 			height: 100%;
 			
-			.intro {
+			/*
+.intro {
 				bottom: 2.5em;
 				min-height: inherit;
 				
 				ul {
 					padding: 1em 0;
+					margin: 0;
 				}
 				
 				.news {
@@ -829,6 +1037,7 @@ nav {
 					padding: 0;
 				}
 			}
+*/
 		}
 		
 		.links {
@@ -838,6 +1047,12 @@ nav {
 			a {
 				float: none;
 			}
+		}
+	}
+	
+	#nextnav {
+		a {
+			padding: 13px 2em;
 		}
 	}
 }

@@ -1,138 +1,14 @@
 <?php
 class Page extends SiteTree {
 
-	/*
-private static $db = array(
-		'OGTitle' => 'Varchar(255)',
-		'OGDescription' => 'Varchar(1024)'
+	private static $db = array(
 	);
-*/
 
 	private static $has_one = array(
-		'OG' => 'OG'
 	);
-	
-	private static $belongs_to = array(
-		'Slider' => 'Slider'
-	);
-	
-	public function getCMSFields() {
-		$fields = parent::getCMSFields();		
-		$fields->removeFieldFromTab('Root.Main', 'Content');
-		
-		/*
-$fields->addFieldToTab(
-                'Root.Main',
-                new ToggleCompositeField('OGID', 'Facebook', array(
-					new TextField('OGTitle', 'Title'),
-					new TextField('OGDescription', 'Description'),
-					new UploadField('OGImage', 'Image')
-				))
-        );
-*/
-		
-		return $fields;
-	}
-	
-	public function onAfterWrite() {
-		parent::onAfterWrite();
-		
-		$this->createCSS();
-		$this->createJS();
-		
-		$template = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/templates/Layout/' . get_class($this) . '.ss';
-		
-		if(!file_exists($template)) {
-			try {
-				$this->__writeFILE($template, '');
-			} catch(Exception $e) {
-				user_error($e, E_USER_WARNING);
-			}
-		}
-	}
-	
-	public function onBeforeWrite() {
-		parent::onBeforeWrite();
-	}
-	
-	public function createCSS() {
-		$dir = 'themes/' . SiteConfig::current_site_config()->Theme . '/scss/';
-		$scss = strtolower(get_class($this)) . '.scss';
-		$file = ROOT . $dir . $scss;
-		
-		// generate scss file.
-		if(!file_exists($file)) {
-			try {
-				$contents = $this->__readFILE(ROOT . $dir . '.bootstrap.scss');
-				$this->__writeFILE($file, $contents);
-			} catch(Exception $e) {
-				user_error($e, E_USER_WARNING);
-			}
-		}
-	}
-	
-	public function createJS() {
-		$dir = 'themes/' . SiteConfig::current_site_config()->Theme . '/js/';
-		$js = strtolower(get_class($this)) . '.js';
-		$file = ROOT . $dir . 'pagetypes/' . $js;
-		
-		// generate js file.
-		if(!file_exists($file)) {
-			try {				
-				$contents = $this->__readFILE(ROOT . $dir . 'pagetypes/.bootstrap.js');
-				
-				$this->__writeFILE($file, str_replace('pagename', strtolower(get_class($this)), $contents));
-				
-			} catch(Exception $e) {
-				user_error($e, E_USER_WARNING);
-			}
-		} else {
-			$contents = $this->__readFILE($file);
-			
-			$require = $this->__readFILE(ROOT . $dir . 'config.js');
-			$this->__writeFILE($file, str_replace('pagename', strtolower(get_class($this)) . ' page', preg_replace('/require\.config\(.*\);/', str_replace('lib', '../lib', $require), $contents)));
-		}
-		
-		// update Gruntfile.
-		$this->updateGruntFile(ROOT . $dir . 'pagetypes/');	
-	}
-	
-	private function updateGruntfile($directory) {
-		$files = array();
-		
-		foreach (new DirectoryIterator($directory) as $fileInfo) {
-		    if($fileInfo->isDot() || substr($fileInfo->getFilename(), 0, 1) === '.') continue;
-		    array_push($files, array('name' => 'pagetypes/' . $fileInfo->getBasename('.js')));
-		}
-		
-		$files = json_encode($files);
-		
-		try {			
-			$contents = $this->__readFILE(ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/.Gruntfile-bolierplate.js');
-			
-			$this->__writeFILE(ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/Gruntfile.js', str_replace('modules: []', 'modules: ' . $files, $contents));
-		} catch(Exception $e) {
-			user_error($e, E_USER_WARNING);
-		}
-	}
-	
-	private function __readFILE($file) {
-		$handle = fopen($file, 'r');
-		$contents = fread($handle, filesize($file));
-		fclose($handle);
-		
-		return $contents;
-	}
-	
-	private function __writeFILE($file, $contents) {
-		$handle = fopen($file, 'w');
-		fwrite($handle, $contents);
-		fclose($handle);
-	}
 }
-
 class Page_Controller extends ContentController {
-	
+
 	private static $allowed_actions = array (
 		'rebuild',
 		'meta'
@@ -141,21 +17,19 @@ class Page_Controller extends ContentController {
 	private static $url_handlers = array(
 		'meta' => 'meta'
 	);
-	
-	protected function getGACode() {
-		$GA = SiteConfig::current_site_config()->GoogleAnalyticsCode;
-		
-		if($GA) {
-			return $GA;
-		}
-		return false;
-	}
-	
-	protected function getSiteVersion() {
-		if (defined('SITE_VERSION')) {
-			return SITE_VERSION;
-		}
-		return false;
+
+	public function init() {
+		parent::init();
+
+		// Note: you should use SS template require tags inside your templates 
+		// instead of putting Requirements calls here.  However these are 
+		// included so that our older themes still work
+		/*
+Requirements::themedCSS('reset');
+		Requirements::themedCSS('layout'); 
+		Requirements::themedCSS('typography'); 
+		Requirements::themedCSS('form'); 
+*/
 	}
 	
 	protected function getSessionID() {
@@ -198,7 +72,8 @@ class Page_Controller extends ContentController {
 			$tags .= '<meta name="google-site-verification" content="' . SiteConfig::current_site_config()->GoogleSiteVerificationCode . '" />' . "\n";
 		}
 		
-		if(defined('SS_ENVIRONMENT_TYPE') && SS_ENVIRONMENT_TYPE != 'live') {
+		// prevent bots from spidering the site whilest in dev.
+		if(Director::isDev()) {
 			$tags .= "<meta name=\"robots\" content=\"noindex, nofollow, noarchive\" />\n";
 		}
 		
@@ -211,87 +86,61 @@ class Page_Controller extends ContentController {
 		return Convert::raw2xml(($this->MetaTitle) ? $this->MetaTitle : $this->Title);
 	}
 	
+	public function getOG($var = 'Title') {
+		switch($var) {
+			case 'Title':
+				if ($this->OGTitle) {
+					return $this->OGTitle;
+				}
+				if (SiteConfig::current_site_config()->OGTitle) {
+					return SiteConfig::current_site_config()->OGTitle;
+				}
+				if($this->getTheTitle()) {
+					return $this->getTheTitle();
+				}
+				return false;
+			case 'Description':
+				if ($this->OGDescription) {
+					return $this->OGDescription;
+				}
+				if (SiteConfig::current_site_config()->OGDescription) {
+					return SiteConfig::current_site_config()->OGDescription;
+				}
+				if($this->MetaDescription) {
+					return Convert::raw2att($this->MetaDescription);
+				}
+				return false;
+			case 'Image':
+				if ($this->OGImage()) {
+					return $this->OGImage();
+				}
+				if (SiteConfig::current_site_config()->OGImage()) {
+					return SiteConfig::current_site_config()->OGImage();
+				}
+				return false;
+			default:
+				return false;
+		}
+	}
+	
 	public function meta($request) {
 		if($request->isAjax()) {
-			$tags = $this->MetaTags(true);
-			
-			if($this->getCurrentOGTitle()) {
-				$tags .= '<meta property="og:title" content="' . $this->getCurrentOGTitle() .'" />';
-			}
-			if($this->getCurrentOGDescription()) {
-				$tags .= '<meta property="og:description" content="' . $this->getCurrentOGDescription() .'" />';
-			}
-			if($this->getCurrentOGImageURL()) {
-				$tags .= '<meta property="og:image" content="' . $this->getCurrentOGImageURL(). '" />';
-			}
-			if($this->getCurrentPageUrl()) {
-				$tags .= '<meta property="og:url" content="' . str_replace('meta', '', $this->getCurrentPageUrl()) . '" />';
-			}
-			
-			return $tags;
+		  $tags = $this->MetaTags();
+		  
+		  if($this->getOG('Title')) {
+		    $tags .= '<meta property="og:title" content="' . $this->getOG('Title') .'" />';
+		  }
+		  if($this->getOG('Description')) {
+		    $tags .= '<meta property="og:description" content="' . $this->getOG('Description') .'" />';
+		  }
+		  
+		  if($this->getOG('Image') && $this->getOG('Image')->URL != '/assets/') {
+		    $tags .= '<meta property="og:title" content="' . $this->getHTTPProtocol() . Director::BaseURL() . $this->getOG('Image')->URL .'" />';
+		  }
+		  
+		  $tags .= '<meta property="og:url" content="' . str_replace('meta', '', $this->getHTTPProtocol() . Director::BaseURL() . $this->getCurrentPageUrl()) . '" />';
+		  
+		  return $tags;
 		}
-	}
-	
-	protected function getCurrentOGTitle() {
-		if ($this->OGTitle)
-			return $this->OGTitle;
-		if (SiteConfig::current_site_config()->OGTitle)
-			return SiteConfig::current_site_config()->OGTitle;
-		return false;
-	}
-	
-	protected function getCurrentOGDescription() {
-		if ($this->OGDescription)
-			return $this->OGDescription;
-		if (SiteConfig::current_site_config()->OGDescription)
-			return SiteConfig::current_site_config()->OGDescription;
-		return false;
-	}
-	
-	protected function getCurrentOGImageURL() {
-		if ($this->OGImageID)
-			return $this->getHTTPProtocol().'://'.$_SERVER['HTTP_HOST'].$this->OGImage()->URL;
-		if (SiteConfig::current_site_config()->OGImageID)
-			return $this->getHTTPProtocol().'://'.$_SERVER['HTTP_HOST'].SiteConfig::current_site_config()->OGImage()->URL;
-		return false;
-	}
-	
-	protected function getRequireJS() {
-		
-		if(defined('SS_ENVIRONMENT_TYPE') && SS_ENVIRONMENT_TYPE == 'dev') {
-			//return sprintf($script, 'js/pagetypes/' . strtolower($this->ClassName));
-			$script = "<script src=\"" . $this->ThemeDir() . "/js/lib/require.js\"></script>\n";
-			$script .= "<script>\n";
-            $script .= "require([\"" . $this->ThemeDir() . "/js/devconfig\"], function (common) {";
-            $script.= "require([\"pagetypes/" . strtolower($this->ClassName) . "\"]);";
-            $script.= "});";
-			$script .= "</script>";
-
-			return $script;
-			
-		} else {
-			$script = '<script src="' . $this->ThemeDir() . '/js/lib/require.js" data-main="' . $this->ThemeDir() . '/%s"></script>';
-			return sprintf($script, 'build/pagetypes/' . strtolower($this->ClassName));
-		}
-	}
-	
-	protected function getCSS() {
-		$css = strtolower($this->data()->class);
-		if(!file_exists(ROOT . $this->ThemeDir() . '/css/' . $css . '.css')) {
-			$css = 'styles';
-		}
-		
-		return sprintf('<link rel="stylesheet" href="%s" />', $this->ThemeDir() . '/css/' . $css . '.css');
-	}
-	
-	public function rebuild() {
-		$this->createCSS();
-		$this->createJS();
-	}
-	
-	public function isMobile($not = true) {
-		$mobi = new Mobile_Detect();
-		
-		return $not === true ? $mobi->isMobile() : !$mobi->isMobile();
 	}
 }

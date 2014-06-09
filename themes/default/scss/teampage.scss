@@ -14,6 +14,7 @@
 	background: $lightgrey;
 }
 
+/*
 #main_nav {
 	a {
 		&:hover,
@@ -22,6 +23,7 @@
 		}
 	}
 }
+*/
 
 .individualentry {
 	
@@ -120,6 +122,8 @@
 #contentarea {
 	margin-top: 0 !important;
 	margin-bottom: 2em;
+	max-width: 896px;
+	width: 896px;
 }
 
 #banner {
@@ -135,7 +139,21 @@
 
 
 #team {
-	margin-top: 17em;
+	margin-top: 19em;
+	
+	.entry {
+		&.thumbnail {
+			&:hover {
+				
+				.thumbnail {
+					display: none;
+				}
+				img {
+					@include transform(none);
+				}
+			}
+		}
+	}
 }
 
 #teammember {
@@ -154,10 +172,12 @@
 
 @include at-breakpoint(0 3 320px) {
 
-	#banner {
+	/*
+#banner {
 		position: relative;
 		margin-top: 46px;
 	}
+*/
 	
 	#team {
 		width: 100% !important;
@@ -165,10 +185,25 @@
 		margin-top: 0em;
 	}
 	
+	aside {
+		width: 100% !important;
+		float: none !important;
+		margin: 0 0 32px 0 !important;
+		padding: 0 !important;
+		display: block !important;
+		
+		strong,
+		span,
+		a {
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+	}
+	
 	#teammember {
 		width: 100% !important;
 		overflow: visible;
-		margin-top: 46px;
+		margin-top: 0;
 		
 		header {
 /* 			display: none; */
@@ -224,29 +259,31 @@
 	
 	#teammember  {
 		blockquote,
-		p,
-		aside,
-		a {
+		aside {
 			padding: 0 16px !important;
 			margin: 0;
+			@include box-sizing(border-box);
+		}
+		
+		p {
+			padding: 0 16px;
+			margin-bottom: 1em;
 		}
 	}
 	
 	#content {
 		padding: 0 !important;
+		@include box-sizing(border-box);
+		
+		.content {
+			padding-bottom: 1em;
+		}
 	}
 	
 	blockquote {
 		margin-bottom: 16px !important;
 	}
-	aside {
-		width: 100% !important;
-		
-		strong,
-		span {
-			margin: auto 16px;
-		}
-	}
+	
 	
 	#contentarea {
 		margin-top: 1em;
@@ -265,3 +302,5 @@
 	}
 */
 }
+
+

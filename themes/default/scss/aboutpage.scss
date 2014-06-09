@@ -20,6 +20,37 @@ aside {
 	font-style: italic;
 	font-size: (48/$font-size)+em;
 	line-height: (50/48)+em;
+	
+	.contact {
+		font-size: (16/48)+em;
+		line-height: 1.2em;
+		margin-top: 50px;
+		font-weight: normal;
+		
+		a {
+			color: $blue;
+			font-style: normal;
+		}
+		
+		.map {
+			color: $black;
+			
+			&:hover {
+				&:after {
+					background: transparent;
+				}
+			}
+		}
+		
+		p {
+			font-family: "minion-pro", Times, serif;
+			font-style: italic;
+			
+			a {
+				font-style: inherit;
+			}
+		}
+	}
 }
 
 .article {
@@ -37,6 +68,16 @@ article {
 		z-index: 2;
 		position: relative;
 		margin-top: 298px;
+	}
+	
+	a {
+		padding-bottom: 3px;
+		
+		&:hover {
+			&:after {
+				background: $blue;
+			}
+		}
 	}
 }
 
@@ -170,6 +211,34 @@ width: auto;
 		}
 		article {
 			padding: 0 !important;
+		}
+	}
+}
+
+@include at-breakpoint(481px 3 768px) {
+	h1 {
+		left: 1em;
+	}
+	
+	article {
+		.row {
+			padding: 0 2em;
+		}
+		
+		.links {
+			width: 100%;
+		}
+	}
+}
+
+@include at-breakpoint(769px 3 1024px) {
+	h1 {
+		left: 1em;
+	}
+	
+	article {
+		.row {
+			padding: 0 2em;
 		}
 	}
 }

@@ -181,7 +181,7 @@ if($('#work').length > 0) {
 				
 				
 				
-				//callback();
+				callback();
 			}
 			
 			var url = ['work'];
