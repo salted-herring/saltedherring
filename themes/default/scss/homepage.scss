@@ -686,30 +686,54 @@ nav {
 			}
 			
 			.contactlinks {
-				float: none;
+/* 				float: none; */
 /* 				width: 100%; */
-				background: red;
+/* 				background: red; */
 				margin: auto;
-				text-align: center !important;
+				width: 100%;
+				min-width: 320px;
+				padding-right: 0;
+				
+				@include clearfix;
 			}
+			
+			li a {
+				white-space: nowrap;
+				padding-right: 10px !important;
+			}
+			
+			.contact {
+/* 				min-width: 144px; */
+				width: 50%;
+				text-align: left !important;
+				height: 24px;
+				
+				a {
+					padding-left: 10px !important;
+					font-size: 24px !important;
+					margin-top: -3px;
+				}
+			}
+			
 			.news {
 				display: none;
 			}
 			ul {
 				padding: 0;
-				width: auto !important;
 			}
 			
 			li {
 				margin: 0;
+/* 				min-width: 144px; */
+				width: 50%;
+				float: left; 
+				text-align: right !important;
 /* 				margin-left: -4px; */
 /* 				margin-right: 1em; */
 /* 				width: 50% !important; */
 			}
 			
-			a {
-				padding: 0 !important;
-			}
+			
 			
 			.contact {
 				/*
@@ -779,7 +803,7 @@ margin-right: 0;
 /* 			margin-left: -1em; */
 /* 			margin-right: -1em; */
 /* 			width: 20em; */
-			font-size: 1em;
+/* 			font-size: 1em; */
 			a {
 				display: inline-block;
 /* 				width: 50%; */
@@ -794,14 +818,14 @@ margin-right: 0;
 			}
 			
 			a[href^="tel:"] {
-				padding-right: 1em;
+/* 				padding-right: 1em; */
 				padding-left: 0;
 			}
 			
 			li {
 				padding: 0;
 /* 				width: 50%; */
-				text-align: center;
+/* 				text-align: center; */
 			}
 			
 			.contact {

@@ -2350,27 +2350,45 @@ section .contact {
     overflow: visible;
   }
   section .intro .contactlinks {
-    float: none;
+    /* 				float: none; */
     /* 				width: 100%; */
-    background: red;
+    /* 				background: red; */
     margin: auto;
-    text-align: center !important;
+    width: 100%;
+    min-width: 320px;
+    padding-right: 0;
+    overflow: hidden;
+  }
+  section .intro li a {
+    white-space: nowrap;
+    padding-right: 10px !important;
+  }
+  section .intro .contact {
+    /* 				min-width: 144px; */
+    width: 50%;
+    text-align: left !important;
+    height: 24px;
+  }
+  section .intro .contact a {
+    padding-left: 10px !important;
+    font-size: 24px !important;
+    margin-top: -3px;
   }
   section .intro .news {
     display: none;
   }
   section .intro ul {
     padding: 0;
-    width: auto !important;
   }
   section .intro li {
     margin: 0;
+    /* 				min-width: 144px; */
+    width: 50%;
+    float: left;
+    text-align: right !important;
     /* 				margin-left: -4px; */
     /* 				margin-right: 1em; */
     /* 				width: 50% !important; */
-  }
-  section .intro a {
-    padding: 0 !important;
   }
   section .intro .contact {
     				/*
@@ -2424,7 +2442,7 @@ section .contact {
     /* 			margin-left: -1em; */
     /* 			margin-right: -1em; */
     /* 			width: 20em; */
-    font-size: 1em;
+    /* 			font-size: 1em; */
   }
   .first .intro a {
     display: inline-block;
@@ -2438,13 +2456,13 @@ section .contact {
     display: none;
   }
   .first .intro a[href^="tel:"] {
-    padding-right: 1em;
+    /* 				padding-right: 1em; */
     padding-left: 0;
   }
   .first .intro li {
     padding: 0;
     /* 				width: 50%; */
-    text-align: center;
+    /* 				text-align: center; */
   }
   .first .intro .contact {
     position: relative;
