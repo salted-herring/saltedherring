@@ -1704,7 +1704,7 @@ footer .fb:hover:before {
   #header,
   #footer,
   #work .block {
-    min-width: 768px;
+    min-width: 1024px;
     width: 100%;
     overflow-x: hidden;
   }
