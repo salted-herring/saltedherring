@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ===========================
  * Colour Pallet
  * =========================== */
@@ -8,7 +9,8 @@
  * Sprite sheets
  * =========================== */
 .sprites-sprite, .sprites-SH_logo_site_black, .sprites-SH_logo_site_black_sm, .sprites-SH_logo_site_blue, .sprites-SH_logo_site_blue_sm, .sprites-digital_brand, .sprites-down_arrow, .sprites-external_arrow, .sprites-external_arrow_blue, .sprites-fb, .sprites-fb_over, .sprites-menu-collapse, .sprites-menu-open, .sprites-next_arrow, .sprites-previous_arrow, .sprites-salt, .sprites-salted-herring, .sprites-salted, .sprites-saltshaker, .sprites-stripes, .external:before, #logo a, #logo a:hover, .menu-open, #menu_icon, #menu_icon.collapse, #menu_icon.expand, #loader span.salt, footer .salt span:after, footer .salt span:before, footer .fb:before {
-  background: url('../img/sprites-s59795d27a4.png') no-repeat;
+  background-image: url('../img/sprites-s59795d27a4.png');
+  background-repeat: no-repeat;
 }
 
 .sprites-SH_logo_site_black {
@@ -141,60 +143,53 @@
 */
 @font-face {
   font-family: "BrandonGrotesque";
-  src: url('../fonts/28275D_0_0.eot');
-  src: url('../fonts/28275D_0_0.eot?#iefix') format('eot'), url('../fonts/28275D_0_0.woff') format('woff'), url('../fonts/28275D_0_0.ttf') format('truetype');
+  src: url('../fonts/28275D_0_0.eot?1382058832');
+  src: url('../fonts/28275D_0_0.eot?&1382058832#iefix') format('embedded-opentype'), url('../fonts/28275D_0_0.woff?1382058832') format('woff'), url('../fonts/28275D_0_0.ttf?1382058832') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
-
 @font-face {
   font-family: "BrandonGrotesque";
-  src: url('../fonts/234A9E_0_0.eot');
-  src: url('../fonts/234A9E_0_0.eot?#iefix') format('eot'), url('../fonts/234A9E_0_0.woff') format('woff'), url('../fonts/234A9E_0_0.ttf') format('truetype');
+  src: url('../fonts/234A9E_0_0.eot?1382058832');
+  src: url('../fonts/234A9E_0_0.eot?&1382058832#iefix') format('embedded-opentype'), url('../fonts/234A9E_0_0.woff?1382058832') format('woff'), url('../fonts/234A9E_0_0.ttf?1382058832') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
-
 @font-face {
   font-family: "BrandonGrotesque";
-  src: url('../fonts/290D38_0_0.eot');
-  src: url('../fonts/290D38_0_0.eot?#iefix') format('eot'), url('../fonts/290D38_0_0.woff') format('woff'), url('../fonts/290D38_0_0.ttf') format('truetype');
+  src: url('../fonts/290D38_0_0.eot?1384697810');
+  src: url('../fonts/290D38_0_0.eot?&1384697810#iefix') format('embedded-opentype'), url('../fonts/290D38_0_0.woff?1384697810') format('woff'), url('../fonts/290D38_0_0.ttf?1384697808') format('truetype');
   font-weight: bold;
   font-style: italic;
 }
-
 @font-face {
   font-family: "BrandonGrotesque";
-  src: url('../fonts/234A9E_2_0.eot');
-  src: url('../fonts/234A9E_2_0.eot?#iefix') format('eot'), url('../fonts/234A9E_2_0.woff') format('woff'), url('../fonts/234A9E_2_0.ttf') format('truetype');
+  src: url('../fonts/234A9E_2_0.eot?1382058832');
+  src: url('../fonts/234A9E_2_0.eot?&1382058832#iefix') format('embedded-opentype'), url('../fonts/234A9E_2_0.woff?1382058832') format('woff'), url('../fonts/234A9E_2_0.ttf?1382058832') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
   font-family: "BrandonGrotesque";
-  src: url('../fonts/234A9E_1_0.eot');
-  src: url('../fonts/234A9E_1_0.eot?#iefix') format('eot'), url('../fonts/234A9E_1_0.woff') format('woff'), url('../fonts/234A9E_1_0.ttf') format('truetype');
+  src: url('../fonts/234A9E_1_0.eot?1382058832');
+  src: url('../fonts/234A9E_1_0.eot?&1382058832#iefix') format('embedded-opentype'), url('../fonts/234A9E_1_0.woff?1382058832') format('woff'), url('../fonts/234A9E_1_0.ttf?1382058832') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: "BrandonGrotesque";
-  src: url('../fonts/2A88B5_0_0.eot');
-  src: url('../fonts/2A88B5_0_0.eot?#iefix') format('eot'), url('../fonts/2A88B5_0_0.woff') format('woff'), url('../fonts/2A88B5_0_0.ttf') format('truetype');
+  src: url('../fonts/2A88B5_0_0.eot?1402288856');
+  src: url('../fonts/2A88B5_0_0.eot?&1402288856#iefix') format('embedded-opentype'), url('../fonts/2A88B5_0_0.woff?1402288856') format('woff'), url('../fonts/2A88B5_0_0.ttf?1402288856') format('truetype');
   font-weight: regular;
   font-style: italic;
 }
-
 @font-face {
   font-family: "BrandonGrotesque";
-  src: url('../fonts/234A9E_1_0.eot');
-  src: url('../fonts/234A9E_1_0.eot?#iefix') format('eot'), url('../fonts/27128A_0_0.woff') format('woff'), url('../fonts/27128A_0_0.ttf') format('truetype');
+  src: url('../fonts/234A9E_1_0.eot?1382058832');
+  src: url('../fonts/234A9E_1_0.eot?&1382058832#iefix') format('embedded-opentype'), url('../fonts/27128A_0_0.woff?1382058832') format('woff'), url('../fonts/27128A_0_0.ttf?1382058832') format('truetype');
   font-weight: 100;
   font-style: normal;
 }
-
 article,
 aside,
 details,
@@ -633,8 +628,7 @@ textarea {
 
   @page {
     margin: 0.5cm;
-}
-
+  }
   p,
   h2,
   h3 {
@@ -727,6 +721,13 @@ iframe {
   padding-right: 2em;
   margin-left: auto;
   margin-right: auto;
+  *zoom: 1;
+  max-width: 56em;
+  _width: 56em;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-left: auto;
+  margin-right: auto;
   width: 960px;
   max-width: 960px;
 }
@@ -735,10 +736,10 @@ iframe {
   display: table;
   clear: both;
 }
-@media (min-width: 56em) {
-  .container {
-    max-width: 56em;
-  }
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 @media (max-width: 320px) {
   .container {
@@ -891,9 +892,8 @@ iframe {
   position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-transition: none;
   -moz-transition: none;
-  -o-transition: none;
+  -webkit-transition: none;
   transition: none;
 }
 .link span, .external span {
@@ -982,6 +982,7 @@ iframe {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
+  text-transform: capitalize;
   display: block;
   line-height: 0;
   width: 185px;
@@ -1007,14 +1008,12 @@ iframe {
   top: 0em;
   right: 0;
   outline: none;
-  -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-transition: top 0.5s;
   -moz-transition: top 0.5s;
-  -o-transition: top 0.5s;
+  -webkit-transition: top 0.5s;
   transition: top 0.5s;
 }
 #main_nav ul {
@@ -1050,9 +1049,8 @@ iframe {
   width: 100%;
   z-index: 2;
   background: transparent;
-  -webkit-transition: background 0.5s;
   -moz-transition: background 0.5s;
-  -o-transition: background 0.5s;
+  -webkit-transition: background 0.5s;
   transition: background 0.5s;
 }
 #main_nav a:hover, #main_nav a.current {
@@ -1079,13 +1077,11 @@ iframe {
   line-height: 1em;
   font-weight: 500;
   display: none;
-  -webkit-transition: none;
   -moz-transition: none;
-  -o-transition: none;
+  -webkit-transition: none;
   transition: none;
-  -webkit-transition: top 0.5s;
   -moz-transition: top 0.5s;
-  -o-transition: top 0.5s;
+  -webkit-transition: top 0.5s;
   transition: top 0.5s;
   background-position: -1100px -145px;
 }
@@ -1154,6 +1150,7 @@ iframe {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
+  text-transform: capitalize;
 }
 
 #loadingcontent {
@@ -1217,39 +1214,27 @@ footer .salt span:before {
   height: 101px;
   z-index: 2;
   background-position: -673px 0;
-  -webkit-animation: none;
   -moz-animation: none;
-  -ms-animation: none;
-  -o-animation: none;
+  -webkit-animation: none;
   animation: none;
 }
 footer .salt.animate span:before {
-  -webkit-animation-timing-function: easeInOutBack;
   -moz-animation-timing-function: easeInOutBack;
-  -ms-animation-timing-function: easeInOutBack;
-  -o-animation-timing-function: easeInOutBack;
+  -webkit-animation-timing-function: easeInOutBack;
   animation-timing-function: easeInOutBack;
-  -webkit-animation: saltshaker 0.5s 2;
   -moz-animation: saltshaker 0.5s 2;
-  -ms-animation: saltshaker 0.5s 2;
-  -o-animation: saltshaker 0.5s 2;
+  -webkit-animation: saltshaker 0.5s 2;
   animation: saltshaker 0.5s 2;
 }
 footer .salt.animate span:after {
-  -webkit-animation-timing-function: easeInOutBounce;
   -moz-animation-timing-function: easeInOutBounce;
-  -ms-animation-timing-function: easeInOutBounce;
-  -o-animation-timing-function: easeInOutBounce;
+  -webkit-animation-timing-function: easeInOutBounce;
   animation-timing-function: easeInOutBounce;
-  -webkit-animation: salt 0.5s 2;
   -moz-animation: salt 0.5s 2;
-  -ms-animation: salt 0.5s 2;
-  -o-animation: salt 0.5s 2;
+  -webkit-animation: salt 0.5s 2;
   animation: salt 0.5s 2;
-  -webkit-animation-delay: 0.1s;
   -moz-animation-delay: 0.1s;
-  -ms-animation-delay: 0.1s;
-  -o-animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
 }
 footer .whoarewe {
@@ -1341,7 +1326,6 @@ footer .fb:hover:before {
     top: -2em;
   }
 }
-
 @-webkit-keyframes saltshaker {
   0%, 100% {
     top: -1em;
@@ -1351,27 +1335,6 @@ footer .fb:hover:before {
     top: -2em;
   }
 }
-
-@-o-keyframes saltshaker {
-  0%, 100% {
-    top: -1em;
-  }
-
-  50% {
-    top: -2em;
-  }
-}
-
-@-ms-keyframes saltshaker {
-  0%, 100% {
-    top: -1em;
-  }
-
-  50% {
-    top: -2em;
-  }
-}
-
 @keyframes saltshaker {
   0%, 100% {
     top: -1em;
@@ -1381,7 +1344,6 @@ footer .fb:hover:before {
     top: -2em;
   }
 }
-
 @-moz-keyframes salt {
   0%, 100% {
     top: 1em;
@@ -1391,7 +1353,6 @@ footer .fb:hover:before {
     top: .5em;
   }
 }
-
 @-webkit-keyframes salt {
   0%, 100% {
     top: 1em;
@@ -1401,27 +1362,6 @@ footer .fb:hover:before {
     top: .5em;
   }
 }
-
-@-o-keyframes salt {
-  0%, 100% {
-    top: 1em;
-  }
-
-  50% {
-    top: .5em;
-  }
-}
-
-@-ms-keyframes salt {
-  0%, 100% {
-    top: 1em;
-  }
-
-  50% {
-    top: .5em;
-  }
-}
-
 @keyframes salt {
   0%, 100% {
     top: 1em;
@@ -1431,7 +1371,6 @@ footer .fb:hover:before {
     top: .5em;
   }
 }
-
 /* ===========================
  * Banner
  * =========================== */
@@ -1465,9 +1404,8 @@ footer .fb:hover:before {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (min-device-width: 320px) and (max-device-width: 568px) {
   #logo a {
     background: url(../img/sprites/SH_logo_site_black.png) no-repeat;
-    -webkit-background-size: 185px 23px;
     -moz-background-size: 185px 23px;
-    -o-background-size: 185px 23px;
+    -webkit-background-size: 185px 23px;
     background-size: 185px 23px;
   }
 }
@@ -1503,10 +1441,9 @@ footer .fb:hover:before {
   }
   #loader .salt {
     margin-top: 0em !important;
-    -webkit-transform: scale(0.5);
     -moz-transform: scale(0.5);
     -ms-transform: scale(0.5);
-    -o-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
     transform: scale(0.5);
   }
 
@@ -1579,9 +1516,8 @@ footer .fb:hover:before {
     -webkit-transform-style: preserve-3d;
     -webkit-user-select: none;
     -moz-user-select: none;
-    -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
     transition: all 0.2s;
   }
   #main_nav li {

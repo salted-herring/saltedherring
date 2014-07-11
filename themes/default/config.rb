@@ -1,3 +1,4 @@
+#require 'compass/import-once/activate'
 # Require any additional compass plugins here.
 require "susy"
 require 'compass-h5bp'
