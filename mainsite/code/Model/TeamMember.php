@@ -43,7 +43,7 @@ class TeamMember extends BaseDBO {
 	
 	public function getOtherPortraits() {
 		if($this->Images()->first()) {
-			$images = $this->Images()->exclude(array('ID' => $this->Images()->first()->ID));
+			$images = $this->Images();
 		
 			$portraits = array();
 			
