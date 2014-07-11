@@ -28,12 +28,10 @@
 		</header>
 		
 		<div id="memberdetails" class="container<% if Images %><% else %> no-images<% end_if %>">
-			<% if firstAnimatedImage %>
+			<% if Images %>
 			<div class="images">
-				<% with firstAnimatedImage %>
-					<% if First %>
+				<% with Images.First %>
 						<img src="$outputImage.URL" alt="$Up.getUserName" class="current" />
-					<% end_if %>
 				<% end_with %>
 			</div>
 			<% end_if %>

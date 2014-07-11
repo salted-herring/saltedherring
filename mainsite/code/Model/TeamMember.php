@@ -58,13 +58,15 @@ class TeamMember extends BaseDBO {
 	}
 	
 	public function firstAnimatedImage() {
-		if($this->Images()->first()) {
+		/*
+if($this->Images()->first()) {
 			$images = $this->Images()->exclude(array('ID' => $this->Images()->first()->ID));
 		
 			if($images) {
 				return $images->first();
 			}
 		}
+*/
 		
 		return false;
 	}
