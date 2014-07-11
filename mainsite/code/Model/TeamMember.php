@@ -13,7 +13,7 @@ class TeamMember extends BaseDBO {
 	);
 	
 	private static $has_one = array(
-		'Photographer' => 'TeamMember',
+/* 		'Photographer' => 'TeamMember', */
 		'Colour' => 'Colour',
 		'ThumbnailOver' => 'Image'
 	);
@@ -73,7 +73,7 @@ class TeamMember extends BaseDBO {
 		$fields = parent::getCMSFields();
 		
 		$fields->removeFieldFromTab('Root.Main', 'Title');
-		$fields->removeFieldFromTab('Root.Main', 'PhotographerID');
+/* 		$fields->removeFieldFromTab('Root.Main', 'PhotographerID'); */
 		
 		$responsibilities = $fields->fieldByName('Root.Main.Responsibilities');
 		$responsibilities->setRightTitle('A comma separated list of responsibilities.');
@@ -99,7 +99,7 @@ class TeamMember extends BaseDBO {
 			
 			$fields->insertAfter($fields->fieldByName('Root.Main.ThumbnailOver'), 'Thumbnail');
 			
-			$fields->addFieldToTab('Root.Images', new DropdownField('PhotographerID', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()), 'Images');
+/* 			$fields->addFieldToTab('Root.Images', new DropdownField('PhotographerID', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()), 'Images'); */
 			
 			$url = new HiddenField('URLSegment');
 			$url->setAttribute('data-prefix', 'http://' . $_SERVER['HTTP_HOST']);
