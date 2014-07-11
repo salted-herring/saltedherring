@@ -30,7 +30,7 @@
 		<div id="memberdetails" class="container<% if Images %><% else %> no-images<% end_if %>">
 			<% if Images %>
 			<div class="images">
-				<% with Images.First %>
+				<% with Images.First.SetWidth(928) %>
 						<img src="$outputImage.URL" alt="$Up.getUserName" class="current" />
 				<% end_with %>
 			</div>
