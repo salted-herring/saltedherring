@@ -103,14 +103,16 @@ class Project extends BaseDBO {
 			$related = $this->ID ? new ListboxField($name = "RelatedProjects", $title = "Related Projects")  : new LiteralField('RelatedWarn', '<p><strong>Related Projects</strong> can be added once the project has been created</p>'),
 		));
 		
-		$categories->setSource($cats);
-		$categories->setMultiple(true);
-		
-		$serv->setSource($services);
-		$serv->setMultiple(true);
-		
-		$related->setSource($rel);
-		$related->setMultiple(true);
+		if(!$this->ID) {
+			$categories->setSource($cats);
+			$categories->setMultiple(true);
+			
+			$serv->setSource($services);
+			$serv->setMultiple(true);
+			
+			$related->setSource($rel);
+			$related->setMultiple(true);
+		}
 		
 		$tagLine->setRightTitle('Short, single line description of project');
 		$cite->setRightTitle('Quotation source. Can contain html tags - e.g. to link to twitter etc.');
