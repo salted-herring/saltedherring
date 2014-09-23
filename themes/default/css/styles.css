@@ -870,6 +870,10 @@ iframe {
 /* ===========================
  * Generic Styles
  * =========================== */
+.hide {
+  display: none;
+}
+
 .stripedMask {
   -webkit-mask-image: url(../img/stripes2.png);
   -moz-mask: url(../img/stripes2.png);
