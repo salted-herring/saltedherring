@@ -1172,6 +1172,9 @@ footer #nextnav {
   bottom: auto;
   top: -66px;
 }
+footer .hide {
+  display: none;
+}
 footer.fixedcontainer {
   /* 		bottom: -300% !important; */
 }

@@ -1172,6 +1172,9 @@ footer #nextnav {
   bottom: auto;
   top: -66px;
 }
+footer .hide {
+  display: none;
+}
 footer.fixedcontainer {
   /* 		bottom: -300% !important; */
 }
@@ -2423,20 +2426,22 @@ footer .fb:hover:before {
 #team {
   margin-top: 19em;
 }
-#team .entry {
-  		/*
-  &.thumbnail {
-  			&:hover {
-  				
-  				.thumbnail {
-  					display: none;
-  				}
-  				img {
-  					@include transform(none);
-  				}
-  			}
-  		}
-  */
+#team .entry .thumbnailover {
+  position: absolute;
+  top: 0;
+  /* 			@include transform(scale(1)); */
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
+}
+#team .entry:hover .thumbnail {
+  /* 				@include transform(scale(1)); */
+}
+#team .entry:hover .thumbnailover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
 }
 
 #teammember article {

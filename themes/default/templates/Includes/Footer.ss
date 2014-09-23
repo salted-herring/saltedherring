@@ -9,17 +9,19 @@
 	
 				<p>Copyright &copy; 2003 – $Now.Year</p>
 			</div>
-			<div class="grid_1 contact">
+			<div class="grid_1 contact" itemscope itemtype="http://schema.org/Organization">
+				<span itemprop="name" class="hide">Salted Herring</span>
 				<p>
-					<a href="mailto:info@saltedherring.com">info@saltedherring.com</a><br>
-					<a href="tel:+6444731344">+64 (0) 4 473 1344</a>
+					<a href="mailto:info@saltedherring.com" itemprop="email">info@saltedherring.com</a><br>
+					<a href="tel:+6444731344" itemprop="telephone">+64 (0) 4 473 1344</a>
 				</p>
 				
-				<p>
-				<a href="http://goo.gl/maps/5kRrd" target="_blank" class="map">Level 4, 56 Victoria St.</a><br>
-				PO Box 6534<br>
-				Wellington 6141<br>
-				New Zealand</p>
+				<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+					<a href="http://goo.gl/maps/5kRrd" target="_blank" class="map" itemprop="streetAddress">Level 4, 56 Victoria St.</a><br>
+					PO Box 6534<br>
+					<span itemprop="addressLocality">Wellington</span> <span itemprop="postalCode">6141</span><br>
+					<span itemprop="addressCountry">New Zealand</span>
+				</p>
 				
 				
 			</div>

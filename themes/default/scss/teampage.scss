@@ -142,19 +142,23 @@
 	margin-top: 19em;
 	
 	.entry {
-		/*
-&.thumbnail {
-			&:hover {
-				
-				.thumbnail {
-					display: none;
-				}
-				img {
-					@include transform(none);
-				}
+		.thumbnailover {
+			position: absolute;
+			top: 0;
+/* 			@include transform(scale(1)); */
+			@include opacity(0);
+			@include transition(transform .3s, opacity .2s);
+		}
+		
+		&:hover {
+			.thumbnail {
+/* 				@include transform(scale(1)); */
+			}
+			
+			.thumbnailover {
+				@include opacity(1);
 			}
 		}
-*/
 	}
 }
 
