@@ -75,7 +75,6 @@ if($this->Images()->first()) {
 		$fields = parent::getCMSFields();
 
 		$fields->removeFieldFromTab('Root.Main', 'Title');
-/* 		$fields->removeFieldFromTab('Root.Main', 'PhotographerID'); */
 
 		$responsibilities = $fields->fieldByName('Root.Main.Responsibilities');
 		$responsibilities->setRightTitle('A comma separated list of responsibilities.');
@@ -101,8 +100,6 @@ if($this->Images()->first()) {
 
 			$fields->insertAfter($fields->fieldByName('Root.Main.ThumbnailOver'), 'Thumbnail');
 
-/* 			$fields->addFieldToTab('Root.Images', new DropdownField('PhotographerID', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()), 'Images'); */
-
 			$url = new HiddenField('URLSegment');
 			$url->setAttribute('data-prefix', 'http://' . $_SERVER['HTTP_HOST']);
 			$url->setAttribute('value', $this->Link());
@@ -117,25 +114,6 @@ if($this->Images()->first()) {
 
 		if($this->MetaDescription == NULL) {
 			$this->MetaDescription = $this->FirstName . $this->LastName . ' - ' . $this->Role . '. ' .$this->Intro;
-		}
-
-		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
-		$data = array();
-
-		foreach(TeamMember::get() as $member) {
-			array_push($data, array(
-				'Title' => $member->getUserName(),
-				'TagLine' => htmlentities($member->Role),
-				'URLSegment' => $member->URLSegment
-			));
-		}
-
-		try {
-			$handle = fopen($dir . 'team.json', 'w');
-			fwrite($handle, json_encode($data));
-			fclose($handle);
-		} catch(Exception $e) {
-			user_error($e, E_USER_WARNING);
 		}
 	}
 

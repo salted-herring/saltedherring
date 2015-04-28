@@ -20,12 +20,14 @@ class TeamPage_Controller extends Page_Controller {
 
 	private static $allowed_actions = array (
 		'meta',
+		'members',
 		'teamMember'
 	);
 
 	private static $url_handlers = array (
-		'meta' => 'meta',
-		'$teamMember!/$arg' => 'teamMember'
+		'meta' 				=> 'meta',
+		'members'			=> 'members',
+		'$teamMember!/$arg'	=> 'teamMember'
 	);
 
 	public function init() {
@@ -82,6 +84,24 @@ class TeamPage_Controller extends Page_Controller {
 		}
 
 		return false;
+	}
+
+	public function members($request) {
+		if (!Director::is_ajax()) {
+			return false;
+		}
+
+		$data = array();
+
+		foreach(TeamMember::get() as $member) {
+			array_push($data, array(
+				'Title' => $member->getUserName(),
+				'TagLine' => htmlentities($member->Role),
+				'URLSegment' => $member->URLSegment
+			));
+		}
+
+		return json_encode($data);
 	}
 
 	public function getOG($var = 'Title') {
