@@ -93,7 +93,7 @@ class TeamPage_Controller extends Page_Controller {
 
 		$data = array();
 
-		foreach(TeamMember::get() as $member) {
+		foreach(TeamMember::get()->filter('isPublished', true) as $member) {
 			array_push($data, array(
 				'Title' => $member->getUserName(),
 				'TagLine' => htmlentities($member->Role),
