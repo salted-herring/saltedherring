@@ -7,7 +7,8 @@ class Project extends BaseDBO {
 		'Citation' => 'HTMLVarchar(255)',
 		'ProjectInfo' => 'HTMLText',
 		'SiteURL' => 'Varchar(255)',
-		'isPublished' => 'Boolean'
+		'isPublished' => 'Boolean',
+		'Content'	=> 'HTMLText'
 	);
 
 	private static $has_one = array(
@@ -53,6 +54,7 @@ class Project extends BaseDBO {
 		$fields->removeByName('ProjectAwards');
 		$fields->removeByName('Project');
 		$fields->removeByName('RelatedProjects');
+		$fields->removeByName('Content');
 
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
@@ -185,29 +187,14 @@ class Project extends BaseDBO {
 		return $this->Media;
 	}
 
-	private function checkPageSubjectInFirstParagraph() {
-		if ($this->checkPageSubjectDefined()) {
-			$first_paragraph = $this->ProjectInfo->FirstParagraph();
-
-			if (trim($first_paragraph != '')) {
-				if (preg_match('/' . $this->SEOPageSubject . '/i', $first_paragraph)) {
-					return true;
-				}
-				else {
-					return false;
-				}
-			}
-		}
-
-		return false;
-	}
-
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();
 
 		if($this->MetaDescription == NULL) {
 			$this->MetaDescription = $this->Title . ' - ' . $this->TagLine;
 		}
+
+		$this->Content = $this->ProjectInfo;
 
 		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
 		$data = array();
