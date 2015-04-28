@@ -122,7 +122,7 @@ if($this->Images()->first()) {
 		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
 		$data = array();
 
-		foreach(TeamMember::get() as $member) {
+		foreach(TeamMember::get()->filter('isPublished', true) as $member) {
 			array_push($data, array(
 				'Title' => $member->getUserName(),
 				'TagLine' => htmlentities($member->Role),
