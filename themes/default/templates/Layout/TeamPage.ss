@@ -15,13 +15,13 @@
 	<a href="$Top.URLSegment/$URLSegment" class="entry<% if Thumbnail && ThumbnailOver %> thumbnail<% end_if %>" <% if Thumbnail %><% else %> style="background: #<% if Colour %>{$Colour.Value}<% else %>333333<% end_if %>;"<% end_if %>>
 		<% if Thumbnail %>
 			<% with $Thumbnail.CroppedImage(320,320) %>
-			<img src="$URL" alt="$Up.Name" width="$Width" height="$Height" class="thumbnail" />
+			<img src="$URL" alt="$Title" width="$Width" height="$Height" class="thumbnail" />
 			<% end_with %>
 		<% end_if %>
 
 		<% if ThumbnailOver %>
 			<% with $ThumbnailOver.CroppedImage(320,320) %>
-			<img src="$URL" alt="$Up.Name" width="$Width" height="$Height" class="thumbnailover" />
+			<img src="$URL" alt="$Title" width="$Width" height="$Height" class="thumbnailover" />
 			<% end_with %>
 		<% end_if %>
 

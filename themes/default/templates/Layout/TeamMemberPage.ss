@@ -31,7 +31,7 @@
 			<% if Images %>
 			<div class="images">
 				<% with Images.First %>
-						<img src="$outputImage(928).URL" alt="$Up.getUserName" class="current" />
+						<img src="$outputImage(928).URL" alt="$Up.Up.getUserName" class="current" />
 				<% end_with %>
 			</div>
 			<% end_if %>

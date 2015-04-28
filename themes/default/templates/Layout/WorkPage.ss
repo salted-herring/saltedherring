@@ -20,7 +20,7 @@
 
 			<% if Thumbnail %>
 				<% with $Thumbnail.CroppedImage(320,320) %>
-				<img src="$URL" alt="$Up.Name" width="$Width" height="$Height" />
+				<img src="$URL" alt="$Title" width="$Width" height="$Height" />
 				<% end_with %>
 			<% end_if %>
 
