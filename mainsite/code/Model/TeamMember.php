@@ -11,77 +11,77 @@ class TeamMember extends BaseDBO {
 		'Email' => 'Varchar(100)',
 		'MobileNumber' => 'Varchar(30)'
 	);
-	
+
 	private static $has_one = array(
 /* 		'Photographer' => 'TeamMember', */
 		'Colour' => 'Colour',
 		'ThumbnailOver' => 'Image'
 	);
-	
+
 	private static $has_many = array(
 		'Images' => 'ImageMedia'
 	);
-	
+
 	static $summary_fields = array(
 		'getUserName' => 'Name'
 	);
-	
+
 	private static $defaults = array(
 	);
-	
+
 	static $searchable_fields = array(
 		'FirstName'
 	);
-	
+
 	public function getUserName() {
 		return $this->FirstName . ' ' . $this->LastName;
 	}
-	
+
 	public function getTitle() {
 		return $this->getUserName();
 	}
-	
+
 	public function getOtherPortraits() {
 		if($this->Images()->first()) {
 			$images = $this->Images();
-		
+
 			$portraits = array();
-			
+
 			foreach($images as $image) {
 				array_push($portraits, $image->outputImage()->URL);
 			}
-			
+
 			return json_encode(array('data' => $portraits));
 		}
-		
+
 		return json_encode(array('data' => NULL));
 	}
-	
+
 	public function firstAnimatedImage() {
 		/*
 if($this->Images()->first()) {
 			$images = $this->Images()->exclude(array('ID' => $this->Images()->first()->ID));
-		
+
 			if($images) {
 				return $images->first();
 			}
 		}
 */
-		
+
 		return false;
 	}
-	
+
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
-		
+
 		$fields->removeFieldFromTab('Root.Main', 'Title');
 /* 		$fields->removeFieldFromTab('Root.Main', 'PhotographerID'); */
-		
+
 		$responsibilities = $fields->fieldByName('Root.Main.Responsibilities');
 		$responsibilities->setRightTitle('A comma separated list of responsibilities.');
-		
-		
-		
+
+
+
 		if($this->ID) {
 			$gridFieldConfig = GridFieldConfig::create()->addComponents(
 				new GridFieldAddNewButton(),
@@ -94,34 +94,34 @@ if($this->Images()->first()) {
 				new GridFieldFilterHeader(),
 				new GridFieldOrderableRows('SortOrder')
 			);
-			
+
 			$fields->addFieldsToTab('Root.Images', array(
 				$gridField = new GridField("Images", "Images", $this->Images(), $gridFieldConfig)
 			));
-			
+
 			$fields->insertAfter($fields->fieldByName('Root.Main.ThumbnailOver'), 'Thumbnail');
-			
+
 /* 			$fields->addFieldToTab('Root.Images', new DropdownField('PhotographerID', 'Photographer', TeamMember::get()->exclude(array('ID' => $this->ID))->map()), 'Images'); */
-			
+
 			$url = new HiddenField('URLSegment');
 			$url->setAttribute('data-prefix', 'http://' . $_SERVER['HTTP_HOST']);
 			$url->setAttribute('value', $this->Link());
 			$fields->addFieldToTab('Root.Main', $url);
 		}
-		
+
 		return $fields;
 	}
-	
+
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();
-		
+
 		if($this->MetaDescription == NULL) {
 			$this->MetaDescription = $this->FirstName . $this->LastName . ' - ' . $this->Role . '. ' .$this->Intro;
 		}
-		
+
 		$dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
 		$data = array();
-		
+
 		foreach(TeamMember::get() as $member) {
 			array_push($data, array(
 				'Title' => $member->getUserName(),
@@ -129,7 +129,7 @@ if($this->Images()->first()) {
 				'URLSegment' => $member->URLSegment
 			));
 		}
-		
+
 		try {
 			$handle = fopen($dir . 'team.json', 'w');
 			fwrite($handle, json_encode($data));
@@ -138,16 +138,23 @@ if($this->Images()->first()) {
 			user_error($e, E_USER_WARNING);
 		}
 	}
-	
+
 	public function AbsoluteLink() {
 		return Director::absoluteURL($this->Link());
 	}
-	
+
 	public function Link() {
 		return '/team/' . $this->URLSegment;
 	}
-	
+
 	public function getSiteConfig() {
 		return SiteConfig::current_site_config();
+	}
+
+	public function canView($member = null) {
+		if(Permission::check('ADMIN')) {
+			return true;
+		}
+		return $this->isPublished;
 	}
 }
