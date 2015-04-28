@@ -17,11 +17,13 @@
 <section id="work" class="container records <% if $categoryName %>$categoryName<% else %>all<% end_if %> init">
 	<% loop getAllProjects %>
 		<a href="$Top.URLSegment/project/$URLSegment" data-sortorder="$SortOrder" class="entry <% loop $Categories %>$legalName <% end_loop %> all" title="$Name">
-		
+
 			<% if Thumbnail %>
-				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Name" />
+				<% with $Thumbnail.CroppedImage(320,320) %>
+				<img src="$URL" alt="$Up.Name" width="$Width" height="$Height" />
+				<% end_with %>
 			<% end_if %>
-			
+
 			<div class="label">
 				<span>
 					<strong>$Title</strong>

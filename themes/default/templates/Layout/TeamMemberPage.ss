@@ -26,7 +26,7 @@
 				<span class="role">$Role</span>
 			</div>
 		</header>
-		
+
 		<div id="memberdetails" class="container<% if Images %><% else %> no-images<% end_if %>">
 			<% if Images %>
 			<div class="images">
@@ -35,30 +35,30 @@
 				<% end_with %>
 			</div>
 			<% end_if %>
-			
+
 			<div class="row" id="contentarea">
 				<div class="content grid_2">
 					<% if Intro %><blockquote>$Intro</blockquote><% end_if %>
 					$Bio
 				</div>
-				
+
 				<aside class="grid_1">
 					<% if Role %>
 					<strong>Role:</strong>
 					<span>$Role</span>
 					<% end_if %>
-					
+
 					<% if Responsibilities %>
 					<strong class="responsibilities">Responsibilities:</strong>
 					<span>$Responsibilities</span>
 					<% end_if %>
-					
+
 					<% if Email || MobileNumber %>
 						<strong class="contact">Contact:</strong>
 						<% if MobileNumber %>
 						<a href="tel:$MobileNumber">$MobileNumber</a>
 						<% end_if %>
-						
+
 						<% if Email %>
 						<a href="mailto:$Email">$Email</a>
 						<% end_if %>
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	</article>
-	
+
 </section>
 <% end_with %>
 </div>
