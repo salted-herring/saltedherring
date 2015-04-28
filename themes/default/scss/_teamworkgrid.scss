@@ -10,32 +10,32 @@
 .filters {
 	padding: 2em 0em 2em 1em;
 	max-width: 400px;
-	
+
 	a {
 		@include minion;
 		color: $black;
 		white-space: nowrap;
 		font-size: (18/$font-size)+em;
-		
+
 		&:last-child {
 			&:after {
 				display: none;
 			}
 		}
-		
+
 		&.all,
 		&.current,
 		&:hover {
 			color: $white;
 		}
-		
+
 		&.all,
 		&.current {
 			&:hover {
 				color: $black;
 			}
 		}
-		
+
 		&:after {
 			margin-left: 10px;
 			margin-right: 10px;
@@ -51,7 +51,7 @@
 	max-width: 960px;
 	margin-bottom: 6em;
 	@include transition(height .5s);
-	
+
 	.entry {
 		position: relative;
 		display: block;
@@ -60,25 +60,25 @@
 		width: 320px;
 		height: 320px;
 		float: left;
-		
+
 		&:hover {
 			.label {
 				background: rgba(0,0,0,0.5);
 				bottom: -142px;
 			}
-			
+
 			img {
 				@include transform(scale(1.1));
 			}
 		}
 	}
-	
+
 	img {
 		position: relative;
 		z-index: 0;
 		@include transition(transform .3s);
 	}
-	
+
 	.label {
 		position: absolute;
 		z-index: 1;
@@ -88,22 +88,22 @@
 		padding: 1em 2em;
 		min-height: 0px;
 		@include transition(bottom .3s);
-		
+
 		&:before {
 			display: none;
 		}
-		
+
 		span {
 			position: relative;
 			display: block;
 			top: 0;
 		}
-		
+
 		strong,
 		em {
 			display: block;
 		}
-		
+
 		em {
 			@include minion;
 		}
@@ -112,7 +112,7 @@
 
 .individualentry {
 	margin-top: 56px;
-		
+
 	header {
 /* 		position: absolute; */
 		z-index: 3;
@@ -123,13 +123,13 @@
 		min-height: 160px;
 		color: $white;
 		margin: 0 0 0 -30em;
-		
+
 		position: fixed;
 		left: 50%;
 		top: 111px;
 /* 		margin-left: -30em; */
 		@include transform(translateZ(0));
-		
+
 		&.delay  {
 			h1 {
 				font-size: (22/$font-size)+em;
@@ -139,19 +139,19 @@
 				font-size: 1em;
 			}
 		}
-		
+
 		@include transition(height .4s);
-		
+
 		.details {
 			padding: 2em 5em;
 			@include transform(translateZ(0));
 			@include transition(all .4s);
 		}
-		
+
 		h1 {
 			//@include transition(font .08s ceaser($easeOutCubic));
 		}
-		
+
 		a {
 			&:hover {
 				&:after {
@@ -159,14 +159,14 @@
 				}
 			}
 		}
-		
-		
+
+
 		&.small {
 /* 			height: 78px; */
 			top: 111px !important;
 			min-height: 78px;
 			height: auto;
-			
+
 			.details {
 				padding: 1em 5em;
 			}
@@ -177,23 +177,23 @@
 			span {
 				font-size: 1em;
 			}
-			
+
 			.photographer {
 				display: none;
 			}
 		}
-		
-		
+
+
 		&.no-images {
 			position: relative;
 /* 			margin-left: -2em; */
 		}
-		
+
 		span {
 			@include minion;
 			font-size: (24/$font-size)+em;
 		}
-		
+
 		.photographer {
 			float: right;
 			font-size: $font-size+px;
@@ -206,16 +206,16 @@
 		display: block;
 		@include transform(scale(1));
 	}
-	
+
 	50% {
 		@include transform(scale(0));
 	}
-	
+
 	51%, 100% {
 		display: none;
 	}
-	
-	
+
+
 }
 
 #banner {
@@ -224,21 +224,21 @@
 	z-index: 10;
 	height: 112px;
 	@include transition(height .2s 0 easInOutCubic, padding .5s 0 ease);
-	
+
 	.container {
 		height: 112px;
 	}
-	
+
 	h1,strong {
 		@include transition(top .2s 0 easeInOutSine);
 	}
-	
+
 	h1 {
 		position: absolute;
 		top: 0;
 		@extend .stripedMask;
 	}
-	
+
 	&.collapsed,
 	&.small {
 		margin-bottom: 0;
@@ -247,7 +247,7 @@
 		z-index: 4;
 		width: 100%;
 		height: 24px;
-		
+
 		.filters {
 			position: relative;
 			right: auto;
@@ -256,29 +256,29 @@
 			padding: 0;
 			width: auto;
 			top: 0;
-			
+
 			a {
 				font-size: (16/$font-size)+em;
 			}
 		}
-		
+
 		h1, strong {
 			top: -10em;
 		}
 	}
-	
+
 	&.small {
 		.filters {
 			width: 100%;
 			max-width: 960px;
 			left: 0;
-			
+
 			strong {
 				display: none;
 			}
 		}
 	}
-	
+
 	.filters {
 		padding-top: 0;
 		top: inherit;
@@ -302,7 +302,7 @@
 	height: 1px;
 	display: none;
 	z-index: 100;
-	
+
 	a {
 		position: fixed;
 		z-index: 10;
@@ -313,14 +313,14 @@
 		padding: (24/$font-size)+em 0 (24/$font-size)+em 1.2em;
 		height: 48px;
 		width: 3em;
-		
+
 		//@include transition-delay(5s);
 		@include transition(width .2s);
-		
+
 		strong {
 			display: block;
 		}
-		
+
 		&:hover {
 /* 			width: auto; */
 			strong,em {
@@ -337,16 +337,16 @@ width: auto;
 				height: auto;
 */
 			}
-			
-			
-			
+
+
+
 			&:after,
 			&:before {
 				position: absolute;
 			}
 		}
-		
-		
+
+
 		&.over {
 			//@include transition-delay(0s);
 			//@include transition(width .2s 0s);
@@ -357,7 +357,7 @@ width: auto;
 			}
 		}
 	}
-	
+
 	strong, em {
 		display: block;
 		position: fixed;
@@ -367,7 +367,7 @@ width: auto;
 		//@include transition-delay(.5s);
 		@include transition(opacity .1s);
 	}
-	
+
 	strong {
 		font-size: (22/$font-size)+em;
 	}
@@ -375,17 +375,17 @@ width: auto;
 		@include minion;
 		margin-top: 1.5em;
 	}
-	
+
 	.next {
 		right: 0;
-		
+
 		/*
 strong,
 		em {
 			padding-right: 0px;
 		}
 */
-		
+
 		&:after {
 			right: 1.2em;
 			top: 1.5em;
@@ -395,17 +395,17 @@ strong,
 		&:before {
 			display: none;
 		}
-		
+
 		&:hover {
 			&:after {
 				top: (24/$font-size)+em;
 			}
 		}
 	}
-	
+
 	.previous {
 		left: 0;
-		
+
 		strong,
 		em {
 			/*
@@ -415,14 +415,14 @@ padding-right: 20px;
 			float: right;
 			text-align: left
 		}
-		
+
 		&:before {
 			margin-left: 0;
 			margin-right: 1.2em;
 			@extend .arrow;
 			@include sprites-sprite(previous_arrow);
 		}
-		
+
 		&:hover {
 			&:before {
 				left: 1.2em;
@@ -433,13 +433,13 @@ padding-right: 20px;
 }
 
 
-@include at-breakpoint(0 3 320px) {
+@include at-breakpoint(0 3 768px) {
 	html,
 	body {
 		height: auto;
 		width: auto;
 	}
-	
+
 	#banner {
 		display: block;
 		position: relative;
@@ -448,32 +448,32 @@ padding-right: 20px;
 		width: 100%;
 		overflow: hidden;
 		margin-top: 55px;
-		
+
 		.container {
 			height: auto;
 			overflow: visible;
 			padding: 0;
 			@include box-sizing(border-box);
 		}
-		
+
 		&.collapsed,
 		&.small {
 			height: auto;
 			padding: 16px 0;
 			width: 100%;
 			position: relative;
-			
+
 			.filters {
 				text-align: left;
 				padding: 0;
 				width: 100%;
-				
+
 				a {
 					font-size: (18/$font-size)+em;
 				}
 			}
 		}
-		
+
 		.filters {
 			top: auto;
 			right: auto;
@@ -482,7 +482,7 @@ padding-right: 20px;
 			width: 100%;
 			margin: 0 !important;
 			bottom: 0;
-			
+
 			a {
 				/*
 &:after {
@@ -490,63 +490,90 @@ padding-right: 20px;
 				}
 */
 			}
-			
+
 			strong {
 				display: none;
 			}
 		}
-		
+
 		h1 {
 			display: none;
 		}
 	}
-	
+
 	section#work,
 	section#project {
 		margin-top: 0 !important;
 	}
-	
+
 	blockquote,
 	cite {
 /* 		display: block !important; */
 		max-width: 100%;
 		display: inline-block !important;
 	}
-	
+
 	blockquote {
 		font-size: 24px !important;
-		
+
 		&:after {
 			display: none;
 		}
 	}
-	
-	
-	#media {		
+
+
+	#media {
 		.image {
 			height: auto !important;
 			width: 100% !important;
 			margin: 0 0 16px 0;
 			min-height: 0 !important;
-			
+
 		}
-		
+
 		.swf {
 			img {
 				display: block;
 			}
 		}
 	}
-	
+
 	#projectnav {
 		display: none !important;
 	}
-	
-	
-	
+
+	.records {
+		.entry {
+			width: 100%;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+
+		.label,
+		.entry:hover .label {
+			width: 100%;
+			background: none;
+			padding: 0 !important;
+
+			span {
+				@include box-sizing(border-box);
+
+				width: 320px;
+				display: block;
+				padding: 1em 2em;
+				margin: 0 auto;
+				background: rgba(0, 0, 0, 0.4);
+			}
+		}
+	}
+
+
+
 	.individualentry {
 /* 		margin-top: 56px; */
-			
+
 		header {
 			position: absolute;
 			z-index: 3;
@@ -559,7 +586,7 @@ padding-right: 20px;
 			color: $white;
 			padding: 0 !important;
 			left: 0;
-			
+
 			.details {
 				@include transition(none);
 				padding: 16px 0em !important;
@@ -571,32 +598,32 @@ padding-right: 20px;
 			span {
 				font-size: 1em;
 			}
-			
+
 			h1, span {
 				padding: 0 16px;
 				display: block;
 			}
-			
+
 			.photographer {
 				display: none;
 			}
-			
+
 			.tagLine,
 			.role {
 				font-size: 16px;
 				line-height: 1.2em;
 			}
-			
+
 			&.no-images {
 				position: relative;
 	/* 			margin-left: -2em; */
 			}
-			
+
 			span {
 				@include minion;
 				font-size: (24/$font-size)+em;
 			}
-			
+
 			.photographer {
 				float: right;
 				font-size: $font-size+px;
@@ -625,11 +652,11 @@ padding-right: 20px;
 		padding: 16px !important;
 		width: 100% !important;
 		@include box-sizing(border-box);
-		
+
 		h1 {
 			position: relative;
 		}
-		
+
 		.filters {
 			/*
 margin-top: 32px;
@@ -644,15 +671,15 @@ margin-top: 32px;
 			width: 100%;
 			height: auto;
 			margin-top: 32px;
-			
+
 		}
-		
+
 		&.collapsed {
 			.filters {
 				margin-top: 0;
 			}
 		}
-		
+
 		&.small {
 			.container {
 				text-align: center;
@@ -670,33 +697,33 @@ margin-top: 32px;
 			}
 		}
 	}
-	
+
 	#project {
 		margin-top: 80px !important;
 	}
-	
+
 	#work {
-		margin-top: 342px !important;
+// 		margin-top: 342px !important;
 	}
 }
 
 @include at-breakpoint(0 3 1024px) {
-	
+
 	#banner {
 		h1 {
 			padding-left: 32px;
 			margin-left: 0;
 		}
-		
+
 		.container {
 			overflow: visible;
 		}
 	}
-	
+
 	#logo {
 		padding-left: 32px;
 	}
-	
+
 	#main_nav {
 		padding-right: 32px;
 	}
@@ -708,7 +735,7 @@ margin-top: 32px;
 			right: auto;
 			left: 454px;
 		}
-		
+
 		&.small {
 			.filters {
 				text-align: center;

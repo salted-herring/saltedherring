@@ -44,13 +44,13 @@ h1 {
 	height: 89px;
 	left: 50%;
 	margin-left: -200px;
-	
+
 	@include sprites-sprite(salted);
 	@include hide_text;
-	
-	
+
+
 	//@extend .stripedMask;
-	
+
 	span {
 		display: none;
 	}
@@ -79,11 +79,11 @@ h1 {
 /* 	z-index: 50; */
 	display: block;
 /* 	background: red; */
-	
+
 	&.fixed {
 		z-index: 100;
 	}
-	
+
 	h1 {
 		@include transform(translate3d(0,0,0), translateZ(0));
 /* 		@include transform(translateZ(0)); */
@@ -107,7 +107,7 @@ h1 {
 	left: 50%;
 	bottom: 0;
 	margin-left: -42.5px;
-	
+
 	a {
 		display: block;
 		background-color: $black;
@@ -116,9 +116,9 @@ h1 {
 		width: 21px;
 		height: 28px ;
 		position: relative;
-		
+
 		@include transition(background .2s ease);
-		
+
 		&:before {
 			position: absolute;
 			width: 21px;
@@ -127,12 +127,12 @@ h1 {
 			display: block;
 			@include sprites-sprite(down_arrow);
 		}
-		
+
 		&:hover {
 			background: transparent;
 		}
 	}
-	
+
 	&.up {
 		a:before {
 			@include transform(rotate(180deg));
@@ -148,7 +148,7 @@ h1 {
 	section {
 		.block {
 			display: none;
-			
+
 			&:first-child {
 				display: block;
 			}
@@ -161,17 +161,17 @@ section {
 	a {
 		color: $white;
 	}
-	
+
 	.block {
 		height: 100%;
 		width: 100%;
 		display: none;
-		
+
 		&.show {
 			display: block;
 		}
 	}
-	
+
 	.text {
 		position: relative;
 		top: 0;
@@ -180,7 +180,7 @@ section {
 		height: 100%;
 /* 		z-index: 10; */
 	}
-	
+
 	.blur {
 		width: 100%;
 		height: 100%;
@@ -195,7 +195,7 @@ section {
 		background-size: cover;
 		display: none;
 	}
-	
+
 	.contain {
 		position: absolute;
 		top: 0px;
@@ -203,14 +203,14 @@ section {
 		width: 100%;
 /* 		-webkit-transform: translateZ(0); */
 	}
-	
+
 	img {
 		position: absolute;
 		z-index: -1;
 		top: 0;
 		left: 0;
 	}
-	
+
 	.header {
 		display: block;
 		text-align: center;
@@ -219,20 +219,20 @@ section {
 		color: $white;
 		font-size: (22/$font-size)+em;
 	}
-	
+
 	.heading {
 		position: fixed;
 		overflow: hidden;
 		height: 89px;
 		display: none;
-		
+
 		h1 {
 			margin-top: -170px;
 			position: fixed;
 			top: 50%;
 		}
 	}
-	
+
 	.first {
 		.keyword {
 			margin-top: -30px;
@@ -253,7 +253,7 @@ nav {
 			bottom: (150/$font-size)+em;
 		}
 */
-		
+
 		.digital {
 			color: $white;
 			font-size: (42/$font-size)+em;
@@ -269,11 +269,11 @@ nav {
 /* 			left: 50%; */
 /* 			margin-left: -(247/2)+px !important; */
 			top: 50%;
-			
+
 			margin-top: 85px;
 		}
 	}
-	
+
 	.first nav, .link {
 		text-align: center;
 		border-top: 3px solid $white;
@@ -282,7 +282,7 @@ nav {
 		display: table;
 		margin: 0 auto;
 		width: auto;
-		
+
 		&.hover {
 			&:before,
 			&:after,
@@ -290,7 +290,7 @@ nav {
 				background: $white;
 			}
 		}
-		
+
 		&:before {
 			position: absolute;
 			content: '';
@@ -305,7 +305,7 @@ nav {
 				left: 3px solid $white;
 			}
 		}
-		
+
 		&:after {
 			position: absolute;
 			content: '';
@@ -320,7 +320,7 @@ nav {
 				bottom: 3px solid $white;
 			}
 		}
-		
+
 		ul {
 			margin: 0;
 			padding: 0;
@@ -331,7 +331,7 @@ nav {
 			margin-left: -4px;
 			display: inline-block;
 		}
-		
+
 		a {
 			padding: 1em .5em;
 			margin: 0 0 -3px 0;
@@ -348,18 +348,18 @@ nav {
 			border-bottom: 3px solid $white;
 /* 			@include transition-delay(8s); */
 			@include transition(none);
-			
+
 			&:hover {
 				color: $blue;
 				border-bottom-color: transparent;
-				
+
 				&:after {
 					width: 0;
 				}
 			}
 		}
 	}
-	
+
 	.link {
 		padding: .8em 2em !important;
 		font-weight: 500;
@@ -367,13 +367,13 @@ nav {
 		display: table;
 		margin: 0 auto;
 		width: auto;
-		
+
 		&:before,
 		&:after {
 			display: none !important;
 		}
 	}
-	
+
 	.links {
 		margin-top: 6em;
 		color: $white;
@@ -381,26 +381,26 @@ nav {
 		left: 50%;
 		bottom: 6em;
 		margin-left: (-896/2)+px;
-		
-		
+
+
 		span {
 			display: block;
 			float: left;
 		}
-		
+
 		em {
 			@include minion;
 		}
-		
+
 		strong {
 			font-size: (22/$font-size)+em;
 		}
-		
+
 		a {
 			float: right;
 		}
 	}
-	
+
 	.intro {
 		background: rgba(0, 211, 255, .6);
 /* 		font-size: (18/$font-size)+em; */
@@ -410,11 +410,11 @@ nav {
 		width: 100%;
 		min-height: 66px;
 		@include transition(bottom .5s 0 easeInExpo);
-		
+
 		&.hide {
 			bottom: -70px;
 		}
-		
+
 		ul {
 			list-style: none;
 			padding: 0;//1.5em 0 0 0;
@@ -424,20 +424,20 @@ nav {
 		li {
 			display: inline;
 		}
-		
+
 		.contact,
 		.blog {
 			a {
 				color: $black;
 			}
 		}
-		
+
 		.container {
 			margin: 0;
 			width: 100%;
 			max-width: 100% !important;
 		}
-		
+
 		.down {
 			visibility: hidden;
 			display: none;
@@ -447,7 +447,7 @@ nav {
 			width: 21px;
 			position: relative;
 			height: 100%;
-			
+
 			&:before {
 				position: absolute;
 				left: 2em;
@@ -459,29 +459,29 @@ nav {
 				@include sprites-sprite(down_arrow);
 			}
 		}
-		
+
 		.contactlinks {
 /* 			width: 415px; */
 			text-align: right;
 			margin-top: 20px;
-			
+
 			a {
 				padding-right: 3em;
-				
+
 				&[href^="/"],
 				&[href^="http"] {
 /* 					font-size: 24px; */
-					
+
 					&:hover {
 						color: $white;
 					}
 				}
-				
+
 				&[href^="tel:"] {
 					cursor: text;
 				}
-				
-				
+
+
 				&:last-child {
 					padding-right: 1em;
 				}
@@ -496,58 +496,58 @@ nav {
 			padding: 0;
 			margin: 23px 0 0 0em;
 			float: right !important;
-			
+
 			li {
 				position: absolute;
 				display: block;
 				top: 30px;
 				padding-left: 20px;
-				
+
 				&.active {
 					top: 0;
 				}
 			}
-			
+
 			a:hover {
 				color: $black;
 			}
-			
+
 			p {
 				margin: 0;
 			}
 		}
-		
+
 		.contactlinks,
 		.down {
 			float: left;
 		}
-		
+
 		.contactlinks,
 		.news {
 			width: 50%;
 			@include box-sizing(border-box);
 		}
-		
+
 		.news {
 			padding-left: 10px;
 		}
-		
+
 		.contactlinks {
 			padding-right: 80px;
 		}
-		
+
 		a {
 			position: relative;
 			display: inline-block;
 			padding-right: 5px;
 /* 			padding-left: 5px; */
-			
+
 			/*
 &[href^="mailto:"] {
 				padding-left: 10px;
 				padding-right: 0;
 				margin-left: 10px;
-				
+
 				&:before {
 					position: absolute;
 					content: '';
@@ -562,12 +562,12 @@ nav {
 */
 		}
 	}
-	
+
 	.contact {
 		display: none;
 	}
-	
-	
+
+
 }
 
 
@@ -576,7 +576,7 @@ nav {
 	height: 100%;
 	width: 100%;
 	position: absolute;
-	
+
 	.block {
 		height: 100%;
 		background-repeat: no-repeat;
@@ -585,18 +585,18 @@ nav {
 		background-position: 50% 0;
 		background-image: none;
 		position: absolute;
-		@include transform(translate3d(0,0,10), translateZ(10));
-		
+		@include translate3d(0px,0px,10,1000);
+
 		img {
 			z-index: 0;
 			display: none;
-			
+
 			&.current {
 				display: block;
 			}
 		}
 	}
-	
+
 	.overlay {
 		width: 100%;
 		height: 100%;
@@ -614,52 +614,51 @@ nav {
 
 
 
-@include at-breakpoint(0 3 320px) {
-/* 	a[href^="tel"], */
+@include at-breakpoint(0 3 768px) {
 	.contact {
 		width: 20%;
 	}
-	
+
 	.block {
 		margin: 0 !important;
 		padding: 0;
 		height: 480px;
-		
+
 		.overlay {
 			display: none;
 		}
 	}
-	
+
 	#main_nav {
 		top: 0;
 	}
-	
+
 	.blog,
 	#nextnav {
 		display: none !important;
 	}
-	
+
 	section {
 		margin: 0;
-		
+
 		&:before,
 		&:after {
 			display: none;
 		}
-		
+
 		.contain {
 			position: relative;
 			top: auto;
 			width: auto;
 		}
-	
+
 		/*
 .block {
 			display: block;
 			overflow: hidden;
 		}
 */
-		
+
 		.heading {
 			padding: 0;
 			width: 100%;
@@ -669,12 +668,12 @@ nav {
 		.header {
 			display: none;
 		}
-		
+
 		img {
 			//height: 100%;
 			//max-width: none;
 		}
-		
+
 		.contact {
 			display: block;
 			a {
@@ -682,15 +681,15 @@ nav {
 				padding: 0 0 0 1em !important;
 			}
 		}
-		
+
 		.intro {
 			display: none;
-			
+
 			.container {
 				width: auto;
 				overflow: visible;
 			}
-			
+
 			.contactlinks {
 /* 				float: none; */
 /* 				width: 100%; */
@@ -699,78 +698,78 @@ nav {
 				width: 100%;
 				min-width: 320px;
 				padding-right: 0;
-				
+
 				@include clearfix;
 			}
-			
+
 			li a {
 				white-space: nowrap;
 				padding-right: 10px !important;
 			}
-			
+
 			.contact {
 /* 				min-width: 144px; */
 				width: 100%;
 				height: 24px;
-				
+
 				a {
 					padding-left: 10px !important;
 					font-size: 24px !important;
 					margin-top: -3px;
 				}
-				
+
 				&:before {
 					display: none !important;
 				}
 			}
-			
+
 			.news {
 				display: none;
 			}
 			ul {
 				padding: 0;
 			}
-			
+
 			li {
 				margin: 0;
 /* 				min-width: 144px; */
 				width: 100%;
-				float: none; 
+				float: none;
 				display: inline-block;
 				text-align: center !important;
 /* 				margin-left: -4px; */
 /* 				margin-right: 1em; */
 /* 				width: 50% !important; */
 			}
-			
-			
-			
+
+
+
 			.contact {
 				/*
 margin-right: 0;
-				
+
 				a {
 					padding-left: 1em !important;
 				}
 */
 			}
 		}
-		
+
 		.down {
 			display: none !important;
 		}
-		
+
 		.link {
 			position: relative;
 			z-index: 1;
 		}
-		
+
 		/*
 .text {
 			padding: 0 1em;
 		}
 */
-		
+
 		.links {
 			margin: 1em 0em 0 0em;
 			padding: 1em 0;
@@ -780,17 +779,17 @@ margin-right: 0;
 			bottom: -1.5em;
 			width: 100%;
 			left: 0;
-			
+
 			span {
 				display: none;
 			}
-			
+
 			a {
 				float: none;
 			}
 		}
 	}
-	
+
 	.first {
 		nav {
 			margin-bottom: 1em;
@@ -798,11 +797,11 @@ margin-right: 0;
 		.link {
 			display: none;
 		}
-		
+
 		.headingwrapper {
 			display: none;
 		}
-		
+
 		.intro {
 			display: block;
 			width: 100%;
@@ -822,25 +821,25 @@ margin-right: 0;
 				color: $black;
 				text-align: center;
 			}
-			
+
 			a[href^="mailto:"] {
 				display: none;
 			}
-			
+
 			a[href^="tel:"] {
 /* 				padding-right: 1em; */
 				padding-left: 0;
 			}
-			
+
 			li {
 				padding: 0;
 /* 				width: 50%; */
 /* 				text-align: center; */
 			}
-			
+
 			.contact {
 				position: relative;
-				
+
 				&:before {
 					position: absolute;
 					display: block;
@@ -854,34 +853,34 @@ margin-right: 0;
 			}
 		}
 	}
-	
+
 	#work {
 		margin: 0em;
 		position: relative;
 		height: 960px;
-		
+
 		h1 {
 			display: none;
 		}
-		
+
 		.digital {
 			font-size: 1.2em;
 		}
-		
+
 		.text {
 			overflow: hidden !important;
 		}
-		
+
 		.block {
 			width: 100% !important;
 			display: block;
 			height: 320px;
 /* 			overflow: visible; */
 			background-attachment: initial;
-			
+
 			&.first {
 				display: block;
-				
+
 				nav {
 					bottom: 8em;
 					&:before {
@@ -891,67 +890,80 @@ margin-right: 0;
 						right: -1.5em;
 					}
 				}
-				
-				
+
+
 				.large {
 					margin-top: -150px;
 				}
-				
+
 				.intro {
 					min-height: 0;
 				}
-				
+
 				/*
 .bottom {
 					display: none;
 				}
 */
 			}
-			
+
 			img {
 				display: none;
 			}
 /* 			visibility: hidden; */
 /* 			background-size: contain !important; */
 		}
-		
+
 		.large {
 			position: relative;
 			@include transform(scale(.5));
 			margin-top: -150px;
 		}
-		
+
 		.keyword {
 			font-size: 50px;
 			margin-top: 80px;
 		}
 	}
-	
+
 	#footer {
 		display: none;
 	}
-	
+
 	section .first .digital {
 		margin-top: 130px;
 	}
 }
 
+@include at-breakpoint(0 3 480px) {
+	section {
+		.text {
+			max-width: 100%;
+			overflow: hidden;
+		}
+	}
+}
+
 @include at-breakpoint(481px 3 768px) {
 
-	#content {
+	/*
+#content {
 		min-width: 768px;
 		width: 100%;
 	}
-	
+*/
+
 	#work {
-		min-width: 768px;
+		/*
+min-width: 768px;
 		width: 100%;
-	
+*/
+
 		.block {
-			min-height: 768px;
+// 			min-height: 768px;
 			height: 100%;
 		}
-		
+
 		/*
 .block {
 			display: block;
@@ -959,7 +971,7 @@ margin-right: 0;
 			height: 76
 		}
 */
-		
+
 	}
 
 }
@@ -969,7 +981,7 @@ margin-right: 0;
 		min-width: 1024px;
 		width: 100%;
 	}
-	
+
 	/*
 section {
 		.intro {
@@ -982,11 +994,11 @@ section {
 		}
 	}
 */
-	
+
 	#work {
 		min-width: 1024px;
 		width: 100%;
-		
+
 		.block {
 			display: block;
 			min-width: 1024px;
@@ -995,40 +1007,40 @@ section {
 min-height: 768px !important;
 			height: 700px !important;
 */
-			
+
 			@include background-size(2048px auto !important);
 			//min-width: 1000px;
 			/*
 -webkit-background-size: 1024px auto !important;
 			background-size: 1024px auto !important;
 */
-			
+
 			.headingwrapper {
 				display: none;
 			}
-			
+
 			.large {
 				display: block !important;
 			}
 		}
-		
+
 		.overlay {
 			display: none;
 		}
-		
+
 		.bottom {
 			height: 100%;
-			
+
 			/*
 .intro {
 				bottom: 2.5em;
 				min-height: inherit;
-				
+
 				ul {
 					padding: 1em 0;
 					margin: 0;
 				}
-				
+
 				.news {
 					height: 1em;
 					margin-left: 0;
@@ -1039,7 +1051,7 @@ min-height: 768px !important;
 			}
 */
 		}
-		
+
 		.links {
 			span {
 				display: none;
@@ -1049,7 +1061,7 @@ min-height: 768px !important;
 			}
 		}
 	}
-	
+
 	#nextnav {
 		a {
 			padding: 13px 2em;

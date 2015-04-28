@@ -6,7 +6,7 @@
 	padding-bottom: 0;
 	padding-top: 0em;
 	bottom: -.5em;
-	
+
 	strong {
 		display: block;
 /* 		margin-bottom: 1em; */
@@ -24,8 +24,8 @@
 	margin-top: 17em;
 	position: relative;
 	width: 960px !important;
-	overflow: hidden;	
-	
+	overflow: hidden;
+
 	.noelems {
 		font-size: 3em;
 		line-height: 1.2em;
@@ -44,10 +44,10 @@
 		.entry {
 			display: none;
 		}
-		
-		
+
+
 		$filters: all brand-development websites applications content-creation campaigns showreels;
-		
+
 		@each $filter in $filters {
 			&.#{$filter} {
 				.entry.#{$filter} {
@@ -56,7 +56,7 @@
 			}
 		}
 	}
-	
+
 	#loader {
 		display: none;
 	}
@@ -119,34 +119,34 @@
  * *************** */
 .individualentry {
 	background: $lightgrey;
-	
+
 	.container {
 		position: relative;
 	}
-	
+
 	header {
 /* 		left: 0; */
 	}
-	
+
 	.tagLine {
 		display: block;
 		@include minion;
 		font-size: $font-size;
 /* 		padding: 0 (40/$font-size)+em; */
 	}
-	
+
 	/*
 img {
 		margin: 0 0 0 -1em;
 	}
 */
-	
+
 	ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
-	
+
 	.media {
 		text-align: center;
 		img {
@@ -156,7 +156,7 @@ img {
 			margin-bottom: 1.5em;
 		}
 	}
-	
+
 	blockquote {
 		font-size: (48/$font-size)+em;
 		line-height: (50/48)+em;
@@ -166,7 +166,7 @@ img {
 		font-weight: bold;
 		font-style: italic;
 		display: inline;
-		
+
 
 		.label {
 			position: absolute;
@@ -177,34 +177,34 @@ img {
 			width: 100%;
 			padding: 1em 2em;
 		}
-		
+
 		&:after {
 			content: '';
 			display: inline-block;
 			padding-right: (10/$font-size)+em;
 		}
 	}
-	
+
 	cite {
 		font-weight: 500;
 		font-style: normal;
 		font-size: (24/$font-size)+em;
 		white-space: nowrap;
 	}
-	
+
 	.content {
 		p {
 			display: none;
 		}
 	}
-	
+
 	aside {
 		strong {
 			font-weight: 500;
 			font-size: (18/$font-size)+em;
 			color: $blue;
 		}
-		
+
 		ul {
 			margin: 1em 0 2em 0;
 		}
@@ -212,33 +212,33 @@ img {
 			display: inline-block;
 			white-space: nowrap;
 		}
-		
+
 		.services li {
 			@include minion;
 			&:after {
 				display: inline;
 				content: ', ';
 			}
-			
+
 			&:last-child:after {
 				display: none;
 			}
 		}
-		
+
 		.awards {
 			li {
 				margin: 0 -4px 0 0;
 				@include minion;
-				
+
 				&:last-child a {
 					margin-right: 0;
 				}
 			}
-			
+
 			img {
 				margin-left: 0;
 			}
-			
+
 			a {
 				display: block;
 				margin-right: 2em;
@@ -262,27 +262,27 @@ img {
 		font-size: (20/$font-size)+em !important;
 		float: left;
 	}
-	
+
 	.fullstory {
 		margin-right: 4%;
-		
+
 		&:hover {
 			background: $blue;
 			color: $white;
 		}
 	}
-	
+
 	.website {
 		@extend .external;
 		color: $blue;
 		border-color: $blue;
 		background-color: $background;
-		
+
 		&:before {
 			background-color: $background;
 			@include sprites-sprite(external_arrow_blue);
 		}
-		
+
 		&:hover {
 			background: $blue;
 			color: $white;
@@ -294,7 +294,7 @@ img {
 	article {
 		position: relative;
 	}
-	
+
 	h1 {
 		font-size: (48/$font-size)+em;
 		line-height: 1em;
@@ -305,17 +305,17 @@ img {
 		@include minion;
 		font-size: (24/$font-size)+em;
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
-	
+
 	.media {
 		img {
 			position: relative;
@@ -329,10 +329,10 @@ img {
 #media {
 	text-align: center;
 	img {
-		
+
 /* 		margin-left: -1em; */
 	}
-	
+
 	.image {
 		background-repeat: no-repeat;
 		width: 928px;
@@ -342,17 +342,17 @@ img {
 		@include transition(background .2s);
 		margin: 0 auto 3em auto;
 		text-align: center;
-		
+
 		&.notloaded {
 			background-image: url(../img/SHloader.gif);
 			background-position: 50% 50%;
 		}
-		
+
 		img {
 			margin-left: 0;
 		}
 	}
-	
+
 	.swf {
 		img {
 			display: none;
@@ -362,36 +362,36 @@ img {
 
 #interestedin {
 	margin-bottom: 6em;
-	
+
 	h2 {
 		font-weight: 500;
 		margin-top: 2.3em;
 		margin-left: (32/24)+em;
 		margin-bottom: 1em;
 	}
-	
+
 	.label {
-		
+
 		&:before {
 			content: 'see project';
 		}
 	}
 }
 
-@include at-breakpoint(0 3 320px) {
-	
+@include at-breakpoint(0 3 768px) {
+
 	#banner {
 		margin-top: 0px;
 		.filters.container {
 			padding-left: 16px !important;
 		}
 	}
-	
-	
+
+
 	#projectdetails {
 		/*
 padding: 0 16px 16px 16px !important;
-		
+
 		.media {
 			margin-left: -16px;
 			margin-right: -16px;
@@ -402,17 +402,17 @@ padding: 0 16px 16px 16px !important;
 			margin: 0 1em !important;
 			padding: 0px !important;
 		}
-		
+
 		.image {
 			margin: 0 0 16px 0;
 		}
 	}
-	
+
 	cite {
 		font-size: 1em !important;
 		margin-bottom: 1.5em;
 	}
-	
+
 	.media {
 		width: 100% !important;
 		img {
@@ -427,25 +427,25 @@ padding: 0 16px 16px 16px !important;
 				padding: 32px;
 			}
 		}
-		
+
 		.content {
 			p:first-child {
 				display: block;
 			}
 		}
 	}
-	
-	
-	
+
+
+
 	#articleLinks {
 		width: 100%;
 	}
-	
+
 	#work {
 		width: 100% !important;
 		overflow: visible;
 		margin-top: 0em;
-		
+
 		.work {
 			img {
 				width: 100%;
@@ -456,8 +456,8 @@ padding: 0 16px 16px 16px !important;
 				}
 			}
 		}
-		
-		
+
+
 		.entry {
 			/*
 width: 90%;
@@ -465,29 +465,29 @@ width: 90%;
 */
 /* 			padding-left: 16px; */
 		}
-		
+
 		.label {
 			padding: 1em 2em;
 		}
-		
+
 		.noelems {
 			padding: 0 16px;
 		}
 	}
-	
+
 	#interestedin {
 		display: none;
 	}
-	
+
 	section.individualentry {
 		header {
 			top: 0 !important;
-			
+
 			.details {
 				padding: 16px !important;
 			}
 		}
-		
+
 		.media {
 			img {
 				margin-bottom: 16px !important;
@@ -505,7 +505,7 @@ width: 90%;
 			h1 {
 				font-size: 1.375em !important;
 			}
-			
+
 			.tagLine {
 				font-size: 1em !important;
 			}
@@ -515,7 +515,7 @@ width: 90%;
 @include at-breakpoint(321px 3 480px) {
 	.individualentry {
 		margin-top: 0;
-		
+
 		header {
 			top: 55px !important;
 		}
@@ -529,19 +529,19 @@ width: 90%;
 			margin: 0 2em;
 		}
 	}
-	
+
 	#banner {
 		height: auto !important;
-		
+
 		&.small {
 			max-height: 50px;
 		}
 	}
-	
+
 	#articleLinks {
 		width: 100% !important;
 	}
-	
+
 	.individualentry header {
 		top: 135px !important;
 		&.small .details,
@@ -549,7 +549,7 @@ width: 90%;
 			padding: 2em 1em !important;
 			height: auto !important;
 		}
-		
+
 		&.small {
 			height: auto !important;
 		}
@@ -566,7 +566,7 @@ width: 90%;
 }
 
 @include at-breakpoint(0 3 1024px) {
-	
+
 	/*
 #banner {
 		height: 50px !important;
@@ -579,10 +579,10 @@ width: 90%;
 		width: 100%;
 		left: auto !important;
 		margin: 0 auto !important;
-		
-		
+
+
 	}
-	
+
 	.individualentry {
 		.media {
 			img {
@@ -592,7 +592,7 @@ width: 90%;
 			}
 		}
 	}
-	
+
 	#media {
 		.image {
 			max-width: 100%;

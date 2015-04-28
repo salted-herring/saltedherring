@@ -8,30 +8,30 @@ $grid-padding   : 2em;
 
 $break: 3;
 
-@include at-breakpoint(0 3 320px) {
+@include at-breakpoint(0 3 768px) {
 	img,
 	object {
 		max-width: 100% !important;
 	}
-	
+
 	img {
 		height: auto;
 	}
-	
+
 	aside {
-		
+
 	}
 }
 
-.container { 
+.container {
 	@include container($total-columns, $break);
 	width: 960px;
 	max-width: 960px;
-	
+
 	$sizes: 320px 480px 768px 1024px;
 	$from: 0 321px 481px 769px;
 	$i: 1;
-	
+
 	@each $size in $sizes {
 		@include at-breakpoint(nth($from, $i) 3 $size) {
 			width: 100%;
@@ -39,7 +39,7 @@ $break: 3;
 			overflow-x: hidden;
 			padding: 0;
 		}
-		
+
 		$i: $i + 1;
 	}
 }
@@ -52,16 +52,16 @@ $break: 3;
 
 .row {
 	@include clearfix;
-	
+
 	@for $i from 1 through $total-columns {
-		.grid_#{$i}:last-child { 
+		.grid_#{$i}:last-child {
 			@include omega;
 		}
 	}
-	
+
 	@include at-breakpoint(0 $total-columns 480px) {
 		@for $i from 1 through $total-columns {
-			.grid_#{$i} { 
+			.grid_#{$i} {
 				@include span-columns($total-columns, $total-columns);
 				@include omega;
 				float: none;
@@ -76,7 +76,7 @@ $break: 3;
 	.grid_#{$i} {
 		@include span-columns($i);
 	}
-	
+
 	.spacer_#{$i} {
 		margin-left: ($i * $column-width + ($gutter-width * $i));
 	}

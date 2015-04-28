@@ -35,7 +35,7 @@ a {
 
 body {
 	background: url(../img/stripes_final.png) $background;
-	
+
 	&.fixed {
 		overflow: hidden;
 	}
@@ -51,7 +51,7 @@ h1 {
 article a {
 	position: relative;
 	padding-bottom: 6px;
-	
+
 	&:after {
 		position: absolute;
 		display: block;
@@ -61,7 +61,7 @@ article a {
 		width: 100%;
 		background: transparent;
 	}
-	
+
 	&:hover {
 		&:after {
 			background: $black;
@@ -88,7 +88,7 @@ iframe {
 	mask: url(../img/stripes2.png);
 	-webkit-mask-size: 963px 230px;
 	-moz-mask-size: 963px 230px;
-	
+
 	-webkit-mask-repeat: repeat;
 	-webkit-mask-position: 0 0;
 }
@@ -100,22 +100,22 @@ iframe {
 	text-align: center;
 	font-size: (22/$font-size)+em;
 	position: relative;
-	
+
 	-webkit-background-clip: padding;
 	background-clip: padding-box;
 	position: relative;
-	
+
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	
+
 	@include transition(none);
-	
+
 	span {
 		background-color: $white;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
-	
+
 	&:hover {
 		background: $white;
 		color: $black;
@@ -124,10 +124,10 @@ iframe {
 
 .external {
 	@extend .link;
-	
+
 	font-size: 18px;
 /* 	background: $blue; */
-	
+
 	&:before {
 		position: absolute;
 		display: block;
@@ -140,7 +140,7 @@ iframe {
 		z-index: 2;
 		@include sprites-sprite(external_arrow);
 	}
-	
+
 	&:hover {
 		&:before {
 			display: none;
@@ -153,7 +153,7 @@ iframe {
 .fixedcontainer {
 	position: fixed;
 	width: inherit;
-	
+
 	.row {
 		width: inherit;
 	}
@@ -182,15 +182,15 @@ iframe {
 	z-index: 100;
 /* 	left: 50%; */
 	background: $lightgrey;
-	
+
 	-webkit-transform: translate3d(0,0,0);
-	
+
 	.row {
 		overflow: visible;
 		position: relative;
 		max-width: auto !important;
 	}
-	
+
 	.container {
 		padding: 0;
 	}
@@ -206,7 +206,7 @@ $logo-height: 23px;
 	margin-right: 0em;
 	height: $logo-height;
 	display: inline-block;
-	
+
 	a {
 		@include hide_text;
 		display: block;
@@ -217,12 +217,12 @@ $logo-height: 23px;
 		@include sprites-sprite(SH_logo_site_black_sm);
 		position: absolute;
 /* 		left: 32px; */
-		
+
 		&:hover {
 			@include sprites-sprite(SH_logo_site_blue_sm);
 		}
 	}
-	
+
 }
 
 .menu-open {
@@ -237,12 +237,12 @@ $logo-height: 23px;
 	top: 0em;
 	right: 0;
 	outline: none;
-	
+
 	@extend .clearfix;
-	
+
 	@include transform(translate3d(0,0,0));
 	@include transition(top .5s);
-	
+
 	ul {
 		margin: 0 !important;
 		padding-left: 0;
@@ -251,25 +251,25 @@ $logo-height: 23px;
 		outline: none;
 		float: right;
 	}
-	
+
 	li {
 		padding: (20/$font-size)+em 0 0 0;
 		display: inline-block;
 		padding-left: 1.3em;
 		line-height: 1em;
-		
+
 		&:first-child {
 			padding-left: 0;
 		}
 	}
-	
+
 	a {
 		font-size: (18/$font-size)+em;
 		font-weight: 800;
 		text-transform: uppercase;
 		color: $black;
 		position: relative;
-		
+
 		&:after {
 			position: absolute;
 			content: '';
@@ -281,21 +281,21 @@ $logo-height: 23px;
 			background: transparent;
 			@include transition(background .5s);
 		}
-		
+
 		&:hover,
 		&.current {
 			color: $blue;
-			
+
 			&:after {
 				background: $black;
 			}
 		}
 	}
-	
+
 	&.hide {
 		top: -57px;
 	}
-	
+
 	&.show,
 	&.collapse {
 		top: 55px;
@@ -307,28 +307,28 @@ $logo-height: 23px;
 	z-index: 120;
 	right: 2em;
 	top: -1em;
-	
+
 	color: $blue;
 	font-size: (18/$font-size)+em;
 	text-transform: uppercase;
 	line-height: 1em;
 	font-weight: 500;
-	
+
 	display: none;
-	
+
 	@include transition(none);
 	@include transition(top .5s);
-	
+
 	&.hide {
 		top: -1em;
 	}
-	
+
 	&.show {
 		top: .8em;
 	}
-	
+
 	@include sprites-sprite(menu-open);
-	
+
 	&.collapse {
 		@include sprites-sprite(menu-collapse);
 	}
@@ -350,7 +350,7 @@ $logo-height: 23px;
 /* 		min-height: 100%; */
 /* 		width: 100%; */
 	//}
-	
+
 	.content {
 		a {
 			color: $black;
@@ -369,9 +369,9 @@ $logo-height: 23px;
 	text-align: center;
 	vertical-align: middle;
 	background: $blue;
-	
+
 	color: $white;
-	
+
 	span {
 		display: block;
 		text-align: center;
@@ -384,7 +384,7 @@ $logo-height: 23px;
 		text-transform: uppercase;
 		line-height: 1em;
 		margin-top: -.5em;
-		
+
 		&.salt {
 			margin-top: .5em;
 			z-index: 2;
@@ -393,7 +393,7 @@ $logo-height: 23px;
 			height: 89px;
 			left: 50%;
 			margin-left: -200px;
-			
+
 			@include sprites-sprite(salted);
 			@include hide_text;
 		}
@@ -412,21 +412,21 @@ footer {
 	margin: 0;
 	position: relative;
 	z-index: 3;
-	
+
 	#nextnav {
 		position: absolute;
 		bottom: auto;
 		top: -66px;
 	}
-	
+
 	.hide {
 		display: none;
 	}
-	
+
 	&.fixedcontainer {
 /* 		bottom: -300% !important; */
 	}
-	
+
 	.salt {
 		background: $black;
 		color: $blue;
@@ -437,15 +437,15 @@ footer {
 		width: 100%;
 		padding: 1em 0;
 		overflow: hidden;
-		
+
 		.container {
 			overflow: visible;
 		}
-		
+
 		span {
 			display: block;
 			position: relative;
-			
+
 			&:after {
 				position: absolute;
 				right: 9em;
@@ -457,7 +457,7 @@ footer {
 				z-index: 0;
 				@include sprites-sprite(salt);
 			}
-			
+
 			&:before {
 				position: absolute;
 				right: 4em;
@@ -472,14 +472,14 @@ footer {
 			}
 		}
 	}
-	
+
 	.salt.animate {
 		span {
 			&:before {
 				@include animation-timing-function(easeInOutBack);
 				@include animation(saltshaker .5s 2);
 			}
-			
+
 			&:after {
 				@include animation-timing-function(easeInOutBounce);
 				@include animation(salt .5s 2);
@@ -487,19 +487,19 @@ footer {
 			}
 		}
 	}
-	
+
 	.whoarewe {
 		margin-top: -1em;
-		
+
 		p {
 			@include minion;
 		}
 	}
-	
+
 	.contact {
 		margin-top: -1em;
 	}
-	
+
 	.details {
 		background: $blue;
 	}
@@ -507,31 +507,31 @@ footer {
 		color: $black;
 		padding: 6em 2em 6em 0;
 	}
-	
+
 	a {
 		color: $white;
-		
+
 		&:hover {
 			&:after {
 				height: 1px;
 			}
 		}
-		
+
 		&[href^="tel:"] {
 			color: $black;
 			cursor: text;
 		}
-		
+
 		&.map {
 			color: $black;
 		}
-		
+
 		&[href^='mailto:'],
 		&.map {
 			position: relative;
 /* 			padding-bottom: 6px; */
 			display: inline-block;
-			
+
 			&:after {
 				position: absolute;
 				display: block;
@@ -541,27 +541,27 @@ footer {
 				width: 100%;
 				background: transparent;
 			}
-			
+
 			&:hover {
 				&:after {
 					background: $black;
 				}
 			}
 		}
-		
-		&[href^='mailto:'] {			
+
+		&[href^='mailto:'] {
 			&:hover:after {
 				background: $white;
 			}
 		}
 	}
-	
+
 	.fb {
 		display: inline-block;
 		position: relative;
 		padding-left: 20px;
 		margin: 1em 0;
-		
+
 		&:before {
 			position: absolute;
 			display: block;
@@ -572,7 +572,7 @@ footer {
 			height: 20px;
 			@include sprites-sprite(fb_over);
 		}
-		
+
 		&:hover {
 			&:after {
 				position: absolute;
@@ -615,11 +615,11 @@ footer {
  * =========================== */
 #banner {
 	padding: 2em 0;
-	
+
 	.container {
 		position: relative;
 	}
-	
+
 	h1 {
 		font-size: (160/$font-size)+em;
 		color: $white;
@@ -639,18 +639,18 @@ footer {
 /*
 .mobile #main_nav {
 	display: block;
-	
+
 	ul {
 		margin-right: 0;
 	}
 }
-*/ 
+*/
 
- 
-@media 
-(-webkit-min-device-pixel-ratio: 2), 
-(min-resolution: 192dpi) and (min-device-width : 320px) 
-and (max-device-width : 568px) { 
+
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) and (min-device-width : 320px)
+and (max-device-width : 568px) {
     #logo {
 	    a {
 		    background: url(../img/sprites/SH_logo_site_black.png) no-repeat;
@@ -659,34 +659,34 @@ and (max-device-width : 568px) {
     }
 }
 
-@include at-breakpoint(0 3 480px) {
+@include at-breakpoint(0 3 768px) {
 	html,
 	body {
 		height: 100%;
 	}
-	
+
 	.row {
 		overflow: visible !important;
 		max-width: 100% !important;
 	}
-	
+
  	.nomobi {
 		display: none !important;
 	}
-	
+
 	#banner {
 		display: none;
 	}
-	
+
 	#content {
 		width: 100%;
 		margin: 0;
-		
+
 		article {
 			padding: 0 1em !important;
 		}
 	}
-	
+
 	#loader {
 		span {
 			font-size: 3.2em;
@@ -696,7 +696,7 @@ and (max-device-width : 568px) {
 			@include transform(scale(.5));
 		}
 	}
-	
+
 	#menu_icon {
 		@include hide_text;
 		width: 39px;
@@ -707,18 +707,18 @@ and (max-device-width : 568px) {
 		position: fixed;
 		top: 1em;
 	}
-	
+
 	#header {
 		width: 100%;
 		left: 0;
 		margin: 0 !important;
 		padding: 0 !important;
-		
+
 		-webkit-transform-style: preserve-3d;
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
 	}
-	
+
 	#logo {
 		left: 0;
 		margin: 0;
@@ -727,12 +727,12 @@ and (max-device-width : 568px) {
 		z-index: 2;
 		background: $background;
 		width: 100%;
-		
+
 		a {
 			left: 16px;
 		}
 	}
-	
+
 	#main_nav {
 		margin-left: 0em;
 		padding-left: 0em;
@@ -744,11 +744,11 @@ and (max-device-width : 568px) {
 		width: 100%;
 		right: 0;
 		top: -57px;
-		
+
 		&:before {
 			display: block;
 		}
-			
+
 		ul {
 			position: absolute;
 			z-index: 0;
@@ -762,23 +762,23 @@ and (max-device-width : 568px) {
 			text-align: center;
 			padding: 0;
 			margin: 0;
-			
+
 			//@include scale(1.0,0,1);
-			
+
 			-webkit-backface-visibility: hidden;
 			-webkit-perspective: 1000;
-			
+
 			-webkit-transform-style: preserve-3d;
 			-webkit-user-select:none;
 			-moz-user-select:none;
-			
+
 			@include transition(all .2s);
 		}
-		
+
 		li {
 			padding: 1.25em 0 1.25em 1.25em;
 		}
-		
+
 		&.collapse {
 			ul {
 				//@include scale(1.0,1.0,1);
@@ -791,19 +791,20 @@ and (max-device-width : 568px) {
 			}
 		}
 	}
-	
+
 	footer {
 		width: 100%;
 		background: $blue;
-/* 		display: none; */
+
+		.fb {
+			display: block;
+		}
+
 		.salt {
 			font-size: (16/$font-size)+em;
 			margin: 0;
-/* 			padding: 1.5em 1em; */
 			line-height: 1em;
-/* 			width: 100%; */
 			text-align: center;
-/* 			display: none; */
 
 			span {
 				&:before,
@@ -812,33 +813,30 @@ and (max-device-width : 568px) {
 				}
 			}
 		}
-		
-		.external {
-			margin: 0 0 1em 1em;
+
+		.details {
+			.container {
+				@include box-sizing(border-box);
+				padding: 6em 1em;
+			}
 		}
-		
+
+		.external {
+			margin: 0;
+		}
+
 		.row {
 			font-size: (16/$font-size)+em;
 			margin: 0;
 			padding: 1.5em 0;
 			line-height: 1.2em;
-			
+
 			p {
-				margin: 1em;
+				margin: 1em 0;
 			}
-/* 			display: none; */
-/* 			width: 100%; */
 		}
 	}
 }
-
-/*
-@include at-breakpoint(380px 3 768px) {
-	body {
-		min-width: 768px;
-	}
-}
-*/
 
 
 @include at-breakpoint(0 3 320px) {
@@ -849,12 +847,13 @@ and (max-device-width : 568px) {
 		width: 100%;
 		overflow-x: hidden;
 	}
-	
+
 	#footer {
 		text-align: center;
 		.fb {
 			margin-left: 1em;
-			margin-top: 0;
+			margin-top: 1em;
+			display: inline-block;
 		}
 	}
 }
@@ -870,7 +869,7 @@ min-width: 768px;
 		overflow-x: hidden;
 */
 	}
-	
+
 	#footer {
 		overflow: hidden;
 	}
@@ -878,38 +877,45 @@ min-width: 768px;
 		.container {
 			max-width: 768px;
 		}
-		
+
+		.grid_1 {
+			width: 50%;
+			margin-right: 0;
+		}
+
 		.salt {
 			.container {
 				padding-left: 1em;
-				
+
 				&:before {
 					right: 1em;
 				}
-				
+
 				&:after {
 					right: 6em;
 				}
 			}
 		}
-		
-		.details {
+
+		/*
+.details {
 			.container {
 				padding: 6em 2em;
 			}
 		}
+*/
 	}
 }
 
 @include at-breakpoint(769px 3 1024px) {
-	
-	
+
+
 	/*
 #logo {
 		padding-left: 2em;
 	}
 */
-	
+
 	#footer {
 		overflow: hidden;
 	}
@@ -917,21 +923,21 @@ min-width: 768px;
 		.container {
 			max-width: 1024px;
 		}
-		
+
 		.salt {
 			.container {
 				padding-left: 1em;
-				
+
 				&:before {
 					right: 1em;
 				}
-				
+
 				&:after {
 					right: 6em;
 				}
 			}
 		}
-		
+
 		.details {
 			.container {
 				padding: 6em 2em;
