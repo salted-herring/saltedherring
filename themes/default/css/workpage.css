@@ -2089,8 +2089,12 @@ footer .fb:hover:before {
     display: none !important;
   }
 
-  .records .entry {
-    width: 100%;
+  .records {
+    		/*
+    .entry {
+    			width: 100%;
+    		}
+    */
   }
   .records img {
     display: block;
@@ -2168,6 +2172,36 @@ footer .fb:hover:before {
   .individualentry header .photographer {
     float: right;
     font-size: 16px;
+  }
+}
+@media (max-width: 654px) {
+  .records .entry {
+    width: 100%;
+  }
+  .records .entry .thumbnailover {
+    left: 50%;
+    margin-left: -160px;
+  }
+  .records img {
+    display: block;
+    margin: 0 auto;
+  }
+  .records .label,
+  .records .entry:hover .label {
+    width: 100%;
+    background: none;
+    padding: 0 !important;
+  }
+  .records .label span,
+  .records .entry:hover .label span {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 320px;
+    display: block;
+    padding: 1em 2em;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.4);
   }
 }
 @media (min-width: 460px) and (max-width: 1023px) {

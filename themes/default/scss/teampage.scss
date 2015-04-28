@@ -7,7 +7,7 @@
 	padding-bottom: 0;
 	width: 300px;
 	top: 2em;
-	
+
 }
 
 .contain {
@@ -26,37 +26,37 @@
 */
 
 .individualentry {
-	
+
 	background: $lightgrey;
-	
+
 	&.container {
 		position: relative;
 	}
-	
+
 	article {
 		position: relative;
 	}
-	
+
 	h1 {
 		font-size: (48/$font-size)+em;
 		line-height: 1em;
 		margin: 0 0 (22/48)+em 0;
 		padding: 0;
 	}
-	
-	
-	
-	
+
+
+
+
 	img {
 		margin: 0 0 0 -1em;
 	}
-	
+
 	ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
-	
+
 	.media {
 		img {
 			position: relative;
@@ -65,7 +65,7 @@
 			margin-bottom: 1.5em;
 		}
 	}
-	
+
 	blockquote {
 		font-size: (48/$font-size)+em;
 		line-height: (50/48)+em;
@@ -76,29 +76,29 @@
 		font-style: italic;
 		display: block;
 	}
-	
+
 	aside {
 		strong {
 			font-weight: normal;
 			font-size: (18/$font-size)+em;
 			color: $yellow;
 		}
-		
+
 		span,
 		strong {
 			display: block;
 		}
-		
+
 		a {
 			color: $black;
 			display: table;
 		}
-		
+
 		a,
 		span {
 			@include minion;
 		}
-		
+
 		.contact,
 		.responsibilities {
 			margin-top: 1em;
@@ -112,7 +112,7 @@
 	img {
 		position: absolute;
 		z-index: 0;
-		
+
 		&.current {
 			z-index: 1;
 		}
@@ -128,11 +128,11 @@
 
 #banner {
 	background: $yellowbanner;
-	
+
 	&.collapsed {
 		.filters {
 			top: 0;
-			
+
 		}
 	}
 }
@@ -140,7 +140,7 @@
 
 #team {
 	margin-top: 19em;
-	
+
 	.entry {
 		.thumbnailover {
 			position: absolute;
@@ -149,12 +149,12 @@
 			@include opacity(0);
 			@include transition(transform .3s, opacity .2s);
 		}
-		
+
 		&:hover {
 			.thumbnail {
 /* 				@include transform(scale(1)); */
 			}
-			
+
 			.thumbnailover {
 				@include opacity(1);
 			}
@@ -170,34 +170,27 @@
 
 #content {
 	padding-bottom: 0;
-	
+
 	.content {
 		padding-bottom: 12em;
 	}
 }
 
-@include at-breakpoint(0 3 320px) {
+@include at-breakpoint(0 3 768px) {
 
-	/*
-#banner {
-		position: relative;
-		margin-top: 46px;
-	}
-*/
-	
 	#team {
 		width: 100% !important;
 		overflow: visible;
 		margin-top: 0em;
 	}
-	
+
 	aside {
 		width: 100% !important;
 		float: none !important;
 		margin: 0 0 32px 0 !important;
 		padding: 0 !important;
 		display: block !important;
-		
+
 		strong,
 		span,
 		a {
@@ -205,51 +198,38 @@
 			padding: 0 !important;
 		}
 	}
-	
+
 	#teammember {
 		width: 100% !important;
 		overflow: visible;
 		margin-top: 0;
-		
+
 		header {
-/* 			display: none; */
 			margin: 0;
 			padding: 1em;
-			
+
 			.details {
 				padding: 32px;
 			}
 		}
-		
+
 		article {
 			width: 100%;
 		}
-		
+
 		.images {
 			height: auto;
 			width: 100%;
 			padding: 0;
 			margin-bottom: 40px;
-/* 			display: none; */
-			
+
 			img {
 				margin: 0;
 				position: relative;
 			}
 		}
 	}
-	
-	/*
-#memberdetails {
-		.content {
-			width: 10% !important;
-			padding: 0;
-			background: red;	
-			display: none;
-		}
-	}
-*/
-	
+
 	.content,
 	.row,
 	.detailscontainer,
@@ -257,12 +237,12 @@
 	.container {
 		width: 100% !important;
 	}
-	
+
 	#teammember article {
 		padding: 0 !important;
 		margin: 0 !important;
 	}
-	
+
 	#teammember  {
 		blockquote,
 		aside {
@@ -270,43 +250,35 @@
 			margin: 0;
 			@include box-sizing(border-box);
 		}
-		
+
 		p {
 			padding: 0 16px;
 			margin-bottom: 1em;
 		}
 	}
-	
+
 	#content {
 		padding: 0 !important;
 		@include box-sizing(border-box);
-		
+
 		.content {
 			padding-bottom: 1em;
 		}
 	}
-	
+
 	blockquote {
 		margin-bottom: 16px !important;
 	}
-	
-	
+
+
 	#contentarea {
 		margin-top: 1em;
 		margin-bottom: 1em;
 		overflow: visible;
 		width: 100% !important;
-		
-		
+
+
 	}
-	
-	/*
-#footer {
-		p {
-			margin-left: 0;
-		}
-	}
-*/
 }
 
 

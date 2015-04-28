@@ -543,9 +543,11 @@ padding-right: 20px;
 	}
 
 	.records {
-		.entry {
+		/*
+.entry {
 			width: 100%;
 		}
+*/
 		img {
 			display: block;
 			margin: 0 auto;
@@ -627,6 +629,41 @@ padding-right: 20px;
 			.photographer {
 				float: right;
 				font-size: $font-size+px;
+			}
+		}
+	}
+}
+
+@include at-breakpoint(0 3 654px, 0 3 768px) {
+	.records {
+		.entry {
+			width: 100%;
+
+			.thumbnailover {
+				left: 50%;
+				margin-left: -160px;
+			}
+		}
+
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+
+		.label,
+		.entry:hover .label {
+			width: 100%;
+			background: none;
+			padding: 0 !important;
+
+			span {
+				@include box-sizing(border-box);
+
+				width: 320px;
+				display: block;
+				padding: 1em 2em;
+				margin: 0 auto;
+				background: rgba(0, 0, 0, 0.4);
 			}
 		}
 	}
