@@ -771,12 +771,13 @@ margin-right: 0;
 */
 
 		.links {
-			margin: 1em 0em 0 0em;
+			margin: 8em 0em 0 0em;
 			padding: 1em 0;
 			float: none;
 			z-index: 1;
 			display: block;
-			bottom: -1.5em;
+			bottom: auto;
+			top: 50%;
 			width: 100%;
 			left: 0;
 
@@ -860,7 +861,7 @@ margin-right: 0;
 		height: 960px;
 
 		h1 {
-			display: none;
+			display: block !important;
 		}
 
 		.digital {
