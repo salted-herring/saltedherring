@@ -18,12 +18,13 @@
 			<em>Tagline</em>
 		</a>
 	</nav>
-<section id="teammember" class="container individualentry">
+<section id="teammember" class="container individualentry" itemprop="member" itemscope itemtype="http://schema.org/Organization">
 	<article>
 		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="<% if Images %><% else %> no-images<% end_if %>">
 			<div class="details">
-				<h1>$getUserName</h1>
-				<span class="role">$Role</span>
+				<h1 itemprop="name">$getUserName</h1>
+				<span itemprop="jobTitle" class="role">$Role</span>
+				<span class="hide" itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">SaltedHerring</span>
 			</div>
 		</header>
 
@@ -31,14 +32,14 @@
 			<% if Images %>
 			<div class="images">
 				<% with Images.First %>
-						<img src="$outputImage(928).URL" alt="$Up.Up.getUserName" class="current" />
+						<img src="$outputImage(928).URL" alt="$Up.Up.getUserName" class="current" itemprop="image" />
 				<% end_with %>
 			</div>
 			<% end_if %>
 
 			<div class="row" id="contentarea">
 				<div class="content grid_2">
-					<% if Intro %><blockquote>$Intro</blockquote><% end_if %>
+					<% if Intro %><blockquote itemprop="description">$Intro</blockquote><% end_if %>
 					$Bio
 				</div>
 
@@ -56,11 +57,11 @@
 					<% if Email || MobileNumber %>
 						<strong class="contact">Contact:</strong>
 						<% if MobileNumber %>
-						<a href="tel:$MobileNumber">$MobileNumber</a>
+						<a href="tel:$MobileNumber" itemprop="telephone">$MobileNumber</a>
 						<% end_if %>
 
 						<% if Email %>
-						<a href="mailto:$Email">$Email</a>
+						<a href="mailto:$Email" itemprop="email">$Email</a>
 						<% end_if %>
 					<% end_if %>
 				</aside>
