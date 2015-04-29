@@ -10,6 +10,7 @@ silverstripe-cache
 .tgz
 themes/*/.sass-cache
 vendor
+Users
 
 _ss_environment.php
 
