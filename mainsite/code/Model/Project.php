@@ -54,7 +54,7 @@ class Project extends BaseDBO {
 		$fields->removeByName('ProjectAwards');
 		$fields->removeByName('Project');
 		$fields->removeByName('RelatedProjects');
-		$fields->removeByName('Content');
+// 		$fields->removeByName('Content');
 
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
