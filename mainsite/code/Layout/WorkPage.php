@@ -57,6 +57,7 @@ class WorkPage_Controller extends Page_Controller {
 		}
 
 		$project = $this->project->first();
+		$this->MetaDescription = $project->MetaDescription;
 
 		return $this->renderWith(array('ProjectPage', 'Page'), array(
 			'Project' => $project,

@@ -63,6 +63,7 @@ class TeamPage_Controller extends Page_Controller {
 		}
 
 		$this->MetaTitle = $teamMember->getUserName();
+		$this->MetaDescription = $teamMember->MetaDescription;
 		$this->currentMember = $teamMember;
 
 		return $this->renderWith(array('TeamMemberPage', 'Page'), array(
