@@ -8,7 +8,7 @@ class Project extends BaseDBO {
 		'ProjectInfo' => 'HTMLText',
 		'SiteURL' => 'Varchar(255)',
 		'isPublished' => 'Boolean',
-		'Content'	=> 'HTMLText'
+		'Content' => 'HTMLText'
 	);
 
 	private static $has_one = array(
