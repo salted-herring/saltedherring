@@ -10,7 +10,7 @@
 	</div>
 </nav>
 <section id="team" class="container records">
-
+$getTeam
 	<% loop getTheTeam %>
 	<a href="$Top.URLSegment/$URLSegment" class="entry<% if Thumbnail && ThumbnailOver %> thumbnail<% end_if %>" <% if Thumbnail %><% else %> style="background: #<% if Colour %>{$Colour.Value}<% else %>333333<% end_if %>;"<% end_if %>>
 		<% if Thumbnail %>
