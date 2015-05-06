@@ -13,7 +13,11 @@ images_dir = "img"
 fonts_dir = "fonts"
 javascripts_dir = "js"
 
-environment = :prod
+environment = :production
+# environment = :development
+
+line_comments = false
+
 
 # In development, we can turn on the FireSass-compatible debug_info.
 firesass = true
@@ -26,8 +30,6 @@ output_style = (environment == :development) ? :expanded : :compressed
 # To enable relative paths to assets via compass helper functions. Uncomment:
 relative_assets = true
 
-# To disable debugging comments that display the original location of your selectors. Uncomment:
-line_comments = false
 
 
 # If you prefer the indented syntax, you might want to regenerate this
