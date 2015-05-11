@@ -22,6 +22,8 @@
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 		<% include GA %>
+		<script type="text/javascript" async defer
+			src="https://apis.google.com/js/platform.js?publisherid=107861897685949690962"></script>
 	</head>
 	<body class="page-$URLSegment<% if isMobile %> mobile<% end_if %>">
 		<% include Header %>
