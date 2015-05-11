@@ -22,8 +22,25 @@
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 		<% include GA %>
-		<script type="text/javascript" async defer
-			src="https://apis.google.com/js/platform.js?publisherid=107861897685949690962"></script>
+
+		<% if ClassName = HomePage %>
+			<script type="application/ld+json">
+		    {
+			"@context": "http://schema.org",
+			"@type": "Organization",
+			"url": "http://www.saltedherring.com",
+			"logo": "http://www.saltedherring.com/themes/default/img/sprites/SH_logo_site_black.png",
+			"contactPoint" : [
+				{ "@type" : "ContactPoint",
+				  "telephone" : "+64 (0)4 473 1344",
+				  "contactType" : "customer service"
+				} ],
+			"sameAs" : [
+				"https://www.facebook.com/pages/Salted-Herring/123449174364209",
+				"https://plus.google.com/+saltedherring"]
+		    }
+		    </script>
+		<% end_if %>
 	</head>
 	<body class="page-$URLSegment<% if isMobile %> mobile<% end_if %>">
 		<% include Header %>
