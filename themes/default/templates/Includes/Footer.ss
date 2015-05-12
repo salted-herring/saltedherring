@@ -12,7 +12,7 @@
 			<div class="grid_1 contact" itemscope itemtype="http://schema.org/Organization">
 				<span itemprop="name" class="hide">Salted Herring</span>
 				<p>
-					<a href="mailto:info@saltedherring.com" itemprop="email">info@saltedherring.com</a><br>
+					<a href="mailto:%69%6E%66%6F%40%73%61%6C%74%65%64%68%65%72%72%69%6E%67%2E%63%6F%6D" itemprop="email">info<!-- >@. -->@<!-- >@. -->saltedherring<!-- >@. -->.<!-- >@. -->com</a><br>
 					<a href="tel:+6444731344" itemprop="telephone">+64 (0) 4 473 1344</a>
 				</p>
 
