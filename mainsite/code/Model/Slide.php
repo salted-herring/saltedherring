@@ -6,6 +6,7 @@ class Slider extends BaseDBO {
 		'Keyword' => 'Varchar(50)',
 		'Description' => 'Varchar(100)',
 		'LinkDescription' => 'Varchar(100)',
+		'LinkTitle' => 'Varchar(100)',
 		'Explanation' => 'Text',
 	);
 
@@ -114,6 +115,7 @@ class Slider extends BaseDBO {
 				array(
 					new HeaderField('Label', 'Choose either an internal link or project to link to.', 4),
 					$link,
+					new TextField ('LinkTitle'),
 					$project
 				)
 			),

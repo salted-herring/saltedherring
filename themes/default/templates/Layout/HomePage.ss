@@ -33,7 +33,13 @@
 							<span><strong>$Title</strong><br><em>$Description</em></span>
 
 
-							<a href="<% if Project %>$Project.getURL<% else %>$Link.Link<% end_if %>" class="link">see project</a>
+							<a href="<% if Project %>$Project.getURL<% else %>$Link.Link<% end_if %>" class="link">
+								<% if Project %>
+								see project
+								<% else %>
+								$LinkTitle
+								<% end_if %>
+							</a>
 						</div>
 
 							<% end_if %>
