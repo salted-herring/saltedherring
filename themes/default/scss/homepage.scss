@@ -220,15 +220,12 @@ section {
 
 
 	.explanation {
-		@include translate(-50%, -50%); // this seems to make text fuzzy in safari
+		@include translate(-50%, 0); // this seems to make text fuzzy in safari
 		position: absolute;
 		left: 50%;
-
-		top: 50%;
+		top: 342px;
 		margin-top: 130px;
-
 		width: 430px;
-
 		color: $white;
 		font-size: (18/$font-size)+em;
 		color: #FFF;
@@ -280,6 +277,7 @@ section {
 		}
 
 		.explanation {
+			top: 424px;
 			margin-top: 130px+$offsetFirst;
 		}
 	//
