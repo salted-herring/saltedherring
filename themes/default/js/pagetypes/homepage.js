@@ -17,6 +17,10 @@ if($('body').is('.mobile')) {
 			requestTick();
 		}
 
+		// this multiplies each slide taller
+		// increase = 1;
+		increase = 1.15;
+
 		/* ===========================
 		 * On resize - make sure:
 		 * - The footer is in the correct place
@@ -25,7 +29,7 @@ if($('body').is('.mobile')) {
 		function _resize() {
 			var targetHeight = ($('#work .block').length * $(window).height()) - parseInt($('#content').css('padding-top')) - (($('#work .block').length - 1) * $('#header').height());
 			if(targetHeight > 0) {
-				$('#content, #work').height(targetHeight);
+				$('#content, #work').height((targetHeight)*increase);
 			}
 
 			var w = window,
@@ -38,12 +42,13 @@ if($('body').is('.mobile')) {
 
 
 
+
 			$('#work .block').each(function(i, el) {
-				var top = (i * (y - $('#header').height()));
+				var top = (i * ((y*increase) - $('#header').height()));
 
 				$(this).css({
 					width: $(window).width(),
-					height: y - $('#header').height(),
+					height: (y*increase) - $('#header').height(),
 					top: top
 				});
 
@@ -123,6 +128,9 @@ if($('body').is('.mobile')) {
 					var _h = condition ? (winHeight / 2) : ((winHeight / 2)) - Math.abs(latestKnownScrollY - top);
 					var newTop = $(this).offset().top-latestKnownScrollY;
 
+					var newTop = newTop;
+
+
 					if($(this).is('.first')) {
 						_h += 53;
 						if(latestKnownScrollY > -1) {
@@ -151,7 +159,7 @@ if($('body').is('.mobile')) {
 
 
 					$(this).find('.heading > h1').css({
-						top: Math.ceil(newTop + _h)
+						top: Math.ceil(newTop + _h)*increase
 					});
 
 				} else {

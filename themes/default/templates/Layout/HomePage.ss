@@ -13,7 +13,6 @@
 
 					<div class="contain">
 
-
 						<div class="headingwrapper">
 							<div class="heading">
 								<h1 class="salted">Salted</h1>
@@ -23,14 +22,12 @@
 						<span class="keyword">$Keyword</span>
 
 						<% if First %>
+							<!-- h1 -->
 							<span class="digital">Digital + Brand</span>
-							<div class="explanation">
-								Jowl capicola flank, shankle ham turducken ball tip filet mignon tenderloin fatback. Ham hock strip steak sausage pastrami turkey hamburger pork chop t-bone meatball picanha cow sirloin kevin landjaeger. Turducken rump tongue hamburger swine filet mignon tail short loin. Andouille shoulder frankfurter, ribeye tenderloin meatloaf bacon. Hamburger shoulder doner prosciutto bacon tongue.
-							</div>
 						<% else %>
-							<div class="explanation">
-								Jowl capicola flank, shankle ham turducken ball tip filet mignon tenderloin fatback. Ham hock strip steak sausage pastrami turkey hamburger pork chop t-bone meatball picanha cow sirloin kevin landjaeger. Turducken rump tongue hamburger swine filet mignon tail short loin. Andouille shoulder frankfurter, ribeye tenderloin meatloaf bacon. Hamburger shoulder doner prosciutto bacon tongue.
-							</div>
+
+
+							<!-- h2 project-->
 							<% if Project.getURL || Link.Link %>
 						<div class="container links">
 							<span><strong>$Title</strong><br><em>$Description</em></span>
@@ -38,11 +35,13 @@
 
 							<a href="<% if Project %>$Project.getURL<% else %>$Link.Link<% end_if %>" class="link">see project</a>
 						</div>
+
 							<% end_if %>
 						<% end_if %>
 
-
-
+						<div class="explanation">
+							$Explanation
+						</div>
 
 					</div>
 					<% if First %>
