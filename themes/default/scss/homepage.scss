@@ -420,9 +420,9 @@ section {
 		z-index: 10;
 		width: 100%;
 		min-height: 66px;
-		@include transition(bottom .5s 0 easeInExpo);
+		@include transition(bottom .3s 0s);
 
-		&.hide {
+		&.hideFooter {
 			bottom: -70px;
 		}
 

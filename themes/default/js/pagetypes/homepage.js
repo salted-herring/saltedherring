@@ -240,9 +240,9 @@ if($('body').is('.mobile')) {
 					});
 
 					if($(this).is('.first') && latestKnownScrollY > 100) {
-						$(this).find('.intro').addClass('hide');
+						$(this).find('.intro').addClass('hideFooter');
 					} else {
-						$(this).find('.intro').removeClass('hide');
+						$(this).find('.intro').removeClass('hideFooter');
 					}
 				}
 			});
