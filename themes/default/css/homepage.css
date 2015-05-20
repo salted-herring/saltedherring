@@ -2065,7 +2065,7 @@ section .heading h1 {
   position: fixed;
   top: 50%;
 }
-/* line 227, ../scss/homepage.scss */
+/* line 222, ../scss/homepage.scss */
 section .explanation {
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -2075,13 +2075,14 @@ section .explanation {
   left: 50%;
   top: 50%;
   margin-top: 130px;
+  width: 430px;
   color: #ffffff;
   font-size: 1.125em;
   color: #FFF;
   font-weight: 500;
   text-align: center;
 }
-/* line 241, ../scss/homepage.scss */
+/* line 238, ../scss/homepage.scss */
 section .explanation:before {
   background: white;
   -moz-transform: translate(-50%, -50%);
@@ -2095,15 +2096,15 @@ section .explanation:before {
   width: 80px;
   height: 3px;
 }
-/* line 259, ../scss/homepage.scss */
+/* line 256, ../scss/homepage.scss */
 section .first .large {
   margin-top: -320px;
 }
-/* line 264, ../scss/homepage.scss */
+/* line 261, ../scss/homepage.scss */
 section .first .keyword {
   margin-top: -210px;
 }
-/* line 269, ../scss/homepage.scss */
+/* line 266, ../scss/homepage.scss */
 section .first .digital {
   margin-top: -100px;
   color: #ffffff;
@@ -2119,11 +2120,11 @@ section .first .digital {
   font-family: "minion-pro", Times, serif;
   top: 50%;
 }
-/* line 285, ../scss/homepage.scss */
+/* line 282, ../scss/homepage.scss */
 section .first .explanation {
   margin-top: 50px;
 }
-/* line 291, ../scss/homepage.scss */
+/* line 288, ../scss/homepage.scss */
 section .first nav,
 section .link,
 section .external {
@@ -2135,7 +2136,7 @@ section .external {
   margin: 0 auto;
   width: auto;
 }
-/* line 302, ../scss/homepage.scss */
+/* line 299, ../scss/homepage.scss */
 section .first nav.hover:before, section .first nav.hover:after,
 section .first nav.hover a,
 section .link.hover:before,
@@ -2146,7 +2147,7 @@ section .link.hover a,
 section .hover.external a {
   background: #ffffff;
 }
-/* line 309, ../scss/homepage.scss */
+/* line 306, ../scss/homepage.scss */
 section .first nav:before,
 section .link:before,
 section .external:before {
@@ -2161,7 +2162,7 @@ section .external:before {
   border-bottom: 3px solid #ffffff;
   border-left: 3px solid #ffffff;
 }
-/* line 324, ../scss/homepage.scss */
+/* line 321, ../scss/homepage.scss */
 section .first nav:after,
 section .link:after,
 section .external:after {
@@ -2176,7 +2177,7 @@ section .external:after {
   border-right: 3px solid #ffffff;
   border-bottom: 3px solid #ffffff;
 }
-/* line 339, ../scss/homepage.scss */
+/* line 336, ../scss/homepage.scss */
 section .first nav ul,
 section .link ul,
 section .external ul {
@@ -2184,7 +2185,7 @@ section .external ul {
   padding: 0;
   line-height: 0;
 }
-/* line 344, ../scss/homepage.scss */
+/* line 341, ../scss/homepage.scss */
 section .first nav li,
 section .link li,
 section .external li {
@@ -2192,7 +2193,7 @@ section .external li {
   margin-left: -4px;
   display: inline-block;
 }
-/* line 350, ../scss/homepage.scss */
+/* line 347, ../scss/homepage.scss */
 section .first nav a,
 section .link a,
 section .external a {
@@ -2214,20 +2215,20 @@ section .external a {
   -webkit-transition: none;
   transition: none;
 }
-/* line 366, ../scss/homepage.scss */
+/* line 363, ../scss/homepage.scss */
 section .first nav a:hover,
 section .link a:hover,
 section .external a:hover {
   color: #00bbde;
   border-bottom-color: transparent;
 }
-/* line 370, ../scss/homepage.scss */
+/* line 367, ../scss/homepage.scss */
 section .first nav a:hover:after,
 section .link a:hover:after,
 section .external a:hover:after {
   width: 0;
 }
-/* line 377, ../scss/homepage.scss */
+/* line 374, ../scss/homepage.scss */
 section .link, section .external {
   padding: .8em 2em !important;
   font-weight: 500;
@@ -2236,11 +2237,11 @@ section .link, section .external {
   margin: 0 auto;
   width: auto;
 }
-/* line 385, ../scss/homepage.scss */
+/* line 382, ../scss/homepage.scss */
 section .link:before, section .external:before, section .link:after, section .external:after {
   display: none !important;
 }
-/* line 391, ../scss/homepage.scss */
+/* line 388, ../scss/homepage.scss */
 section .links {
   margin-top: 6em;
   color: #ffffff;
@@ -2249,25 +2250,25 @@ section .links {
   bottom: 4em;
   margin-left: -448px;
 }
-/* line 400, ../scss/homepage.scss */
+/* line 397, ../scss/homepage.scss */
 section .links span {
   display: block;
   float: left;
 }
-/* line 405, ../scss/homepage.scss */
+/* line 402, ../scss/homepage.scss */
 section .links em {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
-/* line 409, ../scss/homepage.scss */
+/* line 406, ../scss/homepage.scss */
 section .links strong {
   font-size: 1.375em;
 }
-/* line 413, ../scss/homepage.scss */
+/* line 410, ../scss/homepage.scss */
 section .links a {
   float: right;
 }
-/* line 418, ../scss/homepage.scss */
+/* line 415, ../scss/homepage.scss */
 section .intro {
   background: rgba(0, 211, 255, 0.6);
   position: fixed;
@@ -2280,33 +2281,33 @@ section .intro {
   -webkit-transition: bottom 0.5s easeInExpo;
   transition: bottom 0.5s easeInExpo;
 }
-/* line 428, ../scss/homepage.scss */
+/* line 425, ../scss/homepage.scss */
 section .intro.hide {
   bottom: -70px;
 }
-/* line 432, ../scss/homepage.scss */
+/* line 429, ../scss/homepage.scss */
 section .intro ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: inline;
 }
-/* line 438, ../scss/homepage.scss */
+/* line 435, ../scss/homepage.scss */
 section .intro li {
   display: inline;
 }
-/* line 444, ../scss/homepage.scss */
+/* line 441, ../scss/homepage.scss */
 section .intro .contact a,
 section .intro .blog a {
   color: #000000;
 }
-/* line 449, ../scss/homepage.scss */
+/* line 446, ../scss/homepage.scss */
 section .intro .container {
   margin: 0;
   width: 100%;
   max-width: 100% !important;
 }
-/* line 455, ../scss/homepage.scss */
+/* line 452, ../scss/homepage.scss */
 section .intro .down {
   visibility: hidden;
   display: none;
@@ -2320,7 +2321,7 @@ section .intro .down {
   position: relative;
   height: 100%;
 }
-/* line 465, ../scss/homepage.scss */
+/* line 462, ../scss/homepage.scss */
 section .intro .down:before {
   position: absolute;
   left: 2em;
@@ -2331,28 +2332,28 @@ section .intro .down:before {
   display: block;
   background-position: -894px -145px;
 }
-/* line 477, ../scss/homepage.scss */
+/* line 474, ../scss/homepage.scss */
 section .intro .contactlinks {
   text-align: right;
   margin-top: 20px;
 }
-/* line 481, ../scss/homepage.scss */
+/* line 478, ../scss/homepage.scss */
 section .intro .contactlinks a {
   padding-right: 3em;
 }
-/* line 487, ../scss/homepage.scss */
+/* line 484, ../scss/homepage.scss */
 section .intro .contactlinks a[href^="/"]:hover, section .intro .contactlinks a[href^="http"]:hover {
   color: #ffffff;
 }
-/* line 492, ../scss/homepage.scss */
+/* line 489, ../scss/homepage.scss */
 section .intro .contactlinks a[href^="tel:"] {
   cursor: text;
 }
-/* line 497, ../scss/homepage.scss */
+/* line 494, ../scss/homepage.scss */
 section .intro .contactlinks a:last-child {
   padding-right: 1em;
 }
-/* line 502, ../scss/homepage.scss */
+/* line 499, ../scss/homepage.scss */
 section .intro .news {
   padding-left: 2em;
   overflow: hidden;
@@ -2362,31 +2363,31 @@ section .intro .news {
   margin: 23px 0 0 0em;
   float: right !important;
 }
-/* line 511, ../scss/homepage.scss */
+/* line 508, ../scss/homepage.scss */
 section .intro .news li {
   position: absolute;
   display: block;
   top: 30px;
   padding-left: 20px;
 }
-/* line 517, ../scss/homepage.scss */
+/* line 514, ../scss/homepage.scss */
 section .intro .news li.active {
   top: 0;
 }
-/* line 522, ../scss/homepage.scss */
+/* line 519, ../scss/homepage.scss */
 section .intro .news a:hover {
   color: #000000;
 }
-/* line 526, ../scss/homepage.scss */
+/* line 523, ../scss/homepage.scss */
 section .intro .news p {
   margin: 0;
 }
-/* line 531, ../scss/homepage.scss */
+/* line 528, ../scss/homepage.scss */
 section .intro .contactlinks,
 section .intro .down {
   float: left;
 }
-/* line 536, ../scss/homepage.scss */
+/* line 533, ../scss/homepage.scss */
 section .intro .contactlinks,
 section .intro .news {
   width: 50%;
@@ -2394,32 +2395,32 @@ section .intro .news {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 542, ../scss/homepage.scss */
+/* line 539, ../scss/homepage.scss */
 section .intro .news {
   padding-left: 10px;
 }
-/* line 546, ../scss/homepage.scss */
+/* line 543, ../scss/homepage.scss */
 section .intro .contactlinks {
   padding-right: 80px;
 }
-/* line 550, ../scss/homepage.scss */
+/* line 547, ../scss/homepage.scss */
 section .intro a {
   position: relative;
   display: inline-block;
   padding-right: 5px;
 }
-/* line 557, ../scss/homepage.scss */
+/* line 554, ../scss/homepage.scss */
 section .contact {
   display: none;
 }
 
-/* line 566, ../scss/homepage.scss */
+/* line 563, ../scss/homepage.scss */
 #work {
   height: 100%;
   width: 100%;
   position: absolute;
 }
-/* line 571, ../scss/homepage.scss */
+/* line 568, ../scss/homepage.scss */
 #work .block {
   height: 100%;
   background-repeat: no-repeat;
@@ -2435,16 +2436,16 @@ section .contact {
   -webkit-transform: perspective(1000) translate3d(0px, 0px, 10);
   transform: perspective(1000) translate3d(0px, 0px, 10);
 }
-/* line 581, ../scss/homepage.scss */
+/* line 578, ../scss/homepage.scss */
 #work .block img {
   z-index: 0;
   display: none;
 }
-/* line 585, ../scss/homepage.scss */
+/* line 582, ../scss/homepage.scss */
 #work .block img.current {
   display: block;
 }
-/* line 591, ../scss/homepage.scss */
+/* line 588, ../scss/homepage.scss */
 #work .overlay {
   width: 100%;
   height: 100%;
@@ -2464,77 +2465,77 @@ section .contact {
 }
 
 @media (max-width: 768px) {
-  /* line 608, ../scss/homepage.scss */
+  /* line 605, ../scss/homepage.scss */
   .contact {
     width: 20%;
   }
 
-  /* line 612, ../scss/homepage.scss */
+  /* line 609, ../scss/homepage.scss */
   .block {
     margin: 0 !important;
     padding: 0;
     height: 480px;
   }
-  /* line 617, ../scss/homepage.scss */
+  /* line 614, ../scss/homepage.scss */
   .block .overlay {
     display: none;
   }
 
-  /* line 622, ../scss/homepage.scss */
+  /* line 619, ../scss/homepage.scss */
   #main_nav {
     top: 0;
   }
 
-  /* line 626, ../scss/homepage.scss */
+  /* line 623, ../scss/homepage.scss */
   .blog,
   #nextnav {
     display: none !important;
   }
 
-  /* line 631, ../scss/homepage.scss */
+  /* line 628, ../scss/homepage.scss */
   section {
     margin: 0;
   }
-  /* line 634, ../scss/homepage.scss */
+  /* line 631, ../scss/homepage.scss */
   section:before, section:after {
     display: none;
   }
-  /* line 639, ../scss/homepage.scss */
+  /* line 636, ../scss/homepage.scss */
   section .contain {
     position: relative;
     top: auto;
     width: auto;
   }
-  /* line 645, ../scss/homepage.scss */
+  /* line 642, ../scss/homepage.scss */
   section .heading {
     padding: 0;
     width: 100%;
     margin-top: 1.5em;
     font-size: 3.125em;
   }
-  /* line 651, ../scss/homepage.scss */
+  /* line 648, ../scss/homepage.scss */
   section .header {
     display: none;
   }
-  /* line 655, ../scss/homepage.scss */
+  /* line 652, ../scss/homepage.scss */
   section .contact {
     display: block;
   }
-  /* line 657, ../scss/homepage.scss */
+  /* line 654, ../scss/homepage.scss */
   section .contact a {
     display: inline-block !important;
     padding: 0 0 0 1em !important;
   }
-  /* line 663, ../scss/homepage.scss */
+  /* line 660, ../scss/homepage.scss */
   section .intro {
     display: none;
   }
-  /* line 666, ../scss/homepage.scss */
+  /* line 663, ../scss/homepage.scss */
   section .intro .container {
     width: auto;
     overflow: visible;
   }
-  /* line 671, ../scss/homepage.scss */
+  /* line 668, ../scss/homepage.scss */
   section .intro .contactlinks {
     margin: auto;
     width: 100%;
@@ -2543,35 +2544,35 @@ section .contact {
     overflow: hidden;
     *zoom: 1;
   }
-  /* line 680, ../scss/homepage.scss */
+  /* line 677, ../scss/homepage.scss */
   section .intro li a {
     white-space: nowrap;
     padding-right: 10px !important;
   }
-  /* line 685, ../scss/homepage.scss */
+  /* line 682, ../scss/homepage.scss */
   section .intro .contact {
     width: 100%;
     height: 24px;
   }
-  /* line 689, ../scss/homepage.scss */
+  /* line 686, ../scss/homepage.scss */
   section .intro .contact a {
     padding-left: 10px !important;
     font-size: 24px !important;
     margin-top: -3px;
   }
-  /* line 695, ../scss/homepage.scss */
+  /* line 692, ../scss/homepage.scss */
   section .intro .contact:before {
     display: none !important;
   }
-  /* line 700, ../scss/homepage.scss */
+  /* line 697, ../scss/homepage.scss */
   section .intro .news {
     display: none;
   }
-  /* line 703, ../scss/homepage.scss */
+  /* line 700, ../scss/homepage.scss */
   section .intro ul {
     padding: 0;
   }
-  /* line 707, ../scss/homepage.scss */
+  /* line 704, ../scss/homepage.scss */
   section .intro li {
     margin: 0;
     width: 100%;
@@ -2579,16 +2580,16 @@ section .contact {
     display: inline-block;
     text-align: center !important;
   }
-  /* line 716, ../scss/homepage.scss */
+  /* line 713, ../scss/homepage.scss */
   section .down {
     display: none !important;
   }
-  /* line 720, ../scss/homepage.scss */
+  /* line 717, ../scss/homepage.scss */
   section .link, section .external {
     position: relative;
     z-index: 1;
   }
-  /* line 726, ../scss/homepage.scss */
+  /* line 723, ../scss/homepage.scss */
   section .links {
     margin: 0;
     bottom: 10px;
@@ -2600,28 +2601,28 @@ section .contact {
     width: 100%;
     left: 0;
   }
-  /* line 740, ../scss/homepage.scss */
+  /* line 737, ../scss/homepage.scss */
   section .links span {
     display: none;
   }
-  /* line 744, ../scss/homepage.scss */
+  /* line 741, ../scss/homepage.scss */
   section .links a {
     float: none;
   }
 
-  /* line 751, ../scss/homepage.scss */
+  /* line 748, ../scss/homepage.scss */
   .first nav {
     margin-bottom: 1em;
   }
-  /* line 754, ../scss/homepage.scss */
+  /* line 751, ../scss/homepage.scss */
   .first .link, .first .external {
     display: none;
   }
-  /* line 758, ../scss/homepage.scss */
+  /* line 755, ../scss/homepage.scss */
   .first .headingwrapper {
     display: none;
   }
-  /* line 762, ../scss/homepage.scss */
+  /* line 759, ../scss/homepage.scss */
   .first .intro {
     display: block;
     width: 100%;
@@ -2630,30 +2631,30 @@ section .contact {
     text-align: center;
     padding: 1em 0;
   }
-  /* line 770, ../scss/homepage.scss */
+  /* line 767, ../scss/homepage.scss */
   .first .intro a {
     display: inline-block;
     padding: 0;
     color: #000000;
     text-align: center;
   }
-  /* line 777, ../scss/homepage.scss */
+  /* line 774, ../scss/homepage.scss */
   .first .intro a[href^="mailto:"] {
     display: none;
   }
-  /* line 781, ../scss/homepage.scss */
+  /* line 778, ../scss/homepage.scss */
   .first .intro a[href^="tel:"] {
     padding-left: 0;
   }
-  /* line 785, ../scss/homepage.scss */
+  /* line 782, ../scss/homepage.scss */
   .first .intro li {
     padding: 0;
   }
-  /* line 789, ../scss/homepage.scss */
+  /* line 786, ../scss/homepage.scss */
   .first .intro .contact {
     position: relative;
   }
-  /* line 792, ../scss/homepage.scss */
+  /* line 789, ../scss/homepage.scss */
   .first .intro .contact:before {
     position: absolute;
     display: block;
@@ -2665,78 +2666,78 @@ section .contact {
     background: #ffffff;
   }
 
-  /* line 806, ../scss/homepage.scss */
+  /* line 803, ../scss/homepage.scss */
   #work {
     margin: 0em;
     position: relative;
     height: 960px;
   }
-  /* line 811, ../scss/homepage.scss */
+  /* line 808, ../scss/homepage.scss */
   #work h1 {
     display: block !important;
   }
-  /* line 815, ../scss/homepage.scss */
+  /* line 812, ../scss/homepage.scss */
   #work .digital {
     font-size: 1.2em;
   }
-  /* line 819, ../scss/homepage.scss */
+  /* line 816, ../scss/homepage.scss */
   #work .text {
     overflow: hidden !important;
   }
-  /* line 823, ../scss/homepage.scss */
+  /* line 820, ../scss/homepage.scss */
   #work .block {
     width: 100% !important;
     display: block;
     height: 320px;
     background-attachment: initial;
   }
-  /* line 829, ../scss/homepage.scss */
+  /* line 826, ../scss/homepage.scss */
   #work .block.first {
     display: block;
   }
-  /* line 832, ../scss/homepage.scss */
+  /* line 829, ../scss/homepage.scss */
   #work .block.first nav {
     bottom: 8em;
   }
-  /* line 834, ../scss/homepage.scss */
+  /* line 831, ../scss/homepage.scss */
   #work .block.first nav:before {
     left: -1.5em;
   }
-  /* line 837, ../scss/homepage.scss */
+  /* line 834, ../scss/homepage.scss */
   #work .block.first nav:after {
     right: -1.5em;
   }
-  /* line 843, ../scss/homepage.scss */
+  /* line 840, ../scss/homepage.scss */
   #work .block.first .large {
     margin-top: -255px;
   }
-  /* line 849, ../scss/homepage.scss */
+  /* line 846, ../scss/homepage.scss */
   #work .block.first .intro {
     min-height: 0;
   }
-  /* line 854, ../scss/homepage.scss */
+  /* line 851, ../scss/homepage.scss */
   #work .block img {
     display: none;
   }
-  /* line 861, ../scss/homepage.scss */
+  /* line 858, ../scss/homepage.scss */
   #work .large {
     -moz-transform: scale(0.5);
     -ms-transform: scale(0.5);
     -webkit-transform: scale(0.5);
     transform: scale(0.5);
   }
-  /* line 867, ../scss/homepage.scss */
+  /* line 864, ../scss/homepage.scss */
   #work .keyword {
     font-size: 50px;
     margin-top: -176px;
   }
 
-  /* line 876, ../scss/homepage.scss */
+  /* line 873, ../scss/homepage.scss */
   #footer {
     display: none;
   }
 
-  /* line 882, ../scss/homepage.scss */
+  /* line 879, ../scss/homepage.scss */
   section .explanation {
     font-size: 0.9375em;
     margin-top: -75px !important;
@@ -2746,47 +2747,47 @@ section .contact {
     padding: 0 10%;
     box-sizing: border-box;
   }
-  /* line 894, ../scss/homepage.scss */
+  /* line 891, ../scss/homepage.scss */
   section .explanation:before {
     top: -30px;
     width: 60px;
     height: 3px;
   }
-  /* line 902, ../scss/homepage.scss */
+  /* line 899, ../scss/homepage.scss */
   section .first .digital {
     margin-top: -122px;
   }
-  /* line 909, ../scss/homepage.scss */
+  /* line 906, ../scss/homepage.scss */
   section .first .explanation:before {
     display: none;
   }
 }
 @media (max-width: 480px) {
-  /* line 927, ../scss/homepage.scss */
+  /* line 924, ../scss/homepage.scss */
   section .text {
     max-width: 100%;
     overflow: hidden;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  /* line 937, ../scss/homepage.scss */
+  /* line 934, ../scss/homepage.scss */
   #work .block {
     height: 100%;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* line 945, ../scss/homepage.scss */
+  /* line 942, ../scss/homepage.scss */
   #content {
     min-width: 1024px;
     width: 100%;
   }
 
-  /* line 950, ../scss/homepage.scss */
+  /* line 947, ../scss/homepage.scss */
   #work {
     min-width: 1024px;
     width: 100%;
   }
-  /* line 954, ../scss/homepage.scss */
+  /* line 951, ../scss/homepage.scss */
   #work .block {
     -moz-background-size: 2048px auto !important;
     -o-background-size: 2048px auto !important;
@@ -2796,32 +2797,32 @@ section .contact {
     min-width: 1024px;
     width: 100%;
   }
-  /* line 960, ../scss/homepage.scss */
+  /* line 957, ../scss/homepage.scss */
   #work .block .headingwrapper {
     display: none;
   }
-  /* line 964, ../scss/homepage.scss */
+  /* line 961, ../scss/homepage.scss */
   #work .block .large {
     display: block !important;
   }
-  /* line 969, ../scss/homepage.scss */
+  /* line 966, ../scss/homepage.scss */
   #work .overlay {
     display: none;
   }
-  /* line 973, ../scss/homepage.scss */
+  /* line 970, ../scss/homepage.scss */
   #work .bottom {
     height: 100%;
   }
-  /* line 978, ../scss/homepage.scss */
+  /* line 975, ../scss/homepage.scss */
   #work .links span {
     display: none;
   }
-  /* line 981, ../scss/homepage.scss */
+  /* line 978, ../scss/homepage.scss */
   #work .links a {
     float: none;
   }
 
-  /* line 988, ../scss/homepage.scss */
+  /* line 985, ../scss/homepage.scss */
   #nextnav a {
     padding: 13px 2em;
   }

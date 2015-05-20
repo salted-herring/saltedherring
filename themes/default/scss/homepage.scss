@@ -212,12 +212,7 @@ section {
 
 		// salted word offset
 		h1 {
-
-			// margin-top: -232px;  	 //  *1
-			// margin-top: -172px;   //  *1.15
 			margin-top: -231px;   //  *1.15 increase
-
-			// margin-top: -13.5%;
 			position: fixed;
 			top: 50%;
 		}
@@ -231,6 +226,8 @@ section {
 
 		top: 50%;
 		margin-top: 130px;
+
+		width: 430px;
 
 		color: $white;
 		font-size: (18/$font-size)+em;
