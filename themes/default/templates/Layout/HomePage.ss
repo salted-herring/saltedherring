@@ -40,7 +40,9 @@
 						<% end_if %>
 
 						<div class="explanation">
-							$Explanation
+							<% if $Explanation %>
+								$Explanation
+							<% end_if %>
 						</div>
 
 					</div>
