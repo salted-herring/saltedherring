@@ -87,6 +87,7 @@ if($('body').is('.mobile')) {
 			}
 
 			positionHeading();
+			positionExplanation();
 
 
 			if($('#work .block.first').is('.init')) {
@@ -102,6 +103,26 @@ if($('body').is('.mobile')) {
 			$(window).resize(function() {
 				_resize();
 			});
+		}
+
+
+
+
+
+
+		function positionExplanation() {
+
+			$('#work .block:visible').each(function(i, el) {
+				exptop = $(this).find(".explanation").height();
+				// console.log(exptop);
+
+				if($(this).is('.first')) {} else {
+					$(this).find('.explanation').css({
+						marginTop: 4+(exptop/2)
+					});
+				}
+			});
+
 		}
 
 
@@ -215,6 +236,7 @@ if($('body').is('.mobile')) {
 			prevPosition = latestKnownScrollY;
 
 			positionHeading();
+			// positionExplanation();
 			scrolled = true;
 
 			/* ===========================
