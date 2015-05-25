@@ -20,32 +20,32 @@ aside {
 	font-style: italic;
 	font-size: (48/$font-size)+em;
 	line-height: (50/48)+em;
-	
+
 	.contact {
 		font-size: (16/48)+em;
 		line-height: 1.2em;
 		margin-top: 50px;
 		font-weight: normal;
-		
+
 		a {
 			color: $blue;
 			font-style: normal;
 		}
-		
+
 		.map {
 			color: $black;
-			
+
 			&:hover {
 				&:after {
 					background: transparent;
 				}
 			}
 		}
-		
+
 		p {
-			font-family: "minion-pro", Times, serif;
+			@include minion;
 			font-style: italic;
-			
+
 			a {
 				font-style: inherit;
 			}
@@ -55,7 +55,7 @@ aside {
 
 .article {
 	margin-top: -1em;
-	
+
 	/*
 p {
 		font-size: (22/$font-size)+em;
@@ -63,16 +63,16 @@ p {
 */
 }
 
-article {	
+article {
 	.row {
 		z-index: 2;
 		position: relative;
 		margin-top: 298px;
 	}
-	
+
 	a {
 		padding-bottom: 3px;
-		
+
 		&:hover {
 			&:after {
 				background: $blue;
@@ -88,7 +88,7 @@ article {
 	background: url(../img/stripes_final.png);
 	z-index: 1;
 	top: 0px;
-	
+
 /* 	background-position: 5px 5px; */
 /* 	@include opacity(.2); */
 /* 	background-repeat: repeat-y; */
@@ -109,32 +109,32 @@ article {
 		font-size: (20/$font-size)+em !important;
 		float: left;
 		text-decoration: none;
-		
+
 		&:hover:after {
 			background: none !important;
 		}
 	}
-	
+
 	.fullstory {
 		margin-right: 4%;
-		
+
 		&:hover {
 			background: $blue;
 			color: $white;
 		}
 	}
-	
+
 	.website {
 		@extend .external;
 		color: $blue;
 		border-color: $blue;
 		background-color: $background;
-		
+
 		&:before {
 			background-color: $background;
 			@include sprites-sprite(external_arrow_blue);
 		}
-		
+
 		&:hover {
 			background: $blue;
 			color: $white;
@@ -152,7 +152,7 @@ article {
 	h1 {
 		display: none;
 		background-size: contain;
-		
+
 		height: 400px;
 	background-color: red;
 		/*
@@ -170,33 +170,33 @@ width: auto;
 		top: auto;
 		margin: 0;
 	}
-	
+
 	aside {
 		margin-top: 22px !important;
 	}
-	
+
 	.overlay {
 		display: none;
 	}
-	
+
 	article {
 		.row {
 			margin-top: 0 !important;
 		}
 	}
-	
+
 	.article {
 		padding-top: 0 !important;
 	}
-	
+
 	.links {
 		width: 100%;
 	}
-	
+
 	#content {
 		max-width: 100%;
 		padding-bottom: 4em;
-		
+
 		aside {
 			padding: 16px;
 			display: block;
@@ -219,12 +219,12 @@ width: auto;
 	h1 {
 		left: 1em;
 	}
-	
+
 	article {
 		.row {
 			padding: 0 2em;
 		}
-		
+
 		.links {
 			width: 100%;
 		}
@@ -235,7 +235,7 @@ width: auto;
 	h1 {
 		left: 1em;
 	}
-	
+
 	article {
 		.row {
 			padding: 0 2em;

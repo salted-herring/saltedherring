@@ -17,7 +17,7 @@ if($('body').is('.mobile')) {
 			requestTick();
 		}
 
-		// this multiplies each slide taller
+		// this multiplies each slide taller than the window height
 		// increase = 1;
 		increase = 1.15;
 
@@ -109,7 +109,9 @@ if($('body').is('.mobile')) {
 
 
 
-
+		// for varying height text explanations margin top.
+		// as they are transform 50% from the top. they need to float
+		// with other things
 		function positionExplanation() {
 
 			$('#work .block:visible').each(function(i, el) {

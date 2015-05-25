@@ -5,8 +5,7 @@
 	<div class="details">
 		<div class="container row">
 			<div class="grid_1 nomobi whoarewe">
-				<p>We're a Strategic Creative Agency with a black belt in Digital.</p>
-
+				<p>$FooterBlurb</p>
 				<p>Copyright &copy; 2003 – $Now.Year</p>
 			</div>
 			<div class="grid_1 contact" itemscope itemtype="http://schema.org/Organization">

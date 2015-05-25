@@ -262,6 +262,7 @@ section {
 
 		// Digital + Brand
 		.digital {
+			@include minion;
 			margin-top: -20px+$offsetFirst;
 			color: $white;
 			font-size: (42/$font-size)+em;
@@ -272,8 +273,6 @@ section {
 			display: block;
 			text-align: center;
 			width: 100%;
-			font-style: italic;
-			font-family: "minion-pro", Times, serif;
 			top: 50%;
 		}
 
