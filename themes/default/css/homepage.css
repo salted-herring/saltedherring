@@ -2751,8 +2751,12 @@ section .contact {
   }
 
   /* line 898, ../scss/homepage.scss */
+  section .large {
+    margin-top: -260px;
+  }
+  /* line 902, ../scss/homepage.scss */
   section .explanation {
-    border: 1px solid pink;
+    border: 1px solid green;
     -moz-transform: translate(0, 0);
     -ms-transform: translate(0, 0);
     -webkit-transform: translate(0, 0);
@@ -2767,51 +2771,51 @@ section .contact {
     box-sizing: border-box;
     margin-top: -76px !important;
   }
-  /* line 913, ../scss/homepage.scss */
+  /* line 917, ../scss/homepage.scss */
   section .explanation:before {
     top: -30px;
     width: 60px;
     height: 3px;
   }
-  /* line 921, ../scss/homepage.scss */
+  /* line 925, ../scss/homepage.scss */
   section .first .digital {
     margin-top: -122px;
   }
-  /* line 925, ../scss/homepage.scss */
+  /* line 929, ../scss/homepage.scss */
   section .first .explanation {
     margin-top: -84px;
   }
-  /* line 928, ../scss/homepage.scss */
+  /* line 932, ../scss/homepage.scss */
   section .first .explanation:before {
     display: none;
   }
 }
 @media (max-width: 480px) {
-  /* line 946, ../scss/homepage.scss */
+  /* line 950, ../scss/homepage.scss */
   section .text {
     max-width: 100%;
     overflow: hidden;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  /* line 956, ../scss/homepage.scss */
+  /* line 960, ../scss/homepage.scss */
   #work .block {
     height: 100%;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* line 964, ../scss/homepage.scss */
+  /* line 968, ../scss/homepage.scss */
   #content {
     min-width: 1024px;
     width: 100%;
   }
 
-  /* line 969, ../scss/homepage.scss */
+  /* line 973, ../scss/homepage.scss */
   #work {
     min-width: 1024px;
     width: 100%;
   }
-  /* line 973, ../scss/homepage.scss */
+  /* line 977, ../scss/homepage.scss */
   #work .block {
     -moz-background-size: 2048px auto !important;
     -o-background-size: 2048px auto !important;
@@ -2821,32 +2825,32 @@ section .contact {
     min-width: 1024px;
     width: 100%;
   }
-  /* line 979, ../scss/homepage.scss */
+  /* line 983, ../scss/homepage.scss */
   #work .block .headingwrapper {
     display: none;
   }
-  /* line 983, ../scss/homepage.scss */
+  /* line 987, ../scss/homepage.scss */
   #work .block .large {
     display: block !important;
   }
-  /* line 988, ../scss/homepage.scss */
+  /* line 992, ../scss/homepage.scss */
   #work .overlay {
     display: none;
   }
-  /* line 992, ../scss/homepage.scss */
+  /* line 996, ../scss/homepage.scss */
   #work .bottom {
     height: 100%;
   }
-  /* line 997, ../scss/homepage.scss */
+  /* line 1001, ../scss/homepage.scss */
   #work .links span {
     display: none;
   }
-  /* line 1000, ../scss/homepage.scss */
+  /* line 1004, ../scss/homepage.scss */
   #work .links a {
     float: none;
   }
 
-  /* line 1007, ../scss/homepage.scss */
+  /* line 1011, ../scss/homepage.scss */
   #nextnav a {
     padding: 13px 2em;
   }

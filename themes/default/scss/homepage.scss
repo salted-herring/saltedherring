@@ -895,8 +895,12 @@ section {
 
 	section {
 
+		.large {
+		  margin-top: -260px;
+		}
+
 		.explanation {
-			@include b(pink);
+			@include b(green);
 			@include translate(0, 0); // this seems to make text fuzzy in safari
 			@include position(absolute, 50%, 0, null, 0, null);
 			font-size: (15/$font-size)+em;
