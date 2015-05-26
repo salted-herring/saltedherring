@@ -48,9 +48,7 @@
 			<span>Getting</span>
 			<span class="salt">Salted</span>
 		</div>
-		<div id="content" class="clearfix" data-title="$getTitle">
-			$Layout
-		</div>
+
 
 		<% include Footer %>
 		$getRequireJS
