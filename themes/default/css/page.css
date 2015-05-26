@@ -1135,7 +1135,7 @@ iframe {
 /* line 308, ../scss/styles.scss */
 #menu_icon {
   position: absolute;
-  z-index: 120;
+  z-index: 2000;
   right: 2em;
   top: -1em;
   color: #00bbde;
@@ -1576,7 +1576,6 @@ footer .fb:hover:before {
     right: 1em !important;
     display: block;
     top: 1em;
-    z-index: 200;
   }
 
   /* line 716, ../scss/styles.scss */

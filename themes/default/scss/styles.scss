@@ -307,7 +307,7 @@ $logo-height: 23px;
 
 #menu_icon {
 	position: absolute;
-	z-index: 120;
+	z-index: 2000;
 	right: 2em;
 	top: -1em;
 
@@ -701,7 +701,7 @@ and (max-device-width : 568px) {
 	}
 
 	#menu_icon {
-		@include b(lime);
+		@include b(red);
 		@include hide_text;
 		width: 39px;
 		height: 27px;
@@ -710,7 +710,7 @@ and (max-device-width : 568px) {
 		display: block;
 		// position: fixed;
 		top: 1em;
-		z-index: 200;
+		// z-index: 200;
 	}
 
 	#header {
