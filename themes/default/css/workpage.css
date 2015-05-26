@@ -1002,7 +1002,7 @@ iframe {
   margin-top: 0;
   width: 100%;
   /* 	margin-left: -480px; */
-  z-index: 100;
+  z-index: 900;
   /* 	left: 50%; */
   background: #f3f3f3;
   -webkit-transform: translate3d(0, 0, 0);
