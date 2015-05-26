@@ -227,8 +227,8 @@ section {
 
 	.explanation {
 		// border: 1px solid red;
-		// @include translate(-50%, -50%); // this seems to make text fuzzy in safari
-		// left: 50%;
+		@include translate(-50%, -50%); // this seems to make text fuzzy in safari
+		left: 50%;
 		position: absolute;
 		top: 50%;
 		margin-top: 120px;
@@ -897,6 +897,7 @@ section {
 
 		.explanation {
 			@include b(lime);
+			@include translate(0, 0); // this seems to make text fuzzy in safari
 
 			@include position(absolute, 120px, 0, null, 0, null);
 
