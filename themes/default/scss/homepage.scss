@@ -80,12 +80,7 @@ h1 {
 	}
 }
 
-.subtitle {
-	font-size: (18/$font-size)+em;
-	font-weight: bold;
-	display: block;
-	margin: 10px 0 14px;
-}
+
 
 .headingwrapper {
 	width: 400px;
@@ -237,9 +232,9 @@ section {
 		left: 50%;
 		top: 50%;
 		margin-top: 120px;
-		width: 444px;
+		width: 570px;
 		color: $white;
-		font-size: (18/$font-size)+em;
+		font-size: (20/$font-size)+em;
 		color: #FFF;
 		font-weight: 500;
 		text-align: center;
@@ -256,6 +251,19 @@ section {
 		}
 	//
 	}
+
+	.subtitle {
+		font-size: (18/$font-size)+em;
+		font-weight: bold;
+		display: block;
+		margin: 14px 0 14px;
+	}
+
+	.subexplanation {
+		font-size: (14/$font-size)+em;
+	}
+
+
 
 	.first {
 
@@ -289,8 +297,8 @@ section {
 		}
 
 		.explanation {
-			// top: 424px;
-			margin-top: 140px+$offsetFirst;
+			width: 444px;
+			margin-top: 110px+$offsetFirst;
 		}
 	//
 	}
@@ -888,14 +896,11 @@ section {
 	section {
 
 		.explanation {
-			// border: 1px solid red;
 			font-size: (15/$font-size)+em;
-			// font-weight: 500;
-
 			margin-top: -75px!important;
 			transform: none;
 			left: auto;
-			width: 100%;
+			width: 100%!important;
 			padding: 0 10%;
 			box-sizing: border-box;
 
