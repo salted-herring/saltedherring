@@ -346,14 +346,9 @@ $logo-height: 23px;
  * Content
  * =========================== */
 #content {
-	//@include transition(all .5s);
-	//@include at-breakpoint(0 3 320px) {
 		padding-top: 55px;
 		padding-bottom: 12em;
-/* 		min-height: 100%; */
-/* 		width: 100%; */
-	//}
-
+		z-index: 90;
 	.content {
 		a {
 			color: $black;
@@ -735,9 +730,6 @@ and (max-device-width : 568px) {
 		position: absolute;
 		z-index: 2;
 		background: $background;
-
-		@include bg(lime);
-
 		width: 100%;
 
 		a {
