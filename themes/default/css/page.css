@@ -1136,7 +1136,7 @@ iframe {
 #menu_icon {
   display: none;
   position: absolute;
-  z-index: 200;
+  z-index: 2000;
   right: 1em;
   top: -1em;
   padding: 0 12px;
