@@ -120,7 +120,7 @@ if($('body').is('.mobile')) {
 
 				if($(this).is('.first')) {} else {
 					$(this).find('.explanation').css({
-						marginTop: 4+(exptop/2)
+						marginTop: 20+(exptop/2)
 					});
 				}
 			});

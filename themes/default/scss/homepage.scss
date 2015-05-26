@@ -1,5 +1,9 @@
 @import 'styles';
 
+
+$offsetAll: 30px;
+
+
 #content {
 	padding-bottom: 0;
 	height: 1000px;
@@ -27,11 +31,11 @@ h1,
 
 .keyword {
 	width: 100%;
-	margin-top: -150px;
+	margin-top: -150px+$offsetAll;
 }
 
 .large {
-	margin-top: -260px;
+	margin-top: -260px+$offsetAll;
 }
 
 h1 {
@@ -212,7 +216,7 @@ section {
 
 		// salted word offset
 		h1 {
-			margin-top: -231px;   //  *1.15 increase
+			margin-top: -202px;   //  *1.15 increase
 			position: fixed;
 			top: 50%;
 		}
@@ -225,7 +229,7 @@ section {
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		margin-top: 130px;
+		margin-top: 120px;
 		width: 430px;
 		color: $white;
 		font-size: (18/$font-size)+em;
@@ -238,7 +242,7 @@ section {
 			@include translate(-50%, -50%); // this seems to make text fuzzy in safari
 			position: absolute;
 			left: 50%;
-			top: -30px;
+			top: -22px;
 			content:'';
 			width: 80px;
 			height: 3px;
@@ -248,7 +252,8 @@ section {
 
 	.first {
 
-		$offsetFirst: -80px;
+		// $offsetFirst: -80px;
+		$offsetFirst: -50px;
 
 		//salted
 		.large {
@@ -388,7 +393,8 @@ section {
 		color: $white;
 		position: absolute;
 		left: 50%;
-		bottom: 4em;
+		// bottom: 4em;
+		bottom: 18%;
 		margin-left: (-896/2)+px;
 
 
