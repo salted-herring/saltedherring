@@ -897,14 +897,20 @@ section {
 
 		.explanation {
 			@include b(lime);
+
+			@include position(absolute, 120px, 0, null, 0, null);
+
+
 			font-size: (15/$font-size)+em;
-			margin-top: -75px!important;
+
 			transform: none;
-			left: auto;
+			// left: 0;
 			width: 100%!important;
 			padding: 0 10%;
 			box-sizing: border-box;
-			position: relative;
+			// position: relative;
+
+			// margin-top: -75px!important;
 
 			&:before {
 				top: -30px;
