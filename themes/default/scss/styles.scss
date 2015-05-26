@@ -708,7 +708,7 @@ and (max-device-width : 568px) {
 		font-size: $font-size+px;
 		right: 1em !important;
 		display: block;
-		position: fixed;
+		// position: fixed;
 		top: 1em;
 		z-index: 200;
 	}

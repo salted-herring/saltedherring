@@ -1575,7 +1575,6 @@ footer .fb:hover:before {
     font-size: 16px;
     right: 1em !important;
     display: block;
-    position: fixed;
     top: 1em;
     z-index: 200;
   }
