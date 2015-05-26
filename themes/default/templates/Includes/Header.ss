@@ -1,7 +1,7 @@
 <header id="header">
 	<div class="container row">
 
-		<span id="menu_icon" class="expand">
+		<span id="menu_icon">
 			<em class="title">Menu</em>
 		</span>
 
