@@ -2752,7 +2752,7 @@ section .contact {
 
   /* line 898, ../scss/homepage.scss */
   section .explanation {
-    border: 1px solid lime;
+    border: 1px solid red;
     -moz-transform: translate(0, 0);
     -ms-transform: translate(0, 0);
     -webkit-transform: translate(0, 0);
@@ -2762,52 +2762,51 @@ section .contact {
     right: 0;
     left: 0;
     font-size: 0.9375em;
-    transform: none !important;
     width: 100% !important;
     padding: 0 10%;
     box-sizing: border-box;
   }
-  /* line 916, ../scss/homepage.scss */
+  /* line 912, ../scss/homepage.scss */
   section .explanation:before {
     top: -30px;
     width: 60px;
     height: 3px;
   }
-  /* line 924, ../scss/homepage.scss */
+  /* line 920, ../scss/homepage.scss */
   section .first .digital {
     margin-top: -122px;
   }
-  /* line 930, ../scss/homepage.scss */
+  /* line 926, ../scss/homepage.scss */
   section .first .explanation:before {
     display: none;
   }
 }
 @media (max-width: 480px) {
-  /* line 948, ../scss/homepage.scss */
+  /* line 944, ../scss/homepage.scss */
   section .text {
     max-width: 100%;
     overflow: hidden;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  /* line 958, ../scss/homepage.scss */
+  /* line 954, ../scss/homepage.scss */
   #work .block {
     height: 100%;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* line 966, ../scss/homepage.scss */
+  /* line 962, ../scss/homepage.scss */
   #content {
     min-width: 1024px;
     width: 100%;
   }
 
-  /* line 971, ../scss/homepage.scss */
+  /* line 967, ../scss/homepage.scss */
   #work {
     min-width: 1024px;
     width: 100%;
   }
-  /* line 975, ../scss/homepage.scss */
+  /* line 971, ../scss/homepage.scss */
   #work .block {
     -moz-background-size: 2048px auto !important;
     -o-background-size: 2048px auto !important;
@@ -2817,32 +2816,32 @@ section .contact {
     min-width: 1024px;
     width: 100%;
   }
-  /* line 981, ../scss/homepage.scss */
+  /* line 977, ../scss/homepage.scss */
   #work .block .headingwrapper {
     display: none;
   }
-  /* line 985, ../scss/homepage.scss */
+  /* line 981, ../scss/homepage.scss */
   #work .block .large {
     display: block !important;
   }
-  /* line 990, ../scss/homepage.scss */
+  /* line 986, ../scss/homepage.scss */
   #work .overlay {
     display: none;
   }
-  /* line 994, ../scss/homepage.scss */
+  /* line 990, ../scss/homepage.scss */
   #work .bottom {
     height: 100%;
   }
-  /* line 999, ../scss/homepage.scss */
+  /* line 995, ../scss/homepage.scss */
   #work .links span {
     display: none;
   }
-  /* line 1002, ../scss/homepage.scss */
+  /* line 998, ../scss/homepage.scss */
   #work .links a {
     float: none;
   }
 
-  /* line 1009, ../scss/homepage.scss */
+  /* line 1005, ../scss/homepage.scss */
   #nextnav a {
     padding: 13px 2em;
   }
