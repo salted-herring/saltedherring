@@ -2765,6 +2765,7 @@ section .contact {
     width: 100% !important;
     padding: 0 10%;
     box-sizing: border-box;
+    margin-top: -76px !important;
   }
   /* line 913, ../scss/homepage.scss */
   section .explanation:before {
