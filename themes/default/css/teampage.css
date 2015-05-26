@@ -1566,6 +1566,7 @@ footer .fb:hover:before {
 
   /* line 703, ../scss/styles.scss */
   #menu_icon {
+    border: 1px solid lime;
     text-indent: -119988px;
     overflow: hidden;
     text-align: left;
@@ -1576,9 +1577,10 @@ footer .fb:hover:before {
     display: block;
     position: fixed;
     top: 1em;
+    z-index: 200;
   }
 
-  /* line 714, ../scss/styles.scss */
+  /* line 716, ../scss/styles.scss */
   #header {
     width: 100%;
     left: 0;
@@ -1589,7 +1591,7 @@ footer .fb:hover:before {
     -webkit-perspective: 1000;
   }
 
-  /* line 725, ../scss/styles.scss */
+  /* line 727, ../scss/styles.scss */
   #logo {
     left: 0;
     margin: 0;
@@ -1599,12 +1601,12 @@ footer .fb:hover:before {
     background: #f5f5f5;
     width: 100%;
   }
-  /* line 734, ../scss/styles.scss */
+  /* line 736, ../scss/styles.scss */
   #logo a {
     left: 16px;
   }
 
-  /* line 739, ../scss/styles.scss */
+  /* line 741, ../scss/styles.scss */
   #main_nav {
     margin-left: 0em;
     padding-left: 0em;
@@ -1617,11 +1619,11 @@ footer .fb:hover:before {
     right: 0;
     top: -57px;
   }
-  /* line 751, ../scss/styles.scss */
+  /* line 753, ../scss/styles.scss */
   #main_nav:before {
     display: block;
   }
-  /* line 755, ../scss/styles.scss */
+  /* line 757, ../scss/styles.scss */
   #main_nav ul {
     position: absolute;
     z-index: 0;
@@ -1645,61 +1647,61 @@ footer .fb:hover:before {
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
   }
-  /* line 781, ../scss/styles.scss */
+  /* line 783, ../scss/styles.scss */
   #main_nav li {
     padding: 1.25em 0 1.25em 1.25em;
   }
-  /* line 786, ../scss/styles.scss */
+  /* line 788, ../scss/styles.scss */
   #main_nav.collapse ul {
     /* 				height: 3em; */
     overflow: visible;
   }
 
-  /* line 798, ../scss/styles.scss */
+  /* line 800, ../scss/styles.scss */
   footer {
     width: 100%;
     background: #00bbde;
   }
-  /* line 802, ../scss/styles.scss */
+  /* line 804, ../scss/styles.scss */
   footer .fb {
     display: block;
   }
-  /* line 806, ../scss/styles.scss */
+  /* line 808, ../scss/styles.scss */
   footer .salt {
     font-size: 1em;
     margin: 0;
     line-height: 1em;
     text-align: center;
   }
-  /* line 813, ../scss/styles.scss */
+  /* line 815, ../scss/styles.scss */
   footer .salt span:before, footer .salt span:after {
     display: none;
   }
-  /* line 821, ../scss/styles.scss */
+  /* line 823, ../scss/styles.scss */
   footer .details .container {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 6em 1em;
   }
-  /* line 827, ../scss/styles.scss */
+  /* line 829, ../scss/styles.scss */
   footer .external {
     margin: 0;
   }
-  /* line 831, ../scss/styles.scss */
+  /* line 833, ../scss/styles.scss */
   footer .row {
     font-size: 1em;
     margin: 0;
     padding: 1.5em 0;
     line-height: 1.2em;
   }
-  /* line 837, ../scss/styles.scss */
+  /* line 839, ../scss/styles.scss */
   footer .row p {
     margin: 1em 0;
   }
 }
 @media (max-width: 320px) {
-  /* line 846, ../scss/styles.scss */
+  /* line 848, ../scss/styles.scss */
   body,
   #content,
   #footer {
@@ -1708,11 +1710,11 @@ footer .fb:hover:before {
     overflow-x: hidden;
   }
 
-  /* line 854, ../scss/styles.scss */
+  /* line 856, ../scss/styles.scss */
   #footer {
     text-align: center;
   }
-  /* line 856, ../scss/styles.scss */
+  /* line 858, ../scss/styles.scss */
   #footer .fb {
     margin-left: 1em;
     margin-top: 1em;
@@ -1720,7 +1722,7 @@ footer .fb:hover:before {
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  /* line 865, ../scss/styles.scss */
+  /* line 867, ../scss/styles.scss */
   body,
   #content,
   #header,
@@ -1732,12 +1734,12 @@ footer .fb:hover:before {
     */
   }
 
-  /* line 876, ../scss/styles.scss */
+  /* line 878, ../scss/styles.scss */
   #footer {
     overflow: hidden;
   }
 
-  /* line 879, ../scss/styles.scss */
+  /* line 881, ../scss/styles.scss */
   #footer {
     		/*
     .details {
@@ -1747,24 +1749,24 @@ footer .fb:hover:before {
     		}
     */
   }
-  /* line 880, ../scss/styles.scss */
+  /* line 882, ../scss/styles.scss */
   #footer .container {
     max-width: 768px;
   }
-  /* line 884, ../scss/styles.scss */
+  /* line 886, ../scss/styles.scss */
   #footer .grid_1 {
     width: 50%;
     margin-right: 0;
   }
-  /* line 890, ../scss/styles.scss */
+  /* line 892, ../scss/styles.scss */
   #footer .salt .container {
     padding-left: 1em;
   }
-  /* line 893, ../scss/styles.scss */
+  /* line 895, ../scss/styles.scss */
   #footer .salt .container:before {
     right: 1em;
   }
-  /* line 897, ../scss/styles.scss */
+  /* line 899, ../scss/styles.scss */
   #footer .salt .container:after {
     right: 6em;
   }
@@ -1775,34 +1777,34 @@ footer .fb:hover:before {
   		padding-left: 2em;
   	}
   */
-  /* line 922, ../scss/styles.scss */
+  /* line 924, ../scss/styles.scss */
   #footer {
     overflow: hidden;
   }
 
-  /* line 926, ../scss/styles.scss */
+  /* line 928, ../scss/styles.scss */
   #footer .container {
     max-width: 1024px;
   }
-  /* line 931, ../scss/styles.scss */
+  /* line 933, ../scss/styles.scss */
   #footer .salt .container {
     padding-left: 1em;
   }
-  /* line 934, ../scss/styles.scss */
+  /* line 936, ../scss/styles.scss */
   #footer .salt .container:before {
     right: 1em;
   }
-  /* line 938, ../scss/styles.scss */
+  /* line 940, ../scss/styles.scss */
   #footer .salt .container:after {
     right: 6em;
   }
-  /* line 945, ../scss/styles.scss */
+  /* line 947, ../scss/styles.scss */
   #footer .details .container {
     padding: 6em 2em;
   }
 }
 @media (min-width: 768px) and (max-width: 768px) {
-  /* line 953, ../scss/styles.scss */
+  /* line 955, ../scss/styles.scss */
   body,
   #content,
   #header,
@@ -1814,7 +1816,7 @@ footer .fb:hover:before {
   }
 }
 @media (min-width: 1024px) and (max-width: 1024px) {
-  /* line 965, ../scss/styles.scss */
+  /* line 967, ../scss/styles.scss */
   body,
   #content,
   #header,
