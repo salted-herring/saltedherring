@@ -1145,11 +1145,11 @@ iframe {
 /* line 318, ../scss/styles.scss */
 #menu_icon .title {
   color: #00bbde;
-  font-size: 11px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.1px;
   line-height: 1em;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   font-style: normal;
 }
@@ -1873,7 +1873,7 @@ h1 span {
 
 /* line 58, ../scss/homepage.scss */
 #menu_icon {
-  top: .8em;
+  top: 1em;
 }
 
 /* line 62, ../scss/homepage.scss */

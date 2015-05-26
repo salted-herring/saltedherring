@@ -317,7 +317,7 @@ $logo-height: 23px;
 
 	.title {
 		//            color    	size    transf 	 	spacn 	l-heig   align 	weight  decora  style
-		@include type($blue, 	11px, 	uppercase,  0.1px, 	1em, 	 null, 	500, 	none, 	normal);
+		@include type($blue, 	16px, 	uppercase,  0.1px, 	1em, 	 null, 	600, 	none, 	normal);
 	}
 
 	.icon-bar {
