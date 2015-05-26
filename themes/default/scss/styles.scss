@@ -700,8 +700,11 @@ and (max-device-width : 568px) {
 		}
 	}
 
+
+
+
 	#menu_icon {
-		@include b(red);
+		@include bg(red);
 		@include hide_text;
 		width: 39px;
 		height: 27px;
@@ -732,6 +735,9 @@ and (max-device-width : 568px) {
 		position: absolute;
 		z-index: 2;
 		background: $background;
+
+		@include bg(lime);
+
 		width: 100%;
 
 		a {
