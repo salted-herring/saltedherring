@@ -841,6 +841,7 @@ section {
 			display: block;
 			height: 320px;
 			background-attachment: initial;
+			padding-bottom: 150px;
 
 			&.first {
 				display: block;
@@ -928,7 +929,15 @@ section {
 				}
 			}
 		}
+
+	.subtitle,
+	.subexplanation {
+		display: none;
 	}
+
+	//
+	}
+
 
 
 
