@@ -1,6 +1,27 @@
 @import 'styles';
 
 
+%contact-button {
+	font-weight: 500;
+	font-size: 1.125em;
+	width: auto;
+	display: inline-block;
+	border: 3px solid $white;
+	padding: .8em 3em;
+	text-align: center;
+	// position: relative;
+	box-sizing: border-box;
+	text-decoration: none;
+	&:hover {
+		background: $white;
+		color: $black;
+	}
+	&:after {
+	  display: none;
+	}
+}
+
+
 #contact {
 	$row-one-height: 424px;
 
@@ -25,91 +46,115 @@
 		padding: 0 0 0 65px;
 		box-sizing: border-box;
 	}
-//
-}
 
+	.emailButton {
+		// @include b(purple);
+		@extend %contact-button;
+		@include position(absolute, null, null, 40px, 65px, null);
+	//
+	}
 
-$rowtop: 80px;
+	.emailLink {
+		// @include b(pink);
+		@extend %contact-button;
+		@include position(absolute, null, 80px, 40px, null, null);
+	//
+	}
 
-.contactIntroText {
-	// @include b(red);
+	$rowtop: 80px;
 
-	p {
-		color: $blue;
-		font-size: (45/$font-size)+em;
+	.contactIntroText {
+		// @include b(red);
+		p {
+			color: $blue;
+			font-size: (45/$font-size)+em;
+			line-height: 0.94em;
+			font-weight: 800;
+			text-transform: uppercase;
+			padding: #{$rowtop+10px} 20px 0 30px;
+			margin: 0;
+		}
+	//
+	}
+
+	.phoneNumber {
+		// @include b(lime);
+		@include minion;
+		color: $white;
+		font-size: (30/$font-size)+em;
 		line-height: 0.94em;
-		font-weight: 800;
-		text-transform: uppercase;
-		margin: #{$rowtop+10px} 20px 0 30px;
-		padding: 0;
+		padding: $rowtop 0 30px;
+		display: inline-block;
+		text-decoration: none;
+
+		&:after {
+		  display: none;
+		}
+	}
+
+	.contactAddress {
+		// @include b(lime);
+		@include minion;
+		color: $white;
+		font-size: (18/$font-size)+em;
+		line-height: 1.3em;
+		margin: 0 0 30px;
+	//
 	}
 //
 }
 
-.phoneNumber {
-	// @include b(lime);
-	@include minion;
-	color: $white;
-	font-size: (30/$font-size)+em;
-	line-height: 0.94em;
-	margin: $rowtop 0 30px;
-	// font-weight: 800;
-	// padding: 0;
-}
-
-.contactAddress {
-	// @include b(lime);
-	@include minion;
-	color: $white;
-	font-size: (18/$font-size)+em;
-	line-height: 1.3em;
-	margin: 0 0 30px;
-//
-}
 
 
-%button {
-	font-weight: 500;
-	font-size: 1.125em;
-	width: auto;
-	display: inline-block;
-	border: 3px solid $white;
-	padding: .8em 3em;
-	text-align: center;
-	position: relative;
-	box-sizing: border-box;
-	text-decoration: none;
-	&:hover {
-		background: $white;
-		color: $black;
+
+
+@include at-breakpoint(0 3 800px) {
+
+	#content #contact {
+		$response-row-one-height: auto;
+		padding: 0!important;
+
+		.col-1 {
+			height: $response-row-one-height;
+			width: 100%;
+			float: none;
+		}
+
+		.col-2 {
+			background-size: cover;
+			width: 100%;
+			float: none;
+			padding: 0 0 118px 22px;
+		}
+
+		.emailButton {
+			@include position(relative, auto, auto, auto, auto, null);
+			float: left;
+			margin: 0 30px 20px 0;
+		//
+		}
+
+		.emailLink {
+			@include position(relative, auto, auto, auto, auto, null);
+			float: left;
+		//
+		}
+
+		.contactIntroText {
+			p {
+				font-size: (35/$font-size)+em;
+				padding: 20px;
+			}
+		}
+
+		.phoneNumber {
+			padding: 30px 0 20px;
+		}
+
 	}
-	&:after {
-	  display: none;
-	}
-}
 
-.emailButton {
-	// @include b(purple);
-	@extend %button;
-	@include position(absolute, null, null, 40px, 65px, null);
 //
 }
-
-
-.emailLink {
-	// @include b(pink);
-	@extend %button;
-	@include position(absolute, null, 80px, 40px, null, null);
-//
-}
-
-
-
-
-
-
-
-
 
 
 

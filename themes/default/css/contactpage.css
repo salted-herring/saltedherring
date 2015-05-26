@@ -1825,11 +1825,33 @@ footer .fb:hover:before {
     overflow-x: hidden;
   }
 }
-/* line 7, ../scss/contactpage.scss */
+/* line 4, ../scss/contactpage.scss */
+#contact .emailButton, #contact .emailLink {
+  font-weight: 500;
+  font-size: 1.125em;
+  width: auto;
+  display: inline-block;
+  border: 3px solid #ffffff;
+  padding: .8em 3em;
+  text-align: center;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+/* line 15, ../scss/contactpage.scss */
+#contact .emailButton:hover, #contact .emailLink:hover {
+  background: #ffffff;
+  color: #000000;
+}
+/* line 19, ../scss/contactpage.scss */
+#contact .emailButton:after, #contact .emailLink:after {
+  display: none;
+}
+
+/* line 28, ../scss/contactpage.scss */
 #contact .row-one {
   background-color: #00bbde;
 }
-/* line 11, ../scss/contactpage.scss */
+/* line 32, ../scss/contactpage.scss */
 #contact .col-1 {
   background-color: #ffffff;
   height: 424px;
@@ -1837,7 +1859,7 @@ footer .fb:hover:before {
   float: left;
   box-sizing: border-box;
 }
-/* line 19, ../scss/contactpage.scss */
+/* line 40, ../scss/contactpage.scss */
 #contact .col-2 {
   height: 424px;
   position: relative;
@@ -1847,30 +1869,45 @@ footer .fb:hover:before {
   padding: 0 0 0 65px;
   box-sizing: border-box;
 }
-
-/* line 37, ../scss/contactpage.scss */
-.contactIntroText p {
+/* line 50, ../scss/contactpage.scss */
+#contact .emailButton {
+  position: absolute;
+  bottom: 40px;
+  left: 65px;
+}
+/* line 57, ../scss/contactpage.scss */
+#contact .emailLink {
+  position: absolute;
+  right: 80px;
+  bottom: 40px;
+}
+/* line 68, ../scss/contactpage.scss */
+#contact .contactIntroText p {
   color: #00bbde;
   font-size: 2.8125em;
   line-height: 0.94em;
   font-weight: 800;
   text-transform: uppercase;
-  margin: 90px 20px 0 30px;
-  padding: 0;
+  padding: 90px 20px 0 30px;
+  margin: 0;
 }
-
-/* line 49, ../scss/contactpage.scss */
-.phoneNumber {
+/* line 80, ../scss/contactpage.scss */
+#contact .phoneNumber {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
   color: #ffffff;
   font-size: 1.875em;
   line-height: 0.94em;
-  margin: 80px 0 30px;
+  padding: 80px 0 30px;
+  display: inline-block;
+  text-decoration: none;
 }
-
-/* line 60, ../scss/contactpage.scss */
-.contactAddress {
+/* line 90, ../scss/contactpage.scss */
+#contact .phoneNumber:after {
+  display: none;
+}
+/* line 95, ../scss/contactpage.scss */
+#contact .contactAddress {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
   color: #ffffff;
@@ -1879,39 +1916,50 @@ footer .fb:hover:before {
   margin: 0 0 30px;
 }
 
-/* line 71, ../scss/contactpage.scss */
-.emailButton, .emailLink {
-  font-weight: 500;
-  font-size: 1.125em;
-  width: auto;
-  display: inline-block;
-  border: 3px solid #ffffff;
-  padding: .8em 3em;
-  text-align: center;
-  position: relative;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-/* line 82, ../scss/contactpage.scss */
-.emailButton:hover, .emailLink:hover {
-  background: #ffffff;
-  color: #000000;
-}
-/* line 86, ../scss/contactpage.scss */
-.emailButton:after, .emailLink:after {
-  display: none;
-}
-
-/* line 91, ../scss/contactpage.scss */
-.emailButton {
-  position: absolute;
-  bottom: 40px;
-  left: 65px;
-}
-
-/* line 99, ../scss/contactpage.scss */
-.emailLink {
-  position: absolute;
-  right: 80px;
-  bottom: 40px;
+@media (max-width: 800px) {
+  /* line 113, ../scss/contactpage.scss */
+  #content #contact {
+    padding: 0 !important;
+  }
+  /* line 117, ../scss/contactpage.scss */
+  #content #contact .col-1 {
+    height: auto;
+    width: 100%;
+    float: none;
+  }
+  /* line 123, ../scss/contactpage.scss */
+  #content #contact .col-2 {
+    background-size: cover;
+    width: 100%;
+    float: none;
+    padding: 0 0 118px 22px;
+  }
+  /* line 130, ../scss/contactpage.scss */
+  #content #contact .emailButton {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    float: left;
+    margin: 0 30px 20px 0;
+  }
+  /* line 137, ../scss/contactpage.scss */
+  #content #contact .emailLink {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    float: left;
+  }
+  /* line 144, ../scss/contactpage.scss */
+  #content #contact .contactIntroText p {
+    font-size: 2.1875em;
+    padding: 20px;
+  }
+  /* line 150, ../scss/contactpage.scss */
+  #content #contact .phoneNumber {
+    padding: 30px 0 20px;
+  }
 }
