@@ -2752,6 +2752,7 @@ section .contact {
 
   /* line 898, ../scss/homepage.scss */
   section .explanation {
+    border: 1px solid lime;
     font-size: 0.9375em;
     margin-top: -75px !important;
     transform: none;
@@ -2759,48 +2760,49 @@ section .contact {
     width: 100% !important;
     padding: 0 10%;
     box-sizing: border-box;
+    position: relative;
   }
-  /* line 907, ../scss/homepage.scss */
+  /* line 909, ../scss/homepage.scss */
   section .explanation:before {
     top: -30px;
     width: 60px;
     height: 3px;
   }
-  /* line 915, ../scss/homepage.scss */
+  /* line 917, ../scss/homepage.scss */
   section .first .digital {
     margin-top: -122px;
   }
-  /* line 922, ../scss/homepage.scss */
+  /* line 923, ../scss/homepage.scss */
   section .first .explanation:before {
     display: none;
   }
 }
 @media (max-width: 480px) {
-  /* line 940, ../scss/homepage.scss */
+  /* line 941, ../scss/homepage.scss */
   section .text {
     max-width: 100%;
     overflow: hidden;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  /* line 950, ../scss/homepage.scss */
+  /* line 951, ../scss/homepage.scss */
   #work .block {
     height: 100%;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* line 958, ../scss/homepage.scss */
+  /* line 959, ../scss/homepage.scss */
   #content {
     min-width: 1024px;
     width: 100%;
   }
 
-  /* line 963, ../scss/homepage.scss */
+  /* line 964, ../scss/homepage.scss */
   #work {
     min-width: 1024px;
     width: 100%;
   }
-  /* line 967, ../scss/homepage.scss */
+  /* line 968, ../scss/homepage.scss */
   #work .block {
     -moz-background-size: 2048px auto !important;
     -o-background-size: 2048px auto !important;
@@ -2810,32 +2812,32 @@ section .contact {
     min-width: 1024px;
     width: 100%;
   }
-  /* line 973, ../scss/homepage.scss */
+  /* line 974, ../scss/homepage.scss */
   #work .block .headingwrapper {
     display: none;
   }
-  /* line 977, ../scss/homepage.scss */
+  /* line 978, ../scss/homepage.scss */
   #work .block .large {
     display: block !important;
   }
-  /* line 982, ../scss/homepage.scss */
+  /* line 983, ../scss/homepage.scss */
   #work .overlay {
     display: none;
   }
-  /* line 986, ../scss/homepage.scss */
+  /* line 987, ../scss/homepage.scss */
   #work .bottom {
     height: 100%;
   }
-  /* line 991, ../scss/homepage.scss */
+  /* line 992, ../scss/homepage.scss */
   #work .links span {
     display: none;
   }
-  /* line 994, ../scss/homepage.scss */
+  /* line 995, ../scss/homepage.scss */
   #work .links a {
     float: none;
   }
 
-  /* line 1001, ../scss/homepage.scss */
+  /* line 1002, ../scss/homepage.scss */
   #nextnav a {
     padding: 13px 2em;
   }
