@@ -8,6 +8,8 @@ class Slider extends BaseDBO {
 		'LinkDescription' => 'Varchar(100)',
 		'LinkTitle' => 'Varchar(100)',
 		'Explanation' => 'Text',
+		'SubTitle' => 'Varchar(100)',
+		'SubExplanation' => 'Text',
 	);
 
 	private static $has_one = array(
@@ -82,6 +84,8 @@ class Slider extends BaseDBO {
 		$title = new TextField('Title');
 		$description = new TextField('Description');
 		$explanation = new TextareaField('Explanation');
+		$subTitle = new TextField('SubTitle');
+		$subExplanation = new TextareaField('SubExplanation');
 		$link = new DropdownField("LinkID", "Link", SiteTree::get()->map('ID', 'Title'));
 		$linkDescription = new TextField('LinkDescription', 'Link Description');
 		$overlay = new UploadField('OverlayImage', 'Overlay Image');
@@ -121,6 +125,8 @@ class Slider extends BaseDBO {
 			),
 			$linkDescription,
 			$explanation,
+			$subTitle,
+			$subExplanation,
 			$overlay,
 			$gridfield
 		));
@@ -131,6 +137,8 @@ class Slider extends BaseDBO {
 		$keyword->setRightTitle('The large text. e.g. CHOCOLATE');
 		$description->setRightTitle('Description of what the slide represents - e.g. The world\'s first chocolate website.');
 		$explanation->setRightTitle('Explanation text that explains to the user and seo what they see.');
+		$subTitle->setRightTitle('Sub heading within content.');
+		$subExplanation->setRightTitle('Second Paragraph.');
 		$linkDescription->setRightTitle('Text of the link');
 		$link->setRightTitle('A page in the site to link to');
 		$title->setRightTitle('e.g. Whittakers\' Chocolate');

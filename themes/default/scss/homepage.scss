@@ -80,6 +80,13 @@ h1 {
 	}
 }
 
+.subtitle {
+	font-size: (18/$font-size)+em;
+	font-weight: bold;
+	display: block;
+	margin: 10px 0 14px;
+}
+
 .headingwrapper {
 	width: 400px;
 	margin-left: -200px;
@@ -230,7 +237,7 @@ section {
 		left: 50%;
 		top: 50%;
 		margin-top: 120px;
-		width: 430px;
+		width: 444px;
 		color: $white;
 		font-size: (18/$font-size)+em;
 		color: #FFF;

@@ -48,8 +48,14 @@
 						<div class="explanation">
 							<% if $Explanation %>
 								$Explanation
+
+
 							<% end_if %>
+							<span class="subtitle">$SubTitle</span>
+							$SubExplanation
 						</div>
+
+
 
 					</div>
 					<% if First %>
