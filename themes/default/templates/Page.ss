@@ -53,6 +53,6 @@
 		</div>
 
 		<% include Footer %>
-		$getRequireJS
+
 	</body>
 </html>
