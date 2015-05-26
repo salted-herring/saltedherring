@@ -251,7 +251,7 @@ if($('body').is('.mobile')) {
 				return top < (latestKnownScrollY + winHeight) && bottom > latestKnownScrollY;
 			}).each(function(i, el) {
 				if ((latestKnownScrollY + winHeight) > $(this).offset().top) {
-					var top = (-200 + (((latestKnownScrollY - $(this).data('top')) / winHeight) * 500));
+					var top = (-330 + (((latestKnownScrollY - $(this).data('top')) / winHeight) * 500));
 
 					$(this).find('.overlay').css({
 						'background-position': '50% ' + top + '%'
