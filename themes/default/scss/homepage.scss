@@ -653,6 +653,8 @@ section {
 		}
 
 		.contain {
+			@include bg(red);
+			opacity: 0.7;
 			position: relative;
 			top: auto;
 			width: auto;
