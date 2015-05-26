@@ -30,6 +30,73 @@
 
 
 
+
+
+//           color    size    transf      spacn line-hig align weight  decora  style
+// @include type(white, rem(14), uppercase, 1.6px, 1.7em, center, bold, none, normal);
+
+
+//           color size transf spacn line-hig  align weight  decora style
+// @include type(null, null, null, null, null, null, null, null, null);
+
+
+
+@mixin type($f-color: null, $f-size: null, $f-transform: null, $f-spacing: null, $f-lineheight: null, $f-align: null, $f-weight: null, $f-decoration: null, $f-style:null) {
+
+  @if $f-color == 'null' {}
+  @else {
+    color: $f-color;
+  }
+
+  @if $f-size == 'null' {}
+  @else {
+    font-size: $f-size;
+  }
+
+  @if $f-transform == 'null' {}
+  @else {
+    text-transform: $f-transform;
+  }
+
+  @if $f-spacing == 'null' {}
+  @else {
+    letter-spacing: $f-spacing;
+  }
+
+  @if $f-lineheight == 'null' {}
+  @else {
+    line-height: $f-lineheight;
+  }
+
+  @if $f-align == 'null' {}
+  @else {
+    text-align: $f-align;
+  }
+
+  @if $f-weight == 'null' {}
+  @else {
+    font-weight: $f-weight;
+  }
+
+  @if $f-decoration == 'null' {}
+  @else {
+    text-decoration: $f-decoration;
+  }
+
+  @if $f-style == 'null' {}
+  @else {
+    font-style: $f-style;
+  }
+
+//
+}
+
+
+
+
+
+
+
 // Development borders and backgrounds
 
 @mixin bRed { border: 1px solid red; }

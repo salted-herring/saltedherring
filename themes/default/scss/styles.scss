@@ -306,40 +306,51 @@ $logo-height: 23px;
 }
 
 #menu_icon {
-	position: absolute;
-	z-index: 2000;
-	right: 2em;
-	top: -1em;
-
-	color: $blue;
-	font-size: (18/$font-size)+em;
-	text-transform: uppercase;
-	line-height: 1em;
-	font-weight: 500;
-
 	display: none;
 
-	@include transition(none);
-	@include transition(top .5s);
+	position: absolute;
+	z-index: 200;
+	right: 1em;
+	top: -1em;
+	padding: 0 12px;
+  	height: 50px;
 
-	&.hide {
-		top: -1em;
+	.title {
+		//            color    	size    transf 	 	spacn 	l-heig   align 	weight  decora  style
+		@include type($blue, 	11px, 	uppercase,  0.1px, 	1em, 	 null, 	500, 	none, 	normal);
 	}
 
-	&.show {
-		top: .8em;
+	.icon-bar {
+	  display: block;
+	  width: 32px;
+	  height: 3px;
+	  background-color: $blue;
+	  margin: 0 0 6px 0;
+	  &.last {
+		  margin: 0 0 -2px 0;
+	  }
 	}
 
-	@include sprites-sprite(menu-open);
-
-	&.collapse {
-		@include sprites-sprite(menu-collapse);
-	}
-	&.expand {
+	&:hover {
 		cursor: pointer;
-		@include sprites-sprite(menu-open);
 	}
+
+//
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ===========================
@@ -699,16 +710,7 @@ and (max-device-width : 568px) {
 
 
 	#menu_icon {
-		@include bg(red);
-		@include hide_text;
-		width: 39px;
-		height: 27px;
-		font-size: $font-size+px;
-		right: 1em !important;
 		display: block;
-		// position: fixed;
-		top: 1em;
-		// z-index: 200;
 	}
 
 
