@@ -1005,7 +1005,6 @@ iframe {
   z-index: 2000;
   /* 	left: 50%; */
   background: #f3f3f3;
-  -webkit-transform: translate3d(0, 0, 0);
 }
 /* line 191, ../scss/styles.scss */
 #header .row {
