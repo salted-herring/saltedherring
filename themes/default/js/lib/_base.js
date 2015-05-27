@@ -24,9 +24,9 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 	// ============================
 	// Show / hide the mobile menu.
 	//============================
-	$('#header').click(function(e) {
+	$('.page-home').click(function(e) {
 		// e.preventDefault();
-		alert('logo');
+		alert('home');
 		// $(this).toggleClass('collapse expand');
 		$('#main_nav').toggleClass('collapse expand');
 	});
