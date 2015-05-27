@@ -26,7 +26,7 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 	//============================
 	$('#logo').click(function(e) {
 		// e.preventDefault();
-		alert();
+		alert('logo');
 		// $(this).toggleClass('collapse expand');
 		$('#main_nav').toggleClass('collapse expand');
 	});
