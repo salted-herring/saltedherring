@@ -1135,11 +1135,10 @@ iframe {
 /* line 309, ../scss/styles.scss */
 #menu_icon {
   display: none;
-  border: 1px solid lime;
   position: absolute;
   z-index: 200;
   right: 1em;
-  top: -1em;
+  top: 1em;
   padding: 0 12px;
   height: 50px;
 }
