@@ -1,0 +1,316 @@
+
+
+body {
+	background: $background;
+}
+
+.filters {
+	@include position(absolute, null, 7.5em, -.5em, null, null);
+	padding: 2em 0em 0 1em;
+	max-width: 400px;
+	// width: 300px;
+
+	a {
+		@include minion;
+		color: $black;
+		white-space: nowrap;
+		font-size: (18/$font-size)+em;
+
+		&:last-child {
+			&:after {
+				display: none;
+			}
+		}
+
+		&.all,
+		&.current,
+		&:hover {
+			color: $white;
+		}
+
+		&.all,
+		&.current {
+			&:hover {
+				color: $black;
+			}
+		}
+
+		&:after {
+			margin-left: 10px;
+			margin-right: 10px;
+			content: '/';
+			color: $black;
+		}
+	}
+
+}
+
+#banner {
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+	height: 112px;
+	@include transition(height .2s 0 easInOutCubic, padding .5s 0 ease);
+
+	.container {
+		height: 112px;
+	}
+
+	h1,strong {
+		@include transition(top .2s 0 easeInOutSine);
+	}
+
+	h1 {
+		position: absolute;
+		top: 0;
+		@extend .stripedMask;
+	}
+
+	&.collapsed,
+	&.small {
+		margin-bottom: 0;
+		padding: 1em 0;
+		position: fixed;
+		z-index: 4;
+		width: 100%;
+		height: 24px;
+
+		.filters {
+			position: relative;
+			right: auto;
+			bottom: auto;
+			text-align: center;
+			padding: 0;
+			width: auto;
+			top: 0;
+
+			a {
+				font-size: (16/$font-size)+em;
+			}
+		}
+
+		h1, strong {
+			top: -10em;
+		}
+	}
+
+	&.small {
+		.filters {
+			width: 100%;
+			max-width: 960px;
+			left: 0;
+
+			strong {
+				display: none;
+			}
+		}
+	}
+
+	.filters {
+		padding-top: 0;
+		top: inherit;
+		bottom: -.5em;
+	}
+
+	background: $pukegreen;
+
+	&.collapsed {
+		.filters {
+			top: 0;
+
+		}
+	}
+
+	h1 {
+		position: absolute;
+		top: 0;
+		@extend .stripedMask;
+	}
+
+
+//
+}
+
+
+.services {
+	@include transition(height .5s);
+	padding: 0;
+	width: 960px;
+	max-width: 960px;
+	margin-top: 4em;
+	margin-bottom: 5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@include at-breakpoint(0 3 1023px) {
+	#banner {
+		height: auto !important;
+		padding: 16px !important;
+		width: 100% !important;
+		@include box-sizing(border-box);
+
+		h1 {
+			position: relative;
+		}
+
+		.filters {
+
+			position: relative;
+			left: 0px !important;
+			right: auto;
+			bottom: auto;
+			float: left;
+			max-width: 768px;
+			width: 100%;
+			height: auto;
+			margin-top: 32px;
+
+		}
+
+		&.collapsed {
+			.filters {
+				margin-top: 0;
+			}
+		}
+
+		&.small {
+			.container {
+				text-align: center;
+			}
+			.filters {
+				position: absolute;
+				top: 0;
+				padding: 0;
+				margin: 0;
+				width: 100% !important;
+				max-width: 960px;
+				text-align: center;
+				padding: 0 2em;
+				@include box-sizing(border-box);
+			}
+		}
+	}
+
+
+	.services {
+		max-width: 640px;
+	}
+//
+}
+
+@include at-breakpoint(0 3 1024px) {
+
+	#banner {
+		h1 {
+			padding-left: 32px;
+			margin-left: 0;
+		}
+
+		.container {
+			overflow: visible;
+		}
+	}
+
+
+}
+
+
+
+
+@include at-breakpoint(768px 3 1024px) {
+	#banner {
+		.filters {
+			right: auto;
+			left: 454px;
+		}
+
+		&.small {
+			.filters {
+				text-align: center;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+@include at-breakpoint(0 3 768px) {
+
+	#banner {
+		display: block;
+		position: relative;
+		height: auto;
+		padding: 0 !important;
+		width: 100%;
+		overflow: hidden;
+		margin-top: 55px;
+
+		.container {
+			height: auto;
+			overflow: visible;
+			padding: 0;
+			@include box-sizing(border-box);
+		}
+
+		&.collapsed,
+		&.small {
+			height: auto;
+			padding: 16px 0;
+			width: 100%;
+			position: relative;
+
+			.filters {
+				text-align: left;
+				padding: 0;
+				width: 100%;
+
+				a {
+					font-size: (18/$font-size)+em;
+				}
+			}
+		}
+
+		.filters {
+			top: auto;
+			right: auto;
+			padding: 0px;
+			position: relative;
+			width: 100%;
+			margin: 0 !important;
+			bottom: 0;
+
+			strong {
+				display: none;
+			}
+		}
+
+		h1 {
+			display: none;
+		}
+	}
+
+
+	.services {
+		max-width: 320px;
+	}
+
+//
+}

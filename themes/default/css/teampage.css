@@ -2638,7 +2638,7 @@ footer .fb:hover:before {
   top: 2em;
 }
 
-/* line 13, ../scss/teampage.scss */
+/* line 12, ../scss/teampage.scss */
 .contain {
   background: #f3f3f3;
 }
@@ -2653,43 +2653,43 @@ footer .fb:hover:before {
 	}
 }
 */
-/* line 28, ../scss/teampage.scss */
+/* line 27, ../scss/teampage.scss */
 .individualentry {
   background: #f3f3f3;
 }
-/* line 32, ../scss/teampage.scss */
+/* line 31, ../scss/teampage.scss */
 .individualentry.container {
   position: relative;
 }
-/* line 36, ../scss/teampage.scss */
+/* line 35, ../scss/teampage.scss */
 .individualentry article {
   position: relative;
 }
-/* line 40, ../scss/teampage.scss */
+/* line 39, ../scss/teampage.scss */
 .individualentry h1 {
   font-size: 3em;
   line-height: 1em;
   margin: 0 0 0.45833em 0;
   padding: 0;
 }
-/* line 50, ../scss/teampage.scss */
+/* line 49, ../scss/teampage.scss */
 .individualentry img {
   margin: 0 0 0 -1em;
 }
-/* line 54, ../scss/teampage.scss */
+/* line 53, ../scss/teampage.scss */
 .individualentry ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 61, ../scss/teampage.scss */
+/* line 60, ../scss/teampage.scss */
 .individualentry .media img {
   position: relative;
   z-index: 0;
   padding: 0;
   margin-bottom: 1.5em;
 }
-/* line 69, ../scss/teampage.scss */
+/* line 68, ../scss/teampage.scss */
 .individualentry blockquote {
   font-size: 3em;
   line-height: 1.04167em;
@@ -2700,50 +2700,50 @@ footer .fb:hover:before {
   font-style: italic;
   display: block;
 }
-/* line 81, ../scss/teampage.scss */
+/* line 80, ../scss/teampage.scss */
 .individualentry aside strong {
   font-weight: normal;
   font-size: 1.125em;
   color: #d8c801;
 }
-/* line 87, ../scss/teampage.scss */
+/* line 86, ../scss/teampage.scss */
 .individualentry aside span,
 .individualentry aside strong {
   display: block;
 }
-/* line 92, ../scss/teampage.scss */
+/* line 91, ../scss/teampage.scss */
 .individualentry aside a {
   color: #000000;
   display: table;
 }
-/* line 97, ../scss/teampage.scss */
+/* line 96, ../scss/teampage.scss */
 .individualentry aside a,
 .individualentry aside span {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
-/* line 102, ../scss/teampage.scss */
+/* line 101, ../scss/teampage.scss */
 .individualentry aside .contact,
 .individualentry aside .responsibilities {
   margin-top: 1em;
 }
 
-/* line 109, ../scss/teampage.scss */
+/* line 108, ../scss/teampage.scss */
 .images {
   height: 620px;
   margin-bottom: 5em;
 }
-/* line 112, ../scss/teampage.scss */
+/* line 111, ../scss/teampage.scss */
 .images img {
   position: absolute;
   z-index: 0;
 }
-/* line 116, ../scss/teampage.scss */
+/* line 115, ../scss/teampage.scss */
 .images img.current {
   z-index: 1;
 }
 
-/* line 122, ../scss/teampage.scss */
+/* line 121, ../scss/teampage.scss */
 #contentarea {
   margin-top: 0 !important;
   margin-bottom: 2em;
@@ -2751,20 +2751,20 @@ footer .fb:hover:before {
   width: 896px;
 }
 
-/* line 129, ../scss/teampage.scss */
+/* line 128, ../scss/teampage.scss */
 #banner {
   background: #ffe339;
 }
-/* line 133, ../scss/teampage.scss */
+/* line 132, ../scss/teampage.scss */
 #banner.collapsed .filters {
   top: 0;
 }
 
-/* line 141, ../scss/teampage.scss */
+/* line 140, ../scss/teampage.scss */
 #team {
   margin-top: 19em;
 }
-/* line 145, ../scss/teampage.scss */
+/* line 144, ../scss/teampage.scss */
 #team .entry .thumbnailover {
   position: absolute;
   top: 0;
@@ -2775,35 +2775,35 @@ footer .fb:hover:before {
   -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
   transition: transform 0.3s, opacity 0.2s;
 }
-/* line 154, ../scss/teampage.scss */
+/* line 153, ../scss/teampage.scss */
 #team .entry:hover .thumbnailover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
 
-/* line 162, ../scss/teampage.scss */
+/* line 161, ../scss/teampage.scss */
 #teammember article {
   width: inherit;
 }
 
-/* line 167, ../scss/teampage.scss */
+/* line 166, ../scss/teampage.scss */
 #content {
   padding-bottom: 0;
 }
-/* line 170, ../scss/teampage.scss */
+/* line 169, ../scss/teampage.scss */
 #content .content {
   padding-bottom: 12em;
 }
 
 @media (max-width: 768px) {
-  /* line 177, ../scss/teampage.scss */
+  /* line 176, ../scss/teampage.scss */
   #team {
     width: 100% !important;
     overflow: visible;
     margin-top: 0em;
   }
 
-  /* line 183, ../scss/teampage.scss */
+  /* line 182, ../scss/teampage.scss */
   aside {
     width: 100% !important;
     float: none !important;
@@ -2811,7 +2811,7 @@ footer .fb:hover:before {
     padding: 0 !important;
     display: block !important;
   }
-  /* line 190, ../scss/teampage.scss */
+  /* line 189, ../scss/teampage.scss */
   aside strong,
   aside span,
   aside a {
@@ -2819,39 +2819,39 @@ footer .fb:hover:before {
     padding: 0 !important;
   }
 
-  /* line 198, ../scss/teampage.scss */
+  /* line 197, ../scss/teampage.scss */
   #teammember {
     width: 100% !important;
     overflow: visible;
     margin-top: 0;
   }
-  /* line 203, ../scss/teampage.scss */
+  /* line 202, ../scss/teampage.scss */
   #teammember header {
     margin: 0;
     padding: 1em;
   }
-  /* line 207, ../scss/teampage.scss */
+  /* line 206, ../scss/teampage.scss */
   #teammember header .details {
     padding: 32px;
   }
-  /* line 212, ../scss/teampage.scss */
+  /* line 211, ../scss/teampage.scss */
   #teammember article {
     width: 100%;
   }
-  /* line 216, ../scss/teampage.scss */
+  /* line 215, ../scss/teampage.scss */
   #teammember .images {
     height: auto;
     width: 100%;
     padding: 0;
     margin-bottom: 40px;
   }
-  /* line 222, ../scss/teampage.scss */
+  /* line 221, ../scss/teampage.scss */
   #teammember .images img {
     margin: 0;
     position: relative;
   }
 
-  /* line 229, ../scss/teampage.scss */
+  /* line 228, ../scss/teampage.scss */
   .content,
   .row,
   .detailscontainer,
@@ -2860,13 +2860,13 @@ footer .fb:hover:before {
     width: 100% !important;
   }
 
-  /* line 237, ../scss/teampage.scss */
+  /* line 236, ../scss/teampage.scss */
   #teammember article {
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* line 243, ../scss/teampage.scss */
+  /* line 242, ../scss/teampage.scss */
   #teammember blockquote,
   #teammember aside {
     padding: 0 16px !important;
@@ -2875,30 +2875,30 @@ footer .fb:hover:before {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 250, ../scss/teampage.scss */
+  /* line 249, ../scss/teampage.scss */
   #teammember p {
     padding: 0 16px;
     margin-bottom: 1em;
   }
 
-  /* line 256, ../scss/teampage.scss */
+  /* line 255, ../scss/teampage.scss */
   #content {
     padding: 0 !important;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 260, ../scss/teampage.scss */
+  /* line 259, ../scss/teampage.scss */
   #content .content {
     padding-bottom: 1em;
   }
 
-  /* line 265, ../scss/teampage.scss */
+  /* line 264, ../scss/teampage.scss */
   blockquote {
     margin-bottom: 16px !important;
   }
 
-  /* line 270, ../scss/teampage.scss */
+  /* line 269, ../scss/teampage.scss */
   #contentarea {
     margin-top: 1em;
     margin-bottom: 1em;

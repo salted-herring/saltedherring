@@ -1,244 +1,182 @@
-@import 'styles';
 
-body {
-	background: $background;
-}
+@import 'styles', '_aboutgrid';
 
-h1 {
-	@include sprites-sprite(digital_brand);
-	width: 912px;
-	height: 174px;
-	@include hide_text;
-	margin: 62px 0;
-	position: fixed;
-	top: 46px;
-	z-index: 0;
-}
 
-aside {
-	font-weight: bold;
-	font-style: italic;
-	font-size: (48/$font-size)+em;
-	line-height: (50/48)+em;
+#about-landing {
+	margin-top: 17em;
 
-	.contact {
-		font-size: (16/48)+em;
-		line-height: 1.2em;
-		margin-top: 50px;
-		font-weight: normal;
 
-		a {
-			color: $blue;
-			font-style: normal;
-		}
-
-		.map {
-			color: $black;
-
-			&:hover {
-				&:after {
-					background: transparent;
-				}
-			}
-		}
-
-		p {
-			@include minion;
-			font-style: italic;
-
-			a {
-				font-style: inherit;
-			}
-		}
-	}
-}
-
-.article {
-	margin-top: -1em;
-
-	/*
-p {
-		font-size: (22/$font-size)+em;
-	}
-*/
-}
-
-article {
-	.row {
-		z-index: 2;
-		position: relative;
-		margin-top: 298px;
-	}
-
-	a {
-		padding-bottom: 3px;
-
-		&:hover {
-			&:after {
-				background: $blue;
-			}
-		}
-	}
-}
-
-.overlay {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background: url(../img/stripes_final.png);
-	z-index: 1;
-	top: 0px;
-
-/* 	background-position: 5px 5px; */
-/* 	@include opacity(.2); */
-/* 	background-repeat: repeat-y; */
-}
-
-.links {
-	margin: (40/$font-size)+em 0;
-	width: 50%;
-
-	a {
-		@extend .link;
-		color: $blue;
-		border-color: $blue;
-		padding: .625em inherit !important;
-		font-weight: 500;
-		width: 48%;
-		font-style: normal;
-		font-size: (20/$font-size)+em !important;
+	.col1,
+	.col2 {
+		@include clearfix;
+		width: 50%;
 		float: left;
-		text-decoration: none;
-
-		&:hover:after {
-			background: none !important;
-		}
 	}
 
-	.fullstory {
-		margin-right: 4%;
+	.pagetitle {
+		//            color    	size   					transf 	 	spacn 	lin-heig   align 	weight  decora  style
+		@include type($black, 	(60/$font-size)+em, 	null, 	 	0.1px, 	1.1em, 	   null, 	600, 	none, 	italic);
+		position: relative;
+		margin: 0;
+
+		&:after {
+		  @include bg($black);
+		  @include position(absolute, null, null, -30px, 0, auto);
+		  content:'';
+		  width: 106px;
+		  height: 3px;
+		  // display: inline-block;
+		}
+
+	}
+
+
+	$padme: 25px;
+
+	.subtitle {
+		//            color    	size   				    transf 	 	spacn 	lin-heig   align 	weight  decora  style
+		@include type($black, 	(24/$font-size)+em,  	null,	 	null, 	1.7em, 	   null, 	600, 	none, 	normal);
+		margin: 0 0 0 $padme;
+	}
+
+
+	.intro-copy {
+		margin: 0 0 0 $padme;
+	}
+
+//
+}
+
+
+
+.services {
+
+	.entry {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		margin-bottom: 0em;
+		width: 320px;
+		height: 320px;
+		float: left;
 
 		&:hover {
-			background: $blue;
-			color: $white;
+			.label {
+				// background: rgba(0,0,0,0.5);
+				// bottom: -142px;
+			}
+
+			img {
+				@include transform(scale(1.1));
+			}
+
+			strong {
+				font-size: (50/$font-size)+em;
+			}
+			em {
+				font-size: (20/$font-size)+em;
+			}
+
+
 		}
 	}
 
-	.website {
-		@extend .external;
-		color: $blue;
-		border-color: $blue;
-		background-color: $background;
+	img {
+		position: relative;
+		z-index: 0;
+		max-width: 1200px!important;
+		@include transition(transform .3s);
+	}
+
+	.label {
+		@include position(absolute, 130px, null, null, 1px, 1);
+
+		text-align: center;
+		width: 100%;
+		min-height: 0px;
+		// @include transition(bottom .3s);
 
 		&:before {
-			background-color: $background;
-			@include sprites-sprite(external_arrow_blue);
+			display: none;
 		}
 
-		&:hover {
-			background: $blue;
-			color: $white;
+		span {
+			position: relative;
+			display: block;
+			// top: 0;
+		}
+
+		strong,
+		em {
+			display: block;
+		}
+
+		strong {
+			@include transition(font-size .3s);
+			font-size: (40/$font-size)+em;
+			font-style: italic;
+			margin: 0 0 20px 0;
+		}
+
+		em {
+			@include transition(font-size .3s);
+			@include minion;
 		}
 	}
 }
 
 
 
-@include at-breakpoint(0 3 320px) {
-	html,
-	body {
-		height: auto;
-	}
-	h1 {
-		display: none;
-		background-size: contain;
 
-		height: 400px;
-	background-color: red;
-		/*
-text-indent: 0;
-		font-size: 5em;
-		background: none;
-		padding: 16px;
-*/
-		/*
-width: auto;
-		height: auto;
-*/
-		width: 100%;
-		position: relative;
-		top: auto;
-		margin: 0;
-	}
 
-	aside {
-		margin-top: 22px !important;
-	}
 
-	.overlay {
-		display: none;
-	}
 
-	article {
-		.row {
-			margin-top: 0 !important;
+@include at-breakpoint(0 3 1023px) {
+
+	#about-landing {
+
+		.col1,
+		.col2 {
+			width: 640px;
+			float: none;
+			margin: 1px auto;
 		}
-	}
 
-	.article {
-		padding-top: 0 !important;
-	}
-
-	.links {
-		width: 100%;
-	}
-
-	#content {
-		max-width: 100%;
-		padding-bottom: 4em;
-
-		aside {
-			padding: 16px;
-			display: block;
-			width: auto;
+		.subtitle {
 			margin: 0;
 		}
-		.article {
-			display: block;
-			padding: 16px;
+
+		.intro-copy {
 			margin: 0;
-			width: auto;
-		}
-		article {
-			padding: 0 !important;
 		}
 	}
+
+//
 }
 
-@include at-breakpoint(481px 3 768px) {
-	h1 {
-		left: 1em;
-	}
 
-	article {
-		.row {
-			padding: 0 2em;
+
+
+@include at-breakpoint(0 3 768px) {
+
+	#about-landing {
+
+		margin-top: 3em;
+
+		.col1,
+		.col2 {
+			width: 320px;
 		}
 
-		.links {
-			width: 100%;
+		.pagetitle {
+			font-size: (40/$font-size)+em;
 		}
 	}
+
+//
 }
 
-@include at-breakpoint(769px 3 1024px) {
-	h1 {
-		left: 1em;
-	}
 
-	article {
-		.row {
-			padding: 0 2em;
-		}
-	}
-}
+
+
+
