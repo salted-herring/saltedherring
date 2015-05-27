@@ -72,7 +72,7 @@
 							<div class="intro">
 								<div class="container">
 									<ul class="contactlinks">
-										<li><a href="tel:006444731344">+64 (0)4 473 1344</a></li>
+										<li><a href="tel:044731344">04 473 1344</a></li>
 										<li class="contact"><a href="#footer">contact</a></li>
 										<!-- <li class="blog"><a href="http://blog.saltedherring.com" target="_blank">blog</a></li> -->
 									</ul>
