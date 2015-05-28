@@ -1,7 +1,7 @@
 
 
 body {
-	background: $background;
+	// background: $background;
 }
 
 .filters {
@@ -9,6 +9,11 @@ body {
 	padding: 2em 0em 0 1em;
 	max-width: 400px;
 	// width: 300px;
+
+	.centered & {
+		// @include b(lime);
+		max-width: 960px;
+	}
 
 	a {
 		@include minion;
@@ -144,6 +149,135 @@ body {
 
 
 
+.individualentry {
+	margin-top: 56px;
+
+	header {
+/* 		position: absolute; */
+		z-index: 3;
+/* 		top: 0; */
+/* 		left: -2em; */
+		background: rgba(0,0,0,0.5);
+		width: 960px;//800px;
+		min-height: 160px;
+		color: $white;
+		margin: 0 0 0 -30em;
+
+		position: fixed;
+		left: 50%;
+		top: 111px;
+/* 		margin-left: -30em; */
+		@include transform(translateZ(0));
+
+		&.delay  {
+			h1 {
+				font-size: (22/$font-size)+em;
+				margin: 0;
+			}
+			span {
+				font-size: 1em;
+			}
+		}
+
+		@include transition(height .4s);
+
+		.details {
+			padding: 2em 5em;
+			@include transform(translateZ(0));
+			@include transition(all .4s);
+		}
+
+		h1 {
+			//@include transition(font .08s ceaser($easeOutCubic));
+		}
+
+		a {
+			&:hover {
+				&:after {
+					background: $white;
+				}
+			}
+		}
+
+
+		&.small {
+/* 			height: 78px; */
+			top: 111px !important;
+			min-height: 78px;
+			height: auto;
+
+			.details {
+				padding: 1em 5em;
+			}
+			h1 {
+				font-size: (22/$font-size)+em;
+				margin: 0;
+			}
+			span {
+				font-size: 1em;
+			}
+
+			.photographer {
+				display: none;
+			}
+		}
+
+
+		&.no-images {
+			position: relative;
+/* 			margin-left: -2em; */
+		}
+
+		span {
+			@include minion;
+			font-size: (24/$font-size)+em;
+		}
+
+		.photographer {
+			float: right;
+			font-size: $font-size+px;
+		}
+	}
+}
+
+
+.row.contentarea {
+	width: 896px;
+	margin: 30px 0 0 0;
+}
+
+
+
+.content-col-1 ,
+.content-col-2 {
+	@include box-sizing(border-box);
+	width: 50%;
+	float: left;
+	padding: 0 0 0 48px;
+}
+
+
+
+
+
+
+
+@include keyframes(heading) {
+	0% {
+		display: block;
+		@include transform(scale(1));
+	}
+
+	50% {
+		@include transform(scale(0));
+	}
+
+	51%, 100% {
+		display: none;
+	}
+
+
+}
 
 
 
@@ -288,6 +422,8 @@ body {
 			}
 		}
 
+
+
 		.filters {
 			top: auto;
 			right: auto;
@@ -296,6 +432,8 @@ body {
 			width: 100%;
 			margin: 0 !important;
 			bottom: 0;
+
+
 
 			strong {
 				display: none;

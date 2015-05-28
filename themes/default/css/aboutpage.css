@@ -1813,11 +1813,6 @@ footer .fb:hover:before {
     overflow-x: hidden;
   }
 }
-/* line 3, ../scss/_aboutgrid.scss */
-body {
-  background: #f5f5f5;
-}
-
 /* line 7, ../scss/_aboutgrid.scss */
 .filters {
   position: absolute;
@@ -1827,6 +1822,10 @@ body {
   max-width: 400px;
 }
 /* line 13, ../scss/_aboutgrid.scss */
+.centered .filters {
+  max-width: 960px;
+}
+/* line 18, ../scss/_aboutgrid.scss */
 .filters a {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
@@ -1834,19 +1833,19 @@ body {
   white-space: nowrap;
   font-size: 1.125em;
 }
-/* line 20, ../scss/_aboutgrid.scss */
+/* line 25, ../scss/_aboutgrid.scss */
 .filters a:last-child:after {
   display: none;
 }
-/* line 25, ../scss/_aboutgrid.scss */
+/* line 30, ../scss/_aboutgrid.scss */
 .filters a.all, .filters a.current, .filters a:hover {
   color: #ffffff;
 }
-/* line 33, ../scss/_aboutgrid.scss */
+/* line 38, ../scss/_aboutgrid.scss */
 .filters a.all:hover, .filters a.current:hover {
   color: #000000;
 }
-/* line 38, ../scss/_aboutgrid.scss */
+/* line 43, ../scss/_aboutgrid.scss */
 .filters a:after {
   margin-left: 10px;
   margin-right: 10px;
@@ -1854,7 +1853,7 @@ body {
   color: #000000;
 }
 
-/* line 48, ../scss/_aboutgrid.scss */
+/* line 53, ../scss/_aboutgrid.scss */
 #banner {
   position: fixed;
   width: 100%;
@@ -1866,23 +1865,23 @@ body {
   transition: height 0.2s easInOutCubic, padding 0.5s ease;
   background: #848e76;
 }
-/* line 55, ../scss/_aboutgrid.scss */
+/* line 60, ../scss/_aboutgrid.scss */
 #banner .container {
   height: 112px;
 }
-/* line 59, ../scss/_aboutgrid.scss */
+/* line 64, ../scss/_aboutgrid.scss */
 #banner h1, #banner strong {
   -moz-transition: top 0.2s easeInOutSine;
   -o-transition: top 0.2s easeInOutSine;
   -webkit-transition: top 0.2s easeInOutSine;
   transition: top 0.2s easeInOutSine;
 }
-/* line 63, ../scss/_aboutgrid.scss */
+/* line 68, ../scss/_aboutgrid.scss */
 #banner h1 {
   position: absolute;
   top: 0;
 }
-/* line 69, ../scss/_aboutgrid.scss */
+/* line 74, ../scss/_aboutgrid.scss */
 #banner.collapsed, #banner.small {
   margin-bottom: 0;
   padding: 1em 0;
@@ -1891,7 +1890,7 @@ body {
   width: 100%;
   height: 24px;
 }
-/* line 78, ../scss/_aboutgrid.scss */
+/* line 83, ../scss/_aboutgrid.scss */
 #banner.collapsed .filters, #banner.small .filters {
   position: relative;
   right: auto;
@@ -1901,41 +1900,41 @@ body {
   width: auto;
   top: 0;
 }
-/* line 87, ../scss/_aboutgrid.scss */
+/* line 92, ../scss/_aboutgrid.scss */
 #banner.collapsed .filters a, #banner.small .filters a {
   font-size: 1em;
 }
-/* line 92, ../scss/_aboutgrid.scss */
+/* line 97, ../scss/_aboutgrid.scss */
 #banner.collapsed h1, #banner.collapsed strong, #banner.small h1, #banner.small strong {
   top: -10em;
 }
-/* line 98, ../scss/_aboutgrid.scss */
+/* line 103, ../scss/_aboutgrid.scss */
 #banner.small .filters {
   width: 100%;
   max-width: 960px;
   left: 0;
 }
-/* line 103, ../scss/_aboutgrid.scss */
+/* line 108, ../scss/_aboutgrid.scss */
 #banner.small .filters strong {
   display: none;
 }
-/* line 109, ../scss/_aboutgrid.scss */
+/* line 114, ../scss/_aboutgrid.scss */
 #banner .filters {
   padding-top: 0;
   top: inherit;
   bottom: -.5em;
 }
-/* line 118, ../scss/_aboutgrid.scss */
+/* line 123, ../scss/_aboutgrid.scss */
 #banner.collapsed .filters {
   top: 0;
 }
-/* line 124, ../scss/_aboutgrid.scss */
+/* line 129, ../scss/_aboutgrid.scss */
 #banner h1 {
   position: absolute;
   top: 0;
 }
 
-/* line 135, ../scss/_aboutgrid.scss */
+/* line 140, ../scss/_aboutgrid.scss */
 .services {
   -moz-transition: height 0.5s;
   -o-transition: height 0.5s;
@@ -1948,8 +1947,165 @@ body {
   margin-bottom: 5em;
 }
 
+/* line 152, ../scss/_aboutgrid.scss */
+.individualentry {
+  margin-top: 56px;
+}
+/* line 155, ../scss/_aboutgrid.scss */
+.individualentry header {
+  /* 		position: absolute; */
+  z-index: 3;
+  /* 		top: 0; */
+  /* 		left: -2em; */
+  background: rgba(0, 0, 0, 0.5);
+  width: 960px;
+  min-height: 160px;
+  color: #ffffff;
+  margin: 0 0 0 -30em;
+  position: fixed;
+  left: 50%;
+  top: 111px;
+  /* 		margin-left: -30em; */
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: height 0.4s;
+  -o-transition: height 0.4s;
+  -webkit-transition: height 0.4s;
+  transition: height 0.4s;
+}
+/* line 173, ../scss/_aboutgrid.scss */
+.individualentry header.delay h1 {
+  font-size: 1.375em;
+  margin: 0;
+}
+/* line 177, ../scss/_aboutgrid.scss */
+.individualentry header.delay span {
+  font-size: 1em;
+}
+/* line 184, ../scss/_aboutgrid.scss */
+.individualentry header .details {
+  padding: 2em 5em;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+/* line 196, ../scss/_aboutgrid.scss */
+.individualentry header a:hover:after {
+  background: #ffffff;
+}
+/* line 203, ../scss/_aboutgrid.scss */
+.individualentry header.small {
+  /* 			height: 78px; */
+  top: 111px !important;
+  min-height: 78px;
+  height: auto;
+}
+/* line 209, ../scss/_aboutgrid.scss */
+.individualentry header.small .details {
+  padding: 1em 5em;
+}
+/* line 212, ../scss/_aboutgrid.scss */
+.individualentry header.small h1 {
+  font-size: 1.375em;
+  margin: 0;
+}
+/* line 216, ../scss/_aboutgrid.scss */
+.individualentry header.small span {
+  font-size: 1em;
+}
+/* line 220, ../scss/_aboutgrid.scss */
+.individualentry header.small .photographer {
+  display: none;
+}
+/* line 226, ../scss/_aboutgrid.scss */
+.individualentry header.no-images {
+  position: relative;
+  /* 			margin-left: -2em; */
+}
+/* line 231, ../scss/_aboutgrid.scss */
+.individualentry header span {
+  font-family: 'minion-pro', 'Times', serif;
+  font-style: italic;
+  font-size: 1.5em;
+}
+/* line 236, ../scss/_aboutgrid.scss */
+.individualentry header .photographer {
+  float: right;
+  font-size: 16px;
+}
+
+/* line 244, ../scss/_aboutgrid.scss */
+.row.contentarea {
+  width: 896px;
+  margin: 30px 0 0 0;
+}
+
+/* line 251, ../scss/_aboutgrid.scss */
+.content-col-1,
+.content-col-2 {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding: 0 0 0 48px;
+}
+
+@-moz-keyframes heading {
+  0% {
+    display: block;
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(0);
+    transform: scale(0);
+  }
+  51%, 100% {
+    display: none;
+  }
+}
+@-webkit-keyframes heading {
+  0% {
+    display: block;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  51%, 100% {
+    display: none;
+  }
+}
+@keyframes heading {
+  0% {
+    display: block;
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  51%, 100% {
+    display: none;
+  }
+}
 @media (max-width: 1023px) {
-  /* line 159, ../scss/_aboutgrid.scss */
+  /* line 293, ../scss/_aboutgrid.scss */
   #banner {
     height: auto !important;
     padding: 16px !important;
@@ -1958,11 +2114,11 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 165, ../scss/_aboutgrid.scss */
+  /* line 299, ../scss/_aboutgrid.scss */
   #banner h1 {
     position: relative;
   }
-  /* line 169, ../scss/_aboutgrid.scss */
+  /* line 303, ../scss/_aboutgrid.scss */
   #banner .filters {
     position: relative;
     left: 0px !important;
@@ -1974,15 +2130,15 @@ body {
     height: auto;
     margin-top: 32px;
   }
-  /* line 184, ../scss/_aboutgrid.scss */
+  /* line 318, ../scss/_aboutgrid.scss */
   #banner.collapsed .filters {
     margin-top: 0;
   }
-  /* line 190, ../scss/_aboutgrid.scss */
+  /* line 324, ../scss/_aboutgrid.scss */
   #banner.small .container {
     text-align: center;
   }
-  /* line 193, ../scss/_aboutgrid.scss */
+  /* line 327, ../scss/_aboutgrid.scss */
   #banner.small .filters {
     position: absolute;
     top: 0;
@@ -1997,35 +2153,35 @@ body {
     box-sizing: border-box;
   }
 
-  /* line 208, ../scss/_aboutgrid.scss */
+  /* line 342, ../scss/_aboutgrid.scss */
   .services {
     max-width: 640px;
   }
 }
 @media (max-width: 1024px) {
-  /* line 217, ../scss/_aboutgrid.scss */
+  /* line 351, ../scss/_aboutgrid.scss */
   #banner h1 {
     padding-left: 32px;
     margin-left: 0;
   }
-  /* line 222, ../scss/_aboutgrid.scss */
+  /* line 356, ../scss/_aboutgrid.scss */
   #banner .container {
     overflow: visible;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* line 235, ../scss/_aboutgrid.scss */
+  /* line 369, ../scss/_aboutgrid.scss */
   #banner .filters {
     right: auto;
     left: 454px;
   }
-  /* line 241, ../scss/_aboutgrid.scss */
+  /* line 375, ../scss/_aboutgrid.scss */
   #banner.small .filters {
     text-align: center;
   }
 }
 @media (max-width: 768px) {
-  /* line 257, ../scss/_aboutgrid.scss */
+  /* line 391, ../scss/_aboutgrid.scss */
   #banner {
     display: block;
     position: relative;
@@ -2035,7 +2191,7 @@ body {
     overflow: hidden;
     margin-top: 55px;
   }
-  /* line 266, ../scss/_aboutgrid.scss */
+  /* line 400, ../scss/_aboutgrid.scss */
   #banner .container {
     height: auto;
     overflow: visible;
@@ -2044,24 +2200,24 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 273, ../scss/_aboutgrid.scss */
+  /* line 407, ../scss/_aboutgrid.scss */
   #banner.collapsed, #banner.small {
     height: auto;
     padding: 16px 0;
     width: 100%;
     position: relative;
   }
-  /* line 280, ../scss/_aboutgrid.scss */
+  /* line 414, ../scss/_aboutgrid.scss */
   #banner.collapsed .filters, #banner.small .filters {
     text-align: left;
     padding: 0;
     width: 100%;
   }
-  /* line 285, ../scss/_aboutgrid.scss */
+  /* line 419, ../scss/_aboutgrid.scss */
   #banner.collapsed .filters a, #banner.small .filters a {
     font-size: 1.125em;
   }
-  /* line 291, ../scss/_aboutgrid.scss */
+  /* line 427, ../scss/_aboutgrid.scss */
   #banner .filters {
     top: auto;
     right: auto;
@@ -2071,16 +2227,16 @@ body {
     margin: 0 !important;
     bottom: 0;
   }
-  /* line 300, ../scss/_aboutgrid.scss */
+  /* line 438, ../scss/_aboutgrid.scss */
   #banner .filters strong {
     display: none;
   }
-  /* line 305, ../scss/_aboutgrid.scss */
+  /* line 443, ../scss/_aboutgrid.scss */
   #banner h1 {
     display: none;
   }
 
-  /* line 311, ../scss/_aboutgrid.scss */
+  /* line 449, ../scss/_aboutgrid.scss */
   .services {
     max-width: 320px;
   }
@@ -2092,8 +2248,6 @@ body {
 /* line 9, ../scss/aboutpage.scss */
 #about-landing .col1,
 #about-landing .col2 {
-  overflow: hidden;
-  *zoom: 1;
   width: 50%;
   float: left;
 }
@@ -2119,6 +2273,7 @@ body {
   content: '';
   width: 106px;
   height: 3px;
+  display: inline-block;
 }
 /* line 36, ../scss/aboutpage.scss */
 #about-landing .subtitle {
@@ -2214,34 +2369,138 @@ body {
   font-style: italic;
 }
 
+/* line 134, ../scss/aboutpage.scss */
+.individualentry.container {
+  position: relative;
+}
+/* line 138, ../scss/aboutpage.scss */
+.individualentry article {
+  position: relative;
+}
+/* line 142, ../scss/aboutpage.scss */
+.individualentry h1 {
+  font-size: 3em;
+  line-height: 1em;
+  margin: 0 0 0.45833em 0;
+  padding: 0;
+}
+/* line 152, ../scss/aboutpage.scss */
+.individualentry img {
+  margin: 0 0 0 -1em;
+}
+/* line 156, ../scss/aboutpage.scss */
+.individualentry ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 163, ../scss/aboutpage.scss */
+.individualentry .media img {
+  position: relative;
+  z-index: 0;
+  padding: 0;
+  margin-bottom: 1.5em;
+}
+/* line 174, ../scss/aboutpage.scss */
+.individualentry aside strong {
+  font-weight: normal;
+  font-size: 1.125em;
+  color: #d8c801;
+}
+/* line 180, ../scss/aboutpage.scss */
+.individualentry aside span,
+.individualentry aside strong {
+  display: block;
+}
+/* line 185, ../scss/aboutpage.scss */
+.individualentry aside a {
+  color: #000000;
+  display: table;
+}
+/* line 190, ../scss/aboutpage.scss */
+.individualentry aside a,
+.individualentry aside span {
+  font-family: 'minion-pro', 'Times', serif;
+  font-style: italic;
+}
+/* line 195, ../scss/aboutpage.scss */
+.individualentry aside .contact,
+.individualentry aside .responsibilities {
+  margin-top: 1em;
+}
+
+/* line 207, ../scss/aboutpage.scss */
+.contentblock {
+  position: relative;
+  padding: 0 0 35px 0;
+}
+/* line 213, ../scss/aboutpage.scss */
+.contentblock h2 {
+  font-size: 3em;
+  letter-spacing: -0.2px;
+  line-height: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  font-style: italic;
+  position: relative;
+  padding: 0;
+  margin: 22px 0 9px 0;
+  display: block;
+}
+/* line 222, ../scss/aboutpage.scss */
+.contentblock blockquote {
+  font-size: 1.125em;
+  letter-spacing: -0.2px;
+  line-height: 1em;
+  font-weight: 100;
+  text-decoration: none;
+  font-style: italic;
+  font-family: 'minion-pro', 'Times', serif;
+  font-style: italic;
+  display: block;
+  margin: 0 0 30px;
+}
+/* line 230, ../scss/aboutpage.scss */
+.contentblock:after {
+  background-color: #000000;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  z-index: auto;
+  content: '';
+  width: 106px;
+  height: 3px;
+  display: inline-block;
+}
+
 @media (max-width: 1023px) {
-  /* line 138, ../scss/aboutpage.scss */
+  /* line 252, ../scss/aboutpage.scss */
   #about-landing .col1,
   #about-landing .col2 {
     width: 640px;
     float: none;
     margin: 1px auto;
   }
-  /* line 145, ../scss/aboutpage.scss */
+  /* line 259, ../scss/aboutpage.scss */
   #about-landing .subtitle {
     margin: 0;
   }
-  /* line 149, ../scss/aboutpage.scss */
+  /* line 263, ../scss/aboutpage.scss */
   #about-landing .intro-copy {
     margin: 0;
   }
 }
 @media (max-width: 768px) {
-  /* line 162, ../scss/aboutpage.scss */
+  /* line 276, ../scss/aboutpage.scss */
   #about-landing {
     margin-top: 3em;
   }
-  /* line 166, ../scss/aboutpage.scss */
+  /* line 280, ../scss/aboutpage.scss */
   #about-landing .col1,
   #about-landing .col2 {
     width: 320px;
   }
-  /* line 171, ../scss/aboutpage.scss */
+  /* line 285, ../scss/aboutpage.scss */
   #about-landing .pagetitle {
     font-size: 2.5em;
   }
