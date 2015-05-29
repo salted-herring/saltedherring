@@ -2107,18 +2107,25 @@ footer .fb:hover:before {
 @media (max-width: 1023px) {
   /* line 293, ../scss/_aboutgrid.scss */
   #banner {
-    height: auto !important;
     padding: 16px !important;
+  }
+  /* line 295, ../scss/_aboutgrid.scss */
+  #banner.landingPage {
+    height: auto !important;
     width: 100% !important;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 299, ../scss/_aboutgrid.scss */
+  /* line 301, ../scss/_aboutgrid.scss */
+  #banner.landingPage.small {
+    height: 57px !important;
+  }
+  /* line 307, ../scss/_aboutgrid.scss */
   #banner h1 {
     position: relative;
   }
-  /* line 303, ../scss/_aboutgrid.scss */
+  /* line 312, ../scss/_aboutgrid.scss */
   #banner .filters {
     position: relative;
     left: 0px !important;
@@ -2130,15 +2137,15 @@ footer .fb:hover:before {
     height: auto;
     margin-top: 32px;
   }
-  /* line 318, ../scss/_aboutgrid.scss */
+  /* line 327, ../scss/_aboutgrid.scss */
   #banner.collapsed .filters {
     margin-top: 0;
   }
-  /* line 324, ../scss/_aboutgrid.scss */
+  /* line 333, ../scss/_aboutgrid.scss */
   #banner.small .container {
     text-align: center;
   }
-  /* line 327, ../scss/_aboutgrid.scss */
+  /* line 336, ../scss/_aboutgrid.scss */
   #banner.small .filters {
     position: absolute;
     top: 0;
@@ -2153,45 +2160,40 @@ footer .fb:hover:before {
     box-sizing: border-box;
   }
 
-  /* line 342, ../scss/_aboutgrid.scss */
+  /* line 351, ../scss/_aboutgrid.scss */
   .services {
     max-width: 640px;
   }
+
+  /* line 355, ../scss/_aboutgrid.scss */
+  .content-col-1,
+  .content-col-2 {
+    width: 100%;
+    float: none;
+    padding: 0 0 0 6%;
+  }
 }
 @media (max-width: 1024px) {
-  /* line 351, ../scss/_aboutgrid.scss */
+  /* line 371, ../scss/_aboutgrid.scss */
   #banner h1 {
     padding-left: 32px;
     margin-left: 0;
   }
-  /* line 356, ../scss/_aboutgrid.scss */
+  /* line 376, ../scss/_aboutgrid.scss */
   #banner .container {
     overflow: visible;
   }
 }
-@media (min-width: 768px) and (max-width: 1024px) {
-  /* line 369, ../scss/_aboutgrid.scss */
-  #banner .filters {
-    right: auto;
-    left: 454px;
-  }
-  /* line 375, ../scss/_aboutgrid.scss */
-  #banner.small .filters {
-    text-align: center;
-  }
-}
 @media (max-width: 768px) {
-  /* line 391, ../scss/_aboutgrid.scss */
+  /* line 411, ../scss/_aboutgrid.scss */
   #banner {
     display: block;
     position: relative;
     height: auto;
-    padding: 0 !important;
     width: 100%;
     overflow: hidden;
-    margin-top: 55px;
   }
-  /* line 400, ../scss/_aboutgrid.scss */
+  /* line 420, ../scss/_aboutgrid.scss */
   #banner .container {
     height: auto;
     overflow: visible;
@@ -2200,24 +2202,23 @@ footer .fb:hover:before {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  /* line 407, ../scss/_aboutgrid.scss */
+  /* line 427, ../scss/_aboutgrid.scss */
   #banner.collapsed, #banner.small {
-    height: auto;
     padding: 16px 0;
     width: 100%;
     position: relative;
   }
-  /* line 414, ../scss/_aboutgrid.scss */
+  /* line 434, ../scss/_aboutgrid.scss */
   #banner.collapsed .filters, #banner.small .filters {
     text-align: left;
     padding: 0;
     width: 100%;
   }
-  /* line 419, ../scss/_aboutgrid.scss */
+  /* line 439, ../scss/_aboutgrid.scss */
   #banner.collapsed .filters a, #banner.small .filters a {
     font-size: 1.125em;
   }
-  /* line 427, ../scss/_aboutgrid.scss */
+  /* line 447, ../scss/_aboutgrid.scss */
   #banner .filters {
     top: auto;
     right: auto;
@@ -2227,18 +2228,85 @@ footer .fb:hover:before {
     margin: 0 !important;
     bottom: 0;
   }
-  /* line 438, ../scss/_aboutgrid.scss */
+  /* line 458, ../scss/_aboutgrid.scss */
   #banner .filters strong {
     display: none;
   }
-  /* line 443, ../scss/_aboutgrid.scss */
+  /* line 463, ../scss/_aboutgrid.scss */
   #banner h1 {
     display: none;
   }
 
-  /* line 449, ../scss/_aboutgrid.scss */
+  /* line 469, ../scss/_aboutgrid.scss */
   .services {
     max-width: 320px;
+  }
+
+  /* line 476, ../scss/_aboutgrid.scss */
+  .individualentry {
+    /* 		margin-top: 56px; */
+  }
+  /* line 479, ../scss/_aboutgrid.scss */
+  .individualentry header {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    /* 			left: -2em; */
+    background: rgba(0, 0, 0, 0.5);
+    width: 100% !important;
+    height: auto;
+    min-height: inherit;
+    color: #ffffff;
+    padding: 0 !important;
+    left: 0;
+  }
+  /* line 492, ../scss/_aboutgrid.scss */
+  .individualentry header .details {
+    -moz-transition: none;
+    -o-transition: none;
+    -webkit-transition: none;
+    transition: none;
+    padding: 16px 0em !important;
+  }
+  /* line 496, ../scss/_aboutgrid.scss */
+  .individualentry header h1 {
+    font-size: 1.375em;
+    margin: 0;
+  }
+  /* line 500, ../scss/_aboutgrid.scss */
+  .individualentry header span {
+    font-size: 1em;
+  }
+  /* line 504, ../scss/_aboutgrid.scss */
+  .individualentry header h1, .individualentry header span {
+    padding: 0 16px;
+    display: block;
+  }
+  /* line 509, ../scss/_aboutgrid.scss */
+  .individualentry header .photographer {
+    display: none;
+  }
+  /* line 513, ../scss/_aboutgrid.scss */
+  .individualentry header .tagLine,
+  .individualentry header .role {
+    font-size: 16px;
+    line-height: 1.2em;
+  }
+  /* line 519, ../scss/_aboutgrid.scss */
+  .individualentry header.no-images {
+    position: relative;
+    /* 			margin-left: -2em; */
+  }
+  /* line 524, ../scss/_aboutgrid.scss */
+  .individualentry header span {
+    font-family: 'minion-pro', 'Times', serif;
+    font-style: italic;
+    font-size: 1.5em;
+  }
+  /* line 529, ../scss/_aboutgrid.scss */
+  .individualentry header .photographer {
+    float: right;
+    font-size: 16px;
   }
 }
 /* line 5, ../scss/aboutpage.scss */
@@ -2433,9 +2501,10 @@ footer .fb:hover:before {
 .contentblock {
   position: relative;
   padding: 0 0 35px 0;
+  margin: 0 0 45px 0;
 }
 /* line 213, ../scss/aboutpage.scss */
-.contentblock h2 {
+.contentblock .block-title {
   font-size: 3em;
   letter-spacing: -0.2px;
   line-height: 1em;
@@ -2482,26 +2551,94 @@ footer .fb:hover:before {
     margin: 1px auto;
   }
   /* line 259, ../scss/aboutpage.scss */
+  #about-landing .pagetitle {
+    margin: 0 0 58px 0;
+  }
+  /* line 263, ../scss/aboutpage.scss */
   #about-landing .subtitle {
     margin: 0;
   }
-  /* line 263, ../scss/aboutpage.scss */
+  /* line 267, ../scss/aboutpage.scss */
   #about-landing .intro-copy {
     margin: 0;
   }
 }
 @media (max-width: 768px) {
-  /* line 276, ../scss/aboutpage.scss */
+  /* line 281, ../scss/aboutpage.scss */
+  .contentblock .block-title {
+    font-size: 2.375em;
+    margin-left: 15px;
+  }
+  /* line 286, ../scss/aboutpage.scss */
+  .contentblock:after {
+    left: 15px;
+  }
+
+  /* line 293, ../scss/aboutpage.scss */
   #about-landing {
     margin-top: 3em;
   }
-  /* line 280, ../scss/aboutpage.scss */
+  /* line 297, ../scss/aboutpage.scss */
   #about-landing .col1,
   #about-landing .col2 {
     width: 320px;
   }
-  /* line 285, ../scss/aboutpage.scss */
+  /* line 302, ../scss/aboutpage.scss */
   #about-landing .pagetitle {
     font-size: 2.5em;
+  }
+
+  /* line 308, ../scss/aboutpage.scss */
+  #about-section {
+    width: 100% !important;
+    overflow: visible;
+    margin-top: 0;
+  }
+  /* line 313, ../scss/aboutpage.scss */
+  #about-section header {
+    margin: 0;
+    padding: 1em;
+    left: 0;
+  }
+  /* line 318, ../scss/aboutpage.scss */
+  #about-section header .details {
+    padding: 32px;
+  }
+  /* line 323, ../scss/aboutpage.scss */
+  #about-section article {
+    width: 100%;
+  }
+  /* line 327, ../scss/aboutpage.scss */
+  #about-section .images {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 40px;
+  }
+  /* line 333, ../scss/aboutpage.scss */
+  #about-section .images img {
+    margin: 0;
+    position: relative;
+  }
+
+  /* line 340, ../scss/aboutpage.scss */
+  #about-section article {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* line 346, ../scss/aboutpage.scss */
+  #about-section blockquote,
+  #about-section aside {
+    padding: 0 16px !important;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  /* line 353, ../scss/aboutpage.scss */
+  #about-section p {
+    padding: 0 16px;
+    margin-bottom: 1em;
   }
 }

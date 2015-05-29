@@ -205,12 +205,12 @@
 
 
 .contentblock {
-
 	// @include b(lime);
 	position: relative;
 	padding: 0 0 35px 0;
+	margin: 0 0 45px 0;
 
-	h2 {
+	.block-title {
 		//            color    	size    				transf 	spacn 	lin-heig   align 	weight  decora  style
 		@include type(null, 	(48/$font-size)+em, 	null, 	-0.2px, 	1em,   null, 	bold, 	none, 	italic);
 		position: relative;
@@ -256,6 +256,10 @@
 			margin: 1px auto;
 		}
 
+		.pagetitle {
+			margin: 0 0 58px 0;
+		}
+
 		.subtitle {
 			margin: 0;
 		}
@@ -273,6 +277,19 @@
 
 @include at-breakpoint(0 3 768px) {
 
+	.contentblock {
+		.block-title {
+			font-size:(38/$font-size)+em;
+			margin-left: 15px;
+		}
+
+		&:after {
+		  left: 15px;
+		}
+
+	}
+
+
 	#about-landing {
 
 		margin-top: 3em;
@@ -286,6 +303,59 @@
 			font-size: (40/$font-size)+em;
 		}
 	}
+
+
+	#about-section {
+		width: 100% !important;
+		overflow: visible;
+		margin-top: 0;
+
+		header {
+			margin: 0;
+			padding: 1em;
+			left: 0;
+
+			.details {
+				padding: 32px;
+			}
+		}
+
+		article {
+			width: 100%;
+		}
+
+		.images {
+			height: auto;
+			width: 100%;
+			padding: 0;
+			margin-bottom: 40px;
+
+			img {
+				margin: 0;
+				position: relative;
+			}
+		}
+	}
+
+	#about-section article {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	#about-section  {
+		blockquote,
+		aside {
+			padding: 0 16px !important;
+			margin: 0;
+			@include box-sizing(border-box);
+		}
+
+		p {
+			padding: 0 16px;
+			margin-bottom: 1em;
+		}
+	}
+
 
 //
 }
