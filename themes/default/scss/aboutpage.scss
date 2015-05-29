@@ -70,12 +70,12 @@
 				@include transform(scale(1.1));
 			}
 
-			strong {
-				font-size: (50/$font-size)+em;
-			}
-			em {
-				font-size: (20/$font-size)+em;
-			}
+			// strong {
+			// 	font-size: (50/$font-size)+em;
+			// }
+			// em {
+			// 	font-size: (20/$font-size)+em;
+			// }
 
 
 		}
@@ -112,14 +112,14 @@
 		}
 
 		strong {
-			@include transition(font-size .3s);
+			// @include transition(font-size .3s);
 			font-size: (40/$font-size)+em;
 			font-style: italic;
 			margin: 0 0 20px 0;
 		}
 
 		em {
-			@include transition(font-size .3s);
+			// @include transition(font-size .3s);
 			@include minion;
 		}
 	}
