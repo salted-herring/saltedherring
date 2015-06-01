@@ -34,6 +34,14 @@ TeamMember:
     - PublishedDecorator
     - SeoObjectExtension
     - MetaDecorator
+AboutSection:
+  extensions:
+    - PublishedDecorator
+    - SeoObjectExtension
+    - MetaDecorator
+Block:
+  extensions:
+    - PublishedDecorator
 SeoConfig:
     Page: true
     ErrorPage: false

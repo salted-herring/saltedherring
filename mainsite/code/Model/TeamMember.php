@@ -13,7 +13,6 @@ class TeamMember extends BaseDBO {
 	);
 
 	private static $has_one = array(
-/* 		'Photographer' => 'TeamMember', */
 		'Colour' => 'Colour',
 		'ThumbnailOver' => 'Image'
 	);
@@ -58,16 +57,6 @@ class TeamMember extends BaseDBO {
 	}
 
 	public function firstAnimatedImage() {
-		/*
-if($this->Images()->first()) {
-			$images = $this->Images()->exclude(array('ID' => $this->Images()->first()->ID));
-
-			if($images) {
-				return $images->first();
-			}
-		}
-*/
-
 		return false;
 	}
 

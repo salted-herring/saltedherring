@@ -1,83 +1,103 @@
-// <?php
+<?php
 
-// class TeamMember extends BaseDBO {
-// 	private static $db = array(
-// 		'FirstName' => 'Varchar(35)',
-// 		'LastName' => 'Varchar(35)',
-// 		'Role' => 'Varchar(50)',
-// 		'Responsibilities' => 'Text',
-// 		'Intro' => 'Text',
-// 		'Bio' => 'HTMLText',
-// 		'Email' => 'Varchar(100)',
-// 		'MobileNumber' => 'Varchar(30)'
-// 	);
+class AboutSection extends BaseDBO {
+	private static $db = array(
+		'SectionSubTitle' => 'Varchar(128)',
+	);
 
-// 	private static $has_one = array(
-// /* 		'Photographer' => 'TeamMember', */
-// 		'Colour' => 'Colour',
-// 		'ThumbnailOver' => 'Image'
-// 	);
+	private static $has_one = array(
+		'Colour' => 'Colour',
+		'Thumbnail' => 'Image',
+		'HeroImage' => 'Image',
+	);
 
-// 	private static $has_many = array(
-// 		'Images' => 'ImageMedia'
-// 	);
+	private static $has_many = array(
+		'Blocks' => 'Block'
+	);
 
+	static $summary_fields = array(
 
+	);
 
-// 	static $searchable_fields = array(
-// 		'FirstName'
-// 	);
+	private static $defaults = array(
+	);
+
+	static $searchable_fields = array(
+
+	);
 
 
-// 	public function getCMSFields() {
-// 		$fields = parent::getCMSFields();
-
-// 		$fields->removeFieldFromTab('Root.Main', 'Title');
-
-// 		$responsibilities = $fields->fieldByName('Root.Main.Responsibilities');
-// 		$responsibilities->setRightTitle('A comma separated list of responsibilities.');
-
-
-
-// 		if($this->ID) {
-// 			$gridFieldConfig = GridFieldConfig::create()->addComponents(
-// 				new GridFieldAddNewButton(),
-// 				new GridFieldToolbarHeader(),
-// 				new GridFieldSortableHeader(),
-// 				new GridFieldDataColumns(),
-// 				new GridFieldEditButton(),
-// 				new GridFieldDeleteAction(),
-// 				new GridFieldDetailForm(),
-// 				new GridFieldFilterHeader(),
-// 				new GridFieldOrderableRows('SortOrder')
-// 			);
-
-// 			$fields->addFieldsToTab('Root.Images', array(
-// 				$gridField = new GridField("Images", "Images", $this->Images(), $gridFieldConfig)
-// 			));
-
-// 			$fields->insertAfter($fields->fieldByName('Root.Main.ThumbnailOver'), 'Thumbnail');
-
-// 			$url = new HiddenField('URLSegment');
-// 			$url->setAttribute('data-prefix', 'http://' . $_SERVER['HTTP_HOST']);
-// 			$url->setAttribute('value', $this->Link());
-// 			$fields->addFieldToTab('Root.Main', $url);
-// 		}
-
-// 		return $fields;
-// 	}
-
-// 	public function onBeforeWrite() {
-// 		parent::onBeforeWrite();
-
-// 		if($this->MetaDescription == NULL) {
-// 			$this->MetaDescription = $this->FirstName . $this->LastName . ' - ' . $this->Role . '. ' .$this->Intro;
-// 		}
-// 	}
-
-// 	public function AbsoluteLink() {
-// 		return Director::absoluteURL($this->Link());
-// 	}
+	public function getLeft() {
+		$Blocks = $this->Blocks()->filter(array('Col'=>'left','isPublished'=>true));
+		if ($Blocks) {
+			return $Blocks;
+		}
+		return false;
+	}
 
 
-// }
+	public function getRight() {
+		$Blocks = $this->Blocks()->filter(array('Col'=>'right','isPublished'=>true));
+		if ($Blocks) {
+			return $Blocks;
+		}
+		return false;
+	}
+
+
+
+
+
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+
+		$gridFieldConfig = GridFieldConfig::create()->addComponents(
+			new GridFieldToolbarHeader(),
+			new GridFieldSortableHeader(),
+			new GridFieldDataColumns(),
+			new GridFieldEditButton(),
+			$add = new GridFieldAddNewButton(),
+			new GridFieldDeleteAction(),
+			new GridFieldDetailForm(),
+			new GridFieldFilterHeader(),
+			new GridFieldOrderableRows('SortOrder')
+		);
+
+		$add->setButtonName('Add block');
+
+		$gridfield = new GridField("Blocks", "Blocks", $this->Blocks(), $gridFieldConfig);
+		$fields->addFieldToTab('Root.Blocks', $gridfield);
+
+		return $fields;
+	}
+
+
+
+
+	public function onBeforeWrite() {
+		parent::onBeforeWrite();
+
+		if($this->MetaDescription == NULL) {
+			$this->MetaDescription = $this->Title;
+		}
+	}
+
+	public function AbsoluteLink() {
+		return Director::absoluteURL($this->Link());
+	}
+
+	public function Link() {
+		return '/about/' . $this->URLSegment;
+	}
+
+	public function getSiteConfig() {
+		return SiteConfig::current_site_config();
+	}
+
+	public function canView($member = null) {
+		if(Permission::check('ADMIN')) {
+			return true;
+		}
+		return $this->isPublished;
+	}
+}

@@ -1,81 +1,66 @@
 
 
-<div id="banner" class="collapsed centered small">
-	<div class="container">
-		<h1 class="title">About</h1>
-		<div class="filters">
-				<a href="#">Approach</a>
-				<a href="#">Services</a>
-				<a href="#">Process</a>
-				<a href="#">Culture</a>
-		</div>
+<div id="banner" class="collapsed">
+	<div class="filters container">
+		<% loop getSections %>
+			<a href="$Top.URLSegment/$URLSegment"<% if $URLSegment = Section.URLSegment %> class="current"<% end_if %>>$Title</a>
+		<% end_loop %>
 	</div>
 </div>
 
 
 
+
+<% with $Section %>
 <section id="about-section" class="container individualentry">
 	<article>
-		<header style="background: rgba(18,89,107, 0.7);">
+
+
+		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);">
 			<div class="details">
-				<h1>Culture</h1>
-				<span class="role">(Our flavour)</span>
+				<h1>$Title</h1>
+				<span class="sectionSubTitle">$SectionSubTitle</span>
 			</div>
 		</header>
 
 		<div class="container">
 
 			<div class="images">
-				<img src="http://lorempixel.com/g/922/400/sports/1/" alt=""/>
+				<img src="$HeroImage.URL" alt=""/>
 			</div>
 
 			<div class="row contentarea">
 				<div class="content-col-1">
+				<% if Left %>
+				<% loop $Left %>
 					<div class="contentblock">
 
+						<h2 class="block-title">$Title</h2>
+						<blockquote>$SubTitle</blockquote>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quisquam nobis asperiores, iusto. Autem unde accusamus et dolores laborum est voluptates, modi animi reprehenderit veniam nostrum, ea dolorum quo veritatis.</p>
+						$BodyCopy
 
-						<p>Aspernatur dolor quas itaque ex cupiditate maxime a, id dolorem recusandae beatae eaque, in iste amet sapiente, quisquam dicta totam autem ducimus ab fugit tempore atque labore. In, facere, fugit.</p>
 					</div>
-
-					<div class="contentblock">
-
-						<h2 class="block-title">What is Salted Herring actually?</h2>
-						<blockquote>(It's something you eat. If you're Dutch. Or brave!)</blockquote>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quisquam nobis asperiores, iusto. Autem unde accusamus et dolores laborum est voluptates, modi animi reprehenderit veniam nostrum, ea dolorum quo veritatis.</p>
-
-						<p>Aspernatur dolor quas itaque ex cupiditate maxime a, id dolorem recusandae beatae eaque, in iste amet sapiente, quisquam dicta totam autem ducimus ab fugit tempore atque labore. In, facere, fugit.</p>
-					</div>
-
-					<div class="contentblock">
-
-						<h2 class="block-title">What is Salted Herring actually?</h2>
-						<blockquote>(It's something you eat. If you're Dutch. Or brave!)</blockquote>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quisquam nobis asperiores, iusto. Autem unde accusamus et dolores laborum est voluptates, modi animi reprehenderit veniam nostrum, ea dolorum quo veritatis.</p>
-
-						<p>Aspernatur dolor quas itaque ex cupiditate maxime a, id dolorem recusandae beatae eaque, in iste amet sapiente, quisquam dicta totam autem ducimus ab fugit tempore atque labore. In, facere, fugit.</p>
-					</div>
-
+				<% end_loop %>
+				<% end_if %>
 
 				</div>
 
 				<div class="content-col-2">
+				<% loop $Right %>
 					<div class="contentblock">
 
-						<h2 class="block-title">What is Salted Herring actually?</h2>
-						<blockquote>(It's something you eat. If you're Dutch. Or brave!)</blockquote>
+						<h2 class="block-title">$Title</h2>
+						<blockquote>$SubTitle</blockquote>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quisquam nobis asperiores, iusto. Autem unde accusamus et dolores laborum est voluptates, modi animi reprehenderit veniam nostrum, ea dolorum quo veritatis.</p>
+						$BodyCopy
 
-						<p>Aspernatur dolor quas itaque ex cupiditate maxime a, id dolorem recusandae beatae eaque, in iste amet sapiente, quisquam dicta totam autem ducimus ab fugit tempore atque labore. In, facere, fugit.</p>
 					</div>
+				<% end_loop %>
 				</div>
 			</div>
 		</div>
 	</article>
 
 </section>
-
+<% end_with %>
