@@ -277,7 +277,7 @@ $logo-height: 23px;
 		&:after {
 			position: absolute;
 			content: '';
-			bottom: -14px;
+			bottom: -17px;
 			left: 0;
 			height: 4px;
 			width: 100%;
@@ -785,6 +785,11 @@ and (max-device-width : 568px) {
 
 		li {
 			padding: 1.25em 0 1.25em 1.25em;
+
+			a:hover:after,
+			.current:after {
+				bottom: -19px;
+			}
 		}
 
 		&.collapse {

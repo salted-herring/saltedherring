@@ -1104,7 +1104,7 @@ iframe {
 #main_nav a:after {
   position: absolute;
   content: '';
-  bottom: -14px;
+  bottom: -17px;
   left: 0;
   height: 4px;
   width: 100%;
@@ -1637,57 +1637,62 @@ footer .fb:hover:before {
   #main_nav li {
     padding: 1.25em 0 1.25em 1.25em;
   }
-  /* line 791, ../scss/styles.scss */
+  /* line 789, ../scss/styles.scss */
+  #main_nav li a:hover:after,
+  #main_nav li .current:after {
+    bottom: -19px;
+  }
+  /* line 796, ../scss/styles.scss */
   #main_nav.collapse ul {
     /* 				height: 3em; */
     overflow: visible;
   }
 
-  /* line 803, ../scss/styles.scss */
+  /* line 808, ../scss/styles.scss */
   footer {
     width: 100%;
     background: #00bbde;
   }
-  /* line 807, ../scss/styles.scss */
+  /* line 812, ../scss/styles.scss */
   footer .fb {
     display: block;
   }
-  /* line 811, ../scss/styles.scss */
+  /* line 816, ../scss/styles.scss */
   footer .salt {
     font-size: 1em;
     margin: 0;
     line-height: 1em;
     text-align: center;
   }
-  /* line 818, ../scss/styles.scss */
+  /* line 823, ../scss/styles.scss */
   footer .salt span:before, footer .salt span:after {
     display: none;
   }
-  /* line 826, ../scss/styles.scss */
+  /* line 831, ../scss/styles.scss */
   footer .details .container {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 6em 1em;
   }
-  /* line 832, ../scss/styles.scss */
+  /* line 837, ../scss/styles.scss */
   footer .external {
     margin: 0;
   }
-  /* line 836, ../scss/styles.scss */
+  /* line 841, ../scss/styles.scss */
   footer .row {
     font-size: 1em;
     margin: 0;
     padding: 1.5em 0;
     line-height: 1.2em;
   }
-  /* line 842, ../scss/styles.scss */
+  /* line 847, ../scss/styles.scss */
   footer .row p {
     margin: 1em 0;
   }
 }
 @media (max-width: 320px) {
-  /* line 851, ../scss/styles.scss */
+  /* line 856, ../scss/styles.scss */
   body,
   #content,
   #footer {
@@ -1696,11 +1701,11 @@ footer .fb:hover:before {
     overflow-x: hidden;
   }
 
-  /* line 859, ../scss/styles.scss */
+  /* line 864, ../scss/styles.scss */
   #footer {
     text-align: center;
   }
-  /* line 861, ../scss/styles.scss */
+  /* line 866, ../scss/styles.scss */
   #footer .fb {
     margin-left: 1em;
     margin-top: 1em;
@@ -1708,7 +1713,7 @@ footer .fb:hover:before {
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  /* line 870, ../scss/styles.scss */
+  /* line 875, ../scss/styles.scss */
   body,
   #content,
   #header,
@@ -1720,12 +1725,12 @@ footer .fb:hover:before {
     */
   }
 
-  /* line 881, ../scss/styles.scss */
+  /* line 886, ../scss/styles.scss */
   #footer {
     overflow: hidden;
   }
 
-  /* line 884, ../scss/styles.scss */
+  /* line 889, ../scss/styles.scss */
   #footer {
     		/*
     .details {
@@ -1735,24 +1740,24 @@ footer .fb:hover:before {
     		}
     */
   }
-  /* line 885, ../scss/styles.scss */
+  /* line 890, ../scss/styles.scss */
   #footer .container {
     max-width: 768px;
   }
-  /* line 889, ../scss/styles.scss */
+  /* line 894, ../scss/styles.scss */
   #footer .grid_1 {
     width: 50%;
     margin-right: 0;
   }
-  /* line 895, ../scss/styles.scss */
+  /* line 900, ../scss/styles.scss */
   #footer .salt .container {
     padding-left: 1em;
   }
-  /* line 898, ../scss/styles.scss */
+  /* line 903, ../scss/styles.scss */
   #footer .salt .container:before {
     right: 1em;
   }
-  /* line 902, ../scss/styles.scss */
+  /* line 907, ../scss/styles.scss */
   #footer .salt .container:after {
     right: 6em;
   }
@@ -1763,34 +1768,34 @@ footer .fb:hover:before {
   		padding-left: 2em;
   	}
   */
-  /* line 927, ../scss/styles.scss */
+  /* line 932, ../scss/styles.scss */
   #footer {
     overflow: hidden;
   }
 
-  /* line 931, ../scss/styles.scss */
+  /* line 936, ../scss/styles.scss */
   #footer .container {
     max-width: 1024px;
   }
-  /* line 936, ../scss/styles.scss */
+  /* line 941, ../scss/styles.scss */
   #footer .salt .container {
     padding-left: 1em;
   }
-  /* line 939, ../scss/styles.scss */
+  /* line 944, ../scss/styles.scss */
   #footer .salt .container:before {
     right: 1em;
   }
-  /* line 943, ../scss/styles.scss */
+  /* line 948, ../scss/styles.scss */
   #footer .salt .container:after {
     right: 6em;
   }
-  /* line 950, ../scss/styles.scss */
+  /* line 955, ../scss/styles.scss */
   #footer .details .container {
     padding: 6em 2em;
   }
 }
 @media (min-width: 768px) and (max-width: 768px) {
-  /* line 958, ../scss/styles.scss */
+  /* line 963, ../scss/styles.scss */
   body,
   #content,
   #header,
@@ -1802,7 +1807,7 @@ footer .fb:hover:before {
   }
 }
 @media (min-width: 1024px) and (max-width: 1024px) {
-  /* line 970, ../scss/styles.scss */
+  /* line 975, ../scss/styles.scss */
   body,
   #content,
   #header,
