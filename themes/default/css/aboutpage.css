@@ -2610,20 +2610,24 @@ footer .fb:hover:before {
     margin: 0 !important;
   }
 
-  /* line 357, ../scss/aboutpage.scss */
+  /* line 347, ../scss/aboutpage.scss */
+  #about-section .sectionSubTitle {
+    font-size: 1em;
+  }
+  /* line 363, ../scss/aboutpage.scss */
   #about-section .contentblock {
     margin-right: 18px;
   }
-  /* line 359, ../scss/aboutpage.scss */
+  /* line 365, ../scss/aboutpage.scss */
   #about-section .contentblock .block-title {
     font-size: 2.375em;
     margin-left: 0;
   }
-  /* line 364, ../scss/aboutpage.scss */
+  /* line 370, ../scss/aboutpage.scss */
   #about-section .contentblock blockquote {
     padding-left: 0;
   }
-  /* line 368, ../scss/aboutpage.scss */
+  /* line 374, ../scss/aboutpage.scss */
   #about-section .contentblock:after {
     left: 0;
   }
