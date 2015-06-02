@@ -17,12 +17,9 @@ class AboutPage extends Page {
 		$fields = parent::getCMSFields();
 
 		$fields->removeByName('Content');
-
 		$fields->AddFieldToTab('Root.Main', new TextField('PageTitle'));
 		$fields->AddFieldToTab('Root.Main', new TextField('SubTitle'));
 		$fields->AddFieldToTab('Root.Main', new TextareaField('IntroCopy'));
-
-
 
 		$gridFieldConfig = GridFieldConfig::create()->addComponents(
 			new GridFieldToolbarHeader(),
@@ -41,17 +38,10 @@ class AboutPage extends Page {
 		$gridfield = new GridField("Subsections", "Sub sections", AboutSection::get(), $gridFieldConfig);
 		$fields->addFieldToTab('Root.Subsections', $gridfield);
 
-
-
-
 		return $fields;
-
-
-
-
 	}
-
 }
+
 class AboutPage_Controller extends Page_Controller {
 
 	private static $allowed_actions = array (
@@ -77,28 +67,17 @@ class AboutPage_Controller extends Page_Controller {
 
 		$this->MetaTitle = $subsection->Title;
 		$this->MetaDescription = $subsection->MetaDescription;
-		// $this->currentMember = $teamMember;
-
 
 		return $this->renderWith(array('AboutSectionPage', 'Page'), array(
 			'Section' => $subsection
 		));
 
-
-
 	}
-
 
 	public function getSections() {
 		return AboutSection::get()->filter(array('isPublished' => true));
 	}
-
 }
-
-
-
-
-
 
 
 

@@ -26,7 +26,6 @@ class AboutSection extends BaseDBO {
 
 	);
 
-
 	public function getLeft() {
 		$Blocks = $this->Blocks()->filter(array('Col'=>'left','isPublished'=>true));
 		if ($Blocks) {
@@ -35,7 +34,6 @@ class AboutSection extends BaseDBO {
 		return false;
 	}
 
-
 	public function getRight() {
 		$Blocks = $this->Blocks()->filter(array('Col'=>'right','isPublished'=>true));
 		if ($Blocks) {
@@ -43,10 +41,6 @@ class AboutSection extends BaseDBO {
 		}
 		return false;
 	}
-
-
-
-
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
@@ -70,9 +64,6 @@ class AboutSection extends BaseDBO {
 
 		return $fields;
 	}
-
-
-
 
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();

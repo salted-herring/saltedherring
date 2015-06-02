@@ -48,38 +48,6 @@
 	<% end_loop %>
 
 
-
-<!--
-
-
-	<a href="$Top.URLSegment/$URLSegment" class="entry">
-		<img src="/themes/default/img/home.jpg" class="thumbnail" />
-
-		<div class="label">
-			<span>
-				<strong>Services</strong>
-				<em>(Plating enhances flavour)</em>
-			</span>
-		</div>
-	</a>
-
-
-
-
-	<a href="$Top.URLSegment/$URLSegment" class="entry">
-		<img src="/themes/default/img/contact-bg.jpg" class="thumbnail" />
-
-		<div class="label">
-			<span>
-				<strong>Services</strong>
-				<em>(Plating enhances flavour)</em>
-			</span>
-		</div>
-	</a>
-
-
- -->
-
 </div>
 
 
