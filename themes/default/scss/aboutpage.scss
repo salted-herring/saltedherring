@@ -252,7 +252,7 @@
 
 	&:after {
 	  @include bg($black);
-	  @include position(absolute, null, null, 10px, 0, auto);
+	  @include position(absolute, null, null, 0, 0, auto);
 	  content:'';
 	  width: 106px;
 	  height: 3px;

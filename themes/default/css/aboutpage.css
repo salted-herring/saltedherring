@@ -2520,7 +2520,7 @@ footer .fb:hover:before {
 .contentblock:after {
   background-color: #000000;
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   left: 0;
   z-index: auto;
   content: '';
