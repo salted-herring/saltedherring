@@ -23,7 +23,7 @@
 		<div class="container">
 
 			<div class="images">
-				<img src="$HeroImage.URL" alt=""/>
+				<img src="$HeroImage.SetWidth(928).URL" alt=""/>
 			</div>
 
 			<div class="row contentarea">
