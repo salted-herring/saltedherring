@@ -1,14 +1,10 @@
 
 
-body {
-	// background: $background;
-}
 
 .filters {
 	@include position(absolute, null, 7.5em, -.5em, null, null);
 	padding: 2em 0em 0 1em;
 	max-width: 400px;
-	// width: 300px;
 
 	.centered & {
 		// @include b(lime);
@@ -153,10 +149,7 @@ body {
 	margin-top: 56px;
 
 	header {
-/* 		position: absolute; */
 		z-index: 3;
-/* 		top: 0; */
-/* 		left: -2em; */
 		background: rgba(0,0,0,0.5);
 		width: 960px;//800px;
 		min-height: 160px;
@@ -166,7 +159,6 @@ body {
 		position: fixed;
 		left: 50%;
 		top: 111px;
-/* 		margin-left: -30em; */
 		@include transform(translateZ(0));
 
 		&.delay  {
@@ -187,9 +179,9 @@ body {
 			@include transition(all .4s);
 		}
 
-		h1 {
-			//@include transition(font .08s ceaser($easeOutCubic));
-		}
+		// h1 {
+		// 	//@include transition(font .08s ceaser($easeOutCubic));
+		// }
 
 		a {
 			&:hover {
@@ -201,7 +193,6 @@ body {
 
 
 		&.small {
-/* 			height: 78px; */
 			top: 111px !important;
 			min-height: 78px;
 			height: auto;
@@ -225,7 +216,6 @@ body {
 
 		&.no-images {
 			position: relative;
-/* 			margin-left: -2em; */
 		}
 
 		span {
@@ -287,8 +277,6 @@ body {
 
 
 
-
-
 @include at-breakpoint(0 3 1023px) {
 	#banner {
 			padding: 16px !important;
@@ -296,7 +284,6 @@ body {
 			height: auto !important;
 			width: 100% !important;
 			@include box-sizing(border-box);
-
 
 			&.small {
 				height: 57px!important;
@@ -384,27 +371,6 @@ body {
 
 
 
-// @include at-breakpoint(768px 3 1024px) {
-// 	#banner {
-// 		.filters {
-// 			right: auto;
-// 			left: 454px;
-// 		}
-
-// 		&.small {
-// 			.filters {
-// 				text-align: center;
-// 			}
-// 		}
-// 	}
-// }
-
-
-
-
-
-
-
 
 @include at-breakpoint(0 3 768px) {
 
@@ -412,10 +378,8 @@ body {
 		display: block;
 		position: relative;
 		height: auto;
-		// padding: 0 !important;
 		width: 100%;
 		overflow: hidden;
-		// margin-top: 55px;
 
 		.container {
 			height: auto;
@@ -426,7 +390,6 @@ body {
 
 		&.collapsed,
 		&.small {
-			// height: auto;
 			padding: 16px 0;
 			width: 100%;
 			position: relative;
@@ -442,8 +405,6 @@ body {
 			}
 		}
 
-
-
 		.filters {
 			top: auto;
 			right: auto;
@@ -452,8 +413,6 @@ body {
 			width: 100%;
 			margin: 0 !important;
 			bottom: 0;
-
-
 
 			strong {
 				display: none;
@@ -472,17 +431,14 @@ body {
 
 
 
-
 	.individualentry {
-/* 		margin-top: 56px; */
 
 		header {
 			position: absolute;
 			z-index: 3;
 			top: 0;
-/* 			left: -2em; */
 			background: rgba(0,0,0,0.5);
-			width: 100% !important;//800px;
+			width: 100% !important;
 			height: auto;
 			min-height: inherit;
 			color: $white;
@@ -518,7 +474,6 @@ body {
 
 			&.no-images {
 				position: relative;
-	/* 			margin-left: -2em; */
 			}
 
 			span {
