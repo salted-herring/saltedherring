@@ -2514,6 +2514,15 @@ footer .fb:hover:before {
   margin: 0 0 30px;
 }
 /* line 230, ../scss/aboutpage.scss */
+.contentblock a {
+  color: #000000;
+  text-decoration: underline;
+}
+/* line 234, ../scss/aboutpage.scss */
+.contentblock a:after {
+  display: none;
+}
+/* line 239, ../scss/aboutpage.scss */
 .contentblock:after {
   background-color: #000000;
   position: absolute;
@@ -2527,102 +2536,95 @@ footer .fb:hover:before {
 }
 
 @media (max-width: 1023px) {
-  /* line 252, ../scss/aboutpage.scss */
+  /* line 261, ../scss/aboutpage.scss */
   #about-landing .col1,
   #about-landing .col2 {
     width: 640px;
     float: none;
     margin: 1px auto;
   }
-  /* line 259, ../scss/aboutpage.scss */
+  /* line 268, ../scss/aboutpage.scss */
   #about-landing .pagetitle {
     margin: 0 0 58px 0;
   }
-  /* line 263, ../scss/aboutpage.scss */
+  /* line 272, ../scss/aboutpage.scss */
   #about-landing .subtitle {
     margin: 0;
   }
-  /* line 267, ../scss/aboutpage.scss */
+  /* line 276, ../scss/aboutpage.scss */
   #about-landing .intro-copy {
     margin: 0;
   }
 }
 @media (max-width: 768px) {
-  /* line 281, ../scss/aboutpage.scss */
-  .contentblock .block-title {
-    font-size: 2.375em;
-    margin-left: 15px;
-  }
-  /* line 286, ../scss/aboutpage.scss */
-  .contentblock:after {
-    left: 15px;
-  }
-
-  /* line 293, ../scss/aboutpage.scss */
+  /* line 292, ../scss/aboutpage.scss */
   #about-landing {
     margin-top: 3em;
   }
-  /* line 297, ../scss/aboutpage.scss */
+  /* line 296, ../scss/aboutpage.scss */
   #about-landing .col1,
   #about-landing .col2 {
     width: 320px;
   }
-  /* line 302, ../scss/aboutpage.scss */
+  /* line 301, ../scss/aboutpage.scss */
   #about-landing .pagetitle {
     font-size: 2.5em;
   }
 
-  /* line 308, ../scss/aboutpage.scss */
+  /* line 307, ../scss/aboutpage.scss */
   #about-section {
     width: 100% !important;
     overflow: visible;
     margin-top: 0;
   }
-  /* line 313, ../scss/aboutpage.scss */
+  /* line 312, ../scss/aboutpage.scss */
   #about-section header {
     margin: 0;
     padding: 1em;
     left: 0;
   }
-  /* line 318, ../scss/aboutpage.scss */
+  /* line 317, ../scss/aboutpage.scss */
   #about-section header .details {
     padding: 32px;
   }
-  /* line 323, ../scss/aboutpage.scss */
+  /* line 322, ../scss/aboutpage.scss */
   #about-section article {
     width: 100%;
   }
-  /* line 327, ../scss/aboutpage.scss */
+  /* line 326, ../scss/aboutpage.scss */
   #about-section .images {
     height: auto;
     width: 100%;
     padding: 0;
     margin-bottom: 40px;
   }
-  /* line 333, ../scss/aboutpage.scss */
+  /* line 332, ../scss/aboutpage.scss */
   #about-section .images img {
     margin: 0;
     position: relative;
   }
 
-  /* line 340, ../scss/aboutpage.scss */
+  /* line 339, ../scss/aboutpage.scss */
   #about-section article {
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* line 346, ../scss/aboutpage.scss */
-  #about-section blockquote,
-  #about-section aside {
-    padding: 0 16px !important;
-    margin: 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+  /* line 357, ../scss/aboutpage.scss */
+  #about-section .contentblock {
+    margin-right: 18px;
   }
-  /* line 353, ../scss/aboutpage.scss */
-  #about-section p {
-    padding: 0 16px;
-    margin-bottom: 1em;
+  /* line 359, ../scss/aboutpage.scss */
+  #about-section .contentblock .block-title {
+    font-size: 2.375em;
+    margin-left: 0;
+  }
+  /* line 364, ../scss/aboutpage.scss */
+  #about-section .contentblock blockquote {
+    padding-left: 0;
+  }
+  /* line 368, ../scss/aboutpage.scss */
+  #about-section .contentblock:after {
+    left: 0;
   }
 }

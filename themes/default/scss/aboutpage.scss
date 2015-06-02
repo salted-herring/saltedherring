@@ -61,10 +61,10 @@
 		float: left;
 
 		&:hover {
-			.label {
-				// background: rgba(0,0,0,0.5);
-				// bottom: -142px;
-			}
+			// .label {
+			// 	// background: rgba(0,0,0,0.5);
+			// 	// bottom: -142px;
+			// }
 
 			img {
 				@include transform(scale(1.1));
@@ -227,6 +227,15 @@
 		margin: 0 0 30px;
 	}
 
+	a {
+		color: $black;
+		text-decoration: underline;
+
+		&:after {
+		  display: none;
+		}
+	}
+
 	&:after {
 	  @include bg($black);
 	  @include position(absolute, null, null, 10px, 0, auto);
@@ -277,17 +286,7 @@
 
 @include at-breakpoint(0 3 768px) {
 
-	.contentblock {
-		.block-title {
-			font-size:(38/$font-size)+em;
-			margin-left: 15px;
-		}
 
-		&:after {
-		  left: 15px;
-		}
-
-	}
 
 
 	#about-landing {
@@ -343,17 +342,37 @@
 	}
 
 	#about-section  {
-		blockquote,
-		aside {
-			padding: 0 16px !important;
-			margin: 0;
-			@include box-sizing(border-box);
+		// blockquote,
+		// aside {
+		// 	padding: 0 16px !important;
+		// 	margin: 0;
+		// 	@include box-sizing(border-box);
+		// }
+
+		// p {
+		// 	padding: 0 16px;
+		// 	margin-bottom: 1em;
+		// }
+
+		.contentblock {
+			margin-right: 18px;
+			.block-title {
+				font-size:(38/$font-size)+em;
+				margin-left: 0;
+			}
+
+			blockquote {
+				padding-left: 0;
+			}
+
+			&:after {
+			  left: 0;
+			}
+
 		}
 
-		p {
-			padding: 0 16px;
-			margin-bottom: 1em;
-		}
+
+
 	}
 
 
