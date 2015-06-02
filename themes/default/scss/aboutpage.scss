@@ -2,6 +2,20 @@
 @import 'styles', '_aboutgrid';
 
 
+
+
+.page-about {
+
+	.contentblock,
+	p {
+		font-weight: 500;
+	}
+
+
+
+}
+
+
 #about-landing {
 	margin-top: 17em;
 
@@ -17,11 +31,11 @@
 		//            color    	size   					transf 	 	spacn 	lin-heig   align 	weight  decora  style
 		@include type($black, 	(60/$font-size)+em, 	null, 	 	0.1px, 	1.1em, 	   null, 	600, 	none, 	italic);
 		position: relative;
-		margin: 0;
+		margin: 0 100px 0 0;
 
 		&:after {
 		  @include bg($black);
-		  @include position(absolute, null, null, -30px, 0, auto);
+		  @include position(absolute, null, null, -40px, 0, auto);
 		  content:'';
 		  width: 106px;
 		  height: 3px;
@@ -41,7 +55,7 @@
 
 
 	.intro-copy {
-		margin: 0 0 0 $padme;
+		margin: 0 68px 0 $padme;
 	}
 
 //
