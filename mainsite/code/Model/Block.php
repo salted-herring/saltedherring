@@ -4,7 +4,7 @@ class Block extends DataObject {
 	private static $db = array(
 		'Title' => 'Varchar(128)',
 		'SubTitle' => 'Varchar(128)',
-		'BodyCopy' => 'Text',
+		'BodyCopy' => 'HTMLText',
 		'SortOrder' => 'Int',
 		'Col' => 'Enum("left,right")',
 	);
