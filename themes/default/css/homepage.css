@@ -1486,20 +1486,6 @@ footer .fb:hover:before {
   text-transform: uppercase;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (min-device-width: 320px) and (max-device-width: 568px) {
-  /* line 651, ../scss/styles.scss */
-  #logo a {
-    background: url(../img/sprites/SH_logo_site_black.png) no-repeat;
-    -moz-background-size: 185px 23px;
-    -o-background-size: 185px 23px;
-    -webkit-background-size: 185px 23px;
-    background-size: 185px 23px;
-  }
-  /* line 654, ../scss/styles.scss */
-  #logo a:hover {
-    background-position: inherit;
-  }
-}
 @media (max-width: 768px) {
   /* line 662, ../scss/styles.scss */
   html,
