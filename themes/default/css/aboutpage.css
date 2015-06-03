@@ -2239,9 +2239,10 @@ footer .fb:hover:before {
   /* line 428, ../scss/_aboutgrid.scss */
   .services {
     max-width: 320px;
+    padding: 0 6%;
   }
 
-  /* line 436, ../scss/_aboutgrid.scss */
+  /* line 437, ../scss/_aboutgrid.scss */
   .individualentry header {
     position: absolute;
     z-index: 3;
@@ -2254,7 +2255,7 @@ footer .fb:hover:before {
     padding: 0 !important;
     left: 0;
   }
-  /* line 448, ../scss/_aboutgrid.scss */
+  /* line 449, ../scss/_aboutgrid.scss */
   .individualentry header .details {
     -moz-transition: none;
     -o-transition: none;
@@ -2262,41 +2263,41 @@ footer .fb:hover:before {
     transition: none;
     padding: 16px 0em !important;
   }
-  /* line 452, ../scss/_aboutgrid.scss */
+  /* line 453, ../scss/_aboutgrid.scss */
   .individualentry header h1 {
     font-size: 1.375em;
     margin: 0;
   }
-  /* line 456, ../scss/_aboutgrid.scss */
+  /* line 457, ../scss/_aboutgrid.scss */
   .individualentry header span {
     font-size: 1em;
   }
-  /* line 460, ../scss/_aboutgrid.scss */
+  /* line 461, ../scss/_aboutgrid.scss */
   .individualentry header h1, .individualentry header span {
     padding: 0 16px;
     display: block;
   }
-  /* line 465, ../scss/_aboutgrid.scss */
+  /* line 466, ../scss/_aboutgrid.scss */
   .individualentry header .photographer {
     display: none;
   }
-  /* line 469, ../scss/_aboutgrid.scss */
+  /* line 470, ../scss/_aboutgrid.scss */
   .individualentry header .tagLine,
   .individualentry header .role {
     font-size: 16px;
     line-height: 1.2em;
   }
-  /* line 475, ../scss/_aboutgrid.scss */
+  /* line 476, ../scss/_aboutgrid.scss */
   .individualentry header.no-images {
     position: relative;
   }
-  /* line 479, ../scss/_aboutgrid.scss */
+  /* line 480, ../scss/_aboutgrid.scss */
   .individualentry header span {
     font-family: 'minion-pro', 'Times', serif;
     font-style: italic;
     font-size: 1.5em;
   }
-  /* line 484, ../scss/_aboutgrid.scss */
+  /* line 485, ../scss/_aboutgrid.scss */
   .individualentry header .photographer {
     float: right;
     font-size: 16px;
@@ -2541,92 +2542,93 @@ footer .fb:hover:before {
     width: 640px;
     float: none;
     margin: 1px auto;
+    padding: 0 6%;
   }
-  /* line 281, ../scss/aboutpage.scss */
+  /* line 282, ../scss/aboutpage.scss */
   #about-landing .pagetitle {
     margin: 0 0 58px 0;
   }
-  /* line 285, ../scss/aboutpage.scss */
+  /* line 286, ../scss/aboutpage.scss */
   #about-landing .subtitle {
     margin: 0;
   }
-  /* line 289, ../scss/aboutpage.scss */
+  /* line 290, ../scss/aboutpage.scss */
   #about-landing .intro-copy {
     margin: 0;
   }
 }
 @media (max-width: 768px) {
-  /* line 305, ../scss/aboutpage.scss */
+  /* line 306, ../scss/aboutpage.scss */
   #about-landing {
     margin-top: 3em;
   }
-  /* line 309, ../scss/aboutpage.scss */
+  /* line 310, ../scss/aboutpage.scss */
   #about-landing .col1,
   #about-landing .col2 {
     width: 320px;
   }
-  /* line 314, ../scss/aboutpage.scss */
+  /* line 315, ../scss/aboutpage.scss */
   #about-landing .pagetitle {
     font-size: 2.5em;
   }
 
-  /* line 320, ../scss/aboutpage.scss */
+  /* line 321, ../scss/aboutpage.scss */
   #about-section {
     width: 100% !important;
     overflow: visible;
     margin-top: 0;
   }
-  /* line 325, ../scss/aboutpage.scss */
+  /* line 326, ../scss/aboutpage.scss */
   #about-section header {
     margin: 0;
     padding: 1em;
     left: 0;
   }
-  /* line 330, ../scss/aboutpage.scss */
+  /* line 331, ../scss/aboutpage.scss */
   #about-section header .details {
     padding: 32px;
   }
-  /* line 335, ../scss/aboutpage.scss */
+  /* line 336, ../scss/aboutpage.scss */
   #about-section article {
     width: 100%;
   }
-  /* line 339, ../scss/aboutpage.scss */
+  /* line 340, ../scss/aboutpage.scss */
   #about-section .images {
     height: auto;
     width: 100%;
     padding: 0;
     margin-bottom: 40px;
   }
-  /* line 345, ../scss/aboutpage.scss */
+  /* line 346, ../scss/aboutpage.scss */
   #about-section .images img {
     margin: 0;
     position: relative;
   }
 
-  /* line 352, ../scss/aboutpage.scss */
+  /* line 353, ../scss/aboutpage.scss */
   #about-section article {
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* line 360, ../scss/aboutpage.scss */
+  /* line 361, ../scss/aboutpage.scss */
   #about-section .sectionSubTitle {
     font-size: 1em;
   }
-  /* line 376, ../scss/aboutpage.scss */
+  /* line 377, ../scss/aboutpage.scss */
   #about-section .contentblock {
     margin-right: 18px;
   }
-  /* line 378, ../scss/aboutpage.scss */
+  /* line 379, ../scss/aboutpage.scss */
   #about-section .contentblock .block-title {
     font-size: 2.375em;
     margin-left: 0;
   }
-  /* line 383, ../scss/aboutpage.scss */
+  /* line 384, ../scss/aboutpage.scss */
   #about-section .contentblock blockquote {
     padding-left: 0;
   }
-  /* line 387, ../scss/aboutpage.scss */
+  /* line 388, ../scss/aboutpage.scss */
   #about-section .contentblock:after {
     left: 0;
   }
