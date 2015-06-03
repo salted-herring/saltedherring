@@ -1874,17 +1874,20 @@ footer .fb:hover:before {
   right: 80px;
   bottom: 40px;
 }
-/* line 68, ../scss/contactpage.scss */
+/* line 76, ../scss/contactpage.scss */
 #contact .contactIntroText p {
-  color: #00bbde;
-  font-size: 2.8125em;
-  line-height: 0.94em;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 90px 20px 0 30px;
+  color: #000000;
+  font-size: 3.75em;
+  letter-spacing: 0.1px;
+  line-height: 0.9em;
+  font-weight: 600;
+  text-decoration: none;
+  font-style: italic;
+  position: relative;
   margin: 0;
+  padding: 89px 20px 0 30px;
 }
-/* line 80, ../scss/contactpage.scss */
+/* line 98, ../scss/contactpage.scss */
 #contact .phoneNumber {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
@@ -1895,11 +1898,11 @@ footer .fb:hover:before {
   display: inline-block;
   text-decoration: none;
 }
-/* line 90, ../scss/contactpage.scss */
+/* line 108, ../scss/contactpage.scss */
 #contact .phoneNumber:after {
   display: none;
 }
-/* line 95, ../scss/contactpage.scss */
+/* line 113, ../scss/contactpage.scss */
 #contact .contactAddress {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
@@ -1910,24 +1913,24 @@ footer .fb:hover:before {
 }
 
 @media (max-width: 800px) {
-  /* line 113, ../scss/contactpage.scss */
+  /* line 131, ../scss/contactpage.scss */
   #content #contact {
     padding: 0 !important;
   }
-  /* line 117, ../scss/contactpage.scss */
+  /* line 135, ../scss/contactpage.scss */
   #content #contact .col-1 {
     height: auto;
     width: 100%;
     float: none;
   }
-  /* line 123, ../scss/contactpage.scss */
+  /* line 141, ../scss/contactpage.scss */
   #content #contact .col-2 {
     background-size: cover;
     width: 100%;
     float: none;
     padding: 0 0 118px 22px;
   }
-  /* line 130, ../scss/contactpage.scss */
+  /* line 148, ../scss/contactpage.scss */
   #content #contact .emailButton {
     position: relative;
     top: auto;
@@ -1937,7 +1940,7 @@ footer .fb:hover:before {
     float: left;
     margin: 0 30px 20px 0;
   }
-  /* line 137, ../scss/contactpage.scss */
+  /* line 155, ../scss/contactpage.scss */
   #content #contact .emailLink {
     position: relative;
     top: auto;
@@ -1946,12 +1949,12 @@ footer .fb:hover:before {
     left: auto;
     float: left;
   }
-  /* line 144, ../scss/contactpage.scss */
+  /* line 162, ../scss/contactpage.scss */
   #content #contact .contactIntroText p {
     font-size: 2.1875em;
     padding: 20px;
   }
-  /* line 150, ../scss/contactpage.scss */
+  /* line 168, ../scss/contactpage.scss */
   #content #contact .phoneNumber {
     padding: 30px 0 20px;
   }

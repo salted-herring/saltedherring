@@ -2342,7 +2342,7 @@ footer .fb:hover:before {
   height: 3px;
   display: inline-block;
 }
-/* line 50, ../scss/aboutpage.scss */
+/* line 49, ../scss/aboutpage.scss */
 #about-landing .subtitle {
   color: #000000;
   font-size: 1.5em;
@@ -2352,12 +2352,12 @@ footer .fb:hover:before {
   font-style: normal;
   margin: 0 0 0 25px;
 }
-/* line 57, ../scss/aboutpage.scss */
+/* line 56, ../scss/aboutpage.scss */
 #about-landing .intro-copy {
   margin: 0 68px 0 25px;
 }
 
-/* line 68, ../scss/aboutpage.scss */
+/* line 67, ../scss/aboutpage.scss */
 .services .entry {
   position: relative;
   display: block;
@@ -2367,14 +2367,14 @@ footer .fb:hover:before {
   height: 320px;
   float: left;
 }
-/* line 83, ../scss/aboutpage.scss */
+/* line 82, ../scss/aboutpage.scss */
 .services .entry:hover img {
   -moz-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 98, ../scss/aboutpage.scss */
+/* line 97, ../scss/aboutpage.scss */
 .services img {
   position: relative;
   z-index: 0;
@@ -2384,7 +2384,7 @@ footer .fb:hover:before {
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
 }
-/* line 105, ../scss/aboutpage.scss */
+/* line 104, ../scss/aboutpage.scss */
 .services .label {
   position: absolute;
   top: 130px;
@@ -2394,99 +2394,99 @@ footer .fb:hover:before {
   width: 100%;
   min-height: 0px;
 }
-/* line 113, ../scss/aboutpage.scss */
+/* line 112, ../scss/aboutpage.scss */
 .services .label:before {
   display: none;
 }
-/* line 117, ../scss/aboutpage.scss */
+/* line 116, ../scss/aboutpage.scss */
 .services .label span {
   position: relative;
   display: block;
 }
-/* line 123, ../scss/aboutpage.scss */
+/* line 122, ../scss/aboutpage.scss */
 .services .label strong,
 .services .label em {
   display: block;
 }
-/* line 128, ../scss/aboutpage.scss */
+/* line 127, ../scss/aboutpage.scss */
 .services .label strong {
   font-size: 2.5em;
   font-style: italic;
   margin: 0 0 20px 0;
 }
-/* line 135, ../scss/aboutpage.scss */
+/* line 134, ../scss/aboutpage.scss */
 .services .label em {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
 
-/* line 148, ../scss/aboutpage.scss */
+/* line 147, ../scss/aboutpage.scss */
 .individualentry.container {
   position: relative;
 }
-/* line 152, ../scss/aboutpage.scss */
+/* line 151, ../scss/aboutpage.scss */
 .individualentry article {
   position: relative;
 }
-/* line 156, ../scss/aboutpage.scss */
+/* line 155, ../scss/aboutpage.scss */
 .individualentry h1 {
   font-size: 3em;
   line-height: 1em;
   margin: 0 0 0.45833em 0;
   padding: 0;
 }
-/* line 166, ../scss/aboutpage.scss */
+/* line 165, ../scss/aboutpage.scss */
 .individualentry img {
   margin: 0 0 0 -1em;
 }
-/* line 170, ../scss/aboutpage.scss */
+/* line 169, ../scss/aboutpage.scss */
 .individualentry ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 177, ../scss/aboutpage.scss */
+/* line 176, ../scss/aboutpage.scss */
 .individualentry .media img {
   position: relative;
   z-index: 0;
   padding: 0;
   margin-bottom: 1.5em;
 }
-/* line 188, ../scss/aboutpage.scss */
+/* line 187, ../scss/aboutpage.scss */
 .individualentry aside strong {
   font-weight: normal;
   font-size: 1.125em;
   color: #d8c801;
 }
-/* line 194, ../scss/aboutpage.scss */
+/* line 193, ../scss/aboutpage.scss */
 .individualentry aside span,
 .individualentry aside strong {
   display: block;
 }
-/* line 199, ../scss/aboutpage.scss */
+/* line 198, ../scss/aboutpage.scss */
 .individualentry aside a {
   color: #000000;
   display: table;
 }
-/* line 204, ../scss/aboutpage.scss */
+/* line 203, ../scss/aboutpage.scss */
 .individualentry aside a,
 .individualentry aside span {
   font-family: 'minion-pro', 'Times', serif;
   font-style: italic;
 }
-/* line 209, ../scss/aboutpage.scss */
+/* line 208, ../scss/aboutpage.scss */
 .individualentry aside .contact,
 .individualentry aside .responsibilities {
   margin-top: 1em;
 }
 
-/* line 221, ../scss/aboutpage.scss */
+/* line 220, ../scss/aboutpage.scss */
 .contentblock {
   position: relative;
   padding: 0 0 35px 0;
   margin: 0 0 45px 0;
 }
-/* line 227, ../scss/aboutpage.scss */
+/* line 226, ../scss/aboutpage.scss */
 .contentblock .block-title {
   font-size: 3em;
   letter-spacing: -0.2px;
@@ -2499,7 +2499,7 @@ footer .fb:hover:before {
   margin: 22px 0 9px 0;
   display: block;
 }
-/* line 236, ../scss/aboutpage.scss */
+/* line 235, ../scss/aboutpage.scss */
 .contentblock blockquote {
   font-size: 1.125em;
   letter-spacing: -0.2px;
@@ -2512,16 +2512,16 @@ footer .fb:hover:before {
   display: block;
   margin: 0 0 30px;
 }
-/* line 244, ../scss/aboutpage.scss */
+/* line 243, ../scss/aboutpage.scss */
 .contentblock a {
   color: #000000;
   text-decoration: underline;
 }
-/* line 248, ../scss/aboutpage.scss */
+/* line 247, ../scss/aboutpage.scss */
 .contentblock a:after {
   display: none;
 }
-/* line 253, ../scss/aboutpage.scss */
+/* line 252, ../scss/aboutpage.scss */
 .contentblock:after {
   background-color: #000000;
   position: absolute;
@@ -2535,98 +2535,98 @@ footer .fb:hover:before {
 }
 
 @media (max-width: 1023px) {
-  /* line 275, ../scss/aboutpage.scss */
+  /* line 274, ../scss/aboutpage.scss */
   #about-landing .col1,
   #about-landing .col2 {
     width: 640px;
     float: none;
     margin: 1px auto;
   }
-  /* line 282, ../scss/aboutpage.scss */
+  /* line 281, ../scss/aboutpage.scss */
   #about-landing .pagetitle {
     margin: 0 0 58px 0;
   }
-  /* line 286, ../scss/aboutpage.scss */
+  /* line 285, ../scss/aboutpage.scss */
   #about-landing .subtitle {
     margin: 0;
   }
-  /* line 290, ../scss/aboutpage.scss */
+  /* line 289, ../scss/aboutpage.scss */
   #about-landing .intro-copy {
     margin: 0;
   }
 }
 @media (max-width: 768px) {
-  /* line 306, ../scss/aboutpage.scss */
+  /* line 305, ../scss/aboutpage.scss */
   #about-landing {
     margin-top: 3em;
   }
-  /* line 310, ../scss/aboutpage.scss */
+  /* line 309, ../scss/aboutpage.scss */
   #about-landing .col1,
   #about-landing .col2 {
     width: 320px;
   }
-  /* line 315, ../scss/aboutpage.scss */
+  /* line 314, ../scss/aboutpage.scss */
   #about-landing .pagetitle {
     font-size: 2.5em;
   }
 
-  /* line 321, ../scss/aboutpage.scss */
+  /* line 320, ../scss/aboutpage.scss */
   #about-section {
     width: 100% !important;
     overflow: visible;
     margin-top: 0;
   }
-  /* line 326, ../scss/aboutpage.scss */
+  /* line 325, ../scss/aboutpage.scss */
   #about-section header {
     margin: 0;
     padding: 1em;
     left: 0;
   }
-  /* line 331, ../scss/aboutpage.scss */
+  /* line 330, ../scss/aboutpage.scss */
   #about-section header .details {
     padding: 32px;
   }
-  /* line 336, ../scss/aboutpage.scss */
+  /* line 335, ../scss/aboutpage.scss */
   #about-section article {
     width: 100%;
   }
-  /* line 340, ../scss/aboutpage.scss */
+  /* line 339, ../scss/aboutpage.scss */
   #about-section .images {
     height: auto;
     width: 100%;
     padding: 0;
     margin-bottom: 40px;
   }
-  /* line 346, ../scss/aboutpage.scss */
+  /* line 345, ../scss/aboutpage.scss */
   #about-section .images img {
     margin: 0;
     position: relative;
   }
 
-  /* line 353, ../scss/aboutpage.scss */
+  /* line 352, ../scss/aboutpage.scss */
   #about-section article {
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* line 361, ../scss/aboutpage.scss */
+  /* line 360, ../scss/aboutpage.scss */
   #about-section .sectionSubTitle {
     font-size: 1em;
   }
-  /* line 377, ../scss/aboutpage.scss */
+  /* line 376, ../scss/aboutpage.scss */
   #about-section .contentblock {
     margin-right: 18px;
   }
-  /* line 379, ../scss/aboutpage.scss */
+  /* line 378, ../scss/aboutpage.scss */
   #about-section .contentblock .block-title {
     font-size: 2.375em;
     margin-left: 0;
   }
-  /* line 384, ../scss/aboutpage.scss */
+  /* line 383, ../scss/aboutpage.scss */
   #about-section .contentblock blockquote {
     padding-left: 0;
   }
-  /* line 388, ../scss/aboutpage.scss */
+  /* line 387, ../scss/aboutpage.scss */
   #about-section .contentblock:after {
     left: 0;
   }

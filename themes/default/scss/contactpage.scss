@@ -65,17 +65,35 @@
 
 	.contactIntroText {
 		// @include b(red);
+		// p {
+		// 	color: $blue;
+		// 	font-size: (45/$font-size)+em;
+		// 	line-height: 0.94em;
+		// 	font-weight: 800;
+		// 	text-transform: uppercase;
+		// 	margin: 0;
+		// }
 		p {
-			color: $blue;
-			font-size: (45/$font-size)+em;
-			line-height: 0.94em;
-			font-weight: 800;
-			text-transform: uppercase;
-			padding: #{$rowtop+10px} 20px 0 30px;
+			//            color    	size   					transf 	 	spacn 	lin-heig   align 	weight  decora  style
+			@include type($black, 	(60/$font-size)+em, 	null, 	 	0.1px, 	0.9em, 	   null, 	600, 	none, 	italic);
+			position: relative;
 			margin: 0;
+			padding: #{$rowtop+9px} 20px 0 30px;
+
+			// &:after {
+			//   @include bg($black);
+			//   @include position(absolute, null, null, -40px, 0, auto);
+			//   content:'';
+			//   width: 106px;
+			//   height: 3px;
+			//   display: inline-block;
+			// }
 		}
 	//
 	}
+
+
+
 
 	.phoneNumber {
 		// @include b(lime);
