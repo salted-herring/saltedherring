@@ -26,21 +26,28 @@
 	$row-one-height: 424px;
 
 	.row-one {
-		@include bg($blue);
+		.col-2 {
+			background: $blue url('../img/building.png');
+		}
+
+		.col-1 {
+			height: $row-one-height;
+		}
+
+		.col-2 {
+			height: $row-one-height;
+		}
 	}
 
 	.col-1 {
 		@include bg($white);
-		height: $row-one-height;
 		width: 33.34%;
 		float: left;
 		box-sizing: border-box;
 	}
 
 	.col-2 {
-		height: $row-one-height;
 		position: relative;
-		background: url('../img/building.png');
 		width: 66.66%;
 		float: left;
 		padding: 0 0 0 65px;
@@ -119,6 +126,55 @@
 		margin: 0 0 30px;
 	//
 	}
+
+
+
+	.contentblock {
+		// @include b(lime);
+		position: relative;
+		padding: 0 0 35px 0;
+		margin: 91px 56px 0 6px;
+
+		.block-title {
+			//            color    	size    				transf 	spacn 	lin-heig   align 	weight  decora  style
+			@include type(null, 	(48/$font-size)+em, 	null, 	-0.2px, 	1em,   null, 	bold, 	none, 	italic);
+			position: relative;
+			padding: 0;
+			margin: 22px 0 9px 0;
+			display: block;
+		}
+
+		blockquote {
+			//            color    	size    				transf 	spacn 	lin-heig   align 	weight  decora  style
+			@include type(null, 	(18/$font-size)+em, 	null, 	-0.2px, 	1em,   null, 	100, 	none, 	italic);
+			@include minion;
+			display: block;
+			margin: 0 0 30px;
+		}
+
+		a {
+			color: $black;
+			text-decoration: underline;
+
+			&:after {
+			  display: none;
+			}
+		}
+
+		// &:after {
+		//   @include bg($black);
+		//   @include position(absolute, null, null, 0, 0, auto);
+		//   content:'';
+		//   width: 106px;
+		//   height: 3px;
+		//   display: inline-block;
+		// }
+	//
+	}
+
+
+
+
 //
 }
 
@@ -132,18 +188,23 @@
 		$response-row-one-height: auto;
 		padding: 0!important;
 
-		.col-1 {
-			height: $response-row-one-height;
-			width: 100%;
-			float: none;
+
+		.row-one {
+
+			.col-1 {
+				height: $response-row-one-height;
+				width: 100%;
+				float: none;
+			}
+
+			.col-2 {
+				background-size: cover;
+				width: 100%;
+				float: none;
+				padding: 0 0 118px 22px;
+			}
 		}
 
-		.col-2 {
-			background-size: cover;
-			width: 100%;
-			float: none;
-			padding: 0 0 118px 22px;
-		}
 
 		.emailButton {
 			@include position(relative, auto, auto, auto, auto, null);
@@ -169,12 +230,67 @@
 			padding: 30px 0 20px;
 		}
 
+		// .row-two .col-1 img {
+		// 	width: 100%;
+		// }
 	}
 
 //
 }
 
 
+
+@include at-breakpoint(0 3 502px) {
+
+	#content #contact {
+		// $response-row-one-height: auto;
+		padding: 0!important;
+
+
+		.row-two {
+
+			.col-1 {
+				// height: $response-row-one-height;
+				width: 100%;
+				float: none;
+				img {
+					width: 100%;
+				}
+			}
+
+			.col-2 {
+				background-size: cover;
+				width: 100%;
+				float: none;
+				padding: 0 0 118px 22px;
+			}
+		}
+
+
+		.contentblock {
+			margin-right: 18px;
+			margin-top: 60px;
+			.block-title {
+				font-size:(38/$font-size)+em;
+				margin-left: 0;
+			}
+
+			blockquote {
+				padding-left: 0;
+			}
+
+			&:after {
+			  left: 0;
+			}
+
+		}
+
+
+
+	}
+
+//
+}
 
 
 
