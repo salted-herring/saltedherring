@@ -13,8 +13,8 @@ images_dir = "img"
 fonts_dir = "fonts"
 javascripts_dir = "js"
 
-environment = :production
-# environment = :development
+# environment = :production
+environment = :development
 # line_comments = false
 
 
