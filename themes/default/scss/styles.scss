@@ -212,17 +212,16 @@ $logo-height: 23px;
 
 	a {
 		@include hide_text;
+		@include sprites-sprite(SH_logo_site_black_sm);
+		position: absolute;
 		display: block;
 		line-height: 0;
 		width: 185px;
 		font-size: 0;
 		height: $logo-height;
-		@include sprites-sprite(SH_logo_site_black_sm);
-		position: absolute;
-/* 		left: 32px; */
 
 		&:hover {
-			// @include sprites-sprite(SH_logo_site_blue_sm);
+			@include sprites-sprite(SH_logo_site_blue_sm);
 		}
 	}
 
