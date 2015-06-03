@@ -310,7 +310,7 @@ $logo-height: 23px;
 
 	padding: 0 12px;
   	height: 55px;
-  	width: 32px;
+  	width: 46px;
 
 	.title {
 		//            color    	size    transf 	 	spacn 	l-heig   align 	weight  decora  style
@@ -637,20 +637,10 @@ footer {
 }
 
 
-/* ===========================
- * End Sections
- * =========================== */
+//   End Sections
 
 
-/*
-.mobile #main_nav {
-	display: block;
 
-	ul {
-		margin-right: 0;
-	}
-}
-*/
 
 
 @media
@@ -661,6 +651,9 @@ and (max-device-width : 568px) {
 	    a {
 		    background: url(../img/sprites/SH_logo_site_black.png) no-repeat;
 		    @include background-size(185px 23px);
+		    &:hover {
+		    	background-position: inherit;
+		    }
 	    }
     }
 }
@@ -733,7 +726,12 @@ and (max-device-width : 568px) {
 
 		a {
 			left: 16px;
+			&:hover {
+		    	background-position: inherit;
+		    }
 		}
+
+
 	}
 
 	#main_nav {
@@ -790,13 +788,12 @@ and (max-device-width : 568px) {
 		&.collapse {
 			ul {
 				//@include scale(1.0,1.0,1);
-/* 				height: 3em; */
 				overflow: visible;
 			}
-			li {
-				//@include transition-delay(0s);
-				//@include opacity(1.0);
-			}
+			// li {
+			// 	//@include transition-delay(0s);
+			// 	//@include opacity(1.0);
+			// }
 		}
 	}
 
@@ -918,16 +915,10 @@ min-width: 768px;
 @include at-breakpoint(769px 3 1024px) {
 
 
-	/*
-#logo {
-		padding-left: 2em;
-	}
-*/
 
 	#footer {
 		overflow: hidden;
-	}
-	#footer {
+
 		.container {
 			max-width: 1024px;
 		}
