@@ -642,20 +642,26 @@ footer {
 
 
 
-// @media
-// (-webkit-min-device-pixel-ratio: 2),
-// (min-resolution: 192dpi) and (min-device-width : 320px)
-// and (max-device-width : 568px) {
-//     #logo {
-// 	    a {
-// 		    background: url(../img/sprites/SH_logo_site_black.png) no-repeat;
-// 		    @include background-size(185px 23px);
-// 		    &:hover {
-// 		    	background-position: inherit;
-// 		    }
-// 	    }
-//     }
-// }
+// @include at-breakpoint(0 3 1045px)
+
+@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) and (min-device-width : 320px)
+and (max-device-width : 568px) {
+    #logo {
+	    a {
+		    background: url(../img/sprites/SH_logo_site_black.png) no-repeat!important;
+			background-size: 185px 23px!important;
+
+		    &:hover {
+			    background: url(../img/sprites/SH_logo_site_blue_sm.png) no-repeat!important;
+				background-position: 0 0;
+			    background-size: 185px 23px!important;
+		    }
+	    }
+    }
+}
+
 
 @include at-breakpoint(0 3 768px) {
 	html,
@@ -726,7 +732,7 @@ footer {
 		a {
 			left: 16px;
 			&:hover {
-		    	background-position: inherit;
+		    	// background-position: inherit;
 		    }
 		}
 
