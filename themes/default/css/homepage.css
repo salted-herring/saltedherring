@@ -1489,44 +1489,57 @@ footer .fb:hover:before {
   text-transform: uppercase;
 }
 
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (min-device-width: 320px) and (max-device-width: 568px) {
+  /* line 651, ../scss/styles.scss */
+  #logo a {
+    background: url(../img/sprites/SH_logo_site_black.png) no-repeat !important;
+    background-size: 185px 23px !important;
+  }
+  /* line 655, ../scss/styles.scss */
+  #logo a:hover {
+    background: url(../img/sprites/SH_logo_site_blue_sm.png) no-repeat !important;
+    background-position: 0 0;
+    background-size: 185px 23px !important;
+  }
+}
 @media (max-width: 768px) {
-  /* line 661, ../scss/styles.scss */
+  /* line 666, ../scss/styles.scss */
   html,
   body {
     height: 100%;
   }
 
-  /* line 666, ../scss/styles.scss */
+  /* line 671, ../scss/styles.scss */
   .row {
     overflow: visible !important;
     max-width: 100% !important;
   }
 
-  /* line 671, ../scss/styles.scss */
+  /* line 676, ../scss/styles.scss */
   .nomobi {
     display: none !important;
   }
 
-  /* line 675, ../scss/styles.scss */
+  /* line 680, ../scss/styles.scss */
   #banner {
     display: none;
   }
 
-  /* line 679, ../scss/styles.scss */
+  /* line 684, ../scss/styles.scss */
   #content {
     width: 100%;
     margin: 0;
   }
-  /* line 683, ../scss/styles.scss */
+  /* line 688, ../scss/styles.scss */
   #content article {
     padding: 0 1em !important;
   }
 
-  /* line 689, ../scss/styles.scss */
+  /* line 694, ../scss/styles.scss */
   #loader span {
     font-size: 3.2em;
   }
-  /* line 692, ../scss/styles.scss */
+  /* line 697, ../scss/styles.scss */
   #loader .salt {
     margin-top: 0em !important;
     -moz-transform: scale(0.5);
@@ -1535,12 +1548,12 @@ footer .fb:hover:before {
     transform: scale(0.5);
   }
 
-  /* line 701, ../scss/styles.scss */
+  /* line 706, ../scss/styles.scss */
   #menu_icon {
     display: block;
   }
 
-  /* line 706, ../scss/styles.scss */
+  /* line 711, ../scss/styles.scss */
   #header {
     width: 100%;
     left: 0;
@@ -1551,7 +1564,7 @@ footer .fb:hover:before {
     -webkit-perspective: 1000;
   }
 
-  /* line 717, ../scss/styles.scss */
+  /* line 722, ../scss/styles.scss */
   #logo {
     left: 0;
     margin: 0;
@@ -1561,16 +1574,12 @@ footer .fb:hover:before {
     background: #f5f5f5;
     width: 100%;
   }
-  /* line 726, ../scss/styles.scss */
+  /* line 731, ../scss/styles.scss */
   #logo a {
     left: 16px;
   }
-  /* line 728, ../scss/styles.scss */
-  #logo a:hover {
-    background-position: inherit;
-  }
 
-  /* line 736, ../scss/styles.scss */
+  /* line 741, ../scss/styles.scss */
   #main_nav {
     margin-left: 0em;
     padding-left: 0em;
@@ -1583,11 +1592,11 @@ footer .fb:hover:before {
     right: 0;
     top: -57px;
   }
-  /* line 748, ../scss/styles.scss */
+  /* line 753, ../scss/styles.scss */
   #main_nav:before {
     display: block;
   }
-  /* line 752, ../scss/styles.scss */
+  /* line 757, ../scss/styles.scss */
   #main_nav ul {
     position: absolute;
     z-index: 0;
@@ -1611,65 +1620,65 @@ footer .fb:hover:before {
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
   }
-  /* line 778, ../scss/styles.scss */
+  /* line 783, ../scss/styles.scss */
   #main_nav li {
     padding: 1.25em 0 1.25em 1.25em;
   }
-  /* line 781, ../scss/styles.scss */
+  /* line 786, ../scss/styles.scss */
   #main_nav li a:hover:after,
   #main_nav li .current:after {
     bottom: -19px;
   }
-  /* line 788, ../scss/styles.scss */
+  /* line 793, ../scss/styles.scss */
   #main_nav.collapse ul {
     overflow: visible;
   }
 
-  /* line 799, ../scss/styles.scss */
+  /* line 804, ../scss/styles.scss */
   footer {
     width: 100%;
     background: #00bbde;
   }
-  /* line 803, ../scss/styles.scss */
+  /* line 808, ../scss/styles.scss */
   footer .fb {
     display: block;
   }
-  /* line 807, ../scss/styles.scss */
+  /* line 812, ../scss/styles.scss */
   footer .salt {
     font-size: 1em;
     margin: 0;
     line-height: 1em;
     text-align: center;
   }
-  /* line 814, ../scss/styles.scss */
+  /* line 819, ../scss/styles.scss */
   footer .salt span:before, footer .salt span:after {
     display: none;
   }
-  /* line 822, ../scss/styles.scss */
+  /* line 827, ../scss/styles.scss */
   footer .details .container {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 6em 1em;
   }
-  /* line 828, ../scss/styles.scss */
+  /* line 833, ../scss/styles.scss */
   footer .external {
     margin: 0;
   }
-  /* line 832, ../scss/styles.scss */
+  /* line 837, ../scss/styles.scss */
   footer .row {
     font-size: 1em;
     margin: 0;
     padding: 1.5em 0;
     line-height: 1.2em;
   }
-  /* line 838, ../scss/styles.scss */
+  /* line 843, ../scss/styles.scss */
   footer .row p {
     margin: 1em 0;
   }
 }
 @media (max-width: 320px) {
-  /* line 847, ../scss/styles.scss */
+  /* line 852, ../scss/styles.scss */
   body,
   #content,
   #footer {
@@ -1678,11 +1687,11 @@ footer .fb:hover:before {
     overflow-x: hidden;
   }
 
-  /* line 855, ../scss/styles.scss */
+  /* line 860, ../scss/styles.scss */
   #footer {
     text-align: center;
   }
-  /* line 857, ../scss/styles.scss */
+  /* line 862, ../scss/styles.scss */
   #footer .fb {
     margin-left: 1em;
     margin-top: 1em;
@@ -1690,7 +1699,7 @@ footer .fb:hover:before {
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  /* line 866, ../scss/styles.scss */
+  /* line 871, ../scss/styles.scss */
   body,
   #content,
   #header,
@@ -1702,12 +1711,12 @@ footer .fb:hover:before {
     */
   }
 
-  /* line 877, ../scss/styles.scss */
+  /* line 882, ../scss/styles.scss */
   #footer {
     overflow: hidden;
   }
 
-  /* line 880, ../scss/styles.scss */
+  /* line 885, ../scss/styles.scss */
   #footer {
     		/*
     .details {
@@ -1717,56 +1726,56 @@ footer .fb:hover:before {
     		}
     */
   }
-  /* line 881, ../scss/styles.scss */
+  /* line 886, ../scss/styles.scss */
   #footer .container {
     max-width: 768px;
   }
-  /* line 885, ../scss/styles.scss */
+  /* line 890, ../scss/styles.scss */
   #footer .grid_1 {
     width: 50%;
     margin-right: 0;
   }
-  /* line 891, ../scss/styles.scss */
+  /* line 896, ../scss/styles.scss */
   #footer .salt .container {
     padding-left: 1em;
   }
-  /* line 894, ../scss/styles.scss */
+  /* line 899, ../scss/styles.scss */
   #footer .salt .container:before {
     right: 1em;
   }
-  /* line 898, ../scss/styles.scss */
+  /* line 903, ../scss/styles.scss */
   #footer .salt .container:after {
     right: 6em;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* line 918, ../scss/styles.scss */
+  /* line 923, ../scss/styles.scss */
   #footer {
     overflow: hidden;
   }
-  /* line 921, ../scss/styles.scss */
+  /* line 926, ../scss/styles.scss */
   #footer .container {
     max-width: 1024px;
   }
-  /* line 926, ../scss/styles.scss */
+  /* line 931, ../scss/styles.scss */
   #footer .salt .container {
     padding-left: 1em;
   }
-  /* line 929, ../scss/styles.scss */
+  /* line 934, ../scss/styles.scss */
   #footer .salt .container:before {
     right: 1em;
   }
-  /* line 933, ../scss/styles.scss */
+  /* line 938, ../scss/styles.scss */
   #footer .salt .container:after {
     right: 6em;
   }
-  /* line 940, ../scss/styles.scss */
+  /* line 945, ../scss/styles.scss */
   #footer .details .container {
     padding: 6em 2em;
   }
 }
 @media (min-width: 768px) and (max-width: 768px) {
-  /* line 948, ../scss/styles.scss */
+  /* line 953, ../scss/styles.scss */
   body,
   #content,
   #header,
@@ -1778,7 +1787,7 @@ footer .fb:hover:before {
   }
 }
 @media (min-width: 1024px) and (max-width: 1024px) {
-  /* line 960, ../scss/styles.scss */
+  /* line 965, ../scss/styles.scss */
   body,
   #content,
   #header,
