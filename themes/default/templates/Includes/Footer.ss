@@ -16,7 +16,7 @@
 				</p>
 
 				<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-					<a href="$MapLinkURL" target="_blank" class="map" itemprop="streetAddress">$FloorLevel, $StreetAddress.</a><br>
+					<a href="$MapLinkURL" target="_blank" class="map" itemprop="streetAddress">$FloorLevel, $StreetAddress</a><br>
 					$PObox
 					<br>
 
