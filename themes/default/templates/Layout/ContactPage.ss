@@ -14,11 +14,11 @@
 			<div class="col-2">
 				<a class="phoneNumber" href="tel: $PhoneLink">$PhoneDisplay</a>
 				<div class="contactAddress">
-					$StreetAddress <br>
 					$FloorLevel <br>
+					$StreetAddress <br>
+					$PObox<br>
 					$Locality $Postcode <br>
-					$Country <br>
-					$PObox
+					$Country
 				</div>
 				<a class="emailButton"href="mailto:$EmailURL" itemprop="email">$Email</a>
 				<a class="emailLink" href="$MapLinkURL">$MapLink</a>
