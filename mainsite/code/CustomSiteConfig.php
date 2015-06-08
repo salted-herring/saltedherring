@@ -8,6 +8,8 @@ class CustomSiteConfig extends DataExtension {
 		'FooterBlurb' => 'Varchar(256)',
 
 		'EmailURL' => 'Varchar(256)',
+		'EmailDisplay' => 'Varchar(256)',
+
 		'PhoneLink' => 'Varchar(128)',
 		'PhoneDisplay' => 'Varchar(128)',
 		'StreetAddress' => 'Varchar(256)',
@@ -34,7 +36,8 @@ class CustomSiteConfig extends DataExtension {
 
 		$fields->addFieldToTab("Root.Footer", new TextareaField('FooterBlurb', 'Footer Blurb'));
 
-		$fields->addFieldToTab("Root.Contact", new TextField('EmailURL', 'Email Address URL - encoded perhaps'));
+		$fields->addFieldToTab("Root.Contact", new TextField('EmailURL', 'Email Address URL - encoded'));
+		$fields->addFieldToTab("Root.Contact", new TextField('EmailDisplay', 'Email Address Display - encoded'));
 
 		$fields->addFieldToTab("Root.Contact", new TextField('PhoneLink', 'PhoneLink'));
 		$fields->addFieldToTab("Root.Contact", new TextField('PhoneDisplay', 'PhoneDisplay'));

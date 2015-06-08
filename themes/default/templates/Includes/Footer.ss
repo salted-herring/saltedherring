@@ -11,7 +11,7 @@
 			<div class="grid_1 contact" itemscope itemtype="http://schema.org/Organization">
 				<span itemprop="name" class="hide">Salted Herring</span>
 				<p>
-					<a href="mailto:$EmailURL" itemprop="email">$EmailURL</a><br>
+					<a href="mailto:$EmailURL" itemprop="email">$EmailDisplay</a><br>
 					<a href="tel:$PhoneLink" itemprop="telephone">$PhoneDisplay</a>
 				</p>
 

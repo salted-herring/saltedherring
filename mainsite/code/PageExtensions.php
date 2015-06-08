@@ -160,6 +160,15 @@ class PageControllerDecorator extends Extension {
 		return false;
 	}
 
+	public function getEmailDisplay() {
+		$EmailDisplay = SiteConfig::current_site_config()->EmailDisplay;
+
+		if($EmailDisplay) {
+			return $EmailDisplay;
+		}
+		return false;
+	}
+
 	public function getPhoneLink() {
 		$PhoneLink = SiteConfig::current_site_config()->PhoneLink;
 
