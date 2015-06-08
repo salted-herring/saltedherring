@@ -4,17 +4,11 @@ class ContactPage extends Page {
 	private static $db = array(
 		'IntroText' => 'Varchar(256)',
 		'PhoneNumber' => 'Varchar(256)',
-		'Address' => 'Varchar(256)',
-
 		'ContentTitle' => 'Varchar(128)',
 		'ContentSubTitle' => 'Varchar(128)',
 		'BodyCopy' => 'HTMLText',
-
 		'Email' => 'Varchar(256)',
-		'EmailURL' => 'Varchar(256)',
-
-		'MapLink' => 'Varchar(256)',
-		'MapLinkURL' => 'Varchar(256)'
+		'MapLink' => 'Varchar(256)'
 	);
 
 	private static $has_one = array(
@@ -28,20 +22,12 @@ class ContactPage extends Page {
 		$fields = parent::getCMSFields();
 		$fields->RemoveByName('Content');
 		$fields->AddFieldToTab('Root.Main', new TextField('IntroText'));
-		$fields->AddFieldToTab('Root.Main', new TextField('PhoneNumber'));
-		$fields->AddFieldToTab('Root.Main', new TextareaField('Address'));
-
 		$fields->AddFieldToTab('Root.Main', new UploadField('ContentImage'));
-
 		$fields->AddFieldToTab('Root.Main', new TextField('ContentTitle'));
 		$fields->AddFieldToTab('Root.Main', new TextField('ContentSubTitle'));
 		$fields->AddFieldToTab('Root.Main', new HtmlEditorField('BodyCopy'));
-
-		$fields->AddFieldToTab('Root.Main', new TextField('Email'));
-		$fields->AddFieldToTab('Root.Main', new TextField('EmailURL'));
-
-		$fields->AddFieldToTab('Root.Main', new TextField('MapLink'));
-		$fields->AddFieldToTab('Root.Main', new TextField('MapLinkURL'));
+		$fields->AddFieldToTab('Root.Main', new TextField('Email', 'Email Button Text'));
+		$fields->AddFieldToTab('Root.Main', new TextField('MapLink', 'Map Button Text'));
 
 		return $fields;
 

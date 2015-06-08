@@ -11,15 +11,17 @@
 			<div class="grid_1 contact" itemscope itemtype="http://schema.org/Organization">
 				<span itemprop="name" class="hide">Salted Herring</span>
 				<p>
-					<a href="mailto:%69%6E%66%6F%40%73%61%6C%74%65%64%68%65%72%72%69%6E%67%2E%63%6F%6D" itemprop="email">info<!-- >@. -->@<!-- >@. -->saltedherring<!-- >@. -->.<!-- >@. -->com</a><br>
-					<a href="tel:+6444731344" itemprop="telephone">+64 (0) 4 473 1344</a>
+					<a href="mailto:$EmailURL" itemprop="email">$EmailURL</a><br>
+					<a href="tel:$PhoneLink" itemprop="telephone">$PhoneDisplay</a>
 				</p>
 
 				<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-					<a href="http://goo.gl/HJwCZU" target="_blank" class="map" itemprop="streetAddress">Level 5, 15 Courtenay Place.</a><br>
-					PO Box 6534<br>
-					<span itemprop="addressLocality">Wellington</span> <span itemprop="postalCode">6141</span><br>
-					<span itemprop="addressCountry">New Zealand</span>
+					<a href="$MapLinkURL" target="_blank" class="map" itemprop="streetAddress">$FloorLevel, $StreetAddress.</a><br>
+					$PObox
+					<br>
+
+					<span itemprop="addressLocality">$Locality</span> <span itemprop="postalCode">$Postcode</span><br>
+					<span itemprop="addressCountry">$Country</span>
 				</p>
 
 

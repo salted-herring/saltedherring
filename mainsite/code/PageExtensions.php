@@ -151,8 +151,108 @@ class PageControllerDecorator extends Extension {
 		return false;
 	}
 
+	public function getEmailURL() {
+		$EmailURL = SiteConfig::current_site_config()->EmailURL;
+
+		if($EmailURL) {
+			return $EmailURL;
+		}
+		return false;
+	}
+
+	public function getPhoneLink() {
+		$PhoneLink = SiteConfig::current_site_config()->PhoneLink;
+
+		if($PhoneLink) {
+			return $PhoneLink;
+		}
+		return false;
+	}
+
+	public function getPhoneDisplay() {
+		$PhoneDisplay = SiteConfig::current_site_config()->PhoneDisplay;
+
+		if($PhoneDisplay) {
+			return $PhoneDisplay;
+		}
+		return false;
+	}
+
+	public function getStreetAddress() {
+		$StreetAddress = SiteConfig::current_site_config()->StreetAddress;
+
+		if($StreetAddress) {
+			return $StreetAddress;
+		}
+		return false;
+	}
+
+	public function getFloorLevel() {
+		$FloorLevel = SiteConfig::current_site_config()->FloorLevel;
+
+		if($FloorLevel) {
+			return $FloorLevel;
+		}
+		return false;
+	}
+
+	public function getLocality() {
+		$Locality = SiteConfig::current_site_config()->Locality;
+
+		if($Locality) {
+			return $Locality;
+		}
+		return false;
+	}
+
+	public function getPostcode() {
+		$Postcode = SiteConfig::current_site_config()->Postcode;
+
+		if($Postcode) {
+			return $Postcode;
+		}
+		return false;
+	}
+
+	public function getCountry() {
+		$Country = SiteConfig::current_site_config()->Country;
+
+		if($Country) {
+			return $Country;
+		}
+		return false;
+	}
+
+	public function getPObox() {
+		$PObox = SiteConfig::current_site_config()->PObox;
+
+		if($PObox) {
+			return $PObox;
+		}
+		return false;
+	}
+
+	public function getMapLinkURL() {
+		$MapLinkURL = SiteConfig::current_site_config()->MapLinkURL;
+
+		if($MapLinkURL) {
+			return $MapLinkURL;
+		}
+		return false;
+	}
+
+
+
+
 	public function isMobile() {
 		$mobi = new Mobile_Detect();
 		return $mobi->isMobile();
 	}
 }
+
+
+
+
+
+
+
