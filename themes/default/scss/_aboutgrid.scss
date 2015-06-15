@@ -427,7 +427,15 @@
 
 	.services {
 		max-width: 320px;
-		padding: 0 6%;
+		padding: 0;
+		.entry {
+			width: 100%!important;
+		}
+		img {
+			width: 100%!important;
+
+		}
+
 	}
 
 
