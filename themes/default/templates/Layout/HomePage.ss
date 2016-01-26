@@ -102,3 +102,4 @@
 </section>
 
 <nav id="nextnav"><a href="#">&darr;</a></nav>
+<!-- check marker -->
