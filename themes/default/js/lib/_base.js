@@ -32,14 +32,16 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 		});
 		
 	}else{
-		$('#btn-to-bottom').click(function(e) {
-        	e.preventDefault();
-        });
-		$('#btn-to-bottom')[0].addEventListener('touchend',function(e) {
-            $('html,body').animate({
-			  scrollTop: $('#footer').offset().top
-			}, 500);
-        });
+		if ($('#btn-to-bottom').length > 0) {
+			$('#btn-to-bottom').click(function(e) {
+    	    	e.preventDefault();
+        	});
+			$('#btn-to-bottom')[0].addEventListener('touchend',function() {
+	            $('html,body').animate({
+				  scrollTop: $('#footer').offset().top
+				}, 500);
+	        });
+		}
 		$('#menu_icon')[0].addEventListener('touchend',function() {
 			console.log('clicked');
 			$('#main_nav').toggleClass('collapse expand');
