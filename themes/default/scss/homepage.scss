@@ -98,6 +98,7 @@ h1 {
 	z-index: 100;
 	left: 50%;
 	bottom: 0;
+	width: 85px;
 	margin-left: -42.5px;
 
 	a {
@@ -105,8 +106,8 @@ h1 {
 		background-color: $black;
 		padding: 19px 2em;
 		@include hide_text;
-		width: 21px;
-		height: 28px ;
+		width: 100%;
+		height: 66px;
 		position: relative;
 
 		@include transition(background .2s ease);
@@ -215,12 +216,17 @@ section {
 		overflow: hidden;
 		height: 89px;
 		display: none;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		z-index: 2;
 
 		// salted word offset
 		h1 {
-			margin-top: -202px;   //  *1.15 increase
-			position: fixed;
-			top: 50%;
+			//margin-top: -202px;   //  *1.15 increase
+			//position: fixed;
+			//top: 50%;
+			margin: 0 auto;
 		}
 	}
 
@@ -556,11 +562,11 @@ section {
 		}
 
 		.news {
-			padding-left: 10px;
+			padding-left: 42.5px;
 		}
 
 		.contactlinks {
-			padding-right: 80px;
+			padding-right: 45.5px;
 		}
 
 		a {
@@ -621,6 +627,13 @@ section {
 
 
 @include at-breakpoint(0 3 768px) {
+	html,
+	body,
+	#content,
+	#work {
+		height: auto !important;
+	}
+	
 	.contact {
 		width: 20%;
 	}
@@ -636,7 +649,7 @@ section {
 	}
 
 	#main_nav {
-		top: 0;
+		top: -3px;
 	}
 
 	.blog,
@@ -741,7 +754,7 @@ section {
 
 		.links {
 			margin: 0;
-			bottom: 10px;
+			bottom: 4em;
   			top: auto;
 
 			padding: 1em 0;
@@ -829,7 +842,7 @@ section {
 		}
 
 		.digital {
-			font-size: 1.2em;
+			//font-size: 1.2em;
 		}
 
 		.text {
@@ -840,9 +853,9 @@ section {
 			width: 100% !important;
 			display: block;
 			height: 320px;
-			background-attachment: initial;
-			padding-bottom: 150px;
-
+			background-attachment: scroll;
+			//padding-bottom: 150px;
+			position: static;
 			&.first {
 				display: block;
 
@@ -866,8 +879,34 @@ section {
 				.intro {
 					min-height: 0;
 				}
+				
+				
+				
 			}
-
+			//now things become complicate....
+			&#slider-253,
+			&#slider-16 {
+				background-size: 100% auto !important;
+			}
+			
+			&#slider-238 {
+				
+			}
+			
+			&#slider-239 {
+				background-size: 150% auto !important;
+				background-color: #ecebe9;
+			}
+			
+			&#slider-240 {
+				background-size: 140% auto !important;
+			}
+			
+			&#slider-253 {
+				background-color: #4dc9e9;
+				background-position: center center;
+			}
+			
 			img {
 				display: none;
 			}
@@ -877,14 +916,14 @@ section {
 
 		.large {
 			// border: 1px solid brown;
-			@include transform(scale(.5));
+			@include transform(scale(.9));
 		}
 
 		//herring on mobile
 		.keyword {
 			// border: 1px solid lime;
-			font-size: 50px;
-			margin-top: -176px;
+			font-size: 6em;
+			margin-top: -145px;
 		}
 
 	//
@@ -908,7 +947,7 @@ section {
 			width: 100%!important;
 			padding: 0 10%;
 			box-sizing: border-box;
-			margin-top: -76px!important;
+			margin-top: 0;//-76px!important;
 
 			&:before {
 				top: -30px;
@@ -919,11 +958,13 @@ section {
 
 		.first {
 			.digital {
-				margin-top: -118px;
+				//margin-top: -118px;
+				margin-top: -50px;
 			}
 
 			.explanation {
-				margin-top: -84px;
+				margin-top: 1em !important;
+				font-size: 1.25em;
 				&:before {
 					display: none;
 				}
@@ -966,18 +1007,18 @@ section {
 
 @include at-breakpoint(768px 3 1024px) {
 	#content {
-		min-width: 1024px;
+		//min-width: 1024px;
 		width: 100%;
 	}
 
 	#work {
-		min-width: 1024px;
+		//min-width: 1024px;
 		width: 100%;
 
 		.block {
-			@include background-size(2048px auto !important);
+			//@include background-size(2048px auto !important);
 			display: block;
-			min-width: 1024px;
+			//min-width: 1024px;
 			width: 100%;
 
 			.headingwrapper {
@@ -998,8 +1039,14 @@ section {
 		}
 
 		.links {
+			overflow: visible;
+			text-align: center;
 			span {
-				display: none;
+				display: block;
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%,0);
+				top: -75%;
 			}
 			a {
 				float: none;
@@ -1014,8 +1061,136 @@ section {
 	}
 }
 
+// < iPad
+@include at-breakpoint(0 3 767px) {
+	#work {
+		.first {
+			.digital {
+				margin-top: -128px;
+    			font-size: 1.5em;
+			}
+			
+			.explanation {
+				font-size: 1em;
+				margin-top: -5em !important;
+			}
+		}
+		
+		.large {
+			@include transform(scale(.4));
+		}
+		
+		.keyword {
+			font-size: 2.4em;
+			margin-top: -185px;
+		}
+		
+		.heading {
+			h1 {
+				display: none !important;
+			}
+		}
+		
+		.explanation {
+			margin-top: -3em !important;
+		}
+		
+		.links {
+			overflow: visible;
+			text-align: center;
+			span {
+				display: block;
+				position: absolute;
+				left: 50%;
+				transform: translate(-50%,0);
+				top: -120%;	
+			}
+		}
+		
+		.block {
+			//now things become complicate....
+			&#slider-253,
+			&#slider-16 {
+				background-size: cover !important;
+			}
+			
+			&#slider-238 {
+				
+			}
+			
+			&#slider-239 {
+				background-size: auto 90% !important;
+				background-color: #ecebe9;
+				background-position: 40% top;
+			}
+			
+			&#slider-240 {
+				background-size: cover !important;
+			}
+			
+			&#slider-253 {
+				background-color: #4dc9e9;
+				background-position: center center;
+				background-size: 100% auto !important;
+			}
+		}
+	}
+}
 
-
+@include at-breakpoint(1024px 3 1024px) {
+	#content,
+	#work {
+		height: auto !important;
+	}
+	
+	#work {
+		position: static;
+		.links {
+			text-align: left;
+			margin-left: 0;
+			transform: translate(-50%,0);
+			span {
+				top: 0;
+			}
+			
+			a {
+				float: right;
+				margin-right: 1em;
+			}
+		}
+		
+		.block {
+			position: static;
+			background-attachment: scroll;
+			overflow: hidden;
+			//now things become complicate....
+			&#slider-253,
+			&#slider-16 {
+				background-size: 100% auto !important;
+			}
+			
+			&#slider-238 {
+				
+			}
+			
+			&#slider-239 {
+				background-size: 100% auto !important;
+				background-color: #ecebe9;
+				background-position: center top;
+			}
+			
+			&#slider-240 {
+				background-size: cover !important;
+			}
+			
+			&#slider-253 {
+				background-color: #4dc9e9;
+				background-position: center center;
+				background-size: 100% auto !important;
+			}
+		}
+	}
+}
 
 
 

@@ -6,10 +6,11 @@
  * functionality here.
  */
 
-
 define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
-
-
+	var isMobile = false;
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+		isMobile = true;
+	}
 	/* ===========================
 	 * Cross browser compatible docheight
 	 * =========================== */
@@ -24,10 +25,26 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 	// ============================
 	// Show / hide the mobile menu.
 	//============================
-	$('#menu_icon').click(function(e) {
-		// alert('menu');
-		$('#main_nav').toggleClass('collapse expand');
-	});
+	if (!isMobile) {
+		$('#menu_icon').click(function(e) {
+			// alert('menu');
+			$('#main_nav').toggleClass('collapse expand');
+		});
+		
+	}else{
+		$('#btn-to-bottom').click(function(e) {
+        	e.preventDefault();
+        });
+		$('#btn-to-bottom')[0].addEventListener('touchend',function(e) {
+            $('html,body').animate({
+			  scrollTop: $('#footer').offset().top
+			}, 500);
+        });
+		$('#menu_icon')[0].addEventListener('touchend',function() {
+			console.log('clicked');
+			$('#main_nav').toggleClass('collapse expand');
+		});
+	}
 
 	$(document).on('click', '#main_nav a, #logo a', function() {
 		$('#main_nav a, #logo a').removeClass('current');

@@ -25,7 +25,7 @@ class Award extends BaseDBO {
 	);
 	
 	static $belongs_to = array(
-		'ProjectAward'
+		'ProjectAward'	=>	'ProjectAward'
 	);
 	
 	public function getTitle() {

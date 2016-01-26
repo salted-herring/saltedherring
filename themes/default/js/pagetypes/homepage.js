@@ -1,5 +1,5 @@
 require(['jquery', 'backbone', 'underscore', '_base'], function($) {
-
+	document.addEventListener("touchstart", function(){}, true);
 	$(function() {
 		/*
 if($('body').is('.mobile')) {
@@ -45,12 +45,14 @@ if($('body').is('.mobile')) {
 
 			$('#work .block').each(function(i, el) {
 				var top = (i * ((y*increase) - $('#header').height()));
-
 				$(this).css({
 					width: $(window).width(),
 					height: (y*increase) - $('#header').height(),
 					top: top
 				});
+				if ($(window).width() > 480 && $(window).width()<=768) {
+					$(this).height(Math.ceil($(window).width()*0.8533) -1);
+				}
 
 				$(this).attr('data-top', parseInt($(this).position().top));
 				$(this).attr('data-headingtop', parseInt($(this).find('.heading').offset().top));
@@ -141,18 +143,16 @@ if($('body').is('.mobile')) {
 			}
 
 			$('#work .block:visible').each(function(i, el) {
+				$(this).css('z-index', $('#work .block').length - i);
 				var top = $(this).offset().top;
 
 				$(this).find('.heading').show();
-
 				if(top < (latestKnownScrollY + (winHeight/2))) {
 
 					var condition = top < latestKnownScrollY;
 					var _h = condition ? (winHeight / 2) : ((winHeight / 2)) - Math.abs(latestKnownScrollY - top);
-					var newTop = $(this).offset().top-latestKnownScrollY;
-
-					var newTop = newTop;
-
+					
+					var newTop = top-latestKnownScrollY + $(this).find('.heading h1').height();
 
 					if($(this).is('.first')) {
 						_h += 53;
@@ -164,7 +164,7 @@ if($('body').is('.mobile')) {
 							$(this).find('.large').hide();
 						}
 					} else {
-						if(Math.ceil(newTop) <= $('#header').height()) {
+						if(Math.ceil(newTop) <= $('#header').height() + $(this).find('.heading h1').height() * 2) {
 							$(this).find('.heading').hide();
 							$(this).find('.large').show();
 						} else {
@@ -173,22 +173,10 @@ if($('body').is('.mobile')) {
 						}
 					}
 
-
-
-					$(this).find('.heading').css({
-						height: _h,
-						top: newTop
-					});
-
-
-					$(this).find('.heading > h1').css({
-						top: Math.ceil(newTop + _h)*increase
-					});
-
+					
+					
 				} else {
-					$(this).find('.heading').show().css({
-						height: 0
-					});
+					
 					$(this).find('.large').hide();
 				}
 			});

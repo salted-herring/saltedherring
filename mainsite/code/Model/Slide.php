@@ -102,9 +102,13 @@ class Slider extends BaseDBO {
 			new GridFieldAddNewButton(),
 			new GridFieldDeleteAction(),
 			new GridFieldDetailForm(),
-			new GridFieldFilterHeader(),
-			new GridFieldOrderableRows('SortOrder')
+			new GridFieldFilterHeader()
 		);
+		
+		if ($this->ID) {
+			$gridFieldConfig->addComponents(new GridFieldOrderableRows('SortOrder'));
+		}
+		
 		$gridfield = new GridField("Images", "Images", $this->Images(), $gridFieldConfig);
 
 		$fields->addFieldsToTab('Root.Content', array(

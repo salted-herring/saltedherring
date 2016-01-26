@@ -1,7 +1,7 @@
-#require 'compass/import-once/activate'
 # Require any additional compass plugins here.
 require "susy"
 require 'compass-h5bp'
+require 'breakpoint'
 require 'animation'
 require 'ceaser-easing'
 
@@ -10,13 +10,10 @@ http_path = "/"
 css_dir = "css"
 sass_dir = "scss"
 images_dir = "img"
-fonts_dir = "fonts"
 javascripts_dir = "js"
+fonts_dir = "fonts"
 
 environment = :production
-# environment = :development
-# line_comments = false
-
 
 # In development, we can turn on the FireSass-compatible debug_info.
 firesass = true
@@ -29,6 +26,8 @@ output_style = (environment == :development) ? :expanded : :compressed
 # To enable relative paths to assets via compass helper functions. Uncomment:
 relative_assets = true
 
+# To disable debugging comments that display the original location of your selectors. Uncomment:
+line_comments = false
 
 
 # If you prefer the indented syntax, you might want to regenerate this

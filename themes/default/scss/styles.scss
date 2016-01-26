@@ -13,9 +13,10 @@ body {
 /* 	height: 100%; */
 }
 
-* {
-	background-clip: padding-box;
-	box-sizing: padding-box;
+*, *:before, *:after {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 body,
@@ -34,6 +35,17 @@ a {
 	text-decoration: none;
 	//@include transition(all .5s);
 	color: $white;
+}
+
+button,
+button:active,
+buttion:focus,
+button:hover,
+a,
+a:active,
+a:focus,
+a:hover {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
@@ -207,13 +219,13 @@ $logo-height: 23px;
 	padding-top: 1em;
 	padding-bottom: 1em;
 	margin-right: 0em;
-	height: $logo-height;
+	//height: $logo-height;
 	display: inline-block;
 
 	a {
 		@include hide_text;
 		@include sprites-sprite(SH_logo_site_black_sm);
-		position: absolute;
+		//position: absolute;
 		display: block;
 		line-height: 0;
 		width: 185px;
@@ -306,15 +318,15 @@ $logo-height: 23px;
 	display: none;
 	// @include b(lime);
 	@include position(absolute, 0, 0, null, null, 200);
-
+	use-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 	padding: 0 12px;
   	height: 55px;
-  	width: 46px;
-
 	.title {
 		//            color    	size    transf 	 	spacn 	l-heig   align 	weight  decora  style
 		@include type($blue, 	16px, 	uppercase,  0.1px, 	1em, 	 null, 	600, 	none, 	normal);
-		@include position(relative, 14px, 7px, null, null, null);
+		@include position(relative, 14px, null, null, null, null);
 	}
 
 	.icon-bar {
@@ -328,9 +340,6 @@ $logo-height: 23px;
 	  }
 	}
 
-	&:hover {
-		cursor: pointer;
-	}
 //
 }
 
@@ -714,7 +723,7 @@ and (max-device-width : 568px) {
 		left: 0;
 		margin: 0 !important;
 		padding: 0 !important;
-
+		overflow: visible !important;
 		-webkit-transform-style: preserve-3d;
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
@@ -724,7 +733,6 @@ and (max-device-width : 568px) {
 		left: 0;
 		margin: 0;
 		padding-left: 1em;
-		position: absolute;
 		z-index: 2;
 		background: $background;
 		width: 100%;
@@ -756,12 +764,12 @@ and (max-device-width : 568px) {
 		}
 
 		ul {
-			position: absolute;
+			//position: absolute;
 			z-index: 0;
 			left: 0;
 			width: 100%;
 			background: $white;
-			top: 0;
+			//top: -2px;
 /* 			height: 0; */
 			overflow: hidden;
 			max-height: 1000px;
@@ -786,7 +794,7 @@ and (max-device-width : 568px) {
 
 			a:hover:after,
 			.current:after {
-				bottom: -19px;
+				bottom: -20px;
 			}
 		}
 
@@ -956,7 +964,7 @@ min-width: 768px;
 	#header,
 	#footer,
 	#work .block {
-		min-width: 1024px;
+		//min-width: 1024px;
 		width: 100%;
 		overflow-x: hidden;
 	}
@@ -968,8 +976,25 @@ min-width: 768px;
 	#header,
 	#footer,
 	#work .block {
-		min-width: 1024px;
+		//min-width: 1024px;
 		width: 100%;
 		overflow-x: hidden;
 	}
+}
+
+@include at-breakpoint(0 3 767px) {
+	#main_nav {
+		ul {
+			li {
+				a {
+					font-size: 1em;
+					&:hover:after,
+					&.current:after {
+						//bottom: -19px;
+					}
+				}
+			}
+		}
+	}
+	
 }
