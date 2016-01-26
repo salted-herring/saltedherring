@@ -33,3 +33,9 @@ userforms
 gridfieldpaginatorwithshowall
 
 themes/default/json
+restfulserver
+reports
+silverstripe.log
+siteconfig
+var
+restfulserver/*
