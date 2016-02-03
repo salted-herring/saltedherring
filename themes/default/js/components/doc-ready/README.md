@@ -2,18 +2,22 @@
 
 Cross browser document ready helper. Supported by IE8+ and good browsers.
 
-Basically a bower-component-ized version of [dperini/ContentLoaded](https://github.com/dperini/ContentLoaded)
-
 ```js
 docReady( function() {
-  // do stuff...
+  console.log("DOM is ready. Let's party");
 });
 ```
 
-## Bower
+Props to [dperini/ContentLoaded](https://github.com/dperini/ContentLoaded) for original code
 
-docReady is a [Bower](http://bower.io) component
+## Install
 
-``` bash
-bower install desandro/doc-ready
-```
+Install with [Bower](http://bower.io) `bower install doc-ready`
+
+Install with npm `npm install doc-ready`
+
+Install with [Component](http://github.com/component/component) `component install desandro/doc-ready`
+
+## MIT License
+
+docReady is released under the [MIT license](http://desandro.mit-license.org).

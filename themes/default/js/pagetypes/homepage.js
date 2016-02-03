@@ -1,5 +1,9 @@
 require(['jquery', 'backbone', 'underscore', '_base'], function($) {
 	document.addEventListener("touchstart", function(){}, true);
+	
+     //   alert($(window).width() +', ' + $(window).height());
+    
+	
 	$(function() {
 		/*
 if($('body').is('.mobile')) {

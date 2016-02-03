@@ -1064,8 +1064,8 @@ section {
 		.links {
 			text-align: left;
 			margin-left: 0;
-			transform: translate(-50%,0);
-			-webkit-transform: translate(-50%,0);
+			/*transform: translate(-50%,0);
+			-webkit-transform: translate(-50%,0);*/
 			span {
 				top: 0;
 			}
@@ -1160,13 +1160,21 @@ section {
 				margin: 0 auto !important;
 			}
 			
+			.contain {
+				position: relative;
+			}
+			
 			.explanation {
 				margin-top: 0.5em !important;
 				margin-bottom: 1em !important;
 				padding-top: 0.7em;
 				&:before {
-					top: 0;
+					top: 2.75em;
+					transform: translate(-50%,0);
+					webkit-transform: translate(-50%,0);
 				}
+				transform: none;
+				-webkit-transform: none;
 			}
 			
 			.links {
@@ -1245,17 +1253,25 @@ section {
 	}
 }
 
-@media (max-width: 1023px) and (orientation: landscape) {
-	#work {
-		.block {
-			min-height: 586px;	
-		}
-	}
-}
-
 @include at-breakpoint(768px 3 1024px) {
 	#work {
 		.block {
+			&.first {
+				.explanation {
+					&:before {
+						display: none;
+					}
+				}
+			}
+			
+			.explanation {
+				&:before {
+					transform: translate(-50%,0);
+					webkit-transform: translate(-50%,0);
+					top: 5.4em;
+				}
+			}
+			
 			.large {
 				transform: translate(-50%,-110%) scale(0.8);
 				-webkit-transform: translate(-50%,-110%) scale(0.8);
@@ -1281,13 +1297,78 @@ section {
 		}
 	}
 	
-	
 }
 
+@media (max-width: 1024px) and (orientation: landscape) {
+	
+	#content {
+		.intro {
+			min-height: 46px;
+			margin: 0;
+			padding: 0;
+			.contactlinks {
+				li {
+					float: left;
+					width: 50%;
+					display: block;
+					
+					a {
+						line-height: 46px;
+						display: block;
+					}
+				}
+			}
+		}
+	}
+	
+	#work {
+		.block {
+			min-height: 586px;
+			.header {
+				display: none;
+			}
+			
+			.explanation {
+				&:before {
+					top: 5em;
+					transform: translate(-50%,0);
+					webkit-transform: translate(-50%,0);
+				}
+			}
+			
+			.links {
+				margin: 2em auto 3em;
+				.link {
+					float: none;
+					margin: auto;
+				}
+			}
+			
+		}
+		
+		.keyword {
+			font-size: 6em;
+		}
+	}
+}
 
-
-
-
+@media (max-width: 768px) and (orientation: landscape) {
+	#work {
+		.block {
+			.keyword {
+				font-size: 3em;
+			}
+		
+			.explanation {
+				&:before {
+					top: 3em;
+					transform: translate(-50%,0);
+					webkit-transform: translate(-50%,0);
+				}
+			}
+		}
+	}
+}
 
 
 
