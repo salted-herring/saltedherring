@@ -7,6 +7,145 @@ $offsetAll: 30px;
 #content {
 	padding-bottom: 0;
 	height: 1000px;
+	
+	.intro {
+		// border: 1px solid red;
+		background: rgba(0, 211, 255, .6);
+		position: fixed;
+		bottom: 0;
+		z-index: 10;
+		width: 100%;
+		min-height: 66px;
+		@include transition(bottom .3s 0s);
+
+		&.hideFooter {
+			bottom: -70px;
+		}
+
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: inline;
+		}
+		li {
+			display: inline;
+		}
+
+		.contact,
+		.blog {
+			a {
+				color: $black;
+			}
+		}
+
+		.container {
+			margin: 0;
+			width: 100%;
+			max-width: 100% !important;
+		}
+
+		.down {
+			visibility: hidden;
+			display: none;
+			background-color: $black;
+			padding: 1.5em 2em 1em 2em;
+			@include hide_text;
+			width: 21px;
+			position: relative;
+			height: 100%;
+
+			&:before {
+				position: absolute;
+				left: 2em;
+				top: 1.5em;
+				width: 21px;
+				height: 28px;
+				content: '';
+				display: block;
+				@include sprites-sprite(down_arrow);
+			}
+		}
+
+		.contactlinks {
+			text-align: right;
+			margin-top: 20px;
+
+			a {
+				padding-right: 3em;
+
+				&[href^="/"],
+				&[href^="http"] {
+
+					&:hover {
+						color: $white;
+					}
+				}
+
+				&[href^="tel:"] {
+					cursor: text;
+				}
+
+
+				&:last-child {
+					padding-right: 1em;
+				}
+			}
+		}
+		.news {
+			padding-left: 2em;
+			overflow: hidden;
+			height: 24px;
+			position: relative;
+			padding: 0;
+			margin: 23px 0 0 0em;
+			float: right !important;
+
+			li {
+				position: absolute;
+				display: block;
+				top: 30px;
+				padding-left: 20px;
+
+				&.active {
+					top: 0;
+				}
+			}
+
+			a:hover {
+				color: $black;
+			}
+
+			p {
+				margin: 0;
+			}
+		}
+
+		.contactlinks,
+		.down {
+			float: left;
+		}
+
+		.contactlinks,
+		.news {
+			width: 50%;
+			@include box-sizing(border-box);
+		}
+
+		.news {
+			padding-left: 42.5px;
+		}
+
+		.contactlinks {
+			padding-right: 45.5px;
+		}
+
+		a {
+			position: relative;
+			display: inline-block;
+			padding-right: 5px;
+		}
+	}
 }
 
 h1,
@@ -219,6 +358,7 @@ section {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%,-50%);
+		-webkit-transform: translate(-50%,-50%);
 		z-index: 2;
 
 		// salted word offset
@@ -305,6 +445,10 @@ section {
 		.explanation {
 			width: 444px;
 			margin-top: 110px+$offsetFirst;
+		}
+		
+		.links {
+			display: none;
 		}
 	//
 	}
@@ -437,145 +581,6 @@ section {
 		}
 	}
 
-	.intro {
-		// border: 1px solid red;
-		background: rgba(0, 211, 255, .6);
-		position: fixed;
-		bottom: 0;
-		z-index: 10;
-		width: 100%;
-		min-height: 66px;
-		@include transition(bottom .3s 0s);
-
-		&.hideFooter {
-			bottom: -70px;
-		}
-
-		ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-			display: inline;
-		}
-		li {
-			display: inline;
-		}
-
-		.contact,
-		.blog {
-			a {
-				color: $black;
-			}
-		}
-
-		.container {
-			margin: 0;
-			width: 100%;
-			max-width: 100% !important;
-		}
-
-		.down {
-			visibility: hidden;
-			display: none;
-			background-color: $black;
-			padding: 1.5em 2em 1em 2em;
-			@include hide_text;
-			width: 21px;
-			position: relative;
-			height: 100%;
-
-			&:before {
-				position: absolute;
-				left: 2em;
-				top: 1.5em;
-				width: 21px;
-				height: 28px;
-				content: '';
-				display: block;
-				@include sprites-sprite(down_arrow);
-			}
-		}
-
-		.contactlinks {
-			text-align: right;
-			margin-top: 20px;
-
-			a {
-				padding-right: 3em;
-
-				&[href^="/"],
-				&[href^="http"] {
-
-					&:hover {
-						color: $white;
-					}
-				}
-
-				&[href^="tel:"] {
-					cursor: text;
-				}
-
-
-				&:last-child {
-					padding-right: 1em;
-				}
-			}
-		}
-		.news {
-			padding-left: 2em;
-			overflow: hidden;
-			height: 24px;
-			position: relative;
-			padding: 0;
-			margin: 23px 0 0 0em;
-			float: right !important;
-
-			li {
-				position: absolute;
-				display: block;
-				top: 30px;
-				padding-left: 20px;
-
-				&.active {
-					top: 0;
-				}
-			}
-
-			a:hover {
-				color: $black;
-			}
-
-			p {
-				margin: 0;
-			}
-		}
-
-		.contactlinks,
-		.down {
-			float: left;
-		}
-
-		.contactlinks,
-		.news {
-			width: 50%;
-			@include box-sizing(border-box);
-		}
-
-		.news {
-			padding-left: 42.5px;
-		}
-
-		.contactlinks {
-			padding-right: 45.5px;
-		}
-
-		a {
-			position: relative;
-			display: inline-block;
-			padding-right: 5px;
-		}
-	}
-
 	.contact {
 		display: none;
 	}
@@ -689,59 +694,6 @@ section {
 			}
 		}
 
-		.intro {
-			display: none;
-
-			.container {
-				width: auto;
-				overflow: visible;
-			}
-
-			.contactlinks {
-				margin: auto;
-				width: 100%;
-				min-width: 320px;
-				padding-right: 0;
-
-				@include clearfix;
-			}
-
-			li a {
-				white-space: nowrap;
-				padding-right: 10px !important;
-			}
-
-			.contact {
-				width: 100%;
-				height: 24px;
-
-				a {
-					padding-left: 10px !important;
-					font-size: 24px !important;
-					margin-top: -3px;
-				}
-
-				&:before {
-					display: none !important;
-				}
-			}
-
-			.news {
-				display: none;
-			}
-			ul {
-				padding: 0;
-			}
-
-			li {
-				margin: 0;
-				width: 100%;
-				float: none;
-				display: inline-block;
-				text-align: center !important;
-			}
-		}
-
 		.down {
 			display: none !important;
 		}
@@ -788,48 +740,6 @@ section {
 			display: none;
 		}
 
-		.intro {
-			display: block;
-			width: 100%;
-			margin-top: 2em;
-			background: rgba(0, 211, 255, .6);
-			text-align: center;
-			padding: 1em 0;
-
-			a {
-				display: inline-block;
-				padding: 0;
-				color: $black;
-				text-align: center;
-			}
-
-			a[href^="mailto:"] {
-				display: none;
-			}
-
-			a[href^="tel:"] {
-				padding-left: 0;
-			}
-
-			li {
-				padding: 0;
-			}
-
-			.contact {
-				position: relative;
-
-				&:before {
-					position: absolute;
-					display: block;
-					content: '';
-					width: 3px;
-					height: 20px;
-					left: 0;
-					top: 3px;
-					background: $white;
-				}
-			}
-		}
 	}
 
 	#work {
@@ -845,9 +755,9 @@ section {
 			//font-size: 1.2em;
 		}
 
-		.text {
-			overflow: hidden !important;
-		}
+		//.text {
+//			overflow: hidden !important;
+//		}
 
 		.block {
 			width: 100% !important;
@@ -1034,9 +944,7 @@ section {
 			display: none;
 		}
 
-		.bottom {
-			height: 100%;
-		}
+		
 
 		.links {
 			overflow: visible;
@@ -1046,6 +954,7 @@ section {
 				position: absolute;
 				left: 50%;
 				transform: translate(-50%,0);
+				-webkit-transform: translate(-50%,0);
 				top: -75%;
 			}
 			a {
@@ -1074,6 +983,12 @@ section {
 				font-size: 1em;
 				margin-top: -5em !important;
 			}
+			
+			.links {
+				span {
+					display: none;
+				}
+			}
 		}
 		
 		.large {
@@ -1081,7 +996,7 @@ section {
 		}
 		
 		.keyword {
-			font-size: 2.4em;
+			font-size: 2.75em;
 			margin-top: -185px;
 		}
 		
@@ -1103,6 +1018,7 @@ section {
 				position: absolute;
 				left: 50%;
 				transform: translate(-50%,0);
+				-webkit-transform: translate(-50%,0);
 				top: -120%;	
 			}
 		}
@@ -1149,6 +1065,7 @@ section {
 			text-align: left;
 			margin-left: 0;
 			transform: translate(-50%,0);
+			-webkit-transform: translate(-50%,0);
 			span {
 				top: 0;
 			}
@@ -1160,6 +1077,7 @@ section {
 		}
 		
 		.block {
+			width: 100% !important;
 			position: static;
 			background-attachment: scroll;
 			overflow: hidden;
@@ -1191,6 +1109,197 @@ section {
 		}
 	}
 }
+
+@include at-breakpoint(0 3 1024px) {
+	#work {
+		.block {
+			position: relative;
+			top: auto !important;
+			left: auto;
+			right: auto;
+			bottom: auto;
+		}
+		
+		.first {
+			.links {
+				display: none;
+			}
+			
+			.digital {
+				margin: 0.2em 0 0.5em;
+				position: static;
+				
+			}
+		}
+		
+		.large {
+			position: absolute !important;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%,-80%) scale(.4);
+			-webkit-transform: translate(-50%,-80%) scale(.4);
+		}
+		
+		.text {
+			position: absolute;
+			width: 100%;
+			top: 50%;
+			transform: translate(0,-43%);
+			-webkit-transform: translate(0,-43%);
+			height: auto;
+			overflow: visible;
+			.contain {
+				height: auto;
+			}
+			.keyword, 
+			.large,
+			.first .digital,
+			.explanation {
+				position: static;
+				display: block;
+				margin: 0 auto !important;
+			}
+			
+			.explanation {
+				margin-top: 0.5em !important;
+				margin-bottom: 1em !important;
+				padding-top: 0.7em;
+				&:before {
+					top: 0;
+				}
+			}
+			
+			.links {
+				position: static;
+				text-align: center;
+				span {
+					position: static;
+					transform: none;
+					-webkit-transform: none;
+					width: 100%;
+					padding-left: 10px;
+					padding-right: 10px;
+					margin-bottom: 2em;
+				}
+				
+				.link {				
+					display: inline-block;
+				}
+				
+			}
+		}
+	}
+	
+	#content {
+		.intro {
+			width: 100%;
+			margin-top: 2em;
+			background: rgba(0, 211, 255, .6);
+			text-align: center;
+			padding: 1em 0;
+			
+			.contactlinks {
+				width: 100%;
+				float: none;
+				padding: 0;
+				margin: 0;
+				display: block;
+				li {
+					line-height: 1.2;
+					text-align: center;
+					display: block;
+					width: 100%;
+					padding: 0;
+					a {
+						&:last-child {
+							padding: 0;
+						}
+					}
+				}
+			}
+			
+			.news {
+				display: none;
+			}
+			
+			a {
+				display: inline-block;
+				padding: 0;
+				color: $black;
+				text-align: center;
+			}
+	
+			a[href^="mailto:"] {
+				display: none;
+			}
+	
+			a[href^="tel:"] {
+				padding-left: 0;
+			}
+		
+	
+			.contact {
+				font-size: 24px;
+			}
+		}
+	}
+}
+
+@media (max-width: 1023px) and (orientation: landscape) {
+	#work {
+		.block {
+			min-height: 586px;	
+		}
+	}
+}
+
+@include at-breakpoint(768px 3 1024px) {
+	#work {
+		.block {
+			.large {
+				transform: translate(-50%,-110%) scale(0.8);
+				-webkit-transform: translate(-50%,-110%) scale(0.8);
+			}
+			
+			&#slider-240,
+			&#slider-16 {
+				background-size: cover !important;
+			}
+			
+			&#slider-253 {
+				background-size: 100% auto !important;
+				background-position: center center !important;
+				background-color: #4dc9e9 !important;
+			}
+		}
+		
+		.landscape & {
+			.text {
+				transform: translate(0, -35%);
+    			-webkit-transform: translate(0, -35%);
+			}
+		}
+	}
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

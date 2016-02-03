@@ -27,7 +27,18 @@
 						<% else %>
 
 
-							<!-- h2 project-->
+							
+						<% end_if %>
+
+						<div class="explanation">
+							<% if $Explanation %>
+								$Explanation
+							<% end_if %>
+							<span class="subtitle">$SubTitle</span>
+							<span class="subexplanation">$SubExplanation</span>
+						</div>
+						
+						<!-- h2 project-->
 							<% if Project.getURL || Link.Link %>
 						<div class="container links">
 							<span><strong>$Title</strong><br><em>$Description</em></span>
@@ -43,32 +54,19 @@
 						</div>
 
 							<% end_if %>
-						<% end_if %>
-
-						<div class="explanation">
-							<% if $Explanation %>
-								$Explanation
-							<% end_if %>
-							<span class="subtitle">$SubTitle</span>
-							<span class="subexplanation">$SubExplanation</span>
-						</div>
-
 
 
 					</div>
-					<% if First %>
-						<div class="bottom">
-							<!--
-<nav class="container">
-								<ul>
-									<% loop Top.Menu(1) %>
-										<li>
-											<a href="$Link">$MenuTitle.XML</a>
-										</li>
-									<% end_loop %>
-								</ul>
-							</nav>
--->
+					
+					<% if Images && Top.isMobile %>
+					<img src="$Images.First.outputImage.URL" alt="" />
+					<% end_if %>
+				</div>
+			</div>
+		<% end_loop %>
+	<% end_if %>
+
+</section>
 							<div class="intro">
 								<div class="container">
 									<ul class="contactlinks">
@@ -89,17 +87,5 @@
 								</div>
 
 							</div>
-						</div>
-					<% end_if %>
-					<% if Images && Top.isMobile %>
-					<img src="$Images.First.outputImage.URL" alt="" />
-					<% end_if %>
-				</div>
-			</div>
-		<% end_loop %>
-	<% end_if %>
-
-</section>
-
 <nav id="nextnav"><a href="#">&darr;</a></nav>
 <!-- check marker -->

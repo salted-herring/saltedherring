@@ -798,16 +798,7 @@ and (max-device-width : 568px) {
 			}
 		}
 
-		&.collapse {
-			ul {
-				//@include scale(1.0,1.0,1);
-				overflow: visible;
-			}
-			// li {
-			// 	//@include transition-delay(0s);
-			// 	//@include opacity(1.0);
-			// }
-		}
+		
 	}
 
 	footer {

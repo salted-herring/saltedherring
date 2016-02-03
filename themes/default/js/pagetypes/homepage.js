@@ -79,6 +79,15 @@ if($('body').is('.mobile')) {
 					dimensionsOverlay = resize($(this).data('imgwidth'), $(this).data('imgheight'), $(window).width(), $(window).height());
 
 				$(this).show();
+				if($('body').is('.mobile')) {
+					if ($(window).width() <= 1024) {
+						$(this).height($(window).height() - (i == 0?0:-$('#header').height()));
+					}
+				}else{
+					if ($(window).width() <= 1024) {
+						$(this).height($(window).height() - (i == 0?0:$('#header').height()));
+					}
+				}
 			});
 
 			$('#footer').show();
@@ -100,16 +109,19 @@ if($('body').is('.mobile')) {
 		}
 
 		_resize();
-
 		if(!$('body').is('.mobile')) {
-			$(window).resize(function() {
-				_resize();
-			});
+			$(window).resize(_resize);
+		}else{
+			$(window).resize(function(e) {
+                $('body').removeClass('landscape');
+				if ($(window).height() >= 1024 || $(window).width() > 1024) {
+					if ($(window).width() >= $(window).height()) {
+						$('body').addClass('landscape');
+					}
+				}
+            });
 		}
-
-
-
-
+			
 
 		// for varying height text explanations margin top.
 		// as they are transform 50% from the top. they need to float
