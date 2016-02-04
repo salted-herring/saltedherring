@@ -49,7 +49,7 @@
 	padding: 0;
 	width: 960px;
 	max-width: 960px;
-	//margin-bottom: 6em;
+	margin-bottom: 6em;
 	@include transition(height .5s);
 
 	.entry {
@@ -112,7 +112,8 @@
 
 .individualentry {
 	margin-top: 56px;
-
+	padding-left: 0;
+	padding-right: 0;
 	header {
 /* 		position: absolute; */
 		z-index: 3;
@@ -122,13 +123,13 @@
 		width: 960px;//800px;
 		min-height: 160px;
 		color: $white;
-		margin: 0 0 0 -30em;
+		/*margin: 0 0 0 -30em;*/
 
 		position: fixed;
 		left: 50%;
 		top: 111px;
 /* 		margin-left: -30em; */
-		@include transform(translateZ(0));
+		@include transform(translate(-50%,0));
 
 		&.delay  {
 			h1 {
@@ -144,7 +145,7 @@
 
 		.details {
 			padding: 2em 5em;
-			@include transform(translateZ(0));
+			//@include transform(translateZ(0));
 			@include transition(all .4s);
 		}
 
@@ -288,7 +289,7 @@
 	.filters {
 		padding-top: 0;
 		top: inherit;
-		bottom: -.5em;
+		bottom: -5px;
 	}
 }
 
@@ -317,8 +318,8 @@
 		background: $blue;
 		color: $white;
 		padding: (24/$font-size)+em 0 (24/$font-size)+em 1.2em;
-		height: 48px;
-		width: 3em;
+		height: 6em;
+		width: 5em;
 
 		//@include transition-delay(5s);
 		@include transition(width .2s);
@@ -549,11 +550,8 @@ padding-right: 20px;
 	}
 
 	.records {
-		/*
-.entry {
-			width: 100%;
-		}
-*/
+		margin-bottom: 0;
+		
 		img {
 			display: block;
 			margin: 0 auto;
@@ -804,8 +802,8 @@ padding-right: 20px;
 @include at-breakpoint(768px 3 1024px) {
 	#banner {
 		.filters {
-			right: auto;
-			left: 454px;
+			/*right: auto;
+			left: 454px;*/
 		}
 
 		&.small {
@@ -815,3 +813,4 @@ padding-right: 20px;
 		}
 	}
 }
+

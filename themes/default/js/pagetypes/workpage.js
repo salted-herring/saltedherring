@@ -1,7 +1,6 @@
-
-
 require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], function($, Backbone, _) {
-
+	
+	document.addEventListener("touchstart", function(){}, true);
 	var $container = $('#work');
 	$container.isotope({
 		itemSelector: '.entry',

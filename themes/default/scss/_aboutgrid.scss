@@ -50,7 +50,7 @@
 	position: fixed;
 	width: 100%;
 	z-index: 10;
-	height: 112px;
+	//height: 112px;
 	@include transition(height .2s 0 easInOutCubic, padding .5s 0 ease);
 
 	.container {
@@ -74,7 +74,7 @@
 		position: fixed;
 		z-index: 4;
 		width: 100%;
-		height: 24px;
+		//height: 24px;
 
 		.filters {
 			position: relative;
@@ -92,6 +92,10 @@
 
 		h1, strong {
 			top: -10em;
+		}
+		
+		.container {
+			height: auto;
 		}
 	}
 
