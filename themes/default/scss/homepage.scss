@@ -598,7 +598,7 @@ section {
 	.block {
 		height: 100%;
 		background-repeat: no-repeat;
-		@include background-size(cover);
+		//@include background-size(cover);
 		background-attachment: fixed;
 		background-position: 50% 0;
 		background-image: none;

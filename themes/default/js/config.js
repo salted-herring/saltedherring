@@ -6,6 +6,7 @@ require.config({
 		'backbone': 'lib/backbone',
 		'modernizr': 'lib/modernizr',
 		'_base': 'lib/_base',
+		'visible': 'lib/visible',
 		'router': 'routes/router',
 		
 		'bridget': 'components/jquery-bridget/jquery.bridget',

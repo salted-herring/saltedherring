@@ -219,14 +219,11 @@ if($('body').is('.mobile')) {
 			winHeight = $(window).height();
 
 			if((latestKnownScrollY + winHeight) >= $('#footer').offset().top) {
-				var clone = $('#nextnav').clone(true, true);
-				$('#nextnav').remove();
-				$('#footer').prepend(clone);
+				
+				$('#footer').prepend($('#nextnav'));
 			} else {
 				if($('#footer #nextnav').length > 0) {
-					var clone = $('#nextnav').clone(true, true);
-					$('#nextnav').remove();
-					$('#work').after(clone);
+					$('#work').append($('#nextnav'));
 				}
 				$('#nextnav').removeAttr('style');
 			}
@@ -248,32 +245,40 @@ if($('body').is('.mobile')) {
 			/* ===========================
 			 * Animate overlays.
 			 * =========================== */
-			$('body:not(.mobile) #work .block').filter(function() {
-				var top = $(this).offset().top,
-					bottom = top + winHeight;
-
-				return top < (latestKnownScrollY + winHeight) && bottom > latestKnownScrollY;
-			}).each(function(i, el) {
-				if ((latestKnownScrollY + winHeight) > $(this).offset().top) {
-					var top = (-330 + (((latestKnownScrollY - $(this).data('top')) / winHeight) * 500));
-
-					$(this).find('.overlay').css({
-						'background-position': '50% ' + top + '%'
-					});
-
-					var pos = 0 - (.125 * (latestKnownScrollY - $(this).offset().top));
-
-					$(this).css({
-						'background-position': '50% ' + (pos) + 'px'
-					});
-
-					if($(this).is('.first') && latestKnownScrollY > 100) {
-						$(this).find('.intro').addClass('hideFooter');
-					} else {
-						$(this).find('.intro').removeClass('hideFooter');
+			$('body:not(.mobile) #work .block').each(function(i, el) {
+				
+				var this_top = $(this).offset().top,
+				bottom = this_top + winHeight;
+				
+				if (this_top < (latestKnownScrollY + winHeight) && bottom > latestKnownScrollY) {
+				
+					if ((latestKnownScrollY + winHeight) > $(this).offset().top) {
+						var top = (-330 + (((latestKnownScrollY - $(this).data('top')) / winHeight) * 500));
+	
+						$(this).find('.overlay').css({
+							'background-position': '50% ' + top + '%'
+						});
+	
+						var pos = 0 - (.125 * (latestKnownScrollY - $(this).offset().top));
+	
+						$(this).css({
+							'background-position': '50% ' + (pos) + 'px'
+						});
+	
+						
 					}
 				}
 			});
+			
+			/* ===========================
+			 * Intro bar work
+			 * =========================== */
+			
+			if(latestKnownScrollY > 100) {
+				$('#content .intro').addClass('hideFooter');
+			} else {
+				$('#content .intro').removeClass('hideFooter');
+			}
 		}
 
 		function onScroll() {
