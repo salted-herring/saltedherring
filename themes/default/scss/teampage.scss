@@ -25,7 +25,12 @@
 */
 
 .individualentry {
-
+	padding-left: 1em;
+	padding-right: 1em;
+	.container {
+		padding-left: 0;
+		padding-right: 0;
+	}
 	background: $lightgrey;
 
 	&.container {
@@ -47,7 +52,8 @@
 
 
 	img {
-		margin: 0 0 0 -1em;
+		margin: 0;
+		width: calc(100% - 2em);
 	}
 
 	ul {
@@ -271,9 +277,16 @@
 		margin-bottom: 1em;
 		overflow: visible;
 		width: 100% !important;
-
-
 	}
+	
 }
 
-
+@include at-breakpoint(0 3 1024px) {
+	.individualentry {
+		padding: 0;
+		img {
+			margin: 0;
+			width: 100%;
+		}
+	}
+}

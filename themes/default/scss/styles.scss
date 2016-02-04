@@ -285,7 +285,7 @@ $logo-height: 23px;
 		&:after {
 			position: absolute;
 			content: '';
-			bottom: -17px;
+			bottom: -10px;
 			left: 0;
 			height: 4px;
 			width: 100%;
@@ -958,6 +958,16 @@ min-width: 768px;
 		//min-width: 1024px;
 		width: 100%;
 		overflow-x: hidden;
+	}
+}
+
+@include at-breakpoint(0 3 1024px) {
+	#main_nav {
+		a {
+			&:after {
+				bottom: -17px;
+			}
+		}
 	}
 }
 
