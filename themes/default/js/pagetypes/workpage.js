@@ -3,10 +3,9 @@
 require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], function($, Backbone, _) {
 
 	var $container = $('#work');
-	
 	$container.isotope({
 		itemSelector: '.entry',
-		
+		layoutMode: 'fitRows',
 		masonry : {
           columnWidth : $('#work .entry:first').width()
         },

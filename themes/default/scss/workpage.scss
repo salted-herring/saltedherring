@@ -1,8 +1,12 @@
 @import 'styles', 'teamworkgrid';
 
+#content {
+	padding-bottom: 0;
+}
+
 .filters {
 	position: absolute;
-	right: 3em;
+	right: 2em;
 	padding-bottom: 0;
 	padding-top: 0em;
 	bottom: -.5em;
