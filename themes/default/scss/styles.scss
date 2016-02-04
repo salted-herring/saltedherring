@@ -265,7 +265,7 @@ $logo-height: 23px;
 	}
 
 	li {
-		padding: (20/$font-size)+em 0 0 0;
+		padding: 0;
 		display: inline-block;
 		padding-left: 1.3em;
 		line-height: 1em;
@@ -281,11 +281,12 @@ $logo-height: 23px;
 		text-transform: uppercase;
 		color: $black;
 		position: relative;
-
+		line-height: 55px;
+		
 		&:after {
 			position: absolute;
 			content: '';
-			bottom: -10px;
+			bottom: -19px;
 			left: 0;
 			height: 4px;
 			width: 100%;
@@ -300,6 +301,7 @@ $logo-height: 23px;
 
 			&:after {
 				background: $black;
+				bottom: -19px;
 			}
 		}
 	}
@@ -790,7 +792,7 @@ and (max-device-width : 568px) {
 		}
 
 		li {
-			padding: 1.25em 0 1.25em 1.25em;
+			padding: 0 0 0 1.25em;
 
 			a:hover:after,
 			.current:after {
@@ -958,16 +960,6 @@ min-width: 768px;
 		//min-width: 1024px;
 		width: 100%;
 		overflow-x: hidden;
-	}
-}
-
-@include at-breakpoint(0 3 1024px) {
-	#main_nav {
-		a {
-			&:after {
-				bottom: -17px;
-			}
-		}
 	}
 }
 
