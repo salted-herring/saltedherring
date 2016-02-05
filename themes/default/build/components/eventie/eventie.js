@@ -1,8 +1,9 @@
 /*!
- * eventie v1.0.3
+ * eventie v1.0.6
  * event binding helper
  *   eventie.bind( elem, 'click', myFn )
  *   eventie.unbind( elem, 'click', myFn )
+ * MIT license
  */
 
-(function(e){var t=document.documentElement,n=function(){};t.addEventListener?n=function(e,t,n){e.addEventListener(t,n,!1)}:t.attachEvent&&(n=function(t,n,r){t[n+r]=r.handleEvent?function(){var t=e.event;t.target=t.target||t.srcElement,r.handleEvent.call(r,t)}:function(){var n=e.event;n.target=n.target||n.srcElement,r.call(t,n)},t.attachEvent("on"+n,t[n+r])});var r=function(){};t.removeEventListener?r=function(e,t,n){e.removeEventListener(t,n,!1)}:t.detachEvent&&(r=function(e,t,n){e.detachEvent("on"+t,e[t+n]);try{delete e[t+n]}catch(r){e[t+n]=undefined}});var i={bind:n,unbind:r};typeof define=="function"&&define.amd?define(i):e.eventie=i})(this);
+(function(e){function r(t){var n=e.event;return n.target=n.target||n.srcElement||t,n}var t=document.documentElement,n=function(){};t.addEventListener?n=function(e,t,n){e.addEventListener(t,n,!1)}:t.attachEvent&&(n=function(e,t,n){e[t+n]=n.handleEvent?function(){var t=r(e);n.handleEvent.call(n,t)}:function(){var t=r(e);n.call(e,t)},e.attachEvent("on"+t,e[t+n])});var i=function(){};t.removeEventListener?i=function(e,t,n){e.removeEventListener(t,n,!1)}:t.detachEvent&&(i=function(e,t,n){e.detachEvent("on"+t,e[t+n]);try{delete e[t+n]}catch(r){e[t+n]=undefined}});var s={bind:n,unbind:i};typeof define=="function"&&define.amd?define(s):typeof exports=="object"?module.exports=s:e.eventie=s})(window);
