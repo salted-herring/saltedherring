@@ -1,6 +1,5 @@
 require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], function($, Backbone, _) {
 	
-	document.addEventListener("touchstart", function(){}, true);
 	var $container = $('#work');
 	$container.isotope({
 		itemSelector: '.entry',
@@ -90,7 +89,15 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 	
 	$(document).on('click', '.fullstory', function(e) {
 		e.preventDefault();
-		$('.content p').toggle(0, function() { $('.detailscontainer').parent().height($('.detailscontainer').height())} );
+		$(this).toggleClass('toggled');
+		if ($(this).hasClass('toggled')) {
+			$(this).html('show less');
+		}else{
+			$(this).html('full story');
+		}
+		$('.content p').toggle(0, function() { 
+			$('.detailscontainer').parent().height($('.detailscontainer').height());
+		});
 		$('html,body').animate({
 			scrollTop: $('.content p:first').offset().top - $('#banner').height() - $('#header').height() - $('blockquote').height() - 128
 		});

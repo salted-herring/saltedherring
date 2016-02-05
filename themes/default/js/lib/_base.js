@@ -7,6 +7,8 @@
  */
 
 define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
+	
+	document.addEventListener("touchstart", function(){}, true);
 	var isMobile = false;
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 		isMobile = true;

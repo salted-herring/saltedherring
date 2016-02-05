@@ -45,7 +45,7 @@
 					</div>
 
 					<nav id="articleLinks" class="clearfix">
-						<a href="#content" class="fullstory">full story</a>
+						<% if $Content %><a href="#content" class="fullstory">full story</a><% end_if %>
 						<% if SiteURL %><a href="$SiteURL" target="_blank" class="website">visit website</a><% end_if %>
 					</nav>
 				</div>

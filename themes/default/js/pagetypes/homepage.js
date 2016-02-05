@@ -1,5 +1,4 @@
 require(['jquery', 'backbone', 'underscore', '_base'], function($) {
-	document.addEventListener("touchstart", function(){}, true);
 	
      //   alert($(window).width() +', ' + $(window).height());
     
@@ -211,11 +210,24 @@ if($('body').is('.mobile')) {
 
 
 		function update() {
+			
+			latestKnownScrollY = $(window).scrollTop();
+			
+			/* ===========================
+			 * Intro bar work
+			 * =========================== */
+			if(latestKnownScrollY > 100) {
+				$('#content .intro').addClass('hideFooter');
+			} else {
+				$('#content .intro').removeClass('hideFooter');
+			}
+			
 			if($(window).width() <= 1024) {
 				return false;
 			}
+			
 			ticking = false;
-			latestKnownScrollY = $(window).scrollTop();
+			
 			winHeight = $(window).height();
 
 			if((latestKnownScrollY + winHeight) >= $('#footer').offset().top) {
@@ -270,15 +282,7 @@ if($('body').is('.mobile')) {
 				}
 			});
 			
-			/* ===========================
-			 * Intro bar work
-			 * =========================== */
 			
-			if(latestKnownScrollY > 100) {
-				$('#content .intro').addClass('hideFooter');
-			} else {
-				$('#content .intro').removeClass('hideFooter');
-			}
 		}
 
 		function onScroll() {
@@ -487,6 +491,15 @@ if($('body').is('.mobile')) {
 
 				interval = getInterval();
 			}
+		}else{
+			$(window).scroll(function(e) {
+				var latestKnownScrollY = $(window).scrollTop();
+                if(latestKnownScrollY > 100) {
+					$('#content .intro').addClass('hideFooter');
+				} else {
+					$('#content .intro').removeClass('hideFooter');
+				}
+            });
 		}
 
 	});
