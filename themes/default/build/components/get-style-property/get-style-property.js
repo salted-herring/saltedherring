@@ -5,4 +5,4 @@
  * MIT license
  */
 
-(function(e){function r(e){if(!e)return;if(typeof n[e]=="string")return e;e=e.charAt(0).toUpperCase()+e.slice(1);var r;for(var i=0,s=t.length;i<s;i++){r=t[i]+e;if(typeof n[r]=="string")return r}}var t="Webkit Moz ms Ms O".split(" "),n=document.documentElement.style;typeof define=="function"&&define.amd?define([],function(){return r}):typeof exports=="object"?module.exports=r:e.getStyleProperty=r})(window);
+(function(e){function t(e){if(!e)return;if(typeof r[e]=="string")return e;e=e.charAt(0).toUpperCase()+e.slice(1);var t;for(var i=0,s=n.length;i<s;i++){t=n[i]+e;if(typeof r[t]=="string")return t}}var n="Webkit Moz ms Ms O".split(" "),r=document.documentElement.style;typeof define=="function"&&define.amd?define([],function(){return t}):typeof exports=="object"?module.exports=t:e.getStyleProperty=t})(window);
