@@ -57,7 +57,7 @@
 		display: block;
 		overflow: hidden;
 		margin-bottom: 0em;
-		width: 320px;
+		width: 100%;
 		height: 320px;
 		float: left;
 
@@ -566,7 +566,7 @@ padding-right: 20px;
 			span {
 				@include box-sizing(border-box);
 
-				width: 320px;
+				width: 100%;
 				display: block;
 				padding: 1em 2em;
 				margin: 0 auto;
@@ -645,8 +645,7 @@ padding-right: 20px;
 			width: 100%;
 
 			.thumbnailover {
-				left: 50%;
-				margin-left: -160px;
+				
 			}
 		}
 
@@ -664,7 +663,7 @@ padding-right: 20px;
 			span {
 				@include box-sizing(border-box);
 
-				width: 320px;
+				width: 100%;
 				display: block;
 				padding: 1em 2em;
 				margin: 0 auto;
