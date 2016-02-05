@@ -94,11 +94,11 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 
 				if($(window).scrollTop() < (180)) {
 					$('.detailscontainer:not(.nofix)').addClass('fixedcontainer');
-					$('.detailscontainer:not(.nofix)').css('margin-top', 0).parent().height($('.detailscontainer:not(.nofix)').height());
+					//$('.detailscontainer:not(.nofix)').css('margin-top', 0).parent().height($('.detailscontainer:not(.nofix)').height());
 				} else {
-					if($('.detailscontainer:not(.nofix)').is('.fixedcontainer')) {
-						$('.detailscontainer:not(.nofix)').css('margin-top', 216);
-					}
+					//if($('.detailscontainer:not(.nofix)').is('.fixedcontainer')) {
+//						$('.detailscontainer:not(.nofix)').css('margin-top', 216);
+//					}
 
 					$('.detailscontainer:not(.nofix)').removeClass('fixedcontainer');
 				}

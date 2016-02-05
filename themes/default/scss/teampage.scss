@@ -150,6 +150,7 @@
 		.thumbnailover {
 			position: absolute;
 			top: 0;
+			left: 0;
 			@include opacity(0);
 			@include transition(transform .3s, opacity .2s);
 		}
