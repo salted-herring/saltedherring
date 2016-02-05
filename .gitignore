@@ -39,3 +39,4 @@ silverstripe.log
 siteconfig
 var
 restfulserver/*
+themes/default/npm-debug.log
