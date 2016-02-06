@@ -1,0 +1,1 @@
+require(["jquery","backbone","underscore","_base"],function(e,t,n){e(function(){console.log("redirectorpage page")})});
