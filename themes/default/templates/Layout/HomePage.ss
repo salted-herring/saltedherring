@@ -40,8 +40,8 @@
 						
 						<!-- h2 project-->
 							<% if Project.getURL || Link.Link %>
-						<div class="container links">
-							<span><strong>$Title</strong><br><em>$Description</em></span>
+						<div class="container links<% if $Title && $Description %><% else %> button-only<% end_if %>">
+							<% if $Title && $Description %><span><strong>$Title</strong><br><em>$Description</em></span><% end_if %>
 
 
 							<a href="<% if Project %>$Project.getURL<% else %>$Link.Link<% end_if %>" class="link">

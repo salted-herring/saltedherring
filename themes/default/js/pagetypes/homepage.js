@@ -324,7 +324,6 @@ if($('body').is('.mobile')) {
 
 			$.get('themes/default/json/sliders.json', function(response, status, xhr) {
 				if(status == 'success') {
-
 					for(var i in response) {
 						if(response[i].Images) {
 							var target = $('#work .block[data-id="' + response[i].Slider + '"]');
@@ -357,7 +356,6 @@ if($('body').is('.mobile')) {
 							}
 							$('<img/>').load(function(response, status, xhr) {
 
-
 								// we can't load the image, so remove
 								// from list of available images.
 								if(status == 'error') {
@@ -371,8 +369,8 @@ if($('body').is('.mobile')) {
 								$('#slider-' + $(this).attr('id')).append($(this));
 
 								removeItem(images, $(this).attr('src'));
-
-								if(Images.length <= 0) {
+								console.log(Images.length);
+								if(Images.length <= 1) {
 									$(window).resize();
 
 									$('#work .block').addClass('loaded').on('mousemove', function(e) {

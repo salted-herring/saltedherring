@@ -282,11 +282,11 @@ $logo-height: 23px;
 		color: $black;
 		position: relative;
 		line-height: 55px;
-		
+		display: block;
 		&:after {
 			position: absolute;
 			content: '';
-			bottom: -19px;
+			bottom: 0;
 			left: 0;
 			height: 4px;
 			width: 100%;
@@ -301,7 +301,6 @@ $logo-height: 23px;
 
 			&:after {
 				background: $black;
-				bottom: -19px;
 			}
 		}
 	}
@@ -794,10 +793,6 @@ and (max-device-width : 568px) {
 		li {
 			padding: 0 0 0 1.25em;
 
-			a:hover:after,
-			.current:after {
-				bottom: -20px;
-			}
 		}
 
 		
@@ -987,10 +982,7 @@ min-width: 768px;
 			li {
 				a {
 					font-size: 1em;
-					&:hover:after,
-					&.current:after {
-						//bottom: -19px;
-					}
+					
 				}
 			}
 		}
