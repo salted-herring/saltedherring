@@ -193,6 +193,9 @@
 		span {
 			@include minion;
 			font-size: (24/$font-size)+em;
+			&.hide {
+				display: none;
+			}
 		}
 
 		.photographer {

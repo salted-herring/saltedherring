@@ -246,7 +246,7 @@ $logo-height: 23px;
 #main_nav {
 	// @include transform(translate3d(0,0,0));
 	@extend .clearfix;
-	@include transition(top .5s);
+	//@include transition(top .5s);
 
 	position: absolute;
 	z-index: 1;

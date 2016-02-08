@@ -8,7 +8,7 @@ require.config({
 		'_base': 'lib/_base',
 		'visible': 'lib/visible',
 		'router': 'routes/router',
-		
+		'tweenmax': 'lib/TweenMax',
 		'bridget': 'components/jquery-bridget/jquery.bridget',
 		
 		eventie: 'components/eventie/eventie',

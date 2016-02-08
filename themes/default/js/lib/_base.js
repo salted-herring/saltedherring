@@ -6,7 +6,7 @@
  * functionality here.
  */
 
-define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
+define(['jquery', 'backbone', 'router', 'tweenmax'], function($, Backbone, Router) {
 	
 	document.addEventListener("touchstart", function(){}, true);
 	var isMobile = false;
@@ -45,8 +45,11 @@ define(['jquery', 'backbone', 'router'], function($, Backbone, Router) {
 	        });
 		}
 		$('#menu_icon')[0].addEventListener('touchend',function() {
-			console.log('clicked');
-			$('#main_nav').toggleClass('collapse expand');
+			//console.log('clicked');
+			//$('#main_nav').toggleClass('collapse expand');
+			$('#main_nav').toggleClass('on');
+			TweenMax.to($('#main_nav'), 0.5, {top: $('#main_nav').hasClass('on')?55:0});
+			
 		});
 	}
 
