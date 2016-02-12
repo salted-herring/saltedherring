@@ -7,7 +7,7 @@ $offsetAll: 30px;
 #content {
 	padding-bottom: 0;
 	height: 1000px;
-	
+
 	.intro {
 		// border: 1px solid red;
 		background: rgba(0, 211, 255, .6);
@@ -381,9 +381,12 @@ section {
 		width: 570px;
 		color: $white;
 		font-size: (20/$font-size)+em;
-		color: #FFF;
 		font-weight: 500;
 		text-align: center;
+
+		p {
+			color: $white;
+		}
 
 		&:before {
 			background: white;
@@ -446,7 +449,7 @@ section {
 			width: 444px;
 			margin-top: 110px+$offsetFirst;
 		}
-		
+
 		.links {
 			display: none;
 		}
@@ -579,14 +582,14 @@ section {
 		a {
 			float: right;
 		}
-		
+
 		&.button-only {
 			left: 0;
 			margin: 0 auto;
 			width: 100%;
 			max-width: none;
 			text-align: center;
-			
+
 			a {
 				float: none;
 				display: inline-block;
@@ -651,7 +654,7 @@ section {
 	#work {
 		height: auto !important;
 	}
-	
+
 	.contact {
 		width: 20%;
 	}
@@ -802,34 +805,34 @@ section {
 				.intro {
 					min-height: 0;
 				}
-				
-				
-				
+
+
+
 			}
 			//now things become complicate....
 			&#slider-253,
 			&#slider-16 {
 				background-size: 100% auto !important;
 			}
-			
+
 			&#slider-238 {
-				
+
 			}
-			
+
 			&#slider-239 {
 				background-size: 150% auto !important;
 				background-color: #dddad9;
 			}
-			
+
 			&#slider-240 {
 				background-size: 140% auto !important;
 			}
-			
+
 			&#slider-253 {
 				background-color: #4dc9e9;
 				background-position: center center;
 			}
-			
+
 			img {
 				display: none;
 			}
@@ -957,7 +960,7 @@ section {
 			display: none;
 		}
 
-		
+
 
 		.links {
 			overflow: visible;
@@ -991,38 +994,38 @@ section {
 				margin-top: -128px;
     			font-size: 1.5em;
 			}
-			
+
 			.explanation {
 				font-size: 1em;
 				margin-top: -5em !important;
 			}
-			
+
 			.links {
 				span {
 					display: none;
 				}
 			}
 		}
-		
+
 		.large {
 			@include transform(scale(.4));
 		}
-		
+
 		.keyword {
 			font-size: 2.75em;
 			margin-top: -185px;
 		}
-		
+
 		.heading {
 			h1 {
 				display: none !important;
 			}
 		}
-		
+
 		.explanation {
 			margin-top: -3em !important;
 		}
-		
+
 		.links {
 			overflow: visible;
 			text-align: center;
@@ -1032,31 +1035,31 @@ section {
 				left: 50%;
 				transform: translate(-50%,0);
 				-webkit-transform: translate(-50%,0);
-				top: -120%;	
+				top: -120%;
 			}
 		}
-		
+
 		.block {
 			//now things become complicate....
 			&#slider-253,
 			&#slider-16 {
 				background-size: cover !important;
 			}
-			
+
 			&#slider-238 {
-				
+
 			}
-			
+
 			&#slider-239 {
 				background-size: auto 90% !important;
 				background-color: #dddad9;
 				background-position: 40% top;
 			}
-			
+
 			&#slider-240 {
 				background-size: cover !important;
 			}
-			
+
 			&#slider-253 {
 				background-color: #4dc9e9;
 				background-position: center center;
@@ -1071,7 +1074,7 @@ section {
 	#work {
 		height: auto !important;
 	}
-	
+
 	#work {
 		position: static;
 		.links {
@@ -1082,13 +1085,13 @@ section {
 			span {
 				top: 0;
 			}
-			
+
 			a {
 				float: right;
 				margin-right: 1em;
 			}
 		}
-		
+
 		.block {
 			width: 100% !important;
 			position: static;
@@ -1099,21 +1102,21 @@ section {
 			&#slider-16 {
 				background-size: 100% auto !important;
 			}
-			
+
 			&#slider-238 {
-				
+
 			}
-			
+
 			&#slider-239 {
 				background-size: 100% auto !important;
 				background-color: #dddad9;
 				background-position: center top;
 			}
-			
+
 			&#slider-240 {
 				background-size: cover !important;
 			}
-			
+
 			&#slider-253 {
 				background-color: #4dc9e9;
 				background-position: center center;
@@ -1132,19 +1135,19 @@ section {
 			right: auto;
 			bottom: auto;
 		}
-		
+
 		.first {
 			.links {
 				display: none;
 			}
-			
+
 			.digital {
 				margin: 0.2em 0 0.5em;
 				position: static;
-				
+
 			}
 		}
-		
+
 		.large {
 			position: absolute !important;
 			top: 0;
@@ -1152,7 +1155,7 @@ section {
 			transform: translate(-50%,-80%) scale(.4);
 			-webkit-transform: translate(-50%,-80%) scale(.4);
 		}
-		
+
 		.text {
 			position: absolute;
 			width: 100%;
@@ -1164,7 +1167,7 @@ section {
 			.contain {
 				height: auto;
 			}
-			.keyword, 
+			.keyword,
 			.large,
 			.first .digital,
 			.explanation {
@@ -1172,11 +1175,11 @@ section {
 				display: block;
 				margin: 0 auto !important;
 			}
-			
+
 			.contain {
 				position: relative;
 			}
-			
+
 			.explanation {
 				margin-top: 0.5em !important;
 				margin-bottom: 1em !important;
@@ -1189,7 +1192,7 @@ section {
 				transform: none;
 				-webkit-transform: none;
 			}
-			
+
 			.links {
 				position: static;
 				text-align: center;
@@ -1202,15 +1205,15 @@ section {
 					padding-right: 10px;
 					margin-bottom: 2em;
 				}
-				
-				.link {				
+
+				.link {
 					display: inline-block;
 				}
-				
+
 			}
 		}
 	}
-	
+
 	#content {
 		.intro {
 			width: 100%;
@@ -1218,7 +1221,7 @@ section {
 			background: rgba(0, 211, 255, .6);
 			text-align: center;
 			padding: 1em 0;
-			
+
 			.contactlinks {
 				width: 100%;
 				float: none;
@@ -1238,27 +1241,27 @@ section {
 					}
 				}
 			}
-			
+
 			.news {
 				display: none;
 			}
-			
+
 			a {
 				display: inline-block;
 				padding: 0;
 				color: $black;
 				text-align: center;
 			}
-	
+
 			a[href^="mailto:"] {
 				display: none;
 			}
-	
+
 			a[href^="tel:"] {
 				padding-left: 0;
 			}
-		
-	
+
+
 			.contact {
 				font-size: 24px;
 			}
@@ -1276,7 +1279,7 @@ section {
 					}
 				}
 			}
-			
+
 			.explanation {
 				&:before {
 					transform: translate(-50%,0);
@@ -1284,24 +1287,24 @@ section {
 					top: 5.4em;
 				}
 			}
-			
+
 			.large {
 				transform: translate(-50%,-110%) scale(0.8);
 				-webkit-transform: translate(-50%,-110%) scale(0.8);
 			}
-			
+
 			&#slider-240,
 			&#slider-16 {
 				background-size: cover !important;
 			}
-			
+
 			&#slider-253 {
 				background-size: 100% auto !important;
 				background-position: center center !important;
 				background-color: #4dc9e9 !important;
 			}
 		}
-		
+
 		.landscape & {
 			.text {
 				transform: translate(0, -35%);
@@ -1309,11 +1312,11 @@ section {
 			}
 		}
 	}
-	
+
 }
 
 @media (max-width: 1024px) and (orientation: landscape) {
-	
+
 	#content {
 		.intro {
 			min-height: 46px;
@@ -1324,7 +1327,7 @@ section {
 					float: left;
 					width: 50%;
 					display: block;
-					
+
 					a {
 						line-height: 46px;
 						display: block;
@@ -1333,14 +1336,14 @@ section {
 			}
 		}
 	}
-	
+
 	#work {
 		.block {
 			min-height: 586px;
 			.header {
 				display: none;
 			}
-			
+
 			.explanation {
 				&:before {
 					top: 5em;
@@ -1348,7 +1351,7 @@ section {
 					webkit-transform: translate(-50%,0);
 				}
 			}
-			
+
 			.links {
 				margin: 2em auto 3em;
 				.link {
@@ -1356,9 +1359,9 @@ section {
 					margin: auto;
 				}
 			}
-			
+
 		}
-		
+
 		.keyword {
 			font-size: 6em;
 		}
@@ -1371,7 +1374,7 @@ section {
 			.keyword {
 				font-size: 3em;
 			}
-		
+
 			.explanation {
 				&:before {
 					top: 3em;
