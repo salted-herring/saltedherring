@@ -10,7 +10,6 @@
 
 				<div class="text row">
 					<span class="header container">$Header</span>
-
 					<div class="contain">
 
 						<div class="headingwrapper">
@@ -27,17 +26,17 @@
 						<% else %>
 
 
-							
+
 						<% end_if %>
 
 						<div class="explanation">
 							<% if $Explanation %>
-								$Explanation
+								<p>$Explanation</p>
 							<% end_if %>
-							<span class="subtitle">$SubTitle</span>
-							<span class="subexplanation">$SubExplanation</span>
+							<strong class="subtitle">$SubTitle</strong>
+							<p class="subexplanation">$SubExplanation</p>
 						</div>
-						
+
 						<!-- h2 project-->
 							<% if Project.getURL || Link.Link %>
 						<div class="container links<% if $Title && $Description %><% else %> button-only<% end_if %>">
@@ -57,7 +56,7 @@
 
 
 					</div>
-					
+
 					<% if Images && Top.isMobile %>
 					<img src="$Images.First.outputImage.URL" alt="" />
 					<% end_if %>
