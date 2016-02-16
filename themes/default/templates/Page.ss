@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>	   <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>		   <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>		   <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head>
 		<!-- test -->
@@ -25,21 +25,24 @@
 
 		<% if ClassName = HomePage %>
 			<script type="application/ld+json">
-		    {
+			  {
 			"@context": "http://schema.org",
 			"@type": "Organization",
 			"url": "http://www.saltedherring.com",
+			"name": "Salted Herring",
+			"alternateName": "SaltedHerring",
 			"logo": "http://www.saltedherring.com/themes/default/img/sprites/SH_logo_site_black.png",
 			"contactPoint" : [
 				{ "@type" : "ContactPoint",
 				  "telephone" : "+64 (0)4 473 1344",
+				  "email" : "info@saltedherring.com",
 				  "contactType" : "customer service"
 				} ],
 			"sameAs" : [
 				"https://www.facebook.com/pages/Salted-Herring/123449174364209",
 				"https://plus.google.com/+saltedherring"]
-		    }
-		    </script>
+			  }
+			  </script>
 		<% end_if %>
 	</head>
 	<body class="page-$URLSegment<% if isMobile %> mobile<% end_if %>">
