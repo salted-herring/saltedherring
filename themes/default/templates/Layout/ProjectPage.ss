@@ -70,7 +70,7 @@
 					<ul class="awards">
 						<% loop ProjectAwards %>
 						<% if Award.Logo %>
-						<li><% if URL %><a href="$URL" target="_blank"><% end_if %><% with Award.Logo.SetWidth(60) %><img src="$URL" width="$Width" height="$Height" alt="" /><% end_with %><% if URL %></a><% end_if %></li>
+						<li><% if URL %><a href="$URL" target="_blank"><% end_if %><% with Award.Logo.SetHeight(70) %><img src="$URL" width="$Width" height="$Height" alt="" /><% end_with %><% if URL %></a><% end_if %></li>
 						<% end_if %>
 						<% end_loop %>
 					</ul>

@@ -95,7 +95,8 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 		}else{
 			$(this).html('full story');
 		}
-		$('.content p').toggle(0, function() { 
+		//$('.content p').toggle(0, function() { 
+		$('.content p, .content ul').toggle(0, function() { 
 			$('.detailscontainer').parent().height($('.detailscontainer').height());
 		});
 		$('html,body').animate({
