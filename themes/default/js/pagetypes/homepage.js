@@ -459,7 +459,7 @@ if($('body').is('.mobile')) {
 			/* ===========================
 			 * Animate news
 			 * =========================== */
-			if($('.news li').length > 0) {
+			if($('.news li').length > 1) {
 				var interval;
 
 				$('.news').each(function() {
@@ -469,6 +469,7 @@ if($('body').is('.mobile')) {
 						interval = getInterval();
 					});
 				});
+				
 				function getInterval() {
 					return setInterval(function() {
 						$('.news li.active').animate({

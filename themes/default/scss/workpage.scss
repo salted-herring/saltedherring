@@ -203,8 +203,13 @@ img {
 	}
 
 	.content {
-		p {
+		p, ul {
 			display: none;
+		}
+		
+		ul {
+			list-style: disc;
+			list-style-position: inside;
 		}
 	}
 
@@ -259,15 +264,18 @@ img {
 
 #articleLinks {
 	margin: (40/$font-size)+em 0;
-	width: 50%;
+	width: 100%;
 
 	a {
 		@extend .link;
 		color: $blue;
 		border-color: $blue;
-		padding: .625em inherit !important;
+		padding: .625em 0 !important;
 		font-weight: 500;
+		min-width: 125px;
+		max-width: 165px;
 		width: 48%;
+		text-align: center;
 		font-style: normal;
 		font-size: (20/$font-size)+em !important;
 		float: left;
