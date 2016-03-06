@@ -53,3 +53,4 @@ SeoConfig:
     WorkPage: true
     Project: true
     TeamMember: true
+    Category: true

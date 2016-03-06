@@ -40,12 +40,9 @@ $mobi = new Mobile_Detect();
 define('MOBILE', $mobi->isMobile());
 
 GoogleSitemap::register_dataobject('Project', 'daily');
+GoogleSitemap::register_dataobject('Category', 'daily');
 GoogleSitemap::register_dataobject('TeamMember');
 GoogleSitemap::register_dataobject('HomePage', 'daily');
-
-GoogleSitemap::register_dataobject('Project', 'daily');
-GoogleSitemap::register_dataobject('TeamMember', 'daily');
-GoogleSitemap::register_dataobject('HomePage', 'daily');  
 
 
 if (Director::isDev()) {

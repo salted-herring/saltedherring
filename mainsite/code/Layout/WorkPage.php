@@ -109,17 +109,25 @@ class WorkPage_Controller extends Page_Controller {
 				}
 				return false;
 			case 'Description':
+				if ($this->request->param('meta') && !$this->request->isAjax()) {
+					return $this->httpError(403,'Access Deined');
+				}
+				
 				if($this->request->param('meta') || !isset($this->project)) {
-					if ($this->OGDescription) {
+					if ( $this->OGDescription) {
 						return $this->OGDescription;
 					}
-
 				} else {
 					if ($this->project->count() == 0) {
 						return Convert::raw2att($this->project->MetaDescription);
 					}
-
 					return Convert::raw2att($this->project->first()->MetaDescription);
+				}
+				
+				if ($this->request->param('Category')) {
+					if ($cat = DataObject::get_one('Category', array('Slug' => $this->request->param('Category')))) {
+						return Convert::raw2att($cat->MetaDescription);
+					}
 				}
 
 				return Convert::raw2att($this->MetaDescription);
@@ -144,5 +152,42 @@ class WorkPage_Controller extends Page_Controller {
 			default:
 				return false;
 		}
+	}
+	
+	public function MetaTags($includeTitle = true) {
+		if ($cat = $this->request->param('Category')) {
+			$record = DataObject::get_one('Category', array('Slug' => $cat));
+		}else{
+			$record = $this;
+		}
+		$tags = "";
+		if($includeTitle === true || $includeTitle == 'true') {
+			$tags .= "<title>" . $this->getTheTitle() . "</title>\n";
+		}
+		
+		$charset = ContentNegotiator::get_encoding();
+		$tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
+		if($record->MetaKeywords) {
+			$tags .= "<meta name=\"keywords\" content=\"" . Convert::raw2att($record->MetaKeywords) . "\" />\n";
+		}
+		if($record->MetaDescription) {
+			$tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($record->MetaDescription) . "\" />\n";
+		}
+		if($record->ExtraMeta) { 
+			$tags .= $this->ExtraMeta . "\n";
+		} 
+		
+		if($record->URLSegment == 'home' && SiteConfig::current_site_config()->GoogleSiteVerificationCode) {
+			$tags .= '<meta name="google-site-verification" content="' . SiteConfig::current_site_config()->GoogleSiteVerificationCode . '" />' . "\n";
+		}
+		
+		// prevent bots from spidering the site whilest in dev.
+		if(Director::isDev()) {
+			$tags .= "<meta name=\"robots\" content=\"noindex, nofollow, noarchive\" />\n";
+		}
+		
+		$this->extend('MetaTags', $tags);
+		
+		return $tags;
 	}
 }
