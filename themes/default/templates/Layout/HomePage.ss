@@ -14,19 +14,14 @@
 
 						<div class="headingwrapper">
 							<div class="heading">
-								<h1 class="salted">Salted</h1>
+								
 							</div>
 						</div>
-						<h1 class="large">Salted</h1>
-						<span class="keyword">$Keyword</span>
-
 						<% if First %>
-							<!-- h1 -->
+							<h1 class="large">Salted <span class="keyword">$Keyword</span></h1>
 							<span class="digital">Digital + Brand</span>
 						<% else %>
-
-
-
+							<h2 class="large">Salted <span class="keyword">$Keyword</span></h2>
 						<% end_if %>
 
 						<div class="explanation">

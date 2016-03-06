@@ -149,6 +149,7 @@ $offsetAll: 30px;
 }
 
 h1,
+h2,
 .keyword {
 	padding: 1px 0 0 0 !important;
 	text-align: center;
@@ -177,7 +178,8 @@ h1,
 	margin-top: -260px+$offsetAll;
 }
 
-h1 {
+h1,
+h2 {
 	margin: 0;
 	z-index: 2;
 	padding: 0;

@@ -9,6 +9,18 @@ if($('body').is('.mobile')) {
 			return;
 		}
 */
+
+		/*
+			move span out from h1/h2
+		*/
+		$('#work .block').each(function(index, element) {
+            $(this).find('.large span').insertAfter($(this).find('.large'));
+			var dockingTitle = $('<h1 />').addClass('salted').html($.trim($(this).find('.large').html()));
+			$(this).find('.heading').html(dockingTitle);
+        });
+		
+		
+
 		var prevPosition = 0,
 			scrolled = false,
 			latestKnownScrollY = 0,
