@@ -99,3 +99,14 @@ routes/router.js
 lib/TweenMax.js
 lib/_base.js
 pagetypes/default.js
+
+pagetypes/redirectorpage.js
+----------------
+lib/jquery.js
+lib/underscore.js
+lib/backbone.js
+lib/swfobject.js
+routes/router.js
+lib/TweenMax.js
+lib/_base.js
+pagetypes/redirectorpage.js
