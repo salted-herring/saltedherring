@@ -13,9 +13,7 @@
 					<div class="contain">
 
 						<div class="headingwrapper">
-							<div class="heading">
-								
-							</div>
+							<div class="heading"></div>
 						</div>
 						<% if First %>
 							<h1 class="large">Salted <span class="keyword">$Keyword</span></h1>

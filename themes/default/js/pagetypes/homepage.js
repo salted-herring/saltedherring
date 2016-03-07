@@ -14,8 +14,11 @@ if($('body').is('.mobile')) {
 			move span out from h1/h2
 		*/
 		$('#work .block').each(function(index, element) {
-            $(this).find('.large span').insertAfter($(this).find('.large'));
-			var dockingTitle = $('<h1 />').addClass('salted').html($.trim($(this).find('.large').html()));
+			
+			var blockTitle = $(this).find('.large').clone(),
+				keyWord = blockTitle.find('.keyword').remove();
+			keyWord.insertAfter($(this).find('.large'));
+			var dockingTitle = $('<div />').addClass('salted').html($.trim(blockTitle.html()));
 			$(this).find('.heading').html(dockingTitle);
         });
 		
@@ -179,7 +182,7 @@ if($('body').is('.mobile')) {
 					var condition = top < latestKnownScrollY;
 					var _h = condition ? (winHeight / 2) : ((winHeight / 2)) - Math.abs(latestKnownScrollY - top);
 					
-					var newTop = top-latestKnownScrollY + $(this).find('.heading h1').height();
+					var newTop = top-latestKnownScrollY + $(this).find('.heading .salted').height();
 
 					if($(this).is('.first')) {
 						_h += 53;
@@ -191,7 +194,7 @@ if($('body').is('.mobile')) {
 							$(this).find('.large').hide();
 						}
 					} else {
-						if(Math.ceil(newTop) <= $('#header').height() + $(this).find('.heading h1').height() * 2) {
+						if(Math.ceil(newTop) <= $('#header').height() + $(this).find('.heading .salted').height() * 2) {
 							$(this).find('.heading').hide();
 							$(this).find('.large').show();
 						} else {

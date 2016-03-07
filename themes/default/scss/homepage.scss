@@ -149,6 +149,7 @@ $offsetAll: 30px;
 }
 
 h1,
+div.salted,
 h2,
 .keyword {
 	padding: 1px 0 0 0 !important;
@@ -169,6 +170,10 @@ h2,
 	top: 50%;
 }
 
+.large .keyword {
+	display: none;
+}
+
 .keyword {
 	width: 100%;
 	margin-top: -150px+$offsetAll;
@@ -179,6 +184,7 @@ h2,
 }
 
 h1,
+div.salted,
 h2 {
 	margin: 0;
 	z-index: 2;
@@ -216,7 +222,8 @@ h2 {
 		z-index: 100;
 	}
 
-	h1 {
+	h1,
+	div.salted {
 		@include transform(translate3d(0,0,0), translateZ(0));
 	}
 }
@@ -364,7 +371,8 @@ section {
 		z-index: 2;
 
 		// salted word offset
-		h1 {
+		h1,
+		div.salted {
 			//margin-top: -202px;   //  *1.15 increase
 			//position: fixed;
 			//top: 50%;
@@ -765,7 +773,8 @@ section {
 		position: relative;
 		height: 960px;
 
-		h1 {
+		h1,
+		div.salted {
 			display: block !important;
 		}
 
@@ -1019,7 +1028,8 @@ section {
 		}
 
 		.heading {
-			h1 {
+			h1,
+			div.salted {
 				display: none !important;
 			}
 		}

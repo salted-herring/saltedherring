@@ -31,7 +31,7 @@ class Category extends BaseDBO {
 	);
 	
 	public function onBeforeWrite() {
-		$this->Slug = preg_replace('/[^A-Za-z0-9]+/','-', strtolower($this->Name));
+		$this->Slug = rtrim(preg_replace('/[^A-Za-z0-9]+/','-', strtolower(trim($this->Name))),'-');
 		parent::onBeforeWrite();
 	}
 	
@@ -50,7 +50,7 @@ class Category extends BaseDBO {
 	}
 	
 	public function legalName() {
-		return str_replace(' ', '-', $this->Name);
+		return $this->Slug;
 	}
 	
 	public function getSiteConfig() {
