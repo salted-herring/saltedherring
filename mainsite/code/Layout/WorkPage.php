@@ -81,11 +81,11 @@ class WorkPage_Controller extends Page_Controller {
 		}
 
 		$cat = Category::get()->filter(array('URLSegment' => Session::get('category')));
-
+		
 		return $this->renderWith(array('WorkPage', 'Page'), array(
 			'getAllProjects' => Project::get()->filter(array('isPublished' => 1)),
 			'category' => Session::get('category'),
-			'categoryName' => $cat->first()->legalName()
+			'categoryName' => $cat->first()->Slug
 		));
 	}
 

@@ -49,10 +49,6 @@ class Category extends BaseDBO {
 		return $fields;
 	}
 	
-	public function legalName() {
-		return $this->Slug;
-	}
-	
 	public function getSiteConfig() {
 		return SiteConfig::current_site_config();
 	}
