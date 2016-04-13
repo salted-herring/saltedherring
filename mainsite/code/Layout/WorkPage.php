@@ -126,7 +126,7 @@ class WorkPage_Controller extends Page_Controller {
 				}
 				
 				if ($this->request->param('Category')) {
-					if ($cat = DataObject::get_one('Category', array('Slug' => $this->request->param('Category')))) {
+					if ($cat = DataObject::get_one('Category', "Slug='" . $this->request->param('Category') . "'")) {
 						return Convert::raw2att($cat->MetaDescription);
 					}
 				}
@@ -157,7 +157,7 @@ class WorkPage_Controller extends Page_Controller {
 	
 	public function MetaTags($includeTitle = true) {
 		if ($cat = $this->request->param('Category')) {
-			$record = DataObject::get_one('Category', array('Slug' => $cat));
+			$record = DataObject::get_one('Category', "Slug='" . $cat ."'");
 		}else{
 			$record = $this;
 		}
