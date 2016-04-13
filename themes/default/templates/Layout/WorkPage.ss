@@ -16,7 +16,7 @@
 <% if getAllProjects %>
 <section id="work" class="container records <% if $categoryName %>$categoryName<% else %>all<% end_if %> init">
 	<% loop getAllProjects %>
-		<a href="$Top.URLSegment/project/$URLSegment" data-sortorder="$SortOrder" class="entry <% loop $Categories %>$legalName <% end_loop %> all" title="$Name">
+		<a href="$Top.URLSegment/project/$URLSegment" data-sortorder="$SortOrder" class="entry <% loop $Categories %>$Slug <% end_loop %> all" title="$Name">
 
 			<% if Thumbnail %>
 				<% with $Thumbnail.CroppedImage(320,320) %>
