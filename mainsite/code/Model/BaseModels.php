@@ -4,9 +4,14 @@ class BaseDBO extends DataObject {
 	private static $db = array(
 		'Title' => 'Varchar(255)',
 		'URLSegment' => 'Varchar(255)',
+		'Priority'	=>	'Decimal',
 		'SortOrder' => 'Int'
 	);
-
+	
+	private static $defaults = array(
+		'Priority'	=>	0.6
+	);
+	
 	private static $default_sort = "SortOrder";
 
 	function canView($member = false) {
@@ -97,6 +102,10 @@ class BaseDBO extends DataObject {
 		$fields->RemoveFieldFromTab('Root.Main', 'URLSegment');
 		$fields->RemoveFieldFromTab('Root.Main', 'SortOrder');
 		$fields->RemoveFieldFromTab('Root.Main', 'Version');
+		if (method_exists($this,'AbsoluteLink')) {
+			$fields->addFieldToTab('Root.SEO', $txtPriority = TextField::create('Priority', 'Google sitemap priority'), $this->hasField('MetaDescription') ? 'MetaDescription' : null);
+			$txtPriority->setDescription('Value between 0 and 1. e.g. 0.6');
+		}
 
 		return $fields;
 	}

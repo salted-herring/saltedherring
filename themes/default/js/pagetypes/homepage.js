@@ -363,12 +363,13 @@ if($('body').is('.mobile')) {
 							}
 						}
 					}
-
+					
 					for(var i in Images.toLoad) {
 						for(var j in Images.toLoad[i]) {
 							if($('body').is('.mobile') && j>0) {
 								break;
 							}
+							
 							$('<img/>').load(function(response, status, xhr) {
 
 								// we can't load the image, so remove
@@ -379,12 +380,17 @@ if($('body').is('.mobile')) {
 									// no error, so remove from toLoad & check if we're ready to roll.
 									var images = Images.toLoad[$(this).attr('id')];
 								}
-
-
-								$('#slider-' + $(this).attr('id')).append($(this));
+								
+								var altxt = $('#slider-' + $(this).attr('id')).attr('data-alt');
+								if ($(this).data('idx') > 0) {
+									altxt += ' - ' + $(this).data('idx');
+								}
+								$(this).attr('alt', altxt);
+								
+								$('#slider-' + $(this).attr('id')).append($(this).removeAttr('id'));
 
 								removeItem(images, $(this).attr('src'));
-								console.log(Images.length);
+								//console.log(Images.length);
 								if(Images.length <= 1) {
 									$(window).resize();
 
@@ -415,7 +421,7 @@ if($('body').is('.mobile')) {
 									$('#work .block').addClass('show');
 
 								}
-							}).attr('id', i).attr('src', Images.toLoad[i][j]);
+							}).attr('id', i).attr('src', Images.toLoad[i][j]).attr('data-idx', j);
 						}
 					}
 				}
