@@ -157,6 +157,9 @@ class Project extends BaseDBO {
 	}
 
 	public function AbsoluteLink() {
+		if (!$this->isPublished) {
+			return null;
+		}
 		return Director::absoluteURL($this->Link());
 	}
 
