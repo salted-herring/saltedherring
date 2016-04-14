@@ -81,10 +81,9 @@ class WorkPage_Controller extends Page_Controller {
 		}
 
 		$cat = Category::get()->filter(array('URLSegment' => Session::get('category')));
-		$prj = Project::get()->filter(array('isPublished' => 1));
-		
+		if ($cat->count() == 0) { return $this->httpError(404); }
 		return $this->renderWith(array('WorkPage', 'Page'), array(
-			'getAllProjects' => $prj,
+			'getAllProjects' => Project::get()->filter(array('isPublished' => 1)),
 			'category' => Session::get('category'),
 			'categoryName' => $cat->first()->Slug
 		));
