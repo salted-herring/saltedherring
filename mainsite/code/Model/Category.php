@@ -49,11 +49,15 @@ class Category extends BaseDBO {
 		return $fields;
 	}
 	
-	public function legalName() {
-		return $this->Slug;
-	}
-	
 	public function getSiteConfig() {
 		return SiteConfig::current_site_config();
+	}
+	
+	public function AbsoluteLink() {
+		return Director::absoluteURL($this->Link());
+	}
+
+	public function Link() {
+		return '/work/category/' . $this->Slug;
 	}
 }

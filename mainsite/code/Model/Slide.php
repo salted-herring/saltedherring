@@ -10,6 +10,7 @@ class Slider extends BaseDBO {
 		'Explanation' => 'Text',
 		'SubTitle' => 'Varchar(100)',
 		'SubExplanation' => 'Text',
+		'AltForImage' => 'Varchar(100)'
 	);
 
 	private static $has_one = array(
@@ -55,7 +56,8 @@ class Slider extends BaseDBO {
 
 			foreach($slider->Images() as $img) {
 				array_push($current['Images'], array(
-					'URL' => $img->Image()->URL
+					'URL' => $img->Image()->URL,
+					'Alt' => is_null($slider->AltForImage) ? '' : $slider->AltForImage
 				));
 			}
 
@@ -110,7 +112,9 @@ class Slider extends BaseDBO {
 		}
 		
 		$gridfield = new GridField("Images", "Images", $this->Images(), $gridFieldConfig);
-
+		
+		$imgalt = new TextField('AltForImage','Alt text for this slide\'s images');
+		
 		$fields->addFieldsToTab('Root.Content', array(
 			$header,
 			$keyword,
@@ -132,6 +136,7 @@ class Slider extends BaseDBO {
 			$subTitle,
 			$subExplanation,
 			$overlay,
+			$imgalt,
 			$gridfield
 		));
 

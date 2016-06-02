@@ -81,11 +81,11 @@ class WorkPage_Controller extends Page_Controller {
 		}
 
 		$cat = Category::get()->filter(array('URLSegment' => Session::get('category')));
-
+		if ($cat->count() == 0) { return $this->httpError(404); }
 		return $this->renderWith(array('WorkPage', 'Page'), array(
 			'getAllProjects' => Project::get()->filter(array('isPublished' => 1)),
 			'category' => Session::get('category'),
-			'categoryName' => $cat->first()->legalName()
+			'categoryName' => $cat->first()->Slug
 		));
 	}
 
@@ -125,7 +125,7 @@ class WorkPage_Controller extends Page_Controller {
 				}
 				
 				if ($this->request->param('Category')) {
-					if ($cat = DataObject::get_one('Category', array('Slug' => $this->request->param('Category')))) {
+					if ($cat = DataObject::get_one('Category', "Slug='" . $this->request->param('Category') . "'")) {
 						return Convert::raw2att($cat->MetaDescription);
 					}
 				}
@@ -156,7 +156,7 @@ class WorkPage_Controller extends Page_Controller {
 	
 	public function MetaTags($includeTitle = true) {
 		if ($cat = $this->request->param('Category')) {
-			$record = DataObject::get_one('Category', array('Slug' => $cat));
+			$record = DataObject::get_one('Category', "Slug='" . $cat ."'");
 		}else{
 			$record = $this;
 		}

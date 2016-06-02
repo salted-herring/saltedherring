@@ -1398,7 +1398,22 @@ section {
 	}
 }
 
+#slider-238 {
+	.subtitle,
+	p:last-child {
+		display: none;
+	}
+}	
 
+@media (min-height: 900px) {
+	#slider-238 {
+		.subtitle,
+		p:last-child {
+			display: block;
+		}
+		
+	}	
+}
 
 
 
