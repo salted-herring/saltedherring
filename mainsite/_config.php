@@ -50,6 +50,6 @@ if (Director::isDev()) {
 }
 
 if (Director::isLive()) {
-	#Director::forceSSL();
+	Director::forceSSL();
 	SS_Log::add_writer(new SS_LogEmailWriter('administration@saltedherring.com'), SS_Log::ERR);
 }
