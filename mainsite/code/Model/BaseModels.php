@@ -300,7 +300,7 @@ class SWFMedia extends MediaWithFallback {
 		$fields = parent::getCMSFields();
 		$fields->AddFieldToTab('Root.Main',
 			UploadField::create('File', 'SWF')
-				->setAllowedExtensions(array('swf'))
+				->setAllowedExtensions()
 		);
 
 		return $fields;
