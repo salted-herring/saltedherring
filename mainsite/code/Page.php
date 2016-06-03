@@ -51,7 +51,13 @@ Requirements::themedCSS('reset');
 	}
 
 	protected function getBaseTag() {
-		return $this->getHTTPProtocol().'://'.$_SERVER['HTTP_HOST'];
+		$protocol = 'http';
+
+		if (Director::isLive()) {
+			$protocol = 'https';
+		}
+
+		return $protocol .'://' . $_SERVER['HTTP_HOST'];
 	}
 
 	public function MetaTags($includeTitle = true) {
