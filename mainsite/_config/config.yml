@@ -54,3 +54,7 @@ SeoConfig:
     Project: true
     TeamMember: true
     Category: true
+
+File:
+  allowed_extensions:
+    - 'swf'
