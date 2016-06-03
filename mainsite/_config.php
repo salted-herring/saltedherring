@@ -44,6 +44,16 @@ GoogleSitemap::register_dataobject('Category', 'daily');
 GoogleSitemap::register_dataobject('TeamMember');
 GoogleSitemap::register_dataobject('HomePage', 'daily');
 
+File::$allowed_extensions = array(
+	'','html','htm','xhtml','js','css',
+	'bmp','png','gif','jpg','jpeg','ico','pcx','tif','tiff',
+	'au','mid','midi','mpa','mp3','ogg','m4a','ra','wma','wav','cda',
+	'avi','mpg','mpeg','asf','wmv','m4v','mov','mkv','mp4','swf','flv','ram','rm',
+	'doc','docx','txt','rtf','xls','xlsx','pages',
+	'ppt','pptx','pps','csv',
+	'xml','pdf'
+);
+
 
 if (Director::isDev()) {
 	SSViewer::flush_template_cache();
