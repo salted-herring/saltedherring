@@ -7,11 +7,11 @@ class BaseDBO extends DataObject {
 		'Priority'	=>	'Decimal',
 		'SortOrder' => 'Int'
 	);
-	
+
 	private static $defaults = array(
 		'Priority'	=>	0.6
 	);
-	
+
 	private static $default_sort = "SortOrder";
 
 	function canView($member = false) {
@@ -298,7 +298,10 @@ class SWFMedia extends MediaWithFallback {
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
-		$fields->AddFieldToTab('Root.Main', new UploadField('File', 'SWF'));
+		$fields->AddFieldToTab('Root.Main',
+			UploadField::create('File', 'SWF')
+				->setAllowedExtensions(array('swf'))
+		);
 
 		return $fields;
 	}
