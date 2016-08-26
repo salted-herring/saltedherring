@@ -41,4 +41,6 @@ var
 restfulserver/*
 themes/default/npm-debug.log
 themes.tgz
-GridFieldAddOns
+GridFieldAddOns/
+themes/default/js/components/
+themes/default/js/components/*
