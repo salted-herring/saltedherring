@@ -84,9 +84,15 @@
 					<% if $Type = SWF %>
 						<% if isMobile %>
 						<% else %>
-						<div class="image swf notloaded" data-url="$outputFallback.URL" data-width="$outputFallback.Width" data-height="$outputFallback.Height" data-swf="$File.URL" data-swf-width="$width" data-swf-height="$height" data-alt="$Up.Title" id="media_$Pos">
+                        <object
+                        type="application/x-shockwave-flash"
+                        data="$File.URL"
+                        width="$width" height="$height">
+                            <param name="movie" value="$File.URL" />
+                        </object>
+						<%-- <div class="image swf notloaded" data-url="$outputFallback.URL" data-width="$outputFallback.Width" data-height="$outputFallback.Height" data-swf="$File.URL" data-swf-width="$width" data-swf-height="$height" data-alt="$Up.Title" id="media_$Pos">
 							<img src="$outputFallback.URL" width="$outputFallback.Width" height="$outputFallback.Height" alt="$Up.Title" />
-						</div>
+						</div> --%>
 						<% end_if %>
 
 					<% else %>
