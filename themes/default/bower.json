@@ -28,7 +28,7 @@
     "masonry": "~3.1.2",
     "svg.js": "*",
     "swfobject-amd": "~2.3.0",
-    "df-visible": "jquery.visible#^1.2.0",
-    "gsap": "^1.18.2"
+    "df-visible": "^1.2.0",
+    "gsap": ">=1.18.2"
   }
 }
