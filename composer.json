@@ -2,29 +2,30 @@
     "name": "silverstripe/installer",
     "description": "The SilverStripe Framework Installer",
     "require": {
-        "php": ">=5.3.2",
-        "silverstripe/cms": "~3.5.0",
-        "silverstripe/framework": "~3.5.0",
-        "silverstripe/googlesitemaps": "~1.4.0",
-        "silverstripe/html5": "~1.0.3",
-        "silverstripe-australia/gridfieldextensions": "~1.3.0",
-        "mobiledetect/mobiledetectlib": "~2.8.19",
-        "undefinedoffset/sortablegridfield": "~0.5.4",
-        "colymba/gridfield-gallery-theme": "~v1.0.1",
-        "heyday/silverstripe-dataobjectpreview": "~1.0.5",
-        "silverstripe/gridfield-addons": "dev-master",
-        "hubertusanton/silverstripe-seo": "~2.1.1",
-        "kinglozzer/silverstripegmapsobject": "~1.0.5",
-        "silverstripe/staticpublisher": "~1.0.0",
-        "heyday/silverstripe-optimisedimage": "2.0.1",
-        "normann/gridfieldpaginatorwithshowall": "dev-master"
+        "php":                                       ">=5.3.2",
+        "silverstripe/cms":                          "~3.6.0",
+        "silverstripe/framework":                    "~3.6.0",
+        "silverstripe/googlesitemaps":               "~1.4.0",
+        "silverstripe/gridfield-addons":             "dev-master",
+        "silverstripe/html5":                        "~1.0.3",
+        "silverstripe/staticpublisher":              "~1.0.0",
+        "colymba/gridfield-gallery-theme":           "~v1.0.1",
+        "heyday/silverstripe-dataobjectpreview":     "~1.0.5",
+        "heyday/silverstripe-optimisedimage":        "2.0.1",
+        "hubertusanton/silverstripe-seo":            "~2.1.1",
+        "kinglozzer/silverstripegmapsobject":        "~1.0.5",
+        "mobiledetect/mobiledetectlib":              "~2.8.19",
+        "normann/gridfieldpaginatorwithshowall":     "dev-master",
+        "symbiote/silverstripe-gridfieldextensions": "~1.3.0",
+        "undefinedoffset/sortablegridfield":         "~0.5.4",
+        "tractorcow/silverstripe-colorpicker": "3.0.*@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
     },
     "config": {
         "process-timeout": 600,
-        "prefer-install": "dist"
+        "prefer-install":  "dist"
     },
-    "minimum-stability": "stable"
+    "minimum-stability":   "stable"
 }
