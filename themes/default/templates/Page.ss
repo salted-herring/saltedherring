@@ -14,7 +14,7 @@
 		<link rel="apple-touch-icon" sizes="120x120" href="$ThemeDir/img/touch-icon-iphone-retina.png">
 		<link rel="apple-touch-icon" sizes="152x152" href="$ThemeDir/img/touch-icon-ipad-retina.png">
 
-		$getCSS
+		$getCSS.RAW
 
 		<script src="$ThemeDir/js/lib/modernizr.min.js"></script>
 		<script type="text/javascript" src="//use.typekit.net/fxa7vos.js"></script>

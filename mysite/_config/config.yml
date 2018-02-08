@@ -1,0 +1,55 @@
+---
+Name: saltedherring
+---
+SilverStripe\Core\Manifest\ModuleManifest:
+  project: mysite
+SiteVersion:
+  version: !!float 1
+SilverStripe\View\SSViewer:
+  themes:
+    - 'default'
+    - '$default'
+
+Page:
+  extensions:
+    - SaltedHerring\Extensions\SocialDecorator
+    - SaltedHerring\Extensions\PageDecorator
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - SaltedHerring\Config\CustomSiteConfig
+PageController:
+  extensions:
+    - SaltedHerring\Extensions\PageControllerDecorator
+SilverStripe\Admin\ModelAdmin:
+  extensions:
+    - SaltedHerring\Extensions\ModelAdminExtension
+SaltedHerring\Model\Project:
+  extensions:
+    - SaltedHerring\Extensions\ThumbnailDecorator
+    - SaltedHerring\Extensions\MetaDecorator
+SaltedHerring\Model\TeamMember:
+  extensions:
+    - SaltedHerring\Extensions\ThumbnailDecorator
+    - SaltedHerring\Extensions\PublishedDecorator
+    - SaltedHerring\Extensions\MetaDecorator
+SaltedHerring\Model\AboutSection:
+  extensions:
+    - SaltedHerring\Extensions\MetaDecorator
+SaltedHerring\Model\Block:
+  extensions:
+    - SaltedHerring\Extensions\PublishedDecorator
+# SeoConfig:
+#   Page: true
+#   SilverStripe\ErrorPage\ErrorPage: false
+#   SilverStripe\CMS\Model\RedirectorPage: false
+#   SilverStripe\CMS\Model\VirtualPage: false
+#   SaltedHerring\Layout\HomePage: true
+#   SaltedHerring\Layout\AboutPage: true
+#   SaltedHerring\Layout\TeamPage: true
+#   SaltedHerring\Layout\WorkPage: true
+#   SaltedHerring\Controllers\Project: true
+#   SaltedHerring\Layout\TeamMember: true
+#   SaltedHerring\Controllers\Category: true
+SilverStripe\Assets\File:
+  allowed_extensions:
+    - swf
