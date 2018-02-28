@@ -35,7 +35,12 @@
     						<div class="container links<% if $Title && $Description %><% else %> button-only<% end_if %>">
     							<% if $Title && $Description %><span><strong>$Title</strong><br><em>$Description</em></span><% end_if %>
     							<a href="$Link.Link" class="link">
-    								$LinkTitle
+                                    <% if LinkTitle %>
+                                        $LinkTitle
+                                    <% end_if %>
+    								<% if LinkDescription %>
+                                        $LinkDescription
+                                    <% end_if %>
     							</a>
     						</div>
 							<% end_if %>
