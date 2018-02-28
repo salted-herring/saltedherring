@@ -10,7 +10,7 @@ require.config({
 		'router': 'routes/router',
 		'tweenmax': 'lib/TweenMax',
 		'bridget': 'components/jquery-bridget/jquery.bridget',
-		
+
 		eventie: 'components/eventie/eventie',
 		'doc-ready': 'components/doc-ready/doc-ready',
 		eventEmitter: 'components/eventEmitter/eventEmitter',
@@ -18,13 +18,13 @@ require.config({
 		'get-size': 'components/get-size/get-size',
 		'matches-selector': 'components/matches-selector/matches-selector',
 		outlayer: 'components/outlayer/outlayer',
-		
+
 		'mutate': 'lib/mutate/mutate.min',
 		'mutateevents': 'lib/mutate/mutate.events',
 		'swfobject': 'lib/swfobject',
-		
+
 		isotope: 'components/isotope/jquery.isotope'
-		
+
 	},
 	shim: {
 		backbone: {
@@ -37,17 +37,20 @@ require.config({
 		_base: {
 			deps: ['jquery', 'backbone', 'router']
 		},
-		
+		visible: {
+			deps: ['jquery']
+		},
+
 		router: {
 			deps: ['jquery', 'underscore', 'backbone', 'swfobject'],
 			exports: 'WorkRouter'
 		},
-		
+
 		mutate: {
 			deps: ['jquery', 'mutateevents'],
 			exports: '$.mutate'
 		},
-		
+
 		isotope: {
 			deps: ['jquery', 'bridget']
 		},

@@ -47,19 +47,19 @@ class PageControllerDecorator extends Extension
 
         $js = strtolower($js);
 
-        if (Director::isDev()) {
+        // if (Director::isDev()) {
             $script = "<script src=\"" . "/themes/default/js/lib/require.js\" data-cfasync=\"true\"></script>\n";
-            $script .= "<script>\n";
-            $script .= "require([\"" . "/themes/default/js/dev.config\"], function (common) {";
-            $script.= "require([\"pagetypes/" . $js . "\"]);";
-            $script.= "});";
-            $script .= "</script>";
+        $script .= "<script>\n";
+        $script .= "require([\"" . "/themes/default/js/dev.config\"], function (common) {";
+        $script.= "require([\"pagetypes/" . $js . "\"]);";
+        $script.= "});";
+        $script .= "</script>";
 
-            return $script;
-        } else {
-            $script = '<script src="' . '/themes/default/js/lib/require.js" data-main="' . '/themes/default/%s" data-cfasync=\"true\"></script>';
-            return sprintf($script, 'build/pagetypes/' . $js);
-        }
+        return $script;
+        // } else {
+        //     $script = '<script src="' . '/themes/default/js/lib/require.js" data-main="' . '/themes/default/%s" data-cfasync=\"true\"></script>';
+        //     return sprintf($script, 'build/pagetypes/' . $js);
+        // }
     }
 
     private function getFileName()
