@@ -1,12 +1,11 @@
 <div id="banner" class="collapsed">
 	<div class="filters container">
-		<a href="$URLSegment/"<% if category || getCurrentSession %><% else %> class="all"<% end_if %>>all</a>
+		<a href="$Parent.URLSegment/"<% if category || getCurrentSession %><% else %> class="all current"<% end_if %>>all</a>
 		<% loop getCategories %>
-			<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment || Top.getCurrentSession = $URLSegment %> class="current"<% end_if %>>$Name</a>
+			<a href="{$Top.Parent.AbsoluteLink}category/$URLSegment"<% if $Top.category = $URLSegment || Top.getCurrentSession = $URLSegment %> class="current"<% end_if %>>$Name</a>
 		<% end_loop %>
 	</div>
 </div>
-<% with Project %>
 
 <section id="project" class="individualentry">
 	<nav id="projectnav">
@@ -60,7 +59,7 @@
 					<span itemprop="keywords" class="hide"><% loop Services %>$Name<% if not Last %>,<% end_if %><% end_loop %></span>
 					<ul class="services">
 						<% loop Services %>
-						<li>$Name</li>
+						<li>$Title</li>
 						<% end_loop %>
 					</ul>
 					<% end_if %>
@@ -70,7 +69,7 @@
 					<ul class="awards">
 						<% loop ProjectAwards %>
 						<% if Award.Logo %>
-						<li><% if URL %><a href="$URL" target="_blank"><% end_if %><% with Award.Logo.SetHeight(70) %><img src="$URL" width="$Width" height="$Height" alt="" /><% end_with %><% if URL %></a><% end_if %></li>
+						<li><% if URL %><a href="$URL" target="_blank"><% end_if %><% with Award.Logo.ScaleMaxHeight(70) %><img src="$URL" width="$Width" height="$Height" alt="" /><% end_with %><% if URL %></a><% end_if %></li>
 						<% end_if %>
 						<% end_loop %>
 					</ul>
@@ -100,7 +99,6 @@
 							<div class="image vimeo notloaded" data-url="$outputFallback.URL" data-width="$outputFallback.Width" data-vimeo="$vimeoID" data-height="$outputFallback.Height" data-alt="$Up.Title" id="media_$Pos"></div>
 						<% else %>
 							<% with $outputImage %>
-								$outputImage.Height
 								<div class="image notloaded" data-url="$URL" data-width="$Width" data-height="$Height" data-alt="$Up.Title" id="media_$Pos"></div>
 							<% end_with %>
 						<% end_if %>
@@ -112,17 +110,17 @@
 	</div>
 
 </section>
-<% end_with %>
 
-<% if Project.getValidRelatedProjects %>
+<% if RelatedProjects %>
 <section id="interestedin" class="container records">
 	<h2>You might also be interested in:</h2>
 
-	<% loop Project.getValidRelatedProjects %>
-		<a href="$Top.URLSegment/project/$URLSegment" class="entry<% if MultipleOf(3) %> last<% end_if %>" title="$Name">
-
-			<% if Thumbnail %>
-				<img src="$Thumbnail.CroppedImage(320,320).URL" alt="$Name" />
+	<% loop RelatedProjects %>
+		<a href="$Link" class="entry<% if MultipleOf(3) %> last<% end_if %>" title="$Name">
+            <% if $getFirstImage %>
+                <% with $getFirstImage.Image.FillMax(320, 320) %>
+                    <img src="$URL" alt="$Title" width="$Width" height="$Height" />
+                <% end_with %>
 			<% end_if %>
 			<div class="label">
 				<span>

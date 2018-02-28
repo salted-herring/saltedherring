@@ -6,7 +6,7 @@
 			<strong>Filter by:</strong>
 			<a href="$URLSegment/"<% if category %><% else %> class="all"<% end_if %> data-class="all">all</a>
 			<% loop getCategories %>
-				<a href="$Top.URLSegment/category/$URLSegment"<% if $Top.category = $URLSegment || Top.getCurrentSession = $URLSegment %> class="current"<% end_if %> data-class="$URLSegment">$Name</a>
+				<a href="$Top.URLSegment/category/$URLSegment" <% if Top.category %><% if $Top.category == $URLSegment || Top.getCurrentSession == $URLSegment %> class="current"<% end_if %><% end_if %> data-class="$URLSegment">$Title</a>
 			<% end_loop %>
 		</div>
 	</div>
@@ -16,11 +16,11 @@
 <% if getAllProjects %>
 <section id="work" class="container records <% if $categoryName %>$categoryName<% else %>all<% end_if %> init">
 	<% loop getAllProjects %>
-		<a href="$Top.URLSegment/project/$URLSegment" data-sortorder="$SortOrder" class="entry <% loop $Categories %>$Slug <% end_loop %> all" title="$Name">
+		<a href="$Top.URLSegment/$URLSegment" data-sortorder="$SortOrder" class="entry <% loop $Categories %>$URLSegment <% end_loop %> all" title="$Title">
 
-			<% if Thumbnail %>
-				<% with $Thumbnail.CroppedImage(320,320) %>
-				<img src="$URL" alt="$Title" width="$Width" height="$Height" />
+			<% if $Thumbnail %>
+				<% with $Thumbnail.Fill(320, 320) %>
+				    <img src="$URL" alt="$Title" width="$Width" height="$Height" />
 				<% end_with %>
 			<% end_if %>
 

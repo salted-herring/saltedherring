@@ -2,6 +2,7 @@
 
 namespace SaltedHerring\Model;
 
+use SaltedHerring\Layout\ProjectPage;
 use SaltedHerring\Model\Award;
 use SaltedHerring\Model\Project;
 
@@ -16,6 +17,7 @@ class ProjectAward extends DataObject
 
     private static $has_one = array(
         'Project'    => Project::class,
+        'ProjectPages' => ProjectPage::class,
         'Award'      => Award::class
     );
 

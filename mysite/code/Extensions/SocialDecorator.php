@@ -12,13 +12,13 @@ use SilverStripe\ORM\DataExtension;
 
 class SocialDecorator extends DataExtension
 {
-    public static $db = array(
-        'OGTitle' => 'Varchar(255)',
+    private static $db = [
+        'OGTitle'       => 'Varchar(255)',
         'OGDescription' => 'Varchar(255)'
-    );
-    public static $has_one =  array(
-        'OGImage' => Image::class
-    );
+    ];
+    private static $has_one =  [
+        'OGImage'       => Image::class
+    ];
 
     public function __construct()
     {
@@ -43,7 +43,7 @@ class SocialDecorator extends DataExtension
             )
         );
         $og->setStartClosed(false);
-        $fields->addFieldToTab('Root.Social', $og);
+        $fields->addFieldToTab('Root.Main', $og, 'Metadata');
     }
 
     public function onBeforeWrite()

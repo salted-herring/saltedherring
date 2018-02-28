@@ -2,6 +2,7 @@
 
 namespace SaltedHerring\Model;
 
+use SaltedHerring\Layout\ProjectPage;
 use SaltedHerring\Model\Project;
 
 use SilverStripe\ORM\FieldType\DBField;
@@ -27,7 +28,8 @@ class Colour extends BaseDBO
     );
 
     private static $belongs_to = array(
-        'Projects'     => Project::class
+        'Projects'     => Project::class,
+        'ProjectPages' => ProjectPage::class
     );
 
     public function getTitle()

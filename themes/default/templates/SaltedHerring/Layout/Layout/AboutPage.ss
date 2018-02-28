@@ -32,9 +32,9 @@
 <div class="container services">
 
 
-	<% loop Sections %>
+	<% loop Children %>
 
-		<a href="$Top.URLSegment/$URLSegment" class="entry">
+		<a href="$AbsoluteLink" class="entry">
 			<img src="$Thumbnail.URL" class="thumbnail" />
 
 			<div class="label">
@@ -49,7 +49,3 @@
 
 
 </div>
-
-
-
-

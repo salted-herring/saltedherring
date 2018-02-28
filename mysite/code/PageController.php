@@ -3,6 +3,7 @@
 use SilverStripe\Control\Director;
 use SilverStripe\Control\ContentNegotiator;
 use SilverStripe\Core\Convert;
+use SilverStripe\ORM\DataObject;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Assets\Image;
 use SilverStripe\CMS\Controllers\ContentController;
@@ -18,21 +19,6 @@ class PageController extends ContentController
         'meta' => 'meta'
     );
 
-    public function init()
-    {
-        parent::init();
-
-        // Note: you should use SS template require tags inside your templates
-        // instead of putting Requirements calls here.  However these are
-        // included so that our older themes still work
-        /*
-Requirements::themedCSS('reset');
-        Requirements::themedCSS('layout');
-        Requirements::themedCSS('typography');
-        Requirements::themedCSS('form');
-*/
-    }
-
     protected function getSessionID()
     {
         return session_id();
@@ -41,11 +27,11 @@ Requirements::themedCSS('reset');
     protected function getHTTPProtocol()
     {
         $protocol = 'http';
-        if (isset($_SERVER['SCRIPT_URI']) && substr($_SERVER['SCRIPT_URI'], 0, 5) == 'https') {
-            $protocol = 'https';
-        } elseif (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
-            $protocol = 'https';
-        }
+        // if (isset($_SERVER['SCRIPT_URI']) && substr($_SERVER['SCRIPT_URI'], 0, 5) == 'https') {
+        //     $protocol = 'https';
+        // } elseif (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
+        //     $protocol = 'https';
+        // }
         return $protocol;
     }
 
@@ -68,7 +54,7 @@ Requirements::themedCSS('reset');
     public function MetaTags($includeTitle = true)
     {
         $tags = "";
-        if ($includeTitle === true || $includeTitle == 'true') {
+        if ($includeTitle == true || $includeTitle == 'true') {
             $tags .= "<title>" . $this->getTheTitle() . "</title>\n";
         }
 
@@ -100,10 +86,47 @@ Requirements::themedCSS('reset');
 
     public function getTheTitle()
     {
-        return Convert::raw2xml(($this->MetaTitle) ? $this->MetaTitle : $this->Title);
+        return Convert::raw2xml(!empty($this->MetaTitle) ? $this->MetaTitle : $this->Title);
     }
 
-    public function getOG($var = 'Title')
+    public function getOGTags()
+    {
+        $data = [];
+
+        if ($this->OGTitle) {
+            $data['Title'] = $this->OGTitle;
+        } elseif (SiteConfig::current_site_config()->OGTitle) {
+            $data['Title'] = SiteConfig::current_site_config()->OGTitle;
+        } elseif ($this->getTheTitle()) {
+            $data['Title'] = $this->getTheTitle();
+        }
+
+        if ($this->OGDescription) {
+            $data['Description'] = $this->OGDescription;
+        } elseif (SiteConfig::current_site_config()->OGDescription) {
+            $data['Description'] = SiteConfig::current_site_config()->OGDescription;
+        } elseif ($this->MetaDescription) {
+            $data['Description'] = Convert::raw2att($this->MetaDescription);
+        }
+
+        $imID = 0;
+        if ($this->OGImageID != 0) {
+            $imID = $this->OGImageID;
+        } elseif (SiteConfig::current_site_config()->OGImage()) {
+            $imID = SiteConfig::current_site_config()->OGImage()->ID;
+        }
+
+        $im = Image::get()->filter('ID', $imID);
+
+        if ($im->count() > 0) {
+            $data['Image'] = $im->first()->ScaleWidth(476)->getAbsoluteURL();
+        }
+        $data['URL'] = $this->getCurrentPageURL();
+
+        return $this->customise($data)->renderWith(['includes/OG']);
+    }
+
+    public function displayOG($var = 'Title')
     {
         switch ($var) {
             case 'Title':
@@ -128,13 +151,20 @@ Requirements::themedCSS('reset');
                     return Convert::raw2att($this->MetaDescription);
                 }
                 return false;
-            case Image::class:
-                if ($this->OGImage()) {
-                    return $this->OGImage();
+            case 'Image':
+                $imID = 0;
+                if ($this->OGImageID != 0) {
+                    $imID = $this->OGImageID;
+                } elseif (SiteConfig::current_site_config()->OGImage()) {
+                    $imID = SiteConfig::current_site_config()->OGImage()->ID;
                 }
-                if (SiteConfig::current_site_config()->OGImage()) {
-                    return SiteConfig::current_site_config()->OGImage();
+
+                $im = Image::get()->filter('ID', $imID);
+
+                if ($im->count() > 0) {
+                    return $im->first()->ScaleWidth(476)->getAbsoluteURL();
                 }
+
                 return false;
             default:
                 return false;
@@ -146,15 +176,15 @@ Requirements::themedCSS('reset');
         if ($request->isAjax()) {
             $tags = $this->MetaTags();
 
-            if ($this->getOG('Title')) {
-                $tags .= '<meta property="og:title" content="' . $this->getOG('Title') .'" />';
+            if ($this->displayOG('Title')) {
+                $tags .= '<meta property="og:title" content="' . $this->displayOG('Title') .'" />';
             }
-            if ($this->getOG('Description')) {
-                $tags .= '<meta property="og:description" content="' . $this->getOG('Description') .'" />';
+            if ($this->displayOG('Description')) {
+                $tags .= '<meta property="og:description" content="' . $this->displayOG('Description') .'" />';
             }
 
-            if ($this->getOG(Image::class) && $this->getOG(Image::class)->URL != '/assets/') {
-                $tags .= '<meta property="og:title" content="' . $this->getHTTPProtocol() . Director::BaseURL() . $this->getOG(Image::class)->URL .'" />';
+            if ($this->displayOG('Image') && $this->displayOG('Image')->URL != '/assets/') {
+                $tags .= '<meta property="og:title" content="' . $this->getHTTPProtocol() . Director::BaseURL() . $this->displaOG('Image')->URL .'" />';
             }
 
             $tags .= '<meta property="og:url" content="' . str_replace('meta', '', $this->getHTTPProtocol() . Director::BaseURL() . $this->getCurrentPageUrl()) . '" />';

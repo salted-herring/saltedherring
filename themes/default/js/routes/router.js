@@ -15,6 +15,7 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 		routes: {
 /* 			'about(/)': 'about', */
 			'work(/)': 'work',
+			'work/:section': 'work',
 			'work/:section/:fragment(/)': 'work',
 			'team(/)': 'team',
 			'team/:member(/)': 'team'
@@ -71,7 +72,6 @@ if($('body').is('.mobile')) {
 		},
 
 		work: function(section, fragment) {
-
 			var that = this;
 			var callback = function() {
 
@@ -103,10 +103,19 @@ if($('#work').length > 0) {
 */
 
 
-				if(window.location.href.match(/work\/project\//) != null) {
+				if($('body').attr('class').match(/page-work-.*/) != null) {
 					$.get('/work/getCurrentSession', function(response, status, xhr) {
 						that.currentCategory = response;
-						$('#banner .filter a').removeClass('all current');
+						$('#banner .filters a').removeClass('all current');
+                        $('#banner .filters a').filter(function() {
+                            var match = $(this).attr('href').match(/.*\/([a-z-0-9]+)$/);
+
+                            if (match === null) {
+                                return false;
+                            }
+
+                            return match[1] === response;
+                        }).addClass('current');
 
 						// load the existing navigation for the category,
 						// else get the json file.
@@ -114,8 +123,9 @@ if($('#work').length > 0) {
 						if(that.work[cat]) {
 							that.workNavigation(cat);
 						} else {
-							$.get(that.root + 'json/' + cat + '.json', function(response, status, xhr) {
-								that.work[cat] = typeof response == 'string' ? JSON.parse(response) : response;
+							$.get('/api/v1/work/categories/' + cat + '', function(response, status, xhr) {
+                                var parsed = JSON.parse(response);
+								that.work[cat] = parsed.data;
 								that.workNavigation(cat);
 							});
 						}
@@ -196,6 +206,10 @@ if($('#work').length > 0) {
 
 			if(section == 'category') {
 				this.currentCategory = fragment;
+
+                $.get('/work/setSession', 'Category=' + fragment, function() {
+                    console.log(arguments);
+                });
 			}
 		},
 
@@ -240,8 +254,6 @@ if($('#work').length > 0) {
 
 			views = this.views;
 
-/* 			console.log(views); */
-
 			if(views.hasOwnProperty(url)) {
 				/* ===========================
 				 * Grab the cached version.
@@ -263,7 +275,7 @@ if($('#work').length > 0) {
 					}
 				}
 
-				this.loadMeta(views[url].meta);
+				//this.loadMeta(views[url].meta);
 			} else {
 				that = this;
 
@@ -305,7 +317,7 @@ if($('#work').length > 0) {
 						 * Load in meta data, css & js.
 						 * =========================== */
 						$('[rel="stylesheet"]').attr('href', views[url].css);
-						that.getMeta(url, views[url]);
+						// that.getMeta(url, views[url]);
 
 						that.prev = url;
 						$(el).remove();
@@ -430,15 +442,21 @@ if($('#work').length > 0) {
 
 		workNavigation: function(category) {
 			if(category in this.work) {
-				var previous = null,
-					next = null,
-					current = null;
+				var previous = null
+				  , next = null
+				  , current = null
+                  , self = this
+                  ;
 
-				var currentCat = window.location.href.match(/work\/project\/(.*)/);
+                console.log(self.work, self.work[category]);
 
-				if(currentCat != null) {
-					currentCat = currentCat[1];
-					var projects = category == 'all' ? this.work[category] : this.work[category].Projects;
+				var currentProj = window.location.href.match(/work\/(.*)/);
+
+				// if(currentProj != null) {
+					// currentCat = currentCat[1];
+                $.get('/work/getCurrentSession', function(response, status, xhr) {
+                    var currentCategory = response;
+                    var projects = self.work[category].Projects;
 
 					if(typeof projects == 'string') {
 						projects = JSON.parse(projects);
@@ -458,13 +476,15 @@ if($('#work').length > 0) {
 							next = null;
 						}
 
-						if(current.URLSegment == currentCat) {
+						if(current.URLSegment == currentProj[1]) {
 							break;
 						}
 					}
 
-					this.showNav(next, previous, '/work/project/');
-				}
+					self.showNav(next, previous, '/work/');
+                });
+
+				// }
 			}
 		},
 
@@ -472,6 +492,8 @@ if($('#work').length > 0) {
 			var previous = null,
 				next = null,
 				current = null;
+
+			console.log('team', member, this.team);
 
 			for(var i in this.team) {
 				if(current != null) {
@@ -498,18 +520,18 @@ if($('#work').length > 0) {
 		showNav: function(next, previous, base) {
 			$('#projectnav, #projectnav a').hide();
 
-
+            console.log(next, previous);
 
 			if(previous) {
 				$('#projectnav .previous strong').text(previous.Title.replace(/&amp;/g, '&'));
-				$('#projectnav .previous em').text(previous.TagLine.replace(/&amp;/g, '&'));
+				$('#projectnav .previous em').text((previous.TagLine || '').replace(/&amp;/g, '&'));
 				$('#projectnav .previous').attr('href', base + previous.URLSegment);
 				$('#projectnav .previous').show();
 			}
 
 			if(next != null) {
 				$('#projectnav .next strong').text(next.Title.replace(/&amp;/g, '&'));
-				$('#projectnav .next em').text(next.TagLine.replace(/&amp;/g, '&'));
+				$('#projectnav .next em').text((next.TagLine || '').replace(/&amp;/g, '&'));
 				$('#projectnav .next').attr('href', base + next.URLSegment);
 				$('#projectnav .next').show();
 			}

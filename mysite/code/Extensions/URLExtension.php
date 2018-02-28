@@ -8,6 +8,9 @@ use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataExtension;
 
+use SaltedHerring\Utility\Utility;
+use SaltedHerring\Form\DataObjectURLSegmentField;
+
 class URLExtension extends DataExtension
 {
     private static $db = [
@@ -18,17 +21,15 @@ class URLExtension extends DataExtension
         "URLSegment" => true
     ];
 
-    public function getCMSFields()
-    {
-        $fields = parent::getCMSFields();
-        return $fields;
-    }
+    private static $field_labels = [
+        'URLSegment' => 'URL'
+    ];
 
     public function updateCMSFields(FieldList $fields)
     {
-        $fields->removeFieldsFromTab("Root.Main", array(
-            'URLSegment'
-        ));
+        $fields->replaceField('URLSegment',
+            DataObjectURLSegmentField::create('URLSegment', $this->owner->fieldLabel('URLSegment'))
+        );
     }
 
     public function Link($action = null)
@@ -36,44 +37,42 @@ class URLExtension extends DataExtension
         return Controller::join_links('/', $this->owner->URLSegment);
     }
 
-    //Set URLSegment to be unique on write
-    public function onBeforeWrite()
+    public function AbsoluteLink()
     {
-        // If there is no URLSegment set, generate one from Title
-        if ((!$this->owner->URLSegment || $this->owner->URLSegment == 'new-page')) {
-            $name = $this->owner->Title ? $this->owner->Title : 'new-page';
-            $filter = URLSegmentFilter::create();
-            $this->owner->URLSegment = $filter->filter($name);
-
-            // Fallback to generic page name if path is empty (= no valid, convertable characters)
-            if (!$this->owner->URLSegment || $this->owner->URLSegment == '-' || $this->owner->URLSegment == '-1') {
-                $this->owner->URLSegment = "page-$this->owner->ID";
-            }
-        } elseif ($this->owner->isChanged('URLSegment')) {
-            // Make sure the URLSegment is valid for use in a URL
-            $segment = preg_replace('/[^A-Za-z0-9]+/', '-', $this->owner->URLSegment);
-            //$segment = preg_replace('/-+/','-',$segment);
-
-            // If after sanitising there is no URLSegment, give it a reasonable default
-            if (!$segment) {
-                $segment = "page-$this->owner->ID";
-            }
-            $this->owner->URLSegment = $segment;
+        if (!$this->isPublished()) {
+            return null;
         }
 
-        // Ensure that this object has a non-conflicting URLSegment value.
-        $count = 2;
-        while ($this->LookForExistingURLSegment($this->owner->URLSegment)) {
-            $this->owner->URLSegment = preg_replace('/-[0-9]+$/', null, $this->owner->URLSegment) . '-' . $count;
-            $count++;
-        }
-
-        parent::onBeforeWrite();
+        return Director::absoluteURL($this->Link());
     }
 
-    //Test whether the URLSegment exists already on another Product
+    // Test whether the URLSegment exists already on another DataObject of the same type
     public function LookForExistingURLSegment($URLSegment)
     {
-        return (DataObject::get_one(get_class($this->owner), "URLSegment = '" . $URLSegment ."' AND " . get_class($this->owner) . ".ID != " . $this->owner->ID));
+        $class = Utility::getClassName($this->owner);
+
+        return DataObject::get_one(
+            $class,
+            sprintf(
+                "URLSegment = '%s' AND %s.ID != %d",
+                $URLSegment,
+                $class,
+                $this->owner->ID
+            )
+        );
+    }
+
+    public function generateURLSegment($title)
+    {
+        $filter = URLSegmentFilter::create();
+        $t = $filter->filter($title);
+        $class= strtolower(Utility::getClassName($this->owner));
+
+        // Fallback to generic page name if path is empty (= no valid, convertable characters)
+        if (!$t || $t == '-' || $t == '-1') {
+            $t = $class . "-" . $this->owner->ID;
+        }
+
+        return $t;
     }
 }

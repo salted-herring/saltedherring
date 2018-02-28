@@ -1,13 +1,14 @@
 <div id="banner" class="collapsed">
 	<div class="filters container">
-		<a href="$URLSegment">all</a>
-		<% loop getTeam %>
-			<a href="$Top.URLSegment/$URLSegment"<% if $URLSegment = Member.URLSegment %> class="current"<% end_if %>>$FirstName</a>
+		<a href="$Parent.Link">all</a>
+		<% loop Team %>
+            <% if Me.isPublished && Me.ShowInMenus %>
+    			<a href="$Link"<% if $isCurrent %> class="current"<% end_if %>>$FirstName</a>
+            <% end_if %>
 		<% end_loop %>
 	</div>
 </div>
 <div class="contain">
-	<% with Member %>
 	<nav id="projectnav">
 		<a href="#" class="previous">
 			<strong>Title</strong>
@@ -22,7 +23,7 @@
 	<article>
 		<header style="background: #{$Colour.Value}; background: rgba({$Colour.hex2rgb}, 0.7);" class="<% if Images %><% else %> no-images<% end_if %>">
 			<div class="details">
-				<h1 itemprop="name">$getUserName</h1>
+				<h1 itemprop="name">$Title</h1>
 				<span itemprop="jobTitle" class="role">$Role</span>
 				<span class="hide" itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">SaltedHerring</span>
 			</div>
@@ -40,7 +41,7 @@
 			<div class="row" id="contentarea">
 				<div class="content grid_2">
 					<% if Intro %><blockquote itemprop="description">$Intro</blockquote><% end_if %>
-					$Bio
+					$Content
 				</div>
 
 				<aside class="grid_1">
@@ -70,5 +71,4 @@
 	</article>
 
 </section>
-<% end_with %>
 </div>

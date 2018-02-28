@@ -2,6 +2,7 @@
 
 namespace SaltedHerring\Model\Media;
 
+use SaltedHerring\Layout\ProjectPage;
 use SaltedHerring\Model\Project;
 
 use Mobile_Detect;
@@ -18,7 +19,8 @@ class BaseMedia extends DataObject
     private static $default_sort = 'SortOrder ASC';
 
     private static $has_one = array(
-        'Project'   => Project::class
+        'Project'   => Project::class,
+        'ProjectPage' => ProjectPage::class
     );
 
     private static $table_name = 'BaseMedia';
@@ -70,12 +72,12 @@ class BaseMedia extends DataObject
         // Sort Order
 
         if (!$this->ID) {
-            $query = DB::query("SELECT MIN(SortOrder) FROM BaseMedia WHERE ClassName = '" . $this->getClassName() . "'");
-
-            if ($query) {
-                $minVal = (int)($query->value());
-                $this->SortOrder = $minVal - 1;
-            }
+            // $query = DB::query("SELECT MIN(SortOrder) FROM BaseMedia WHERE ClassName = '" . $this->getClassName() . "'");
+            //
+            // if ($query) {
+            //     $minVal = (int)($query->value());
+            //     $this->SortOrder = $minVal - 1;
+            // }
         }
 
         parent::onBeforeWrite();

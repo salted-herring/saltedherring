@@ -1,10 +1,8 @@
 <?php
 
-namespace SaltedHerring\Controllers;
-
+namespace SaltedHerring\Layout;
 
 use PageController;
-
 
 class ContactPageController extends PageController
 {

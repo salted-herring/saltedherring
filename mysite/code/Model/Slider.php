@@ -4,6 +4,7 @@ namespace SaltedHerring\Model;
 
 use Page;
 
+use SaltedHerring\Layout\ProjectPage;
 use SaltedHerring\Model\BaseDBO;
 use SaltedHerring\Model\Project;
 use SaltedHerring\Model\Colour;
@@ -48,7 +49,6 @@ class Slider extends BaseDBO
 
     private static $has_one = array(
         'Link'            => Page::class,
-        'Project'         => Project::class,
         'OverlayImage'    => Image::class,
         'Colour'          => Colour::class
     );
@@ -61,42 +61,6 @@ class Slider extends BaseDBO
 
     private static $single_name = 'Slide';
     private static $plural_name = 'Slides';
-
-
-    public function onBeforeWrite()
-    {
-        parent::onBeforeWrite();
-
-        $dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
-        $data = array();
-
-        foreach (Slider::get() as $slider) {
-
-            //$projects = Project::get()->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID);
-
-            $current = array(
-                'Slider' => $slider->ID,
-                'Images' => array()
-            );
-
-            foreach ($slider->Images() as $img) {
-                array_push($current['Images'], array(
-                    'URL' => $img->Image()->URL,
-                    'Alt' => is_null($slider->AltForImage) ? '' : $slider->AltForImage
-                ));
-            }
-
-            array_push($data, $current);
-        }
-
-        try {
-            $handle = fopen($dir . 'sliders.json', 'w');
-            fwrite($handle, json_encode($data));
-            fclose($handle);
-        } catch (Exception $e) {
-            user_error($e, E_USER_WARNING);
-        }
-    }
 
     public function getCMSFields()
     {
@@ -117,7 +81,7 @@ class Slider extends BaseDBO
         $link = new DropdownField("LinkID", "Link", SiteTree::get()->map('ID', 'Title'));
         $linkDescription = new TextField('LinkDescription', 'Link Description');
         $overlay = new UploadField('OverlayImage', 'Overlay Image');
-        $project = new DropdownField("ProjectID", "Project", Project::get()->map('ID', 'Title'), $emptyString = 'x');
+        $project = new DropdownField("ProjectID", "Project", ProjectPage::get()->map('ID', 'Title'));
 
         $project->setEmptyString('(Choose) …');
         $link->setEmptyString('(Choose) …');
@@ -147,15 +111,7 @@ class Slider extends BaseDBO
             $title,
             $colour = new DropdownField("ColourID", "Colour", Colour::get()->map('ID', 'Name')),
             $description,
-            new ToggleCompositeField(
-                'Link',
-                'Internal Link or Project',
-                array(
-                    $link,
-                    new TextField('LinkTitle'),
-                    $project
-                )
-            ),
+            $link,
             $linkDescription,
             $explanation,
             $subTitle,

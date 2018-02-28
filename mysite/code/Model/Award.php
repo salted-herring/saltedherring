@@ -53,7 +53,7 @@ class Award extends BaseDBO
     public function getThumbnail()
     {
         if ($this->Logo()->exists()) {
-            return DBField::create_field('HTMLVarchar', '<img src="' . $this->Logo()->CroppedImage(40, 40)->URL . '"/>');
+            return DBField::create_field('HTMLVarchar', '<img src="' . $this->Logo()->CMSThumbnail()->URL . '"/>');
         }
         return null;
     }

@@ -35,21 +35,17 @@ SaltedHerring\Model\TeamMember:
 SaltedHerring\Model\AboutSection:
   extensions:
     - SaltedHerring\Extensions\MetaDecorator
-SaltedHerring\Model\Block:
-  extensions:
-    - SaltedHerring\Extensions\PublishedDecorator
-# SeoConfig:
-#   Page: true
-#   SilverStripe\ErrorPage\ErrorPage: false
-#   SilverStripe\CMS\Model\RedirectorPage: false
-#   SilverStripe\CMS\Model\VirtualPage: false
-#   SaltedHerring\Layout\HomePage: true
-#   SaltedHerring\Layout\AboutPage: true
-#   SaltedHerring\Layout\TeamPage: true
-#   SaltedHerring\Layout\WorkPage: true
-#   SaltedHerring\Controllers\Project: true
-#   SaltedHerring\Layout\TeamMember: true
-#   SaltedHerring\Controllers\Category: true
+
+
 SilverStripe\Assets\File:
   allowed_extensions:
     - swf
+  force_resample: true
+
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\Assets\Image_Backend:
+   properties:
+     Quality: 90
+  Intervention\Image\ImageManager:
+    constructor:
+      - { driver: imagick }

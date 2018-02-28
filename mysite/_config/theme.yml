@@ -4,5 +4,6 @@ Name: mytheme
 SilverStripe\View\SSViewer:
   themes:
     - '$default'
+  source_file_comments: false
 SilverStripe\i18n\i18n:
-  default_locale: 'en_US'
+  default_locale: 'en_NZ'

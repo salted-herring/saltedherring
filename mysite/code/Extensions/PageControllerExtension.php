@@ -10,7 +10,19 @@ class PageControllerDecorator extends Extension
 {
     public function getCSS()
     {
-        $css = strtolower(get_class($this->owner->data()));
+        $css = $this->getFileName();
+
+        $overrides = [
+            'ProjectPage' => 'workpage',
+            'AboutSectionPage' => 'aboutpage',
+            'TeamMemberPage' => 'teampage'
+        ];
+
+        if (in_array($css, array_keys($overrides))) {
+            $css = $overrides[$css];
+        }
+
+        $css = strtolower($css);
 
         if (!file_exists(Director::baseFolder() . '/themes/default/css/' . $css . '.css')) {
             $css = 'styles';
@@ -21,20 +33,37 @@ class PageControllerDecorator extends Extension
 
     public function getRequireJS()
     {
+        $js = $this->getFileName();
+
+        $overrides = [
+            'ProjectPage' => 'workpage',
+            'AboutSectionPage' => 'aboutpage',
+            'TeamMemberPage' => 'teampage'
+        ];
+
+        if (in_array($js, array_keys($overrides))) {
+            $js = $overrides[$js];
+        }
+
         if (Director::isDev()) {
-            //return sprintf($script, 'js/pagetypes/' . strtolower($this->ClassName));
             $script = "<script src=\"" . "/themes/default/js/lib/require.js\"></script>\n";
             $script .= "<script>\n";
             $script .= "require([\"" . "/themes/default/js/dev.config\"], function (common) {";
-            $script.= "require([\"pagetypes/" . strtolower($this->owner->ClassName) . "\"]);";
+            $script.= "require([\"pagetypes/" . $js . "\"]);";
             $script.= "});";
             $script .= "</script>";
 
             return $script;
         } else {
             $script = '<script src="' . '/themes/default/js/lib/require.js" data-main="' . '/themes/default/%s"></script>';
-            return sprintf($script, 'build/pagetypes/' . strtolower($this->owner->ClassName));
+            return sprintf($script, 'build/pagetypes/' . $js);
         }
+    }
+
+    private function getFileName()
+    {
+        $reflect = new \ReflectionClass($this->owner->data());
+        return $reflect->getShortName();
     }
 
     public function getGACode()

@@ -1,0 +1,7 @@
+---
+Name: saltedherringroutes
+After: framework/routes#coreroutes
+---
+SilverStripe\Control\Director:
+  rules:
+      'api/v1/work': 'SaltedHerring\API\WorkAPI'

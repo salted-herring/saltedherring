@@ -4,7 +4,7 @@ namespace SaltedHerring\Layout;
 
 use Page;
 
-use SaltedHerring\Model\AboutSection;
+// use SaltedHerring\Model\AboutSection;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\GridField\GridFieldConfig;
@@ -21,6 +21,8 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Versioned\VersionedGridFieldItemRequest;
 
+use SilverStripe\Lumberjack\Model\Lumberjack;
+
 class AboutPage extends Page
 {
     private static $db = array(
@@ -29,11 +31,13 @@ class AboutPage extends Page
         'IntroCopy' => 'Text'
     );
 
-    private static $has_one = array(
-    );
+    private static $extensions = [
+        Lumberjack::class,
+    ];
 
-    private static $has_many = array(
-    );
+    private static $allowed_children = [
+        'SaltedHerring\Layout\AboutSectionPage'
+    ];
 
     private static $table_name = 'AboutPage';
 
@@ -42,30 +46,30 @@ class AboutPage extends Page
         $fields = parent::getCMSFields();
 
         $fields->removeByName('Content');
-        $fields->AddFieldToTab('Root.Main', new TextField('PageTitle'));
-        $fields->AddFieldToTab('Root.Main', new TextField('SubTitle'));
-        $fields->AddFieldToTab('Root.Main', new TextareaField('IntroCopy'));
+        $fields->AddFieldToTab('Root.Main', new TextField('PageTitle'), 'Metadata');
+        $fields->AddFieldToTab('Root.Main', new TextField('SubTitle'), 'Metadata');
+        $fields->AddFieldToTab('Root.Main', new TextareaField('IntroCopy'), 'Metadata');
 
-        $gridFieldConfig = GridFieldConfig::create()->addComponents(
-            new GridFieldToolbarHeader(),
-            new GridFieldSortableHeader(),
-            new GridFieldDataColumns(),
-            new GridFieldEditButton(),
-            $add = new GridFieldAddNewButton(),
-            new GridFieldDeleteAction(),
-            new GridFieldDetailForm(),
-            new GridFieldFilterHeader(),
-            new GridFieldOrderableRows('SortOrder')
-        );
-
-        $gridFieldConfig
-            ->getComponentByType(GridFieldDetailForm::class)
-            ->setItemRequestClass(VersionedGridFieldItemRequest::class);
-
-        $add->setButtonName('Add sub section');
-
-        $gridfield = new GridField("Subsections", "Sub sections", AboutSection::get(), $gridFieldConfig);
-        $fields->addFieldToTab('Root.Subsections', $gridfield);
+        // $gridFieldConfig = GridFieldConfig::create()->addComponents(
+        //     new GridFieldToolbarHeader(),
+        //     new GridFieldSortableHeader(),
+        //     new GridFieldDataColumns(),
+        //     new GridFieldEditButton(),
+        //     $add = new GridFieldAddNewButton(),
+        //     new GridFieldDeleteAction(),
+        //     new GridFieldDetailForm(),
+        //     new GridFieldFilterHeader(),
+        //     new GridFieldOrderableRows('SortOrder')
+        // );
+        //
+        // $gridFieldConfig
+        //     ->getComponentByType(GridFieldDetailForm::class)
+        //     ->setItemRequestClass(VersionedGridFieldItemRequest::class);
+        //
+        // $add->setButtonName('Add sub section');
+        //
+        // $gridfield = new GridField("Subsections", "Sub sections", AboutSection::get(), $gridFieldConfig);
+        // $fields->addFieldToTab('Root.Subsections', $gridfield);
 
         return $fields;
     }

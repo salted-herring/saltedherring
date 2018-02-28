@@ -8,11 +8,13 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\Versioned\Versioned;
 
+use SaltedHerring\Extensions\URLExtension;
+use SaltedHerring\Form\DataObjectURLSegmentField;
+
 class BaseDBO extends DataObject
 {
     private static $db = array(
         'Title'      => 'Varchar(255)',
-        'URLSegment' => 'Varchar(255)',
         'Priority'   => 'Decimal',
         'SortOrder'  => 'Int'
     );
@@ -22,8 +24,15 @@ class BaseDBO extends DataObject
     );
 
     private static $extensions = [
-        Versioned::class
+        Versioned::class,
+        URLExtension::class
     ];
+
+    private static $summary_fields = [
+        'Title'
+    ];
+
+    private static $versioned_gridfield_extensions = true;
 
     private static $default_sort = "SortOrder";
 
@@ -97,37 +106,36 @@ class BaseDBO extends DataObject
     }
 
     //Test whether the URLSegment exists already on another Product
-    public function LookForExistingURLSegment($URLSegment)
-    {
-        return (DataObject::get_one('BaseDBO', "URLSegment = '" . $URLSegment ."' AND BaseDBO.ID != " . $this->ID));
-    }
+    // public function LookForExistingURLSegment($URLSegment)
+    // {
+    //     return (DataObject::get_one('BaseDBO', "URLSegment = '" . $URLSegment ."' AND BaseDBO.ID != " . $this->ID));
+    // }
 
-    public function generateURLSegment($title)
-    {
-        $filter = URLSegmentFilter::create();
-        $t = $filter->filter($title);
-
-        // Fallback to generic page name if path is empty (= no valid, convertable characters)
-        if (!$t || $t == '-' || $t == '-1') {
-            $t = "page-$this->ID";
-        }
-
-        // Hook for extensions
-        $this->extend('updateURLSegment', $t, $title);
-
-        return $t;
-    }
+    // public function generateURLSegment($title)
+    // {
+    //     $filter = URLSegmentFilter::create();
+    //     $t = $filter->filter($title);
+    //
+    //     // Fallback to generic page name if path is empty (= no valid, convertable characters)
+    //     if (!$t || $t == '-' || $t == '-1') {
+    //         $t = "page-$this->ID";
+    //     }
+    //
+    //     // Hook for extensions
+    //     $this->extend('updateURLSegment', $t, $title);
+    //
+    //     return $t;
+    // }
 
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->RemoveFieldFromTab('Root.Main', 'URLSegment');
         $fields->RemoveFieldFromTab('Root.Main', 'SortOrder');
-        $fields->RemoveFieldFromTab('Root.Main', 'Version');
-        if (method_exists($this, 'AbsoluteLink')) {
-            $fields->addFieldToTab('Root.SEO', $txtPriority = TextField::create('Priority', 'Google sitemap priority'), $this->hasField('MetaDescription') ? 'MetaDescription' : null);
-            $txtPriority->setDescription('Value between 0 and 1. e.g. 0.6');
-        }
+        $fields->RemoveFieldFromTab('Root.Main', 'Priority');
+        // if (method_exists($this, 'AbsoluteLink')) {
+        //     $fields->addFieldToTab('Root.SEO', $txtPriority = TextField::create('Priority', 'Google sitemap priority'), $this->hasField('MetaDescription') ? 'MetaDescription' : null);
+        //     $txtPriority->setDescription('Value between 0 and 1. e.g. 0.6');
+        // }
 
         return $fields;
     }

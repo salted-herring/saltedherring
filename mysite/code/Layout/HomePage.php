@@ -19,6 +19,7 @@ use SilverStripe\Forms\GridField\GridFieldFilterHeader;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\GridField\GridField;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 class HomePage extends Page
 {
@@ -38,6 +39,10 @@ class HomePage extends Page
     {
         $fields = parent::getCMSFields();
 
+        $fields->removeByName([
+            'Content'
+        ]);
+
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             new GridFieldToolbarHeader(),
             new GridFieldSortableHeader(),
@@ -52,7 +57,7 @@ class HomePage extends Page
 
         $add->setButtonName('Add Slide');
 
-        $gridfield = new GridField("Slides", "Slides", Slider::get(), GridFieldConfig_RecordEditor::create());
+        $gridfield = new GridField("Slides", "Slides", Slider::get(), $gridFieldConfig);
         $fields->addFieldToTab('Root.Slides', $gridfield);
 
         $gridFieldConfig = GridFieldConfig::create()->addComponents(

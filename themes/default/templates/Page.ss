@@ -7,7 +7,7 @@
 		<base href="$BaseTag">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		$MetaTags(true)
-		<% include OG %>
+		$OGTags
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<link rel="apple-touch-icon" href="$ThemeDir/img/touch-icon-iphone.png">
 		<link rel="apple-touch-icon" sizes="76x76" href="$ThemeDir/img/touch-icon-ipad.png">
@@ -44,7 +44,7 @@
 			  </script>
 		<% end_if %>
 	</head>
-	<body class="page-$URLSegment<% if isMobile %> mobile<% end_if %>">
+	<body class="page-$URLSegment<% if $Parent.ClassName == 'SaltedHerring\Layout\WorkPage' %> page-work<% end_if %> page-$ElementName<% if isMobile %> mobile<% end_if %>">
 		<% include Header %>
 		<div id="loader">
 			<span>Getting</span>
@@ -55,6 +55,6 @@
 		</div>
 
 		<% include Footer %>
-		$getRequireJS
+		$getRequireJS.RAW
 	</body>
 </html>

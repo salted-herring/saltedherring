@@ -1,5 +1,5 @@
 
-pagetypes/aboutpage.js
+pagetypes/contactpage.js
 ----------------
 lib/jquery.js
 lib/underscore.js
@@ -8,9 +8,9 @@ lib/swfobject.js
 routes/router.js
 lib/TweenMax.js
 lib/_base.js
-pagetypes/aboutpage.js
+pagetypes/contactpage.js
 
-pagetypes/homepage.js
+pagetypes/page.js
 ----------------
 lib/jquery.js
 lib/underscore.js
@@ -19,7 +19,18 @@ lib/swfobject.js
 routes/router.js
 lib/TweenMax.js
 lib/_base.js
-pagetypes/homepage.js
+pagetypes/page.js
+
+pagetypes/redirectorpage.js
+----------------
+lib/jquery.js
+lib/underscore.js
+lib/backbone.js
+lib/swfobject.js
+routes/router.js
+lib/TweenMax.js
+lib/_base.js
+pagetypes/redirectorpage.js
 
 pagetypes/workpage.js
 ----------------
@@ -34,7 +45,7 @@ components/jquery-bridget/jquery.bridget.js
 components/isotope/jquery.isotope.js
 pagetypes/workpage.js
 
-pagetypes/reportspage.js
+pagetypes/homepage.js
 ----------------
 lib/jquery.js
 lib/underscore.js
@@ -43,9 +54,9 @@ lib/swfobject.js
 routes/router.js
 lib/TweenMax.js
 lib/_base.js
-pagetypes/reportspage.js
+pagetypes/homepage.js
 
-pagetypes/contactpage.js
+pagetypes/aboutpage.js
 ----------------
 lib/jquery.js
 lib/underscore.js
@@ -54,7 +65,7 @@ lib/swfobject.js
 routes/router.js
 lib/TweenMax.js
 lib/_base.js
-pagetypes/contactpage.js
+pagetypes/aboutpage.js
 
 pagetypes/teampage.js
 ----------------
@@ -78,17 +89,6 @@ lib/TweenMax.js
 lib/_base.js
 pagetypes/errorpage.js
 
-pagetypes/page.js
-----------------
-lib/jquery.js
-lib/underscore.js
-lib/backbone.js
-lib/swfobject.js
-routes/router.js
-lib/TweenMax.js
-lib/_base.js
-pagetypes/page.js
-
 pagetypes/default.js
 ----------------
 lib/jquery.js
@@ -100,7 +100,7 @@ lib/TweenMax.js
 lib/_base.js
 pagetypes/default.js
 
-pagetypes/redirectorpage.js
+pagetypes/reportspage.js
 ----------------
 lib/jquery.js
 lib/underscore.js
@@ -109,4 +109,4 @@ lib/swfobject.js
 routes/router.js
 lib/TweenMax.js
 lib/_base.js
-pagetypes/redirectorpage.js
+pagetypes/reportspage.js

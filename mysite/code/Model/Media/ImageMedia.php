@@ -2,8 +2,9 @@
 
 namespace SaltedHerring\Model\Media;
 
+use SaltedHerring\Layout\TeamMemberPage;
 use SaltedHerring\Model\Media\BaseMedia;
-use SaltedHerring\Model\Media\TeamMember;
+use SaltedHerring\Model\TeamMember;
 
 use SilverStripe\Assets\Image;
 use SilverStripe\ORM\FieldType\DBField;
@@ -11,13 +12,14 @@ use SilverStripe\ORM\FieldType\DBField;
 class ImageMedia extends BaseMedia
 {
     private static $has_one = array(
-        'Image'        => Image::class,
-        'TeamMember'   => TeamMember::class
+        'Image'          => Image::class,
+        'TeamMember'     => TeamMember::class,
+        'TeamMemberPage' => TeamMemberPage::class
     );
 
     private static $summary_fields = array(
-        'getThumbnail' => Image::class,
-        'Title'        => 'Title'
+        'getThumbnail'   => Image::class,
+        'Title'          => 'Title'
     );
 
     private static $singular_name = 'Image';
@@ -28,7 +30,7 @@ class ImageMedia extends BaseMedia
     public function getThumbnail()
     {
         if ($this->Image()->exists()) {
-            return DBField::create_field('HTMLVarchar', '<img src="' . $this->Image()->CroppedImage(40, 40)->URL . '"/>');
+            return DBField::create_field('HTMLVarchar', '<img src="' . $this->Image()->FitMax(40, 40)->URL . '"/>');
         }
         return null;
     }
@@ -53,6 +55,6 @@ class ImageMedia extends BaseMedia
             return $this->Image();
         }
 
-        return $this->Image()->setWidth($targetWidth);
+        return $this->Image()->ScaleMaxWidth($targetWidth);
     }
 }

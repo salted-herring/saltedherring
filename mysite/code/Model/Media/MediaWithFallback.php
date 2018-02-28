@@ -29,9 +29,9 @@ class MediaWithFallback extends BaseMedia
             return false;
         }
         if ($this->isMobile()) {
-            return $this->PosterImage()->setWidth(480);
+            return $this->PosterImage()->ScaleMaxWidth(480);
         }
 
-        return $this->PosterImage()->setWidth($width != -1 ? $width : 928);
+        return $this->PosterImage()->ScaleMaxWidth($width != -1 ? $width : 928);
     }
 }

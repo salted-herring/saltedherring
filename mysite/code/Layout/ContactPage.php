@@ -4,12 +4,11 @@ namespace SaltedHerring\Layout;
 
 use Page;
 
-
-use HtmlEditorField;
 use SilverStripe\Assets\Image;
-use SilverStripe\Forms\TextField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Email\Email;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 
 class ContactPage extends Page
 {
@@ -41,7 +40,7 @@ class ContactPage extends Page
         $fields->AddFieldToTab('Root.Main', new TextField('ContentTitle'));
         $fields->AddFieldToTab('Root.Main', new TextField('ContentSubTitle'));
         $fields->AddFieldToTab('Root.Main', new HtmlEditorField('BodyCopy'));
-        $fields->AddFieldToTab('Root.Main', new TextField(Email::class, 'Email Button Text'));
+        $fields->AddFieldToTab('Root.Main', new TextField('Email', 'Email Button Text'));
         $fields->AddFieldToTab('Root.Main', new TextField('MapLink', 'Map Button Text'));
 
         return $fields;

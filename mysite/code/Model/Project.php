@@ -7,10 +7,13 @@ use SaltedHerring\Model\Category;
 use SaltedHerring\Model\Client;
 use SaltedHerring\Model\ProjectAward;
 use SaltedHerring\Model\Service;
+use SaltedHerring\Model\Media\BaseMedia;
 
-use DropDownField;
+// use DropDownField;
 use Exception;
 
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
 use SilverStripe\Forms\GridField\GridFieldSortableHeader;
@@ -24,7 +27,8 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\ListboxField;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\DropDownField;
+use SilverStripe\Forms\Tab;
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Forms\HiddenField;
@@ -146,13 +150,13 @@ class Project extends BaseDBO
 
         if ($this->ID) {
             $categories->setSource($cats);
-            $categories->setMultiple(true);
+            // $categories->setMultiple(true);
 
             $serv->setSource($services);
-            $serv->setMultiple(true);
+            // $serv->setMultiple(true);
 
             $related->setSource($rel);
-            $related->setMultiple(true);
+            // $related->setMultiple(true);
         }
 
         $tagLine->setRightTitle('Short, single line description of project');
@@ -181,39 +185,34 @@ class Project extends BaseDBO
 
             $fields->addFieldToTab('Root.Media', new GridField("Media", "Media", $this->Media(), $gridFieldConfig));
 
-            $url = new HiddenField('URLSegment');
-            $url->setAttribute('data-prefix', 'http://' . $_SERVER['HTTP_HOST']);
-            $url->setAttribute('value', $this->Link());
-            $fields->addFieldToTab('Root.Main', $url);
+            // $url = new HiddenField('URLSegment');
+            // $url->setAttribute('data-prefix', 'http://' . $_SERVER['HTTP_HOST']);
+            // $url->setAttribute('value', $this->Link());
+            // $fields->addFieldToTab('Root.Main', $url);
+
+            $url = $fields->fieldByName('Root.Main.URLSegment');
+            $baseLink = Controller::join_links(
+                Director::absoluteBaseURL(),
+                'work/project'
+            );
+            $url->setURLPrefix($baseLink);
+            $url->setDefaultURL('new-project');
         }
 
         return $fields;
     }
 
 
-    public function getURL()
-    {
-        return '/work/project/' . $this->URLSegment;
-    }
-
-    public function AbsoluteLink()
-    {
-        if (!$this->isPublished) {
-            return null;
-        }
-        return Director::absoluteURL($this->Link());
-    }
-
-    public function Link()
-    {
-        return $this->getURL();
-    }
+    // public function getURL()
+    // {
+    //     return '/work/project/' . $this->URLSegment;
+    // }
 
     public function getFirstImage()
     {
         $im = null;
         foreach ($this->Media() as $media) {
-            if ($media->getType() == Image::class) {
+            if ($media->getType() == 'Image') {
                 return $media;
             }
         }
@@ -234,76 +233,76 @@ class Project extends BaseDBO
         return $this->Media;
     }
 
-    public function onBeforeWrite()
-    {
-        parent::onBeforeWrite();
+    // public function onBeforeWrite()
+    // {
+    //     parent::onBeforeWrite();
+    //
+    //     if ($this->MetaDescription == null) {
+    //         $this->MetaDescription = $this->Title . ' - ' . $this->TagLine;
+    //     }
+    //
+    //     $this->Content = $this->ProjectInfo;
+    //
+    //     $dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
+    //     $data = array();
+    //
+    //     foreach (Category::get() as $cat) {
+    //         $projects = Project::get()->filter(array('isPublished' => 1))->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID);
+    //
+    //         $current = array(
+    //             'Category' => $cat->Title,
+    //             'URLSegment' => $cat->URLSegment,
+    //             'Projects' => array()
+    //         );
+    //
+    //         foreach ($projects as $project) {
+    //             array_push($current['Projects'], array(
+    //                 'Title' => $project->Title,
+    //                 'TagLine' => htmlentities($project->TagLine),
+    //                 'URLSegment' => $project->URLSegment
+    //             ));
+    //         }
+    //
+    //         try {
+    //             $handle = fopen($dir . $cat->URLSegment . '.json', 'w');
+    //             fwrite($handle, json_encode($current));
+    //             fclose($handle);
+    //         } catch (Exception $e) {
+    //             user_error($e, E_USER_WARNING);
+    //         }
+    //     }
+    //
+    //     $all = array();
+    //
+    //     foreach (Project::get()->filter(array('isPublished' => 1)) as $project) {
+    //         array_push($all, array(
+    //             'Title' => $project->Title,
+    //             'TagLine' => htmlentities($project->TagLine),
+    //             'URLSegment' => $project->URLSegment
+    //         ));
+    //     }
+    //
+    //     try {
+    //         $handle = fopen($dir . 'all.json', 'w');
+    //         fwrite($handle, json_encode($all));
+    //         fclose($handle);
+    //     } catch (Exception $e) {
+    //         user_error($e, E_USER_WARNING);
+    //     }
+    // }
 
-        if ($this->MetaDescription == null) {
-            $this->MetaDescription = $this->Title . ' - ' . $this->TagLine;
-        }
-
-        $this->Content = $this->ProjectInfo;
-
-        $dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
-        $data = array();
-
-        foreach (Category::get() as $cat) {
-            $projects = Project::get()->filter(array('isPublished' => 1))->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID);
-
-            $current = array(
-                'Category' => $cat->Title,
-                'URLSegment' => $cat->URLSegment,
-                'Projects' => array()
-            );
-
-            foreach ($projects as $project) {
-                array_push($current['Projects'], array(
-                    'Title' => $project->Title,
-                    'TagLine' => htmlentities($project->TagLine),
-                    'URLSegment' => $project->URLSegment
-                ));
-            }
-
-            try {
-                $handle = fopen($dir . $cat->URLSegment . '.json', 'w');
-                fwrite($handle, json_encode($current));
-                fclose($handle);
-            } catch (Exception $e) {
-                user_error($e, E_USER_WARNING);
-            }
-        }
-
-        $all = array();
-
-        foreach (Project::get()->filter(array('isPublished' => 1)) as $project) {
-            array_push($all, array(
-                'Title' => $project->Title,
-                'TagLine' => htmlentities($project->TagLine),
-                'URLSegment' => $project->URLSegment
-            ));
-        }
-
-        try {
-            $handle = fopen($dir . 'all.json', 'w');
-            fwrite($handle, json_encode($all));
-            fclose($handle);
-        } catch (Exception $e) {
-            user_error($e, E_USER_WARNING);
-        }
-    }
-
-    public function getValidRelatedProjects()
-    {
-        return $this->RelatedProjects()->filter(array('isPublished' => 1));
-    }
-
-    public function canView($member = null, $context = array())
-    {
-        if (Permission::check('ADMIN')) {
-            return true;
-        }
-        return $this->isPublished;
-    }
+    // public function getValidRelatedProjects()
+    // {
+    //     return $this->RelatedProjects()->filter(array('isPublished' => 1));
+    // }
+    //
+    // public function canView($member = null, $context = array())
+    // {
+    //     if (Permission::check('ADMIN')) {
+    //         return true;
+    //     }
+    //     return $this->isPublished;
+    // }
 
     public function getSiteConfig()
     {

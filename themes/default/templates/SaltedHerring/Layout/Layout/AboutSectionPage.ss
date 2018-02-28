@@ -1,14 +1,14 @@
 
 <div id="banner" class="collapsed">
 	<div class="filters container">
-		<% loop getSections %>
-			<a href="$Top.URLSegment/$URLSegment"<% if $URLSegment = Section.URLSegment %> class="current"<% end_if %>>$Title</a>
+		<% loop $Parent.Children %>
+			<a href="$AbsoluteLink"<% if $isCurrent %> class="current"<% end_if %>>$Title</a>
 		<% end_loop %>
 	</div>
 </div>
 
 
-<% with $Section %>
+<%-- <% with $Section %> --%>
 <section id="about-section" class="container individualentry">
 	<article>
 
@@ -21,10 +21,11 @@
 		</header>
 
 		<div class="container">
-
+            <% if HeroImage %>
 			<div class="images">
-				<img width="928" height="$HeroImage.SetWidth(928).Height" src="$HeroImage.SetWidth(928).URL" alt=""/>
+				<img width="928" height="$HeroImage.ScaleWidth(928).Height" src="$HeroImage.ScaleWidth(928).URL" alt=""/>
 			</div>
+            <% end_if %>
 
 			<div class="row contentarea">
 				<div class="content-col-1">
@@ -53,5 +54,4 @@
 	</article>
 
 </section>
-<% end_with %>
-
+<%-- <% end_with %> --%>

@@ -5,7 +5,7 @@
 		<% loop getSliders %>
 			<div id="slider-{$ID}" class="block<% if First %> first init<% end_if %>"<% if Images %><% with Images.First %> style="background-image: url($outputImage(1920).URL); background-size: cover;" data-imgwidth="$outputImage(1920).Width" data-imgheight="$outputImage(1920).Height"<% end_with %><% end_if %> data-keyword="$Keyword"<% if Images %> data-images="$Images.Count"<% end_if %> data-id="$ID" data-alt="$AltForImage">
 				<% if $OverlayImage %>
-					<div class="overlay" style="background-image: url($OverlayImage.SetWidth(1920).URL);"></div>
+					<div class="overlay" style="background-image: url($OverlayImage.ScaleWidth(1920).URL);"></div>
 				<% end_if %>
 
 				<div class="text row">
@@ -31,20 +31,13 @@
 						</div>
 
 						<!-- h2 project-->
-							<% if Project.getURL || Link.Link %>
-						<div class="container links<% if $Title && $Description %><% else %> button-only<% end_if %>">
-							<% if $Title && $Description %><span><strong>$Title</strong><br><em>$Description</em></span><% end_if %>
-
-
-							<a href="<% if Project %>$Project.getURL<% else %>$Link.Link<% end_if %>" class="link">
-								<% if Project %>
-								see project
-								<% else %>
-								$LinkTitle
-								<% end_if %>
-							</a>
-						</div>
-
+							<% if Link %>
+    						<div class="container links<% if $Title && $Description %><% else %> button-only<% end_if %>">
+    							<% if $Title && $Description %><span><strong>$Title</strong><br><em>$Description</em></span><% end_if %>
+    							<a href="$Link.Link" class="link">
+    								$LinkTitle
+    							</a>
+    						</div>
 							<% end_if %>
 
 
