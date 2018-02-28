@@ -42,13 +42,7 @@ class PageController extends ContentController
 
     protected function getBaseTag()
     {
-        $protocol = 'http';
-
-        if (Director::isLive()) {
-            $protocol = 'https';
-        }
-
-        return $protocol .'://' . $_SERVER['HTTP_HOST'];
+        return Director::protocolAndHost($this->request);
     }
 
     public function MetaTags($includeTitle = true)
