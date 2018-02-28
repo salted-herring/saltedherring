@@ -207,9 +207,7 @@ if($('#work').length > 0) {
 			if(section == 'category') {
 				this.currentCategory = fragment;
 
-                $.get('/work/setSession', 'Category=' + fragment, function() {
-                    console.log(arguments);
-                });
+                $.get('/work/setSession', 'Category=' + fragment, function() {});
 			}
 		},
 
@@ -448,8 +446,6 @@ if($('#work').length > 0) {
                   , self = this
                   ;
 
-                console.log(self.work, self.work[category]);
-
 				var currentProj = window.location.href.match(/work\/(.*)/);
 
 				// if(currentProj != null) {
@@ -493,8 +489,6 @@ if($('#work').length > 0) {
 				next = null,
 				current = null;
 
-			console.log('team', member, this.team);
-
 			for(var i in this.team) {
 				if(current != null) {
 					previous = current;
@@ -519,8 +513,6 @@ if($('#work').length > 0) {
 
 		showNav: function(next, previous, base) {
 			$('#projectnav, #projectnav a').hide();
-
-            console.log(next, previous);
 
 			if(previous) {
 				$('#projectnav .previous strong').text(previous.Title.replace(/&amp;/g, '&'));
