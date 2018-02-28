@@ -123,7 +123,7 @@ class PageController extends ContentController
         }
         $data['URL'] = $this->getCurrentPageURL();
 
-        return $this->customise($data)->renderWith(['includes/OG']);
+        return $this->customise($data)->renderWith(['Includes/OG']);
     }
 
     public function displayOG($var = 'Title')

@@ -45,6 +45,8 @@ class PageControllerDecorator extends Extension
             $js = $overrides[$js];
         }
 
+        $js = strtolower($js);
+
         if (Director::isDev()) {
             $script = "<script src=\"" . "/themes/default/js/lib/require.js\"></script>\n";
             $script .= "<script>\n";
