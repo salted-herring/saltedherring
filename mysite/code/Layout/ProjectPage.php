@@ -140,7 +140,9 @@ class ProjectPage extends Page
         $fields->addFieldsToTab('Root.Main', array(
             $tagLine = new TextField('TagLine', 'Tag Line'),
             $quote = new TextareaField('Quote'),
-            $cite = new TextField('Citation', 'Source')
+            $cite = new TextField('Citation', 'Source'),
+            TextField::create('SiteURL', 'Website URL')
+                ->setDescription('Include http(s)://')
         ), 'OG');
 
         $fields->addFieldsToTab(
@@ -160,8 +162,8 @@ class ProjectPage extends Page
             $related->setSource($rel);
         }
 
-        $tagLine->setRightTitle('Short, single line description of project');
-        $cite->setRightTitle('Quotation source. Can contain html tags - e.g. to link to twitter etc.');
+        $tagLine->setDescription('Short, single line description of project');
+        $cite->setDescription('Quotation source. Can contain html tags - e.g. to link to twitter etc.');
         $quote->setTitle('Quote - use “ & ” for quote marks.');
 
         if ($this->ID) {
