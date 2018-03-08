@@ -5,6 +5,7 @@ namespace SaltedHerring\Layout;
 use Page;
 
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+use Symbiote\GridFieldExtensions\GridFieldConfigurablePaginator;
 use SilverStripe\Lumberjack\Model\Lumberjack;
 
 class WorkPage extends Page
@@ -25,7 +26,10 @@ class WorkPage extends Page
 
         $children = $fields->fieldByName('Root.ChildPages.ChildPages');
         $config = $children->getConfig();
-        $config->addComponent(new GridFieldOrderableRows('Sort'));
+        $config
+            ->removeComponentsByType('SilverStripe\Forms\GridField\GridFieldPaginator')
+            ->addComponent(new GridFieldOrderableRows('Sort'))
+            ->addComponent($paginator = new GridFieldConfigurablePaginator(50, [50, 100, 500, 1000]));
 
         return $fields;
     }

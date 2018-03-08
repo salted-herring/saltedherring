@@ -37,9 +37,10 @@
     							<a href="$Link.Link" class="link">
                                     <% if LinkTitle %>
                                         $LinkTitle
-                                    <% end_if %>
-    								<% if LinkDescription %>
-                                        $LinkDescription
+                                    <% else %>
+        								<% if LinkDescription %>
+                                            $LinkDescription
+                                        <% end_if %>
                                     <% end_if %>
     							</a>
     						</div>
