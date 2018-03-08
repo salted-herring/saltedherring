@@ -52,10 +52,11 @@ class HomePage extends Page
             new GridFieldDeleteAction(),
             new GridFieldDetailForm(),
             new GridFieldFilterHeader(),
-            new GridFieldOrderableRows('SortOrder')
+            $sort = new GridFieldSortableRows('SortOrder')
         );
 
         $add->setButtonName('Add Slide');
+        $sort->setUpdateVersionedStage('Live');
 
         $gridfield = new GridField("Slides", "Slides", Slider::get(), $gridFieldConfig);
         $fields->addFieldToTab('Root.Slides', $gridfield);
@@ -69,10 +70,11 @@ class HomePage extends Page
             new GridFieldDeleteAction(),
             new GridFieldDetailForm(),
             new GridFieldFilterHeader(),
-            new GridFieldOrderableRows('SortOrder')
+            $sort = new GridFieldSortableRows('SortOrder')
         );
 
         $add->setButtonName('Add News');
+        $sort->setUpdateVersionedStage('Live');
 
         $gridfield = new GridField("News", "News", $this->NewsItems(), $gridFieldConfig);
         $fields->addFieldToTab('Root.News', $gridfield);
