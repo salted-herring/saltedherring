@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "923e2d573d2ee8d441413867b7b17003",
+    "content-hash": "f57762432f942d3d719fa85eeac1f2c5",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2929,16 +2929,16 @@
         },
         {
             "name": "undefinedoffset/sortablegridfield",
-            "version": "2.0.2",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UndefinedOffset/SortableGridField.git",
-                "reference": "e53e3622a40cf1f58996cfdedd54f86c30cfbb8d"
+                "reference": "5e3e5cac3fde83509f558aff5c8c4f6dcc1dcff2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/e53e3622a40cf1f58996cfdedd54f86c30cfbb8d",
-                "reference": "e53e3622a40cf1f58996cfdedd54f86c30cfbb8d",
+                "url": "https://api.github.com/repos/UndefinedOffset/SortableGridField/zipball/5e3e5cac3fde83509f558aff5c8c4f6dcc1dcff2",
+                "reference": "5e3e5cac3fde83509f558aff5c8c4f6dcc1dcff2",
                 "shasum": ""
             },
             "require": {
@@ -2979,7 +2979,7 @@
                 "gridfield",
                 "silverstripe"
             ],
-            "time": "2017-12-11T16:29:59+00:00"
+            "time": "2018-03-07T13:46:08+00:00"
         },
         {
             "name": "webonyx/graphql-php",

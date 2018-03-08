@@ -6,6 +6,7 @@ use Page;
 use SilverStripe\Lumberjack\Model\Lumberjack;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use Symbiote\GridFieldExtensions\GridFieldConfigurablePaginator;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 class TeamPage extends Page
 {
@@ -27,8 +28,10 @@ class TeamPage extends Page
         $config = $children->getConfig();
         $config
             ->removeComponentsByType('SilverStripe\Forms\GridField\GridFieldPaginator')
-            ->addComponent(new GridFieldOrderableRows('Sort'))
+            ->addComponent($sort = new GridFieldSortableRows('Sort'))
             ->addComponent($paginator = new GridFieldConfigurablePaginator(50, [50, 100, 500, 1000]));
+
+        $sort->setUpdateVersionedStage('Live');
 
         return $fields;
     }

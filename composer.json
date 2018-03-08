@@ -7,7 +7,7 @@
         "kinglozzer/silverstripegmapsobject": "~2.0.0",
         "mobiledetect/mobiledetectlib": "~2.8.26",
         "symbiote/silverstripe-gridfieldextensions": "~3.1.0",
-        "undefinedoffset/sortablegridfield": "~2.0.1",
+        "undefinedoffset/sortablegridfield": "^2.0",
         "tractorcow/silverstripe-colorpicker": "4.0.*@dev",
         "silverstripe/asset-admin": "^1.0",
         "littlegiant/silverstripe-seo-editor": "^2.1",

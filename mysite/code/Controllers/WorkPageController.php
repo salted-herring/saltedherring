@@ -112,7 +112,7 @@ class WorkPageController extends PageController
         $this->MetaDescription = $cat->MetaDescription;
 
         return $this->renderWith(array('SaltedHerring\Layout\WorkPage', 'Page'), array(
-            'getAllProjects' => Versioned::get_by_stage('SaltedHerring\Layout\ProjectPage', 'Live'),
+            'getAllProjects' => Versioned::get_by_stage('SaltedHerring\Layout\ProjectPage', 'Live')->sort('Sort'),
             'category' => $request->getSession()->get('category'),
             'categoryName' => $cat->URLSegment
         ));
@@ -142,7 +142,7 @@ class WorkPageController extends PageController
 
     public function getAllProjects()
     {
-        return Versioned::get_by_stage('SaltedHerring\Layout\ProjectPage', 'Live');
+        return Versioned::get_by_stage('SaltedHerring\Layout\ProjectPage', 'Live')->sort('Sort');
     }
 
     public function getCategories()
