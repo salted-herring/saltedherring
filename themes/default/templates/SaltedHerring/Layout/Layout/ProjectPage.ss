@@ -40,7 +40,7 @@
 					<cite>$Citation</cite><% end_if %>
 
 					<div class="content">
-						$ProjectInfo
+						$Content
 					</div>
 
 					<nav id="articleLinks" class="clearfix">
