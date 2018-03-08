@@ -13,6 +13,7 @@ use SaltedHerring\Model\Colour;
 use SaltedHerring\Model\Media\ImageMedia;
 
 use SilverStripe\Assets\Image;
+use SilverStripe\Forms\DropDownField;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
@@ -77,6 +78,7 @@ class TeamMemberPage extends Page
             [
                 TextField::create('FirstName', 'First Name'),
                 TextField::create('LastName', 'Last Name'),
+                $colour = new DropdownField("ColourID", "Colour", Colour::get()->map('ID', 'Name')),
                 TextField::create('Role', 'Role'),
                 TextField::create('Responsibilities', 'Responsibilities')
                     ->setDescription('A comma separated list of responsibilities.'),
