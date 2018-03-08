@@ -70,7 +70,7 @@
 
 									<% if $Top.NewsItems %>
 									<ul class="news">
-										<% loop $Top.NewsItems.sort(SortOrder DESC) %>
+										<% loop $Top.NewsItems.sort(SortOrder) %>
 										<li<% if First %> class="active"<% end_if %>>$Text</li>
 										<% end_loop %>
 									</ul>
