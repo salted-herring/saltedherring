@@ -116,8 +116,6 @@ var callback = function() {
 
 	var route = new WorkRouter();//new Router());
 
-	console.log(route);
-
 	//var route = new WorkRouter(Router);
 	Backbone.history.start({pushState: true});
 

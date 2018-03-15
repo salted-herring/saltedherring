@@ -59,10 +59,11 @@ require(['jquery', 'backbone', 'underscore', '_base', 'bridget', 'isotope'], fun
 			//$('#menu_icon').removeClass('show').addClass('hide');
 			//$('#main_nav').removeClass('hide').addClass('show');
 
-			showHiddenMessage();
+			window.showHiddenMessage();
 		},
 
 		work: function(section, fragment) {
+
             if(section == 'category') {
 
                 $.get('/work/setSession', 'Category=' + fragment, function() {});

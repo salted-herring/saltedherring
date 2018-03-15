@@ -15,7 +15,7 @@ define(['jquery', 'backbone', 'swfobject'], function($, Backbone, SwfObject) {
 		routes: {
 /* 			'about(/)': 'about', */
 			'work(/)': 'work',
-			'work/:section': 'work',
+			'work/:section(/)': 'work',
 			'work/:section/:fragment(/)': 'work',
 			'team(/)': 'team',
 			'team/:member(/)': 'team'
