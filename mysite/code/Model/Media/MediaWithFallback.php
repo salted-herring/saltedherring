@@ -9,9 +9,11 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class MediaWithFallback extends BaseMedia
 {
-    private static $has_one = array(
+    private static $has_one = [
         'PosterImage' => Image::class
-    );
+    ];
+
+    private static $owns = [ 'PosterImage' ];
 
     private static $table_name = 'MediaWithFallback';
 

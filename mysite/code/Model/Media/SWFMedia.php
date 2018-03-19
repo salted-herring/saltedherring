@@ -9,14 +9,16 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 
 class SWFMedia extends MediaWithFallback
 {
-    private static $db = array(
+    private static $db = [
         'width' => 'Int',
         'height' => 'Int'
-    );
+    ];
 
-    private static $has_one = array(
+    private static $has_one = [
         'File' => File::class
-    );
+    ];
+
+    private static $owns = [ 'File' ];
 
     private static $table_name = 'SWFMedia';
 

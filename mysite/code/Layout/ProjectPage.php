@@ -19,6 +19,8 @@ use SaltedHerring\Model\Media\ImageMedia;
 use SaltedHerring\Model\Media\SWFMedia;
 use SaltedHerring\Model\Media\VimeoMedia;
 
+use Heyday\ColorPalette\Fields\ColorPaletteField;
+
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\GridField\GridField;
@@ -93,6 +95,8 @@ class ProjectPage extends Page
         'SaltedHerring\Extensions\ThumbnailDecorator'
     ];
 
+    private static $owns = [ 'Thumbnail' ];
+
     private static $table_name = 'ProjectPage';
 
     private static $show_in_sitetree = false;
@@ -144,6 +148,15 @@ class ProjectPage extends Page
             TextField::create('SiteURL', 'Website URL')
                 ->setDescription('Include http(s)://')
         ), 'OG');
+
+        // $colourVals = Colour::get()->map('Name', 'Value')->toArray();
+        //
+        // array_walk($colourVals, function (&$value, $key) {
+        //     $value = '#' . $value;
+        // });
+        //
+        // $colours = ColorPaletteField::create("Colour", "Colour", $colourVals);
+        // $colours->setValue($this->Colour()->Name);
 
         $fields->addFieldsToTab(
             'Root.Tags',

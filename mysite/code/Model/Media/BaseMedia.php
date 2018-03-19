@@ -11,17 +11,17 @@ use SilverStripe\ORM\DataObject;
 
 class BaseMedia extends DataObject
 {
-    private static $db = array(
+    private static $db = [
         'Title'     => 'Varchar(100)',
         'SortOrder' => 'Int'
-    );
+    ];
 
     private static $default_sort = 'SortOrder ASC';
 
-    private static $has_one = array(
-        'Project'   => Project::class,
+    private static $has_one = [
+        'Project'   => Project::class,  // TODO - deprecate
         'ProjectPage' => ProjectPage::class
-    );
+    ];
 
     private static $table_name = 'BaseMedia';
 
@@ -62,6 +62,7 @@ class BaseMedia extends DataObject
         $fields->RemoveFieldFromTab('Root.Main', 'SortOrder');
         $fields->RemoveFieldFromTab('Root.Main', 'Version');
         $fields->RemoveFieldFromTab('Root.Main', 'ProjectID');
+        $fields->RemoveFieldFromTab('Root.Main', 'ProjectPageID');
         $fields->RemoveFieldFromTab('Root.Main', 'TeamMemberID');
 
         return $fields;

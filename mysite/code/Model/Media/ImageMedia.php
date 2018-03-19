@@ -11,16 +11,18 @@ use SilverStripe\ORM\FieldType\DBField;
 
 class ImageMedia extends BaseMedia
 {
-    private static $has_one = array(
+    private static $has_one = [
         'Image'          => Image::class,
-        'TeamMember'     => TeamMember::class,
+        'TeamMember'     => TeamMember::class, // TODO - deprecate
         'TeamMemberPage' => TeamMemberPage::class
-    );
+    ];
 
-    private static $summary_fields = array(
+    private static $owns = [ 'Image' ];
+
+    private static $summary_fields = [
         'getThumbnail'   => Image::class,
         'Title'          => 'Title'
-    );
+    ];
 
     private static $singular_name = 'Image';
     private static $plural_name = 'Images';
@@ -39,6 +41,7 @@ class ImageMedia extends BaseMedia
     {
         $fields = parent::getCMSFields();
         $fields->RemoveFieldFromTab('Root.Main', 'TeamMemberID');
+        $fields->RemoveFieldFromTab('Root.Main', 'TeamMemberPageID');
 
         return $fields;
     }
