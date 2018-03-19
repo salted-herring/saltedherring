@@ -57,7 +57,7 @@ class Slider extends BaseDBO
         'Images'          => SliderImage::class
     );
 
-    private static $owns = [ 'Images' ];
+    private static $owns = [ 'Images', 'OverlayImage' ];
 
     private static $table_name = 'Slider';
 
