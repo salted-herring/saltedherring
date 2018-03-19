@@ -2,7 +2,7 @@
     "name": "saltedherring/saltedherring",
     "require": {
         "silverstripe/recipe-cms": "^1.0.0",
-        "silverstripe/googlesitemaps": "^2.0.0",
+        "silverstripe/googlesitemaps": "2.0.0",
         "silverstripe/html5": "2.0.0-beta1",
         "kinglozzer/silverstripegmapsobject": "~2.0.0",
         "mobiledetect/mobiledetectlib": "~2.8.26",
