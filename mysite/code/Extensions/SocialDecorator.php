@@ -42,7 +42,7 @@ class SocialDecorator extends DataExtension
                 new UploadField('OGImage', Image::class)
             )
         );
-        $og->setStartClosed(false);
+        $og->setStartClosed(true);
         $fields->addFieldToTab('Root.Main', $og, 'Metadata');
     }
 
