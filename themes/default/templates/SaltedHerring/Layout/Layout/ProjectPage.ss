@@ -117,11 +117,18 @@
 
 	<% loop RelatedProjects %>
 		<a href="$Link" class="entry<% if MultipleOf(3) %> last<% end_if %>" title="$Name">
-            <% if $getFirstImage %>
-                <% with $getFirstImage.Image.FillMax(320, 320) %>
+            <% if Thumbnail %>
+                <% with $Thumbnail.FillMax(320, 320) %>
                     <img src="$URL" alt="$Title" width="$Width" height="$Height" />
                 <% end_with %>
-			<% end_if %>
+            <% else %>
+                <% if $getFirstImage %>
+                    <% with $getFirstImage.Image.FillMax(320, 320) %>
+                        <img src="$URL" alt="$Title" width="$Width" height="$Height" />
+                    <% end_with %>
+    			<% end_if %>
+            <% end_if %>
+
 			<div class="label">
 				<span>
 					<strong>$Title</strong>
