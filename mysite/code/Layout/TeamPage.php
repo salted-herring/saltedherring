@@ -25,13 +25,17 @@ class TeamPage extends Page
         $fields = parent::getCMSFields();
 
         $children = $fields->fieldByName('Root.ChildPages.ChildPages');
+        $children->setModelClass('SaltedHerring\Layout\TeamMemberPage');
+        $children = $children->setList(TeamMemberPage::get());
         $config = $children->getConfig();
+
         $config
             ->removeComponentsByType('SilverStripe\Forms\GridField\GridFieldPaginator')
-            ->addComponent($sort = new GridFieldSortableRows('Sort'))
+            ->addComponent($sort = new GridFieldSortableRows('SortOrder'))
             ->addComponent($paginator = new GridFieldConfigurablePaginator(50, [50, 100, 500, 1000]));
 
         $sort->setUpdateVersionedStage('Live');
+        $sort->setAppendToTop(true);
 
         return $fields;
     }

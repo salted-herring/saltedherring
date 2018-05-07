@@ -9,6 +9,9 @@ namespace SaltedHerring\Layout;
 
 use Page;
 
+use SaltedHerring\Extensions\SortOrderExtension;
+use SaltedHerring\Extensions\ThumbnailDecorator;
+
 use SaltedHerring\Model\Colour;
 use SaltedHerring\Model\Media\ImageMedia;
 
@@ -61,7 +64,8 @@ class TeamMemberPage extends Page
     ];
 
     private static $extensions = [
-        'SaltedHerring\Extensions\ThumbnailDecorator'
+        ThumbnailDecorator::class,
+        SortOrderExtension::class
     ];
 
     private static $table_name = 'TeamMemberPage';

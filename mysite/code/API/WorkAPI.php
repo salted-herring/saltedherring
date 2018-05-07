@@ -64,7 +64,7 @@ class WorkAPI extends PageController
                 $data['Category'] = 'All';
                 $data['URLSegment'] = 'all';
 
-                $projects = Versioned::get_by_stage('SaltedHerring\Layout\ProjectPage', 'Live')->sort('Sort');
+                $projects = Versioned::get_by_stage('SaltedHerring\Layout\ProjectPage', 'Live');
             }
 
             foreach ($projects as $project) {

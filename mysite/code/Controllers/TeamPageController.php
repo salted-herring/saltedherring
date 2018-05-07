@@ -58,7 +58,7 @@ class TeamPageController extends PageController
 
         $data = [];
 
-        foreach (TeamMemberPage::get()->sort() as $member) {
+        foreach (TeamMemberPage::get() as $member) {
             if (!$member->isPublished()) {
                 continue;
             }

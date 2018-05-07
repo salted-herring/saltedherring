@@ -9,6 +9,9 @@ namespace SaltedHerring\Layout;
 
 use Page;
 
+use SaltedHerring\Extensions\SortOrderExtension;
+use SaltedHerring\Extensions\ThumbnailDecorator;
+
 use SaltedHerring\Model\Category;
 use SaltedHerring\Model\Client;
 use SaltedHerring\Model\ProjectAward;
@@ -92,7 +95,8 @@ class ProjectPage extends Page
     ];
 
     private static $extensions = [
-        'SaltedHerring\Extensions\ThumbnailDecorator'
+        SortOrderExtension::class,
+        ThumbnailDecorator::class
     ];
 
     private static $owns = [ 'Thumbnail' ];
