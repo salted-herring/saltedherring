@@ -92,10 +92,6 @@ class ProjectPage extends Page
         'Project'         => 'ProjectPage.RelatedProjects'
     ];
 
-    private static $owns = [
-        'Media'
-    ];
-
     private static $summary_fields = [
         'Title'
     ];
@@ -105,7 +101,10 @@ class ProjectPage extends Page
         ThumbnailDecorator::class
     ];
 
-    private static $owns = [ 'Thumbnail' ];
+    private static $owns = [
+        'Thumbnail',
+        'Media'
+    ];
 
     private static $table_name = 'ProjectPage';
 
