@@ -12,7 +12,16 @@ use SaltedHerring\Model\Media\BaseMedia;
 // use DropDownField;
 use Exception;
 
+use SilverStripe\Assets\Image;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Forms\DropDownField;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\ListboxField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
@@ -23,21 +32,14 @@ use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridFieldFilterHeader;
-use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\ListboxField;
-use SilverStripe\Forms\LiteralField;
-use SilverStripe\Forms\DropDownField;
-use SilverStripe\Forms\Tab;
-use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
-use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
-use SilverStripe\Forms\HiddenField;
-use SilverStripe\Control\Director;
-use SilverStripe\Assets\Image;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\Queries\SQLSelect;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Security\Permission;
-use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\DataObject;
+
+use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 class Project extends BaseDBO
 {
@@ -97,7 +99,6 @@ class Project extends BaseDBO
         $fields->removeByName('ProjectAwards');
         $fields->removeByName('Project');
         $fields->removeByName('RelatedProjects');
-// 		$fields->removeByName('Content');
 
         $gridFieldConfig = GridFieldConfig::create()->addComponents(
             new GridFieldToolbarHeader(),
@@ -202,12 +203,6 @@ class Project extends BaseDBO
         return $fields;
     }
 
-
-    // public function getURL()
-    // {
-    //     return '/work/project/' . $this->URLSegment;
-    // }
-
     public function getFirstImage()
     {
         $im = null;
@@ -232,77 +227,6 @@ class Project extends BaseDBO
 
         return $this->Media;
     }
-
-    // public function onBeforeWrite()
-    // {
-    //     parent::onBeforeWrite();
-    //
-    //     if ($this->MetaDescription == null) {
-    //         $this->MetaDescription = $this->Title . ' - ' . $this->TagLine;
-    //     }
-    //
-    //     $this->Content = $this->ProjectInfo;
-    //
-    //     $dir = ROOT . 'themes/' . SiteConfig::current_site_config()->Theme . '/json/';
-    //     $data = array();
-    //
-    //     foreach (Category::get() as $cat) {
-    //         $projects = Project::get()->filter(array('isPublished' => 1))->leftJoin('Project_Categories', 'Project.ID = Project_Categories.ProjectID')->filter('CategoryID', $cat->ID);
-    //
-    //         $current = array(
-    //             'Category' => $cat->Title,
-    //             'URLSegment' => $cat->URLSegment,
-    //             'Projects' => array()
-    //         );
-    //
-    //         foreach ($projects as $project) {
-    //             array_push($current['Projects'], array(
-    //                 'Title' => $project->Title,
-    //                 'TagLine' => htmlentities($project->TagLine),
-    //                 'URLSegment' => $project->URLSegment
-    //             ));
-    //         }
-    //
-    //         try {
-    //             $handle = fopen($dir . $cat->URLSegment . '.json', 'w');
-    //             fwrite($handle, json_encode($current));
-    //             fclose($handle);
-    //         } catch (Exception $e) {
-    //             user_error($e, E_USER_WARNING);
-    //         }
-    //     }
-    //
-    //     $all = array();
-    //
-    //     foreach (Project::get()->filter(array('isPublished' => 1)) as $project) {
-    //         array_push($all, array(
-    //             'Title' => $project->Title,
-    //             'TagLine' => htmlentities($project->TagLine),
-    //             'URLSegment' => $project->URLSegment
-    //         ));
-    //     }
-    //
-    //     try {
-    //         $handle = fopen($dir . 'all.json', 'w');
-    //         fwrite($handle, json_encode($all));
-    //         fclose($handle);
-    //     } catch (Exception $e) {
-    //         user_error($e, E_USER_WARNING);
-    //     }
-    // }
-
-    // public function getValidRelatedProjects()
-    // {
-    //     return $this->RelatedProjects()->filter(array('isPublished' => 1));
-    // }
-    //
-    // public function canView($member = null, $context = array())
-    // {
-    //     if (Permission::check('ADMIN')) {
-    //         return true;
-    //     }
-    //     return $this->isPublished;
-    // }
 
     public function getSiteConfig()
     {

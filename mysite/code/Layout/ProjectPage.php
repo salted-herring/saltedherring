@@ -54,6 +54,8 @@ use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Security\Permission;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\Queries\SQLSelect;
+use SilverStripe\ORM\ArrayList;
 
 class ProjectPage extends Page
 {
@@ -310,6 +312,27 @@ class ProjectPage extends Page
     //     }
     //     return $this->isPublished;
     // }
+
+    /**
+     * Instead of returning the services with their default sort,
+     * return them in the order added to this project.
+     */
+    public function getSortedServices()
+    {
+        $sql = new SQLSelect();
+        $sql->setFrom('ProjectPage_Services');
+        $sql->addSelect('ServiceID');
+        $sql->setWhere(['ProjectPageID' => $this->ID]);
+
+        $result = $sql->execute();
+        $services = new ArrayList();
+
+        foreach ($result as $row) {
+            $services->add(Service::get()->byId($row['ServiceID']));
+        }
+
+        return $services;
+    }
 
     public function getSiteConfig()
     {

@@ -36,8 +36,8 @@
 
 			<div class="row">
 				<div class="grid_2">
-					<% if Quote && Citation %><blockquote>$Quote</blockquote>
-					<cite>$Citation</cite><% end_if %>
+					<% if Quote %><blockquote>$Quote</blockquote><% end_if %>
+					<% if Citation %><cite>$Citation</cite><% end_if %>
 
 					<div class="content">
 						$Content
@@ -54,11 +54,12 @@
 					<% loop Categories %><span itemprop="genre" class="hide">$Name</span><% end_loop %>
 					<% end_if %>
 
-					<% if Services %>
+					<% if SortedServices %>
 					<strong>services:</strong>
-					<span itemprop="keywords" class="hide"><% loop Services %>$Name<% if not Last %>,<% end_if %><% end_loop %></span>
+
+					<span itemprop="keywords" class="hide"><% loop SortedServices %>$Name<% if not Last %>,<% end_if %><% end_loop %></span>
 					<ul class="services">
-						<% loop Services %>
+						<% loop SortedServices %>
 						<li>$Title</li>
 						<% end_loop %>
 					</ul>
