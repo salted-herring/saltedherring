@@ -266,7 +266,7 @@ img {
 	width: 100%;
 
 	a {
-		@extend .external;
+
 		color: $blue;
 		border-color: $blue;
 		padding: .625em 0 !important;
@@ -281,7 +281,10 @@ img {
 	}
 
 	.fullstory {
+		@extend .link;
 		margin-right: 4%;
+		color: $blue;
+		border-color: $blue;
 
         &:before {
 			background-color: $background;
