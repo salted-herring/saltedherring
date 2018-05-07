@@ -92,6 +92,10 @@ class ProjectPage extends Page
         'Project'         => 'ProjectPage.RelatedProjects'
     ];
 
+    private static $owns = [
+        'Media'
+    ];
+
     private static $summary_fields = [
         'Title'
     ];

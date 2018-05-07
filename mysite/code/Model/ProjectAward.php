@@ -6,6 +6,7 @@ use SaltedHerring\Layout\ProjectPage;
 use SaltedHerring\Model\Award;
 use SaltedHerring\Model\Project;
 
+use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
 
