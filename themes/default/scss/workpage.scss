@@ -283,6 +283,10 @@ img {
 	.fullstory {
 		margin-right: 4%;
 
+        &:before {
+			background-color: $background;
+		}
+
 		&:hover {
 			background: $blue;
 			color: $white;
