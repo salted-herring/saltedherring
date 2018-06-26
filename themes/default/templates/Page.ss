@@ -4,7 +4,7 @@
 <!--[if IE 8]>		   <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head>
-		<base href="$base_tag">
+		<% base_tag %>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		$MetaTags(true)
 		$OGTags
