@@ -53,6 +53,7 @@ SilverStripe\Core\Injector\Injector:
 ---
   Only:
     environment: 'live'
+    Name: 'slatedherringlive'
 ---
 SilverStripe\Control\Director:
   alternate_base_url: 'https://www.saltedherring.com'
