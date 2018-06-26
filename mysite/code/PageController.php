@@ -27,17 +27,17 @@ class PageController extends ContentController
     protected function getHTTPProtocol()
     {
         $protocol = 'http';
-        // if (isset($_SERVER['SCRIPT_URI']) && substr($_SERVER['SCRIPT_URI'], 0, 5) == 'https') {
-        //     $protocol = 'https';
-        // } elseif (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
-        //     $protocol = 'https';
-        // }
+        if (isset($_SERVER['SCRIPT_URI']) && substr($_SERVER['SCRIPT_URI'], 0, 5) == 'https') {
+            $protocol = 'https';
+        } elseif (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
+            $protocol = 'https';
+        }
         return $protocol;
     }
 
     protected function getCurrentPageURL()
     {
-        return $this->getHTTPProtocol().'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        return Director::protocol($this->request).'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     }
 
     protected function getBaseTag()
