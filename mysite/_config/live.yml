@@ -1,9 +1,0 @@
----
-Name: 'saltedherringlive'
-After: 'saltedherring'
----
-Only:
-  environment: 'live'
----
-SilverStripe\Control\Director:
-  alternate_base_url: 'https://www.saltedherring.com'

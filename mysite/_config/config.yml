@@ -49,3 +49,9 @@ SilverStripe\Core\Injector\Injector:
   Intervention\Image\ImageManager:
     constructor:
       - { driver: imagick }
+---
+Only:
+  environment: 'live'
+---
+SilverStripe\Control\Director:
+  alternate_base_url: 'https://www.saltedherring.com'
