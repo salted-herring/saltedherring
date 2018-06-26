@@ -12,7 +12,7 @@ class Colour extends BaseDBO
 {
     private static $db = array(
         'Name'         => 'Varchar(25)',
-        'Value'        => 'Varchar(25)'
+        'Value'        => 'Color'
     );
 
     private static $summary_fields = array(
@@ -25,11 +25,6 @@ class Colour extends BaseDBO
     private static $searchable_fields = array(
         'Name',
         'Value'
-    );
-
-    private static $belongs_to = array(
-        'Projects'     => Project::class,
-        'ProjectPages' => ProjectPage::class
     );
 
     public function getTitle()

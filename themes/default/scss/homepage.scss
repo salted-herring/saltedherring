@@ -628,6 +628,8 @@ section {
 		background-attachment: fixed;
 		background-position: 50% 0;
 		background-image: none;
+        background-size: cover;
+        backface-visibility: hidden;
 		position: absolute;
 		@include translate3d(0px,0px,10,1000);
 
@@ -1403,7 +1405,7 @@ section {
 	p:last-child {
 		display: none;
 	}
-}	
+}
 
 @media (min-height: 900px) {
 	#slider-238 {
@@ -1411,20 +1413,6 @@ section {
 		p:last-child {
 			display: block;
 		}
-		
-	}	
+
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
