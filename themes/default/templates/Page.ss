@@ -4,7 +4,7 @@
 <!--[if IE 8]>		   <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head>
-		<base href="$BaseTag">
+		<base href="$base_tag">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		$MetaTags(true)
 		$OGTags
@@ -30,7 +30,7 @@
 			"url": "http://www.saltedherring.com",
 			"name": "Salted Herring",
 			"alternateName": "SaltedHerring",
-			"logo": "http://www.saltedherring.com/themes/default/img/sprites/SH_logo_site_black.png",
+			"logo": "https://www.saltedherring.com/themes/default/img/sprites/SH_logo_site_black.png",
 			"contactPoint" : [
 				{ "@type" : "ContactPoint",
 				  "telephone" : "+64 (0)4 473 1344",
