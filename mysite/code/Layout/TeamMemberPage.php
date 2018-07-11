@@ -63,6 +63,11 @@ class TeamMemberPage extends Page
         'FirstName'
     ];
 
+    private static $owns = [
+        'Thumbnail',
+        'ThumbnailOver'
+    ];
+
     private static $extensions = [
         ThumbnailDecorator::class,
         SortOrderExtension::class
