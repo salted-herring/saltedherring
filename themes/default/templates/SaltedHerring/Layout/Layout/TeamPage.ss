@@ -3,7 +3,7 @@
     <div class="container">
         <h1 class="title">Team</h1>
         <div class="filters">
-            <% loop Children %>
+            <% loop Children.sort(SortOrder) %>
                 <% if Me.isPublished && Me.ShowInMenus %>
                     <a href="$Top.URLSegment/$URLSegment"<% if $MultipleOf(3) %> class="_3"<% end_if %>>$FirstName</a>
                 <% end_if %>
