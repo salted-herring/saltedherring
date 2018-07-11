@@ -178,7 +178,7 @@ class PageController extends ContentController
             }
 
             if ($this->displayOG('Image') && $this->displayOG('Image')->URL != '/assets/') {
-                $tags .= '<meta property="og:title" content="' . $this->getHTTPProtocol() . Director::BaseURL() . $this->displaOG('Image')->URL .'" />';
+                $tags .= '<meta property="og:title" content="' . $this->getHTTPProtocol() . Director::BaseURL() . $this->displayOG('Image')->URL .'" />';
             }
 
             $tags .= '<meta property="og:url" content="' . str_replace('meta', '', $this->getHTTPProtocol() . Director::BaseURL() . $this->getCurrentPageUrl()) . '" />';
