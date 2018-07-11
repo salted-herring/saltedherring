@@ -142,7 +142,7 @@ class WorkPageController extends PageController
 
     public function getAllProjects()
     {
-        return Versioned::get_by_stage('SaltedHerring\Layout\ProjectPage', 'Live')->sort('Sort');
+        return Versioned::get_by_stage('SaltedHerring\Layout\ProjectPage', 'Live')->sort('SortOrder');
     }
 
     public function getCategories()
